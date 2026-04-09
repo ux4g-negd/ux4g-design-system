@@ -1,0 +1,243 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+    --ux4g-accordion-bg: var(--ux4g-bg-neutral-subtle);
+    --ux4g-accordion-border-color: var(--ux4g-border-color-neutral-default);
+    --ux4g-accordion-header-bg-hover: var(--ux4g-bg-neutral-subtle);
+    --ux4g-accordion-header-bg-expanded: var(--ux4g-bg-neutral);
+    --ux4g-accordion-body-bg: var(--ux4g-bg-neutral);
+
+    --ux4g-accordion-title-color: var(--ux4g-text-neutral-primary);
+    --ux4g-accordion-body-color: var(--ux4g-text-neutral-secondary);
+    --ux4g-accordion-icon-color: var(--ux4g-text-neutral-primary);
+    --ux4g-accordion-icon-color-hover: var(--ux4g-text-brand-primary-default);
+    --ux4g-accordion-focus-color: var(--ux4g-border-color-primary-strong);
+
+    --ux4g-accordion-title-size: var(--ux4g-fs-16);
+    --ux4g-accordion-title-line-height: var(--ux4g-lh-20);
+    --ux4g-accordion-title-weight: var(--ux4g-fw-semibold);
+
+    --ux4g-accordion-body-size: var(--ux4g-fs-16);
+    --ux4g-accordion-body-line-height: var(--ux4g-lh-24);
+    --ux4g-accordion-body-weight: var(--ux4g-fw-regular);
+
+    --ux4g-accordion-button-min-height: var(--ux4g-spacing-14, 56px);
+    --ux4g-accordion-button-padding-x: var(--ux4g-padding-m);
+    --ux4g-accordion-button-padding-y: var(--ux4g-padding-s);
+    --ux4g-accordion-body-padding-x: var(--ux4g-padding-m);
+    --ux4g-accordion-body-padding-y: var(--ux4g-padding-m);
+
+    --ux4g-accordion-title-padding-x: var(--ux4g-padding-xs);
+
+
+    --ux4g-accordion-arrow-size: var(--ux4g-fs-8, 8px);
+    --ux4g-accordion-arrow-stroke: var(--ux4g-border-width-md, 2px);
+    --ux4g-accordion-arrow-open-offset: var(--ux4g-padding-2xs, 4px);
+
+    /* Type 1 defaults: title left, arrow right */
+    --ux4g-accordion-arrow-order: 1;
+    --ux4g-accordion-arrow-margin-left: auto;
+    --ux4g-accordion-arrow-margin-right: var(--ux4g-spacing-none, 0);
+}
+
+/* Accordion */
+.ux4g-accordion {
+    width: 100%;
+    border-bottom: var(--ux4g-border-width-sm, 1px) solid var(--ux4g-accordion-border-color);
+    background: var(--ux4g-accordion-body-bg);
+}
+
+.ux4g-accordion__item {
+    border-bottom: var(--ux4g-border-width-sm, 1px) solid var(--ux4g-accordion-border-color);
+}
+
+.ux4g-accordion__item:last-child {
+    border-bottom: var(--ux4g-border-width-none, 0);
+}
+
+.ux4g-accordion__header { margin: var(--ux4g-margin-none, 0); }
+
+.ux4g-accordion__button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: var(--ux4g-accordion-button-min-height);
+    padding: var(--ux4g-accordion-button-padding-y) var(--ux4g-accordion-button-padding-x);
+    background: var(--ux4g-accordion-body-bg);
+    border: var(--ux4g-border-width-none, 0);
+    color: var(--ux4g-accordion-title-color);
+    font-size: var(--ux4g-accordion-title-size);
+    line-height: var(--ux4g-accordion-title-line-height);
+    font-weight: var(--ux4g-accordion-title-weight);
+    font-family: var(--ux4g-ff);
+    text-align: var(--ux4g-ta-start, left);
+    overflow-anchor: none;
+    cursor: pointer;
+    transition: background-color var(--ux4g-duration-fast, 0.2s) ease;
+}
+
+.ux4g-accordion__button-content {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.ux4g-accordion__title {
+    display: block;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    word-break: var(--ux4g-wb-break, break-word);
+    padding-left: var(--ux4g-accordion-title-padding-x);
+}
+
+.ux4g-accordion__button::after {
+    content: "";
+    order: var(--ux4g-accordion-arrow-order);
+    width: var(--ux4g-accordion-arrow-size);
+    height: var(--ux4g-accordion-arrow-size);
+    margin-left: var(--ux4g-accordion-arrow-margin-left);
+    margin-right: var(--ux4g-accordion-arrow-margin-right);
+    border-right: var(--ux4g-accordion-arrow-stroke) solid var(--ux4g-accordion-icon-color);
+    border-bottom: var(--ux4g-accordion-arrow-stroke) solid var(--ux4g-accordion-icon-color);
+    transform: rotate(45deg);
+    transition: transform var(--ux4g-duration-fast, 0.2s) ease, margin-top var(--ux4g-duration-fast, 0.2s) ease, border-color var(--ux4g-duration-fast, 0.2s) ease;
+    flex-shrink: 0;
+}
+
+.ux4g-accordion__button:hover {
+    background: var(--ux4g-accordion-header-bg-hover);
+}
+
+.ux4g-accordion__button:hover::after {
+    border-right-color: var(--ux4g-accordion-icon-color-hover);
+    border-bottom-color: var(--ux4g-accordion-icon-color-hover);
+}
+
+.ux4g-accordion__button:focus-visible {
+    outline: var(--ux4g-border-width-md, 2px) solid var(--ux4g-accordion-focus-color);
+    outline-offset: calc(var(--ux4g-padding-3xs, 2px) * -1);
+}
+
+.ux4g-accordion__button:not(.collapsed) {
+    background: var(--ux4g-accordion-header-bg-expanded);
+    outline: none;
+}
+
+.ux4g-accordion__button:not(.collapsed)::after {
+    transform: rotate(-135deg);
+    margin-top: var(--ux4g-accordion-arrow-open-offset);
+}
+
+
+.ux4g-accordion__collapse {
+    height: 0;
+    overflow: var(--ux4g-of-hidden);
+    transition: height var(--ux4g-duration-normal, 0.28s) cubic-bezier(.4, 0, .2, 1);
+}
+
+.ux4g-accordion__collapse.show {
+    height: auto;
+}
+
+.ux4g-accordion__collapse.collapsing {
+    height: 0;
+    overflow: var(--ux4g-of-hidden);
+    transition: height var(--ux4g-duration-normal, 0.28s) cubic-bezier(.4, 0, .2, 1);
+}
+
+.ux4g-accordion__body {
+    padding: 0 var(--ux4g-accordion-body-padding-x) var(--ux4g-accordion-body-padding-y);
+    background: var(--ux4g-accordion-body-bg);
+    color: var(--ux4g-accordion-body-color);
+    font-size: var(--ux4g-accordion-body-size);
+    line-height: var(--ux4g-accordion-body-line-height);
+    font-weight: var(--ux4g-accordion-body-weight);
+    font-family: var(--ux4g-ff);
+}
+
+.ux4g-accordion__body > :first-child {
+    margin-top: var(--ux4g-margin-none, 0);
+}
+
+.ux4g-accordion__body > :last-child {
+    margin-bottom: var(--ux4g-margin-none, 0);
+}
+
+/* Type 1: title left, arrow right */
+.ux4g-accordion-arrow-right {
+    --ux4g-accordion-arrow-order: 1;
+    --ux4g-accordion-arrow-margin-left: auto;
+    --ux4g-accordion-arrow-margin-right: var(--ux4g-spacing-none, 0);
+}
+
+/* Type 2: arrow left, gap, title */
+.ux4g-accordion-arrow-left {
+    --ux4g-accordion-arrow-order: -1;
+    --ux4g-accordion-arrow-margin-left: var(--ux4g-spacing-none, 0);
+    --ux4g-accordion-arrow-margin-right: var(--ux4g-padding-m, 16px);
+}
+
+/* Type 4: with container */
+.ux4g-accordion-bordered {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-padding-xl, 24px);
+    border-bottom: var(--ux4g-border-width-none);
+}
+
+.ux4g-accordion-bordered .ux4g-accordion__item {
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+    border-radius: var(--ux4g-radius-md);
+    overflow: var(--ux4g-of-hidden);
+}
+
+.ux4g-accordion-bordered .ux4g-accordion__item:last-child {
+    border-bottom: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+}
+
+.ux4g-accordion-bordered .ux4g-accordion__button {
+     background-color: var(--ux4g-accordion-body-bg);
+     color: var(--ux4g-accordion-title-color);
+     font-size: var(--ux4g-accordion-title-size);
+}
+
+.ux4g-accordion-bordered .ux4g-accordion__body {
+     background-color: var(--ux4g-accordion-body-bg);
+     color: var(--ux4g-accordion-body-color);
+     font-size: var(--ux4g-accordion-body-size);
+}
+
+
+/* 48rem = 768px */
+@media (max-width: 48rem) {
+    .ux4g-accordion {
+        --ux4g-accordion-button-min-height: var(--ux4g-fs-48, 48px);
+        --ux4g-accordion-button-padding-x: var(--ux4g-padding-s);
+        --ux4g-accordion-button-padding-y: var(--ux4g-padding-s);
+        --ux4g-accordion-body-padding-x: var(--ux4g-padding-s);
+        --ux4g-accordion-body-padding-y: var(--ux4g-padding-s);
+        --ux4g-accordion-body-size: var(--ux4g-fs-14);
+        --ux4g-accordion-body-line-height: var(--ux4g-lh-20);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ux4g-accordion__button,
+    .ux4g-accordion__button::after,
+    .ux4g-accordion__collapse.collapsing {
+        transition: none;
+    }
+}

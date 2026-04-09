@@ -1,0 +1,39 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+@import "./colors.tokens.css";
+@import "./typography.tokens.css";
+@import "./spacing.tokens.css";
+@import "./radius.tokens.css";
+@import "./border.tokens.css";
+@import "./blur.tokens.css";
+@import "./opacity.tokens.css";
+@import "./shadow.tokens.css";
+@import "./z-index.tokens.css";
+@import "./visibility.tokens.css";
+@import "./text-transform.tokens.css";
+@import "./vertical-align.tokens.css";
+@import "./position.tokens.css";
+@import "./object-fit.tokens.css";
+@import "./overflow.tokens.css";
+@import "./layout.tokens.css";
+@import "./interaction.tokens.css";
+
+
+
+
+
+
+
+

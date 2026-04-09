@@ -1,0 +1,98 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  /* Border Width */
+  --ux4g-border-width-none: var(--ux4g-border-none);
+  --ux4g-border-width-sm: var(--ux4g-border-thin);
+  --ux4g-border-width-md: var(--ux4g-border-thick);
+  --ux4g-border-width-lg: var(--ux4g-border-thicker);
+  --ux4g-border-width-xl: var(--ux4g-border-thickest);
+
+  /* Border Color - Neutral */
+  --ux4g-border-color-neutral-default: var(--ux4g-color-neutral-300);
+  --ux4g-border-color-neutral-subtle: var(--ux4g-color-neutral-200);
+  --ux4g-border-color-neutral-strong: var(--ux4g-color-neutral-500);
+  --ux4g-border-color-neutral-focus: var(--ux4g-color-neutral-600);
+  --ux4g-border-color-neutral-hover: var(--ux4g-color-neutral-300);
+  --ux4g-border-color-neutral-active: var(--ux4g-color-neutral-400);
+  --ux4g-border-color-neutral-elevated: var(--ux4g-color-neutral-0);
+
+
+  /* Status Borders */
+  --ux4g-border-color-success-default: var(--ux4g-color-green-300);
+  --ux4g-border-color-success-strong: var(--ux4g-color-green-600);
+
+  --ux4g-border-color-info-default: var(--ux4g-color-cyan-300);
+  --ux4g-border-color-info-strong: var(--ux4g-color-cyan-600);
+
+  --ux4g-border-color-error-default: var(--ux4g-color-red-300);
+  --ux4g-border-color-error-strong: var(--ux4g-color-red-600);
+
+  --ux4g-border-color-warning-default: var(--ux4g-color-orange-300);
+  --ux4g-border-color-warning-strong: var(--ux4g-color-orange-600);
+
+  /* Brand Borders */
+  --ux4g-border-color-primary-default: var(--ux4g-color-primary-300);
+  --ux4g-border-color-primary-strong: var(--ux4g-color-primary-600);
+  --ux4g-border-color-primary-hover: var(--ux4g-color-primary-700);
+  --ux4g-border-color-primary-active: var(--ux4g-color-primary-800);
+  --ux4g-border-color-secondary-default: var(--ux4g-color-secondary-300);
+  --ux4g-border-color-tertiary-default: var(--ux4g-color-tertiary-300);
+
+  /* Brand Borders */
+  --ux4g-control-border-default: var(--ux4g-color-neutral-200);
+
+  --ux4x-icon-border-desabled: rgba(229, 229, 229, 1)
+
+
+}
+
+/* =========================================
+   DARK THEME — BORDER TOKENS (SOLID)
+========================================= */
+:root[data-theme="dark"] {
+  /* Border Color - Neutral */
+  --ux4g-border-color-neutral-default: var(--ux4g-color-neutral-600);
+  --ux4g-border-color-neutral-subtle: var(--ux4g-color-neutral-700);
+  --ux4g-border-color-neutral-strong: var(--ux4g-color-neutral-400);
+  --ux4g-border-color-neutral-focus: var(--ux4g-color-neutral-300);
+  --ux4g-border-color-neutral-hover: var(--ux4g-color-neutral-700);
+  --ux4g-border-color-neutral-active: var(--ux4g-color-neutral-600);
+  --ux4g-border-color-neutral-elevated: var(--ux4g-color-neutral-950);
+
+
+  /* Status Borders */
+  --ux4g-border-color-success-default: var(--ux4g-color-green-700);
+  --ux4g-border-color-success-strong: var(--ux4g-color-green-300);
+
+  --ux4g-border-color-info-default: var(--ux4g-color-cyan-700);
+  --ux4g-border-color-info-strong: var(--ux4g-color-cyan-300);
+
+  --ux4g-border-color-error-default: var(--ux4g-color-red-700);
+  --ux4g-border-color-error-strong: var(--ux4g-color-red-300);
+
+  --ux4g-border-color-warning-default: var(--ux4g-color-orange-700);
+  --ux4g-border-color-warning-strong: var(--ux4g-color-orange-300);
+
+  /* Brand Borders */
+  --ux4g-border-color-primary-default: var(--ux4g-color-primary-600);
+  --ux4g-border-color-primary-strong: var(--ux4g-color-primary-300);
+  --ux4g-border-color-primary-hover: var(--ux4g-color-primary-200);
+  --ux4g-border-color-primary-active: var(--ux4g-color-primary-100);
+  --ux4g-border-color-secondary-default: var(--ux4g-color-secondary-600);
+  --ux4g-border-color-tertiary-default: var(--ux4g-color-tertiary-600);
+    --ux4x-icon-border-desabled: rgba(64, 64, 64, 1)
+
+}

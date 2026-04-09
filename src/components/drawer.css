@@ -1,0 +1,176 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* =========================================== UX4G Drawer Component =========================================== */
+body.ux4g-drawer-lock {
+    overflow: hidden;;
+}
+/* Overlay */
+ .ux4g-drawer-overlay {
+     position: var(--ux4g-pos-fixed) !important;
+     top: var(--ux4g-pos-top-0) !important;
+     left: var(--ux4g-pos-start-0) !important;
+     width: 100vw;
+     height: 100vh;
+      background-color: rgba(0, 0, 0, 0.50);
+     z-index: var(--ux4g-z-layout-top);
+     opacity: var(--ux4g-opacity-0);
+     visibility: hidden;
+     transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+ .ux4g-drawer-overlay.ux4g-drawer-open {
+     opacity: 1;
+     visibility: visible;
+}
+ .ux4g-drawer-left.ux4g-drawer-open, .ux4g-drawer-right.ux4g-drawer-open {
+     transform: translateX(0) !important;
+}
+ .ux4g-drawer-top.ux4g-drawer-open, .ux4g-drawer-bottom.ux4g-drawer-open {
+     transform: translateY(0) !important;
+}
+/* Drawer Container */
+ .ux4g-drawer {
+     position: fixed !important;
+     background-color: var(--ux4g-bg-neutral-strong, #ffffff);
+     z-index: 1001;
+     display: flex;
+     flex-direction: column;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* transition: transform 0.3s ease;
+     */
+     padding: var(--ux4g-padding-none) var(--ux4g-padding-xl);
+     gap: var(--ux4g-stack-m);
+     transform: translate3d(0,0,0);
+     transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+/* Drawer Positions */
+ .ux4g-drawer-right {
+     top: 0 ! ;
+     right: 0 !important;
+     height: 100vh;
+     width: 100%;
+     max-width: 500px;
+     transform: translateX(100%) !important;
+}
+ .ux4g-drawer-left {
+     top: 0 !important;
+     left: 0 !important;
+     height: 100vh;
+     width: 100%;
+     max-width: 500px;
+     transform: translateX(-100%) !important;
+}
+ .ux4g-drawer-top {
+     top: 0 !important;
+     left: 0 !important;
+     width: 100vw;
+     height: min(50vh, 500px);
+     transform: translateY(-100%) !important;
+}
+ .ux4g-drawer-bottom {
+     bottom: 0 !important;
+     left: 0 !important;
+     width: 100vw;
+     height: min(50vh, 500px);
+     transform: translateY(100%) !important;
+}
+/* Internal Layout */
+ .ux4g-drawer-header {
+     display: flex;
+     align-items: flex-start;
+     justify-content: space-between;
+     padding: var(--ux4g-padding-s) var(--ux4g-padding-none);
+     border-bottom: var(--ux4g-border-width-sm, 1px) solid var(--ux4g-border-color-neutral-default);
+     gap: var(--ux4g-inline-l);
+}
+ .ux4g-drawer-title-group {
+     display: flex;
+     flex-direction: column;
+     gap: var(--ux4g-stack-2xs);
+}
+ .ux4g-drawer-title-wrapper {
+     display: flex;
+     align-items: center;
+     gap: var(--ux4g-inline-s);
+}
+ .ux4g-drawer-title-wrapper .ux4g-icon {
+     font-size: var(--ux4g-fs-24);
+     color: var(--ux4g-text-neutral-primary);
+}
+ .ux4g-drawer-title {
+     font-size: var(--ux4g-fs-20);
+     line-height: var(--ux4g-lh-24);
+     font-weight: var(--ux4g-font-weight-semibold);
+     color: var(--ux4g-text-neutral-primary);
+     margin: 0;
+}
+ .ux4g-drawer-subtitle {
+     font-size: var(--ux4g-fs-16);
+     line-height: var(--ux4g-lh-24);
+     color: var(--ux4g-text-neutral-secondary);
+     display: block;
+     margin-left: 26px;
+     font-weight: var(--ux4g-font-weight-regular);
+}
+/* Add support for no-icon alignment */
+ .ux4g-drawer-title-wrapper:first-child:not(:has(.ux4g-icon)) + .ux4g-drawer-subtitle {
+     margin-left: 0;
+}
+ .ux4g-drawer-header-actions {
+     display: flex;
+     align-items: center;
+     gap: var(--ux4g-space-5);
+}
+ .ux4g-drawer-action-text {
+     font-size: var(--ux4g-fs-12);
+     color: var(--ux4g-text-neutral-secondary);
+}
+ .ux4g-drawer-close {
+     background: transparent;
+     cursor: pointer;
+     font-size: var(--ux4g-fs-20);
+     padding: 0;
+     color: var(--ux4g-text-neutral-secondary);
+     display: flex;
+     align-items: center;
+     border-radius: var(--ux4g-radius-xs);
+     opacity: var(--ux4g-opacity-50);
+     transition: all 0.3s ease;
+}
+ .ux4g-drawer-close:hover{
+     background-color: var(--ux4g-bg-neutral-subtle) !important;
+     opacity: 1;
+}
+ .ux4g-drawer-close .ux4g-icon-outlined{
+     font-size: var(--ux4g-fs-24);
+     width: var(--ux4g-fs-24);
+     height: var(--ux4g-fs-24);
+}
+ .ux4g-drawer-body {
+     flex: 1;
+     overflow-y: auto;
+     padding: var(--ux4g-padding-m) var(--ux4g-padding-none);
+     font-size: var(--ux4g-fs-14);
+     color: var(--ux4g-text-neutral-secondary);
+     line-height: var(--ux4g-lh-20);
+     font-weight: var(--ux4g-fw-regular);
+}
+ .ux4g-drawer-footer {
+     display: flex;
+     align-items: center;
+     gap: var(--ux4g-space-5);
+     padding: var(--ux4g-padding-l) var(--ux4g-padding-none);
+     border-top: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+}
+ 

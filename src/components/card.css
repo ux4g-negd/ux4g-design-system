@@ -1,0 +1,187 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+.ux4g-card-solid {
+    background-color: var(--ux4g-bg-neutral-elevated);
+    box-shadow: var(--ux4g-shadow-l1);
+    border: var(--ux4g-border-thin) solid var(--ux4g-border-color-neutral-default);
+}
+
+.ux4g-card-outline {
+    border: var(--ux4g-border-thin) solid var(--ux4g-border-color-neutral-default);
+}
+
+.ux4g-card {
+    border-radius: var(--ux4g-radius-lg);
+    transition: all 0.3s ease;
+}
+
+.ux4g-card:hover {
+    box-shadow: var(--ux4g-shadow-l2);
+}
+
+
+.ux4g-card-body {
+    padding: var(--ux4g-padding-m);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ux4g-inline-m);
+}
+
+.ux4g-card-vertical .ux4g-card-body .ux4g-avatar {
+    margin-top: var(--ux4g-space-10);
+}
+
+.ux4g-card-body p {
+    font-size: var(--ux4g-fs-14);
+    line-height: var(--ux4g-lh-20);
+    font-weight: var(--ux4g-font-weight-regular);
+    color: var(--ux4g-text-neutral-primary);
+}
+
+.card-group {
+    display: flex;
+    gap: var(--ux4g-inline-s);
+}
+
+
+.ux4g-card-footer {
+    padding: var(--ux4g-padding-m);
+}
+
+.ux4g-card-title {
+    color: var(--ux4g-text-neutral-primary);
+    font-size: var(--ux4g-fs-16);
+    line-height: var(--ux4g-lh-20);
+    font-weight: var(--ux4g-font-weight-display-semibold);
+}
+
+.ux4g-card-sub-title {
+    color: var(--ux4g-text-neutral-secondary);
+    font-size: var(--ux4g-fs-16);
+    line-height: var(--ux4g-lh-24);
+    font-weight: var(--ux4g-font-weight-regular);
+}
+
+/* .ux4g-card-header-img {
+     width: 100%;
+     height: 200px;
+     background: linear-gradient(135deg, #4338ca 0%, #6d28d9 35%, #a21caf 70%, #d946ef 100%);
+     display: block;
+     overflow: var(--ux4g-of-hidden) 
+}
+ */
+.ux4g-card-header-img {
+    position: var(--ux4g-pos-relative);
+}
+
+.ux4g-card-header-image {
+    transition: all 0.3s ease;
+    width: 100%;
+    height: 38vh;
+    object-fit: cover;
+    display: block;
+}
+
+.ux4g-card-header-image:hover {
+    transform: scale(1.01);
+}
+
+.ux4g-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-2xs);
+    padding: var(--ux4g-padding-m);
+}
+
+.ux4g-card-header-tag {
+    position: var(--ux4g-position-absolute) !important;
+    top: var(--ux4g-pos-offset-0) !important;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+/* .ux4g-card-header-img:hover {
+}
+ */
+.ux4g-card-token {
+    width: 24px;
+    height: 24px;
+    background-color: rgba(23, 23, 23, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ux4g-color-neutral-0);
+}
+
+.ux4g-card-token .ux4g-icon-outlined {
+    color: var(--ux4g-color-neutral-0);
+}
+
+.ux4g-card-header-tag {
+    padding: var(--ux4g-space-5);
+}
+
+.ux4g-card[disabled] {
+    opacity: var(--ux4g-opacity-30);
+    pointer-events: none;
+}
+
+/* Horizontal card */
+.ux4g-card-horizontal {
+    display: flex;
+    width: 100%;
+}
+
+.ux4g-card-horizontal .ux4g-card-header-img {
+    height: 100%;
+}
+
+.ux4g-card-horizontal .ux4g-card-header-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.ux4g-card-horizontal .ux4g-card-header {
+    flex: 2;
+}
+
+.ux4g-card-horizontal .ux4g-card-body {
+    flex: 3;
+}
+
+@media (max-width: 768px) {
+    .ux4g-card-horizontal {
+        flex-direction: column;
+    }
+
+    .ux4g-card-horizontal .ux4g-card-header,
+    .ux4g-card-horizontal .ux4g-card-body {
+        flex: none;
+        width: 100%;
+    }
+
+    .ux4g-card-horizontal .ux4g-card-header-img {
+        margin-bottom: 0;
+    }
+
+    .ux4g-card-horizontal .ux4g-card-header-image {
+        height: 38vh !important;
+    }
+}

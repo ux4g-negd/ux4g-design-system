@@ -1,0 +1,92 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* OBJECT FIT */
+.ux4g-of-cover { object-fit: cover; }
+.ux4g-of-contain { object-fit: contain; }
+.ux4g-of-fill { object-fit: fill; }
+.ux4g-of-none { object-fit: none; }
+.ux4g-of-scale-down { object-fit: scale-down; }
+
+/* OBJECT POSITION BASE */
+.ux4g-op {
+  object-position: var(--ux4g-op, center);
+}
+
+/* POSITION PRESETS */
+.ux4g-op-center { --ux4g-op: center; }
+.ux4g-op-top { --ux4g-op: top; }
+.ux4g-op-bottom { --ux4g-op: bottom; }
+.ux4g-op-left { --ux4g-op: left; }
+.ux4g-op-right { --ux4g-op: right; }
+
+/* OPTIONAL CORNERS */
+.ux4g-op-top-left { --ux4g-op: top left; }
+.ux4g-op-top-right { --ux4g-op: top right; }
+.ux4g-op-bottom-left { --ux4g-op: bottom left; }
+.ux4g-op-bottom-right { --ux4g-op: bottom right; }
+
+/* FLUID IMAGE FIX */
+.ux4g-img-fluid {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+/* SM ≥ 576px */
+@media (min-width: 576px) {
+  .ux4g-sm-of-cover { object-fit: cover; }
+  .ux4g-sm-of-contain { object-fit: contain; }
+  .ux4g-sm-of-fill { object-fit: fill; }
+  .ux4g-sm-of-none { object-fit: none; }
+  .ux4g-sm-of-scale-down { object-fit: scale-down; }
+}
+
+/* MD ≥ 768px */
+@media (min-width: 768px) {
+  .ux4g-md-of-cover { object-fit: cover; }
+  .ux4g-md-of-contain { object-fit: contain; }
+  .ux4g-md-of-fill { object-fit: fill; }
+  .ux4g-md-of-none { object-fit: none; }
+  .ux4g-md-of-scale-down { object-fit: scale-down; }
+}
+
+/* LG ≥ 992px */
+@media (min-width: 992px) {
+  .ux4g-lg-of-cover { object-fit: cover; }
+  .ux4g-lg-of-contain { object-fit: contain; }
+  .ux4g-lg-of-fill { object-fit: fill; }
+  .ux4g-lg-of-none { object-fit: none; }
+  .ux4g-lg-of-scale-down { object-fit: scale-down; }
+}
+
+/* XL ≥ 1200px */
+@media (min-width: 1200px) {
+  .ux4g-xl-of-cover { object-fit: cover; }
+  .ux4g-xl-of-contain { object-fit: contain; }
+  .ux4g-xl-of-fill { object-fit: fill; }
+  .ux4g-xl-of-none { object-fit: none; }
+  .ux4g-xl-of-scale-down { object-fit: scale-down; }
+}
+
+/* 2XL ≥ 1400px */
+@media (min-width: 1400px) {
+  .ux4g-2xl-of-cover { object-fit: cover; }
+  .ux4g-2xl-of-contain { object-fit: contain; }
+  .ux4g-2xl-of-fill { object-fit: fill; }
+  .ux4g-2xl-of-none { object-fit: none; }
+  .ux4g-2xl-of-scale-down { object-fit: scale-down; }
+}

@@ -1,0 +1,82 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* =========================================
+   UX4G CONTAINER SYSTEM (DS SAFE)
+========================================= */
+.ux4g-container,
+.ux4g-container-fluid,
+.ux4g-container-sm,
+.ux4g-container-md,
+.ux4g-container-lg,
+.ux4g-container-xl,
+.ux4g-container-2xl {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: calc(var(--ux4g-gutter-x) * 0.5);
+}
+
+.ux4g-container-fluid {
+  max-width: 100%;
+}
+
+/* SM */
+@media (min-width: 576px) {
+  .ux4g-container,
+  .ux4g-container-sm {
+    max-width: var(--ux4g-container-sm);
+  }
+}
+
+/* MD */
+@media (min-width: 768px) {
+  .ux4g-container,
+  .ux4g-container-sm,
+  .ux4g-container-md {
+    max-width: var(--ux4g-container-md);
+  }
+}
+
+/* LG */
+@media (min-width: 992px) {
+  .ux4g-container,
+  .ux4g-container-sm,
+  .ux4g-container-md,
+  .ux4g-container-lg {
+    max-width: var(--ux4g-container-lg);
+  }
+}
+
+/* XL */
+@media (min-width: 1200px) {
+  .ux4g-container,
+  .ux4g-container-sm,
+  .ux4g-container-md,
+  .ux4g-container-lg,
+  .ux4g-container-xl {
+    max-width: var(--ux4g-container-xl);
+  }
+}
+
+/* 2XL */
+@media (min-width: 1400px) {
+  .ux4g-container,
+  .ux4g-container-sm,
+  .ux4g-container-md,
+  .ux4g-container-lg,
+  .ux4g-container-xl,
+  .ux4g-container-2xl {
+    max-width: var(--ux4g-container-2xl);
+  }
+}

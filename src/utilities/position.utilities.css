@@ -1,0 +1,120 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* ==========================================
+   UX4G Position Utilities (FIXED ENGINE)
+   ========================================== */
+
+/* ===== Engine (SCOPED — NOT GLOBAL) ===== */
+.ux4g-static,
+.ux4g-relative,
+.ux4g-absolute,
+.ux4g-fixed,
+.ux4g-sticky,
+.ux4g-top-0,
+.ux4g-top-50,
+.ux4g-top-100,
+.ux4g-bottom-0,
+.ux4g-bottom-50,
+.ux4g-bottom-100,
+.ux4g-start-0,
+.ux4g-start-50,
+.ux4g-start-100,
+.ux4g-end-0,
+.ux4g-end-50,
+.ux4g-end-100,
+.ux4g-translate-middle,
+.ux4g-translate-middle-x,
+.ux4g-translate-middle-y,
+.ux4g-bottom-xs,
+.ux4g-bottom-sm,
+.ux4g-end-overflow-xs,
+.ux4g-end-overflow-sm,
+.ux4g-end-overflow-md {
+  position: var(--ux4g-pos-current, unset);
+  top: var(--ux4g-top-current, unset);
+  right: var(--ux4g-end-current, unset);
+  bottom: var(--ux4g-bottom-current, unset);
+  left: var(--ux4g-start-current, unset);
+  transform: var(--ux4g-transform-current, unset);
+}
+
+/* ===== Position ===== */
+.ux4g-static   { --ux4g-pos-current: var(--ux4g-pos-static); }
+.ux4g-relative { --ux4g-pos-current: var(--ux4g-pos-relative); }
+.ux4g-absolute { --ux4g-pos-current: var(--ux4g-pos-absolute); }
+.ux4g-fixed    { --ux4g-pos-current: var(--ux4g-pos-fixed); }
+.ux4g-sticky   { --ux4g-pos-current: var(--ux4g-pos-sticky); }
+
+/* ===== Top ===== */
+.ux4g-top-0   { --ux4g-top-current: var(--ux4g-pos-top-0); }
+.ux4g-top-50  { --ux4g-top-current: var(--ux4g-pos-top-50); }
+.ux4g-top-100 { --ux4g-top-current: var(--ux4g-pos-top-100); }
+
+/* ===== Bottom ===== */
+.ux4g-bottom-0   { --ux4g-bottom-current: var(--ux4g-pos-bottom-0); }
+.ux4g-bottom-50  { --ux4g-bottom-current: var(--ux4g-pos-bottom-50); }
+.ux4g-bottom-100 { --ux4g-bottom-current: var(--ux4g-pos-bottom-100); }
+
+/* ===== Start ===== */
+.ux4g-start-0   { --ux4g-start-current: var(--ux4g-pos-start-0); }
+.ux4g-start-50  { --ux4g-start-current: var(--ux4g-pos-start-50); }
+.ux4g-start-100 { --ux4g-start-current: var(--ux4g-pos-start-100); }
+
+/* ===== End ===== */
+.ux4g-end-0   { --ux4g-end-current: var(--ux4g-pos-end-0); }
+.ux4g-end-50  { --ux4g-end-current: var(--ux4g-pos-end-50); }
+.ux4g-end-100 { --ux4g-end-current: var(--ux4g-pos-end-100); }
+
+/* ===== Offset Utilities (FIX ADDED) ===== */
+.ux4g-bottom-xs { --ux4g-bottom-current: var(--ux4g-pos-bottom-xs); }
+.ux4g-bottom-sm { --ux4g-bottom-current: var(--ux4g-pos-bottom-sm); }
+
+.ux4g-end-overflow-xs { --ux4g-end-current: var(--ux4g-pos-end-overflow-xs); }
+.ux4g-end-overflow-sm { --ux4g-end-current: var(--ux4g-pos-end-overflow-sm); }
+.ux4g-end-overflow-md { --ux4g-end-current: var(--ux4g-pos-end-overflow-md); }
+
+/* Custom Floating Offsets (24px) used home (index.html) */
+.ux4g-bottom-8 { --ux4g-bottom-current: var(--ux4g-space-8); }
+.ux4g-end-8    { --ux4g-end-current: var(--ux4g-space-8); }
+
+/* ===== Transform ===== */
+.ux4g-translate-middle   { --ux4g-transform-current: var(--ux4g-pos-translate-middle); }
+.ux4g-translate-middle-x { --ux4g-transform-current: var(--ux4g-pos-translate-middle-x); }
+.ux4g-translate-middle-y { --ux4g-transform-current: var(--ux4g-pos-translate-middle-y); }
+
+/* ===== Helpers ===== */
+.ux4g-fixed-top {
+  position: var(--ux4g-pos-fixed);
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.ux4g-fixed-bottom {
+  position: var(--ux4g-pos-fixed);
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.ux4g-sticky-top {
+  position: var(--ux4g-pos-sticky);
+  top: 0;
+}
+
+.ux4g-sticky-bottom {
+  position: var(--ux4g-pos-sticky);
+  bottom: 0;
+}

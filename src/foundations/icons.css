@@ -1,0 +1,114 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* ==========================================
+   UX4G Material Icons – Local Font Setup
+   ========================================== */
+
+/* ----- Filled ----- */
+@font-face {
+  font-family: "UX4G Material Icons";
+  src: url("../assets/fonts/MaterialIcons-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ----- Outlined ----- */
+@font-face {
+  font-family: "UX4G Material Icons Outlined";
+  src: url("../assets/fonts/MaterialIconsOutlined-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ----- Round ----- */
+@font-face {
+  font-family: "UX4G Material Icons Round";
+  src: url("../assets/fonts/MaterialIconsRound-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ----- Sharp ----- */
+@font-face {
+  font-family: "UX4G Material Icons Sharp";
+  src: url("../assets/fonts/MaterialIconsSharp-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ----- Two Tone ----- */
+@font-face {
+  font-family: "UX4G Material Icons TwoTone";
+  src: url("../assets/fonts/MaterialIconsTwoTone-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+/* ==========================================
+   Base Icon Engine
+   ========================================== */
+
+.ux4g-icon,
+.ux4g-icon-filled,
+.ux4g-icon-outlined,
+.ux4g-icon-round,
+.ux4g-icon-sharp,
+.ux4g-icon-twotone {
+  font-weight: normal;
+  font-style: normal;
+  font-size: var(--ux4g-icon-size, 16px);
+  width:  var(--ux4g-icon-width, 16px);
+  height:  var(--ux4g-icon-height, 16px);
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga";
+  -webkit-font-feature-settings: "liga";
+}
+
+/* Variant Mapping */
+.ux4g-icon,
+.ux4g-icon-filled {
+  font-family: "UX4G Material Icons";
+}
+
+.ux4g-icon-outlined {
+  font-family: "UX4G Material Icons Outlined";
+}
+
+.ux4g-icon-round {
+  font-family: "UX4G Material Icons Round";
+}
+
+.ux4g-icon-sharp {
+  font-family: "UX4G Material Icons Sharp";
+}
+
+.ux4g-icon-twotone {
+  font-family: "UX4G Material Icons TwoTone";
+}

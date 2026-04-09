@@ -1,0 +1,145 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+
+/* =========================================
+   JUSTIFY UTILITIES
+   Controls justification of flex/grid items.
+   1. Justify Content (jc)
+   2. Justify Items (ji)
+   3. Justify Self (js)
+========================================= */
+
+/* 1.0 JUSTIFY CONTENT */
+.ux4g-jc-start { justify-content: flex-start; }
+.ux4g-jc-end { justify-content: flex-end; } 
+.ux4g-jc-center { justify-content: center; }
+.ux4g-jc-between { justify-content: space-between; }
+.ux4g-jc-around { justify-content: space-around; }
+.ux4g-jc-evenly { justify-content: space-evenly; }
+
+/* 2.0 JUSTIFY ITEMS */
+.ux4g-ji-start { justify-items: start; }
+.ux4g-ji-end { justify-items: end; }
+.ux4g-ji-center { justify-items: center; }
+.ux4g-ji-stretch { justify-items: stretch; }
+.ux4g-ji-normal { justify-items: normal; }
+.ux4g-ji-center-safe { justify-items: safe center; }
+.ux4g-ji-end-safe { justify-items: safe end; }
+
+/* 3.0 JUSTIFY SELF */
+.ux4g-js-auto { justify-self: auto; }
+.ux4g-js-start { justify-self: start; }
+.ux4g-js-end { justify-self: end; }
+.ux4g-js-center { justify-self: center; }
+.ux4g-js-stretch { justify-self: stretch; }
+.ux4g-js-center-safe { justify-self: safe center; }
+.ux4g-js-end-safe { justify-self: safe end; }
+
+
+/* ================= RESPONSIVE ================= */
+
+/* ================= SM ≥ 576px ================= */
+@media (min-width: 576px) {
+  .ux4g-sm-jc-start { justify-content: flex-start; }
+  .ux4g-sm-jc-end { justify-content: flex-end; }
+  .ux4g-sm-jc-center { justify-content: center; }
+  .ux4g-sm-jc-between { justify-content: space-between; }
+  .ux4g-sm-jc-around { justify-content: space-around; }
+  .ux4g-sm-jc-evenly { justify-content: space-evenly; }
+
+  .ux4g-sm-ji-start { justify-items: start; }
+  .ux4g-sm-ji-end { justify-items: end; }
+  .ux4g-sm-ji-center { justify-items: center; }
+  .ux4g-sm-ji-stretch { justify-items: stretch; }
+
+  .ux4g-sm-js-start { justify-self: start; }
+  .ux4g-sm-js-end { justify-self: end; }
+  .ux4g-sm-js-center { justify-self: center; }
+  .ux4g-sm-js-stretch { justify-self: stretch; }
+}
+
+/* ================= MD ≥ 768px ================= */
+@media (min-width: 768px) {
+  .ux4g-md-jc-start { justify-content: flex-start; }
+  .ux4g-md-jc-end { justify-content: flex-end; }
+  .ux4g-md-jc-center { justify-content: center; }
+  .ux4g-md-jc-between { justify-content: space-between; }
+  .ux4g-md-jc-around { justify-content: space-around; }
+  .ux4g-md-jc-evenly { justify-content: space-evenly; }
+
+  .ux4g-md-ji-start { justify-items: start; }
+  .ux4g-md-ji-end { justify-items: end; }
+  .ux4g-md-ji-center { justify-items: center; }
+  .ux4g-md-ji-stretch { justify-items: stretch; }
+
+  .ux4g-md-js-start { justify-self: start; }
+  .ux4g-md-js-end { justify-self: end; }
+  .ux4g-md-js-center { justify-self: center; }
+  .ux4g-md-js-stretch { justify-self: stretch; }
+}
+
+/* ================= LG ≥ 992px ================= */
+@media (min-width: 992px) {
+  .ux4g-lg-jc-start { justify-content: flex-start; }
+  .ux4g-lg-jc-end { justify-content: flex-end; }
+  .ux4g-lg-jc-center { justify-content: center; }
+  .ux4g-lg-jc-between { justify-content: space-between; }
+  .ux4g-lg-jc-around { justify-content: space-around; }
+  .ux4g-lg-jc-evenly { justify-content: space-evenly; }
+
+  .ux4g-lg-ji-start { justify-items: start; }
+  .ux4g-lg-ji-end { justify-items: end; }
+  .ux4g-lg-ji-center { justify-items: center; }
+  .ux4g-lg-ji-stretch { justify-items: stretch; }
+
+  .ux4g-lg-js-start { justify-self: start; }
+  .ux4g-lg-js-end { justify-self: end; }
+  .ux4g-lg-js-center { justify-self: center; }
+  .ux4g-lg-js-stretch { justify-self: stretch; }
+}
+
+/* ================= XL ≥ 1200px ================= */
+@media (min-width: 1200px) {
+  .ux4g-xl-jc-start { justify-content: flex-start; }
+  .ux4g-xl-jc-center { justify-content: center; }
+  .ux4g-xl-jc-between { justify-content: space-between; }
+  .ux4g-xl-jc-around { justify-content: space-around; }
+  .ux4g-xl-jc-evenly { justify-content: space-evenly; }
+
+  .ux4g-xl-ji-start { justify-items: start; }
+  .ux4g-xl-ji-center { justify-items: center; }
+  .ux4g-xl-ji-stretch { justify-items: stretch; }
+
+  .ux4g-xl-js-start { justify-self: start; }
+  .ux4g-xl-js-center { justify-self: center; }
+  .ux4g-xl-js-stretch { justify-self: stretch; }
+}
+
+/* ================= 2XL ≥ 1400px ================= */
+@media (min-width: 1400px) {
+  .ux4g-2xl-jc-start { justify-content: flex-start; }
+  .ux4g-2xl-jc-center { justify-content: center; }
+  .ux4g-2xl-jc-between { justify-content: space-between; }
+  .ux4g-2xl-jc-around { justify-content: space-around; }
+  .ux4g-2xl-jc-evenly { justify-content: space-evenly; }
+
+  .ux4g-2xl-ji-start { justify-items: start; }
+  .ux4g-2xl-ji-center { justify-items: center; }
+  .ux4g-2xl-ji-stretch { justify-items: stretch; }
+
+  .ux4g-2xl-js-start { justify-self: start; }
+  .ux4g-2xl-js-center { justify-self: center; }
+  .ux4g-2xl-js-stretch { justify-self: stretch; }
+}

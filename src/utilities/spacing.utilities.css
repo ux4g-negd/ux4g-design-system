@@ -1,0 +1,199 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* =========================================
+   UX4G SPACING UTILITIES (SINGLE FILE)
+   Order:
+   1. Margin
+   2. Padding
+========================================= */
+
+
+/* =========================================
+   1.0 MARGIN UTILITIES
+========================================= */
+
+/* 1.1 Margin Base */
+.ux4g-m-none { margin: var(--ux4g-margin-none); }
+.ux4g-m-2xs  { margin: var(--ux4g-margin-2xs); }
+.ux4g-m-xs   { margin: var(--ux4g-margin-xs); }
+.ux4g-m-s    { margin: var(--ux4g-margin-s); }
+.ux4g-m-m    { margin: var(--ux4g-margin-m); }
+.ux4g-m-l    { margin: var(--ux4g-margin-l); }
+.ux4g-m-xl   { margin: var(--ux4g-margin-xl); }
+.ux4g-m-2xl  { margin: var(--ux4g-margin-2xl); }
+
+/* 1.2 Margin Auto (Optimized Complete Set) */
+.ux4g-m-auto  { margin: auto; }
+.ux4g-mx-auto { margin-inline: auto; }
+.ux4g-my-auto { margin-block: auto; }
+
+/* 1.3 Margin Axis (Logical + RTL Safe) */
+.ux4g-mx-none { margin-inline: var(--ux4g-margin-none); }
+.ux4g-mx-2xs  { margin-inline: var(--ux4g-margin-2xs); }
+.ux4g-mx-xs   { margin-inline: var(--ux4g-margin-xs); }
+.ux4g-mx-s    { margin-inline: var(--ux4g-margin-s); }
+.ux4g-mx-m    { margin-inline: var(--ux4g-margin-m); }
+.ux4g-mx-l    { margin-inline: var(--ux4g-margin-l); }
+.ux4g-mx-xl   { margin-inline: var(--ux4g-margin-xl); }
+.ux4g-mx-2xl  { margin-inline: var(--ux4g-margin-2xl); }
+
+.ux4g-my-none { margin-block: var(--ux4g-margin-none); }
+.ux4g-my-2xs  { margin-block: var(--ux4g-margin-2xs); }
+.ux4g-my-xs   { margin-block: var(--ux4g-margin-xs); }
+.ux4g-my-s    { margin-block: var(--ux4g-margin-s); }
+.ux4g-my-m    { margin-block: var(--ux4g-margin-m); }
+.ux4g-my-l    { margin-block: var(--ux4g-margin-l); }
+.ux4g-my-xl   { margin-block: var(--ux4g-margin-xl); }
+.ux4g-my-2xl  { margin-block: var(--ux4g-margin-2xl); }
+
+/* 1.4 Directional Margin (RTL Safe) */
+/* Block Start (Top) */
+.ux4g-mt-none { margin-block-start: var(--ux4g-margin-none); }
+.ux4g-mt-2xs  { margin-block-start: var(--ux4g-margin-2xs); }
+.ux4g-mt-xs   { margin-block-start: var(--ux4g-margin-xs); }
+.ux4g-mt-s    { margin-block-start: var(--ux4g-margin-s); }
+.ux4g-mt-m    { margin-block-start: var(--ux4g-margin-m); }
+.ux4g-mt-l    { margin-block-start: var(--ux4g-margin-l); }
+.ux4g-mt-xl   { margin-block-start: var(--ux4g-margin-xl); }
+.ux4g-mt-2xl  { margin-block-start: var(--ux4g-margin-2xl); }
+
+/* Block End (Bottom) */
+.ux4g-mb-none { margin-block-end: var(--ux4g-margin-none); }
+.ux4g-mb-2xs  { margin-block-end: var(--ux4g-margin-2xs); }
+.ux4g-mb-xs   { margin-block-end: var(--ux4g-margin-xs); }
+.ux4g-mb-s    { margin-block-end: var(--ux4g-margin-s); }
+.ux4g-mb-m    { margin-block-end: var(--ux4g-margin-m); }
+.ux4g-mb-l    { margin-block-end: var(--ux4g-margin-l); }
+.ux4g-mb-xl   { margin-block-end: var(--ux4g-margin-xl); }
+.ux4g-mb-2xl  { margin-block-end: var(--ux4g-margin-2xl); }
+
+/* Inline Start (LTR: Left | RTL: Right) */
+.ux4g-ml-none { margin-inline-start: var(--ux4g-margin-none); }
+.ux4g-ml-2xs  { margin-inline-start: var(--ux4g-margin-2xs); }
+.ux4g-ml-xs   { margin-inline-start: var(--ux4g-margin-xs); }
+.ux4g-ml-s    { margin-inline-start: var(--ux4g-margin-s); }
+.ux4g-ml-m    { margin-inline-start: var(--ux4g-margin-m); }
+.ux4g-ml-l    { margin-inline-start: var(--ux4g-margin-l); }
+.ux4g-ml-xl   { margin-inline-start: var(--ux4g-margin-xl); }
+.ux4g-ml-2xl  { margin-inline-start: var(--ux4g-margin-2xl); }
+
+/* Inline End (LTR: Right | RTL: Left) */
+.ux4g-mr-none { margin-inline-end: var(--ux4g-margin-none); }
+.ux4g-mr-2xs  { margin-inline-end: var(--ux4g-margin-2xs); }
+.ux4g-mr-xs   { margin-inline-end: var(--ux4g-margin-xs); }
+.ux4g-mr-s    { margin-inline-end: var(--ux4g-margin-s); }
+.ux4g-mr-m    { margin-inline-end: var(--ux4g-margin-m); }
+.ux4g-mr-l    { margin-inline-end: var(--ux4g-margin-l); }
+.ux4g-mr-xl   { margin-inline-end: var(--ux4g-margin-xl); }
+.ux4g-mr-2xl  { margin-inline-end: var(--ux4g-margin-2xl); }
+
+
+/* =========================================
+   2.0 PADDING UTILITIES
+========================================= */
+
+/* 2.1 Padding Base */
+.ux4g-p-none { padding: var(--ux4g-padding-none); }
+.ux4g-p-2xs  { padding: var(--ux4g-padding-2xs); }
+.ux4g-p-xs   { padding: var(--ux4g-padding-xs); }
+.ux4g-p-s    { padding: var(--ux4g-padding-s); }
+.ux4g-p-m    { padding: var(--ux4g-padding-m); }
+.ux4g-p-l    { padding: var(--ux4g-padding-l); }
+.ux4g-p-xl   { padding: var(--ux4g-padding-xl); }
+.ux4g-p-2xl  { padding: var(--ux4g-padding-2xl); }
+
+/* 2.2 Padding Axis (Fixed Complete Symmetry) */
+.ux4g-px-none { padding-inline: var(--ux4g-padding-none); }
+.ux4g-px-2xs  { padding-inline: var(--ux4g-padding-2xs); }
+.ux4g-px-xs   { padding-inline: var(--ux4g-padding-xs); }
+.ux4g-px-s    { padding-inline: var(--ux4g-padding-s); }
+.ux4g-px-m    { padding-inline: var(--ux4g-padding-m); }
+.ux4g-px-l    { padding-inline: var(--ux4g-padding-l); }
+.ux4g-px-xl   { padding-inline: var(--ux4g-padding-xl); }
+.ux4g-px-2xl  { padding-inline: var(--ux4g-padding-2xl); }
+
+
+.ux4g-py-none { padding-block: var(--ux4g-padding-none); }
+.ux4g-py-2xs  { padding-block: var(--ux4g-padding-2xs); }
+.ux4g-py-xs   { padding-block: var(--ux4g-padding-xs); }
+.ux4g-py-s    { padding-block: var(--ux4g-padding-s); }
+.ux4g-py-m    { padding-block: var(--ux4g-padding-m); }
+.ux4g-py-l    { padding-block: var(--ux4g-padding-l); }
+.ux4g-py-xl   { padding-block: var(--ux4g-padding-xl); }
+.ux4g-py-2xl  { padding-block: var(--ux4g-padding-2xl); }
+
+/* 2.3 Directional Padding (Logical + RTL Safe) */
+/* Block Start (Top) */
+.ux4g-pt-none { padding-block-start: var(--ux4g-padding-none); }
+.ux4g-pt-2xs  { padding-block-start: var(--ux4g-padding-2xs); }
+.ux4g-pt-xs   { padding-block-start: var(--ux4g-padding-xs); }
+.ux4g-pt-s    { padding-block-start: var(--ux4g-padding-s); }
+.ux4g-pt-m    { padding-block-start: var(--ux4g-padding-m); }
+.ux4g-pt-l    { padding-block-start: var(--ux4g-padding-l); }
+.ux4g-pt-xl   { padding-block-start: var(--ux4g-padding-xl); }
+.ux4g-pt-2xl  { padding-block-start: var(--ux4g-padding-2xl); }
+
+/* Block End (Bottom) */
+.ux4g-pb-none { padding-block-end: var(--ux4g-padding-none); }
+.ux4g-pb-2xs  { padding-block-end: var(--ux4g-padding-2xs); }
+.ux4g-pb-xs   { padding-block-end: var(--ux4g-padding-xs); }
+.ux4g-pb-s    { padding-block-end: var(--ux4g-padding-s); }
+.ux4g-pb-m    { padding-block-end: var(--ux4g-padding-m); }
+.ux4g-pb-l    { padding-block-end: var(--ux4g-padding-l); }
+.ux4g-pb-xl   { padding-block-end: var(--ux4g-padding-xl); }
+.ux4g-pb-2xl  { padding-block-end: var(--ux4g-padding-2xl); }
+
+/* Inline Start (LTR/RTL Safe) */
+.ux4g-pl-none { padding-inline-start: var(--ux4g-padding-none); }
+.ux4g-pl-2xs  { padding-inline-start: var(--ux4g-padding-2xs); }
+.ux4g-pl-xs   { padding-inline-start: var(--ux4g-padding-xs); }
+.ux4g-pl-s    { padding-inline-start: var(--ux4g-padding-s); }
+.ux4g-pl-m    { padding-inline-start: var(--ux4g-padding-m); }
+.ux4g-pl-l    { padding-inline-start: var(--ux4g-padding-l); }
+.ux4g-pl-xl   { padding-inline-start: var(--ux4g-padding-xl); }
+.ux4g-pl-2xl  { padding-inline-start: var(--ux4g-padding-2xl); }
+
+/* Inline End (LTR/RTL Safe) */
+.ux4g-pr-none { padding-inline-end: var(--ux4g-padding-none); }
+.ux4g-pr-2xs  { padding-inline-end: var(--ux4g-padding-2xs); }
+.ux4g-pr-xs   { padding-inline-end: var(--ux4g-padding-xs); }
+.ux4g-pr-s    { padding-inline-end: var(--ux4g-padding-s); }
+.ux4g-pr-m    { padding-inline-end: var(--ux4g-padding-m); }
+.ux4g-pr-l    { padding-inline-end: var(--ux4g-padding-l); }
+.ux4g-pr-xl   { padding-inline-end: var(--ux4g-padding-xl); }
+.ux4g-pr-2xl  { padding-inline-end: var(--ux4g-padding-2xl); }
+
+
+
+
+
+/* =========================================
+   4.0 AUTO MARGINS (Flexbox Alignment)
+========================================= */
+.ux4g-ml-auto { margin-inline-start: auto; }
+.ux4g-mr-auto { margin-inline-end: auto; }
+.ux4g-mt-auto { margin-block-start: auto; }
+.ux4g-mb-auto { margin-block-end: auto; }
+
+
+
+
+
+
+/* 2.4 PADDING (FIXED PIXELS) */
+.ux4g-pt-20 { padding-block-start: 20px; }
+.ux4g-pb-20 { padding-block-end: 20px; }
+.ux4g-pl-20 { padding-inline-start: 20px; }
+.ux4g-pr-20 { padding-inline-end: 20px; }

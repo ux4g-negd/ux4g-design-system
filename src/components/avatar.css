@@ -1,0 +1,216 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+.ux4g-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ux4g-sz-base);
+  height: var(--ux4g-sz-base);
+  font-size: var(--ux4g-fs-12);
+  border-radius: var(--ux4g-radius-full);
+  background-color: var(--ux4g-bg-primary);
+  color: var(--ux4g-text-brand-primary-default);
+  --ux4g-icon-bg-color: currentColor; 
+  font-family: var(--ux4g-ff);
+  font-weight: var(--ux4g-fw-semibold);
+  user-select: none;
+  box-sizing: border-box;
+  vertical-align: var(--ux4g-va-middle);
+  position: var(--ux4g-pos-relative) !important;
+
+}
+
+
+.ux4g-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: var(--ux4g-of-avatar);
+  border-radius: inherit;
+}
+
+.ux4g-avatar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== SIZES MATRIX ===== */
+
+/* 1. Status Avatar Matrix (S, M, L) */
+.ux4g-avatar-status {
+  width: var(--ux4g-sz-m);
+  height: var(--ux4g-sz-m);
+  font-size: var(--ux4g-fs-12);
+  --ux4g-icon-size: var(--ux4g-sz-12);
+}
+
+.ux4g-avatar-status.ux4g-avatar-s {
+  width: var(--ux4g-sz-s);
+  height: var(--ux4g-sz-s);
+  font-size: var(--ux4g-fs-12);
+  --ux4g-icon-size: var(--ux4g-sz-11);
+}
+
+.ux4g-avatar-status.ux4g-avatar-m {
+  width: var(--ux4g-sz-m);
+  height: var(--ux4g-sz-m);
+  font-size: var(--ux4g-fs-12);
+  --ux4g-icon-size: var(--ux4g-sz-12);
+}
+
+.ux4g-avatar-status.ux4g-avatar-l {
+  width: var(--ux4g-sz-l);
+  height: var(--ux4g-sz-l);
+  font-size: var(--ux4g-fs-14);
+  --ux4g-icon-size: var(--ux4g-sz-14);
+}
+
+/* 2. Profile Avatar Matrix (L, XL, 2XL, 3XL) */
+.ux4g-avatar-profile {
+  width: var(--ux4g-sz-l);
+  height: var(--ux4g-sz-l);
+  font-size: var(--ux4g-fs-14);
+  --ux4g-icon-size: var(--ux4g-sz-14);
+}
+
+.ux4g-avatar-profile.ux4g-avatar-l {
+  width: var(--ux4g-sz-l);
+  height: var(--ux4g-sz-l);
+  font-size: var(--ux4g-fs-14);
+  --ux4g-icon-size: var(--ux4g-sz-14);
+}
+
+.ux4g-avatar-profile.ux4g-avatar-xl {
+  width: var(--ux4g-sz-xl);
+  height: var(--ux4g-sz-xl);
+  font-size: var(--ux4g-fs-16);
+  --ux4g-icon-size: var(--ux4g-sz-16);
+}
+
+.ux4g-avatar-profile.ux4g-avatar-2xl {
+  width: var(--ux4g-sz-2xl);
+  height: var(--ux4g-sz-2xl);
+  font-size: var(--ux4g-fs-18);
+  --ux4g-icon-size: var(--ux4g-sz-16);
+}
+
+.ux4g-avatar-profile.ux4g-avatar-3xl {
+  width: var(--ux4g-sz-3xl);
+  height: var(--ux4g-sz-3xl);
+  font-size: var(--ux4g-fs-20);
+  --ux4g-icon-size: var(--ux4g-sz-xs);
+}
+
+/* 3. Avatar Group (xs, s, m) */
+.ux4g-avatar-group .ux4g-avatar {
+  width: var(--ux4g-sz-m);
+  height: var(--ux4g-sz-m);
+  font-size: var(--ux4g-fs-12);
+  --ux4g-icon-size: var(--ux4g-sz-12);
+}
+
+.ux4g-avatar-group .ux4g-avatar-xs {
+  width: var(--ux4g-sz-xs);
+  height: var(--ux4g-sz-xs);
+  font-size: var(--ux4g-fs-11);
+  --ux4g-icon-size: var(--ux4g-sz-11);
+}
+
+.ux4g-avatar-group .ux4g-avatar-s {
+  width: var(--ux4g-sz-s);
+  height: var(--ux4g-sz-s);
+  font-size: var(--ux4g-fs-12);
+  --ux4g-icon-size: var(--ux4g-sz-11);
+}
+
+.ux4g-avatar-group .ux4g-avatar-m {
+  width: var(--ux4g-sz-m);
+  height: var(--ux4g-sz-m);
+  font-size: var(--ux4g-fs-12);
+  --ux4g-icon-size: var(--ux4g-sz-12);
+}
+
+.ux4g-avatar-s { width: var(--ux4g-sz-s); height: var(--ux4g-sz-s); }
+.ux4g-avatar-m { width: var(--ux4g-sz-m); height: var(--ux4g-sz-m); }
+.ux4g-avatar-l { width: var(--ux4g-sz-l); height: var(--ux4g-sz-l); }
+
+
+/* ===== OVERLAYS (BADGES & ACTIONS) ===== */
+.ux4g-avatar .avatar-badge {
+  position: var(--ux4g-pos-absolute) !important;
+  bottom: 0;      
+  right: 0;
+  box-shadow: 0 0 0 var(--ux4g-border-width-md) var(--ux4g-badge-border) !important;
+}
+
+/* Star dot (custom SVG) resets background and shadow */
+.ux4g-avatar .avatar-badge:has(svg) {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+
+
+/* ===== AVATAR GROUP ===== */
+.ux4g-avatar-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Avatar stacking */
+.ux4g-avatar-group > .ux4g-avatar {
+  margin-left: calc(var(--ux4g-inline-s) * -1);
+  border: var(--ux4g-border-width-md) solid var(--ux4g-bg-neutral-strong);
+  position: relative;
+  flex-shrink: 0;
+  z-index: var(--ux4g-z-layout-base);
+  transition: transform .2s ease, z-index .2s ease;
+}
+
+.ux4g-avatar-group > .ux4g-avatar:first-child {
+  margin-left: 0;
+}
+
+.ux4g-avatar-group > .ux4g-avatar:hover {
+  z-index: var(--ux4g-z-layout-top);
+  transform: scale(1.06);
+}
+
+.ux4g-avatar-group[data-max] > .ux4g-avatar {
+  display: none;
+}
+
+.ux4g-avatar-group[data-max="2"] > .ux4g-avatar:not(.ux4g-avatar-number):nth-child(-n+1),
+.ux4g-avatar-group[data-max="3"] > .ux4g-avatar:not(.ux4g-avatar-number):nth-child(-n+2),
+.ux4g-avatar-group[data-max="4"] > .ux4g-avatar:not(.ux4g-avatar-number):nth-child(-n+3),
+.ux4g-avatar-group[data-max="5"] > .ux4g-avatar:not(.ux4g-avatar-number):nth-child(-n+4) {
+  display: inline-flex;
+}
+
+.ux4g-avatar-group[data-max] > .ux4g-avatar-number {
+  display: inline-flex;
+}
+
+.ux4g-avatar-number {
+  background-color: var(--ux4g-bg-neutral-subtle);
+  color: var(--ux4g-text-neutral-secondary);
+  font-weight: var(--ux4g-fw-semibold);
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

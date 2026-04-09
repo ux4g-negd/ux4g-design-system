@@ -1,0 +1,135 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+.ux4g-img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: var(--ux4g-of-image, cover);
+    object-position: var(--ux4g-op-image, center);
+    background-color: var(--ux4g-bg-neutral-subtle);
+}
+
+.ux4g-img-rounded {
+    border-radius: var(--ux4g-radius-lg);
+}
+
+
+[class*="ux4g-ratio-"]{width:100%;}
+.ux4g-ratio-1-1{aspect-ratio:1/1;}
+.ux4g-ratio-4-3{aspect-ratio:4/3;}
+.ux4g-ratio-3-2{aspect-ratio:3/2;}
+.ux4g-ratio-16-10{aspect-ratio:16/10;}
+.ux4g-ratio-16-9{aspect-ratio:16/9;}
+.ux4g-ratio-2-1{aspect-ratio:2/1;}
+.ux4g-ratio-5-2{aspect-ratio:5/2;}
+.ux4g-ratio-3-1{aspect-ratio:3/1;}
+.ux4g-ratio-1-16{aspect-ratio:480/776;}
+.ux4g-ratio-2-3{aspect-ratio:2/3;}
+.ux4g-ratio-3-4{aspect-ratio:3/4;}
+
+[class*="ux4g-ratio-"] .ux4g-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Browser Fallback */
+@supports not (aspect-ratio: 1 / 1) {
+    .ux4g-ratio-1-1 {height: 100%;}
+
+    .ux4g-ratio-16-9 { height: 270px;}
+}
+
+/* Browser Fallback */
+@supports not (aspect-ratio: 1 / 1) {
+    .ux4g-ratio-1-1 {
+        height: 100%;
+    }
+
+    .ux4g-ratio-16-9 {
+        height: 270px;
+    }
+}
+
+/* Image Overlay Container */
+.ux4g-img-overlay {
+    position: var(--ux4g-pos-relative) !important;
+    display: block;
+    overflow: var(--ux4g-of-hidden);
+}
+
+/* Apply radius on container */
+.ux4g-img-overlay.ux4g-img-rounded {
+    border-radius: var(--ux4g-radius-lg);
+}
+
+/* Overlay Bottom */
+.ux4g-img-overlay-bottom,
+.ux4g-img-overlay-top {
+    position: var(--ux4g-pos-absolute) !important;
+    left: var(--ux4g-pos-start-0) !important;
+    width: 100% !important;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: var(--ux4g-padding-m);
+    background: var(--ux4g-bg-overlay)
+
+}
+
+.ux4g-img-overlay-bottom .ux4g-body-s-default,
+.ux4g-img-overlay-top .ux4g-body-s-default,
+.ux4g-img-overlay-bottom .ux4g-body-xs-default,
+.ux4g-img-overlay-top .ux4g-body-xs-default,
+.ux4g-img-overlay-bottom .ux4g-heading-xs-default,
+.ux4g-img-overlay-top .ux4g-heading-xs-default {
+    --ux4g-text-current: var(--ux4g-icon-neutral-inverse, #fafafa) !important;
+}
+
+.ux4g-img-overlay-bottom {
+    bottom: var(--ux4g-pos-bottom-0) !important;
+
+}
+
+.ux4g-img-overlay-top {
+    top: var(--ux4g-pos-top-0) !important
+}
+
+/* Rounded: inherit container radius on matching edge */
+.ux4g-img-overlay.ux4g-img-rounded .ux4g-img-overlay-bottom {
+    border-bottom-left-radius: var(--ux4g-radius-lg);
+    border-bottom-right-radius: var(--ux4g-radius-lg);
+}
+
+.ux4g-img-overlay.ux4g-img-rounded .ux4g-img-overlay-top {
+    border-top-left-radius: var(--ux4g-radius-lg);
+    border-top-right-radius: var(--ux4g-radius-lg);
+}
+
+.ux4g-img-overlay-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-xs);
+}
+
+/* Icon Styles */
+.ux4g-img-overlay-top .ux4g-icon-outlined,
+.ux4g-img-overlay-top svg,
+.ux4g-img-overlay-bottom .ux4g-icon-outlined,
+.ux4g-img-overlay-bottom svg {
+  color: var(--ux4g-icon-neutral-inverse, #fafafa) !important;
+  fill: var(--ux4g-icon-neutral-inverse, #fafafa) !important;
+}

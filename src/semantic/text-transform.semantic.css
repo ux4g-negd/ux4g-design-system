@@ -1,0 +1,20 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  --ux4g-text-case-default: var(--ux4g-text-transform-none);
+  --ux4g-text-case-lower: var(--ux4g-text-transform-lowercase);
+  --ux4g-text-case-upper: var(--ux4g-text-transform-uppercase);
+  --ux4g-text-case-capitalize: var(--ux4g-text-transform-capitalize);
+}

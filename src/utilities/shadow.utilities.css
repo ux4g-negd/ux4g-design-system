@@ -1,0 +1,29 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+
+
+/* Base Shadow Engine */
+[class^="ux4g-shadow-"],
+[class*=" ux4g-shadow-"] {
+  box-shadow: var(--ux4g-shadow-current, none);
+}
+
+/* Shadow Levels (Combined) */
+.ux4g-shadow-l0 { --ux4g-shadow-current: var(--ux4g-shadow-l0); }
+.ux4g-shadow-l1 { --ux4g-shadow-current: var(--ux4g-shadow-l1); }
+.ux4g-shadow-l2 { --ux4g-shadow-current: var(--ux4g-shadow-l2); }
+.ux4g-shadow-l3 { --ux4g-shadow-current: var(--ux4g-shadow-l3); }
+.ux4g-shadow-l4 { --ux4g-shadow-current: var(--ux4g-shadow-l4); }
+.ux4g-shadow-lg { --ux4g-shadow-current: var(--ux4g-shadow-l4); }

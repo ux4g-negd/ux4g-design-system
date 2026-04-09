@@ -1,0 +1,39 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* box shadow */
+:root {
+  --ux4g-shadow-l0: none;
+  --ux4g-shadow-l1: 0px 1px 2px 0px var(--ux4g-elevation-color-1), 0px 1px 2px 0px var(--ux4g-elevation-color-1);
+
+  --ux4g-shadow-l2: 0px 4px 8px 0px var(--ux4g-elevation-color-2), 0px 1px 2px 0px var(--ux4g-elevation-color-1);
+
+  --ux4g-shadow-l3: 0px 8px 16px 0px var(--ux4g-elevation-color-4), 0px 4px 8px 0px var(--ux4g-elevation-color-2);
+
+  --ux4g-shadow-l4: 0px 16px 32px 0px var(--ux4g-elevation-color-6), 0px 8px 16px 0px var(--ux4g-elevation-color-4);
+
+  /* Focus rings */
+  --ux4g-shadow-focus-inset: inset 0 0 0 var(--ux4g-border-width-md) var(--ux4g-border-color-primary-strong);
+  --ux4g-shadow-focus-ring: 0 0 0 0.125rem var(--ux4g-bg-neutral), 0 0 0 0.25rem var(--ux4g-bg-primary-strong);
+  --ux4g-shadow-focus-border: 0 0 0 0.125rem var(--ux4g-border-color-primary-default);
+}
+
+
+:root[data-theme="dark"] {
+  --ux4g-elevation-color-0: rgba(0, 0, 0, 0);
+  --ux4g-elevation-color-1: rgba(0, 0, 0, 0.2);
+  --ux4g-elevation-color-2: rgba(0, 0, 0, 0.3);
+  --ux4g-elevation-color-4: rgba(0, 0, 0, 0.5);
+  --ux4g-elevation-color-6: rgba(0, 0, 0, 0.7);
+}

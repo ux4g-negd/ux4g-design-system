@@ -1,0 +1,281 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+ /* ============================================================ UX4G TAB COMPONENT CSS Component: Tab / Horizontal ============================================================ */
+ .ux4g-tab {
+     display: inline-flex;
+     flex-direction: column;
+     width: 100%;
+     font-family: var(--ux4g-ff);
+ }
+
+ .ux4g-tab-list {
+     display: flex;
+     align-items: flex-end;
+     position: relative;
+ }
+
+ .ux4g-tab-item {
+     display: inline-flex;
+     align-items: center;
+     flex-shrink: 0;
+     cursor: pointer;
+     user-select: none;
+     white-space: nowrap;
+     color: var(--ux4g-text-neutral-secondary);
+     --ux4g-fs-current: var(--ux4g-fs-14);
+     --ux4g-lh-current: var(--ux4g-lh-20);
+     --ux4g-fw-current: var(--ux4g-fw-regular);
+ }
+
+ .ux4g-tab-item:hover:not(.ux4g-tab-item-disabled) {
+     color: var(--ux4g-text-neutral-primary);
+ }
+
+ .ux4g-tab-item.is-active {
+     color: var(--ux4g-text-brand-primary-default);
+ }
+
+ .ux4g-tab-item-disabled {
+     color: var(--ux4g-text-neutral-disabled);
+     cursor: not-allowed;
+     opacity: var(--ux4g-opacity-disabled);
+     pointer-events: none;
+ }
+
+ .ux4g-tab-item:focus-visible {
+    outline: var(--ux4g-outline-width-default) solid var(--ux4g-outline-color-focus);
+    outline-offset: var(--ux4g-outline-offset-default);
+    border-radius: var(--ux4g-radius-xs);
+}
+
+ /* More button */
+ .ux4g-tab-more {
+     position: relative;
+     gap: var(--ux4g-inline-xs);
+ }
+
+ .ux4g-tab-more-icon {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     color: var(--ux4g-text-neutral-tertiary);
+     flex-shrink: 0;
+     transition: color var(--ux4g-motion-duration-productive) var(--ux4g-motion-easing-standard);
+ }
+
+ .ux4g-tab-more.is-active .ux4g-tab-more-icon,
+ .ux4g-tab-more:hover .ux4g-tab-more-icon {
+     color: var(--ux4g-text-brand-primary-default);
+ }
+
+ /* ------------------------------------------------------- DROPDOWN — hidden by default, NO is-open needed in HTML ------------------------------------------------------- */
+ .ux4g-tab-dropdown-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: calc(100% + var(--ux4g-inline-xs));
+    right: 0;
+    min-width: 140px;
+    z-index: var(--ux4g-z-dropdown);
+    transform-origin: top right;
+}
+
+ .ux4g-tab-dropdown-list.is-open {
+     display: flex;
+     animation: ux4g-dropdown-open var(--ux4g-motion-duration-productive) var(--ux4g-motion-easing-out);
+ }
+
+ @keyframes ux4g-dropdown-open {
+     from {
+         opacity: 0;
+         transform: scaleY(0.92) translateY(-4px);
+     }
+
+     to {
+         opacity: 1;
+         transform: scaleY(1) translateY(0);
+     }
+ }
+
+ .ux4g-tab-dropdown-item.is-active {
+     background-color: var(--ux4g-bg-neutral-emphasis);
+ }
+
+ /* Tab panel */
+ .ux4g-tab-panel {
+     display: none;
+     padding: var(--ux4g-padding-m) 0;
+     --ux4g-fs-current: var(--ux4g-fs-14);
+     --ux4g-lh-current: var(--ux4g-lh-20);
+     color: var(--ux4g-text-neutral-secondary);
+ }
+
+ .ux4g-tab-panel.is-active {
+     display: block;
+ }
+
+ /* ── VARIANT: UNDERLINE ── */
+ .ux4g-tab-underline .ux4g-tab-list {
+     border-bottom: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+ }
+
+ .ux4g-tab-underline .ux4g-tab-item {
+     position: relative;
+     bottom: -1px;
+     border-bottom: var(--ux4g-border-width-md) solid transparent;
+     transition: color var(--ux4g-motion-duration-productive) var(--ux4g-motion-easing-standard), border-bottom-color var(--ux4g-motion-duration-productive) var(--ux4g-motion-easing-standard);
+ }
+
+ .ux4g-tab-underline .ux4g-tab-item.is-active {
+     border-bottom-color: var(--ux4g-border-color-primary-strong);
+ }
+
+ .ux4g-tab-underline .ux4g-tab-item:hover:not(.is-active):not(.ux4g-tab-item-disabled) {
+     border-bottom-color: var(--ux4g-border-color-neutral-strong);
+ }
+
+ /* ── VARIANT: PILL ── */
+ .ux4g-tab-pill .ux4g-tab-list {
+     gap: var(--ux4g-inline-s);
+ }
+
+ .ux4g-tab-pill .ux4g-tab-item {
+     border-radius: var(--ux4g-radius-md);
+     background: transparent;
+ }
+
+ .ux4g-tab-pill .ux4g-tab-item.is-active {
+     background: var(--ux4g-bg-primary-soft);
+     color: var(--ux4g-text-brand-primary-default);
+ }
+
+ .ux4g-tab-pill .ux4g-tab-item:hover:not(.is-active):not(.ux4g-tab-item-disabled) {
+     background: var(--ux4g-bg-neutral-soft);
+     color: var(--ux4g-text-neutral-primary);
+ }
+
+ /* ── SIZE: SMALL ── */
+ .ux4g-tab-sm .ux4g-tab-item {
+    --ux4g-fs-current: var(--ux4g-fs-14);
+    --ux4g-lh-current: var(--ux4g-lh-20);
+    padding: 0 var(--ux4g-padding-xs);
+    height: var(--ux4g-sz-s);
+    gap: var(--ux4g-inline-s);
+}
+
+ .ux4g-tab-sm .ux4g-tab-more-icon svg {
+    width: var(--ux4g-sz-14);
+    height: var(--ux4g-sz-14);
+}
+
+ .ux4g-tab-sm .ux4g-tab-dropdown-item {
+     --ux4g-fs-current: var(--ux4g-fs-12);
+     --ux4g-lh-current: var(--ux4g-lh-16);
+     padding: var(--ux4g-padding-2xs) var(--ux4g-padding-s);
+ }
+
+ /* ── SIZE: MEDIUM ── */
+ .ux4g-tab-md .ux4g-tab-item {
+    --ux4g-fs-current: var(--ux4g-fs-16);
+    --ux4g-lh-current: var(--ux4g-lh-24);
+    padding: 0 var(--ux4g-padding-l);
+    height: var(--ux4g-sz-m);
+    gap: var(--ux4g-inline-s);
+}
+
+ .ux4g-tab-md .ux4g-tab-more-icon svg {
+    width: var(--ux4g-sz-16);
+    height: var(--ux4g-sz-16);
+}
+
+ /* ── SIZE: LARGE ── */
+ .ux4g-tab-lg .ux4g-tab-item {
+    --ux4g-fs-current: var(--ux4g-fs-18);
+    --ux4g-lh-current: var(--ux4g-lh-24);
+    height: var(--ux4g-sz-l);
+    padding: 0 var(--ux4g-padding-l);
+    gap: var(--ux4g-inline-s);
+}
+
+ .ux4g-tab-lg .ux4g-tab-more-icon svg {
+    width: var(--ux4g-sz-18);
+    height: var(--ux4g-sz-18);
+}
+
+ .ux4g-tab-lg .ux4g-tab-dropdown-item {
+     --ux4g-fs-current: var(--ux4g-fs-16);
+     --ux4g-lh-current: var(--ux4g-lh-24);
+     padding: var(--ux4g-padding-s) var(--ux4g-padding-l);
+ }
+
+ /* ============================================================ UX4G TAB COMPONENT CSS Component: Tab / Vertical (addendum — append after horizontal CSS) Usage: add .ux4g-tab-vertical alongside existing classes Example: <div class="ux4g-tab ux4g-tab-vertical ux4g-tab-underline ux4g-tab-md" data-ux4g-tab> <div class="ux4g-tab ux4g-tab-vertical ux4g-tab-pill ux4g-tab-lg" data-ux4g-tab> NOTE: No existing horizontal selectors are modified. ============================================================ */
+ .ux4g-tab-vertical {
+     flex-direction: row;
+     align-items: flex-start;
+     width: auto;
+ }
+
+ .ux4g-tab-vertical .ux4g-tab-list {
+     flex-direction: column;
+     align-items: stretch;
+     border-bottom: none;
+ }
+
+ .ux4g-tab-vertical .ux4g-tab-item {
+     justify-content: flex-start;
+     width: 100%;
+ }
+
+ .ux4g-tab-vertical .ux4g-tab-panel {
+     flex: 1;
+     padding: 0 var(--ux4g-padding-l);
+ }
+
+ .ux4g-tab-vertical.ux4g-tab-underline .ux4g-tab-list {
+     border-bottom: none;
+     border-left: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+ }
+
+ .ux4g-tab-vertical.ux4g-tab-underline .ux4g-tab-item {
+     bottom: 0;
+     border-bottom: none;
+     border-left: var(--ux4g-border-width-md) solid transparent;
+     margin-left: -1px;
+     transition: color var(--ux4g-motion-duration-productive) var(--ux4g-motion-easing-standard), border-left-color var(--ux4g-motion-duration-productive) var(--ux4g-motion-easing-standard);
+ }
+
+ .ux4g-tab-vertical.ux4g-tab-underline .ux4g-tab-item.is-active {
+     border-left-color: var(--ux4g-border-color-primary-strong);
+ }
+
+ .ux4g-tab-vertical.ux4g-tab-underline .ux4g-tab-item:hover:not(.is-active):not(.ux4g-tab-item-disabled) {
+     border-left-color: var(--ux4g-border-color-neutral-strong);
+ }
+
+ .ux4g-tab-vertical.ux4g-tab-pill .ux4g-tab-list {
+     gap: var(--ux4g-inline-s);
+ }
+
+ .ux4g-tab-vertical.ux4g-tab-sm .ux4g-tab-item {
+     padding: 0 var(--ux4g-padding-xs);
+ }
+
+ .ux4g-tab-vertical.ux4g-tab-md .ux4g-tab-item {
+     padding: 0 var(--ux4g-padding-m);
+ }
+
+ .ux4g-tab-vertical.ux4g-tab-lg .ux4g-tab-item {
+     padding: 0 var(--ux4g-padding-l);
+ }

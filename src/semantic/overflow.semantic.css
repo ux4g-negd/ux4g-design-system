@@ -1,0 +1,38 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  --ux4g-of-auto: var(--ux4g-overflow-auto);
+  --ux4g-of-hidden: var(--ux4g-overflow-hidden);
+  --ux4g-of-visible: var(--ux4g-overflow-visible);
+  --ux4g-of-scroll: var(--ux4g-overflow-scroll);
+
+  /* Axis semantic */
+  --ux4g-ofx-auto: var(--ux4g-overflow-auto);
+  --ux4g-ofx-hidden: var(--ux4g-overflow-hidden);
+  --ux4g-ofx-visible: var(--ux4g-overflow-visible);
+  --ux4g-ofx-scroll: var(--ux4g-overflow-scroll);
+
+  --ux4g-ofy-auto: var(--ux4g-overflow-auto);
+  --ux4g-ofy-hidden: var(--ux4g-overflow-hidden);
+  --ux4g-ofy-visible: var(--ux4g-overflow-visible);
+  --ux4g-ofy-scroll: var(--ux4g-overflow-scroll);
+
+
+    /* Semantic Scroll (used by overflow utilities) */
+  --ux4g-scroll-thumb: var(--ux4g-scrollbar-thumb);
+  --ux4g-scroll-track: var(--ux4g-scrollbar-track);
+  --ux4g-scroll-size: var(--ux4g-scrollbar-size);
+  --ux4g-scroll-radius: var(--ux4g-scrollbar-radius);
+}

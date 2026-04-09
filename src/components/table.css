@@ -1,0 +1,606 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+.ux4g-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--ux4g-bg-neutral-elevated);
+    /* border: solid 1px var(--ux4g-border-color-neutral-default); */
+    border-radius: var(--ux4g-radius-m);
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* top-left border-radius */
+
+
+/* top-left border-radius */
+.ux4g-table tr:first-child th:first-child {
+    border-top-left-radius: var(--ux4g-radius-md);
+}
+
+/* top-right border-radius */
+.ux4g-table tr:first-child th:last-child {
+    border-top-right-radius: var(--ux4g-radius-md);
+}
+
+/* bottom-left border-radius */
+.ux4g-table tr:last-child td:first-child {
+    border-bottom-left-radius: var(--ux4g-radius-md);
+}
+
+/* bottom-right border-radius */
+.ux4g-table tr:last-child td:last-child {
+    border-bottom-right-radius: var(--ux4g-radius-md);
+}
+
+.ux4g-table-rounded {
+    border-radius: var(--ux4g-radius-md);
+    overflow: hidden;
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+}
+
+/* table bordered end radius*/
+
+/* :root[data-theme="dark"] .ux4g-table {
+    --ux4g-table-divider-color: var(--ux4g-color-neutral-600);
+} */
+
+
+.ux4g-table-m td,
+.ux4g-table td {
+    padding: var(--ux4g-padding-s) var(--ux4g-padding-m);
+    min-height: 44px;
+    vertical-align: var(--ux4g-va-middle, middle);
+    font-size: var(--ux4g-fs-14);
+    line-height: var(--ux4g-lh-20);
+    font-weight: var(--ux4g-fw-regular);
+    color: var(--ux4g-text-neutral-primary);
+}
+
+.ux4g-table-m th,
+.ux4g-table th {
+    padding: var(--ux4g-padding-s) var(--ux4g-padding-m);
+    min-height: 44px;
+    font-size: var(--ux4g-fs-12);
+    line-height: var(--ux4g-lh-16);
+    font-weight: var(--ux4g-font-weight-bold);
+    color: var(--ux4g-text-neutral-secondary);
+    text-align: left;
+}
+.ux4g-table-column-dividers th{
+    vertical-align: var(--ux4g-va-middle, middle);
+
+}
+
+.ux4g-table-s td {
+    padding: var(--ux4g-padding-xs) var(--ux4g-padding-m);
+    min-height: 36px;
+}
+
+.ux4g-table-s th {
+    padding: var(--ux4g-padding-xs) var(--ux4g-padding-m);
+    min-height: 36px;
+}
+
+.ux4g-table-lg td {
+    padding: var(--ux4g-padding-m) var(--ux4g-padding-l);
+    min-height: 52px;
+    font-size: var(--ux4g-fs-16);
+    line-height: var(--ux4g-lh-24);
+}
+
+.ux4g-table-lg th {
+    padding: var(--ux4g-padding-m) var(--ux4g-padding-l);
+    min-height: 48px;
+    font-size: var(--ux4g-fs-14);
+    line-height: var(--ux4g-lh-18);
+}
+
+.ux4g-table th,
+.ux4g-table td {
+    border-bottom: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+}
+
+.ux4g-table tr:last-child td {
+    border-bottom: none;
+}
+
+.ux4g-table-no-row-dividers th,
+.ux4g-table-no-row-dividers td {
+    border-bottom: none;
+}
+
+.ux4g-table-column-dividers th,
+.ux4g-table-column-dividers td {
+    border-right: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+}
+
+.ux4g-table-column-dividers>thead> tr:nth-child(1) th:last-child,
+.ux4g-table-column-dividers>tbody>tr>td:last-child {
+    border-right: none !important;
+}
+
+.ux4g-table td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ux4g-table th {
+    position: var(--ux4g-pos-relative);
+    background-color: var(--ux4g-bg-neutral-elevated);
+    white-space: var(--ux4g-tw-nowrap, nowrap);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ux4g-table-resizable th {
+    background-clip: padding-box;
+}
+
+.ux4g-table-resize-handle {
+    position: var(--ux4g-pos-absolute);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: var(--ux4g-inline-s);
+    cursor: col-resize;
+    z-index: var(--ux4g-z-layout-raised);
+    background-color: transparent;
+    transform: translateX(50%);
+    transition: background-color var(--ux4g-motion-duration-productive) ease;
+}
+
+.ux4g-table-resize-handle:hover {
+    background-color: var(--ux4g-bg-primary-soft);
+}
+
+.ux4g-table-resize-handle.ux4g-is-resizing {
+    background-color: var(--ux4g-bg-primary-strong);
+}
+
+
+.ux4g-table-header-brand th {
+    background-color: var(--ux4g-bg-primary);
+}
+
+.ux4g-table-th-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--ux4g-inline-s);
+}
+
+.ux4g-table-sortable th {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color var(--ux4g-motion-duration-productive) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ux4g-table-sortable th:hover {
+    background-color: var(--table-row-bg-hover);
+}
+
+.ux4g-table-sortable th:active {
+    background-color: var(--table-row-bg-active);
+}
+
+.ux4g-table-sortable th[data-sort] .ux4g-table-sort-icon {
+    color: var(--ux4g-text-neutral-secondary);
+    transition: transform var(--ux4g-motion-duration-productive) ease, color var(--ux4g-motion-duration-productive) ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--ux4g-fs-20);
+    pointer-events: none;
+}
+
+.ux4g-table-s .ux4g-table-sort-icon {
+    font-size: var(--ux4g-fs-16);
+}
+
+.ux4g-table-lg .ux4g-table-sort-icon {
+    font-size: var(--ux4g-fs-24);
+}
+
+.ux4g-table-sortable th[data-sort="none"] .ux4g-table-sort-icon {
+    color: var(--ux4g-text-neutral-disabled);
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.ux4g-table-sortable th[data-sort="none"]:hover .ux4g-table-sort-icon {
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-table-sortable th[data-sort="desc"] .ux4g-table-sort-icon {
+    color: var(--ux4g-text-brand-primary-default);
+    transform: rotate(0deg);
+}
+
+.ux4g-table-sortable th[data-sort="asc"] .ux4g-table-sort-icon {
+    color: var(--ux4g-text-brand-primary-default);
+    transform: rotate(180deg);
+}
+
+
+.ux4g-table-zebra-rows tbody tr:nth-child(even),
+.ux4g-table-zebra-rows tbody tr:nth-child(even) th,
+.ux4g-table-zebra-rows tbody tr:nth-child(even) td {
+    background-color: var(--ux4g-bg-neutral-soft);
+}
+
+.ux4g-table-zebra-rows tbody tr:nth-child(odd),
+.ux4g-table-zebra-rows tbody tr:nth-child(odd) th,
+.ux4g-table-zebra-rows tbody tr:nth-child(odd) td {
+    background-color: var(--ux4g-bg-neutral);
+}
+
+.ux4g-table-zebra-cols td:nth-child(even),
+.ux4g-table-zebra-cols th:nth-child(even) {
+    background-color: var(--ux4g-bg-neutral-soft);
+}
+
+.ux4g-table-zebra-cols td:nth-child(odd),
+.ux4g-table-zebra-cols th:nth-child(odd) {
+    background-color: var(--ux4g-bg-neutral);
+}
+
+.ux4g-table th[colspan],
+.ux4g-table td[colspan] {
+    text-align: center;
+}
+
+.ux4g-table-interactive tbody tr {
+    transition: background-color var(--ux4g-motion-duration-productive) var(--ux4g-motion-easing-standard), box-shadow var(--ux4g-motion-duration-productive);
+    cursor: pointer;
+}
+
+
+.ux4g-table-interactive tbody tr:hover,
+.ux4g-table-interactive tbody tr.ux4g-is-hovered {
+    background-color: var(--ux4g-bg-neutral-subtle);
+}
+
+.ux4g-table-interactive tbody tr:active,
+.ux4g-table-interactive tbody tr.ux4g-is-active {
+    background-color: var(--ux4g-bg-neutral-emphasis);
+}
+
+.ux4g-table-interactive tbody tr.ux4g-is-selected {
+    background-color: var(--ux4g-bg-primary);
+}
+
+.ux4g-table-interactive tbody tr.ux4g-is-selected:hover,
+.ux4g-table-interactive tbody tr.ux4g-is-selected.ux4g-is-hovered {
+    background-color: var(--ux4g-bg-brand-primary-soft);
+}
+
+.ux4g-table-interactive tbody tr.ux4g-is-selected:active,
+.ux4g-table-interactive tbody tr.ux4g-is-selected.ux4g-is-active {
+    background-color: var(--ux4g-bg-brand-primary-subtle);
+}
+
+.ux4g-table-interactive tbody tr.ux4g-is-disabled,
+.ux4g-table tbody tr.is-disabled {
+    pointer-events: none;
+    background-color: var(--ux4g-bg-neutral-elevated);
+    opacity: var(--ux4g-interaction-disabled-opacity, 0.4);
+}
+
+
+.ux4g-table-cell-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: var(--ux4g-tw-nowrap, nowrap);
+}
+
+.ux4g-table-cell-avatar,
+.ux4g-table-cell-image {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-m);
+}
+
+.ux4g-table-avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ux4g-table-cell-avatar-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.ux4g-table-cell-tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--ux4g-inline-s);
+}
+
+.ux4g-table-tag {
+    height: 1.25rem;
+    padding: 0 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ux4g-radius-sm);
+}
+
+.ux4g-table-cell-checkbox,
+.ux4g-table-cell-radio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ux4g-table-selection-col {
+    position: var(--ux4g-pos-relative);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+}
+
+.ux4g-sno-text {
+    transition: opacity var(--ux4g-motion-duration-productive) ease, visibility var(--ux4g-motion-duration-productive);
+}
+
+.ux4g-table-selection-col .ux4g-checkbox {
+    position: var(--ux4g-pos-absolute);
+    transition: opacity var(--ux4g-motion-duration-productive) ease, visibility var(--ux4g-motion-duration-productive) ease;
+    margin: 0;
+}
+
+.ux4g-table-interactive tbody tr:hover .ux4g-sno-text,
+.ux4g-table-interactive tbody tr:focus-within .ux4g-sno-text {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.ux4g-table-interactive tbody tr:hover .ux4g-table-selection-col .ux4g-checkbox,
+.ux4g-table-interactive tbody tr:focus-within .ux4g-table-selection-col .ux4g-checkbox {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ux4g-table-interactive tbody tr.ux4g-is-selected .ux4g-sno-text {
+    display: none;
+}
+
+.ux4g-table-interactive tbody tr.ux4g-is-selected .ux4g-table-selection-col .ux4g-checkbox {
+    position: var(--ux4g-pos-static);
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.ux4g-table-cell-icon-btn {
+    background-color: transparent;
+    color: var(--ux4g-text-neutral-secondary);
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ux4g-radius-sm);
+    transition: background-color var(--ux4g-motion-duration-productive), color var(--ux4g-motion-duration-productive), box-shadow var(--ux4g-motion-duration-productive);
+    height: var(--ux4g-sz-32);
+    width: var(--ux4g-sz-32);
+}
+
+.ux4g-table-s .ux4g-table-cell-icon-btn {
+    height: 28px;
+    width: 28px;
+}
+
+.ux4g-table-lg .ux4g-table-cell-icon-btn {
+    height: var(--ux4g-sz-40);
+    width: var(--ux4g-sz-40);
+}
+
+.ux4g-table-cell-icon-btn:hover {
+    background-color: var(--ux4g-bg-neutral-subtle);
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-table-cell-icon-btn:active {
+    background-color: var(--ux4g-bg-neutral-emphasis);
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-table-cell-icon-btn:focus-visible {
+    outline: none;
+    box-shadow: var(--ux4g-shadow-focus-ring);
+}
+
+.ux4g-table-cell-icon-btn:disabled {
+    color: var(--ux4g-text-neutral-disabled);
+    cursor: not-allowed;
+    background-color: transparent;
+}
+
+
+.ux4g-table-cell-fluid-input {
+    flex: 1;
+    min-width: 0;
+}
+
+.ux4g-table-cell-fixed-input {
+    width: 8.75rem;
+}
+
+.ux4g-table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ux4g-table-loading-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--ux4g-section-m) 0;
+    min-height: 12.5rem;
+    width: 100%;
+    background-color: transparent;
+}
+
+
+.ux4g-table-input,
+.ux4g-table-select {
+    width: 100%;
+    padding: var(--ux4g-padding-2xs) var(--ux4g-padding-s);
+    background-color: var(--ux4g-bg-neutral-elevated);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-sm);
+    transition: border-color var(--ux4g-motion-duration-productive) ease, box-shadow var(--ux4g-motion-duration-productive);
+    height: 40px;
+    appearance: none;
+    color: var(--ux4g-text-neutral-primary);
+}
+
+.ux4g-table-s .ux4g-table-input,
+.ux4g-table-s .ux4g-table-select {
+    height: 28px;
+}
+
+.ux4g-table-lg .ux4g-table-input,
+.ux4g-table-lg .ux4g-table-select {
+    height: var(--ux4g-sz-48);
+}
+
+.ux4g-table-select {
+    padding-right: 2rem;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%207.5L10%2012.5L15%207.5%22%20stroke%3D%22%23404040%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1.25rem;
+}
+
+:root[data-theme="dark"] .ux4g-table-select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%207.5L10%2012.5L15%207.5%22%20stroke%3D%22%23E5E5E5%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E');
+}
+
+.ux4g-table-input:hover,
+.ux4g-table-select:hover {
+    border-color: var(--ux4g-border-color-neutral-focus, #4b5563);
+}
+
+.ux4g-table-input:focus,
+.ux4g-table-select:focus {
+    outline: none;
+    border-color: var(--ux4g-border-color-primary-strong);
+    box-shadow: var(--ux4g-shadow-focus-border);
+}
+
+.ux4g-table-input:disabled,
+.ux4g-table-select:disabled {
+    background-color: var(--ux4g-bg-neutral-soft);
+    color: var(--ux4g-text-neutral-disabled);
+    border-color: var(--ux4g-border-color-neutral-subtle);
+    cursor: not-allowed;
+}
+
+.ux4g-table-input.ux4g-status-success,
+.ux4g-table-select.ux4g-status-success {
+    border-color: var(--ux4g-border-color-success-strong, #16a34a);
+}
+
+.ux4g-table-input.ux4g-status-error,
+.ux4g-table-select.ux4g-status-error {
+    border-color: var(--ux4g-border-color-error-strong, #dc2626);
+}
+
+.ux4g-table-input.ux4g-status-warning,
+.ux4g-table-select.ux4g-status-warning {
+    border-color: var(--ux4g-text-warning-default);
+}
+
+.ux4g-table-cell-fixed-input {
+    width: 8.75rem;
+}
+
+.ux4g-table-cell-tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--ux4g-inline-s);
+}
+
+/* Table Filter Additions */
+.ux4g-table-th-header-row {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-xs);
+}
+
+.ux4g-table-filter-icon {
+    color: var(--ux4g-text-neutral-secondary);
+    transition: transform var(--ux4g-motion-duration-productive) ease, color var(--ux4g-motion-duration-productive) ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--ux4g-fs-20);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.ux4g-table-s .ux4g-table-filter-icon {
+    font-size: var(--ux4g-fs-16);
+}
+
+.ux4g-table-lg .ux4g-table-filter-icon {
+    font-size: var(--ux4g-fs-24);
+}
+
+.ux4g-table-filter-icon:hover {
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-table-inline-filter {
+    display: none;
+    width: 100%;
+    margin-top: var(--ux4g-stack-xs);
+}
+
+th.ux4g-is-filtering .ux4g-table-inline-filter {
+    display: block;
+}
+
+.ux4g-table-inline-filter .ux4g-search-clear {
+    display: inline-flex !important;
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-table-inline-filter .ux4g-search-clear:hover {
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-table-inline-filter .ux4g-search-container::before {
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-table-inline-filter .ux4g-search-input {
+    min-width: 0;
+    width: 100%;
+}

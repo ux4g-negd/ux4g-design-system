@@ -1,0 +1,251 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* =========================================================
+UX4G TAG – TONAL (Base Shared Styles)
+Applies to all tonal tag variants
+========================================================= */
+:is(.ux4g-tag-tonal-neutral,
+  .ux4g-tag-tonal-brand,
+  .ux4g-tag-tonal-success,
+  .ux4g-tag-tonal-warning,
+  .ux4g-tag-tonal-error,
+  .ux4g-tag-tonal-info,
+ 
+  .ux4g-tag-filled-neutral,
+  .ux4g-tag-filled-brand,
+  .ux4g-tag-filled-success,
+  .ux4g-tag-filled-warning,
+  .ux4g-tag-filled-error,
+  .ux4g-tag-filled-info,
+ 
+  .ux4g-tag-outline-neutral,
+  .ux4g-tag-outline-brand,
+  .ux4g-tag-outline-success,
+  .ux4g-tag-outline-warning,
+  .ux4g-tag-outline-error,
+  .ux4g-tag-outline-info,
+ 
+  .ux4g-tag-text-neutral,
+  .ux4g-tag-text-brand,
+  .ux4g-tag-text-success,
+  .ux4g-tag-text-warning,
+  .ux4g-tag-text-error,
+  .ux4g-tag-text-info,
+) {
+  border-radius: var(--ux4g-radius-sm);
+  padding: var(--ux4g-padding-2xs) var(--ux4g-padding-xs);
+  border: solid transparent var(--ux4g-border-width-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ux4g-inline-xs);
+  font-size: var(--ux4g-fs-12);
+  line-height: var(--ux4g-lh-16);
+  font-weight: var(--ux4g-font-weight-medium);
+  width: fit-content;
+}
+/* =========================================================
+   UX4G TAG – TONAL VARIANTS
+   ========================================================= */
+ 
+ 
+.ux4g-tag-tonal-neutral {
+  background-color: var(--ux4g-bg-neutral-subtle);
+  color: var(--ux4g-text-neutral-primary);
+}
+.ux4g-tag-tonal-brand {
+  background-color: var(--ux4g-bg-primary-soft);
+  color: var(--ux4g-bg-primary-strong);
+}
+.ux4g-tag-tonal-success {
+  background-color: var(--ux4g-bg-success-soft);
+  color: var(--ux4g-bg-success-strong);
+}
+.ux4g-tag-tonal-warning {
+  background-color: var(--ux4g-bg-warning-soft);
+  color: var(--ux4g-bg-warning-strong);
+}
+.ux4g-tag-tonal-error {
+  background-color: var(--ux4g-bg-error-soft);
+  color: var(--ux4g-bg-error-strong);
+}
+.ux4g-tag-tonal-info {
+  background-color: var(--ux4g-bg-info-soft);
+  color: var(--ux4g-bg-info-strong);
+}
+ 
+ 
+/* =========================================================
+   UX4G TAG – TONAL FILLED VARIANTS
+   ========================================================= */
+ 
+ 
+.ux4g-tag-tonal-neutral {
+  background-color: var(--ux4g-bg-neutral-subtle);
+  color: var(--ux4g-text-neutral-primary);
+}
+.ux4g-tag-tonal-brand {
+  background-color: var(--ux4g-bg-primary-soft);
+  color: var(--ux4g-text-brand-primary-default);
+}
+ 
+.ux4g-tag-tonal-success {
+  background-color: var(--ux4g-bg-success-soft);
+  color: var(--ux4g-bg-success-strong);
+}
+.ux4g-tag-tonal-warning {
+  background-color: var(--ux4g-bg-warning-soft);
+  color: var(--ux4g-bg-warning-strong);
+}
+.ux4g-tag-tonal-error {
+  background-color: var(--ux4g-bg-error-soft);
+  color: var(--ux4g-bg-error-strong);
+}
+.ux4g-tag-tonal-info {
+  background-color: var(--ux4g-bg-info-soft);
+  color: var(--ux4g-bg-info-strong);
+}
+ 
+/* =========================================================
+   UX4G TAG – FILLED VARIANTS
+   ========================================================= */
+ 
+/* Neutral */
+.ux4g-tag-filled-neutral {
+  background-color: var(--ux4g-bg-neutral-stronger);
+  color: var(--ux4g-text-neutral-inverse);
+}
+:is(
+.ux4g-tag-filled-neutral, 
+.ux4g-tag-filled-brand, 
+.ux4g-tag-filled-success, 
+.ux4g-tag-filled-warning, 
+.ux4g-tag-filled-error, 
+.ux4g-tag-filled-info
+) i{
+ --ux4g-text-current: var(--ux4g-text-neutral-inverse);
+}
+
+ 
+/* Brand */
+.ux4g-tag-filled-brand {
+  background-color: var(--ux4g-bg-primary-strong);
+  color: var(--ux4g-text-neutral-inverse);
+}
+ 
+/* Success */
+.ux4g-tag-filled-success {
+  background-color: var(--ux4g-bg-success-strong);
+  color: var(--ux4g-text-neutral-inverse);
+}
+ 
+/* Warning */
+.ux4g-tag-filled-warning {
+  background-color: var(--ux4g-bg-warning-strong);
+  color: var(--ux4g-text-neutral-inverse);
+}
+ 
+/* Error */
+.ux4g-tag-filled-error {
+  background-color: var(--ux4g-bg-error-strong);
+  color: var(--ux4g-text-neutral-inverse);
+}
+ 
+/* Info */
+.ux4g-tag-filled-info {
+  background-color: var(--ux4g-bg-info-strong);
+  color: var(--ux4g-text-neutral-inverse);
+}
+ 
+/*=========================================================
+   UX4G TAG – OUTLINE VARIANTS
+   ========================================================= */
+ 
+/* Neutral */
+.ux4g-tag-outline-neutral {
+  border-color: var(--ux4g-border-color-neutral-default);
+  color: var(--ux4g-text-neutral-primary);
+}
+ 
+/* Brand */
+.ux4g-tag-outline-brand {
+  border-color: var(--ux4g-border-color-primary-default);
+  color: var(--ux4g-text-brand-primary-default);
+}
+ 
+/* Success */
+.ux4g-tag-outline-success {
+  border-color: var(--ux4g-border-color-success-strong);
+  color: var(--ux4g-text-status-success);
+}
+ 
+/* Warning */
+.ux4g-tag-outline-warning {
+  border-color: var(--ux4g-border-color-secondary-default);
+  color: var(--ux4g-color-secondary-800);
+}
+ 
+/* Error */
+.ux4g-tag-outline-error {
+  border-color: var(--ux4g-border-color-error-default);
+  color: var(--ux4g-text-status-error);
+}
+ 
+/* Info */
+.ux4g-tag-outline-info {
+  border-color: var(--ux4g-border-color-info-default);
+  color: var(--ux4g-text-status-info);
+}
+ 
+/*=========================================================
+   UX4G TAG – TEXT VARIANTS
+   ========================================================= */
+ 
+/* Neutral */
+.ux4g-tag-text-neutral {
+  color: var(--ux4g-text-neutral-primary);
+}
+ 
+/* Brand */
+.ux4g-tag-text-brand {
+  color: var(--ux4g-text-brand-primary-default);
+}
+ 
+/* Success */
+.ux4g-tag-text-success {
+  color: var(--ux4g-text-status-success);
+}
+ 
+/* Warning */
+.ux4g-tag-text-warning {
+  color: var(--ux4g-color-secondary-800);
+}
+ 
+/* Error */
+.ux4g-tag-text-error {
+  color: var(--ux4g-text-status-error);
+}
+ 
+/* Info */
+.ux4g-tag-text-info {
+  color: var(--ux4g-text-status-info);
+}
+
+
+/* small size */
+
+.ux4g-tag-s {
+  padding: var(--ux4g-padding-3xs) var(--ux4g-padding-xs);
+}

@@ -1,0 +1,35 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* =========================================
+   DISPLAY UTILITIES
+   Author: UX4G
+   Standard display properties including
+   Grid, Flex, Table, and Print variants.
+========================================= */
+
+/* Base Display */
+.ux4g-d-none { display: none;}
+.ux4g-d-block { display: block;}
+.ux4g-d-inline { display: inline;}
+.ux4g-d-inline-block { display: inline-block;}
+.ux4g-d-flex { display: flex;}
+.ux4g-d-inline-flex { display: inline-flex;}
+
+
+
+/* Table Display */
+.ux4g-d-table { display: table;}
+.ux4g-d-table-row { display: table-row;}
+.ux4g-d-table-cell { display: table-cell;}

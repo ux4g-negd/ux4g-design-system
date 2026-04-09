@@ -1,0 +1,54 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  /* ===== Sizing Semantic ===== */
+  --ux4g-sz-8: var(--ux4g-size-8);
+  --ux4g-sz-10: var(--ux4g-size-10);
+  --ux4g-sz-11: var(--ux4g-size-11);
+  --ux4g-sz-12: var(--ux4g-size-12);
+  --ux4g-sz-14: var(--ux4g-size-14);
+  --ux4g-sz-16: var(--ux4g-size-16);
+  --ux4g-sz-18: var(--ux4g-size-18);
+  --ux4g-sz-20: var(--ux4g-size-20);
+  --ux4g-sz-24: var(--ux4g-size-24);
+  --ux4g-sz-28: var(--ux4g-size-28);
+  --ux4g-sz-32: var(--ux4g-size-32);
+  --ux4g-sz-36: var(--ux4g-size-36);
+  --ux4g-sz-40: var(--ux4g-size-40);
+  --ux4g-sz-48: var(--ux4g-size-48);
+  --ux4g-sz-52: var(--ux4g-size-52);
+  --ux4g-sz-56: var(--ux4g-size-56);
+  --ux4g-sz-60: var(--ux4g-size-60);
+  --ux4g-sz-64: var(--ux4g-size-64);
+  --ux4g-sz-80: var(--ux4g-size-80);
+  --ux4g-sz-120: var(--ux4g-size-120);
+
+  --ux4g-sz-none: 0;
+  --ux4g-sz-full: 100%;
+  --ux4g-sz-half: 50%;
+  --ux4g-sz-auto: auto;
+  --ux4g-sz-screen-w: 100vw;
+  --ux4g-sz-screen-h: 100vh;
+
+  /* Component Specific Aliases (Optional but good for clarity) */
+  --ux4g-sz-xs: var(--ux4g-size-24);
+  --ux4g-sz-s: var(--ux4g-size-32);
+  --ux4g-sz-base: var(--ux4g-size-36);
+  --ux4g-sz-m: var(--ux4g-size-40);
+  --ux4g-sz-l: var(--ux4g-size-48);
+  --ux4g-sz-xl: var(--ux4g-size-64);
+  --ux4g-sz-2xl: var(--ux4g-size-80);
+  --ux4g-sz-3xl: var(--ux4g-size-120);
+}

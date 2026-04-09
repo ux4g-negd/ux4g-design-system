@@ -1,0 +1,52 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  /* Media Semantics */
+  --ux4g-of-image: var(--ux4g-object-fit-cover);
+  --ux4g-of-video: var(--ux4g-object-fit-contain);
+
+  /* Component Semantics */
+  --ux4g-of-avatar: var(--ux4g-object-fit-cover);
+  --ux4g-of-thumbnail: var(--ux4g-object-fit-cover);
+  --ux4g-of-card-media: var(--ux4g-object-fit-cover);
+  --ux4g-of-logo: var(--ux4g-object-fit-contain);
+
+  /* Utility Bridge*/
+  --ux4g-of-contain: var(--ux4g-object-fit-contain);
+  --ux4g-of-cover: var(--ux4g-object-fit-cover);
+  --ux4g-of-fill: var(--ux4g-object-fit-fill);
+  --ux4g-of-none: var(--ux4g-object-fit-none);
+  --ux4g-of-scale-down: var(--ux4g-object-fit-scale-down);
+
+
+
+    /* ===== Object Position Semantic ===== */
+  --ux4g-op-image: var(--ux4g-object-position-center);
+  --ux4g-op-avatar: var(--ux4g-object-position-center);
+  --ux4g-op-thumbnail: var(--ux4g-object-position-center);
+  --ux4g-op-card-media: var(--ux4g-object-position-center);
+  --ux4g-op-logo: var(--ux4g-object-position-center);
+
+  /* Generic Bridge (like object-fit) */
+  --ux4g-op-center: var(--ux4g-object-position-center);
+  --ux4g-op-top: var(--ux4g-object-position-top);
+  --ux4g-op-bottom: var(--ux4g-object-position-bottom);
+  --ux4g-op-left: var(--ux4g-object-position-left);
+  --ux4g-op-right: var(--ux4g-object-position-right);
+  --ux4g-op-top-left: var(--ux4g-object-position-top-left);
+  --ux4g-op-top-right: var(--ux4g-object-position-top-right);
+  --ux4g-op-bottom-left: var(--ux4g-object-position-bottom-left);
+  --ux4g-op-bottom-right: var(--ux4g-object-position-bottom-right);
+}

@@ -1,0 +1,172 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+
+/* =========================================
+   ALIGN UTILITIES
+   Controls alignment of flex items.
+   1. Align Items (ai)
+   2. Align Self (as)
+   3. Align Content (ac)
+========================================= */
+
+/* 1.0 ALIGN ITEMS */
+.ux4g-ai-start { align-items: flex-start; }
+.ux4g-ai-center { align-items: center; }
+.ux4g-ai-end { align-items: flex-end; }
+.ux4g-ai-stretch { align-items: stretch; }
+.ux4g-ai-baseline { align-items: baseline; } 
+
+/* 2.0 ALIGN SELF */
+.ux4g-as-start { align-self: flex-start; }
+.ux4g-as-end { align-self: flex-end; }
+.ux4g-as-center { align-self: center; }
+.ux4g-as-baseline { align-self: baseline; }
+.ux4g-as-stretch { align-self: stretch; }
+
+/* 3.0 ALIGN CONTENT */
+.ux4g-ac-start { align-content: flex-start; }
+.ux4g-ac-end { align-content: flex-end; }
+.ux4g-ac-center { align-content: center; }
+.ux4g-ac-between { align-content: space-between; }
+.ux4g-ac-around { align-content: space-around; }
+.ux4g-ac-stretch { align-content: stretch; }
+
+
+/* ================= RESPONSIVE ================= */
+
+/* ================= SM ≥ 576px ================= */
+@media (min-width: 576px) {
+  /* ALIGN ITEMS */
+  .ux4g-sm-ai-start { align-items: flex-start; }
+  .ux4g-sm-ai-end { align-items: flex-end; }
+  .ux4g-sm-ai-center { align-items: center; }
+  .ux4g-sm-ai-baseline { align-items: baseline; }
+  .ux4g-sm-ai-stretch { align-items: stretch; }
+
+  /* ALIGN SELF */
+  .ux4g-sm-as-start { align-self: flex-start; }
+  .ux4g-sm-as-end { align-self: flex-end; }
+  .ux4g-sm-as-center { align-self: center; }
+  .ux4g-sm-as-baseline { align-self: baseline; }
+  .ux4g-sm-as-stretch { align-self: stretch; }
+
+  /* ALIGN CONTENT */
+  .ux4g-sm-ac-start { align-content: flex-start; }
+  .ux4g-sm-ac-end { align-content: flex-end; }
+  .ux4g-sm-ac-center { align-content: center; }
+  .ux4g-sm-ac-between { align-content: space-between; }
+  .ux4g-sm-ac-around { align-content: space-around; }
+  .ux4g-sm-ac-stretch { align-content: stretch; }
+}
+
+/* ================= MD ≥ 768px ================= */
+@media (min-width: 768px) {
+  /* ALIGN ITEMS */
+  .ux4g-md-ai-start { align-items: flex-start; }
+  .ux4g-md-ai-end { align-items: flex-end; }
+  .ux4g-md-ai-center { align-items: center; }
+  .ux4g-md-ai-baseline { align-items: baseline; }
+  .ux4g-md-ai-stretch { align-items: stretch; }
+
+  /* ALIGN SELF */
+  .ux4g-md-as-start { align-self: flex-start; }
+  .ux4g-md-as-end { align-self: flex-end; }
+  .ux4g-md-as-center { align-self: center; }
+  .ux4g-md-as-baseline { align-self: baseline; }
+  .ux4g-md-as-stretch { align-self: stretch; }
+
+  /* ALIGN CONTENT */
+  .ux4g-md-ac-start { align-content: flex-start; }
+  .ux4g-md-ac-end { align-content: flex-end; }
+  .ux4g-md-ac-center { align-content: center; }
+  .ux4g-md-ac-between { align-content: space-between; }
+  .ux4g-md-ac-around { align-content: space-around; }
+  .ux4g-md-ac-stretch { align-content: stretch; }
+}
+
+/* ================= LG ≥ 992px ================= */
+@media (min-width: 992px) {
+  /* ALIGN ITEMS */
+  .ux4g-lg-ai-start { align-items: flex-start; }
+  .ux4g-lg-ai-end { align-items: flex-end; }
+  .ux4g-lg-ai-center { align-items: center; }
+  .ux4g-lg-ai-baseline { align-items: baseline; }
+  .ux4g-lg-ai-stretch { align-items: stretch; }
+
+  /* ALIGN SELF */
+  .ux4g-lg-as-start { align-self: flex-start; }
+  .ux4g-lg-as-end { align-self: flex-end; }
+  .ux4g-lg-as-center { align-self: center; }
+  .ux4g-lg-as-baseline { align-self: baseline; }
+  .ux4g-lg-as-stretch { align-self: stretch; }
+
+  /* ALIGN CONTENT */
+  .ux4g-lg-ac-start { align-content: flex-start; }
+  .ux4g-lg-ac-end { align-content: flex-end; }
+  .ux4g-lg-ac-center { align-content: center; }
+  .ux4g-lg-ac-between { align-content: space-between; }
+  .ux4g-lg-ac-around { align-content: space-around; }
+  .ux4g-lg-ac-stretch { align-content: stretch; }
+}
+
+/* ================= XL ≥ 1200px ================= */
+@media (min-width: 1200px) {
+  /* ALIGN ITEMS */
+  .ux4g-xl-ai-start { align-items: flex-start; }
+  .ux4g-xl-ai-end { align-items: flex-end; }
+  .ux4g-xl-ai-center { align-items: center; }
+  .ux4g-xl-ai-baseline { align-items: baseline; }
+  .ux4g-xl-ai-stretch { align-items: stretch; }
+
+  /* ALIGN SELF */
+  .ux4g-xl-as-start { align-self: flex-start; }
+  .ux4g-xl-as-end { align-self: flex-end; }
+  .ux4g-xl-as-center { align-self: center; }
+  .ux4g-xl-as-baseline { align-self: baseline; }
+  .ux4g-xl-as-stretch { align-self: stretch; }
+
+  /* ALIGN CONTENT */
+  .ux4g-xl-ac-start { align-content: flex-start; }
+  .ux4g-xl-ac-end { align-content: flex-end; }
+  .ux4g-xl-ac-center { align-content: center; }
+  .ux4g-xl-ac-between { align-content: space-between; }
+  .ux4g-xl-ac-around { align-content: space-around; }
+  .ux4g-xl-ac-stretch { align-content: stretch; }
+}
+
+/* ================= 2XL ≥ 1400px ================= */
+@media (min-width: 1400px) {
+  /* ALIGN ITEMS */
+  .ux4g-2xl-ai-start { align-items: flex-start; }
+  .ux4g-2xl-ai-end { align-items: flex-end; }
+  .ux4g-2xl-ai-center { align-items: center; }
+  .ux4g-2xl-ai-baseline { align-items: baseline; }
+  .ux4g-2xl-ai-stretch { align-items: stretch; }
+
+  /* ALIGN SELF */
+  .ux4g-2xl-as-start { align-self: flex-start; }
+  .ux4g-2xl-as-end { align-self: flex-end; }
+  .ux4g-2xl-as-center { align-self: center; }
+  .ux4g-2xl-as-baseline { align-self: baseline; }
+  .ux4g-2xl-as-stretch { align-self: stretch; }
+
+  /* ALIGN CONTENT */
+  .ux4g-2xl-ac-start { align-content: flex-start; }
+  .ux4g-2xl-ac-end { align-content: flex-end; }
+  .ux4g-2xl-ac-center { align-content: center; }
+  .ux4g-2xl-ac-between { align-content: space-between; }
+  .ux4g-2xl-ac-around { align-content: space-around; }
+  .ux4g-2xl-ac-stretch { align-content: stretch; }
+}

@@ -1,0 +1,135 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* =========================================
+   UX4G GRID SYSTEM
+   1. Grid Base
+   2. Grid Columns
+   3. Grid Rows
+   4. Auto Rows
+   5. Span Utilities
+   6. Alignment
+   7. Auto Fit (Responsive Layout)
+========================================= */
+
+
+/* =========================================
+   1. GRID BASE
+========================================= */
+.ux4g-grid,.ux4g-d-grid { 
+   display: grid;
+   gap: var(--ux4g-gutter-y, 0px) var(--ux4g-gutter-x, 0px);
+ }
+ 
+.ux4g-inline-grid { display: inline-grid; }
+
+
+
+/* =========================================
+   2. GRID COLUMNS (STRUCTURE)
+========================================= */
+.ux4g-grid-cols-1  { grid-template-columns: repeat(1, 1fr); }
+.ux4g-grid-cols-2  { grid-template-columns: repeat(2, 1fr); }
+.ux4g-grid-cols-3  { grid-template-columns: repeat(3, 1fr); }
+.ux4g-grid-cols-4  { grid-template-columns: repeat(4, 1fr); }
+.ux4g-grid-cols-5  { grid-template-columns: repeat(5, 1fr); }
+.ux4g-grid-cols-6  { grid-template-columns: repeat(6, 1fr); }
+.ux4g-grid-cols-7  { grid-template-columns: repeat(7, 1fr); }
+.ux4g-grid-cols-8  { grid-template-columns: repeat(8, 1fr); }
+.ux4g-grid-cols-9  { grid-template-columns: repeat(9, 1fr); }
+.ux4g-grid-cols-10 { grid-template-columns: repeat(10, 1fr); }
+.ux4g-grid-cols-11 { grid-template-columns: repeat(11, 1fr); }
+.ux4g-grid-cols-12 { grid-template-columns: repeat(12, 1fr); }
+
+.ux4g-grid-cols-none     { grid-template-columns: none; }
+.ux4g-grid-cols-subgrid  { grid-template-columns: subgrid; }
+
+
+/* =========================================
+   3. GRID ROWS (STRUCTURE)
+========================================= */
+.ux4g-grid-rows-1  { grid-template-rows: repeat(1, 1fr); }
+.ux4g-grid-rows-2  { grid-template-rows: repeat(2, 1fr); }
+.ux4g-grid-rows-3  { grid-template-rows: repeat(3, 1fr); }
+.ux4g-grid-rows-4  { grid-template-rows: repeat(4, 1fr); }
+.ux4g-grid-rows-5  { grid-template-rows: repeat(5, 1fr); }
+.ux4g-grid-rows-6  { grid-template-rows: repeat(6, 1fr); }
+.ux4g-grid-rows-7  { grid-template-rows: repeat(7, 1fr); }
+.ux4g-grid-rows-8  { grid-template-rows: repeat(8, 1fr); }
+.ux4g-grid-rows-9  { grid-template-rows: repeat(9, 1fr); }
+.ux4g-grid-rows-10 { grid-template-rows: repeat(10, 1fr); }
+.ux4g-grid-rows-11 { grid-template-rows: repeat(11, 1fr); }
+.ux4g-grid-rows-12 { grid-template-rows: repeat(12, 1fr); }
+
+.ux4g-grid-rows-none     { grid-template-rows: none; }
+.ux4g-grid-rows-subgrid  { grid-template-rows: subgrid; }
+
+
+/* =========================================
+   4. AUTO ROWS (DYNAMIC BEHAVIOR)
+========================================= */
+.ux4g-auto-rows-auto { grid-auto-rows: auto; }
+.ux4g-auto-rows-min  { grid-auto-rows: min-content; }
+.ux4g-auto-rows-max  { grid-auto-rows: max-content; }
+.ux4g-auto-rows-fr   { grid-auto-rows: 1fr; }
+
+
+/* =========================================
+   5. SPAN UTILITIES (PLACEMENT)
+========================================= */
+
+/* Column Span */
+.ux4g-span-1  { grid-column: span 1; }
+.ux4g-span-2  { grid-column: span 2; }
+.ux4g-span-3  { grid-column: span 3; }
+.ux4g-span-4  { grid-column: span 4; }
+.ux4g-span-5  { grid-column: span 5; }
+.ux4g-span-6  { grid-column: span 6; }
+.ux4g-span-12 { grid-column: span 12; }
+
+/* Row Span */
+.ux4g-row-span-1 { grid-row: span 1; }
+.ux4g-row-span-2 { grid-row: span 2; }
+.ux4g-row-span-3 { grid-row: span 3; }
+
+
+/* =========================================
+   6. ALIGNMENT (LAYOUT CONTROL)
+========================================= */
+.ux4g-place-items-center { place-items: center; }
+.ux4g-place-items-start  { place-items: start; }
+.ux4g-place-items-end    { place-items: end; }
+
+.ux4g-justify-items-center { justify-items: center; }
+.ux4g-align-items-center   { align-items: center; }
+
+
+/* =========================================
+   7. AUTO FIT (RESPONSIVE GRID)
+========================================= */
+.ux4g-grid-auto-fit-200 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.ux4g-grid-auto-fit-250 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.ux4g-grid-auto-fit-300 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.ux4g-grid-auto-fit-400 {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}

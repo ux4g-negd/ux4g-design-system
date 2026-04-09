@@ -1,0 +1,89 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+
+/* =========================================
+   ORDER UTILITIES
+   Controls the visual order of flex items.
+   Range: 0-5, first (-1), last (999)
+========================================= */
+
+.ux4g-order-first { order: -1; }
+.ux4g-order-last { order: 999; }
+.ux4g-order-0 { order: 0; }
+.ux4g-order-1 { order: 1; }
+.ux4g-order-2 { order: 2; }
+.ux4g-order-3 { order: 3; }
+.ux4g-order-4 { order: 4; }
+.ux4g-order-5 { order: 5; }
+
+/* ================= SM ≥ 576px ================= */
+@media (min-width: 576px) {
+  .ux4g-sm-order-first { order: -1; }
+  .ux4g-sm-order-last { order: 999; }
+  .ux4g-sm-order-0 { order: 0; }
+  .ux4g-sm-order-1 { order: 1; }
+  .ux4g-sm-order-2 { order: 2; }
+  .ux4g-sm-order-3 { order: 3; }
+  .ux4g-sm-order-4 { order: 4; }
+  .ux4g-sm-order-5 { order: 5; }
+}
+
+/* ================= MD ≥ 768px ================= */
+@media (min-width: 768px) {
+  .ux4g-md-order-first { order: -1; }
+  .ux4g-md-order-last { order: 999; }
+  .ux4g-md-order-0 { order: 0; }
+  .ux4g-md-order-1 { order: 1; }
+  .ux4g-md-order-2 { order: 2; }
+  .ux4g-md-order-3 { order: 3; }
+  .ux4g-md-order-4 { order: 4; }
+  .ux4g-md-order-5 { order: 5; }
+}
+
+/* ================= LG ≥ 992px ================= */
+@media (min-width: 992px) {
+  .ux4g-lg-order-first { order: -1; }
+  .ux4g-lg-order-last { order: 999; }
+  .ux4g-lg-order-0 { order: 0; }
+  .ux4g-lg-order-1 { order: 1; }
+  .ux4g-lg-order-2 { order: 2; }
+  .ux4g-lg-order-3 { order: 3; }
+  .ux4g-lg-order-4 { order: 4; }
+  .ux4g-lg-order-5 { order: 5; }
+}
+
+/* ================= XL ≥ 1200px ================= */
+@media (min-width: 1200px) {
+  .ux4g-xl-order-first { order: -1; }
+  .ux4g-xl-order-last { order: 999; }
+  .ux4g-xl-order-0 { order: 0; }
+  .ux4g-xl-order-1 { order: 1; }
+  .ux4g-xl-order-2 { order: 2; }
+  .ux4g-xl-order-3 { order: 3; }
+  .ux4g-xl-order-4 { order: 4; }
+  .ux4g-xl-order-5 { order: 5; }
+}
+
+/* ================= 2XL ≥ 1400px ================= */
+@media (min-width: 1400px) {
+  .ux4g-2xl-order-first { order: -1; }
+  .ux4g-2xl-order-last { order: 999; }
+  .ux4g-2xl-order-0 { order: 0; }
+  .ux4g-2xl-order-1 { order: 1; }
+  .ux4g-2xl-order-2 { order: 2; }
+  .ux4g-2xl-order-3 { order: 3; }
+  .ux4g-2xl-order-4 { order: 4; }
+  .ux4g-2xl-order-5 { order: 5; }
+}

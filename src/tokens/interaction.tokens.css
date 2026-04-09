@@ -1,0 +1,27 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  /* Transition Durations */
+  --ux4g-transition-duration-fast: 150ms;
+  --ux4g-transition-duration-base: 250ms;
+  --ux4g-transition-duration-slow: 400ms;
+
+  /* Timing Functions */
+  --ux4g-transition-timing-ease: ease;
+  --ux4g-transition-timing-linear: linear;
+  --ux4g-transition-timing-in: ease-in;
+  --ux4g-transition-timing-out: ease-out;
+  --ux4g-transition-timing-in-out: ease-in-out;
+}

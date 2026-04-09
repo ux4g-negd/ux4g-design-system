@@ -1,0 +1,359 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+.ux4g-list {
+  border-radius: var(--ux4g-radius-md);
+  box-shadow: var(--ux4g-shadow-l2);
+  background-color: var(--ux4g-bg-neutral-elevated);
+  padding: var(--ux4g-space-2) var(--ux4g-space-none);
+}
+
+/* Disabled text */
+
+.ux4g-list-item-row:disabled:hover {
+  background: none !important;
+  
+} .ux4g-list-item-row:disabled {
+
+  pointer-events: none  !important;
+}
+
+.ux4g-list-item-row:disabled 
+:is(.ux4g-list-item-start, .ux4g-list-item-end, .ux4g-icon-outlined) {
+  color: var(--ux4g-text-neutral-disabled) !important;
+  background: none ;
+}
+
+.ux4g-list-item {
+  color: var(--ux4g-text-neutral-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ux4g-list-item-row {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  gap: var(--ux4g-space-4);
+}
+
+.ux4g-list-item-start {
+  display: flex;
+  align-items: center;
+  gap: var(--ux4g-space-4);
+}
+
+.ux4g-list-default .ux4g-list-item-end{
+  color: var(--ux4g-text-neutral-tertiary);
+}
+.ux4g-list-default .ux4g-list-item-start{
+  color: var(--ux4g-text-neutral-primary);
+}
+.ux4g-list-item-end {
+  gap: var(--ux4g-space-4);
+  display: flex;
+  align-items: center;
+}
+
+.ux4g-list-default .ux4g-list-item-row:hover {
+  background-color: var(--ux4g-bg-neutral-subtle);
+}
+
+.ux4g-list-default .ux4g-list-item-row:active {
+  background-color: var(--ux4g-bg-neutral-emphasis);
+}
+
+.ux4g-list-default .ux4g-list-item-row.active {
+  background-color: var(--ux4g-bg-primary);
+  color: var(--ux4g-text-brand-primary-default)
+}
+
+.ux4g-list-default .ux4g-list-item-row.active:hover {
+  background-color: var(--ux4g-bg-primary-soft);
+}
+
+.ux4g-list-default .ux4g-list-item-row.active:active {
+  background-color: var(--ux4g-bg-primary-subtle);
+}
+
+.ux4g-list-default .ux4g-list-item-row.active .ux4g-list-item-end,
+.ux4g-list-default .ux4g-list-item-row.active .ux4g-list-item-start,
+.ux4g-list-default .ux4g-list-item-row.active .ux4g-icon-outlined {
+  color: var(--ux4g-text-brand-primary-default)
+}
+
+
+
+/* list error */
+/* ======================================================
+   UX4G LIST — ERROR VARIANT
+   ====================================================== */
+
+.ux4g-list-error .ux4g-list-item-row .ux4g-list-item-end,
+.ux4g-list-error .ux4g-list-item-row .ux4g-list-item-start{
+    color: var(--ux4g-text-status-error);
+  }
+.ux4g-list-error .ux4g-list-item-row .ux4g-icon-outlined {
+  color: var(--ux4g-icon-status-error);
+}
+
+
+
+/* Start + End text */
+.ux4g-list-error .ux4g-list-item:is(.ux4g-list-item-start, .ux4g-list-item-end) {
+  color: var(--ux4g-text-status-error);
+}
+
+/* Hover */
+.ux4g-list-error .ux4g-list-item-row:hover {
+  background-color: var(--ux4g-bg-error-soft);
+}
+
+/* Active */
+.ux4g-list-error .ux4g-list-item-row:active {
+  background-color: var(--ux4g-bg-error-subtle);
+}
+
+.ux4g-list-error .ux4g-list-item-row:active:is(.ux4g-list-item-start, .ux4g-list-item-end) {
+  color: var(--ux4g-text-status-error) ;
+}
+
+/* If item also has .active */
+.ux4g-list-error .ux4g-list-item-row.active {
+  background-color: var(--ux4g-bg-error-emphasis);
+  color: var(--ux4g-text-status-error);
+}
+
+/* Prevent default primary active from interfering */
+.ux4g-list-error .ux4g-list-item-row.active:is(.ux4g-list-item-start, .ux4g-list-item-end) {
+  color: var(--ux4g-text-status-error);
+}
+
+/* ======================================================
+   UX4G LIST — SUCCESS VARIANT
+   ====================================================== */
+.ux4g-list-success .ux4g-list-item-row .ux4g-list-item-end,
+.ux4g-list-success .ux4g-list-item-row .ux4g-list-item-start{
+    color: var(--ux4g-text-status-success);
+  }
+.ux4g-list-success .ux4g-list-item-row .ux4g-icon-outlined {
+  color: var(--ux4g-icon-status-success);
+}
+
+
+
+
+/* Start + End text */
+.ux4g-list-success .ux4g-list-item-row:is(.ux4g-list-item-start, .ux4g-list-item-end) {
+  color: var(--ux4g-text-status-success);
+}
+
+/* Hover */
+.ux4g-list-success .ux4g-list-item-row:hover {
+  background-color: var(--ux4g-bg-success-soft);
+}
+
+/* Active */
+.ux4g-list-success .ux4g-list-item-row:active {
+  background-color: var(--ux4g-bg-success-subtle);
+}
+
+.ux4g-list-success .ux4g-list-item-row:active:is(.ux4g-list-item-start, .ux4g-list-item-end) {
+  color: var(--ux4g-text-status-success);
+}
+
+/* If item also has .active */
+.ux4g-list-success .ux4g-list-item-row.active {
+  background-color: var(--ux4g-bg-success-emphasis);
+  color: var(--ux4g-text-status-success);
+}
+
+/* Prevent default primary active from interfering */
+.ux4g-list-success .ux4g-list-item-row.active:is(.ux4g-list-item-start, .ux4g-list-item-end) {
+  color: var(--ux4g-text-status-success);
+}
+
+
+/* ======================================================
+   UX4G LIST — WARNING VARIANT
+   ====================================================== */
+.ux4g-list-warning .ux4g-list-item-row .ux4g-list-item-end,
+.ux4g-list-warning .ux4g-list-item-row .ux4g-list-item-start{
+    color: var(--ux4g-text-status-warning);
+  }
+.ux4g-list-warning .ux4g-list-item-row .ux4g-icon-outlined {
+  color: var(--ux4g-icon-status-warning);
+}
+
+/* Start + End text */
+.ux4g-list-warning .ux4g-list-item-row:is(.ux4g-list-item-start, .ux4g-list-item-end) {
+  color: var(--ux4g-text-status-warning);
+}
+
+/* Hover */
+.ux4g-list-warning .ux4g-list-item-row:hover {
+  background-color: var(--ux4g-bg-warning-soft);
+}
+
+/* Active */
+.ux4g-list-warning .ux4g-list-item-rowm:active {
+  background-color: var(--ux4g-bg-warning-subtle);
+}
+
+.ux4g-list-warning .ux4g-list-item-row:active:is(.ux4g-list-item-start, .ux4g-list-item-end) {
+  color: var(--ux4g-text-status-warning);
+}
+
+/* If item also has .active */
+.ux4g-list-warning .ux4g-list-item-row.active {
+  background-color: var(--ux4g-bg-warning-emphasis);
+  color: var(--ux4g-text-status-warning);
+}
+
+/* Prevent default primary active from interfering */
+.ux4g-list-warning .ux4g-list-item-row.active:is(.ux4g-list-item-start, .ux4g-list-item-end) {
+  color: var(--ux4g-text-status-warning);
+}
+
+
+
+
+/* sizes for all variants */
+
+/* small */
+.ux4g-list-s .ux4g-list-item-start{
+  font-size: var(--ux4g-fs-14);
+  line-height: var(--ux4g-lh-20);
+  font-weight: var(--ux4g-font-weight-regular);
+}
+.ux4g-list-s .ux4g-list-item-end{
+  font-size: var(--ux4g-fs-11);
+  line-height: var(--ux4g-lh-14);
+  font-weight: var(--ux4g-font-weight-medium);
+}
+.ux4g-list-s .ux4g-list-item .ux4g-list-item-row {
+  padding: var(--ux4g-space-2) var(--ux4g-space-5);
+  min-height: 32px;
+}
+.ux4g-list-s .ux4g-list-item-start .ux4g-list-item-label {
+    font-size: var(--ux4g-fs-14) ;
+
+}
+.ux4g-list-s .ux4g-list-item-end .ux4g-list-item-label-support {
+      font-size: var(--ux4g-fs-11) ;
+}
+
+/* Medium */
+.ux4g-list-m .ux4g-list-item-start{
+  font-size: var(--ux4g-fs-14);
+  line-height: var(--ux4g-lh-20);
+  font-weight: var(--ux4g-font-weight-regular);
+}
+.ux4g-list-m .ux4g-list-item-end{
+  font-size: var(--ux4g-fs-11);
+  line-height: var(--ux4g-lh-14);
+  font-weight: var(--ux4g-font-weight-medium);
+}
+
+.ux4g-list-m .ux4g-list-item .ux4g-list-item-row {
+  padding: var(--ux4g-space-4) var(--ux4g-space-6);
+  min-height: 40px;
+}
+.ux4g-list-m .ux4g-list-item-start .ux4g-list-item-label {
+    font-size: var(--ux4g-fs-14) ;
+
+}
+.ux4g-list-m .ux4g-list-item-end .ux4g-list-item-label-support {
+      font-size: var(--ux4g-fs-11) ;
+}
+
+/* Large */
+.ux4g-list-l .ux4g-list-item-start{
+  font-size: var(--ux4g-fs-16);
+  line-height: var(--ux4g-lh-24);
+  font-weight: var(--ux4g-font-weight-regular);
+}
+.ux4g-list-l .ux4g-list-item-end{
+  font-size: var(--ux4g-fs-12);
+  line-height: var(--ux4g-lh-16);
+  font-weight: var(--ux4g-font-weight-medium);
+}
+
+.ux4g-list-l .ux4g-list-item .ux4g-list-item-row {
+  padding: var(--ux4g-space-6);
+  min-height: 56px;
+}
+
+.ux4g-list-l .ux4g-list-item-start .ux4g-list-item-label {
+    font-size: var(--ux4g-fs-16) ;
+
+}
+.ux4g-list-l .ux4g-list-item-end .ux4g-list-item-label-support {
+      font-size: var(--ux4g-fs-12) ;
+}
+
+/* Xl Large */
+.ux4g-list-xl .ux4g-list-item-start{
+  font-size: var(--ux4g-fs-16);
+  line-height: var(--ux4g-lh-24);
+  font-weight: var(--ux4g-font-weight-regular);
+}
+.ux4g-list-xl .ux4g-list-item-end{
+  font-size: var(--ux4g-fs-12);
+  line-height: var(--ux4g-lh-16);
+  font-weight: var(--ux4g-font-weight-medium);
+}
+.ux4g-list-xl .ux4g-list-item .ux4g-list-item-row {
+  padding: var(--ux4g-space-6);
+  min-height: 72px;
+}
+
+.ux4g-list-xl .ux4g-list-item-start .ux4g-list-item-label {
+    font-size: var(--ux4g-fs-16) ;
+
+}
+.ux4g-list-xl .ux4g-list-item-end .ux4g-list-item-label-support {
+      font-size: var(--ux4g-fs-12) ;
+}
+
+
+/* Drag and drop styles */
+.ux4g-list-draggable .ux4g-list-item-start .ux4g-icon-outlined {
+  cursor: grab;
+}
+.ux4g-list-draggable .ux4g-list-item-row,
+.ux4g-list-action .ux4g-list-item-row,
+.ux4g-list-switch .ux4g-list-item-row{
+  cursor: auto;
+}
+
+/* multiselect with check mark */
+.ux4g-check-icon{
+  opacity: var(--ux4g-opacity-0);
+  transform:scale(.6);
+  transition:all .18s ease;
+}
+.ux4g-list-multiselect-item.active .ux4g-check-icon{
+  opacity:var(--ux4g-opacity-100);
+  transform:scale(1);
+}
+
+/* list selct switch */
+

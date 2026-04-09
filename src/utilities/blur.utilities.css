@@ -1,0 +1,19 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+.ux4g-blur-0 { filter: blur(var(--ux4g-blur-none)); }
+.ux4g-blur-1 { filter: blur(var(--ux4g-blur-subtle)); }
+.ux4g-blur-2 { filter: blur(var(--ux4g-blur-soft)); }
+.ux4g-blur-3 { filter: blur(var(--ux4g-blur-medium)); }
+.ux4g-blur-4 { filter: blur(var(--ux4g-blur-strong)); }

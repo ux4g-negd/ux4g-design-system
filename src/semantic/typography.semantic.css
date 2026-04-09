@@ -1,0 +1,77 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  /* font-size */
+  --ux4g-fs-60: var(--ux4g-size-60);
+  --ux4g-fs-52: var(--ux4g-size-52);
+  --ux4g-fs-48: var(--ux4g-size-48);
+  --ux4g-fs-40: var(--ux4g-size-40);
+  --ux4g-fs-36: var(--ux4g-size-36);
+  --ux4g-fs-32: var(--ux4g-size-32);
+  --ux4g-fs-28: var(--ux4g-size-28);
+  --ux4g-fs-24: var(--ux4g-size-24);
+  --ux4g-fs-20: var(--ux4g-size-20);
+  --ux4g-fs-18: var(--ux4g-size-18);
+  --ux4g-fs-16: var(--ux4g-size-16);
+  --ux4g-fs-14: var(--ux4g-size-14);
+  --ux4g-fs-12: var(--ux4g-size-12);
+  --ux4g-fs-11: var(--ux4g-size-11);
+  --ux4g-fs-8: var(--ux4g-size-8);
+
+
+  /* line height =========== */
+  --ux4g-lh-80: var(--ux4g-line-height-80);
+  --ux4g-lh-72: var(--ux4g-line-height-72);
+  --ux4g-lh-52: var(--ux4g-line-height-52);
+  --ux4g-lh-44: var(--ux4g-line-height-44);
+  --ux4g-lh-36: var(--ux4g-line-height-36);
+  --ux4g-lh-32: var(--ux4g-line-height-32);
+  --ux4g-lh-28: var(--ux4g-line-height-28);
+  --ux4g-lh-24: var(--ux4g-line-height-24);
+  --ux4g-lh-20: var(--ux4g-line-height-20);
+  --ux4g-lh-18: var(--ux4g-line-height-18);
+  --ux4g-lh-16: var(--ux4g-line-height-16);
+  --ux4g-lh-14: var(--ux4g-line-height-14);
+
+  /* font-weight */
+  --ux4g-fw-regular: var(--ux4g-font-weight-regular);
+  --ux4g-fw-medium: var(--ux4g-font-weight-medium);
+  --ux4g-fw-semibold: var(--ux4g-font-weight-semibold);
+  --ux4g-fw-bold: var(--ux4g-font-weight-bold);
+  --ux4g-fw-display-semibold: var(--ux4g-font-weight-display-semibold);
+  --ux4g-fw-display-bold: var(--ux4g-font-weight-display-bold);
+
+  /* font family */
+  --ux4g-ff: var(--ux4g-font-family-base);
+  --ux4g-ff-display: var(--ux4g-font-family-display);
+
+  /* Semantic Text Align */
+  --ux4g-ta-start: var(--ux4g-text-align-start);
+  --ux4g-ta-center: var(--ux4g-text-align-center);
+  --ux4g-ta-end: var(--ux4g-text-align-end);
+
+  /* Semantic Transform */
+  --ux4g-tt-lowercase: var(--ux4g-text-transform-lowercase);
+  --ux4g-tt-uppercase: var(--ux4g-text-transform-uppercase);
+  --ux4g-tt-capitalize: var(--ux4g-text-transform-capitalize);
+
+  /* Semantic Wrap */
+  --ux4g-tw-wrap: var(--ux4g-text-wrap);
+  --ux4g-tw-nowrap: var(--ux4g-text-nowrap);
+
+  /* Semantic Word Break */
+  --ux4g-wb-break: var(--ux4g-word-break);
+
+}

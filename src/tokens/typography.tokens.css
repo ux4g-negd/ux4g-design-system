@@ -1,0 +1,96 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* FONT FACE */
+
+:root {
+  /* FONT FAMILY */
+  --ux4g-font-family-base: "Noto Sans", system-ui, sans-serif;
+  --ux4g-font-family-display: "Noto Sans Display", "Noto Sans", sans-serif;
+
+  /* SIZE */
+  --ux4g-size-8: 0.5rem;
+  --ux4g-size-10: 0.625rem;
+  --ux4g-size-11: 0.6875rem;
+  --ux4g-size-12: 0.75rem;
+  --ux4g-size-14: 0.875rem;
+  --ux4g-size-16: 1rem;
+  --ux4g-size-18: 1.125rem;
+  --ux4g-size-20: 1.25rem;
+  --ux4g-size-24: 1.5rem;
+  --ux4g-size-28: 1.75rem;
+  --ux4g-size-32: 2rem;
+  --ux4g-size-36: 2.25rem;
+  --ux4g-size-40: 2.5rem;
+  --ux4g-size-48: 3rem;
+  --ux4g-size-52: 3.25rem;
+  --ux4g-size-56: 3.5rem;
+  --ux4g-size-60: 3.75rem;
+  --ux4g-size-64: 4rem;
+  --ux4g-size-80: 5rem;
+  --ux4g-size-120: 7.5rem;
+
+  /* LINE HEIGHT */
+  --ux4g-line-height-80: 5rem;
+  /* 80px */
+  --ux4g-line-height-72: 4.5rem;
+  /* 72px */
+  --ux4g-line-height-52: 3.25rem;
+  /* 52px */
+  --ux4g-line-height-44: 2.75rem;
+  /* 44px */
+  --ux4g-line-height-36: 2.25rem;
+  /* 36px */
+  --ux4g-line-height-32: 2rem;
+  /* 32px */
+  --ux4g-line-height-28: 1.75rem;
+  /* 28px */
+  --ux4g-line-height-24: 1.5rem;
+  /* 24px */
+  --ux4g-line-height-20: 1.25rem;
+  /* 20px */
+  --ux4g-line-height-18: 1.125rem;
+  /* 18px */
+  --ux4g-line-height-16: 1rem;
+  /* 16px */
+  --ux4g-line-height-14: 0.875rem;
+  /* 14px */
+
+  /* FONT WEIGHT */
+  --ux4g-font-weight-regular: 400;
+  --ux4g-font-weight-medium: 500;
+  --ux4g-font-weight-semibold: 600;
+  --ux4g-font-weight-bold: 700;
+  /* Display variants (if using Noto Sans Display) */
+  --ux4g-font-weight-display-semibold: 600;
+  --ux4g-font-weight-display-bold: 700;
+
+  /* Text Align */
+  --ux4g-text-align-start: left;
+  --ux4g-text-align-center: center;
+  --ux4g-text-align-end: right;
+
+  /* Text Transform */
+  --ux4g-text-transform-lowercase: lowercase;
+  --ux4g-text-transform-uppercase: uppercase;
+  --ux4g-text-transform-capitalize: capitalize;
+
+  /* Text Wrap */
+  --ux4g-text-wrap: wrap;
+  --ux4g-text-nowrap: nowrap;
+
+  /* Word Break */
+  --ux4g-word-break: break-word;
+
+}

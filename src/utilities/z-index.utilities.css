@@ -1,0 +1,21 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+   /* Z-Index Utilities (Low Level) */
+.ux4g-z-n1 { z-index: var(--ux4g-z-n1) ; }
+.ux4g-z-0 { z-index: var(--ux4g-z-0) ; }
+.ux4g-z-1 { z-index: var(--ux4g-z-1) ; }
+.ux4g-z-2 { z-index: var(--ux4g-z-2) ; }
+.ux4g-z-3 { z-index: var(--ux4g-z-3) ; }
+

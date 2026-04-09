@@ -1,0 +1,194 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* =========================================
+   UX4G FLEX GRID SYSTEM (12-Column)
+========================================= */
+.ux4g-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-inline: calc(var(--ux4g-gutter-x, var(--ux4g-space-6)) * -0.5);
+  margin-block: calc(var(--ux4g-gutter-y, 0) * -1);
+}
+
+.ux4g-row > * {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-inline: calc(var(--ux4g-gutter-x, var(--ux4g-space-6)) * 0.5);
+  padding-block: var(--ux4g-gutter-y, 0);
+}
+
+/* Base Columns */
+.ux4g-col { flex: 1 0 0%; min-width: 0; }
+.ux4g-col-auto { flex: 0 0 auto; width: auto; }
+.ux4g-col-1  { flex: 0 0 auto; width: 8.33333333%; }
+.ux4g-col-2  { flex: 0 0 auto; width: 16.66666667%; }
+.ux4g-col-3  { flex: 0 0 auto; width: 25%; }
+.ux4g-col-4  { flex: 0 0 auto; width: 33.33333333%; }
+.ux4g-col-5  { flex: 0 0 auto; width: 41.66666667%; }
+.ux4g-col-6  { flex: 0 0 auto; width: 50%; }
+.ux4g-col-7  { flex: 0 0 auto; width: 58.33333333%; }
+.ux4g-col-8  { flex: 0 0 auto; width: 66.66666667%; }
+.ux4g-col-9  { flex: 0 0 auto; width: 75%; }
+.ux4g-col-10 { flex: 0 0 auto; width: 83.33333333%; }
+.ux4g-col-11 { flex: 0 0 auto; width: 91.66666667%; }
+.ux4g-col-12 { flex: 0 0 auto; width: 100%; }
+
+/* Offsets */
+.ux4g-offset-1  { margin-inline-start: 8.33333333%; }
+.ux4g-offset-2  { margin-inline-start: 16.66666667%; }
+.ux4g-offset-3  { margin-inline-start: 25%; }
+.ux4g-offset-4  { margin-inline-start: 33.33333333%; }
+.ux4g-offset-5  { margin-inline-start: 41.66666667%; }
+.ux4g-offset-6  { margin-inline-start: 50%; }
+.ux4g-offset-7  { margin-inline-start: 58.33333333%; }
+.ux4g-offset-8  { margin-inline-start: 66.66666667%; }
+.ux4g-offset-9  { margin-inline-start: 75%; }
+.ux4g-offset-10 { margin-inline-start: 83.33333333%; }
+.ux4g-offset-11 { margin-inline-start: 91.66666667%; }
+
+/* Row Columns */
+.ux4g-row-cols-1 > * { flex: 0 0 auto; width: 100%; }
+.ux4g-row-cols-2 > * { flex: 0 0 auto; width: 50%; }
+.ux4g-row-cols-3 > * { flex: 0 0 auto; width: 33.33333333%; }
+.ux4g-row-cols-4 > * { flex: 0 0 auto; width: 25%; }
+.ux4g-row-cols-5 > * { flex: 0 0 auto; width: 20%; }
+.ux4g-row-cols-6 > * { flex: 0 0 auto; width: 16.66666667%; }
+
+/* =========================================
+   UX4G GUTTER SYSTEM (CLEAN v2)
+========================================= */
+
+.ux4g-gutter-none {
+  --ux4g-gutter-x: 0px;
+  --ux4g-gutter-y: 0px;
+}
+
+.ux4g-gutter-xs {
+  --ux4g-gutter-x: var(--ux4g-space-4, 8px);
+  --ux4g-gutter-y: var(--ux4g-space-4, 8px);
+}
+
+.ux4g-gutter-s {
+  --ux4g-gutter-x: var(--ux4g-space-5, 12px);
+  --ux4g-gutter-y: var(--ux4g-space-5, 12px);
+}
+
+.ux4g-gutter-m {
+  --ux4g-gutter-x: var(--ux4g-space-6, 16px);
+  --ux4g-gutter-y: var(--ux4g-space-6, 16px);
+}
+
+.ux4g-gutter-l {
+  --ux4g-gutter-x: var(--ux4g-space-8, 24px);
+  --ux4g-gutter-y: var(--ux4g-space-8, 24px);
+}
+
+.ux4g-gutter-xl {
+  --ux4g-gutter-x: var(--ux4g-space-10, 40px);
+  --ux4g-gutter-y: var(--ux4g-space-10, 40px);
+}
+
+/* Responsive Breakpoints */
+
+/* SM ≥ 576px */
+@media (min-width: 576px) {
+  .ux4g-col-sm { flex: 1 0 0%; }
+  .ux4g-col-sm-auto { width: auto; }
+  .ux4g-col-sm-1  { width: 8.33333333%; }
+  .ux4g-col-sm-2  { width: 16.66666667%; }
+  .ux4g-col-sm-3  { width: 25%; }
+  .ux4g-col-sm-4  { width: 33.33333333%; }
+  .ux4g-col-sm-5  { width: 41.66666667%; }
+  .ux4g-col-sm-6  { width: 50%; }
+  .ux4g-col-sm-7  { width: 58.33333333%; }
+  .ux4g-col-sm-8  { width: 66.66666667%; }
+  .ux4g-col-sm-9  { width: 75%; }
+  .ux4g-col-sm-10 { width: 83.33333333%; }
+  .ux4g-col-sm-11 { width: 91.66666667%; }
+  .ux4g-col-sm-12 { width: 100%; }
+}
+
+/* MD ≥ 768px */
+@media (min-width: 768px) {
+  .ux4g-col-md { flex: 1 0 0%; }
+  .ux4g-col-md-auto { width: auto; }
+  .ux4g-col-md-1  { width: 8.33333333%; }
+  .ux4g-col-md-2  { width: 16.66666667%; }
+  .ux4g-col-md-3  { width: 25%; }
+  .ux4g-col-md-4  { width: 33.33333333%; }
+  .ux4g-col-md-5  { width: 41.66666667%; }
+  .ux4g-col-md-6  { width: 50%; }
+  .ux4g-col-md-7  { width: 58.33333333%; }
+  .ux4g-col-md-8  { width: 66.66666667%; }
+  .ux4g-col-md-9  { width: 75%; }
+  .ux4g-col-md-10 { width: 83.33333333%; }
+  .ux4g-col-md-11 { width: 91.66666667%; }
+  .ux4g-col-md-12 { width: 100%; }
+}
+
+/* LG ≥ 992px */
+@media (min-width: 992px) {
+  .ux4g-col-lg { flex: 1 0 0%; }
+  .ux4g-col-lg-auto { width: auto; }
+  .ux4g-col-lg-1  { width: 8.33333333%; }
+  .ux4g-col-lg-2  { width: 16.66666667%; }
+  .ux4g-col-lg-3  { width: 25%; }
+  .ux4g-col-lg-4  { width: 33.33333333%; }
+  .ux4g-col-lg-5  { width: 41.66666667%; }
+  .ux4g-col-lg-6  { width: 50%; }
+  .ux4g-col-lg-7  { width: 58.33333333%; }
+  .ux4g-col-lg-8  { width: 66.66666667%; }
+  .ux4g-col-lg-9  { width: 75%; }
+  .ux4g-col-lg-10 { width: 83.33333333%; }
+  .ux4g-col-lg-11 { width: 91.66666667%; }
+  .ux4g-col-lg-12 { width: 100%; }
+}
+
+/* XL ≥ 1200px */
+@media (min-width: 1200px) {
+  .ux4g-col-xl { flex: 1 0 0%; }
+  .ux4g-col-xl-auto { width: auto; }
+  .ux4g-col-xl-1  { width: 8.33333333%; }
+  .ux4g-col-xl-2  { width: 16.66666667%; }
+  .ux4g-col-xl-3  { width: 25%; }
+  .ux4g-col-xl-4  { width: 33.33333333%; }
+  .ux4g-col-xl-5  { width: 41.66666667%; }
+  .ux4g-col-xl-6  { width: 50%; }
+  .ux4g-col-xl-7  { width: 58.33333333%; }
+  .ux4g-col-xl-8  { width: 66.66666667%; }
+  .ux4g-col-xl-9  { width: 75%; }
+  .ux4g-col-xl-10 { width: 83.33333333%; }
+  .ux4g-col-xl-11 { width: 91.66666667%; }
+  .ux4g-col-xl-12 { width: 100%; }
+}
+
+/* 2XL ≥ 1400px */
+@media (min-width: 1400px) {
+  .ux4g-col-2xl { flex: 1 0 0%; }
+  .ux4g-col-2xl-auto { width: auto; }
+  .ux4g-col-2xl-1  { width: 8.33333333%; }
+  .ux4g-col-2xl-2  { width: 16.66666667%; }
+  .ux4g-col-2xl-3  { width: 25%; }
+  .ux4g-col-2xl-4  { width: 33.33333333%; }
+  .ux4g-col-2xl-5  { width: 41.66666667%; }
+  .ux4g-col-2xl-6  { width: 50%; }
+  .ux4g-col-2xl-7  { width: 58.33333333%; }
+  .ux4g-col-2xl-8  { width: 66.66666667%; }
+  .ux4g-col-2xl-9  { width: 75%; }
+  .ux4g-col-2xl-10 { width: 83.33333333%; }
+  .ux4g-col-2xl-11 { width: 91.66666667%; }
+  .ux4g-col-2xl-12 { width: 100%; }
+}

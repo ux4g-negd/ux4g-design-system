@@ -1,0 +1,22 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  --ux4g-va-baseline: var(--ux4g-vertical-align-baseline);
+  --ux4g-va-top: var(--ux4g-vertical-align-top);
+  --ux4g-va-middle: var(--ux4g-vertical-align-middle);
+  --ux4g-va-bottom: var(--ux4g-vertical-align-bottom);
+  --ux4g-va-text-top: var(--ux4g-vertical-align-text-top);
+  --ux4g-va-text-bottom: var(--ux4g-vertical-align-text-bottom);
+}

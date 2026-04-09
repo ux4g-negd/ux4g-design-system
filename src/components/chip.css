@@ -1,0 +1,149 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* =========================================================
+   CHIP BASE (all chip variants)
+   ========================================================= */
+
+:is(.ux4g-filter-chip-md, .ux4g-filter-chip-sm,
+    .ux4g-choice-chip-md, .ux4g-choice-chip-sm,
+    .ux4g-input-chip-md, .ux4g-input-chip-sm,
+    .ux4g-input-chip-xs) {
+  color: var(--ux4g-text-neutral-primary);
+  font-size: var(--ux4g-fs-14);
+  border-radius: var(--ux4g-radius-sm);
+  padding: var(--ux4g-space-none) var(--ux4g-padding-xs);
+  border: var(--ux4g-border-thin) solid transparent;
+  transition:
+    background-color 220ms cubic-bezier(.25, .8, .25, 1),
+    border-color 220ms cubic-bezier(.25, .8, .25, 1);
+}
+.ux4g-input-chip{
+  cursor: pointer;
+}
+
+/* Sizes */
+:is(.ux4g-filter-chip-sm, .ux4g-choice-chip-sm, .ux4g-input-chip-sm) { min-height: 28px; }
+:is(.ux4g-filter-chip-md, .ux4g-choice-chip-md, .ux4g-input-chip-md) { min-height: 32px;}
+
+.ux4g-input-chip-xs {
+  min-height: 20px;
+  padding: var(--ux4g-space-none) var(--ux4g-padding-2xs) !important;
+  font-size: var(--ux4g-fs-12) !important;
+}
+
+/* =========================================================
+   FILTER CHIP (ux4g-chip) states
+   ========================================================= */
+
+:is(.ux4g-filter-chip-md, .ux4g-filter-chip-sm) {
+  background-color: var(--ux4g-bg-neutral);
+  border-color: var(--ux4g-border-color-neutral-default);
+}
+:is(.ux4g-filter-chip-md, .ux4g-filter-chip-sm):hover {
+  background-color: var(--ux4g-bg-neutral-subtle);
+  border-color: var(--ux4g-border-color-neutral-subtle);
+}
+:is(.ux4g-filter-chip-md, .ux4g-filter-chip-sm).active {
+  background-color: var(--ux4g-bg-primary-soft);
+  color: var(--ux4g-bg-primary-strong);
+  border-color: var(--ux4g-bg-primary-emphasis);
+}
+
+:is(.ux4g-filter-chip-md, .ux4g-filter-chip-sm).active:hover {
+  background-color: var(--ux4g-bg-primary-soft);
+  border-color: var(--ux4g-bg-primary-soft);
+}
+.ux4g-filter-chip-md.active .ux4g-icon-outlined, 
+.ux4g-filter-chip-sm.active .ux4g-icon-outlined{
+  color: var(--ux4g-bg-primary-strong);
+}
+
+/* =========================================================
+   CHOICE CHIP (ux4g-choice-chip) states
+   ========================================================= */
+:is(.ux4g-choice-chip-md, .ux4g-choice-chip-sm) {
+  background-color: var(--ux4g-bg-neutral);
+  border-color: var(--ux4g-border-color-neutral-default);
+}
+
+:is(.ux4g-choice-chip-md, .ux4g-choice-chip-sm).active {
+  background-color: var(--ux4g-bg-primary-strong);
+  color: var(--ux4g-bg-neutral);
+}
+:is(.ux4g-choice-chip-md, .ux4g-choice-chip-sm).active .ux4g-icon-outlined {
+  color: var(--ux4g-bg-neutral);
+}
+
+:is(.ux4g-choice-chip-md, .ux4g-choice-chip-sm):hover {
+ box-shadow: var(--ux4g-shadow-l1);
+}
+
+:is(.ux4g-choice-chip-md, .ux4g-choice-chip-sm).active:hover {
+  border-color: var(--ux4g-bg-neutral);
+}
+
+/* =========================================================
+   INPUT CHIP (ux4g-input-chip) states
+   ========================================================= */
+
+:is(.ux4g-input-chip-md, .ux4g-input-chip-sm, .ux4g-input-chip-xs) {
+  background-color: var(--ux4g-bg-neutral);
+  border-color: var(--ux4g-border-color-neutral-subtle);
+}
+
+/* =========================================================
+   DISABLED (shared)
+   ========================================================= */
+
+
+:is(
+.ux4g-filter-chip-md, 
+.ux4g-filter-chip-sm,
+.ux4g-choice-chip-md,
+.ux4g-choice-chip-sm,
+.ux4g-input-chip-md,
+.ux4g-input-chip-sm,
+.ux4g-input-chip-xs
+)[disabled] {
+   --ux4g-text-current: var(--ux4g-text-link-disabled);
+     color: var(--ux4g-text-current);
+     cursor: not-allowed;
+     text-decoration: none;
+     pointer-events: none;
+     border-color: var(--ux4g-border-color-neutral-subtle);
+}
+:is(
+.ux4g-choice-chip-md, 
+.ux4g-choice-chip-sm,
+.ux4g-input-chip-md, 
+.ux4g-input-chip-sm,
+.ux4g-input-chip-xs
+)[disabled] {
+  background-color:  var(--ux4g-bg-neutral-subtle);
+  --ux4g-text-current: var(--ux4g-text-neutral-disabled);
+  cursor: not-allowed;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+/* If you want chip (not choice/input) to keep your special disabled color token: */
+/* :is(
+.ux4g-filter-chip-md,
+.ux4g-choice-chip-md,
+.ux4g-choice-chip-sm,
+.ux4g-filter-chip-sm)[disabled] {
+  --ux4g-text-current: var(--ux4g-text-link-disabled);
+  
+} */

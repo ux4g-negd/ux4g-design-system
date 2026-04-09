@@ -1,0 +1,319 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+.ux4g-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ux4g-inline-s);
+    cursor: pointer;
+    vertical-align: var(--ux4g-va-middle);
+    position: var(--ux4g-pos-relative);
+    user-select: none;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.ux4g-switch-reverse {
+    flex-direction: row-reverse;
+}
+
+.ux4g-switch-input {
+    position: var(--ux4g-pos-absolute);
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin: var(--ux4g-margin-none);
+    padding: var(--ux4g-padding-none);
+    pointer-events: none;
+}
+
+.ux4g-switch-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: var(--ux4g-pos-relative);
+    padding: var(--ux4g-padding-none);
+}
+
+.ux4g-switch-track {
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: var(--ux4g-radius-full, 9999px);
+    background-color: var(--ux4g-bg-neutral-subtle);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: var(--ux4g-pos-relative);
+    width: var(--ux4g-size-40);
+    height: 1.375rem;
+    cursor: pointer;
+}
+
+.ux4g-switch-thumb {
+    position: var(--ux4g-pos-absolute);
+    left: 0.125rem;
+    width: var(--ux4g-size-18);
+    height: var(--ux4g-size-18);
+    background-color: var(--ux4g-bg-neutral);
+    border-radius: var(--ux4g-radius-full);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s;
+    box-shadow: var(--ux4g-shadow-level-0-key);
+}
+
+/* Checked State */
+.ux4g-switch-input:checked ~ .ux4g-switch-control .ux4g-switch-track {
+    background-color: var(--ux4g-bg-primary-strong);
+}
+
+.ux4g-switch-input:checked ~ .ux4g-switch-control .ux4g-switch-thumb {
+    transform: translateX(var(--ux4g-size-18));
+}
+
+/* Hover States */
+.ux4g-switch:hover .ux4g-switch-input:not(:disabled):not(:checked) ~ .ux4g-switch-control .ux4g-switch-track,
+.ux4g-switch.is-hovered .ux4g-switch-input:not(:disabled):not(:checked) ~ .ux4g-switch-control .ux4g-switch-track {
+    background-color: var(--ux4g-bg-neutral-subtle-hover, #D1D5DB); /* Fallback to neutral hover if token missing */
+}
+
+.ux4g-switch:hover .ux4g-switch-input:not(:disabled):checked ~ .ux4g-switch-control .ux4g-switch-track,
+.ux4g-switch.is-hovered .ux4g-switch-input:not(:disabled):checked ~ .ux4g-switch-control .ux4g-switch-track {
+    background-color: var(--ux4g-bg-primary-strong-hover);
+}
+
+/* Active States */
+.ux4g-switch:active .ux4g-switch-input:not(:disabled):not(:checked) ~ .ux4g-switch-control .ux4g-switch-thumb,
+.ux4g-switch.is-active .ux4g-switch-input:not(:disabled):not(:checked) ~ .ux4g-switch-control .ux4g-switch-thumb {
+    background-color: var(--ux4g-bg-neutral-emphasis);
+}
+
+.ux4g-switch:active .ux4g-switch-input:not(:disabled):checked ~ .ux4g-switch-control .ux4g-switch-thumb,
+.ux4g-switch.is-active .ux4g-switch-input:not(:disabled):checked ~ .ux4g-switch-control .ux4g-switch-thumb {
+    background-color: var(--ux4g-bg-neutral-emphasis);
+}
+
+/* Focus State (Default/LG is 2px outline) */
+.ux4g-switch-input:focus-visible ~ .ux4g-switch-control .ux4g-switch-track,
+.ux4g-switch.is-focused .ux4g-switch-control .ux4g-switch-track {
+    box-shadow: 0 0 0 0.125rem var(--ux4g-bg-neutral), 0 0 0 0.25rem var(--ux4g-bg-primary-strong);
+    outline: none;
+}
+
+/* S/M sizes have 1px outline */
+.ux4g-switch-sm .ux4g-switch-input:focus-visible ~ .ux4g-switch-control .ux4g-switch-track,
+.ux4g-switch-md .ux4g-switch-input:focus-visible ~ .ux4g-switch-control .ux4g-switch-track,
+.ux4g-switch-sm.is-focused .ux4g-switch-control .ux4g-switch-track,
+.ux4g-switch-md.is-focused .ux4g-switch-control .ux4g-switch-track {
+    box-shadow: 0 0 0 0.0625rem var(--ux4g-bg-neutral), 0 0 0 0.125rem var(--ux4g-bg-primary-strong);
+}
+
+/* Disabled State */
+.ux4g-switch-input:disabled ~ .ux4g-switch-control .ux4g-switch-track {
+    background-color: var(--ux4g-bg-neutral-disabled);
+    cursor: not-allowed;
+}
+
+.ux4g-switch-input:disabled ~ .ux4g-switch-control .ux4g-switch-thumb {
+    background-color: var(--ux4g-text-neutral-disabled);
+}
+
+.ux4g-switch-input:disabled ~ .ux4g-switch-content {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ux4g-switch:has(.ux4g-switch-input:disabled) {
+    cursor: not-allowed;
+}
+
+/* Content & Typography */
+.ux4g-switch-content {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--ux4g-inline-xs);
+    flex-shrink: 0;
+}
+
+.ux4g-switch-label {
+    white-space: var(--ux4g-tw-nowrap);
+}
+
+.ux4g-switch-description {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ux4g-inline-xs);
+    flex-shrink: 0;
+    font-size: var(--ux4g-fs-12);
+    line-height: var(--ux4g-lh-16);
+    font-weight: var(--ux4g-fw-regular); 
+    white-space: var(--ux4g-tw-nowrap);
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-switch-desc-icon {
+    width: var(--ux4g-size-16);
+    height: var(--ux4g-size-16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-switch-icon {
+    width: var(--ux4g-size-20);
+    height: var(--ux4g-size-20);
+    color: var(--ux4g-text-neutral-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Sizes */
+/* SM */
+.ux4g-switch-sm {
+    gap: var(--ux4g-inline-xs);
+}
+.ux4g-switch-sm .ux4g-switch-track {
+    width: var(--ux4g-size-32);
+    height: var(--ux4g-size-18);
+}
+.ux4g-switch-sm .ux4g-switch-thumb {
+    width: var(--ux4g-size-14);
+    height: var(--ux4g-size-14);
+    left: 0.125rem;
+}
+.ux4g-switch-sm .ux4g-switch-input:checked ~ .ux4g-switch-control .ux4g-switch-thumb {
+    transform: translateX(var(--ux4g-size-14));
+}
+.ux4g-switch-sm .ux4g-switch-label {
+    font-size: var(--ux4g-fs-12);
+    line-height: var(--ux4g-lh-16);
+}
+.ux4g-switch-sm .ux4g-switch-description {
+    font-size: var(--ux4g-fs-12);
+    line-height: var(--ux4g-lh-16);
+}
+.ux4g-switch-sm .ux4g-switch-desc-icon {
+    width: var(--ux4g-size-14);
+    height: var(--ux4g-size-14);
+}
+.ux4g-switch-sm .ux4g-switch-icon {
+    width: var(--ux4g-size-16);
+    height: var(--ux4g-size-16);
+}
+
+/* MD (Default) */
+.ux4g-switch-md .ux4g-switch-track {
+    width: var(--ux4g-size-40);
+    height: 1.375rem;
+}
+.ux4g-switch-md .ux4g-switch-thumb {
+    width: var(--ux4g-size-18);
+    height: var(--ux4g-size-18);
+    left: 0.125rem;
+}
+.ux4g-switch-md .ux4g-switch-input:checked ~ .ux4g-switch-control .ux4g-switch-thumb {
+    transform: translateX(var(--ux4g-size-18));
+}
+.ux4g-switch-md .ux4g-switch-label {
+    font-size: var(--ux4g-fs-14);
+    line-height: var(--ux4g-lh-18);
+}
+.ux4g-switch-md .ux4g-switch-description {
+    font-size: var(--ux4g-fs-12);
+    line-height: var(--ux4g-lh-16);
+}
+.ux4g-switch-md .ux4g-switch-desc-icon {
+    width: var(--ux4g-size-16);
+    height: var(--ux4g-size-16);
+}
+.ux4g-switch-md .ux4g-switch-icon {
+    width: var(--ux4g-size-20);
+    height: var(--ux4g-size-20);
+}
+
+/* LG */
+.ux4g-switch-lg {
+    gap: var(--ux4g-inline-m);
+}
+.ux4g-switch-lg .ux4g-switch-track {
+    width: var(--ux4g-size-48);
+    height: var(--ux4g-size-28);
+}
+.ux4g-switch-lg .ux4g-switch-thumb {
+    width: 1.375rem;
+    height: 1.375rem;
+    left: 0.1875rem;
+}
+.ux4g-switch-lg .ux4g-switch-input:checked ~ .ux4g-switch-control .ux4g-switch-thumb {
+    transform: translateX(var(--ux4g-size-20));
+}
+.ux4g-switch-lg .ux4g-switch-label {
+    font-size: var(--ux4g-fs-16);
+    line-height: var(--ux4g-lh-20);
+}
+.ux4g-switch-lg .ux4g-switch-description {
+    font-size: var(--ux4g-fs-14);
+    line-height: var(--ux4g-lh-18);
+}
+.ux4g-switch-lg .ux4g-switch-desc-icon {
+    width: var(--ux4g-size-18);
+    height: var(--ux4g-size-18);
+}
+.ux4g-switch-lg .ux4g-switch-icon {
+    width: var(--ux4g-size-24);
+    height: var(--ux4g-size-24);
+}
+
+/* Description Variants (Standalone) */
+ .ux4g-switch-desc-helper {
+     color: var(--ux4g-text-neutral-secondary);
+}
+ .ux4g-switch-desc-error {
+     color: var(--ux4g-text-status-error);
+}
+ .ux4g-switch-desc-warning {
+     color: var(--ux4g-text-status-warning);
+}
+ .ux4g-switch-desc-success {
+     color: var(--ux4g-text-status-success);
+}
+ .ux4g-switch-desc-info {
+     color: var(--ux4g-text-status-info);
+}
+
+/* Description Variant Icons - Standalone Overrides */
+ .ux4g-switch-desc-icon-helper,
+ .ux4g-switch-desc-icon-helper .ux4g-switch-icon {
+     color: var(--ux4g-text-neutral-secondary);
+}
+ .ux4g-switch-desc-icon-error,
+ .ux4g-switch-desc-icon-error .ux4g-switch-icon {
+     color: var(--ux4g-icon-status-error);
+}
+ .ux4g-switch-desc-icon-warning,
+ .ux4g-switch-desc-icon-warning .ux4g-switch-icon {
+     color: var(--ux4g-icon-status-warning);
+}
+ .ux4g-switch-desc-icon-success,
+ .ux4g-switch-desc-icon-success .ux4g-switch-icon {
+     color: var(--ux4g-icon-status-success);
+}
+ .ux4g-switch-desc-icon-info,
+ .ux4g-switch-desc-icon-info .ux4g-switch-icon {
+     color: var(--ux4g-icon-status-info);
+}

@@ -1,0 +1,50 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* Base UI Font */
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../assets/fonts/NotoSans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Global Typography Baseline */
+html,
+body {
+  font-family: var(--ux4g-font-family-base, "Noto Sans", system-ui, sans-serif);
+}
+
+/* Ensure form controls follow global font-family */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit;
+  font-family: inherit;
+}
+
+/* Display Font (Headings) */
+@font-face {
+  font-family: "Noto Sans Display";
+  src: url("../assets/fonts/NotoSansDisplay.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+

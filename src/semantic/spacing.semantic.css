@@ -1,0 +1,69 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/*  Spacing */
+:root {
+  /* General Spacing */
+  --ux4g-spacing-none: var(--ux4g-space-none);
+  --ux4g-spacing-3: var(--ux4g-space-3);
+
+  /* Section Spacing */
+  --ux4g-section-none: var(--ux4g-space-none);
+  --ux4g-section-xs: var(--ux4g-space-8);
+  --ux4g-section-s: var(--ux4g-space-9);
+  --ux4g-section-m: var(--ux4g-space-11);
+  --ux4g-section-l: var(--ux4g-space-12);
+  --ux4g-section-xl: var(--ux4g-space-13);
+  --ux4g-section-2xl: var(--ux4g-space-14);
+
+  /* Padding Scale */
+   --ux4g-padding-none: var(--ux4g-space-none);
+  --ux4g-padding-3xs: var(--ux4g-space-1);
+  --ux4g-padding-2xs: var(--ux4g-space-2);
+  --ux4g-padding-xs: var(--ux4g-space-4);
+  --ux4g-padding-s: var(--ux4g-space-5);
+  --ux4g-padding-m: var(--ux4g-space-6);
+  --ux4g-padding-l: var(--ux4g-space-7);
+  --ux4g-padding-xl: var(--ux4g-space-8);
+  --ux4g-padding-2xl: var(--ux4g-space-9);
+  --ux4g-padding-3xl: var(--ux4g-space-15);
+  --ux4g-padding-4xl: var(--ux4g-space-16);
+
+    /* marging Scale */
+  --ux4g-margin-none: var(--ux4g-space-none);
+  --ux4g-margin-3xs: var(--ux4g-space-1);
+  --ux4g-margin-2xs: var(--ux4g-space-2);
+  --ux4g-margin-xs: var(--ux4g-space-4);
+  --ux4g-margin-s: var(--ux4g-space-5);
+  --ux4g-margin-m: var(--ux4g-space-6);
+  --ux4g-margin-l: var(--ux4g-space-7);
+  --ux4g-margin-xl: var(--ux4g-space-8);
+  --ux4g-margin-2xl: var(--ux4g-space-9);
+
+  /* Inline Spacing */
+   --ux4g-inline-none: var(--ux4g-space-none);
+  --ux4g-inline-2xs: var(--ux4g-space-1);
+  --ux4g-inline-xs: var(--ux4g-space-2);
+  --ux4g-inline-s: var(--ux4g-space-4);
+  --ux4g-inline-m: var(--ux4g-space-5);
+  --ux4g-inline-l: var(--ux4g-space-6);
+
+  /* Stack Spacing */
+   --ux4g-stack-none: var(--ux4g-space-none);
+  --ux4g-stack-2xs: var(--ux4g-space-2);
+  --ux4g-stack-xs: var(--ux4g-space-4);
+  --ux4g-stack-s: var(--ux4g-space-5);
+  --ux4g-stack-m: var(--ux4g-space-6);
+  --ux4g-stack-l: var(--ux4g-space-8);
+}

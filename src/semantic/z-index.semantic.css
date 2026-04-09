@@ -1,0 +1,31 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  --ux4g-z-layout-base: var(--ux4g-z-0);
+  --ux4g-z-layout-raised: var(--ux4g-z-1);
+  --ux4g-z-layout-overlay: var(--ux4g-z-2);
+  --ux4g-z-layout-top: var(--ux4g-z-3);
+
+   /* Components */
+  --ux4g-z-dropdown: var(--ux4g-z-dropdown);
+  --ux4g-z-sticky: var(--ux4g-z-sticky);
+  --ux4g-z-fixed: var(--ux4g-z-fixed);
+  --ux4g-z-offcanvas: var(--ux4g-z-offcanvas);
+  --ux4g-z-modal-backdrop: var(--ux4g-z-modal-backdrop);
+  --ux4g-z-modal: var(--ux4g-z-modal);
+  --ux4g-z-popover: var(--ux4g-z-popover);
+  --ux4g-z-tooltip: var(--ux4g-z-tooltip);
+  --ux4g-z-toast: var(--ux4g-z-toast);
+}

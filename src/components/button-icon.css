@@ -1,0 +1,213 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* =========================================== UX4G ICON BUTTON — Base Styles =========================================== */
+.ux4g-icon-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--ux4g-padding-xs, 8px);
+    border-radius: var(--ux4g-radius-md);
+    cursor: pointer;
+    border: var(--ux4g-border-width-sm) solid transparent;
+    outline: var(--ux4g-border-width-sm) transparent;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease, outline-color .15s ease, outline-offset .15s ease, transform .08s ease;
+    gap: var(--ux4g-inline-none, 0);
+    background-color: transparent;
+    color: var(--ux4g-text-current, currentColor);
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.ux4g-icon-btn ux4g-icon,
+.ux4g-icon-btn i,
+.ux4g-icon-btn svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================================== UX4G ICON BUTTON — Shapes =========================================== */
+.ux4g-icon-btn-pill {
+    border-radius: var(--ux4g-radius-full);
+}
+
+/* =========================================== UX4G ICON BUTTON — Sizes =========================================== */
+/* Size XL - 48x48 as requested */
+.ux4g-icon-btn-xl {
+    width: var(--ux4g-sz-48);
+    height: var(--ux4g-sz-48);
+}
+
+.ux4g-icon-btn-xl i,
+.ux4g-icon-btn-xl ux4g-icon,
+.ux4g-icon-btn-xl svg {
+    font-size: var(--ux4g-fs-24);
+    width: var(--ux4g-fs-24);
+    height: var(--ux4g-fs-24);
+}
+
+.ux4g-icon-btn-lg {
+    width: var(--ux4g-sz-48);
+    height: var(--ux4g-sz-48);
+}
+
+.ux4g-icon-btn-lg i,
+.ux4g-icon-btn-lg ux4g-icon,
+.ux4g-icon-btn-lg svg {
+    font-size: var(--ux4g-fs-24);
+    width: var(--ux4g-fs-24);
+    height: var(--ux4g-fs-24);
+}
+
+/* Size M - 40x40 */
+.ux4g-icon-btn-md {
+    width: var(--ux4g-sz-40);
+    height: var(--ux4g-sz-40);
+}
+
+.ux4g-icon-btn-md i,
+.ux4g-icon-btn-md ux4g-icon,
+.ux4g-icon-btn-md svg {
+    font-size: var(--ux4g-fs-18);
+    width: var(--ux4g-fs-18);
+    height: var(--ux4g-fs-18);
+}
+
+/* Size S - 32x32 */
+.ux4g-icon-btn-sm {
+    width: var(--ux4g-sz-32);
+    height: var(--ux4g-sz-32);
+}
+
+.ux4g-icon-btn-sm i,
+.ux4g-icon-btn-sm ux4g-icon,
+.ux4g-icon-btn-sm svg {
+    font-size: var(--ux4g-fs-16);
+    width: var(--ux4g-fs-16);
+    height: var(--ux4g-fs-16);
+}
+
+/* Size XS - 24x24 */
+.ux4g-icon-btn-xs {
+    width: var(--ux4g-sz-24);
+    height: var(--ux4g-sz-24);
+}
+
+.ux4g-icon-btn-xs i,
+.ux4g-icon-btn-xs ux4g-icon,
+.ux4g-icon-btn-xs svg {
+    font-size: var(--ux4g-fs-14);
+    width: var(--ux4g-fs-14);
+    height: var(--ux4g-fs-14);
+}
+
+
+/* FILLED PRIMARY */
+.ux4g-icon-btn-primary {
+    background-color: var(--ux4g-bg-primary-strong);
+    --ux4g-text-current: var(--ux4g-text-neutral-inverse);
+}
+
+.ux4g-icon-btn-primary:hover {
+    background-color: var(--ux4g-bg-primary-strong-hover);
+}
+
+.ux4g-icon-btn-primary:active {
+    background-color: var(--ux4g-bg-primary-stronger);
+}
+
+/* OUTLINE PRIMARY */
+.ux4g-icon-btn-outline-primary {
+    background-color: var(--ux4g-bg-neutral-strong);
+    --ux4g-text-current: var(--ux4g-text-brand-primary-default);
+    border-color: var(--ux4g-border-color-primary-default);
+}
+
+.ux4g-icon-btn-outline-primary:hover {
+    background-color: var(--ux4g-bg-primary-subtle);
+}
+
+.ux4g-icon-btn-outline-primary:active {
+    background-color: var(--ux4g-bg-primary-emphasis);
+    border-color: var(--ux4g-bg-primary-emphasis);
+}
+
+/* TONAL PRIMARY */
+.ux4g-icon-btn-tonal-primary {
+    background-color: var(--ux4g-bg-primary-soft);
+    --ux4g-text-current: var(--ux4g-text-brand-primary-default);
+}
+
+.ux4g-icon-btn-tonal-primary:hover {
+    background-color: var(--ux4g-bg-primary-subtle);
+}
+
+.ux4g-icon-btn-tonal-primary:active {
+    background-color: var(--ux4g-bg-primary-emphasis);
+}
+
+/* STANDARD (Default) PRIMARY */
+.ux4g-icon-btn-text-primary {
+    background-color: transparent;
+    --ux4g-text-current: var(--ux4g-text-brand-primary-default);
+    border-color: transparent;
+}
+
+.ux4g-icon-btn-text-primary:hover {
+    background-color: var(--ux4g-bg-primary-subtle);
+}
+
+.ux4g-icon-btn-text-primary:active {
+    background-color: var(--ux4g-bg-primary-emphasis);
+}
+
+
+
+/* =========================================== Universal States =========================================== */
+.ux4g-icon-btn:focus {
+    outline: var(--ux4g-border-width-md) solid var(--ux4g-bg-primary-strong);
+    outline-offset: 2px;
+}
+
+/* Base Disabled State */
+.ux4g-icon-btn:disabled,
+.ux4g-icon-btn[aria-disabled="true"] {
+    --ux4g-text-current: var(--ux4g-text-neutral-disabled);
+    pointer-events: none;
+    opacity: 1;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+/* Filled & Tonal Disabled Background */
+.ux4g-icon-btn-primary:disabled,
+.ux4g-icon-btn-primary[aria-disabled="true"],
+.ux4g-icon-btn-tonal-primary:disabled,
+.ux4g-icon-btn-tonal-primary[aria-disabled="true"] {
+    background-color: var(--ux4g-bg-neutral-subtle);
+}
+
+/* Outline Disabled Border */
+.ux4g-icon-btn-outline-primary:disabled,
+.ux4g-icon-btn-outline-primary[aria-disabled="true"] {
+    border-color: var(--ux4x-icon-border-desabled);
+}
+
+/* Default/Text Disabled (No Background/No Border) */
+.ux4g-icon-btn-text-primary:disabled,
+.ux4g-icon-btn-text-primary[aria-disabled="true"] {
+    background-color: transparent;
+    border-color: transparent;
+}

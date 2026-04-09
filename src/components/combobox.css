@@ -1,0 +1,546 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+.ux4g-combobox {
+  --ux4g-combobox-height: var(--ux4g-sz-m, 40px);
+  --ux4g-combobox-padding-x: var(--ux4g-padding-s, 12px);
+  --ux4g-combobox-menu-offset-y: var(--ux4g-spacing-3, 6px);
+  --ux4g-combobox-focus-ring-width: var(--ux4g-border-width-sm, 1px);
+  --ux4g-combobox-transition-fast: 0.15s ease;
+  --ux4g-combobox-menu-shadow: var(--ux4g-shadow-l2);
+  --ux4g-combobox-menu-chevron-sm: var(--ux4g-fs-16, 16px);
+  --ux4g-combobox-menu-chevron-md: var(--ux4g-fs-18, 18px);
+  --ux4g-combobox-menu-chevron-lg: var(--ux4g-fs-20, 20px);
+  --ux4g-combobox-menu-chevron-size: var(--ux4g-combobox-menu-chevron-md);
+  --ux4g-combobox-radius: var(--ux4g-radius-md, 8px);
+  --ux4g-combobox-gap: var(--ux4g-inline-xs, 4px);
+  --ux4g-combobox-border: var(--ux4g-border-color-neutral-subtle, #e5e5e5);
+  --ux4g-combobox-border-hover: var(--ux4g-border-color-neutral-default, #d9d9d9);
+  --ux4g-combobox-border-focus: var(--ux4g-border-color-primary-strong, #4a2bc2);
+  --ux4g-combobox-bg: var(--ux4g-bg-neutral-strong, #ffffff);
+  --ux4g-combobox-menu-width: 100%;
+  --ux4g-combobox-focus-shadow: 0 0 0 var(--ux4g-combobox-focus-ring-width) var(--ux4g-combobox-border-focus);
+
+  position: var(--ux4g-pos-relative, relative);
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--ux4g-padding-2xs, 4px);
+}
+
+.ux4g-combobox.is-open {
+  z-index: var(--ux4g-z-dropdown, 1000);
+}
+
+.ux4g-combobox.is-open .ux4g-combobox-help {
+  display: none !important;
+}
+
+
+
+.ux4g-combobox .ux4g-combobox-control {
+  min-height: var(--ux4g-combobox-height);
+  width: 100%;
+  border-radius: var(--ux4g-combobox-radius);
+  border: var(--ux4g-border-width-sm, 1px) solid var(--ux4g-combobox-border);
+  background: var(--ux4g-combobox-bg);
+  color: var(--ux4g-text-neutral-secondary, #525252);
+  padding: var(--ux4g-padding-none, 0) var(--ux4g-combobox-padding-x);
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ux4g-combobox-gap);
+  cursor: pointer;
+  transition:
+    border-color var(--ux4g-combobox-transition-fast),
+    box-shadow var(--ux4g-combobox-transition-fast),
+    background-color var(--ux4g-combobox-transition-fast);
+}
+
+.ux4g-combobox .ux4g-combobox-control:hover {
+  border-color: var(--ux4g-combobox-border-hover);
+}
+
+.ux4g-combobox .ux4g-combobox-control:focus {
+  outline: var(--ux4g-border-width-none, none);
+}
+
+.ux4g-combobox:is(.is-open, :focus-within) .ux4g-combobox-control,
+.ux4g-combobox .ux4g-combobox-control:focus-visible {
+  border-color: var(--ux4g-combobox-border-focus);
+  box-shadow: var(--ux4g-combobox-focus-shadow);
+}
+
+.ux4g-combobox-value {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ux4g-combobox-gap);
+  min-width: 0;
+  flex: 1;
+  overflow: var(--ux4g-of-hidden);
+}
+
+.ux4g-combobox-caret {
+  color: var(--ux4g-text-neutral-secondary);
+  font-size: var(--ux4g-combobox-menu-chevron-size);
+  flex-shrink: var(--ux4g-spacing-none, 0);
+  transition: transform var(--ux4g-combobox-transition-fast);
+}
+
+.ux4g-combobox.is-open .ux4g-combobox-caret {
+  transform: rotate(180deg);
+}
+
+.ux4g-combobox-menu {
+  position: var(--ux4g-pos-absolute, absolute);
+  top: calc(100% + var(--ux4g-combobox-menu-offset-y));
+  left: var(--ux4g-spacing-none, 0);
+  display: none;
+  width: var(--ux4g-combobox-menu-width);
+  padding: var(--ux4g-padding-2xs, 4px) var(--ux4g-padding-none, 0);
+  border-radius: var(--ux4g-radius-md, 8px);
+  background: var(--ux4g-combobox-bg);
+  box-shadow: var(--ux4g-combobox-menu-shadow);
+}
+
+.ux4g-combobox.is-open>.ux4g-combobox-menu {
+  display: block;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: var(--ux4g-of-hidden)
+}
+
+.ux4g-combobox-menu .ux4g-list {
+  padding: var(--ux4g-padding-none, 0);
+  box-shadow: var(--ux4g-shadow-l0, none);
+  border-radius: var(--ux4g-radius-none, 0);
+  background: transparent;
+}
+
+.ux4g-combobox-menu .ux4g-list-item .ux4g-list-item-row {
+  width: 100%;
+  border-radius: var(--ux4g-radius-sm, 6px);
+}
+
+.ux4g-combobox-option {
+  width: 100%;
+  padding: var(--ux4g-padding-2xs, 4px) var(--ux4g-padding-s, 12px);
+}
+
+.ux4g-combobox-option:hover {
+  background: var(--ux4g-bg-neutral-subtle, #e5e5e5);
+}
+
+.ux4g-combobox-option.is-selected,
+.ux4g-combobox-option:has(.ux4g-combobox-option-input:checked) {
+  background: var(--ux4g-bg-primary, #ede9fe);
+}
+
+.ux4g-combobox-option.is-selected:is(:hover, :active, :focus-within),
+.ux4g-combobox-option:has(.ux4g-combobox-option-input:checked):is(:hover, :active, :focus-within) {
+  background: var(--ux4g-bg-primary, #ede9fe);
+}
+
+.ux4g-combobox-option .ux4g-checkbox-content {
+  min-width: 0;
+}
+
+.ux4g-combobox-option .ux4g-checkbox-label {
+  font-weight: var(--ux4g-fw-regular, 400);
+  color: var(--ux4g-text-neutral-primary, #171717);
+}
+
+.ux4g-combobox-option.is-selected .ux4g-checkbox-label,
+.ux4g-combobox-option:has(.ux4g-combobox-option-input:checked) .ux4g-checkbox-label {
+  color: var(--ux4g-text-brand-primary-default, #4a2bc2);
+}
+
+.ux4g-combobox-chip:focus {
+  outline: none !important;
+
+}
+
+.ux4g-combobox-single-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ux4g-combobox-gap, 8px);
+  background: transparent;
+  border: none;
+  color: var(--ux4g-text-neutral-primary, #171717);
+  padding: var(--ux4g-padding-2xs, 8px) var(--ux4g-padding-s, 12px);
+  cursor: pointer;
+  text-align: left;
+  border-radius: var(--ux4g-radius-sm, 6px);
+  font-family: inherit;
+  font-size: var(--ux4g-fs-14, 14px);
+  transition: background-color var(--ux4g-combobox-transition-fast);
+}
+
+.ux4g-combobox-single-option:hover {
+  background: var(--ux4g-bg-neutral-subtle, #e5e5e5);
+}
+
+.ux4g-combobox-single-option:focus {
+  outline: none;
+}
+
+.ux4g-combobox-single-option:focus-visible {
+  background: var(--ux4g-bg-neutral-subtle, #e5e5e5);
+}
+
+.ux4g-combobox-single-check {
+  opacity: 0;
+  color: var(--ux4g-text-brand-primary-default, #4a2bc2);
+}
+
+.ux4g-combobox-single-option.is-selected,
+.ux4g-combobox-single-option.active {
+  background: var(--ux4g-bg-primary-soft, #ede9fe);
+  color: var(--ux4g-text-brand-primary-default, #4a2bc2);
+}
+
+.ux4g-combobox-single-option.is-selected .ux4g-combobox-single-check,
+.ux4g-combobox-single-option.active .ux4g-combobox-single-check {
+  opacity: 1;
+}
+
+.ux4g-combobox-selected-chips {
+  display: none;
+  align-items: center;
+  gap: var(--ux4g-padding-2xs, 4px);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.ux4g-combobox.has-selection .ux4g-combobox-selected-chips {
+  display: inline-flex;
+}
+
+.ux4g-combobox.has-selection.ux4g-combobox-multi:not(:focus-within) .ux4g-combobox-input-wrap>.ux4g-icon-outlined,
+.ux4g-combobox.has-selection.ux4g-combobox-multi:not(:focus-within) .ux4g-combobox-value>.ux4g-icon-outlined:not(.ux4g-combobox-chip *) {
+  display: none;
+}
+
+.ux4g-combobox-multi .ux4g-combobox-value {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ux4g-spacing-3, 6px);
+  padding: var(--ux4g-padding-3xs, 4px) var(--ux4g-padding-xl, 24px) var(--ux4g-padding-3xs, 4px) var(--ux4g-padding-none, 0);
+  flex: 1;
+  min-width: var(--ux4g-spacing-none, 0);
+}
+
+.ux4g-combobox-multi .ux4g-combobox-control {
+  height: auto;
+  min-height: var(--ux4g-combobox-height);
+  padding-top: var(--ux4g-padding-3xs, 4px);
+  padding-bottom: var(--ux4g-padding-3xs, 4px);
+}
+
+.ux4g-combobox-multi .ux4g-combobox-input-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ux4g-combobox-gap, 6px);
+  flex: 1;
+  min-width: 140px;
+}
+
+.ux4g-combobox-multi .ux4g-combobox-selected-chips {
+  display: contents;
+  /* Ensures individual chips wrap correctly onto multiple lines */
+}
+
+/* Force chips to show before the typing block structurally */
+.ux4g-combobox-multi .ux4g-combobox-chip {
+  order: 1;
+}
+
+.ux4g-combobox-multi .ux4g-combobox-input-wrap,
+.ux4g-combobox-multi .ux4g-combobox-value>.ux4g-combobox-input,
+.ux4g-combobox-multi .ux4g-combobox-value>.ux4g-icon-outlined:not(.ux4g-combobox-chip *) {
+  order: 2;
+}
+
+.ux4g-combobox-multi .ux4g-combobox-input-wrap>.ux4g-combobox-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.ux4g-combobox-multi .ux4g-combobox-option {
+  border-radius: var(--ux4g-radius-sm, 6px);
+}
+
+.ux4g-combobox-multi .ux4g-combobox-option+.ux4g-combobox-option {
+  margin-top: var(--ux4g-padding-2xs, 6px);
+}
+
+.ux4g-combobox-multi .ux4g-combobox-value>.ux4g-icon-outlined,
+.ux4g-combobox-multi .ux4g-combobox-input-wrap>.ux4g-icon-outlined,
+.ux4g-combobox-multi .ux4g-combobox-value>.ux4g-icon-outlined:not(.ux4g-combobox-chip *) {
+  display: inline-flex;
+  align-items: center;
+  line-height: var(--ux4g-lh-16, 1);
+  flex-shrink: var(--ux4g-spacing-none, 0);
+  color: var(--ux4g-text-neutral-primary, #171717);
+}
+
+.ux4g-combobox-sm .ux4g-combobox-value > .ux4g-icon-outlined,
+.ux4g-combobox-sm .ux4g-combobox-input-wrap > .ux4g-icon-outlined {
+  font-size: var(--ux4g-fs-14, 14px);
+}
+
+.ux4g-combobox-md .ux4g-combobox-value > .ux4g-icon-outlined,
+.ux4g-combobox-md .ux4g-combobox-input-wrap > .ux4g-icon-outlined {
+  font-size: var(--ux4g-fs-16, 16px);
+}
+
+.ux4g-combobox-lg .ux4g-combobox-value > .ux4g-icon-outlined,
+.ux4g-combobox-lg .ux4g-combobox-input-wrap > .ux4g-icon-outlined {
+  font-size: var(--ux4g-fs-20, 20px);
+}
+
+.ux4g-combobox-multi.ux4g-combobox-sm .ux4g-combobox-value {
+  gap: var(--ux4g-padding-xs, 8px);
+  padding: var(--ux4g-padding-3xs, 4px);
+}
+
+.ux4g-combobox-multi.ux4g-combobox-md .ux4g-combobox-value {
+  gap: var(--ux4g-padding-xs, 8px);
+  padding: var(--ux4g-padding-3xs, 4px);
+}
+
+.ux4g-combobox-multi.ux4g-combobox-lg .ux4g-combobox-value {
+  gap: var(--ux4g-padding-s, 12px);
+  padding: var(--ux4g-padding-3xs, 4px);
+}
+
+.ux4g-combobox-multi.ux4g-combobox-lg .ux4g-combobox-control {
+  padding-top: var(--ux4g-padding-2xs, 6px);
+  padding-bottom: var(--ux4g-padding-2xs, 6px);
+}
+
+.ux4g-combobox-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ux4g-padding-3xs, 4px);
+  white-space: nowrap;
+  flex-shrink: 0;
+  max-width: 100%;
+  min-height: 28px;
+  background-color: var(--ux4g-bg-neutral);
+  color: var(--ux4g-text-neutral-primary);
+  font-size: var(--ux4g-fs-14);
+  border-radius: var(--ux4g-radius-sm);
+  padding: var(--ux4g-space-none) var(--ux4g-padding-xs);
+  border: var(--ux4g-border-thin) solid var(--ux4g-border-color-neutral-subtle);
+  line-height: 1;
+}
+
+.ux4g-combobox-multi.ux4g-combobox-md .ux4g-combobox-chip .ux4g-icon-outlined {
+  font-size: var(--ux4g-fs-16, 16px);
+  margin-top: 0;
+}
+
+.ux4g-combobox-multi.ux4g-combobox-lg .ux4g-combobox-chip .ux4g-icon-outlined {
+  font-size: var(--ux4g-fs-16, 16px);
+  margin-top: 0;
+}
+
+.ux4g-combobox-chip[role="button"] {
+  cursor: default;
+}
+
+.ux4g-combobox-chip .ux4g-icon-outlined:last-child {
+  cursor: pointer;
+}
+
+.ux4g-combobox-chip .ux4g-icon-outlined:last-child:hover {
+  background-color: var(--ux4g-border-color-neutral-subtle, #e5e5e5);
+  border-radius: var(--ux4g-radius-xs, 4px);
+}
+
+.ux4g-combobox-chip[role="button"]:focus-visible {
+  outline: var(--ux4g-border-width-sm, 1px) solid var(--ux4g-combobox-border-focus);
+  outline-offset: var(--ux4g-border-width-sm, 1px);
+}
+
+.ux4g-combobox-chip .ux4g-icon-outlined {
+  font-size: var(--ux4g-fs-14, 14px);
+  margin-top: 1px;
+}
+
+.ux4g-combobox-chip > span:not(.ux4g-icon-outlined) {
+  overflow: var(--ux4g-of-hidden, hidden);
+  text-overflow: ellipsis;
+  white-space: var(--ux4g-tw-nowrap, nowrap);
+  max-width: 100%;
+}
+
+.ux4g-combobox-help {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ux4g-padding-3xs, 2px);
+  font-size: var(--ux4g-fs-12, 12px);
+  line-height: var(--ux4g-lh-16, 16px);
+  font-weight: var(--ux4g-fw-regular, 400);
+  color: var(--ux4g-text-neutral-tertiary, #737373);
+  display: none;
+}
+
+.ux4g-combobox-default .ux4g-combobox-help,
+:is(.ux4g-combobox-error, .ux4g-combobox-success, .ux4g-combobox-warning) .ux4g-combobox-help {
+  display: inline-flex !important;
+}
+
+
+.ux4g-combobox-help :is(.ux4g-icon, .ux4g-icon-outlined) {
+  font-size: inherit;
+  line-height: 1;
+}
+
+/* Help text typescale by combobox size:
+   S/M -> body-xs-default, L -> body-s-default */
+.ux4g-combobox.ux4g-combobox-sm+.ux4g-combobox-help,
+.ux4g-combobox.ux4g-combobox-md+.ux4g-combobox-help {
+  font-size: var(--ux4g-fs-12, 12px);
+  line-height: var(--ux4g-lh-16, 16px);
+  font-weight: var(--ux4g-fw-regular, 400);
+}
+
+.ux4g-combobox.ux4g-combobox-lg+.ux4g-combobox-help {
+  font-size: var(--ux4g-fs-14, 14px);
+  line-height: var(--ux4g-lh-20, 20px);
+  font-weight: var(--ux4g-fw-regular, 400);
+}
+
+
+.ux4g-combobox .ux4g-combobox-control:disabled,
+.ux4g-combobox .ux4g-combobox-control[aria-disabled="true"] {
+  border-color: var(--ux4g-border-color-neutral-subtle, #e5e5e5);
+  background: var(--ux4g-bg-neutral-disabled, #e5e5e5);
+  color: var(--ux4g-text-neutral-disabled, #a1a1a1);
+  box-shadow: var(--ux4g-shadow-l0, none);
+  cursor: not-allowed;
+}
+
+.ux4g-combobox .ux4g-combobox-control:disabled .ux4g-combobox-caret,
+.ux4g-combobox .ux4g-combobox-control:disabled .ux4g-icon-outlined,
+.ux4g-combobox .ux4g-combobox-control[aria-disabled="true"] .ux4g-combobox-caret,
+.ux4g-combobox .ux4g-combobox-control[aria-disabled="true"] .ux4g-icon-outlined {
+  color: var(--ux4g-text-neutral-disabled, #a1a1a1);
+}
+
+.ux4g-combobox.ux4g-combobox-error {
+  --ux4g-combobox-border: var(--ux4g-border-color-error-strong, #db372d);
+  --ux4g-combobox-border-hover: var(--ux4g-border-color-error-strong, #db372d);
+  --ux4g-combobox-border-focus: var(--ux4g-border-color-error-strong, #db372d);
+  --ux4g-combobox-state-text: var(--ux4g-text-status-error, #db372d);
+  --ux4g-combobox-state-icon: var(--ux4g-icon-status-error, #db372d);
+}
+
+.ux4g-combobox.ux4g-combobox-success {
+  --ux4g-combobox-border: var(--ux4g-border-color-success-strong, #1aa64a);
+  --ux4g-combobox-border-hover: var(--ux4g-border-color-success-strong, #1aa64a);
+  --ux4g-combobox-border-focus: var(--ux4g-border-color-success-strong, #1aa64a);
+  --ux4g-combobox-state-text: var(--ux4g-text-status-success, #1aa64a);
+  --ux4g-combobox-state-icon: var(--ux4g-icon-status-success, #1aa64a);
+}
+
+.ux4g-combobox.ux4g-combobox-warning {
+  --ux4g-combobox-border: var(--ux4g-border-color-warning-strong, #fa8c16);
+  --ux4g-combobox-border-hover: var(--ux4g-border-color-warning-strong, #fa8c16);
+  --ux4g-combobox-border-focus: var(--ux4g-border-color-warning-strong, #fa8c16);
+  --ux4g-combobox-state-text: var(--ux4g-text-status-warning, #fa8c16);
+  --ux4g-combobox-state-icon: var(--ux4g-icon-status-warning, #fa8c16);
+}
+
+.ux4g-combobox.ux4g-combobox-default {
+  --ux4g-combobox-state-text: var(--ux4g-text-neutral-tertiary, #737373);
+  --ux4g-combobox-state-icon: var(--ux4g-text-neutral-tertiary, #737373);
+}
+
+/* Ensure these states use the overridden variables for help text colors */
+:is(.ux4g-combobox-error, .ux4g-combobox-success, .ux4g-combobox-warning, .ux4g-combobox-default) .ux4g-combobox-help {
+  color: var(--ux4g-combobox-state-text);
+}
+
+:is(.ux4g-combobox-error, .ux4g-combobox-success, .ux4g-combobox-warning, .ux4g-combobox-default) .ux4g-combobox-help :is(.ux4g-icon, .ux4g-icon-outlined) {
+  color: var(--ux4g-combobox-state-icon);
+}
+
+/* The base rules for .ux4g-combobox-control will now automatically inherit the overridden --ux4g-combobox-border, etc. */
+
+/* Sizes */
+.ux4g-combobox-sm {
+  --ux4g-combobox-height: var(--ux4g-sz-s, 32px);
+  --ux4g-combobox-menu-chevron-size: var(--ux4g-combobox-menu-chevron-sm);
+}
+
+.ux4g-combobox-md {
+  --ux4g-combobox-height: var(--ux4g-sz-m, 40px);
+  --ux4g-combobox-menu-chevron-size: var(--ux4g-combobox-menu-chevron-md);
+}
+
+.ux4g-combobox-lg {
+  --ux4g-combobox-height: var(--ux4g-sz-l, 48px);
+  --ux4g-combobox-menu-chevron-size: var(--ux4g-combobox-menu-chevron-lg);
+}
+
+.ux4g-combobox.ux4g-combobox-sm .ux4g-combobox-control {
+  font-size: var(--ux4g-fs-14, 14px);
+}
+
+.ux4g-combobox.ux4g-combobox-md .ux4g-combobox-control {
+  font-size: var(--ux4g-fs-14, 14px);
+}
+
+.ux4g-combobox.ux4g-combobox-lg .ux4g-combobox-control {
+  font-size: var(--ux4g-fs-16, 16px);
+}
+
+.ux4g-combobox-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  flex: 1;
+  min-width: 0;
+  color: var(--ux4g-text-neutral-primary, #171717);
+  font-family: inherit;
+  font-size: inherit;
+  padding: var(--ux4g-padding-none, 0);
+  margin: var(--ux4g-margin-none, 0);
+}
+
+.ux4g-combobox-input::placeholder {
+  color: var(--ux4g-text-neutral-tertiary, #737373);
+}
+
+.ux4g-combobox-input:disabled,
+.ux4g-combobox-control:disabled .ux4g-combobox-input,
+.ux4g-combobox-control[aria-disabled="true"] .ux4g-combobox-input {
+  color: var(--ux4g-text-neutral-disabled, #a1a1a1);
+  background: transparent;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.ux4g-combobox-input:disabled::placeholder,
+.ux4g-combobox-control:disabled .ux4g-combobox-input::placeholder,
+.ux4g-combobox-control[aria-disabled="true"] .ux4g-combobox-input::placeholder {
+  color: var(--ux4g-text-neutral-disabled, #a1a1a1);
+}
+
+/* Base states are handled above in the combined focus-within rule */

@@ -1,0 +1,173 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* ========================================= UX4G Breadcrumb (Base) ========================================= */
+.ux4g-breadcrumb .ux4g-breadcrumb-list {
+    flex-wrap: wrap;
+    gap: var(--ux4g-space-3);
+    --ux4g-fs-current: var(--ux4g-fs-14);
+    --ux4g-lh-current: var(--ux4g-lh-18);
+    --ux4g-fw-current: var(--ux4g-font-weight-medium);
+}
+
+.ux4g-breadcrumb .ux4g-breadcrumb-item {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.ux4g-breadcrumb .ux4g-breadcrumb-link {
+    color: var(--ux4g-text-link-neutral-default);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.ux4g-breadcrumb .ux4g-breadcrumb-link span {
+    display: flex;
+    align-items: center;
+}
+
+.ux4g-breadcrumb .ux4g-breadcrumb-link:hover {
+    color: var(--ux4g-text-link-default-hover);
+}
+
+/* Current item */
+.ux4g-breadcrumb .ux4g-breadcrumb-item.active {
+    color: var(--ux4g-text-link-default-active);
+}
+
+/* ========================================= Variant 1: Divider (›) ========================================= */
+.ux4g-breadcrumb-divider .ux4g-breadcrumb-item+.ux4g-breadcrumb-item::before,
+.ux4g-breadcrumb-menu li+li::before {
+    content: "›";
+    font-size: var(--ux4g-fs-20);
+    margin-left: var(--ux4g-space-4);
+    margin-right: var(--ux4g-space-4);
+    color: var(--ux4g-text-link-neutral-default);
+    display: inline-flex;
+    align-items: center;
+    vertical-align: var(--ux4g-va-middle);
+    line-height: normal;
+    position: var(--ux4g-pos-relative);
+    top: -2px;
+}
+
+/* ========================================= Variant 2: Icon Divider (chevron_right) Uses your "Material Icons Outlined" ========================================= */
+.ux4g-breadcrumb-icon .ux4g-breadcrumb-item+.ux4g-breadcrumb-item::before {
+    content: "/";
+    font-size: var(--ux4g-fs-20);
+    margin: var(--ux4g-margin-none) var(--ux4g-space-4);
+    color: var(--ux4g-text-link-neutral-default);
+    display: inline-flex;
+    align-items: center;
+    vertical-align: var(--ux4g-va-middle);
+}
+
+/* dropdown menu */
+/* ===== Dropdown ===== */
+/* Wrapper */
+.ux4g-breadcrumb-dropdown {
+    position: var(--ux4g-pos-relative);
+}
+
+/* Toggle button */
+.ux4g-breadcrumb-toggle {
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.ux4g-breadcrumb-toggle:hover,
+.ux4g-breadcrumb-toggle:focus-visible {
+    color: var(--ux4g-text-link-default-hover);
+}
+
+.ux4g-breadcrumb-toggle .ux4g-icon-outlined{
+    font-size: var(--ux4g-fs-20);
+    color: var(--ux4g-text-link-neutral-active);
+    display: flex;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+}
+
+.ux4g-breadcrumb-toggle .ux4g-icon {
+    font-size: var(--ux4g-fs-20);
+    color: var(--ux4g-text-link-neutral-active);
+    transition: transform 0.2s ease;
+    transform: rotate(0deg);
+    display: flex;
+    align-items: center;
+}
+
+.ux4g-breadcrumb-toggle[aria-expanded="true"] .ux4g-icon {
+    transform: rotate(180deg);
+}
+
+/* Menu base */
+.ux4g-breadcrumb-menu {
+    visibility: var(--ux4g-visibility-hidden);
+    position: var(--ux4g-pos-absolute) ;
+    top: var(--ux4g-space-8) ;
+    left: var(--ux4g-pos-start-0) ;
+    min-width: 220px;
+    background: var(--ux4g-bg-neutral-elevated);
+    border-radius: var(--ux4g-radius-sm);
+    box-shadow: var(--ux4g-shadow-l2);
+    padding: var(--ux4g-space-5);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: var(--ux4g-space-3);
+}
+
+.ux4g-breadcrumb-menu li {
+    display: flex;
+    align-items: center;
+}
+
+/* Responsive Dropdown Menu for Mobile */
+@media (max-width: 767px) {
+    .ux4g-breadcrumb-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        min-width: fit-content;
+    }
+
+    .ux4g-breadcrumb-menu li+li::before {
+        display: none;
+    }
+}
+
+.ux4g-breadcrumb-menu.show {
+    visibility: var(--ux4g-visibility-visible);
+}
+
+.ux4g-breadcrumb-menuitem {
+    color: var(--ux4g-text-link-neutral-default);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    --ux4g-fs-current: var(--ux4g-fs-14);
+    --ux4g-lh-current: var(--ux4g-lh-18);
+    --ux4g-fw-current: var(--ux4g-font-weight-medium);
+}
+
+.ux4g-breadcrumb-menuitem:hover {
+    color: var(--ux4g-text-link-default-hover);
+}
+

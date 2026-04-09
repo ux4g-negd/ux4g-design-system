@@ -1,0 +1,73 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* ================================
+   LINK - SMALL
+================================ */
+.ux4g-text-link-sm,
+.ux4g-text-link-neutral-sm {
+  font-size: var(--ux4g-fs-14);
+  line-height: var(--ux4g-lh-20);
+  font-weight: var(--ux4g-font-weight-medium);
+}
+
+/* ================================
+   LINK - MEDIUM
+================================ */
+.ux4g-text-link-md,
+.ux4g-text-link-neutral-md {
+  font-size: var(--ux4g-fs-16);
+  line-height: var(--ux4g-lh-24);
+  font-weight: var(--ux4g-font-weight-medium);
+}
+
+/* ================================
+   ICON FIX
+================================ */
+.ux4g-text-link-sm .material-icons,
+.ux4g-text-link-md .material-icons,
+.ux4g-text-link-neutral-sm .material-icons,
+.ux4g-text-link-neutral-md .material-icons {
+  font-size: var(--ux4g-fs-16)
+}
+
+/* ================================
+   COLOR
+================================ */
+.ux4g-text-link-sm,
+.ux4g-text-link-md {
+ --ux4g-text-current: var(--ux4g-text-link-default-default);
+}
+
+.ux4g-text-link-neutral-sm,
+.ux4g-text-link-neutral-md {
+  --ux4g-text-current: var(--ux4g-text-link-neutral-default);
+}
+
+/* ================================
+   INTERACTION
+================================ */
+.ux4g-text-link-sm,
+.ux4g-text-link-md,
+.ux4g-text-link-neutral-sm,
+.ux4g-text-link-neutral-md {
+  text-decoration: none;
+}
+
+.ux4g-text-link-sm:hover,
+.ux4g-text-link-md:hover,
+.ux4g-text-link-neutral-sm:hover,
+.ux4g-text-link-neutral-md:hover {
+  text-decoration: underline;
+}

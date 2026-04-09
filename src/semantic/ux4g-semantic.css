@@ -1,0 +1,34 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+@import "./typography.semantic.css";
+@import "./blur.semantic.css";
+@import "./radius.semantic.css";
+@import "./border.semantic.css";
+@import "./background.semantic.css";
+@import "./colors.semantic.css";
+@import "./shadow.semantic.css";
+@import "./spacing.semantic.css";
+@import "./z-index.semantic.css";
+@import "./visibility.semantic.css";
+@import "./text-transform.semantic.css";
+@import "./vertical-align.semantic.css";
+@import "./position.semantic.css";
+@import "./object-fit.semantic.css";
+@import "./overflow.semantic.css";
+@import "./spinner.semantic.css";
+@import "./opacity.semantic.css";
+@import "./sizing.semantic.css";
+@import "./interaction.semantic.css";
+

@@ -1,0 +1,3107 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Document</title>
+    <link href="./index.css" rel="stylesheet" />
+    <script src="./ux4g.js"></script>
+    <script src="./ux4g-custom.js"></script>
+    <style>
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            padding: 10px 16px;
+            border-radius: 99px;
+            cursor: pointer;
+            background: var(--ux4g-bg-neutral-strong);
+            color: var(--ux4g-text-neutral-primary);
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            background: var(--ux4g-bg-primary-soft);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body class="ux4g-bg-neutral">
+    <button class="theme-toggle" onclick="ux4g.Theme.toggle()">🌓 Toggle Mode</button>
+    <h1 class="ux4g-text-center ux4g-mt-2xl ux4g-p-xl">Utilities & Layout</h1>
+
+    <!-- =========================================================================
+         LAYOUT SECTION
+         ===================== Core Structural Systems ========================= -->
+    <div class="ux4g-bg-primary-soft ux4g-p-xl ux4g-mb-3xl ux4g-radius-l ux4g-border ux4g-border-primary ux4g-mx-xl">
+        <h1 class="ux4g-fs-40 ux4g-fw-bold ux4g-mb-m ux4g-text-center">LAYOUT</h1>
+        <p class="ux4g-text-center ux4g-text-neutral-secondary">Responsive structural utilities including Breakpoints,
+            Containers, and Grid systems.</p>
+    </div>
+
+    <!-- Layout & Breakpoints -->
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <h1 class="ux4g-fs-32 ux4g-fw-bold ux4g-mb-m">Containers</h1>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl">Containers are a fundamental building block of UX4G that
+            contain, pad, and align your content within a given device or viewport.</p>
+        <h2 class="ux4g-fs-24 ux4g-fw-bold ux4g-mb-m ">Container Variants Demo</h2>
+        <div
+            class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+            <!-- container -->
+            <div class="ux4g-container ux4g-bg-info-strong ux4g-p-m ux4g-radius-m ux4g-text-white">
+                <h2 class="ux4g-fs-18 ux4g-fw-bold ux4g-mb-2xs">.ux4g-container</h2>
+                <p class="ux4g-fs-12 ux4g-m-none">Responsive fixed-width container.</p>
+            </div>
+            <!-- container-fluid -->
+            <div class="ux4g-container-fluid ux4g-bg-primary-strong ux4g-p-m ux4g-radius-m ux4g-text-white">
+                <h2 class="ux4g-fs-18 ux4g-fw-bold ux4g-mb-2xs">.ux4g-container-fluid</h2>
+                <p class="ux4g-fs-12 ux4g-m-none">Always full width (100%).</p>
+            </div>
+            <!-- container-sm -->
+            <div class="ux4g-container-sm ux4g-bg-secondary-strong ux4g-p-m ux4g-radius-m ux4g-text-white">
+                <h2 class="ux4g-fs-18 ux4g-fw-bold ux4g-mb-2xs">.ux4g-container-sm</h2>
+                <p class="ux4g-fs-12 ux4g-m-none">100% width until small breakpoint, then fixed.</p>
+            </div>
+            <!-- container-md -->
+            <div class="ux4g-container-md ux4g-bg-warning-strong ux4g-p-m ux4g-radius-m ux4g-text-white">
+                <h2 class="ux4g-fs-18 ux4g-fw-bold ux4g-mb-2xs">.ux4g-container-md</h2>
+                <p class="ux4g-fs-12 ux4g-m-none">100% width until medium breakpoint, then fixed.</p>
+            </div>
+            <!-- container-lg -->
+            <div class="ux4g-container-lg ux4g-bg-error-strong ux4g-p-m ux4g-radius-m ux4g-text-white">
+                <h2 class="ux4g-fs-18 ux4g-fw-bold ux4g-mb-2xs">.ux4g-container-lg</h2>
+                <p class="ux4g-fs-12 ux4g-m-none">100% width until large breakpoint, then fixed.</p>
+            </div>
+            <!-- container-xl -->
+            <div class="ux4g-container-xl ux4g-bg-warning-strong ux4g-p-m ux4g-radius-m ux4g-text-white">
+                <h2 class="ux4g-fs-18 ux4g-fw-bold ux4g-mb-2xs">.ux4g-container-xl</h2>
+                <p class="ux4g-fs-12 ux4g-m-none">100% width until extra-large breakpoint, then fixed.</p>
+            </div>
+            <!-- container-2xl -->
+            <div class="ux4g-container-2xl ux4g-bg-success-strong ux4g-p-m ux4g-radius-m ux4g-text-white">
+                <h2 class="ux4g-fs-18 ux4g-fw-bold ux4g-mb-2xs">.ux4g-container-2xl</h2>
+                <p class="ux4g-fs-12 ux4g-m-none">100% width until extra-extra-large breakpoint, then fixed.</p>
+            </div>
+        </div>
+
+        <h1 class="ux4g-fs-32 ux4g-fw-bold ux4g-mb-m ux4g-mt-2xl">Centering Layout</h1>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl">Multiple ways to achieve perfectly centered layouts in the
+            UX4G Design System.</p>
+
+        <!-- Container Centering -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">1. Container Centering</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Uses <span
+                class="ux4g-text-error">ux4g-container</span> to center content based on current breakpoint width.</p>
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m">
+            <div
+                class="ux4g-container ux4g-bg-primary-soft ux4g-p-xl ux4g-radius-m ux4g-text-center ux4g-border ux4g-border-primary ux4g-fw-bold ux4g-fs-14">
+                .ux4g-container (Centered Layout)
+            </div>
+        </div>
+
+        <!-- Margin Auto Centering -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">2. Margin Auto Centering</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Uses <span
+                class="ux4g-text-error">ux4g-mx-auto</span> to center fixed-width elements horizontally.</p>
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m">
+            <div
+                class="ux4g-mx-auto ux4g-bg-success-soft ux4g-p-xl ux4g-radius-m ux4g-text-center ux4g-border ux4g-border-success ux4g-fw-bold ux4g-fs-14 ux4g-w-50">
+                .ux4g-mx-auto (Centered with Width)
+            </div>
+        </div>
+
+        <!-- Flex Centering -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">3. Flexbox Centering</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Uses <span class="ux4g-text-error">jc-center</span>
+            and <span class="ux4g-text-error">ai-center</span> for both horizontal and vertical alignment.</p>
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m">
+            <div
+                class="ux4g-d-flex ux4g-jc-center ux4g-ai-center ux4g-hpx-150 ux4g-bg-neutral-subtle ux4g-radius-m ux4g-border ux4g-border-neutral-subtle">
+                <div
+                    class="ux4g-bg-error-soft ux4g-p-m ux4g-radius-s ux4g-border ux4g-border-error ux4g-fw-bold ux4g-fs-14">
+                    Centered Content (Flexbox)
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;!-- 1. Container --&gt;<br>
+                &lt;div class="ux4g-container"&gt;...&lt;/div&gt;<br><br>
+                &lt;!-- 2. Margin Auto --&gt;<br>
+                &lt;div class="ux4g-mx-auto ux4g-w-50"&gt;...&lt;/div&gt;<br><br>
+                &lt;!-- 3. Flex Center --&gt;<br>
+                &lt;div class="ux4g-d-flex ux4g-jc-center ux4g-ai-center"&gt;...&lt;/div&gt;
+            </code>
+        </div>
+    </div>
+
+    <!-- Grid System -->
+    <div id="grid-system"
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <h1 class="ux4g-fs-32 ux4g-fw-bold ux4g-mb-m">Grid System</h1>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl">The UX4G Grid System provides a flexible, 12-column responsive
+            layout based on CSS Grid. It includes utilities for columns, rows, automatic sizing, and item alignment.</p>
+
+        <!-- 1. Grid Base -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">1. Grid Base</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Initiate a grid layout using the <span
+                class="ux4g-text-error">ux4g-grid</span> class.</p>
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m">
+            <div class="ux4g-grid ux4g-grid-cols-3 ux4g-gap-m">
+                <div
+                    class="ux4g-bg-primary-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-primary ux4g-text-center ux4g-fw-semibold">
+                    1</div>
+                <div
+                    class="ux4g-bg-primary-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-primary ux4g-text-center ux4g-fw-semibold">
+                    2</div>
+                <div
+                    class="ux4g-bg-primary-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-primary ux4g-text-center ux4g-fw-semibold">
+                    3</div>
+            </div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto ux4g-mb-xl">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;div class="ux4g-grid ux4g-grid-cols-3 ux4g-gap-m"&gt;<br>
+                &nbsp;&nbsp;&lt;div&gt;1&lt;/div&gt;<br>
+                &nbsp;&nbsp;&lt;div&gt;2&lt;/div&gt;<br>
+                &nbsp;&nbsp;&lt;div&gt;3&lt;/div&gt;<br>
+                &lt;/div&gt;
+            </code>
+        </div>
+
+        <!-- 2. Grid Columns -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">2. Grid Columns</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Define the number of columns using <span
+                class="ux4g-text-error">ux4g-grid-cols-{n}</span> where {n} is 1 through 12.</p>
+        <div
+            class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xl">
+            <div>
+                <p class="ux4g-fs-12 ux4g-fw-bold ux4g-mb-xs ux4g-text-neutral-secondary">4 Columns (.ux4g-grid-cols-4)
+                </p>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-m">
+                    <div
+                        class="ux4g-bg-secondary-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-secondary ux4g-text-center ux4g-fw-medium">
+                        Column</div>
+                    <div
+                        class="ux4g-bg-secondary-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-secondary ux4g-text-center ux4g-fw-medium">
+                        Column</div>
+                    <div
+                        class="ux4g-bg-secondary-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-secondary ux4g-text-center ux4g-fw-medium">
+                        Column</div>
+                    <div
+                        class="ux4g-bg-secondary-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-secondary ux4g-text-center ux4g-fw-medium">
+                        Column</div>
+                </div>
+            </div>
+            <div>
+                <p class="ux4g-fs-12 ux4g-fw-bold ux4g-mb-xs ux4g-text-neutral-secondary">12 Columns
+                    (.ux4g-grid-cols-12)</p>
+                <div class="ux4g-grid ux4g-grid-cols-12 ux4g-gap-s">
+                    <div
+                        class="ux4g-bg-neutral-subtle ux4g-hpx-40 ux4g-radius-xs ux4g-border ux4g-border-neutral-subtle">
+                    </div>
+                    <div
+                        class="ux4g-bg-neutral-subtle ux4g-hpx-40 ux4g-radius-xs ux4g-border ux4g-border-neutral-subtle">
+                    </div>
+                    <div
+                        class="ux4g-bg-neutral-subtle ux4g-hpx-40 ux4g-radius-xs ux4g-border ux4g-border-neutral-subtle">
+                    </div>
+                    <div
+                        class="ux4g-bg-neutral-subtle ux4g-hpx-40 ux4g-radius-xs ux4g-border ux4g-border-neutral-subtle">
+                    </div>
+                    <div
+                        class="ux4g-bg-neutral-subtle ux4g-hpx-40 ux4g-radius-xs ux4g-border ux4g-border-neutral-subtle">
+                    </div>
+                    <div
+                        class="ux4g-bg-neutral-subtle ux4g-hpx-40 ux4g-radius-xs ux4g-border ux4g-border-neutral-subtle">
+                    </div>
+                    <div
+                        class="ux4g-bg-neutral-subtle ux4g-hpx-40 ux4g-radius-xs ux4g-border ux4g-border-neutral-subtle">
+                    </div>
+                    <div
+                        class="ux4g-bg-neutral-subtle ux4g-hpx-40 ux4g-radius-xs ux4g-border ux4g-border-neutral-subtle">
+                    </div>
+                    <div
+                        class="ux4g-bg-neutral-subtle ux4g-hpx-40 ux4g-radius-xs ux4g-border ux4g-border-neutral-subtle">
+                    </div>
+                    <div
+                        class="ux4g-bg-neutral-subtle ux4g-hpx-40 ux4g-radius-xs ux4g-border ux4g-border-neutral-subtle">
+                    </div>
+                    <div
+                        class="ux4g-bg-neutral-subtle ux4g-hpx-40 ux4g-radius-xs ux4g-border ux4g-border-neutral-subtle">
+                    </div>
+                    <div
+                        class="ux4g-bg-neutral-subtle ux4g-hpx-40 ux4g-radius-xs ux4g-border ux4g-border-neutral-subtle">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto ux4g-mb-xl">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;!-- 4 Columns --&gt;<br>
+                &lt;div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-m"&gt;...&lt;/div&gt;<br><br>
+                &lt;!-- 12 Columns --&gt;<br>
+                &lt;div class="ux4g-grid ux4g-grid-cols-12 ux4g-gap-s"&gt;...&lt;/div&gt;
+            </code>
+        </div>
+
+        <!-- 3. Grid Rows -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">3. Grid Rows</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Define static grid rows using <span
+                class="ux4g-text-error">ux4g-grid-rows-{n}</span>.</p>
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m">
+            <div class="ux4g-grid ux4g-grid-rows-3 ux4g-grid-cols-2 ux4g-gap-m ux4g-hpx-200">
+                <div
+                    class="ux4g-bg-info-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-info ux4g-d-flex ux4g-ai-center ux4g-jc-center">
+                    Row 1</div>
+                <div
+                    class="ux4g-bg-info-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-info ux4g-d-flex ux4g-ai-center ux4g-jc-center">
+                    Row 1</div>
+                <div
+                    class="ux4g-bg-info-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-info ux4g-d-flex ux4g-ai-center ux4g-jc-center">
+                    Row 2</div>
+                <div
+                    class="ux4g-bg-info-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-info ux4g-d-flex ux4g-ai-center ux4g-jc-center">
+                    Row 2</div>
+                <div
+                    class="ux4g-bg-info-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-info ux4g-d-flex ux4g-ai-center ux4g-jc-center">
+                    Row 3</div>
+                <div
+                    class="ux4g-bg-info-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-info ux4g-d-flex ux4g-ai-center ux4g-jc-center">
+                    Row 3</div>
+            </div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto ux4g-mb-xl">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;div class="ux4g-grid ux4g-grid-rows-3 ux4g-grid-cols-2 ux4g-gap-m"&gt;...&lt;/div&gt;
+            </code>
+        </div>
+
+        <!-- 4. Auto Rows -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">4. Auto Rows</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Control the size of implicit rows using <span
+                class="ux4g-text-error">ux4g-auto-rows-{auto|min|max|fr}</span>.</p>
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m">
+            <div class="ux4g-grid ux4g-grid-cols-2 ux4g-auto-rows-max ux4g-gap-m">
+                <div
+                    class="ux4g-bg-neutral-subtle ux4g-p-xl ux4g-radius-m ux4g-border ux4g-border-neutral-subtle ux4g-text-center">
+                    Short content</div>
+                <div
+                    class="ux4g-bg-neutral-subtle ux4g-p-xl ux4g-radius-m ux4g-border ux4g-border-neutral-subtle ux4g-text-center">
+                    Short content</div>
+                <div
+                    class="ux4g-bg-neutral-subtle ux4g-p-xl ux4g-radius-m ux4g-border ux4g-border-neutral-subtle ux4g-text-center">
+                    Implicit row with Content height (max-content)</div>
+                <div
+                    class="ux4g-bg-neutral-subtle ux4g-p-xl ux4g-radius-m ux4g-border ux4g-border-neutral-subtle ux4g-text-center">
+                    Adjusts based on content</div>
+            </div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto ux4g-mb-xl">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;div class="ux4g-grid ux4g-grid-cols-2 ux4g-auto-rows-max ux4g-gap-m"&gt;...&lt;/div&gt;
+            </code>
+        </div>
+
+        <!-- 5. Span Utilities -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">5. Span Utilities</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Combine column and row spans using <span
+                class="ux4g-text-error">ux4g-span-{n}</span> and <span class="ux4g-text-error">ux4g-row-span-{n}</span>.
+        </p>
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m">
+            <div class="ux4g-grid ux4g-grid-cols-3 ux4g-grid-rows-2 ux4g-gap-m">
+                <div
+                    class="ux4g-span-2 ux4g-bg-warning-soft ux4g-p-xl ux4g-radius-m ux4g-border ux4g-border-warning ux4g-text-center ux4g-fw-bold ux4g-fs-18 ux4g-text-warning-strong">
+                    Span 2 Columns</div>
+                <div
+                    class="ux4g-row-span-2 ux4g-bg-success-soft ux4g-p-xl ux4g-radius-m ux4g-border ux4g-border-success ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-fw-bold ux4g-fs-18 ux4g-text-center ux4g-text-success-strong">
+                    Span 2 Rows</div>
+                <div
+                    class="ux4g-bg-neutral-subtle ux4g-p-xl ux4g-radius-m ux4g-border ux4g-border-neutral-subtle ux4g-text-center ux4g-fw-semibold">
+                    1x1 Item</div>
+                <div
+                    class="ux4g-bg-neutral-subtle ux4g-p-xl ux4g-radius-m ux4g-border ux4g-border-neutral-subtle ux4g-text-center ux4g-fw-semibold">
+                    1x1 Item</div>
+            </div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto ux4g-mb-xl">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;div class="ux4g-span-2"&gt;Span 2 Cols&lt;/div&gt;<br>
+                &lt;div class="ux4g-row-span-2"&gt;Span 2 Rows&lt;/div&gt;
+            </code>
+        </div>
+
+        <!-- 6. Alignment -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">6. Alignment</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Align items globally within the grid container using
+            <span class="ux4g-text-error">ux4g-place-items-{center|start|end}</span>.
+        </p>
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m">
+            <div
+                class="ux4g-grid ux4g-grid-cols-3 ux4g-place-items-center ux4g-gap-m ux4g-bg-neutral-subtle ux4g-p-l ux4g-radius-m ux4g-hpx-150">
+                <div
+                    class="ux4g-bg-error-strong ux4g-text-white ux4g-wpx-60 ux4g-hpx-60 ux4g-radius-full ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-fw-bold ux4g-shadow-m">
+                    1</div>
+                <div
+                    class="ux4g-bg-error-strong ux4g-text-white ux4g-wpx-60 ux4g-hpx-60 ux4g-radius-full ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-fw-bold ux4g-shadow-m">
+                    2</div>
+                <div
+                    class="ux4g-bg-error-strong ux4g-text-white ux4g-wpx-60 ux4g-hpx-60 ux4g-radius-full ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-fw-bold ux4g-shadow-m">
+                    3</div>
+            </div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto ux4g-mb-xl">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;div class="ux4g-grid ux4g-place-items-center"&gt;...&lt;/div&gt;
+            </code>
+        </div>
+
+        <!-- 7. Auto Fit (Responsive Layout) -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">7. Auto Fit (Responsive Layout)</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Create fully responsive masonry-style grids using
+            <span class="ux4g-text-error">ux4g-grid-auto-fit-{width}</span>. Items will automatically wrap as space
+            decreases.
+        </p>
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m">
+            <p class="ux4g-fs-12 ux4g-fw-bold ux4g-mb-xs ux4g-text-neutral-secondary">Responsive Auto-fit
+                (.ux4g-grid-auto-fit-250)</p>
+            <div class="ux4g-grid ux4g-grid-auto-fit-250 ux4g-gap-m">
+                <div
+                    class="ux4g-bg-primary-strong ux4g-text-white ux4g-p-2xl ux4g-radius-l ux4g-shadow-l1 ux4g-text-center">
+                    <h3 class="ux4g-fs-18 ux4g-mb-xs">Module A</h3>
+                    <p class="ux4g-fs-12 ux4g-opacity-75">Resizes automatically</p>
+                </div>
+                <div
+                    class="ux4g-bg-primary-strong ux4g-text-white ux4g-p-2xl ux4g-radius-l ux4g-shadow-l1 ux4g-text-center">
+                    <h3 class="ux4g-fs-18 ux4g-mb-xs">Module B</h3>
+                    <p class="ux4g-fs-12 ux4g-opacity-75">Resizes automatically</p>
+                </div>
+                <div
+                    class="ux4g-bg-primary-strong ux4g-text-white ux4g-p-2xl ux4g-radius-l ux4g-shadow-l1 ux4g-text-center">
+                    <h3 class="ux4g-fs-18 ux4g-mb-xs">Module C</h3>
+                    <p class="ux4g-fs-12 ux4g-opacity-75">Resizes automatically</p>
+                </div>
+            </div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto ux4g-mb-xl">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;div class="ux4g-grid ux4g-grid-auto-fit-250 ux4g-gap-m"&gt;...&lt;/div&gt;
+            </code>
+        </div>
+
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle ux4g-mt-xl">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML Examples</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;!-- 1. Grid Base --&gt;<br>
+                &lt;div class="ux4g-grid ux4g-grid-cols-3 ux4g-gap-m"&gt;...&lt;/div&gt;<br><br>
+                &lt;!-- 2. Columns & Spans --&gt;<br>
+                &lt;div class="ux4g-span-2"&gt;...&lt;/div&gt;<br><br>
+                &lt;!-- 3. Auto Fit (Responsive) --&gt;<br>
+                &lt;div class="ux4g-grid ux4g-grid-auto-fit-250"&gt;...&lt;/div&gt;
+            </code>
+        </div>
+    </div>
+
+    <!-- Flex Grid System -->
+    <div id="flex-grid"
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <h1 class="ux4g-fs-32 ux4g-fw-bold ux4g-mb-m">Flex Grid System</h1>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl">A traditional 12-column layout system built with Flexbox. It
+            supports auto-layout, column wrapping, offsets, and row-based column sizing.</p>
+
+        <!-- 1. Basic Columns -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">1. Basic Columns</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Use <span class="ux4g-text-error">ux4g-row</span> as
+            a container and <span class="ux4g-text-error">ux4g-col-{n}</span> for variable widths.</p>
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m">
+            <div class="ux4g-row ux4g-gutter-m">
+                <div class="ux4g-col-4">
+                    <div
+                        class="ux4g-bg-primary-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-primary ux4g-text-center ux4g-fw-bold">
+                        ux4g-col-4</div>
+                </div>
+                <div class="ux4g-col-8">
+                    <div
+                        class="ux4g-bg-primary-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-primary ux4g-text-center ux4g-fw-bold">
+                        ux4g-col-8</div>
+                </div>
+            </div>
+            <div class="ux4g-row ux4g-gutter-m ux4g-mt-m">
+                <div class="ux4g-col-3">
+                    <div
+                        class="ux4g-bg-secondary-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-secondary ux4g-text-center ux4g-fw-bold">
+                        ux4g-col-3</div>
+                </div>
+                <div class="ux4g-col-6">
+                    <div
+                        class="ux4g-bg-secondary-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-secondary ux4g-text-center ux4g-fw-bold">
+                        ux4g-col-6</div>
+                </div>
+                <div class="ux4g-col-3">
+                    <div
+                        class="ux4g-bg-secondary-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-secondary ux4g-text-center ux4g-fw-bold">
+                        ux4g-col-3</div>
+                </div>
+            </div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto ux4g-mb-xl">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;div class="ux4g-row"&gt;<br>
+                &nbsp;&nbsp;&lt;div class="ux4g-col-4"&gt;...&lt;/div&gt;<br>
+                &nbsp;&nbsp;&lt;div class="ux4g-col-8"&gt;...&lt;/div&gt;<br>
+                &lt;/div&gt;
+            </code>
+        </div>
+
+        <!-- 2. Auto-Layout -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">2. Auto-Layout</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Use <span class="ux4g-text-error">ux4g-col</span> to
+            evenly distribute space or <span class="ux4g-text-error">ux4g-col-auto</span> to fit content.</p>
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m">
+            <div class="ux4g-row ux4g-gutter-m">
+                <div class="ux4g-col">
+                    <div
+                        class="ux4g-bg-info-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-info ux4g-text-center ux4g-fw-bold">
+                        Equal Width</div>
+                </div>
+                <div class="ux4g-col">
+                    <div
+                        class="ux4g-bg-info-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-info ux4g-text-center ux4g-fw-bold">
+                        Equal Width</div>
+                </div>
+                <div class="ux4g-col">
+                    <div
+                        class="ux4g-bg-info-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-info ux4g-text-center ux4g-fw-bold">
+                        Equal Width</div>
+                </div>
+            </div>
+            <div class="ux4g-row ux4g-gutter-m ux4g-mt-m">
+                <div class="ux4g-col-auto">
+                    <div
+                        class="ux4g-bg-info-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-info ux4g-text-center ux4g-fw-bold">
+                        Auto Width (Content)</div>
+                </div>
+                <div class="ux4g-col">
+                    <div
+                        class="ux4g-bg-info-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-info ux4g-text-center ux4g-fw-bold">
+                        Remaining Space</div>
+                </div>
+            </div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto ux4g-mb-xl">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;div class="ux4g-col"&gt;...&lt;/div&gt; &lt;!-- Equal width --&gt;<br>
+                &lt;div class="ux4g-col-auto"&gt;...&lt;/div&gt; &lt;!-- Content width --&gt;
+            </code>
+        </div>
+
+        <!-- 3. Offsets -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">3. Column Offsets</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Move columns to the right using <span
+                class="ux4g-text-error">ux4g-offset-{n}</span>.</p>
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m">
+            <div class="ux4g-row ux4g-gutter-m">
+                <div class="ux4g-col-4">
+                    <div
+                        class="ux4g-bg-warning-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-warning ux4g-text-center ux4g-fw-bold">
+                        Col 4</div>
+                </div>
+                <div class="ux4g-col-4 ux4g-offset-4">
+                    <div
+                        class="ux4g-bg-warning-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-warning ux4g-text-center ux4g-fw-bold">
+                        Col 4 (Offset 4)</div>
+                </div>
+            </div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto ux4g-mb-xl">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;div class="ux4g-col-4 ux4g-offset-4"&gt;...&lt;/div&gt;
+            </code>
+        </div>
+
+        <!-- 4. Row Columns -->
+        <h2 class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-s ux4g-mt-xl">4. Row Columns</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-m ux4g-fs-14">Control number of items per row globally using <span
+                class="ux4g-text-error">ux4g-row-cols-{n}</span>.</p>
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl ux4g-mb-m">
+            <div class="ux4g-row ux4g-row-cols-3 ux4g-gutter-m">
+                <div class="ux4g-col">
+                    <div
+                        class="ux4g-bg-success-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-success ux4g-text-center ux4g-fw-bold">
+                        Item 1</div>
+                </div>
+                <div class="ux4g-col">
+                    <div
+                        class="ux4g-bg-success-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-success ux4g-text-center ux4g-fw-bold">
+                        Item 2</div>
+                </div>
+                <div class="ux4g-col">
+                    <div
+                        class="ux4g-bg-success-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-success ux4g-text-center ux4g-fw-bold">
+                        Item 3</div>
+                </div>
+                <div class="ux4g-col">
+                    <div
+                        class="ux4g-bg-success-soft ux4g-p-m ux4g-radius-m ux4g-border ux4g-border-success ux4g-text-center ux4g-fw-bold">
+                        Item 4</div>
+                </div>
+            </div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;div class="ux4g-row ux4g-row-cols-3"&gt;...&lt;/div&gt;
+            </code>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="ux4g-bg-primary-soft ux4g-p-xl ux4g-mb-3xl ux4g-radius-l ux4g-border ux4g-border-primary ux4g-mx-xl">
+        <h1 class="ux4g-fs-40 ux4g-fw-bold ux4g-mb-m ux4g-text-center">Utilities</h1>
+    </div>
+
+    <!-- Borders Section -->
+    <div id="borders-section"
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <h1 class="ux4g-fs-32 ux4g-fw-bold ux4g-mb-m">Borders</h1>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl">Comprehensive set of border utility classes including width,
+            radius, color, and side-specific variations.</p>
+
+        <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-l">
+            <!-- Border Width & Radius Variations -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl">
+                <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Border Width & Radius Variations
+                </div>
+
+                <p class="ux4g-fs-12 ux4g-fw-bold ux4g-mb-s ux4g-text-neutral-secondary">Basic Borders</p>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-m ux4g-mb-xl ux4g-ai-center">
+                    <div class="ux4g-p-s ux4g-border ux4g-text-center ux4g-bg-neutral-subtle ux4g-radius-s">Default
+                    </div>
+                    <div class="ux4g-p-s ux4g-border-bold ux4g-text-center ux4g-bg-neutral-subtle ux4g-radius-s">Bold
+                    </div>
+                </div>
+
+                <p class="ux4g-fs-12 ux4g-fw-bold ux4g-mb-s ux4g-text-neutral-secondary">Button Border Radius</p>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-m">
+                    <button class="ux4g-border ux4g-border-primary ux4g-radius-full ux4g-p-s ux4g-fs-12">Radius
+                        Full</button>
+                    <button class="ux4g-border-bold ux4g-border-primary ux4g-radius-l ux4g-p-s ux4g-fs-12">Radius
+                        L</button>
+                    <button class="ux4g-border ux4g-border-primary ux4g-radius-m ux4g-p-s ux4g-fs-12">Radius M</button>
+                    <button class="ux4g-border ux4g-border-primary ux4g-radius-s ux4g-p-s ux4g-fs-12">Radius S</button>
+                </div>
+            </div>
+
+            <!-- Border Colors -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl">
+                <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Border Colors</div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-m ux4g-text-center">
+                    <div class="ux4g-p-s ux4g-border ux4g-border-primary ux4g-radius-s ux4g-fs-12">Primary</div>
+                    <div class="ux4g-p-s ux4g-border ux4g-border-primary-strong ux4g-radius-s ux4g-fs-12">Primary Strong
+                    </div>
+                    <div class="ux4g-p-s ux4g-border ux4g-border-secondary ux4g-radius-s ux4g-fs-12">Secondary</div>
+                    <div class="ux4g-p-s ux4g-border ux4g-border-tertiary ux4g-radius-s ux4g-fs-12">Tertiary</div>
+                    <div class="ux4g-p-s ux4g-border ux4g-border-success ux4g-radius-s ux4g-fs-12">Success</div>
+                    <div class="ux4g-p-s ux4g-border ux4g-border-success-strong ux4g-radius-s ux4g-fs-12">Success Strong
+                    </div>
+                    <div class="ux4g-p-s ux4g-border ux4g-border-error ux4g-radius-s ux4g-fs-12">Error</div>
+                    <div class="ux4g-p-s ux4g-border ux4g-border-error-strong ux4g-radius-s ux4g-fs-12">Error Strong
+                    </div>
+                    <div class="ux4g-p-s ux4g-border ux4g-border-info ux4g-radius-s ux4g-fs-12">Info</div>
+                    <div class="ux4g-p-s ux4g-border ux4g-border-info-strong ux4g-radius-s ux4g-fs-12">Info Strong</div>
+                    <div class="ux4g-p-s ux4g-border ux4g-border-neutral-strong ux4g-radius-s ux4g-fs-12">Neutral Strong
+                    </div>
+                    <div class="ux4g-p-s ux4g-border ux4g-border-neutral-subtle ux4g-radius-s ux4g-fs-12">Neutral Subtle
+                    </div>
+                </div>
+            </div>
+
+            <!-- Border Radius Side (4x4 Grid) -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl">
+                <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Border Radius Side (4x4 Grid)</div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-m">
+                    <!-- Row 1: Top -->
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-top-full ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Top Full</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-top-l ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Top L</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-top-m ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Top M</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-top-s ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Top S</div>
+                    <!-- Row 2: Bottom -->
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-bottom-full ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Bottom Full</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-bottom-l ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Bottom L</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-bottom-m ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Bottom M</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-bottom-s ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Bottom S</div>
+                    <!-- Row 3: Left -->
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-left-full ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Left Full</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-left-l ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Left L</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-left-m ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Left M</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-left-s ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Left S</div>
+                    <!-- Row 4: Right -->
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-right-full ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Right Full</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-right-l ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Right L</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-right-m ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Right M</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-right-s ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        Right S</div>
+                </div>
+            </div>
+
+            <!-- Border Radius Individual (4x4 Grid) -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl">
+                <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Border Radius Individual (4x4 Grid)
+                </div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-m">
+                    <!-- Row 1: TL -->
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-tl-full ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        TL Full</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-tl-l ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        TL L</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-tl-m ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        TL M</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-tl-s ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        TL S</div>
+                    <!-- Row 2: TR -->
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-tr-full ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        TR Full</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-tr-l ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        TR L</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-tr-m ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        TR M</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-tr-s ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        TR S</div>
+                    <!-- Row 3: BL -->
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-bl-full ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        BL Full</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-bl-l ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        BL L</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-bl-m ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        BL M</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-bl-s ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        BL S</div>
+                    <!-- Row 4: BR -->
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-br-full ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        BR Full</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-br-l ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        BR L</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-br-m ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        BR M</div>
+                    <div
+                        class="ux4g-p-m ux4g-border ux4g-radius-br-s ux4g-bg-neutral-subtle ux4g-text-center ux4g-fs-12">
+                        BR S</div>
+                </div>
+            </div>
+
+            <div class="ux4g-grid ux4g-grid-cols-2 ux4g-gap-xl">
+                <!-- Side Borders -->
+                <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl">
+                    <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Side Borders</div>
+                    <div class="ux4g-grid ux4g-grid-cols-2 ux4g-gap-m">
+                        <div class="ux4g-p-s ux4g-bt ux4g-border-primary ux4g-bg-neutral-subtle ux4g-text-center">Top
+                            Only</div>
+                        <div class="ux4g-p-s ux4g-br ux4g-border-primary ux4g-bg-neutral-subtle ux4g-text-center">End
+                            Only</div>
+                        <div class="ux4g-p-s ux4g-bb ux4g-border-primary ux4g-bg-neutral-subtle ux4g-text-center">Bottom
+                            Only</div>
+                        <div class="ux4g-p-s ux4g-bl ux4g-border-primary ux4g-bg-neutral-subtle ux4g-text-center">Start
+                            Only</div>
+                    </div>
+                </div>
+
+                <!-- Subtractive Borders -->
+                <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-xl">
+                    <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Remove Borders</div>
+                    <div class="ux4g-grid ux4g-grid-cols-2 ux4g-gap-m">
+                        <div class="ux4g-p-s ux4g-border ux4g-bt-0 ux4g-bg-neutral-subtle ux4g-text-center">No Top</div>
+                        <div class="ux4g-p-s ux4g-border-bold ux4g-bl-0 ux4g-bg-neutral-subtle ux4g-text-center">No
+                            Start</div>
+                        <div class="ux4g-p-s ux4g-border-bold ux4g-br-0 ux4g-bg-neutral-subtle ux4g-text-center">No End
+                        </div>
+                        <div class="ux4g-p-s ux4g-border-bold ux4g-bb-0 ux4g-bg-neutral-subtle ux4g-text-center">No
+                            Bottom</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle ux4g-mt-2xl">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML Examples</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;!-- Basic Borders --&gt;<br>
+                &lt;div class="ux4g-border"&gt;...&lt;/div&gt;<br>
+                &lt;div class="ux4g-border-bold"&gt;...&lt;/div&gt;<br><br>
+                
+                &lt;!-- Radius Variants --&gt;<br>
+                &lt;div class="ux4g-radius-l"&gt;...&lt;/div&gt;<br>
+                &lt;div class="ux4g-radius-top-full"&gt;...&lt;/div&gt;<br><br>
+
+                &lt;!-- Border Colors --&gt;<br>
+                &lt;div class="ux4g-border ux4g-border-primary"&gt;...&lt;/div&gt;
+            </code>
+        </div>
+    </div>
+
+    <!-- Backgrounds Section -->
+    <div id="backgrounds-section"
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <h1 class="ux4g-fs-32 ux4g-fw-bold ux4g-mb-m">Backgrounds</h1>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl">A complete set of background color utilities for surfaces,
+            containers, and status-based components.</p>
+
+        <div class="ux4g-grid ux4g-grid-cols-2 ux4g-gap-xl">
+            <!-- Neutral Backgrounds -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Neutral</div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-s">
+                    <div
+                        class="ux4g-bg-neutral ux4g-hpx-60 ux4g-radius-s ux4g-border ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Base</div>
+                    <div
+                        class="ux4g-bg-neutral-subtle ux4g-hpx-60 ux4g-radius-s ux4g-border ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Subtle</div>
+                    <div
+                        class="ux4g-bg-neutral-emphasis ux4g-hpx-60 ux4g-radius-s ux4g-border ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Emphasis</div>
+                    <div
+                        class="ux4g-bg-neutral-strong ux4g-hpx-60 ux4g-radius-s ux4g-border ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Strong</div>
+                    <div
+                        class="ux4g-bg-neutral-stronger ux4g-hpx-60 ux4g-radius-s ux4g-border ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Stronger</div>
+                </div>
+            </div>
+
+            <!-- Primary Backgrounds -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Primary</div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-s">
+                    <div
+                        class="ux4g-bg-primary ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Base</div>
+                    <div
+                        class="ux4g-bg-primary-soft ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Soft</div>
+                    <div
+                        class="ux4g-bg-primary-subtle ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Subtle</div>
+                    <div
+                        class="ux4g-bg-primary-emphasis ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Emph.</div>
+                    <div
+                        class="ux4g-bg-primary-strong ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Strong</div>
+                    <div
+                        class="ux4g-bg-primary-stronger ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Stronger</div>
+                </div>
+            </div>
+
+            <!-- Secondary Backgrounds -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Secondary</div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-s">
+                    <div
+                        class="ux4g-bg-secondary ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Base</div>
+                    <div
+                        class="ux4g-bg-secondary-soft ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Soft</div>
+                    <div
+                        class="ux4g-bg-secondary-subtle ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Subtle</div>
+                    <div
+                        class="ux4g-bg-secondary-emphasis ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Emph.</div>
+                    <div
+                        class="ux4g-bg-secondary-strong ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Strong</div>
+                </div>
+            </div>
+
+            <!-- Tertiary Backgrounds -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Tertiary</div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-s">
+                    <div
+                        class="ux4g-bg-tertiary ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Base</div>
+                    <div
+                        class="ux4g-bg-tertiary-soft ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Soft</div>
+                    <div
+                        class="ux4g-bg-tertiary-subtle ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Subtle</div>
+                    <div
+                        class="ux4g-bg-tertiary-emphasis ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Emph.</div>
+                    <div
+                        class="ux4g-bg-tertiary-strong ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Strong</div>
+                </div>
+            </div>
+
+            <!-- Success Backgrounds -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Success</div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-s">
+                    <div
+                        class="ux4g-bg-success ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Base</div>
+                    <div
+                        class="ux4g-bg-success-soft ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Soft</div>
+                    <div
+                        class="ux4g-bg-success-subtle ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Subtle</div>
+                    <div
+                        class="ux4g-bg-success-emphasis ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Emph.</div>
+                    <div
+                        class="ux4g-bg-success-strong ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Strong</div>
+                </div>
+            </div>
+
+            <!-- Error Backgrounds -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Error</div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-s">
+                    <div
+                        class="ux4g-bg-error ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Base</div>
+                    <div
+                        class="ux4g-bg-error-soft ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Soft</div>
+                    <div
+                        class="ux4g-bg-error-subtle ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Subtle</div>
+                    <div
+                        class="ux4g-bg-error-emphasis ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Emph.</div>
+                    <div
+                        class="ux4g-bg-error-strong ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Strong</div>
+                </div>
+            </div>
+
+            <!-- Warning Backgrounds -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Warning</div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-s">
+                    <div
+                        class="ux4g-bg-warning ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Base</div>
+                    <div
+                        class="ux4g-bg-warning-soft ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Soft</div>
+                    <div
+                        class="ux4g-bg-warning-subtle ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Subtle</div>
+                    <div
+                        class="ux4g-bg-warning-emphasis ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Emph.</div>
+                    <div
+                        class="ux4g-bg-warning-strong ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Strong</div>
+                </div>
+            </div>
+
+            <!-- Info Backgrounds -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Info</div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-s">
+                    <div
+                        class="ux4g-bg-info ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Base</div>
+                    <div
+                        class="ux4g-bg-info-soft ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Soft</div>
+                    <div
+                        class="ux4g-bg-info-subtle ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10">
+                        Subtle</div>
+                    <div
+                        class="ux4g-bg-info-emphasis ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Emph.</div>
+                    <div
+                        class="ux4g-bg-info-strong ux4g-hpx-60 ux4g-radius-s ux4g-d-flex ux4g-ai-end ux4g-p-2xs ux4g-fs-10 ux4g-text-white">
+                        Strong</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HTML Examples -->
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle ux4g-mt-2xl">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML Examples</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;!-- Surface Backgrounds --&gt;<br>
+                &lt;div class="ux4g-bg-neutral"&gt;...&lt;/div&gt;<br>
+                &lt;div class="ux4g-bg-neutral-subtle"&gt;...&lt;/div&gt;<br><br>
+                
+                &lt;!-- Brand Backgrounds --&gt;<br>
+                &lt;div class="ux4g-bg-primary"&gt;...&lt;/div&gt;<br>
+                &lt;div class="ux4g-bg-primary-soft"&gt;...&lt;/div&gt;<br><br>
+
+                &lt;!-- Status Backgrounds --&gt;<br>
+                &lt;div class="ux4g-bg-success-soft"&gt;...&lt;/div&gt;<br>
+                &lt;div class="ux4g-bg-error-emphasis"&gt;...&lt;/div&gt;
+            </code>
+        </div>
+    </div>
+
+    <!-- Text Colors Section -->
+    <div id="text-colors-section"
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <h1 class="ux4g-fs-32 ux4g-fw-bold ux4g-mb-m">Text Colors</h1>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl">Typography color utilities for standardizing text content and
+            interactive links.</p>
+
+        <div class="ux4g-grid ux4g-grid-cols-2 ux4g-gap-xl">
+            <!-- Neutral Text -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Neutral Text</div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-s">
+                    <div class="ux4g-text-neutral-primary"> Neutral Primary</div>
+                    <div class="ux4g-text-neutral-secondary">Neutral secondary</div>
+                    <div class="ux4g-text-neutral-tertiary"> Neutral tertiary</div>
+                    <div class="ux4g-text-neutral-inverse ux4g-bg-error-subtle">Neutral inverse</div>
+                </div>
+            </div>
+
+            <!-- Brand Text -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Brand Text</div>
+                <div class="ux4g-grid ux4g-grid-cols-3 ux4g-gap-s">
+                    <div class="ux4g-text-primary"> Primary</div>
+                    <div class="ux4g-text-secondary"> secondary</div>
+                    <div class="ux4g-text-tertiary"> tertiary</div>
+                </div>
+            </div>
+
+            <!-- Status Text -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Status Text</div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-s">
+                    <div class="ux4g-text-success"> text success</div>
+                    <div class="ux4g-text-error"> text error</div>
+                    <div class="ux4g-text-info"> text info</div>
+                    <div class="ux4g-text-warning"> text warning</div>
+                </div>
+            </div>
+
+            <!-- Link Text -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Link Styles</div>
+                <div class="ux4g-grid ux4g-grid-cols-4 ux4g-gap-s">
+
+                    <a class="ux4g-text-link" href="javascript:void(0)" target="_blank">Default</a>
+
+
+                    <a class="ux4g-text-link-neutral" href="javascript:void(0)" target="_blank">Neutral</a>
+
+
+                    <a class="ux4g-text-link-visited" href="javascript:void(0)" target="_blank">Visited</a>
+
+
+                    <a class="ux4g-text-link-disabled" href="javascript:void(0)">Disabled</a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- HTML Examples -->
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle ux4g-mt-2xl">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML Examples</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;!-- Neutral Text --&gt;<br>
+                &lt;div class="ux4g-text-neutral-primary"&gt;...&lt;/div&gt;<br>
+                &lt;div class="ux4g-text-neutral-secondary"&gt;...&lt;/div&gt;<br><br>
+                
+                &lt;!-- Status Text --&gt;<br>
+                &lt;div class="ux4g-text-error"&gt;...&lt;/div&gt;<br>
+                &lt;div class="ux4g-text-success"&gt;...&lt;/div&gt;<br><br>
+
+                &lt;!-- Links --&gt;<br>
+                &lt;a href="#" class="ux4g-text-link"&gt;...&lt;/a&gt;
+            </code>
+        </div>
+    </div>
+
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+        <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Spacing (Padding and Margin)</div>
+        <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+            <!-- Padding Base All -->
+            <div class="ux4g-p-m ux4g-bg-neutral-subtle ux4g-radius-l">
+                <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-m">All Padding Base Classes (.ux4g-p-*)</div>
+                <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-s">
+                    <div class="ux4g-d-flex ux4g-ai-center ux4g-stack-gap-m">
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-p-none ux4g-radius-s">
+                            p-none</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-p-2xs ux4g-radius-s">
+                            p-2xs</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-p-xs ux4g-radius-s">
+                            p-xs</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-p-s ux4g-radius-s">p-s
+                        </div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-p-m ux4g-radius-s">p-m
+                        </div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-p-l ux4g-radius-s">p-l
+                        </div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-p-xl ux4g-radius-s">
+                            p-xl</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-p-2xl ux4g-radius-s">
+                            p-2xl</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Margin Base All -->
+            <div class="ux4g-p-m ux4g-bg-neutral-subtle ux4g-radius-l">
+                <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-m">All Margin Base Classes (.ux4g-m-*)</div>
+                <div
+                    class="ux4g-bg-neutral ux4g-p-m ux4g-radius-m ux4g-d-flex ux4g-flex-wrap ux4g-jc-start ux4g-ai-center">
+                    <div
+                        class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-m-none ux4g-p-xs ux4g-radius-s">
+                        m-none</div>
+                    <div
+                        class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-m-2xs ux4g-p-xs ux4g-radius-s">
+                        m-2xs</div>
+                    <div class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-m-xs ux4g-p-xs ux4g-radius-s">
+                        m-xs</div>
+                    <div class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-m-s ux4g-p-xs ux4g-radius-s">
+                        m-s</div>
+                    <div class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-m-m ux4g-p-xs ux4g-radius-s">
+                        m-m</div>
+                    <div class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-m-l ux4g-p-xs ux4g-radius-s">
+                        m-l</div>
+                    <div class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-m-xl ux4g-p-xs ux4g-radius-s">
+                        m-xl</div>
+                    <div
+                        class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-m-2xl ux4g-p-xs ux4g-radius-s">
+                        m-2xl</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+        <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Spacing (Padding with axis)</div>
+        <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+            <!-- Padding Axis -->
+            <div class="ux4g-p-m ux4g-bg-neutral-subtle ux4g-radius-l">
+                <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-m">Padding Axis: Horizontal (px) and Vertical (py)</div>
+                <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+                    <div class="ux4g-fs-12 ux4g-fw-bold ux4g-text-neutral-secondary ux4g-mb-xs">Horizontal Padding
+                        (.ux4g-px-*)</div>
+                    <div class="ux4g-d-flex ux4g-jc-start ux4g-ai-center ux4g-flex-wrap ux4g-gap-s">
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-px-none ux4g-radius-s">
+                            px-none</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-px-2xs ux4g-radius-s">
+                            px-2xs</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-px-xs ux4g-radius-s">
+                            px-xs</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-px-s ux4g-radius-s">
+                            px-s</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-px-m ux4g-radius-s">
+                            px-m</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-px-l ux4g-radius-s">
+                            px-l</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-px-xl ux4g-radius-s">
+                            px-xl</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-px-2xl ux4g-radius-s">
+                            px-2xl</div>
+                    </div>
+                    <div class="ux4g-fs-12 ux4g-fw-bold ux4g-text-neutral-secondary ux4g-mb-xs">Vertical Padding
+                        (.ux4g-py-*)</div>
+                    <div class="ux4g-d-flex ux4g-jc-start ux4g-ai-end ux4g-flex-wrap ux4g-gap-s">
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-py-none ux4g-radius-s">
+                            py-none</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-py-2xs ux4g-radius-s">
+                            py-2xs</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-py-xs ux4g-radius-s">
+                            py-xs</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-py-s ux4g-radius-s">
+                            py-s</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-py-m ux4g-radius-s">
+                            py-m</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-py-l ux4g-radius-s">
+                            py-l</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-py-xl ux4g-radius-s">
+                            py-xl</div>
+                        <div class="ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-py-2xl ux4g-radius-s">
+                            py-2xl</div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+        <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Spacing ( Margin with axis)</div>
+        <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+
+
+            <!-- Margin Axis -->
+            <div class="ux4g-p-m ux4g-bg-neutral-subtle ux4g-radius-l">
+                <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-m">Margin Axis: Horizontal (mx) and Vertical (my)</div>
+                <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+                    <div class="ux4g-fs-12 ux4g-fw-bold ux4g-text-neutral-secondary ux4g-mb-xs">Horizontal Margin
+                        (.ux4g-mx-*)</div>
+                    <div
+                        class="ux4g-bg-neutral ux4g-p-m ux4g-radius-l ux4g-d-flex ux4g-jc-start ux4g-ai-center ux4g-flex-wrap">
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-mx-none ux4g-p-xs ux4g-radius-s">
+                            mx-none</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-mx-2xs ux4g-p-xs ux4g-radius-s">
+                            mx-2xs</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-mx-xs ux4g-p-xs ux4g-radius-s">
+                            mx-xs</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-mx-s ux4g-p-xs ux4g-radius-s">
+                            mx-s</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-mx-m ux4g-p-xs ux4g-radius-s">
+                            mx-m</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-mx-l ux4g-p-xs ux4g-radius-s">
+                            mx-l</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-mx-xl ux4g-p-xs ux4g-radius-s">
+                            mx-xl</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-mx-2xl ux4g-p-xs ux4g-radius-s">
+                            mx-2xl</div>
+                    </div>
+                    <div class="ux4g-fs-12 ux4g-fw-bold ux4g-text-neutral-secondary ux4g-mb-xs">Vertical Margin
+                        (.ux4g-my-*)</div>
+                    <div
+                        class="ux4g-bg-neutral ux4g-p-m ux4g-radius-l ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-my-none ux4g-p-xs ux4g-radius-s">
+                            my-none</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-my-2xs ux4g-p-xs ux4g-radius-s">
+                            my-2xs</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-my-xs ux4g-p-xs ux4g-radius-s">
+                            my-xs</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-my-s ux4g-p-xs ux4g-radius-s">
+                            my-s</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-my-m ux4g-p-xs ux4g-radius-s">
+                            my-m</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-my-l ux4g-p-xs ux4g-radius-s">
+                            my-l</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-my-xl ux4g-p-xs ux4g-radius-s">
+                            my-xl</div>
+                        <div
+                            class="ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-my-2xl ux4g-p-xs ux4g-radius-s">
+                            my-2xl</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+        <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Auto Margins (Alignment)</div>
+        <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+            <div class="ux4g-p-m ux4g-bg-neutral-subtle ux4g-radius-l">
+                <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-m">Flexbox Alignment Strategies</div>
+                <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+                    <!-- mx-auto -->
+                    <div>
+                        <div class="ux4g-fs-12 ux4g-fw-bold ux4g-mb-xs ux4g-text-neutral-primary">Horizontal Center
+                            (.ux4g-mx-auto)</div>
+                        <div class="ux4g-d-flex ux4g-bg-neutral ux4g-p-s ux4g-radius-m">
+                            <div
+                                class="ux4g-bg-primary-stronger ux4g-text-neutral-inverse ux4g-p-xs ux4g-radius-s ux4g-mx-auto">
+                                mx-auto</div>
+                        </div>
+                    </div>
+                    <!-- ml-auto -->
+                    <div>
+                        <div class="ux4g-fs-12 ux4g-fw-bold ux4g-mb-xs ux4g-text-neutral-secondary">Push to End
+                            (.ux4g-ml-auto)</div>
+                        <div class="ux4g-d-flex ux4g-bg-neutral ux4g-p-s ux4g-radius-m">
+                            <div class="ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-p-xs ux4g-radius-s">
+                                Start</div>
+                            <div
+                                class="ux4g-bg-error-strong ux4g-text-neutral-inverse ux4g-p-xs ux4g-radius-s ux4g-ml-auto">
+                                ml-auto</div>
+                        </div>
+                    </div>
+                    <!-- mr-auto -->
+                    <div>
+                        <div class="ux4g-fs-12 ux4g-fw-bold ux4g-mb-xs ux4g-text-neutral-secondary ux4g-text-end">
+                            Push to Start (.ux4g-mr-auto)</div>
+                        <div class="ux4g-d-flex ux4g-bg-neutral ux4g-p-s ux4g-radius-m">
+                            <div
+                                class="ux4g-bg-info-strong ux4g-text-neutral-inverse ux4g-p-xs ux4g-radius-s ux4g-mr-auto">
+                                mr-auto</div>
+                            <div class="ux4g-bg-error-strong ux4g-text-neutral-inverse ux4g-p-xs ux4g-radius-s">End
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Typography Utilities -->
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Typography (Scale & Transform)</div>
+        <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xl">
+            <!-- Heading Scale -->
+            <div class="ux4g-p-l ux4g-bg-neutral-subtle ux4g-radius-l">
+                <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-m ux4g-text-neutral-secondary">HEADINGS SCALE</div>
+                <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+                    <div class="ux4g-fs-60 ux4g-lh-80 ux4g-fw-d-bold">Display 60px</div>
+                    <div class="ux4g-fs-40 ux4g-lh-52 ux4g-fw-bold">Heading 40px</div>
+                    <div class="ux4g-fs-32 ux4g-lh-36 ux4g-fw-semibold">Heading 32px</div>
+                    <div class="ux4g-fs-24 ux4g-lh-32 ux4g-fw-medium">Heading 24px </div>
+                    <div class="ux4g-fs-16 ux4g-lh-24 ux4g-fw-regular">Body 16px</div>
+                </div>
+            </div>
+
+            <!-- Text Transforms -->
+            <div class="ux4g-p-l ux4g-my-xl ux4g-bg-neutral-subtle ux4g-radius-l">
+                <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-m ux4g-text-neutral-secondary">TEXT TRANSFORMS</div>
+                <div class="ux4g-d-flex ux4g-ai-center ux4g-gap-xl ux4g-flex-wrap">
+                    <div class="ux4g-text-lowercase ux4g-fs-24">LOWERCASE TEXT</div>
+                    <div class="ux4g-text-uppercase ux4g-fs-24">uppercase text</div>
+                    <div class="ux4g-text-capitalize ux4g-fs-24">capitalize text</div>
+                </div>
+            </div>
+
+            <!-- Weights & Families -->
+            <div class="ux4g-p-l ux4g-bg-neutral-subtle ux4g-radius-l">
+                <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-m ux4g-text-neutral-secondary">WEIGHTS & FAMILIES</div>
+                <div class="ux4g-d-flex ux4g-jc-start ux4g-ai-center ux4g-flex-wrap ux4g-gap-xl">
+                    <div class="ux4g-ff-base ux4g-fw-regular ux4g-fs-18">Base regular</div>
+                    <div class="ux4g-ff-base ux4g-fw-bold ux4g-fs-18">Base bold</div>
+                    <div class="ux4g-ff-display ux4g-fw-d-bold ux4g-fs-18">Display bold</div>
+                    <div class="ux4g-ff-display ux4g-fw-d-semibold ux4g-fs-18">Display semibold</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+        <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Blur / Filter</div>
+        <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-s ux4g-ai-center">
+            <div class="ux4g-blur-0">Blur 0</div>
+            <div class="ux4g-blur-1">Blur 1</div>
+            <div class="ux4g-blur-2">Blur 2</div>
+            <div class="ux4g-blur-3">Blur 3</div>
+            <div class="ux4g-blur-4">Blur 4</div>
+        </div>
+    </div>
+
+    <!-- Position System Section -->
+    <div id="position-system" class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <h1 class="ux4g-fs-32 ux4g-fw-bold ux4g-mb-m">Position</h1>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl">Utilities for configuring the positioning behavior of elements, particularly useful for headers, footers, and sticky components.</p>
+
+        <div class="ux4g-grid ux4g-grid-cols-2 ux4g-gap-xl">
+            <!-- Fixed Top Demo (Simulated visual for docs) -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Fixed Top</div>
+                <div class="ux4g-relative ux4g-w-full ux4g-hpx-150 ux4g-bg-neutral-subtle ux4g-radius-m ux4g-o-hidden ux4g-border ux4g-border-neutral-subtle">
+                    <!-- Note: Using absolute to visually simulate 'fixed' behavior within this bounding box -->
+                    <div class="ux4g-absolute ux4g-top-0 ux4g-start-0 ux4g-w-full ux4g-bg-primary-stronger ux4g-p-s ux4g-text-white ux4g-text-center ux4g-fs-12 ux4g-fw-bold ux4g-z-1">
+                        Fixed Top (.ux4g-fixed-top)
+                    </div>
+                    <div class="ux4g-p-m ux4g-pt-2xl ux4g-fs-12 ux4g-text-neutral-secondary">
+                        Locks the element to the top of the viewport. Scrollable content will flow beneath it natively in full page contexts.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fixed Bottom Demo (Simulated visual for docs) -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Fixed Bottom</div>
+                <div class="ux4g-relative ux4g-w-full ux4g-hpx-150 ux4g-bg-neutral-subtle ux4g-radius-m ux4g-o-hidden ux4g-border ux4g-border-neutral-subtle">
+                    <div class="ux4g-p-m ux4g-fs-12 ux4g-text-neutral-secondary">
+                        Locks the element to the bottom of the viewport viewport, perfect for action bars or footers.
+                    </div>
+                    <!-- Note: Using absolute to visually simulate 'fixed' behavior within this bounding box -->
+                    <div class="ux4g-absolute ux4g-bottom-0 ux4g-start-0 ux4g-w-full ux4g-bg-info-strong ux4g-p-s ux4g-text-white ux4g-text-center ux4g-fs-12 ux4g-fw-bold ux4g-z-1">
+                        Fixed Bottom (.ux4g-fixed-bottom)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Top -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Sticky Top</div>
+                <div class="ux4g-bg-neutral-strong ux4g-radius-m ux4g-border ux4g-border-neutral-subtle ux4g-o-auto ux4g-hpx-150">
+                    <div class="ux4g-sticky-top ux4g-bg-primary-strong ux4g-p-s ux4g-text-white ux4g-text-center ux4g-fs-12 ux4g-fw-bold">
+                        Sticky Top (.ux4g-sticky-top)
+                    </div>
+                    <div class="ux4g-p-m ux4g-fs-12 ux4g-text-neutral-secondary ux4g-hpx-300">
+                        <p class="ux4g-mb-s">Scroll down to see the sticky behavior engaging when it hits the top edge.</p>
+                        <div class="ux4g-hpx-40 ux4g-bg-neutral-subtle ux4g-radius-s ux4g-mb-s"></div>
+                        <div class="ux4g-hpx-40 ux4g-bg-neutral-subtle ux4g-radius-s ux4g-mb-s"></div>
+                        <div class="ux4g-hpx-40 ux4g-bg-neutral-subtle ux4g-radius-s ux4g-mb-s"></div>
+                        <div class="ux4g-hpx-40 ux4g-bg-neutral-subtle ux4g-radius-s ux4g-mb-s"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Bottom -->
+            <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral ux4g-p-l">
+                <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Sticky Bottom</div>
+                <div class="ux4g-bg-neutral-strong ux4g-radius-m ux4g-border ux4g-border-neutral-subtle ux4g-o-auto ux4g-hpx-150">
+                    <div class="ux4g-p-m ux4g-fs-12 ux4g-text-neutral-secondary ux4g-hpx-300">
+                        <p class="ux4g-mb-s">Scroll down to see the sticky element hold to the bottom.</p>
+                        <div class="ux4g-hpx-40 ux4g-bg-neutral-subtle ux4g-radius-s ux4g-mb-s"></div>
+                        <div class="ux4g-hpx-40 ux4g-bg-neutral-subtle ux4g-radius-s ux4g-mb-s"></div>
+                        <div class="ux4g-hpx-40 ux4g-bg-neutral-subtle ux4g-radius-s ux4g-mb-s"></div>
+                        <div class="ux4g-hpx-40 ux4g-bg-neutral-subtle ux4g-radius-s ux4g-mb-s"></div>
+                    </div>
+                    <div class="ux4g-sticky-bottom ux4g-bg-primary-stronger ux4g-p-s ux4g-text-white ux4g-text-center ux4g-fs-12 ux4g-fw-bold">
+                        Sticky Bottom (.ux4g-sticky-bottom)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ux4g-grid ux4g-grid-cols-3 ux4g-gap-xl ux4g-mb-2xl">
+            <!-- Position / Corners -->
+            <div class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+                <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">
+                    Position / Corners (UX4G Background)
+                </div>
+                <div class="ux4g-relative ux4g-border ux4g-radius-m ux4g-bg-neutral-subtle" style="height: 180px">
+                    <div class="ux4g-absolute ux4g-top-0 ux4g-start-0 ux4g-bg-secondary-strong ux4g-radius-s" style="width: 32px; height: 32px"></div>
+                    <div class="ux4g-absolute ux4g-top-0 ux4g-end-0 ux4g-bg-secondary-strong ux4g-radius-s" style="width: 32px; height: 32px"></div>
+                    <div class="ux4g-absolute ux4g-bottom-0 ux4g-start-0 ux4g-bg-secondary-strong ux4g-radius-s" style="width: 32px; height: 32px"></div>
+                    <div class="ux4g-absolute ux4g-bottom-0 ux4g-end-0 ux4g-bg-secondary-strong ux4g-radius-s" style="width: 32px; height: 32px"></div>
+                </div>
+            </div>
+
+            <!-- Position / Mixed Placement -->
+            <div class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+                <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">
+                    Position / Mixed Placement (UX4G)
+                </div>
+                <!-- Updated height from 200px to 180px to match row consistency if possible, but kept 200px as original if preferred. Set to 180px so the grid items look uniform, wait let me use h-full. Actually, applying h-parent. -->
+                <div class="ux4g-relative ux4g-border ux4g-radius-m ux4g-bg-neutral-subtle ux4g-h-full" style="min-height: 180px">
+                    <div class="ux4g-absolute ux4g-top-0 ux4g-start-0 ux4g-bg-primary-strong ux4g-radius-s" style="width: 32px; height: 32px"></div>
+                    <div class="ux4g-absolute ux4g-top-0 ux4g-end-0 ux4g-bg-primary-strong ux4g-radius-s" style="width: 32px; height: 32px"></div>
+                    <!-- Center Primary Block -->
+                    <div class="ux4g-absolute ux4g-top-50 ux4g-start-50 ux4g-translate-middle ux4g-bg-secondary-strong ux4g-radius-s" style="width: 36px; height: 36px"></div>
+                    <!-- Wait, ux4g-bottom-50 ux4g-end-50 in user prompt -->
+                    <div class="ux4g-absolute ux4g-bottom-50 ux4g-end-50 ux4g-bg-info-strong ux4g-radius-s" style="width: 32px; height: 32px"></div>
+                    <div class="ux4g-absolute ux4g-bottom-0 ux4g-start-0 ux4g-bg-primary-strong ux4g-radius-s" style="width: 32px; height: 32px"></div>
+                    <div class="ux4g-absolute ux4g-bottom-0 ux4g-end-0 ux4g-bg-primary-strong ux4g-radius-s" style="width: 32px; height: 32px"></div>
+                </div>
+            </div>
+
+            <!-- Position / Center Elements -->
+            <div class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+                <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">
+                    Position / Center Elements (UX4G)
+                </div>
+                <div class="ux4g-relative ux4g-border ux4g-radius-m ux4g-bg-neutral-subtle ux4g-h-full" style="min-height: 180px">
+                    <!-- Top Row -->
+                    <div class="ux4g-absolute ux4g-top-0 ux4g-start-0 ux4g-translate-middle ux4g-bg-success-strong ux4g-radius-s" style="width: 28px; height: 28px"></div>
+                    <div class="ux4g-absolute ux4g-top-0 ux4g-start-50 ux4g-translate-middle ux4g-bg-success-strong ux4g-radius-s" style="width: 28px; height: 28px"></div>
+                    <div class="ux4g-absolute ux4g-top-0 ux4g-start-100 ux4g-translate-middle ux4g-bg-success-strong ux4g-radius-s" style="width: 28px; height: 28px"></div>
+                    <!-- Middle Row -->
+                    <div class="ux4g-absolute ux4g-top-50 ux4g-start-0 ux4g-translate-middle ux4g-bg-success-strong ux4g-radius-s" style="width: 28px; height: 28px"></div>
+                    <!-- Main Center Highlight -->
+                    <div class="ux4g-absolute ux4g-top-50 ux4g-start-50 ux4g-translate-middle ux4g-bg-error-strong ux4g-radius-s" style="width: 34px; height: 34px"></div>
+                    <div class="ux4g-absolute ux4g-top-50 ux4g-start-100 ux4g-translate-middle ux4g-bg-success-strong ux4g-radius-s" style="width: 28px; height: 28px"></div>
+                    <!-- Bottom Row -->
+                    <div class="ux4g-absolute ux4g-top-100 ux4g-start-0 ux4g-translate-middle ux4g-bg-success-strong ux4g-radius-s" style="width: 28px; height: 28px"></div>
+                    <div class="ux4g-absolute ux4g-top-100 ux4g-start-50 ux4g-translate-middle ux4g-bg-success-strong ux4g-radius-s" style="width: 28px; height: 28px"></div>
+                    <div class="ux4g-absolute ux4g-top-100 ux4g-start-100 ux4g-translate-middle ux4g-bg-success-strong ux4g-radius-s" style="width: 28px; height: 28px"></div>
+                </div>
+            </div>
+        </div>
+        <!-- HTML Examples -->
+        <div class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle ux4g-mt-2xl">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML Examples</div>
+        </div>
+        <div class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;!-- Fixed Defaults to Window Viewport --&gt;<br>
+                &lt;div class="ux4g-fixed-top"&gt;...&lt;/div&gt;<br>
+                &lt;div class="ux4g-fixed-bottom"&gt;...&lt;/div&gt;<br><br>
+                
+                &lt;!-- Sticky Restricts to Scrollable Parent --&gt;<br>
+                &lt;div class="ux4g-sticky-top"&gt;...&lt;/div&gt;<br>
+                &lt;div class="ux4g-sticky-bottom"&gt;...&lt;/div&gt;
+            </code>
+        </div>
+    </div>
+
+
+
+
+    <!-- Z-Index Utilities -->
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+        <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Z-Index</div>
+        <div
+            class="ux4g-relative ux4g-hpx-300 ux4g-bg-neutral-subtle ux4g-radius-m ux4g-p-xl ux4g-d-flex ux4g-jc-center">
+            <!-- Layers based on provided image -->
+            <div class="ux4g-z-3 ux4g-absolute ux4g-bg-primary-stronger ux4g-radius-m ux4g-wpx-100 ux4g-hpx-100 ux4g-shadow-l1 ux4g-d-flex ux4g-ai-end ux4g-jc-end ux4g-p-s ux4g-text-neutral-inverse"
+                style="top: 20px; left: 20px;">z-3</div>
+            <div class="ux4g-z-2 ux4g-absolute ux4g-bg-primary-stronger ux4g-radius-m ux4g-wpx-100 ux4g-hpx-100 ux4g-shadow-l1 ux4g-d-flex ux4g-ai-end ux4g-jc-end ux4g-p-s ux4g-text-neutral-inverse"
+                style="top: 50px; left: 50px;">z-2</div>
+            <div class="ux4g-z-1 ux4g-absolute ux4g-bg-primary-stronger ux4g-radius-m ux4g-wpx-100 ux4g-hpx-100 ux4g-shadow-l1 ux4g-d-flex ux4g-ai-end ux4g-jc-end ux4g-p-s ux4g-text-neutral-inverse"
+                style="top: 80px; left: 80px;">z-1</div>
+            <div class="ux4g-z-0 ux4g-absolute ux4g-bg-primary-stronger ux4g-radius-m ux4g-wpx-100 ux4g-hpx-100 ux4g-shadow-l1 ux4g-d-flex ux4g-ai-end ux4g-jc-end ux4g-p-s ux4g-text-neutral-inverse"
+                style="top: 110px; left: 110px;">z-0</div>
+            <div class="ux4g-z-n1 ux4g-absolute ux4g-bg-primary-stronger ux4g-radius-m ux4g-wpx-100 ux4g-hpx-100 ux4g-shadow-l1 ux4g-d-flex ux4g-ai-end ux4g-jc-end ux4g-p-s ux4g-text-neutral-inverse"
+                style="top: 140px; left: 140px;">z-n1</div>
+        </div>
+    </div>
+    <br />
+
+    <!-- Overflow Section -->
+    <div id="overflow-system" class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <h1 class="ux4g-fs-32 ux4g-fw-bold ux4g-mb-m">Overflow</h1>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl">Utilities for controlling how content is handled when it exceeds its container's boundaries.</p>
+
+        <div class="ux4g-grid ux4g-grid-cols-3 ux4g-gap-l">
+            <!-- ROW 1: Global Overflow -->
+            <!-- ux4g-o-auto -->
+            <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral ux4g-p-m">
+                <div class="ux4g-fs-14 ux4g-fw-semibold ux4g-mb-s ux4g-text-center">ux4g-o-auto</div>
+                <div class="ux4g-bg-neutral-subtle ux4g-radius-s ux4g-border ux4g-border-neutral-subtle ux4g-o-auto ux4g-hpx-100">
+                    <div class="ux4g-p-s ux4g-wpx-200 ux4g-hpx-150 ux4g-fs-12 ux4g-text-neutral-secondary">
+                        Scrollbars appear automatically when content exceeds dimensions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non sapien vitae erat.
+                    </div>
+                </div>
+            </div>
+            <!-- ux4g-o-hidden -->
+            <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral ux4g-p-m">
+                <div class="ux4g-fs-14 ux4g-fw-semibold ux4g-mb-s ux4g-text-center">ux4g-o-hidden</div>
+                <div class="ux4g-bg-neutral-subtle ux4g-radius-s ux4g-border ux4g-border-neutral-subtle ux4g-o-hidden ux4g-hpx-100">
+                    <div class="ux4g-p-s ux4g-wpx-200 ux4g-hpx-150 ux4g-fs-12 ux4g-text-neutral-secondary">
+                        Extra content is clipped and hidden. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non sapien vitae erat.
+                    </div>
+                </div>
+            </div>
+            <!-- ux4g-o-visible -->
+            <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral ux4g-p-m">
+                <div class="ux4g-fs-14 ux4g-fw-semibold ux4g-mb-s ux4g-text-center">ux4g-o-visible</div>
+                <div class="ux4g-bg-neutral-subtle ux4g-radius-s ux4g-border ux4g-border-neutral-subtle ux4g-o-visible ux4g-hpx-100">
+                    <div class="ux4g-p-s ux4g-wpx-200 ux4g-hpx-150 ux4g-fs-12 ux4g-bg-primary-subtle ux4g-text-neutral-secondary">
+                        Content flows outside bounds. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </div>
+                </div>
+            </div>
+            <!-- ux4g-o-scroll -->
+            <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral ux4g-p-m">
+                <div class="ux4g-fs-14 ux4g-fw-semibold ux4g-mb-s ux4g-text-center">ux4g-o-scroll</div>
+                <div class="ux4g-bg-neutral-subtle ux4g-radius-s ux4g-border ux4g-border-neutral-subtle ux4g-o-scroll ux4g-hpx-100">
+                    <div class="ux4g-p-s ux4g-wpx-200 ux4g-hpx-150 ux4g-fs-12 ux4g-text-neutral-secondary">
+                        Scrollbars ALWAYS visible. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROW 2: Horizontal Overflow X -->
+            <!-- ux4g-o-x-auto -->
+            <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral ux4g-p-m">
+                <div class="ux4g-fs-14 ux4g-fw-semibold ux4g-mb-s ux4g-text-center">ux4g-o-x-auto</div>
+                <div class="ux4g-bg-neutral-subtle ux4g-radius-s ux4g-border ux4g-border-neutral-subtle ux4g-o-x-auto ux4g-hpx-100">
+                    <div class="ux4g-p-s ux4g-wpx-300 ux4g-fs-12 ux4g-text-neutral-secondary ux4g-text-nowrap">
+                        Horizontal scroll only visible if text exceeds X width.
+                    </div>
+                </div>
+            </div>
+            <!-- ux4g-o-x-hidden -->
+            <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral ux4g-p-m">
+                <div class="ux4g-fs-14 ux4g-fw-semibold ux4g-mb-s ux4g-text-center">ux4g-o-x-hidden</div>
+                <div class="ux4g-bg-neutral-subtle ux4g-radius-s ux4g-border ux4g-border-neutral-subtle ux4g-o-x-hidden ux4g-hpx-100">
+                    <div class="ux4g-p-s ux4g-wpx-300 ux4g-fs-12 ux4g-text-neutral-secondary ux4g-text-nowrap">
+                        Horizontal content clipped natively. Non-scrollable.
+                    </div>
+                </div>
+            </div>
+            <!-- ux4g-o-x-visible -->
+            <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral ux4g-p-m">
+                <div class="ux4g-fs-14 ux4g-fw-semibold ux4g-mb-s ux4g-text-center">ux4g-o-x-visible</div>
+                <div class="ux4g-bg-neutral-subtle ux4g-radius-s ux4g-border ux4g-border-neutral-subtle ux4g-o-x-visible ux4g-hpx-100">
+                    <div class="ux4g-p-s ux4g-wpx-300 ux4g-fs-12 ux4g-bg-primary-subtle ux4g-text-neutral-secondary ux4g-text-nowrap ux4g-d-inline-flex">
+                        Horizontal content visually overflows container.
+                    </div>
+                </div>
+            </div>
+            <!-- ux4g-o-x-scroll -->
+            <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral ux4g-p-m">
+                <div class="ux4g-fs-14 ux4g-fw-semibold ux4g-mb-s ux4g-text-center">ux4g-o-x-scroll</div>
+                <div class="ux4g-bg-neutral-subtle ux4g-radius-s ux4g-border ux4g-border-neutral-subtle ux4g-o-x-scroll ux4g-hpx-100">
+                    <div class="ux4g-p-s ux4g-wpx-300 ux4g-fs-12 ux4g-text-neutral-secondary ux4g-text-nowrap">
+                        Horizontal scrollbar ALWAYS visible.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROW 3: Vertical Overflow Y -->
+            <!-- ux4g-o-y-auto -->
+            <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral ux4g-p-m">
+                <div class="ux4g-fs-14 ux4g-fw-semibold ux4g-mb-s ux4g-text-center">ux4g-o-y-auto</div>
+                <div class="ux4g-bg-neutral-subtle ux4g-radius-s ux4g-border ux4g-border-neutral-subtle ux4g-o-y-auto ux4g-hpx-100">
+                    <div class="ux4g-p-s ux4g-hpx-150 ux4g-fs-12 ux4g-text-neutral-secondary">
+                        Vertical scroll appears ONLY when constrained height is exceeded.
+                    </div>
+                </div>
+            </div>
+            <!-- ux4g-o-y-hidden -->
+            <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral ux4g-p-m">
+                <div class="ux4g-fs-14 ux4g-fw-semibold ux4g-mb-s ux4g-text-center">ux4g-o-y-hidden</div>
+                <div class="ux4g-bg-neutral-subtle ux4g-radius-s ux4g-border ux4g-border-neutral-subtle ux4g-o-y-hidden ux4g-hpx-100">
+                    <div class="ux4g-p-s ux4g-hpx-150 ux4g-fs-12 ux4g-text-neutral-secondary">
+                        Extra vertical content is clipped natively. Non-scrollable.
+                    </div>
+                </div>
+            </div>
+            <!-- ux4g-o-y-visible -->
+            <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral ux4g-p-m">
+                <div class="ux4g-fs-14 ux4g-fw-semibold ux4g-mb-s ux4g-text-center">ux4g-o-y-visible</div>
+                <div class="ux4g-bg-neutral-subtle ux4g-radius-s ux4g-border ux4g-border-neutral-subtle ux4g-o-y-visible ux4g-hpx-100">
+                    <div class="ux4g-p-s ux4g-hpx-150 ux4g-bg-primary-subtle ux4g-fs-12 ux4g-text-neutral-secondary">
+                        Content overflows naturally outside of the bounding box.
+                    </div>
+                </div>
+            </div>
+            <!-- ux4g-o-y-scroll -->
+            <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral ux4g-p-m">
+                <div class="ux4g-fs-14 ux4g-fw-semibold ux4g-mb-s ux4g-text-center">ux4g-o-y-scroll</div>
+                <div class="ux4g-bg-neutral-subtle ux4g-radius-s ux4g-border ux4g-border-neutral-subtle ux4g-o-y-scroll ux4g-hpx-100">
+                    <div class="ux4g-p-s ux4g-hpx-150 ux4g-fs-12 ux4g-text-neutral-secondary">
+                        Vertical scrollbar ALWAYS visible.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HTML Examples -->
+        <div class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle ux4g-mt-2xl">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML Examples</div>
+        </div>
+        <div class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;!-- Global Overflow --&gt;<br>
+                &lt;div class="ux4g-o-auto"&gt;...&lt;/div&gt;<br>
+                &lt;div class="ux4g-o-hidden"&gt;...&lt;/div&gt;<br><br>
+                
+                &lt;!-- Axis-Specific Overflow --&gt;<br>
+                &lt;div class="ux4g-o-x-scroll"&gt;...&lt;/div&gt;<br>
+                &lt;div class="ux4g-o-y-hidden"&gt;...&lt;/div&gt;
+            </code>
+        </div>
+    </div>
+
+
+    <!-- Display Utilities -->
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+        <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Display Utilities (Responsive)</div>
+        <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+            <div class="ux4g-p-s ux4g-bg-neutral-subtle ux4g-radius-m ux4g-text-center">
+                <span class="ux4g-d-none ux4g-md-d-inline ux4g-text-primary ux4g-fw-bold">Visible only on MD and up
+                    (ux4g-d-none ux4g-md-d-inline)</span>
+                <span class="ux4g-d-inline ux4g-md-d-none ux4g-text-error">Visible only on SM (ux4g-d-inline
+                    ux4g-md-d-none)</span>
+            </div>
+            <div class="ux4g-d-grid ux4g-grid-cols-2 ux4g-gap-s">
+                <div
+                    class="ux4g-p-s ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                    ux4g-d-grid</div>
+                <div
+                    class="ux4g-p-s ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                    ux4g-d-grid</div>
+            </div>
+            <div class="ux4g-d-table ux4g-w-full ux4g-border">
+                <div class="ux4g-d-table-row">
+                    <div class="ux4g-d-table-cell ux4g-p-s ux4g-border">ux4g-d-table-cell</div>
+                    <div class="ux4g-d-table-cell ux4g-p-s ux4g-border">ux4g-d-table-cell</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+  
+
+    <div class="ux4g-d-grid ux4g-grid-cols-2 ux4g-gap-m ux4g-mb-2xl">
+        <!-- Flex Display -->
+        <div
+            class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Flex Display (ux4g-d-flex)</div>
+            <div class="ux4g-d-flex ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item 1</div>
+                <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item 2</div>
+                <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item 3</div>
+            </div>
+            <div class="ux4g-text-neutral-secondary ux4g-mt-s">Standard flex container with gap.</div>
+        </div>
+
+        <!-- Flex Direction -->
+        <div
+            class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Flex Direction</div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+                <!-- Row -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Row (ux4g-flex-row)</div>
+                    <div
+                        class="ux4g-d-flex ux4g-flex-row ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                        <div class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s">item 1
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s">item 2
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s">item 3
+                        </div>
+                    </div>
+                </div>
+                <!-- Row Reverse -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Row Reverse (ux4g-flex-row-reverse)</div>
+                    <div
+                        class="ux4g-d-flex ux4g-flex-row-reverse ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                        <div class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s">item 1
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s">item 2
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s">item 3
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Column (ux4g-flex-col)</div>
+                    <div
+                        class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                        <div class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s">item 1
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s">item 2
+                        </div>
+                    </div>
+                </div>
+                <!-- Column Reverse -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Column Reverse (ux4g-flex-col-reverse)</div>
+                    <div
+                        class="ux4g-d-flex ux4g-flex-col-reverse ux4g-stack-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                        <div class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s">item 1
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s">item 2
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Justify Content -->
+        <div
+            class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Justify Content</div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+                <!-- Start -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Start (ux4g-jc-start)</div>
+                    <div class="ux4g-d-flex ux4g-jc-start ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Justify
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Content
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Start</div>
+                    </div>
+                </div>
+                <!-- End -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">End (ux4g-jc-end)</div>
+                    <div class="ux4g-d-flex ux4g-jc-end ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Justify
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Content
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">End</div>
+                    </div>
+                </div>
+                <!-- Center -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Center (ux4g-jc-center)</div>
+                    <div class="ux4g-d-flex ux4g-jc-center ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Justify
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Content
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Center
+                        </div>
+                    </div>
+                </div>
+                <!-- Between -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Between (ux4g-jc-between)</div>
+                    <div class="ux4g-d-flex ux4g-jc-between ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Justify
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Content
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Between
+                        </div>
+                    </div>
+                </div>
+                <!-- Around -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Around (ux4g-jc-around)</div>
+                    <div class="ux4g-d-flex ux4g-jc-around ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Justify
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Content
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Around
+                        </div>
+                    </div>
+                </div>
+                <!-- Evenly -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Evenly (ux4g-jc-evenly)</div>
+                    <div class="ux4g-d-flex ux4g-jc-evenly ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Justify
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Content
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s">Evenly
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Align Items -->
+        <div
+            class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Align Items</div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+                <!-- Start -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Start (ux4g-ai-start)</div>
+                    <div
+                        class="ux4g-d-flex ux4g-ai-start ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-80">
+                        <div class="ux4g-p-s ux4g-bg-warning-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-warning-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">End (ux4g-ai-end)</div>
+                    <div
+                        class="ux4g-d-flex ux4g-ai-end ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-80">
+                        <div class="ux4g-p-s ux4g-bg-warning-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-warning-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                        </div>
+                    </div>
+                </div>
+                <!-- Center -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Center (ux4g-ai-center)</div>
+                    <div
+                        class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-80">
+                        <div class="ux4g-p-s ux4g-bg-warning-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-warning-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                        </div>
+                    </div>
+                </div>
+                <!-- Baseline -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Baseline (ux4g-ai-baseline)</div>
+                    <div
+                        class="ux4g-d-flex ux4g-ai-baseline ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-80">
+                        <div class="ux4g-p-s ux4g-bg-warning-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-pt-20">
+                            Flex Item</div>
+                        <div class="ux4g-p-s ux4g-bg-warning-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                        </div>
+                    </div>
+                </div>
+                <!-- Stretch -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Stretch (ux4g-ai-stretch)</div>
+                    <div
+                        class="ux4g-d-flex ux4g-ai-stretch ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-80">
+                        <div class="ux4g-p-s ux4g-bg-warning-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                        </div>
+                        <div class="ux4g-p-s ux4g-bg-warning-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- Align Self -->
+            <div
+                class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+                <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Align Self</div>
+                <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+                    <!-- Start -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Start (ux4g-as-start)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-ai-stretch ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-100">
+                            <div class="ux4g-p-s ux4g-bg-info-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                            </div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-as-start">
+                                Align Self Start</div>
+                            <div class="ux4g-p-s ux4g-bg-info-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">End (ux4g-as-end)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-ai-stretch ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-100">
+                            <div class="ux4g-p-s ux4g-bg-info-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                            </div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-as-end">
+                                Align Self End</div>
+                            <div class="ux4g-p-s ux4g-bg-info-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Center -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Center (ux4g-as-center)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-ai-stretch ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-100">
+                            <div class="ux4g-p-s ux4g-bg-info-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                            </div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-as-center">
+                                Align Self Center</div>
+                            <div class="ux4g-p-s ux4g-bg-info-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Baseline -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Baseline (ux4g-as-baseline)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-ai-stretch ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-100">
+                            <div class="ux4g-p-s ux4g-bg-info-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                            </div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-as-baseline">
+                                Align Self Baseline</div>
+                            <div class="ux4g-p-s ux4g-bg-info-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Stretch -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Stretch (ux4g-as-stretch)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-ai-start ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-100">
+                            <div class="ux4g-p-s ux4g-bg-info-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                            </div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-as-stretch">
+                                Align Self Stretch</div>
+                            <div class="ux4g-p-s ux4g-bg-info-strong ux4g-text-neutral-inverse ux4g-radius-s">Flex Item
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Flex Wrap -->
+            <div
+                class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+                <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Flex Wrap</div>
+                <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+                    <!-- No Wrap -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">No Wrap (ux4g-nowrap)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-nowrap ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-o-hidden">
+                            <div
+                                class="ux4g-p-s ux4g-bg-error-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-flex-none ux4g-w-50">
+                                item 1</div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-error-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-flex-none ux4g-w-50">
+                                item 2</div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-error-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-flex-none ux4g-w-50">
+                                item 3</div>
+                        </div>
+                    </div>
+                    <!-- Wrap -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Wrap (ux4g-wrap)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-wrap ux4g-inline-gap-s ux4g-stack-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                            <div
+                                class="ux4g-p-s ux4g-bg-error-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-w-50">
+                                item 1</div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-error-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-w-50">
+                                item 2</div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-error-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-w-50">
+                                item 3</div>
+                        </div>
+                    </div>
+                    <!-- Wrap Reverse -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Wrap Reverse (ux4g-wrap-reverse)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-wrap-reverse ux4g-inline-gap-s ux4g-stack-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                            <div
+                                class="ux4g-p-s ux4g-bg-error-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-w-50">
+                                item 1</div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-error-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-w-50">
+                                item 2</div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-error-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-w-50">
+                                item 3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Responsive Flex -->
+            <div
+                class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+                <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Responsive Flex Direction</div>
+                <div
+                    class="ux4g-d-flex ux4g-flex-col ux4g-md-flex-row ux4g-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                    <div class="ux4g-p-s ux4g-bg-primary-stronger ux4g-text-neutral-inverse ux4g-radius-s">Mobile: Col
+                    </div>
+                    <div class="ux4g-p-s ux4g-bg-primary-stronger ux4g-text-neutral-inverse ux4g-radius-s">Desktop: Row
+                    </div>
+                </div>
+                <div class="ux4g-text-neutral-secondary ux4g-mt-s">Column on mobile, Row on MD+ screens.</div>
+            </div>
+
+            <!-- Flex Sizing & Shorthands -->
+            <div
+                class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+                <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Flex Sizing & Shorthands</div>
+                <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+                    <!-- Flex Fill -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Flex Fill (ux4g-flex-fill)</div>
+                        <div class="ux4g-d-flex ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                            <div
+                                class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-flex-fill">
+                                filled</div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-flex-fill">
+                                filled</div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-flex-fill">
+                                filled</div>
+                        </div>
+                    </div>
+                    <!-- Flex Grow / Shrink -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Grow & Shrink (ux4g-grow / ux4g-shrink)</div>
+                        <div class="ux4g-d-flex ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                            <div
+                                class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-grow ux4g-shrink">
+                                grows to fill</div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-grow-0 ux4g-shrink-0">
+                                flat</div>
+                        </div>
+                    </div>
+                    <!-- Flex Ratios -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Flex Ratios (flex-2 / flex-1)</div>
+                        <div class="ux4g-d-flex ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                            <div
+                                class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-flex-2">
+                                ratio 2</div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-flex-1">
+                                ratio 1</div>
+                        </div>
+                    </div>
+                    <!-- Flex Auto/None -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Flex Control (auto / none)</div>
+                        <div class="ux4g-d-flex ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                            <div
+                                class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-flex-auto">
+                                auto size</div>
+                            <div
+                                class="ux4g-p-s ux4g-bg-secondary-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-flex-none ux4g-w-100p">
+                                none (100px)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Align Content -->
+            <div
+                class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+                <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Align Content</div>
+                <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+                    <!-- Start -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Start (ux4g-ac-start)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-ac-start ux4g-wrap ux4g-inline-gap-xs ux4g-stack-gap-xs ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-180">
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">End (ux4g-ac-end)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-ac-end ux4g-wrap ux4g-inline-gap-xs ux4g-stack-gap-xs ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-180">
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Center -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Center (ux4g-ac-center)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-ac-center ux4g-wrap ux4g-inline-gap-xs ux4g-stack-gap-xs ux4g-bg-neutral-subtle ux4g-p-xs ux4g-radius-m ux4g-min-h-180">
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Between -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Between (ux4g-ac-between)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-ac-between ux4g-wrap ux4g-inline-gap-xs ux4g-stack-gap-xs ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-180">
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Around -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Around (ux4g-ac-around)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-ac-around ux4g-wrap ux4g-inline-gap-xs ux4g-stack-gap-xs ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-180">
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Stretch -->
+                    <div>
+                        <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Stretch (ux4g-ac-stretch)</div>
+                        <div
+                            class="ux4g-d-flex ux4g-ac-stretch ux4g-wrap ux4g-inline-gap-xs ux4g-stack-gap-xs ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m ux4g-min-h-180">
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                            <div class="ux4g-p-s ux4g-bg-primary-strong ux4g-text-neutral-inverse ux4g-radius-s">item
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Flex Order -->
+        <div
+            class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Flex Visual Ordering</div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+                <!-- Order First/Last -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">First & Last (ux4g-order-first / ux4g-order-last)
+                    </div>
+                    <div class="ux4g-d-flex ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                        <div
+                            class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-order-last">
+                            1 (Last)</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-order-2">
+                            2 (Middle)</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-order-first">
+                            3 (First)</div>
+                    </div>
+                </div>
+                <!-- Numeric Order -->
+                <div>
+                    <div class="ux4g-fs-14 ux4g-fw-bold ux4g-mb-xs">Numeric Order (ux4g-order-0 to 5)</div>
+                    <div class="ux4g-d-flex ux4g-inline-gap-s ux4g-bg-neutral-subtle ux4g-p-s ux4g-radius-m">
+                        <div
+                            class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-order-5">
+                            DOM 1 (Order 5)</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-success-strong ux4g-text-neutral-inverse ux4g-radius-s ux4g-order-1">
+                            DOM 2 (Order 1)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1 class="ux4g-text-center ux4g-my-l">UX4G Opacity</h1>
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-mb-2xl ux4g-border ux4g-border-neutral-subtle">
+        <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Opacity Scale</div>
+        <div class="ux4g-d-flex ux4g-jc-center ux4g-ai-center ux4g-wrap ux4g-gap-m">
+            <!-- 100% to 75% -->
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-100 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    100</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-100</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-95 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    95</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-95</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-90 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    90</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-90</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-80 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    80</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-80</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-75 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    75</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-75</div>
+            </div>
+            <!-- 70% to 40% -->
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-70 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    70</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-70</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-60 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    60</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-60</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-50 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    50</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-50</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-40 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    40</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-40</div>
+            </div>
+            <!-- 30% to 0% -->
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-30 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    30</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-30</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-25 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    25</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-25</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-20 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    20</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-20</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-10 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    10</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-10</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-5 ux4g-text-neutral-inverse ux4g-fw-bold">
+                    5</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-5</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-s">
+                <div
+                    class="ux4g-p-l ux4g-bg-primary-strong ux4g-radius-m ux4g-opacity-0 ux4g-text-neutral-inverse ux4g-fw-bold ux4g-border">
+                    0</div>
+                <div class="ux4g-fs-10 ux4g-text-neutral-secondary">opacity-0</div>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="ux4g-text-center ux4g-my-l">UX4G Sizing</h1>
+
+    <!-- Width Section -->
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <div class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-xl ux4g-text-neutral-primary">Width Utilities</div>
+
+        <!-- Percent Widths -->
+        <div class="ux4g-mb-2xl">
+            <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m">Relative to Parent (Percent)</div>
+            <div class="ux4g-p-m ux4g-bg-neutral ux4g-border ux4g-radius-m ux4g-mb-m">
+                <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs ux4g-w-full">
+                    <div
+                        class="ux4g-w-25 ux4g-p-m ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-fw-bold">
+                        Width 25%</div>
+                    <div
+                        class="ux4g-w-50 ux4g-p-m ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-fw-bold">
+                        Width 50%</div>
+                    <div
+                        class="ux4g-w-75 ux4g-p-m ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-fw-bold">
+                        Width 75%</div>
+                    <div
+                        class="ux4g-w-100 ux4g-p-m ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-fw-bold">
+                        Width 100%</div>
+                    <div
+                        class="ux4g-w-auto ux4g-p-m ux4g-bg-primary-soft ux4g-border ux4g-border-primary ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-fw-bold">
+                        Width auto</div>
+                </div>
+            </div>
+            <div class="ux4g-fs-12 ux4g-text-neutral-secondary ux4g-mb-s ux4g-fw-bold">HTML Markup:</div>
+            <pre class="ux4g-p-m ux4g-bg-neutral-strong ux4g-radius-m ux4g-fs-12 ux4g-o-auto">
+&lt;div class="ux4g-w-25"&gt;Width 25%&lt;/div&gt;
+&lt;div class="ux4g-w-50"&gt;Width 50%&lt;/div&gt;
+&lt;div class="ux4g-w-75"&gt;Width 75%&lt;/div&gt;
+&lt;div class="ux4g-w-100"&gt;Width 100%&lt;/div&gt;
+&lt;div class="ux4g-w-auto"&gt;Width auto&lt;/div&gt;</pre>
+        </div>
+
+        <!-- Fixed Widths -->
+        <div>
+            <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m">Fixed Dimensions (Pixels)</div>
+            <div class="ux4g-p-m ux4g-bg-neutral ux4g-border ux4g-radius-m ux4g-mb-m">
+                <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs ux4g-w-full ux4g-ai-start">
+                    <div
+                        class="ux4g-wpx-100 ux4g-p-m ux4g-bg-secondary-soft ux4g-border ux4g-border-secondary ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-fw-bold ux4g-text-center">
+                        100px</div>
+                    <div
+                        class="ux4g-wpx-200 ux4g-p-m ux4g-bg-secondary-soft ux4g-border ux4g-border-secondary ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-fw-bold ux4g-text-center">
+                        200px</div>
+                    <div
+                        class="ux4g-wpx-300 ux4g-p-m ux4g-bg-secondary-soft ux4g-border ux4g-border-secondary ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-fw-bold ux4g-text-center">
+                        300px</div>
+                    <div
+                        class="ux4g-wpx-400 ux4g-p-m ux4g-bg-secondary-soft ux4g-border ux4g-border-secondary ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-fw-bold ux4g-text-center">
+                        400px</div>
+                </div>
+            </div>
+            <div class="ux4g-fs-12 ux4g-text-neutral-secondary ux4g-mb-s ux4g-fw-bold">HTML Markup:</div>
+            <pre class="ux4g-p-m ux4g-bg-neutral-strong ux4g-radius-m ux4g-fs-12 ux4g-o-auto">
+&lt;div class="ux4g-wpx-100"&gt;100px width&lt;/div&gt;
+&lt;div class="ux4g-wpx-200"&gt;200px width&lt;/div&gt;
+&lt;div class="ux4g-wpx-300"&gt;300px width&lt;/div&gt;
+&lt;div class="ux4g-wpx-400"&gt;400px width&lt;/div&gt;</pre>
+        </div>
+    </div>
+
+
+    <!-- Height Section -->
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <div class="ux4g-fs-20 ux4g-fw-bold ux4g-mb-xl ux4g-text-neutral-primary">Height Utilities</div>
+
+        <!-- Percent Heights -->
+        <div class="ux4g-mb-2xl">
+            <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m">Relative to Parent (Percent)</div>
+            <div class="ux4g-p-m ux4g-bg-neutral ux4g-border ux4g-radius-m ux4g-mb-m">
+                <div
+                    class="ux4g-hpx-200 ux4g-d-flex ux4g-inline-gap-s ux4g-ai-start ux4g-p-m ux4g-bg-neutral-subtle ux4g-radius-s ux4g-jc-center">
+                    <div
+                        class="ux4g-h-25 ux4g-wpx-150 ux4g-p-xs ux4g-bg-info-soft ux4g-border ux4g-border-info ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-fw-bold">
+                        Height 25%</div>
+                    <div
+                        class="ux4g-h-50 ux4g-wpx-150 ux4g-p-xs ux4g-bg-info-soft ux4g-border ux4g-border-info ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-fw-bold">
+                        Height 50%</div>
+                    <div
+                        class="ux4g-h-75 ux4g-wpx-150 ux4g-p-xs ux4g-bg-info-soft ux4g-border ux4g-border-info ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-fw-bold">
+                        Height 75%</div>
+                    <div
+                        class="ux4g-h-100 ux4g-wpx-150 ux4g-p-xs ux4g-bg-info-soft ux4g-border ux4g-border-info ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-fw-bold">
+                        Height 100%</div>
+                    <div
+                        class="ux4g-h-auto ux4g-wpx-150 ux4g-p-xs ux4g-bg-info-soft ux4g-border ux4g-border-info ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-fw-bold">
+                        Height auto</div>
+                </div>
+            </div>
+            <div class="ux4g-fs-12 ux4g-text-neutral-secondary ux4g-mb-s ux4g-fw-bold">HTML Markup:</div>
+            <pre class="ux4g-p-m ux4g-bg-neutral-strong ux4g-radius-m ux4g-fs-12 ux4g-o-auto">
+&lt;div class="ux4g-hpx-200 ux4g-d-flex"&gt;
+  &lt;div class="ux4g-h-25 ux4g-wpx-150"&gt;Height 25%&lt;/div&gt;
+  &lt;div class="ux4g-h-50 ux4g-wpx-150"&gt;Height 50%&lt;/div&gt;
+  &lt;div class="ux4g-h-75 ux4g-wpx-150"&gt;Height 75%&lt;/div&gt;
+  &lt;div class="ux4g-h-100 ux4g-wpx-150"&gt;Height 100%&lt;/div&gt;
+  &lt;div class="ux4g-h-auto ux4g-wpx-150"&gt;Height auto&lt;/div&gt;
+&lt;/div&gt;</pre>
+        </div>
+
+        <!-- Fixed Heights -->
+        <div>
+            <div class="ux4g-fs-16 ux4g-fw-semibold ux4g-mb-m">Fixed Dimensions (Pixels)</div>
+            <div
+                class="ux4g-p-m ux4g-bg-neutral ux4g-border ux4g-radius-m ux4g-mb-m ux4g-d-flex ux4g-ai-start ux4g-inline-gap-s">
+                <div
+                    class="ux4g-hpx-100 ux4g-wpx-100 ux4g-p-xs ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-fw-bold">
+                    100px</div>
+                <div
+                    class="ux4g-hpx-150 ux4g-wpx-100 ux4g-p-xs ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-fw-bold">
+                    150px</div>
+                <div
+                    class="ux4g-hpx-200 ux4g-wpx-100 ux4g-p-xs ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-fw-bold">
+                    200px</div>
+                <div
+                    class="ux4g-hpx-300 ux4g-wpx-100 ux4g-p-xs ux4g-bg-success-soft ux4g-border ux4g-border-success ux4g-radius-xs ux4g-text-neutral-primary ux4g-fs-12 ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-fw-bold">
+                    300px</div>
+            </div>
+            <div class="ux4g-fs-12 ux4g-text-neutral-secondary ux4g-mb-s ux4g-fw-bold">HTML Markup:</div>
+            <pre class="ux4g-p-m ux4g-bg-neutral-strong ux4g-radius-m ux4g-fs-12 ux4g-o-auto">
+&lt;div class="ux4g-hpx-100 ux4g-wpx-100"&gt;100px height&lt;/div&gt;
+&lt;div class="ux4g-hpx-150 ux4g-wpx-100"&gt;150px height&lt;/div&gt;
+&lt;div class="ux4g-hpx-200 ux4g-wpx-100"&gt;200px height&lt;/div&gt;
+&lt;div class="ux4g-hpx-300 ux4g-wpx-100"&gt;300px height&lt;/div&gt;</pre>
+        </div>
+    </div>
+
+
+    <h1 class="ux4g-text-center ux4g-my-l">UX4G Interactions</h1>
+    <div class="ux4g-d-grid ux4g-grid-cols-2 ux4g-gap-m ux4g-mb-2xl">
+        <!-- Cursors & Selection -->
+        <div
+            class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Cursors & Selection</div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m">
+                <!-- Cursors -->
+                <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                    <div class="ux4g-p-s ux4g-bg-neutral-subtle ux4g-radius-s ux4g-cursor-pointer ux4g-text-center">
+                        ux4g-cursor-pointer</div>
+                    <div class="ux4g-p-s ux4g-bg-neutral-subtle ux4g-radius-s ux4g-cursor-not-allowed ux4g-text-center">
+                        ux4g-cursor-not-allowed</div>
+                </div>
+                <!-- Selection -->
+                <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                    <div class="ux4g-p-s ux4g-bg-primary-soft ux4g-radius-s ux4g-select-none ux4g-text-center">
+                        ux4g-select-none (Can't select me)</div>
+                    <div class="ux4g-p-s ux4g-bg-primary-soft ux4g-radius-s ux4g-select-all ux4g-text-center">
+                        ux4g-select-all (Auto-select entire block)</div>
+                    <div class="ux4g-p-s ux4g-bg-primary-soft ux4g-radius-s ux4g-select-auto ux4g-text-center">
+                        ux4g-select-auto (Default behavior)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shadow / Combined -->
+        <div
+            class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Shadow / Combined</div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m ux4g-ai-center ux4g-w-full">
+                <div class="ux4g-p-m ux4g-bg-neutral-strong ux4g-radius-m ux4g-shadow-l0 ux4g-w-full ux4g-text-center">
+                    Level 0 (None)</div>
+                <div
+                    class="ux4g-p-m ux4g-bg-neutral-strong ux4g-radius-m ux4g-shadow-l1 ux4g-w-full ux4g-text-center ux4g-border">
+                    Level 1 (Subtle)</div>
+                <div class="ux4g-p-m ux4g-bg-neutral-strong ux4g-radius-m ux4g-shadow-l2 ux4g-w-full ux4g-text-center">
+                    Level 2 (Regular)</div>
+                <div class="ux4g-p-m ux4g-bg-neutral-strong ux4g-radius-m ux4g-shadow-l3 ux4g-w-full ux4g-text-center">
+                    Level 3 (Large)</div>
+                <div class="ux4g-p-m ux4g-bg-neutral-strong ux4g-radius-m ux4g-shadow-l4 ux4g-w-full ux4g-text-center">
+                    Level 4 (Strong)</div>
+            </div>
+        </div>
+    </div>
+    <!-- Gap Utilities -->
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <h1 class="ux4g-fs-32 ux4g-fw-bold ux4g-mb-m">Gap Utilities</h1>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-2xl text-center">Control the spacing between grid and flex items.
+            Use semantic tokens for layout, vertical rhythm, and horizontal flow.</p>
+
+        <!-- 1.1 Section Gap -->
+        <h2 class="ux4g-fs-24 ux4g-fw-bold ux4g-mb-m">1.1 Section Gap (Layout Spacing)</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl">Sets both row and column gap based on section layout tokens.
+        </p>
+
+        <div class="ux4g-d-grid ux4g-grid-cols-2 ux4g-gap-xl ux4g-mb-3xl">
+            <!-- Slices of different sizes -->
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-gap-none</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-grid ux4g-grid-cols-2 ux4g-gap-none">
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            1</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-gap-xs</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-grid ux4g-grid-cols-2 ux4g-gap-xs">
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            1</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-gap-s</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-grid ux4g-grid-cols-2 ux4g-gap-s">
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            1</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-gap-m</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-grid ux4g-grid-cols-2 ux4g-gap-m">
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            1</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-gap-l</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-grid ux4g-grid-cols-2 ux4g-gap-l">
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            1</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-gap-xl</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-grid ux4g-grid-cols-2 ux4g-gap-xl">
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            1</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-gap-2xl</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-grid ux4g-grid-cols-2 ux4g-gap-2xl">
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            1</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-text-center">
+                            2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1.2 Stack Gap -->
+        <h2 class="ux4g-fs-24 ux4g-fw-bold ux4g-mb-m">1.2 Stack Gap (Vertical Rhythm)</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl"><span class="ux4g-text-error">row-gap</span> sets the vertical
+            space between items.</p>
+
+        <div class="ux4g-d-grid ux4g-grid-cols-2 ux4g-gap-xl ux4g-mb-3xl">
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-stack-gap-none</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-none ux4g-ai-center">
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-w-full ux4g-text-center">
+                            Item 1</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-w-full ux4g-text-center">
+                            Item 2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-stack-gap-2xs</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-2xs ux4g-ai-center">
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-w-full ux4g-text-center">
+                            Item 1</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-w-full ux4g-text-center">
+                            Item 2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-stack-gap-xs</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs ux4g-ai-center">
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-w-full ux4g-text-center">
+                            Item 1</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-w-full ux4g-text-center">
+                            Item 2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-stack-gap-s</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-s ux4g-ai-center">
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-w-full ux4g-text-center">
+                            Item 1</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-w-full ux4g-text-center">
+                            Item 2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-stack-gap-m</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-m ux4g-ai-center">
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-w-full ux4g-text-center">
+                            Item 1</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-w-full ux4g-text-center">
+                            Item 2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-stack-gap-l</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-l ux4g-ai-center">
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-w-full ux4g-text-center">
+                            Item 1</div>
+                        <div
+                            class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s ux4g-w-full ux4g-text-center">
+                            Item 2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1.3 Inline Gap -->
+        <h2 class="ux4g-fs-24 ux4g-fw-bold ux4g-mb-m">1.3 Inline Gap (Horizontal Flow)</h2>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl"><span class="ux4g-text-error">column-gap</span> sets the
+            horizontal space between items.</p>
+
+        <div class="ux4g-d-grid ux4g-grid-cols-2 ux4g-gap-xl ux4g-mb-xl">
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-inline-gap-none</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-flex ux4g-inline-gap-none ux4g-jc-center">
+                        <div class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s">Item 1</div>
+                        <div class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s">Item 2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-inline-gap-2xs</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-flex ux4g-inline-gap-2xs ux4g-jc-center">
+                        <div class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s">Item 1</div>
+                        <div class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s">Item 2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-inline-gap-xs</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-flex ux4g-inline-gap-xs ux4g-jc-center">
+                        <div class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s">Item 1</div>
+                        <div class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s">Item 2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-inline-gap-s</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-flex ux4g-inline-gap-s ux4g-jc-center">
+                        <div class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s">Item 1</div>
+                        <div class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s">Item 2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-inline-gap-m</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-flex ux4g-inline-gap-m ux4g-jc-center">
+                        <div class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s">Item 1</div>
+                        <div class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s">Item 2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-stack-gap-xs">
+                <div class="ux4g-fs-14 ux4g-fw-bold">ux4g-inline-gap-l</div>
+                <div class="ux4g-border ux4g-radius-m ux4g-bg-neutral-strong ux4g-p-m">
+                    <div class="ux4g-d-flex ux4g-inline-gap-l ux4g-jc-center">
+                        <div class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s">Item 1</div>
+                        <div class="ux4g-p-s ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-s">Item 2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vertical Align -->
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <h1 class="ux4g-fs-32 ux4g-fw-bold ux4g-mb-m">Vertical Align</h1>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl">Change the alignment of elements with the <span
+                class="ux4g-text-error">ux4g-va-*</span> utilities. Only affects inline, inline-block, inline-table, and
+            table cell elements.</p>
+
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral-strong ux4g-p-xl ux4g-mb-m ux4g-o-auto">
+            <div class="ux4g-fs-24 ux4g-bg-neutral ux4g-p-m ux4g-radius-m">
+                <span class="ux4g-va-baseline ux4g-bg-primary ux4g-p-xs ux4g-radius-s ux4g-fs-14">baseline</span>
+                <span class="ux4g-va-top ux4g-bg-primary ux4g-p-xs ux4g-radius-s ux4g-fs-14">top</span>
+                <span class="ux4g-va-middle ux4g-bg-primary ux4g-p-xs ux4g-radius-s ux4g-fs-14">middle</span>
+                <span class="ux4g-va-bottom ux4g-bg-primary ux4g-p-xs ux4g-radius-s ux4g-fs-14">bottom</span>
+                <span class="ux4g-va-text-top ux4g-bg-primary ux4g-p-xs ux4g-radius-s ux4g-fs-14">text-top</span>
+                <span class="ux4g-va-text-bottom ux4g-bg-primary ux4g-p-xs ux4g-radius-s ux4g-fs-14">text-bottom</span>
+            </div>
+        </div>
+
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;span class="ux4g-va-baseline"&gt;baseline&lt;/span&gt;<br>
+                &lt;span class="ux4g-va-top"&gt;top&lt;/span&gt;<br>
+                &lt;span class="ux4g-va-middle"&gt;middle&lt;/span&gt;<br>
+                &lt;span class="ux4g-va-bottom"&gt;bottom&lt;/span&gt;<br>
+                &lt;span class="ux4g-va-text-top"&gt;text-top&lt;/span&gt;<br>
+                &lt;span class="ux4g-va-text-bottom"&gt;text-bottom&lt;/span&gt;
+            </code>
+        </div>
+    </div>
+    <!-- Visibility -->
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <h1 class="ux4g-fs-32 ux4g-fw-bold ux4g-mb-m">Visibility</h1>
+        <p class="ux4g-text-neutral-secondary ux4g-mb-xl">Control the <span class="ux4g-text-error">visibility</span> of
+            elements without affecting the layout flux.</p>
+
+        <div class="ux4g-border ux4g-radius-l ux4g-bg-neutral-strong ux4g-p-xl ux4g-mb-m">
+            <div class="ux4g-d-flex ux4g-gap-m ux4g-ai-center">
+                <div
+                    class="ux4g-visible ux4g-p-m ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-m ux4g-fs-14">
+                    Visible element</div>
+                <div
+                    class="ux4g-invisible ux4g-p-m ux4g-bg-primary ux4g-border ux4g-border-primary ux4g-radius-m ux4g-fs-14">
+                    Invisible element</div>
+                <div class="ux4g-p-m ux4g-bg-neutral ux4g-border ux4g-border-neutral-subtle ux4g-radius-m ux4g-fs-14">
+                    Regular element</div>
+            </div>
+            <p class="ux4g-fs-12 ux4g-text-neutral-tertiary ux4g-mt-s">Note: The invisible element still takes up space
+                in the layout.</p>
+        </div>
+
+        <div
+            class="ux4g-bg-neutral-subtle ux4g-p-m ux4g-radius-top-l ux4g-d-flex ux4g-jc-between ux4g-ai-center ux4g-border ux4g-border-neutral-subtle">
+            <div class="ux4g-fs-14 ux4g-fw-bold">HTML</div>
+        </div>
+        <div
+            class="ux4g-bg-neutral-strong ux4g-p-m ux4g-radius-bottom-l ux4g-border ux4g-border-neutral-subtle ux4g-o-auto">
+            <code class="ux4g-fs-14 ux4g-text-secondary">
+                &lt;div class="ux4g-visible"&gt;Visible element&lt;/div&gt;<br>
+                &lt;div class="ux4g-invisible"&gt;Invisible element&lt;/div&gt;
+            </code>
+        </div>
+    </div>
+
+    <!-- Object Fit -->
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Object Fit</div>
+        <div class="ux4g-d-grid ux4g-grid-cols-4 ux4g-md-grid-cols-3 ux4g-lg-grid-5 ux4g-gap-m">
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-hpx-100">
+                    <img src="./assets/images/of_cover.png" alt="Cover" class="ux4g-of-cover ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-of-cover</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-hpx-100">
+                    <img src="./assets/images/of_contain.png" alt="Contain"
+                        class="ux4g-of-contain ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-of-contain</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-hpx-100">
+                    <img src="./assets/images/of_fill.png" alt="Fill" class="ux4g-of-fill ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-of-fill</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-hpx-100">
+                    <img src="./assets/images/of_none.png" alt="None" class="ux4g-of-none ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-of-none</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-hpx-100">
+                    <img src="./assets/images/of_scale_down.png" alt="Scale Down"
+                        class="ux4g-of-scale-down ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-of-scale-down</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Object Position -->
+    <div
+        class="ux4g-p-xl ux4g-radius-l ux4g-bg-neutral-strong ux4g-shadow-l1 ux4g-d-flex ux4g-flex-col ux4g-jc-start ux4g-border ux4g-border-neutral-subtle ux4g-mb-2xl">
+        <div class="ux4g-fs-18 ux4g-fw-semibold ux4g-mb-m ux4g-text-center">Object Position</div>
+        <div class="ux4g-d-grid ux4g-grid-cols-4 ux4g-md-grid-cols-3 ux4g-lg-grid-5 ux4g-gap-m">
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-w-100 ux4g-hpx-150">
+                    <img src="./assets/images/ux4g_dummy_bg.png" alt="Center"
+                        class="ux4g-of-none ux4g-op ux4g-op-center ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-op-center</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-w-100 ux4g-hpx-150">
+                    <img src="./assets/images/ux4g_dummy_bg.png" alt="Top"
+                        class="ux4g-of-none ux4g-op ux4g-op-top ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-op-top</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-w-100 ux4g-hpx-150">
+                    <img src="./assets/images/ux4g_dummy_bg.png" alt="Bottom"
+                        class="ux4g-of-none ux4g-op ux4g-op-bottom ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-op-bottom</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-w-100 ux4g-hpx-150">
+                    <img src="./assets/images/ux4g_dummy_bg.png" alt="Left"
+                        class="ux4g-of-none ux4g-op ux4g-op-left ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-op-left</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-w-100 ux4g-hpx-150">
+                    <img src="./assets/images/ux4g_dummy_bg.png" alt="Right"
+                        class="ux4g-of-none ux4g-op ux4g-op-right ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-op-right</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-w-100 ux4g-hpx-150">
+                    <img src="./assets/images/ux4g_dummy_bg.png" alt="Top Left"
+                        class="ux4g-of-none ux4g-op ux4g-op-top-left ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-op-top-left</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-w-100 ux4g-hpx-150">
+                    <img src="./assets/images/ux4g_dummy_bg.png" alt="Top Right"
+                        class="ux4g-of-none ux4g-op ux4g-op-top-right ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-op-top-right</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-w-100 ux4g-hpx-150">
+                    <img src="./assets/images/ux4g_dummy_bg.png" alt="Bottom Left"
+                        class="ux4g-of-none ux4g-op ux4g-op-bottom-left ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-op-bottom-left</div>
+            </div>
+            <div class="ux4g-d-flex ux4g-flex-col ux4g-ai-center ux4g-stack-gap-xs">
+                <div class="ux4g-border ux4g-radius-m ux4g-o-hidden ux4g-bg-neutral-subtle ux4g-w-100 ux4g-hpx-150">
+                    <img src="./assets/images/ux4g_dummy_bg.png" alt="Bottom Right"
+                        class="ux4g-of-none ux4g-op ux4g-op-bottom-right ux4g-w-full ux4g-h-full">
+                </div>
+                <div class="ux4g-fs-12 ux4g-fw-bold">ux4g-op-bottom-right</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

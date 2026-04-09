@@ -1,0 +1,87 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+
+/* =========================================
+   GAP UTILITIES (Semantic)
+   Controls spacing between grid/flex items.
+   1. Section Gap (Layout)
+   2. Stack Gap (Vertical)
+   3. Inline Gap (Horizontal)
+========================================= */
+
+/* 1.1 Section Gap (Layout Spacing) */
+.ux4g-gap-none { gap: var(--ux4g-section-none); }
+.ux4g-gap-xs   { gap: var(--ux4g-section-xs); }
+.ux4g-gap-s    { gap: var(--ux4g-section-s); }
+.ux4g-gap-m    { gap: var(--ux4g-section-m); }
+.ux4g-gap-l    { gap: var(--ux4g-section-l); }
+.ux4g-gap-xl   { gap: var(--ux4g-section-xl); }
+.ux4g-gap-2xl  { gap: var(--ux4g-section-2xl); }
+
+/* 1.2 Stack Gap (Vertical Rhythm) */
+.ux4g-stack-gap-none { row-gap: var(--ux4g-stack-none); }
+.ux4g-stack-gap-2xs  { row-gap: var(--ux4g-stack-2xs); }
+.ux4g-stack-gap-xs   { row-gap: var(--ux4g-stack-xs); }
+.ux4g-stack-gap-s    { row-gap: var(--ux4g-stack-s); }
+.ux4g-stack-gap-m    { row-gap: var(--ux4g-stack-m); }
+.ux4g-stack-gap-l    { row-gap: var(--ux4g-stack-l); }
+
+/* 1.3 Inline Gap (Horizontal Flow) */
+.ux4g-inline-gap-none { column-gap: var(--ux4g-inline-none); }
+.ux4g-inline-gap-2xs  { column-gap: var(--ux4g-inline-2xs); }
+.ux4g-inline-gap-xs   { column-gap: var(--ux4g-inline-xs); }
+.ux4g-inline-gap-s    { column-gap: var(--ux4g-inline-s); }
+.ux4g-inline-gap-m    { column-gap: var(--ux4g-inline-m); }
+.ux4g-inline-gap-l    { column-gap: var(--ux4g-inline-l); }
+
+
+/* ================= RESPONSIVE ================= */
+
+/* SM ≥ 576px */
+@media (min-width: 576px) {
+  .ux4g-gap-sm-none { gap: var(--ux4g-section-none); }
+  .ux4g-gap-sm-s    { gap: var(--ux4g-section-s); }
+  .ux4g-gap-sm-m    { gap: var(--ux4g-section-m); }
+  .ux4g-gap-sm-l    { gap: var(--ux4g-section-l); }
+  .ux4g-gap-sm-xl   { gap: var(--ux4g-section-xl); }
+  .ux4g-gap-sm-2xl  { gap: var(--ux4g-section-2xl); }
+}
+
+/* MD ≥ 768px */
+@media (min-width: 768px) {
+  .ux4g-gap-md-none { gap: var(--ux4g-section-none); }
+  .ux4g-gap-md-s    { gap: var(--ux4g-section-s); }
+  .ux4g-gap-md-m    { gap: var(--ux4g-section-m); }
+  .ux4g-gap-md-l    { gap: var(--ux4g-section-l); }
+  .ux4g-gap-md-xl   { gap: var(--ux4g-section-xl); }
+}
+
+/* LG ≥ 992px */
+@media (min-width: 992px) {
+  .ux4g-gap-lg-none { gap: var(--ux4g-section-none); }
+  .ux4g-gap-lg-s    { gap: var(--ux4g-section-s); }
+  .ux4g-gap-lg-m    { gap: var(--ux4g-section-m); }
+  .ux4g-gap-lg-l    { gap: var(--ux4g-section-l); }
+  .ux4g-gap-lg-xl   { gap: var(--ux4g-section-xl); }
+}
+
+/* XL ≥ 1200px */
+@media (min-width: 1200px) {
+  .ux4g-gap-xl-none { gap: var(--ux4g-section-none); }
+  .ux4g-gap-xl-m    { gap: var(--ux4g-section-m); }
+  .ux4g-gap-xl-l    { gap: var(--ux4g-section-l); }
+  .ux4g-gap-xl-xl   { gap: var(--ux4g-section-xl); }
+  .ux4g-gap-xl-2xl  { gap: var(--ux4g-section-2xl); }
+}

@@ -1,0 +1,55 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  /* ===== Position ===== */
+  --ux4g-pos-static: var(--ux4g-position-static);
+  --ux4g-pos-relative: var(--ux4g-position-relative);
+  --ux4g-pos-absolute: var(--ux4g-position-absolute);
+  --ux4g-pos-fixed: var(--ux4g-position-fixed);
+  --ux4g-pos-sticky: var(--ux4g-position-sticky);
+
+  /* ===== Top ===== */
+  --ux4g-pos-top-0: var(--ux4g-pos-value-0);
+  --ux4g-pos-top-50: var(--ux4g-pos-value-50);
+  --ux4g-pos-top-100: var(--ux4g-pos-value-100);
+
+  /* ===== Bottom ===== */
+  --ux4g-pos-bottom-0: var(--ux4g-pos-value-0);
+  --ux4g-pos-bottom-50: var(--ux4g-pos-value-50);
+  --ux4g-pos-bottom-100: var(--ux4g-pos-value-100);
+
+  /* ===== Start ===== */
+  --ux4g-pos-start-0: var(--ux4g-pos-value-0);
+  --ux4g-pos-start-50: var(--ux4g-pos-value-50);
+  --ux4g-pos-start-100: var(--ux4g-pos-value-100);
+
+  /* ===== End ===== */
+  --ux4g-pos-end-0: var(--ux4g-pos-value-0);
+  --ux4g-pos-end-50: var(--ux4g-pos-value-50);
+  --ux4g-pos-end-100: var(--ux4g-pos-value-100);
+
+  /* ===== Transform ===== */
+  --ux4g-pos-translate-middle: var(--ux4g-translate-middle);
+  --ux4g-pos-translate-middle-x: var(--ux4g-translate-middle-x);
+  --ux4g-pos-translate-middle-y: var(--ux4g-translate-middle-y);
+
+  /* ===== Offset ===== */
+  --ux4g-pos-bottom-xs: var(--ux4g-pos-offset-1);
+  --ux4g-pos-bottom-sm: var(--ux4g-pos-offset-5);
+
+  --ux4g-pos-end-overflow-xs: var(--ux4g-pos-offset-n1);
+  --ux4g-pos-end-overflow-sm: var(--ux4g-pos-offset-n3);
+  --ux4g-pos-end-overflow-md: var(--ux4g-pos-offset-n5);
+}

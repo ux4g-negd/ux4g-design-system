@@ -1,0 +1,40 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  /* =========================================
+     UX4G BREAKPOINT TOKENS
+  ========================================= */
+  --ux4g-bp-sm: 36rem;   /* 576px */
+  --ux4g-bp-md: 48rem;   /* 768px */
+  --ux4g-bp-lg: 62rem;   /* 992px */
+  --ux4g-bp-xl: 75rem;   /* 1200px */
+  --ux4g-bp-2xl: 87.5rem; /* 1400px */
+
+  /* Container Sizes */
+  --ux4g-container-sm: 540px;
+  --ux4g-container-md: 720px;
+  --ux4g-container-lg: 960px;
+  --ux4g-container-xl: 1140px;
+  --ux4g-container-2xl: 1320px;
+
+  /* Grid & Layout */
+  --ux4g-gutter-x: var(--ux4g-space-5, 12px);
+  --ux4g-gutter-y: 0;
+
+  /* Grid defaults */
+  --ux4g-grid-gap: var(--ux4g-space-5, 12px);
+  --ux4g-grid-column-gap: var(--ux4g-grid-gap);
+  --ux4g-grid-row-gap: var(--ux4g-grid-gap);
+}

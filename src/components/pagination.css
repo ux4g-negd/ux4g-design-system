@@ -1,0 +1,279 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+.ux4g-pagination-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-margin-m);
+}
+
+/* PAGINATION */
+.ux4g-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ux4g-inline-s);
+    user-select: none;
+    padding: var(--ux4g-padding-xs);
+}
+
+.ux4g-page-number,
+.ux4g-page-nav {
+    background-color: transparent;
+    height: 32px;
+    border-radius: var(--ux4g-radius-md);
+    cursor: pointer;
+    color: var(--ux4g-text-neutral-tertiary);
+    padding: var(--ux4g-padding-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--ux4g-border-width-sm) solid transparent;
+    --ux4g-fs-current: var(--ux4g-fs-14);
+    --ux4g-lh-current: var(--ux4g-lh-20);
+    --ux4g-fw-current: var(--ux4g-font-weight-regular);
+}
+
+.ux4g-page-number:hover,
+.ux4g-page-nav:hover {
+    border-color: var(--ux4g-border-color-neutral-hover);
+    color: var(--ux4g-text-neutral-primary);
+}
+
+.ux4g-page-number.active,
+.ux4g-page-number:active {
+    border-color: var(--ux4g-border-color-primary-strong);
+    color: var(--ux4g-text-neutral-primary);
+    background-color: var(--ux4g-bg-neutral);
+}
+
+.ux4g-page-number-more {
+    font-size: 20px;
+}
+
+.ux4g-page-number:focus {
+    background-color: var(--ux4g-bg-neutral-strong);
+}
+
+/* PAGE SIZE */
+.ux4g-page-size {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-space-4);
+    color: var(--ux4g-text-neutral-tertiary);
+    font-size: var(--ux4g-fs-12);
+}
+
+.ux4g-page-size-select-wrapper {
+    position: var(--ux4g-pos-relative);
+    display: flex;
+    align-items: center;
+}
+
+.ux4g-page-size-select-wrapper .ux4g-icon-outlined {
+    position: var(--ux4g-pos-absolute);
+    pointer-events: none;
+}
+
+.ux4g-page-size-select-wrapper .ux4g-icon-outlined:first-child {
+    left: 8px;
+}
+
+.ux4g-page-size-select-wrapper .ux4g-icon-outlined.ux4g-select-value-icon {
+    left: 55%;
+    transform: translateX(-50%);
+    color: var(--ux4g-text-neutral-tertiary);
+    font-size: var(--ux4g-fs-20);
+    top: 10px;
+}
+
+.ux4g-page-size-select-wrapper .ux4g-icon-outlined:last-child {
+    right: 6px;
+}
+
+.ux4g-page-size-select-wrapper.has-value .ux4g-select-value-icon {
+    display: none;
+}
+
+
+.ux4g-page-size select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-md);
+    padding: var(--ux4g-padding-none) 24px var(--ux4g-padding-none) 32px;
+    background: var(--ux4g-bg-neutral-elevated);
+    height: 32px;
+    color: var(--ux4g-bg-neutral-elevated);
+    /* Initially matches background to hide text */
+    cursor: pointer;
+    text-align: var(--ux4g-ta-center);
+    --ux4g-fs-current: var(--ux4g-fs-14);
+    --ux4g-lh-current: var(--ux4g-lh-20);
+    --ux4g-fw-current: var(--ux4g-font-weight-regular);
+}
+
+.ux4g-page-size-select-wrapper.has-value select {
+    color: var(--ux4g-text-neutral-primary);
+}
+
+
+.ux4g-page-size select option {
+    color: var(--ux4g-text-neutral-primary);
+}
+
+.ux4g-page-nav.prev,
+.ux4g-page-nav.next {
+    font-size: var(--ux4g-fs-20);
+}
+
+.ux4g-page-nav.prev {
+    margin-right: var(--ux4g-space-4);
+}
+
+.ux4g-page-nav.disabled,
+.ux4g-page-nav[disabled],
+.ux4g-pagination-prev.disabled,
+.ux4g-pagination-prev[disabled] {
+    color: var(--ux4g-text-neutral-tertiary);
+    pointer-events: none;
+}
+
+.ux4g-page-nav.next {
+    color: var(--ux4g-text-brand-primary-default);
+}
+
+/******************************************dotted pagination*******************************/
+.ux4g-pagination-dotted {
+    max-width: 220px;
+}
+
+.ux4g-pagination-solid {
+    background-color: var(--ux4g-bg-neutral-soft);
+}
+
+.ux4g-pagination-translucent {
+    background-color: rgba(255, 255, 255, 0.70)
+}
+
+.ux4g-pagination-dotted .ux4g-pagination-dots {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: var(--ux4g-inline-s);
+}
+
+.ux4g-page-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--ux4g-radius-full);
+    background: var(--ux4g-control-bg-default);
+    /* inactive */
+    cursor: pointer;
+    position: var(--ux4g-pos-relative);
+    border: solid var(--ux4g-border-width-sm) var(--ux4g-control-border-default);
+}
+
+.ux4g-page-dot.ux4g-active,
+.ux4g-page-dot:active {
+    background: var(--ux4g-bg-primary-strong);
+    cursor: default;
+}
+
+/* Arrows */
+.ux4g-pagination-prev,
+.ux4g-pagination-next {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--ux4g-radius-full);
+    background: var(--ux4g-bg-neutral-strong);
+    color: var(--ux4g-text-brand-primary-default);
+    font-size: var(--ux4g-fs-20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: var(--ux4g-padding-2xs);
+}
+
+/* Compact → fewer gaps, smaller arrows */
+.ux4g-pagination-compact {
+    gap: var(--ux4g-space-4);
+}
+
+.ux4g-pagination-compact .ux4g-pagination-prev,
+.ux4g-pagination-compact .ux4g-pagination-next {
+    width: 30px;
+    height: 30px;
+    font-size: var(--ux4g-fs-18);
+}
+
+/* No arrows variant */
+.ux4g-pagination-no-arrows .ux4g-pagination-prev,
+.ux4g-pagination-no-arrows .ux4g-pagination-next {
+    display: none;
+}
+
+.ux4g-pagination-prev-right,
+.ux4g-pagination-next-right {
+    position: var(--ux4g-pos-absolute);
+}
+
+.ux4g-pagination-prev-right {
+    right: var(--ux4g-space-10);
+}
+
+.ux4g-pagination-next-right {
+    right: var(--ux4g-space-none);
+}
+
+@media screen and (max-width: 768px) {
+    .ux4g-pagination-wrapper {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--ux4g-margin-m);
+    }
+
+    .ux4g-pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    .ux4g-pagination-dotted {
+        max-width: 100%;
+        justify-content: center;
+    }
+
+    .ux4g-pagination-dotted .ux4g-pagination-dots {
+        width: auto;
+        justify-content: center;
+        gap: var(--ux4g-inline-s);
+    }
+
+    .ux4g-page-size {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .ux4g-pagination-prev-right,
+    .ux4g-pagination-next-right {
+        position: var(--ux4g-pos-static);
+    }
+}

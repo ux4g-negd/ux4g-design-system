@@ -1,0 +1,154 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* background-color */
+:root {
+  --ux4g-bg-neutral-elevated: var(--ux4g-color-neutral-0);
+  --ux4g-bg-neutral: var(--ux4g-color-neutral-50);
+  --ux4g-bg-neutral-soft: var(--ux4g-color-neutral-100);
+  --ux4g-bg-neutral-subtle: var(--ux4g-color-neutral-200);
+  --ux4g-bg-neutral-emphasis: var(--ux4g-color-neutral-300);
+  --ux4g-bg-neutral-strong: var(--ux4g-color-neutral-0);
+  --ux4g-bg-neutral-stronger: var(--ux4g-color-neutral-900);
+  --ux4g-bg-neutral-disabled:  var(--ux4g-color-neutral-200);
+
+  --ux4g-bg-primary: var(--ux4g-color-primary-50);
+  --ux4g-bg-primary-soft: var(--ux4g-color-primary-100);
+  --ux4g-bg-primary-subtle: var(--ux4g-color-primary-200);
+  --ux4g-bg-primary-subtlest: var(--ux4g-color-primary-50);
+  --ux4g-bg-primary-emphasis: var(--ux4g-color-primary-300);
+  --ux4g-bg-primary-strong: var(--ux4g-color-primary-600);
+  --ux4g-bg-primary-strong-hover: var(--ux4g-color-primary-700);
+  --ux4g-bg-primary-stronger: var(--ux4g-color-primary-800);
+  --ux4g-bg-primary-stronger-hover: var(--ux4g-color-primary-900);
+
+    --ux4g-bg-secondary: var(--ux4g-color-secondary-50);
+  --ux4g-bg-secondary-soft: var(--ux4g-color-secondary-100);
+  --ux4g-bg-secondary-subtle: var(--ux4g-color-secondary-200);
+  --ux4g-bg-secondary-emphasis: var(--ux4g-color-secondary-300);
+  --ux4g-bg-secondary-strong: var(--ux4g-color-secondary-600);
+
+    --ux4g-bg-tertiary: var(--ux4g-color-tertiary-50);
+  --ux4g-bg-tertiary-soft: var(--ux4g-color-tertiary-100);
+  --ux4g-bg-tertiary-subtle: var(--ux4g-color-tertiary-200);
+  --ux4g-bg-tertiary-emphasis: var(--ux4g-color-tertiary-300);
+  --ux4g-bg-tertiary-strong: var(--ux4g-color-tertiary-600);
+
+  --ux4g-bg-success: var(--ux4g-color-green-50);
+  --ux4g-bg-success-soft: var(--ux4g-color-green-100);
+  --ux4g-bg-success-subtle: var(--ux4g-color-green-200);
+  --ux4g-bg-success-emphasis: var(--ux4g-color-green-300);
+  --ux4g-bg-success-strong: var(--ux4g-color-green-600);
+
+  --ux4g-bg-error: var(--ux4g-color-red-50);
+  --ux4g-bg-error-soft: var(--ux4g-color-red-100);
+  --ux4g-bg-error-subtle: var(--ux4g-color-red-200);
+  --ux4g-bg-error-emphasis: var(--ux4g-color-red-300);
+  --ux4g-bg-error-strong: var(--ux4g-color-red-600);
+  --ux4g-bg-error-strong-hover : var(--ux4g-color-red-700);
+  --ux4g-bg-error-stronger : var(--ux4g-color-red-800);
+
+
+
+  --ux4g-bg-warning: var(--ux4g-color-orange-50);
+  --ux4g-bg-warning-soft: var(--ux4g-color-orange-100);
+  --ux4g-bg-warning-subtle: var(--ux4g-color-orange-200);
+  --ux4g-bg-warning-emphasis: var(--ux4g-color-orange-300);
+  --ux4g-bg-warning-strong: var(--ux4g-color-orange-600);
+
+  --ux4g-bg-info: var(--ux4g-color-cyan-50);
+  --ux4g-bg-info-soft: var(--ux4g-color-cyan-100);
+  --ux4g-bg-info-subtle: var(--ux4g-color-cyan-200);
+  --ux4g-bg-info-emphasis: var(--ux4g-color-cyan-300);
+  --ux4g-bg-info-strong: var(--ux4g-color-cyan-600);
+
+  --ux4g-control-bg-default: var(--ux4g-color-neutral-50);
+  --ux4g-bg-overlay: rgba(23, 23, 23, 0.70);
+
+  
+}
+
+
+
+
+/* =========================================
+   DARK THEME — BACKGROUND (FIGMA MATCHED)
+========================================= */
+:root[data-theme="dark"] {
+  /* ================= NEUTRAL ================= */
+  --ux4g-bg-neutral-elevated: var(--ux4g-color-neutral-950);
+  --ux4g-bg-neutral: var(--ux4g-color-neutral-900);
+  --ux4g-bg-neutral-soft: var(--ux4g-color-neutral-800);
+  --ux4g-bg-neutral-subtle: var(--ux4g-color-neutral-800);
+  --ux4g-bg-neutral-emphasis: var(--ux4g-color-neutral-700);
+  --ux4g-bg-neutral-strong: var(--ux4g-color-neutral-950);
+  --ux4g-bg-neutral-stronger: var(--ux4g-color-neutral-50);
+  --ux4g-bg-neutral-inverse: var(--ux4g-color-neutral-50);
+  --ux4g-bg-neutral-disabled: rgba(250, 250, 250, 0.25);
+  --ux4g-bg-neutral-none: transparent;
+
+  /* ================= PRIMARY ================= */
+  --ux4g-bg-primary: var(--ux4g-color-primary-900);
+  --ux4g-bg-primary-soft: var(--ux4g-color-primary-800);
+  --ux4g-bg-primary-subtle: var(--ux4g-color-primary-700);
+  --ux4g-bg-primary-subtlest: var(--ux4g-color-primary-900);
+  --ux4g-bg-primary-emphasis: var(--ux4g-color-primary-600);
+  --ux4g-bg-primary-strong: var(--ux4g-color-primary-300);
+  --ux4g-bg-primary-strong-hover: var(--ux4g-color-primary-400);
+  --ux4g-bg-primary-stronger: var(--ux4g-color-primary-200);
+  --ux4g-bg-primary-stronger-hover: var(--ux4g-color-primary-100);
+
+  /* ================= SECONDARY ================= */
+  --ux4g-bg-secondary: var(--ux4g-color-secondary-900);
+  --ux4g-bg-secondary-soft: var(--ux4g-color-secondary-800);
+  --ux4g-bg-secondary-subtle: var(--ux4g-color-secondary-700);
+  --ux4g-bg-secondary-emphasis: var(--ux4g-color-secondary-600);
+  --ux4g-bg-secondary-strong: var(--ux4g-color-secondary-300);
+
+  /* ================= TERTIARY ================= */
+  --ux4g-bg-tertiary: var(--ux4g-color-tertiary-900);
+  --ux4g-bg-tertiary-soft: var(--ux4g-color-tertiary-800);
+  --ux4g-bg-tertiary-subtle: var(--ux4g-color-tertiary-700);
+  --ux4g-bg-tertiary-emphasis: var(--ux4g-color-tertiary-600);
+  --ux4g-bg-tertiary-strong: var(--ux4g-color-tertiary-300);
+
+  /* ================= STATUS ================= */
+  --ux4g-bg-success: var(--ux4g-color-green-900);
+  --ux4g-bg-success-soft: var(--ux4g-color-green-800);
+  --ux4g-bg-success-subtle: var(--ux4g-color-green-700);
+  --ux4g-bg-success-emphasis: var(--ux4g-color-green-600);
+  --ux4g-bg-success-strong: var(--ux4g-color-green-300);
+
+  --ux4g-bg-error: var(--ux4g-color-red-900);
+  --ux4g-bg-error-soft: var(--ux4g-color-red-800);
+  --ux4g-bg-error-subtle: var(--ux4g-color-red-700);
+  --ux4g-bg-error-emphasis: var(--ux4g-color-red-600);
+  --ux4g-bg-error-strong: var(--ux4g-color-red-300);
+  --ux4g-bg-error-stronger : var(--ux4g-color-red-200);
+
+
+  --ux4g-bg-warning: var(--ux4g-color-orange-900);
+  --ux4g-bg-warning-soft: var(--ux4g-color-orange-800);
+  --ux4g-bg-warning-subtle: var(--ux4g-color-orange-700);
+  --ux4g-bg-warning-emphasis: var(--ux4g-color-orange-600);
+  --ux4g-bg-warning-strong: var(--ux4g-color-orange-300);
+
+  --ux4g-bg-info: var(--ux4g-color-cyan-900);
+  --ux4g-bg-info-soft: var(--ux4g-color-cyan-800);
+  --ux4g-bg-info-subtle: var(--ux4g-color-cyan-700);
+  --ux4g-bg-info-emphasis: var(--ux4g-color-cyan-600);
+  --ux4g-bg-info-strong: var(--ux4g-color-cyan-300);
+
+  --ux4g-bg-overlay:rgba(250, 250, 250, 0.6)
+}

@@ -1,0 +1,478 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* ================= Base Alert ================= */
+.ux4g-alert {
+  display: flex;
+  align-items: center;
+  gap: var(--ux4g-inline-l);
+  width: 100%;
+  padding: var(--ux4g-padding-s) var(--ux4g-padding-2xl);
+  box-sizing: border-box;
+}
+
+/* ================= Status Variables ================= */
+.ux4g-alert-info {
+  --ux4g-alert-bg: var(--ux4g-bg-info-soft);
+  --ux4g-alert-text: var(--ux4g-text-info-default);
+}
+
+.ux4g-alert-success {
+  --ux4g-alert-bg: var(--ux4g-bg-success-soft);
+  --ux4g-alert-text: var(--ux4g-text-success-default);
+}
+
+.ux4g-alert-warning {
+  --ux4g-alert-bg: var(--ux4g-bg-warning-soft);
+  --ux4g-alert-text: var(--ux4g-text-warning-default);
+}
+
+.ux4g-alert-error {
+  --ux4g-alert-bg: var(--ux4g-bg-error-soft);
+  --ux4g-alert-text: var(--ux4g-text-error-default);
+}
+
+.ux4g-alert-info,
+.ux4g-alert-success,
+.ux4g-alert-warning,
+.ux4g-alert-error {
+  background-color: var(--ux4g-alert-bg);
+  color: var(--ux4g-alert-text);
+}
+
+/* ================= Icon ================= */
+.ux4g-alert-icon {
+  --ux4g-icon-size: var(--ux4g-fs-20);
+  --ux4g-icon-width: var(--ux4g-fs-20);
+  --ux4g-icon-height: var(--ux4g-fs-20);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+/* ================= Content ================= */
+.ux4g-alert-content {
+  display: flex;
+  align-items: center;
+  gap: var(--ux4g-inline-xs);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ================= Typography ================= */
+.ux4g-alert-title,
+.ux4g-alert-message,
+.ux4g-alert-link,
+.ux4g-alert-progress-text {
+  font-size: var(--ux4g-fs-current);
+  line-height: var(--ux4g-lh-current);
+  font-weight: var(--ux4g-fw-current);
+  font-family: var(--ux4g-ff-current, var(--ux4g-ff));
+}
+
+.ux4g-alert-title {
+  color: var(--ux4g-text-neutral-primary);
+  --ux4g-fs-current: var(--ux4g-fs-16);
+  --ux4g-lh-current: var(--ux4g-lh-20);
+  --ux4g-fw-current: var(--ux4g-fw-bold);
+}
+
+.ux4g-alert-message {
+  color: var(--ux4g-text-neutral-secondary);
+  --ux4g-fs-current: var(--ux4g-fs-14);
+  --ux4g-lh-current: var(--ux4g-lh-20);
+  --ux4g-fw-current: var(--ux4g-fw-regular);
+}
+
+.ux4g-alert-link {
+  color: var(--ux4g-text-brand-primary-default);
+  text-decoration: none;
+  --ux4g-fs-current: var(--ux4g-fs-14);
+  --ux4g-lh-current: var(--ux4g-lh-18);
+  --ux4g-fw-current: var(--ux4g-fw-medium);
+  white-space: nowrap;
+}
+
+.ux4g-alert-link:hover {
+  text-decoration: none;
+}
+
+/* ================= Actions ================= */
+.ux4g-alert-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ux4g-inline-l);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* ================= Close Button ================= */
+.ux4g-alert-close {
+  background: none;
+  border: var(--ux4g-border-width-none);
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ux4g-alert-close .ux4g-icon {
+  --ux4g-icon-size: var(--ux4g-fs-18);
+  color: var(--ux4g-text-neutral-primary);
+    --ux4g-icon-width: var(--ux4g-fs-18);
+  --ux4g-icon-height: var(--ux4g-fs-18);
+}
+
+/* ================= Center Layout ================= */
+.ux4g-alert-center {
+  position: var(--ux4g-pos-relative) !important;
+}
+
+.ux4g-alert-center .ux4g-alert-content {
+  justify-content: center;
+  text-align: var(--ux4g-ta-center);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ux4g-inline-m);
+}
+
+.ux4g-alert-center .ux4g-alert-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ux4g-inline-xs);
+  margin-left: 0;
+}
+
+.ux4g-alert-center .ux4g-alert-close {
+  position: var(--ux4g-pos-absolute);
+  right: var(--ux4g-padding-2xl);
+  top: var(--ux4g-pos-top-50);
+  transform: var(--ux4g-pos-translate-middle-y);
+}
+
+.ux4g-alert-center .ux4g-alert-icon {
+  margin-right: var(--ux4g-inline-xs);
+}
+
+/* ================= Wide & Narrow ================= */
+.ux4g-alert-wide {
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--ux4g-inline-l);
+  padding-block: var(--ux4g-padding-s);
+}
+
+.ux4g-alert-wide .ux4g-alert-content {
+  justify-content: flex-start;
+  text-align: var(--ux4g-ta-start);
+}
+
+.ux4g-alert-wide {
+  padding-left: var(--ux4g-padding-3xl);
+}
+
+.ux4g-alert-wide .ux4g-alert-link {
+  padding-right: var(--ux4g-padding-3xl);
+}
+
+
+
+/* ================= Mobile Responsive ================= */
+@media (max-width: 767px) {
+
+  .ux4g-alert-wide {
+    display: none;
+  }
+
+  .ux4g-alert:not(.ux4g-alert-center) {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--ux4g-inline-m);
+    padding: var(--ux4g-padding-s) var(--ux4g-padding-m);
+    position: var(--ux4g-pos-relative);
+  }
+
+  .ux4g-alert:not(.ux4g-alert-center) .ux4g-alert-content {
+    flex: 1 1 calc(100% - var(--ux4g-padding-2xl));
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ux4g-inline-xs);
+  }
+
+  .ux4g-alert:not(.ux4g-alert-center) .ux4g-alert-actions {
+    flex: 1 1 100%;
+    padding-left: var(--ux4g-padding-2xl);
+    justify-content: flex-start;
+    margin-top: var(--ux4g-stack-xs);
+  }
+
+  .ux4g-alert:not(.ux4g-alert-center) .ux4g-alert-close {
+    position: var(--ux4g-pos-absolute);
+    top: var(--ux4g-padding-s);
+    right: var(--ux4g-padding-s);
+  }
+
+  .ux4g-alert-center {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: var(--ux4g-ta-center);
+    padding: var(--ux4g-padding-s) var(--ux4g-padding-m);
+  }
+
+  .ux4g-alert-center .ux4g-alert-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--ux4g-inline-xs);
+    width: 100%;
+  }
+
+  .ux4g-alert-center .ux4g-alert-icon {
+    order: 1;
+  }
+
+  .ux4g-alert-center .ux4g-alert-title {
+    order: 2;
+  }
+
+  .ux4g-alert-center .ux4g-alert-message {
+    order: 3;
+    flex: 1 1 100%;
+    text-align: var(--ux4g-ta-center);
+    margin-top: var(--ux4g-stack-2xs);
+  }
+
+  .ux4g-alert-center .ux4g-alert-link {
+    order: 4;
+    flex: 1 1 100%;
+    text-align: var(--ux4g-ta-center);
+    margin-top: var(--ux4g-stack-xs);
+    white-space: normal;
+  }
+
+  .ux4g-alert-center .ux4g-alert-close {
+    position: var(--ux4g-pos-absolute);
+    top: var(--ux4g-padding-s);
+    right: var(--ux4g-padding-m);
+    transform: none;
+  }
+}
+
+/* ================= Context Alert (Grid Layout) ================= */
+.ux4g-context-alert {
+  position: var(--ux4g-pos-relative);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "icon title actions"
+    ". message message";
+  column-gap: var(--ux4g-inline-m);
+  row-gap: var(--ux4g-stack-xs);
+  padding: var(--ux4g-padding-m);
+  width: 560px;
+  min-width: 560px;
+  max-width: 100%;
+  border-radius: var(--ux4g-radius-md);
+  background: var(--ux4g-bg-neutral-elevated, #FFF);
+  box-shadow: var(--ux4g-shadow-l3);
+  box-sizing: border-box;
+  align-items: flex-start;
+}
+
+/* Context Alert Dynamic Color states handled by .ux4g-alert-* variables */
+.ux4g-context-alert.ux4g-alert-info,
+.ux4g-context-alert.ux4g-alert-success,
+.ux4g-context-alert.ux4g-alert-warning,
+.ux4g-context-alert.ux4g-alert-error {
+  background-color: var(--ux4g-bg-neutral-elevated, #FFF);
+  /* Keep white background for toasts */
+  color: var(--ux4g-alert-text);
+}
+
+.ux4g-context-alert .ux4g-alert-icon {
+  grid-area: icon;
+  margin-top: var(--ux4g-space-1);
+}
+
+.ux4g-context-alert .ux4g-alert-title {
+  grid-area: title;
+  --ux4g-lh-current: var(--ux4g-lh-24);
+}
+
+.ux4g-context-alert .ux4g-alert-message {
+  grid-area: message;
+}
+
+.ux4g-context-alert .ux4g-alert-actions {
+  grid-area: actions;
+  display: flex;
+  align-items: center;
+  gap: var(--ux4g-inline-l);
+  margin-left: 0;
+}
+
+/* Specificity fix for absolute positioning if desired, but grid-area is more stable */
+.ux4g-context-alert .ux4g-alert-actions:not([style*="position: absolute"]) {
+  position: var(--ux4g-pos-static);
+}
+
+/* Handle grid with progress and footer */
+.ux4g-context-alert:has(.ux4g-alert-progress-wrapper),
+.ux4g-context-alert:has(.ux4g-alert-footer) {
+  grid-template-areas:
+    "icon title actions"
+    ". message message"
+    ". progress progress"
+    ". footer footer";
+}
+
+@media (max-width: 767px) {
+  .ux4g-context-alert {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "icon actions"
+      "title title"
+      "message message";
+  }
+
+  .ux4g-context-alert:has(.ux4g-alert-progress-wrapper),
+  .ux4g-context-alert:has(.ux4g-alert-footer) {
+    grid-template-areas:
+      "icon actions"
+      "title title"
+      "message message"
+      "progress progress"
+      "footer footer";
+  }
+
+  .ux4g-context-alert .ux4g-alert-actions {
+    justify-self: end;
+  }
+}
+
+/* ================= Alert Progress & Footer ================= */
+.ux4g-alert-progress-wrapper {
+  grid-area: progress;
+  display: flex;
+  align-items: center;
+  gap: var(--ux4g-inline-m);
+  width: 100%;
+}
+
+.ux4g-alert-progress {
+  height: var(--ux4g-sz-8);
+  flex: 1;
+  background-color: var(--ux4g-bg-neutral-subtle);
+  border-radius: var(--ux4g-radius-md);
+  position: var(--ux4g-pos-relative);
+  overflow: hidden;
+}
+
+.ux4g-alert-progress-inner {
+  height: 100%;
+  background-color: var(--ux4g-bg-primary-strong);
+  border-radius: var(--ux4g-radius-md);
+  min-width: var(--ux4g-sz-8);
+  transition: width 0.3s ease;
+}
+
+.ux4g-alert-progress-text {
+  --ux4g-fs-current: var(--ux4g-fs-14);
+  --ux4g-lh-current: var(--ux4g-lh-20);
+  color: var(--ux4g-text-neutral-secondary);
+  min-width: var(--ux4g-sz-32);
+  text-align: right;
+}
+
+.ux4g-alert-footer {
+  grid-area: footer;
+  display: flex;
+  align-items: center;
+  gap: var(--ux4g-inline-l);
+  margin-block-start: var(--ux4g-stack-xs);
+}
+
+/* ================= Alert Position Containers ================= */
+.ux4g-alert-container {
+  position: var(--ux4g-pos-fixed);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ux4g-padding-m);
+  pointer-events: none;
+  width: auto;
+}
+
+.ux4g-alert-container>* {
+  pointer-events: auto;
+}
+
+.ux4g-alert-top-left {
+  top: var(--ux4g-padding-xl);
+  left: var(--ux4g-padding-xl);
+}
+
+.ux4g-alert-top-right {
+  top: var(--ux4g-padding-xl);
+  right: var(--ux4g-padding-xl);
+}
+
+.ux4g-alert-bottom-left {
+  bottom: var(--ux4g-padding-xl);
+  left: var(--ux4g-padding-xl);
+}
+
+.ux4g-alert-bottom-right {
+  bottom: var(--ux4g-padding-xl);
+  right: var(--ux4g-padding-xl);
+}
+
+/* ================= Animations ================= */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.ux4g-animate-left {
+  animation: slideInLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ux4g-animate-right {
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}

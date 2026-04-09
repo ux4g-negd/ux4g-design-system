@@ -1,0 +1,103 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* Base Engine */
+[class*="ux4g-o-"] {
+  overflow: var(--ux4g-of);
+}
+
+[class*="ux4g-o-x-"] {
+  overflow-x: var(--ux4g-ofx);
+}
+
+[class*="ux4g-o-y-"] {
+  overflow-y: var(--ux4g-ofy);
+}
+
+/* ===== Overflow Utilities ===== */
+.ux4g-o-auto { --ux4g-of: var(--ux4g-of-auto); }
+.ux4g-o-hidden { --ux4g-of: var(--ux4g-of-hidden); }
+.ux4g-o-visible { --ux4g-of: var(--ux4g-of-visible); }
+.ux4g-o-scroll { --ux4g-of: var(--ux4g-of-scroll); }
+
+/* ===== Overflow X Utilities ===== */
+.ux4g-o-x-auto { --ux4g-ofx: var(--ux4g-ofx-auto); }
+.ux4g-o-x-hidden { --ux4g-ofx: var(--ux4g-ofx-hidden); }
+.ux4g-o-x-visible { --ux4g-ofx: var(--ux4g-ofx-visible); }
+.ux4g-o-x-scroll { --ux4g-ofx: var(--ux4g-ofx-scroll); }
+
+/* ===== Overflow Y Utilities ===== */
+.ux4g-o-y-auto { --ux4g-ofy: var(--ux4g-ofy-auto); }
+.ux4g-o-y-hidden { --ux4g-ofy: var(--ux4g-ofy-hidden); }
+.ux4g-o-y-visible { --ux4g-ofy: var(--ux4g-ofy-visible); }
+.ux4g-o-y-scroll { --ux4g-ofy: var(--ux4g-ofy-scroll); }
+
+
+
+
+/* =========================================================
+   Base Overflow Engine (DRY)
+========================================================= */
+.ux4g-o-auto,
+.ux4g-o-scroll,
+.ux4g-o-y-auto,
+.ux4g-o-y-scroll,
+.ux4g-o-x-auto,
+.ux4g-o-x-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ux4g-scroll-thumb) var(--ux4g-scroll-track);
+}
+
+
+/* WebKit Browsers (Chrome, Edge, Safari) */
+.ux4g-o-auto::-webkit-scrollbar,
+.ux4g-o-scroll::-webkit-scrollbar,
+.ux4g-o-y-auto::-webkit-scrollbar,
+.ux4g-o-y-scroll::-webkit-scrollbar,
+.ux4g-o-x-auto::-webkit-scrollbar,
+.ux4g-o-x-scroll::-webkit-scrollbar {
+  width: var(--ux4g-scroll-size);
+  height: var(--ux4g-scroll-size);
+}
+
+.ux4g-o-auto::-webkit-scrollbar-track,
+.ux4g-o-scroll::-webkit-scrollbar-track,
+.ux4g-o-y-auto::-webkit-scrollbar-track,
+.ux4g-o-y-scroll::-webkit-scrollbar-track,
+.ux4g-o-x-auto::-webkit-scrollbar-track,
+.ux4g-o-x-scroll::-webkit-scrollbar-track {
+  background: var(--ux4g-scroll-track);
+  border-radius: var(--ux4g-scroll-radius);
+}
+
+.ux4g-o-auto::-webkit-scrollbar-thumb,
+.ux4g-o-scroll::-webkit-scrollbar-thumb,
+.ux4g-o-y-auto::-webkit-scrollbar-thumb,
+.ux4g-o-y-scroll::-webkit-scrollbar-thumb,
+.ux4g-o-x-auto::-webkit-scrollbar-thumb,
+.ux4g-o-x-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--ux4g-scroll-thumb);
+  border-radius: var(--ux4g-scroll-radius);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.ux4g-o-auto::-webkit-scrollbar-thumb:hover,
+.ux4g-o-scroll::-webkit-scrollbar-thumb:hover,
+.ux4g-o-y-auto::-webkit-scrollbar-thumb:hover,
+.ux4g-o-y-scroll::-webkit-scrollbar-thumb:hover,
+.ux4g-o-x-auto::-webkit-scrollbar-thumb:hover,
+.ux4g-o-x-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ux4g-color-neutral-400, --ux4g-color-neutral-400);
+}

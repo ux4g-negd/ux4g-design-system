@@ -1,0 +1,140 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  --ux4g-badge-border: var(--ux4g-bg-neutral);
+  --ux4g-badge-dot: var(--ux4g-sz-8);
+  --ux4g-badge-sz: var(--ux4g-sz-18);
+  --ux4g-badge-fs: calc(var(--ux4g-badge-sz) / 2);
+  --ux4g-badge-ico: calc(var(--ux4g-badge-sz) * 0.65); 
+}
+
+
+
+[class*="ux4g-badge-"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  border-radius: var(--ux4g-radius-full);
+  font-family: var(--ux4g-ff);
+  font-weight: var(--ux4g-fw-bold);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: var(--ux4g-va-middle);
+  border: 0 solid transparent;
+  color: var(--ux4g-text-neutral-inverse);
+  line-height: 0; 
+}
+
+[class*="ux4g-badge-dot-"] {
+  width: var(--ux4g-badge-dot);
+  height: var(--ux4g-badge-dot);
+  min-width: var(--ux4g-badge-dot);
+  min-height: var(--ux4g-badge-dot);
+  aspect-ratio: 1 / 1;
+  box-shadow: var(--ux4g-shadow-l3);
+  box-sizing: border-box;
+  font-size: 0;
+  line-height: 0;
+}
+
+[class*="ux4g-badge-icon-"],
+[class*="ux4g-badge-digit-"] {
+  height: var(--ux4g-badge-sz);
+  min-width: var(--ux4g-badge-sz);
+  width: auto;
+  aspect-ratio: 1 / 1; 
+  padding: 0;   
+  font-size: var(--ux4g-badge-fs);
+}
+
+[class*="ux4g-badge-digit-"] {
+  padding: 0 4px; 
+  aspect-ratio: auto;
+}
+
+[class*="ux4g-badge-icon-"] {
+  padding: 0;
+  aspect-ratio: 1 / 1;
+}
+
+[class*="ux4g-badge-icon-"] > .ux4g-icon,
+[class*="ux4g-badge-icon-"] > .ux4g-icon-outlined {
+  font-size: var(--ux4g-badge-ico) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+}
+
+/* Color Variants */
+.ux4g-badge-dot-primary, .ux4g-badge-icon-primary, .ux4g-badge-digit-primary { background: var(--ux4g-bg-primary-strong); }
+.ux4g-badge-dot-success, .ux4g-badge-icon-success, .ux4g-badge-digit-success { background: var(--ux4g-bg-success-strong); }
+.ux4g-badge-dot-warning, .ux4g-badge-icon-warning, .ux4g-badge-digit-warning { background: var(--ux4g-bg-warning-strong); }
+.ux4g-badge-dot-danger, .ux4g-badge-icon-danger, .ux4g-badge-digit-danger { background: var(--ux4g-bg-error-strong); }
+.ux4g-badge-dot-info, .ux4g-badge-icon-info, .ux4g-badge-digit-info { background: var(--ux4g-bg-info-strong); }
+.ux4g-badge-dot-secondary, .ux4g-badge-icon-secondary, .ux4g-badge-digit-secondary { background: var(--ux4g-bg-secondary-strong); }
+.ux4g-badge-dot-tertiary, .ux4g-badge-icon-tertiary, .ux4g-badge-digit-tertiary { background: var(--ux4g-bg-tertiary-strong); }
+.ux4g-badge-dot-neutral, .ux4g-badge-icon-neutral, .ux4g-badge-digit-neutral { 
+  background: var(--ux4g-bg-neutral-subtle); 
+  color: var(--ux4g-text-neutral-primary); 
+}
+
+/* Badge Size Overrides for Status & Profile Matrix */
+.ux4g-badge-s { 
+  --ux4g-badge-dot: 10px; 
+  --ux4g-badge-sz: 10px; 
+  --ux4g-badge-ico: 5px; 
+  --ux4g-badge-fs: 5px; 
+}
+.ux4g-badge-m { 
+  --ux4g-badge-dot: 12px; 
+  --ux4g-badge-sz: 12px; 
+  --ux4g-badge-ico: 6px; 
+  --ux4g-badge-fs: 6px; 
+}
+.ux4g-badge-l { 
+  --ux4g-badge-dot: 12px; 
+  --ux4g-badge-sz: 12px; 
+  --ux4g-badge-ico: 6px; 
+  --ux4g-badge-fs: 6px; 
+}
+
+.ux4g-badge-profile-l { 
+  --ux4g-badge-dot: 18px; 
+  --ux4g-badge-sz: 18px; 
+  --ux4g-badge-ico: 9px; 
+  --ux4g-badge-fs: 9px; 
+}
+.ux4g-badge-profile-xl { 
+  --ux4g-badge-dot: 20px; 
+  --ux4g-badge-sz: 20px; 
+  --ux4g-badge-ico: 10px; 
+  --ux4g-badge-fs: 10px; 
+}
+.ux4g-badge-profile-2xl { 
+  --ux4g-badge-dot: 24px; 
+  --ux4g-badge-sz: 24px; 
+  --ux4g-badge-ico: 12px; 
+  --ux4g-badge-fs: 12px; 
+}
+.ux4g-badge-profile-3xl { 
+  --ux4g-badge-dot: 32px; 
+  --ux4g-badge-sz: 32px; 
+  --ux4g-badge-ico: 16px; 
+  --ux4g-badge-fs: 16px; 
+}

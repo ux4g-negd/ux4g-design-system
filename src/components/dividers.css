@@ -1,0 +1,34 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* ========================================================= HORIZONTAL DIVIDER ========================================================= */
+.ux4g-divider-horizontal {
+    display: block;
+    width: 100%;
+    height: 1px;
+    border: 0;
+    background-color: var(--ux4g-border-color-neutral-subtle);
+}
+
+/* ========================================================= VERTICAL DIVIDER ========================================================= */
+.ux4g-divider-vertical {
+    display: block;
+    width: 1px;
+    background-color: var(--ux4g-border-color-neutral-subtle);
+}
+
+.ux4g-as-stretch,
+.ux4g-divider-vertical {
+    align-self: stretch !important;
+}

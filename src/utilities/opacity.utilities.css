@@ -1,0 +1,38 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+
+
+/* Base Engine */
+[class^="ux4g-opacity-"],
+[class*=" ux4g-opacity-"] {
+  opacity: var(--ux4g-opacity-current);
+}
+
+/* Opacity Scale */
+.ux4g-opacity-0   { --ux4g-opacity-current: var(--ux4g-opacity-0); }
+.ux4g-opacity-5   { --ux4g-opacity-current: var(--ux4g-opacity-5); }
+.ux4g-opacity-10  { --ux4g-opacity-current: var(--ux4g-opacity-10); }
+.ux4g-opacity-20  { --ux4g-opacity-current: var(--ux4g-opacity-20); }
+.ux4g-opacity-25  { --ux4g-opacity-current: var(--ux4g-opacity-25); }
+.ux4g-opacity-30  { --ux4g-opacity-current: var(--ux4g-opacity-30); }
+.ux4g-opacity-40  { --ux4g-opacity-current: var(--ux4g-opacity-40); }
+.ux4g-opacity-50  { --ux4g-opacity-current: var(--ux4g-opacity-50); }
+.ux4g-opacity-60  { --ux4g-opacity-current: var(--ux4g-opacity-60); }
+.ux4g-opacity-70  { --ux4g-opacity-current: var(--ux4g-opacity-70); }
+.ux4g-opacity-75  { --ux4g-opacity-current: var(--ux4g-opacity-75); }
+.ux4g-opacity-80  { --ux4g-opacity-current: var(--ux4g-opacity-80); }
+.ux4g-opacity-90  { --ux4g-opacity-current: var(--ux4g-opacity-90); }
+.ux4g-opacity-95  { --ux4g-opacity-current: var(--ux4g-opacity-95); }
+.ux4g-opacity-100 { --ux4g-opacity-current: var(--ux4g-opacity-100); }

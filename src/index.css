@@ -1,0 +1,35 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+*----------------------------/
+
+
+/* 1. Primitive Tokens */
+@import "./tokens/ux4g-tokens.css";
+
+/* 2. Semantic Tokens */
+@import "./semantic/ux4g-semantic.css";
+
+@import "./reset/reset.css";
+@import "./foundations/ux4g.foundations.css";
+
+/* Layout */
+@import "./layout/ux4g.layout.css";
+
+/* 3. Components */
+@import "./components/ux4g.components.css";
+
+/* 4. Utilities (Moved to bottom to win specificity battles) */
+@import "./utilities/ux4g.utilities.css";
+
+

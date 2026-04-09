@@ -1,0 +1,206 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* ========================================================= UX4G MODAL : Overlay ========================================================= */
+.ux4g-modal-backdrop-25 {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.ux4g-modal-backdrop-50 {
+    background-color: rgba(0, 0, 0, 0.50);
+}
+
+.ux4g-modal-backdrop-75 {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.ux4g-modal-backdrop-blur {
+    backdrop-filter: blur(8px);
+}
+
+/* ========================================================= UX4G MODAL : Overlay Container & Backdrop - Covers full viewport - Centers modal box - Handles the transparent backdrop and fade transition ========================================================= */
+
+.ux4g-modal-backdrop {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+}
+
+/* ========================================================= UX4G MODAL : Overlay Container - Covers full viewport - Centers modal box ========================================================= */
+.ux4g-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================================= UX4G MODAL : Modal Panel - Main modal surface - Handles background, radius and elevation ========================================================= */
+.ux4g-modal-box {
+    background: var(--ux4g-bg-neutral-elevated);
+    border-radius: var(--ux4g-radius-lg);
+    box-shadow: var(--ux4g-shadow-l3);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    transition: transform .3s ease-out;
+
+    margin: var(--ux4g-margin-l) auto var(--ux4g-margin-none) auto;
+}
+
+/* ========================================================= UX4G MODAL : Size Variants - Controls modal width - All sizes maintain responsive max width ========================================================= */
+.ux4g-modal-s {
+    width: 360px;
+    max-width: 90%;
+}
+
+.ux4g-modal-m {
+    width: 500px;
+    max-width: 90%;
+}
+
+.ux4g-modal-l {
+    width: 800px;
+    max-width: 90%;
+}
+
+/* ========================================================= UX4G MODAL : Header - Contains title and close button ========================================================= */
+.ux4g-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--ux4g-padding-m);
+    border-bottom: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    gap: var(--ux4g-space-2);
+}
+
+/* ========================================================= UX4G MODAL : Header Title - Modal heading typography ========================================================= */
+.ux4g-modal-header-title {
+    color: var(--ux4g-text-neutral-primary);
+    font-size: var(--ux4g-fs-20);
+    font-weight: var(--ux4g-fw-semibold);
+    line-height: var(--ux4g-lh-24);
+}
+
+.ux4g-modal-header-sub-heading {
+    color: var(--ux4g-text-neutral-secondary);
+    font-size: var(--ux4g-fs-14);
+    font-weight: var(--ux4g-fw-regular);
+    line-height: var(--ux4g-lh-20);
+}
+
+.ux4g-modal-sub-heading {
+    color: var(--ux4g-text-neutral-secondary);
+    font-size: var(--ux4g-fs-12);
+    font-weight: var(--ux4g-fw-regular);
+    line-height: var(--ux4g-lh-16);
+}
+
+/* ========================================================= UX4G MODAL : Body - Main content area ========================================================= */
+.ux4g-modal-body {
+    padding: var(--ux4g-padding-s) var(--ux4g-padding-l);
+}
+
+.ux4g-modal-body-title {
+    color: var(--ux4g-text-neutral-secondary);
+    font-size: var(--ux4g-fs-16);
+    font-weight: var(--ux4g-fw-semibold);
+    line-height: var(--ux4g-lh-20);
+    padding-block-end: var(--ux4g-padding-xs);
+
+}
+
+.ux4g-modal-body p {
+    font-size: var(--ux4g-fs-14);
+    line-height: var(--ux4g-lh-20);
+    font-weight: var(--ux4g-fw-regular);
+    color: var(--ux4g-text-neutral-secondary);
+
+}
+
+/* ========================================================= UX4G MODAL : Footer Actions - Button group ========================================================= */
+.ux4g-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--ux4g-space-4);
+    padding: var(--ux4g-padding-l);
+    border-top: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+}
+
+/* ========================================================= UX4G MODAL : Close Button - Icon button for dismissing modal ========================================================= */
+
+.ux4g-modal-close-two {
+    position: absolute;
+    right: var(--ux4g-space-5);
+    top: var(--ux4g-space-5);
+}
+
+.ux4g-modal-close {
+    border: var(--ux4g-border-width-none);
+    background: none;
+    font-size: var(--ux4g-fs-20);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ux4g-radius-xs);
+    opacity: var(--ux4g-opacity-50);
+    transition: all 0.3s ease;
+    width: 24px;
+    height: 24px;
+}
+
+.ux4g-modal-close:hover {
+    background-color: var(--ux4g-bg-neutral-subtle);
+    opacity: 1;
+}
+
+.ux4g-modal-close-icon {
+    font-size: var(--ux4g-fs-20);
+}
+
+.is-open {
+    display: block;
+}
+
+.ux4g-modal-header-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+}
+
+/* ========================================================= UX4G MODAL Center Content ========================================================= */
+
+.ux4g-modal-center-content .ux4g-modal-body,
+.ux4g-modal-center-content .ux4g-modal-actions {
+    align-items: center;
+    justify-content: center;
+    text-align: var(--ux4g-ta-center);
+}
+
+.ux4g-modal-center-content .ux4g-modal-header-title-content {
+    text-align: var(--ux4g-ta-center);
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    row-gap: var(--ux4g-stack-xs);
+}
+
+.ux4g-modal-center-content .ux4g-modal-header {
+    align-items: flex-start;
+}

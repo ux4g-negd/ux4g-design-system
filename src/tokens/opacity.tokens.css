@@ -1,0 +1,31 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  --ux4g-opacity-0: 0;
+  --ux4g-opacity-5: 0.05;
+  --ux4g-opacity-10: 0.1;
+  --ux4g-opacity-20: 0.2;
+  --ux4g-opacity-25: 0.25;
+  --ux4g-opacity-30: 0.3;
+  --ux4g-opacity-40: 0.4;
+  --ux4g-opacity-50: 0.5;
+  --ux4g-opacity-60: 0.6;
+  --ux4g-opacity-70: 0.7;
+  --ux4g-opacity-75: 0.75;
+  --ux4g-opacity-80: 0.8;
+  --ux4g-opacity-90: 0.9;
+  --ux4g-opacity-95: 0.95;
+  --ux4g-opacity-100: 1;
+}

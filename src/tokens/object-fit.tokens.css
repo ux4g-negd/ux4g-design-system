@@ -1,0 +1,33 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  --ux4g-object-fit-contain: contain;
+  --ux4g-object-fit-cover: cover;
+  --ux4g-object-fit-fill: fill;
+  --ux4g-object-fit-none: none;
+  --ux4g-object-fit-scale-down: scale-down;
+
+
+  /* Object Position Primitive Tokens */
+   --ux4g-object-position-center: center;
+  --ux4g-object-position-top: top;
+  --ux4g-object-position-bottom: bottom;
+  --ux4g-object-position-left: left;
+  --ux4g-object-position-right: right;
+  --ux4g-object-position-top-left: top left;
+  --ux4g-object-position-top-right: top right;
+  --ux4g-object-position-bottom-left: bottom left;
+  --ux4g-object-position-bottom-right: bottom right;
+}

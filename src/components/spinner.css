@@ -1,0 +1,168 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* BASE SPINNER (Token Driven – Default 32px) */
+.ux4g-spinner,
+[class^="ux4g-spinner-"] {
+  --ux4g-spinner-size: var(--ux4g-fs-24);
+  --ux4g-spinner-stroke: var(--ux4g-border-thickest, 4px);
+  --ux4g-spinner-color-1: var(--Spinner-primary-Color-1);
+  --ux4g-spinner-color-2: var(--Spinner-primary-Color-2);
+
+  width: var(--ux4g-spinner-size);
+  height: var(--ux4g-spinner-size);
+  border-radius: var(--ux4g-radius-full);
+  border: var(--ux4g-spinner-stroke) solid transparent;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: ux4g-spinner-rotate .9s linear infinite;
+  vertical-align: var(--ux4g-va-middle);
+  position: relative;
+}
+
+
+
+/* COLOR SEMANTICS (Robust Matching) */
+[class*="spinner-primary"] {
+  --ux4g-spinner-color-1: var(--Spinner-primary-Color-1);
+  --ux4g-spinner-color-2: var(--Spinner-primary-Color-2);
+}
+
+[class*="spinner-inverse"] {
+  --ux4g-spinner-color-1: var(--Spinner-Light-Color-2);
+  --ux4g-spinner-color-2: var(--Spinner-Light-Color-1);
+}
+
+[class*="spinner-danger"] {
+  --ux4g-spinner-color-1: var(--Spinner-danger-Color-1);
+  --ux4g-spinner-color-2: var(--Spinner-danger-Color-2);
+}
+
+/* [class*="spinner-secondary"] {
+  --ux4g-spinner-color-1: var(--Spinner-secondary-Color-1);
+  --ux4g-spinner-color-2: var(--Spinner-secondary-Color-2);
+}
+
+[class*="spinner-tertiary"] {
+  --ux4g-spinner-color-1: var(--Spinner-tertiary-Color-1);
+  --ux4g-spinner-color-2: var(--Spinner-tertiary-Color-2);
+}
+
+[class*="spinner-success"] {
+  --ux4g-spinner-color-1: var(--Spinner-success-Color-1);
+  --ux4g-spinner-color-2: var(--Spinner-success-Color-2);
+}
+
+[class*="spinner-info"] {
+  --ux4g-spinner-color-1: var(--Spinner-info-Color-1);
+  --ux4g-spinner-color-2: var(--Spinner-info-Color-2);
+}
+
+[class*="spinner-warning"] {
+  --ux4g-spinner-color-1: var(--Spinner-warning-Color-1);
+  --ux4g-spinner-color-2: var(--Spinner-warning-Color-2);
+} */
+
+/* SIZES */
+.ux4g-spinner-xl {
+  --ux4g-spinner-size: var(--ux4g-fs-40);
+}
+
+.ux4g-spinner-lg {
+  --ux4g-spinner-size: var(--ux4g-fs-32);
+}
+
+.ux4g-spinner-md {
+  --ux4g-spinner-size: var(--ux4g-fs-24);
+}
+
+.ux4g-spinner-sm {
+  --ux4g-spinner-size: var(--ux4g-fs-20);
+  --ux4g-spinner-stroke: var(--ux4g-border-thicker, 3px);
+}
+
+.ux4g-spinner-xs {
+  --ux4g-spinner-size: var(--ux4g-fs-16);
+  --ux4g-spinner-stroke: var(--ux4g-border-thicker, 3px);
+}
+
+/* FULL (Gradient Ring Spinner) */
+[class*="spinner-"][class*="-full"] {
+  background: conic-gradient(from 180deg at 50% 50%, var(--ux4g-spinner-color-1) 0deg, var(--ux4g-spinner-color-2) 360deg) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+/* SPLIT (Long Gradient Arc) */
+[class*="spinner-"][class*="-split"] {
+  background: conic-gradient(from 180deg at 50% 50%,
+      var(--ux4g-spinner-color-1) 0deg,
+      var(--ux4g-spinner-color-2) 270deg,
+      transparent 270deg,
+      transparent 360deg) border-box;
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+/* PARTIAL (Short Gradient Arc) */
+[class*="spinner-"][class*="-partial"] {
+  background: conic-gradient(from 180deg at 50% 50%,
+      var(--ux4g-spinner-color-1) 0deg,
+      var(--ux4g-spinner-color-2) 90deg,
+      transparent 90deg,
+      transparent 360deg) border-box;
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+@keyframes ux4g-spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ux4g-spinner,
+  [class^="ux4g-spinner-"] {
+    animation: none;
+  }
+}

@@ -1,0 +1,47 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* Base Border Engine */
+.ux4g-border { border-style: solid; border-width: var(--ux4g-border-width-sm); border-color: var(--ux4g-border-current, var(--ux4g-border-color-neutral-default)); }
+.ux4g-border-bold { border-style: solid; border-width: var(--ux4g-border-width-md); border-color: var(--ux4g-border-current, var(--ux4g-border-color-neutral-default)); }
+
+/* Border Width */
+.ux4g-border-none { border-width: var(--ux4g-border-width-none); }
+.ux4g-b-0 { border: 0; }
+
+/* Individual Sides (Token + RTL Safe) */
+.ux4g-bt { border-top: var(--ux4g-border-width-sm) solid var(--ux4g-border-current, var(--ux4g-border-color-neutral-default)); }
+.ux4g-br { border-inline-end: var(--ux4g-border-width-sm) solid var(--ux4g-border-current, var(--ux4g-border-color-neutral-default)); }
+.ux4g-bb { border-bottom: var(--ux4g-border-width-sm) solid var(--ux4g-border-current, var(--ux4g-border-color-neutral-default)); }
+.ux4g-bl { border-inline-start: var(--ux4g-border-width-sm) solid var(--ux4g-border-current, var(--ux4g-border-color-neutral-default)); }
+
+/* Remove Border (Atomic Reset) */
+.ux4g-bt-0 { border-top: 0; }
+.ux4g-br-0 { border-inline-end: 0; }
+.ux4g-bb-0 { border-bottom: 0; }
+.ux4g-bl-0 { border-inline-start: 0; }
+
+/* Border Color Tokens (Engine Setters) */
+.ux4g-border-neutral-subtle { --ux4g-border-current: var(--ux4g-border-color-neutral-subtle); }
+.ux4g-border-neutral-strong { --ux4g-border-current: var(--ux4g-border-color-neutral-strong); }
+.ux4g-border-primary { --ux4g-border-current: var(--ux4g-border-color-primary-default); }
+.ux4g-border-primary-strong { --ux4g-border-current: var(--ux4g-border-color-primary-strong); }
+.ux4g-border-secondary { --ux4g-border-current: var(--ux4g-border-color-secondary-default); }
+.ux4g-border-tertiary { --ux4g-border-current: var(--ux4g-border-color-tertiary-default); }
+.ux4g-border-success { --ux4g-border-current: var(--ux4g-border-color-success-default); }
+.ux4g-border-success-strong { --ux4g-border-current: var(--ux4g-border-color-success-strong); }
+.ux4g-border-info { --ux4g-border-current: var(--ux4g-border-color-info-default); }
+.ux4g-border-info-strong { --ux4g-border-current: var(--ux4g-border-color-info-strong); }
+.ux4g-border-error { --ux4g-border-current: var(--ux4g-border-color-error-default); }
+.ux4g-border-error-strong { --ux4g-border-current: var(--ux4g-border-color-error-strong); }

@@ -1,0 +1,120 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* =========================================
+   UX4G SIZING SYSTEM (CLEAN)
+========================================= */
+
+/* ========================
+   1. WIDTH (PERCENT)
+======================== */
+.ux4g-w-0    { width: 0; }
+.ux4g-w-25   { width: 25%; }
+.ux4g-w-50   { width: 50%; }
+.ux4g-w-75   { width: 75%; }
+.ux4g-w-100  { width: 100%; }
+.ux4g-w-auto { width: auto; }
+
+/* ========================
+   2. WIDTH (FIXED - TOKEN)
+======================== */
+.ux4g-wpx-100 { width: 100px; }
+.ux4g-wpx-150 { width: 150px; }
+.ux4g-wpx-200 { width: 200px; }
+.ux4g-wpx-300 { width: 300px; }
+.ux4g-wpx-400 { width: 400px; }
+
+/* ========================
+   3. SPECIAL WIDTH
+======================== */
+.ux4g-w-min     { width: min-content; }
+.ux4g-w-max     { width: max-content; }
+.ux4g-w-fit     { width: fit-content; }
+.ux4g-w-screen  { width: 100vw; }
+
+/* ========================
+   4. MAX / MIN WIDTH
+======================== */
+.ux4g-max-w-none { max-width: none; }
+.ux4g-max-w-full { max-width: 100%; }
+.ux4g-max-w-fit  { max-width: fit-content; }
+
+.ux4g-min-w-0    { min-width: 0; }
+.ux4g-min-w-full { min-width: 100%; }
+
+/* ========================
+   5. HEIGHT (PERCENT)
+======================== */
+.ux4g-h-0    { height: 0; }
+.ux4g-h-25   { height: 25%; }
+.ux4g-h-50   { height: 50%; }
+.ux4g-h-75   { height: 75%; }
+.ux4g-h-100  { height: 100%; }
+.ux4g-h-auto { height: auto; }
+
+/* ========================
+   6. HEIGHT (FIXED)
+======================== */
+.ux4g-hpx-100 { height: 100px; }
+.ux4g-hpx-150 { height: 150px; }
+.ux4g-hpx-200 { height: 200px; }
+.ux4g-hpx-300 { height: 300px; }
+.ux4g-hpx-400 { height: 400px; }
+
+
+/* ========================
+   7. SPECIAL HEIGHT
+======================== */
+.ux4g-h-min     { height: min-content; }
+.ux4g-h-max     { height: max-content; }
+.ux4g-h-fit     { height: fit-content; }
+.ux4g-h-screen  { height: 100vh; }
+.ux4g-h-dvh     { height: 100dvh; }
+
+/* ========================
+   8. MIN / MAX HEIGHT
+======================== */
+.ux4g-max-h-full   { max-height: 100%; }
+.ux4g-max-h-screen { max-height: 100vh; }
+
+.ux4g-min-h-0      { min-height: 0; }
+.ux4g-min-h-full   { min-height: 100%; }
+.ux4g-min-h-screen { min-height: 100vh; }
+.ux4g-min-h-dvh    { min-height: 100dvh; }
+
+/* =========================================
+   LOGICAL SIZING (RTL SAFE)
+========================================= */
+
+/* INLINE SIZE */
+.ux4g-is-auto   { inline-size: auto; }
+.ux4g-is-full   { inline-size: 100%; }
+.ux4g-is-fit    { inline-size: fit-content; }
+.ux4g-is-screen { inline-size: 100vi; }
+
+/* BLOCK SIZE */
+.ux4g-bs-auto   { block-size: auto; }
+.ux4g-bs-full   { block-size: 100%; }
+.ux4g-bs-fit    { block-size: fit-content; }
+.ux4g-bs-screen { block-size: 100vb; }
+
+/* MIN/MAX LOGICAL */
+.ux4g-min-is-0    { min-inline-size: 0; }
+.ux4g-min-is-full { min-inline-size: 100%; }
+.ux4g-max-is-full { max-inline-size: 100%; }
+
+.ux4g-min-bs-0      { min-block-size: 0; }
+.ux4g-min-bs-full   { min-block-size: 100%; }
+.ux4g-min-bs-screen { min-block-size: 100vb; }
+.ux4g-max-bs-full   { max-block-size: 100%; }

@@ -1,0 +1,63 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* BASE */
+[class^="ux4g-text-"],
+[class*="ux4g-icon-"] {
+  color: var(--ux4g-text-current, var(--ux4g-text-neutral-primary));
+}
+
+/* ================= NEUTRAL ================= */
+.ux4g-text-neutral-primary   { --ux4g-text-current: var(--ux4g-text-neutral-primary); }
+.ux4g-text-neutral-secondary { --ux4g-text-current: var(--ux4g-text-neutral-secondary); }
+.ux4g-text-neutral-tertiary  { --ux4g-text-current: var(--ux4g-text-neutral-tertiary); }
+.ux4g-text-neutral-inverse   { --ux4g-text-current: var(--ux4g-text-neutral-inverse); }
+
+/* ================= BRAND ================= */
+.ux4g-text-primary   { --ux4g-text-current: var(--ux4g-text-brand-primary-default); }
+.ux4g-text-secondary { --ux4g-text-current: var(--ux4g-text-brand-secondary-default); }
+.ux4g-text-tertiary  { --ux4g-text-current: var(--ux4g-text-brand-tertiary-default); }
+
+/* ================= STATUS ================= */
+.ux4g-text-success { --ux4g-text-current: var(--ux4g-text-status-success); }
+.ux4g-text-error   { --ux4g-text-current: var(--ux4g-text-status-error); }
+.ux4g-text-warning { --ux4g-text-current: var(--ux4g-text-status-warning); }
+.ux4g-text-info    { --ux4g-text-current: var(--ux4g-text-status-info); }
+
+/* ================= ICON STATUS ================= */
+.ux4g-icon-success { --ux4g-text-current: var(--ux4g-icon-status-success); }
+.ux4g-icon-error   { --ux4g-text-current: var(--ux4g-icon-status-error); }
+.ux4g-icon-warning { --ux4g-text-current: var(--ux4g-icon-status-warning); }
+.ux4g-icon-info    { --ux4g-text-current: var(--ux4g-icon-status-info); }
+
+/* ================= LINKS - NEUTRAL ================= */
+.ux4g-text-link-neutral { --ux4g-text-current: var(--ux4g-text-link-neutral-default); }
+.ux4g-text-link-neutral:hover { --ux4g-text-current: var(--ux4g-text-link-neutral-hover); }
+.ux4g-text-link-neutral:active { --ux4g-text-current: var(--ux4g-text-link-neutral-active); }
+.ux4g-text-link-neutral:visited { --ux4g-text-current: var(--ux4g-text-link-neutral-visited); }
+.ux4g-text-link-neutral-inverse { --ux4g-text-current: var(--ux4g-text-link-neutral-inverse); }
+
+/* ================= LINKS - BRAND ================= */
+.ux4g-text-link { --ux4g-text-current: var(--ux4g-text-link-default-default); }
+.ux4g-text-link:hover { --ux4g-text-current: var(--ux4g-text-link-default-hover); }
+.ux4g-text-link:active { --ux4g-text-current: var(--ux4g-text-link-default-active); }
+.ux4g-text-link:visited { --ux4g-text-current: var(--ux4g-text-link-default-visited); }
+.ux4g-text-link-inverse { --ux4g-text-current: var(--ux4g-text-link-default-inverse); }
+
+/* ================= STATIC COLORS ================= */
+.ux4g-text-white { --ux4g-text-current: var(--ux4g-text-white); }
+.ux4g-text-black { --ux4g-text-current: var(--ux4g-text-black); }
+
+/* ================= LINK DISABLED ================= */
+.ux4g-text-link:is(:disabled, [aria-disabled="true"]), .ux4g-text-link-neutral:is(:disabled, [aria-disabled="true"]) { --ux4g-text-current: var(--ux4g-text-link-disabled); color: var(--ux4g-text-current); cursor: not-allowed; text-decoration: none; pointer-events: none; }

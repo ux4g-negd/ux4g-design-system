@@ -1,0 +1,46 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* =========================================
+   FLEX DIRECTION
+========================================= */
+.ux4g-flex-row { flex-direction: row; }
+.ux4g-flex-col, .ux4g-flex-column { flex-direction: column; }
+.ux4g-flex-row-reverse { flex-direction: row-reverse; }
+.ux4g-flex-col-reverse, .ux4g-flex-column-reverse { flex-direction: column-reverse; }
+
+/* =========================================
+   FLEX (SHORTHANDS)
+========================================= */
+.ux4g-flex-1 { flex: 1; }
+.ux4g-flex-2 { flex: 2; }
+.ux4g-flex-3 { flex: 3; }
+.ux4g-flex-auto { flex: 1 1 auto; }
+.ux4g-flex-none { flex: none; }
+
+/* =========================================
+   FLEX WRAP
+========================================= */
+.ux4g-wrap { flex-wrap: wrap; }
+.ux4g-nowrap { flex-wrap: nowrap; }
+.ux4g-wrap-reverse { flex-wrap: wrap-reverse; }
+.ux4g-flex-fill { flex: 1 1 auto; }
+
+/* =========================================
+   FLEX GROW / SHRINK
+========================================= */
+.ux4g-grow { flex-grow: 1; }
+.ux4g-grow-0 { flex-grow: 0; }
+.ux4g-shrink { flex-shrink: 1; }
+.ux4g-shrink-0 { flex-shrink: 0; }

@@ -1,0 +1,31 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  --ux4g-z-n1: -1;
+  --ux4g-z-0: 0;
+  --ux4g-z-1: 1;
+  --ux4g-z-2: 2;
+  --ux4g-z-3: 3;
+
+   --ux4g-z-dropdown: 1000;
+  --ux4g-z-sticky: 1020;
+  --ux4g-z-fixed: 1030;
+  --ux4g-z-offcanvas: 1040;
+  --ux4g-z-modal-backdrop: 1050;
+  --ux4g-z-modal: 1060;
+  --ux4g-z-popover: 1070;
+  --ux4g-z-tooltip: 1080;
+  --ux4g-z-toast: 1090;
+}

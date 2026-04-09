@@ -1,0 +1,102 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+/* =========================================
+   RESPONSIVE DISPLAY UTILITIES
+   Author: UX4G
+========================================= */
+
+/* SM ≥ 576px */
+@media (min-width: 576px) {
+   .ux4g-sm-d-none { display: none ;}
+   .ux4g-sm-d-inline { display: inline ;}
+   .ux4g-sm-d-inline-block { display: inline-block ;}
+   .ux4g-sm-d-block { display: block ;}
+   .ux4g-sm-d-grid { display: grid ;}
+   .ux4g-sm-d-table { display: table ;}
+   .ux4g-sm-d-table-row { display: table-row ;}
+   .ux4g-sm-d-table-cell { display: table-cell ;}
+   .ux4g-sm-d-flex { display: flex ;}
+   .ux4g-sm-d-inline-flex { display: inline-flex ;}
+}
+
+/* MD ≥ 768px */
+@media (min-width: 768px) {
+   .ux4g-md-d-none { display: none ;}
+   .ux4g-md-d-inline { display: inline ;}
+   .ux4g-md-d-inline-block { display: inline-block ;}
+   .ux4g-md-d-block { display: block ;}
+   .ux4g-md-d-grid { display: grid ;}
+   .ux4g-md-d-table { display: table ;}
+   .ux4g-md-d-table-row { display: table-row ;}
+   .ux4g-md-d-table-cell { display: table-cell ;}
+   .ux4g-md-d-flex { display: flex ;}
+   .ux4g-md-d-inline-flex { display: inline-flex ;}
+}
+
+/* LG ≥ 992px */
+@media (min-width: 992px) {
+   .ux4g-lg-d-none { display: none ;}
+   .ux4g-lg-d-inline { display: inline ;}
+   .ux4g-lg-d-inline-block { display: inline-block ;}
+   .ux4g-lg-d-block { display: block ;}
+   .ux4g-lg-d-grid { display: grid ;}
+   .ux4g-lg-d-table { display: table ;}
+   .ux4g-lg-d-table-row { display: table-row ;}
+   .ux4g-lg-d-table-cell { display: table-cell ;}
+   .ux4g-lg-d-flex { display: flex ;}
+   .ux4g-lg-d-inline-flex { display: inline-flex ;}
+}
+
+/* XL ≥ 1200px */
+@media (min-width: 1200px) {
+   .ux4g-xl-d-none { display: none ;}
+   .ux4g-xl-d-inline { display: inline ;}
+   .ux4g-xl-d-inline-block { display: inline-block ;}
+   .ux4g-xl-d-block { display: block ;}
+   .ux4g-xl-d-grid { display: grid ;}
+   .ux4g-xl-d-table { display: table ;}
+   .ux4g-xl-d-table-row { display: table-row ;}
+   .ux4g-xl-d-table-cell { display: table-cell ;}
+   .ux4g-xl-d-flex { display: flex ;}
+   .ux4g-xl-d-inline-flex { display: inline-flex ;}
+}
+
+/* 2XL ≥ 1400px */
+@media (min-width: 1400px) {
+   .ux4g-2xl-d-none { display: none ;}
+   .ux4g-2xl-d-inline { display: inline ;}
+   .ux4g-2xl-d-inline-block { display: inline-block ;}
+   .ux4g-2xl-d-block { display: block ;}
+   .ux4g-2xl-d-grid { display: grid ;}
+   .ux4g-2xl-d-table { display: table ;}
+   .ux4g-2xl-d-table-row { display: table-row ;}
+   .ux4g-2xl-d-table-cell { display: table-cell ;}
+   .ux4g-2xl-d-flex { display: flex ;}
+   .ux4g-2xl-d-inline-flex { display: inline-flex ;}
+}
+
+/* ================= PRINT UTILITIES ================= */
+@media print {
+   .ux4g-d-print-none { display: none ;}
+   .ux4g-d-print-inline { display: inline ;}
+   .ux4g-d-print-inline-block { display: inline-block ;}
+   .ux4g-d-print-block { display: block ;}
+   .ux4g-d-print-grid { display: grid ;}
+   .ux4g-d-print-table { display: table ;}
+   .ux4g-d-print-table-row { display: table-row ;}
+   .ux4g-d-print-table-cell { display: table-cell ;}
+   .ux4g-d-print-flex { display: flex ;}
+   .ux4g-d-print-inline-flex { display: inline-flex ;}
+}

@@ -1,0 +1,134 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+ /* Border Radius - All */
+.ux4g-radius-none { border-radius: var(--ux4g-radius-0) ; }
+.ux4g-radius-s { border-radius: var(--ux4g-radius-sm) ; }
+.ux4g-radius-m { border-radius: var(--ux4g-radius-md) ; }
+.ux4g-radius-l { border-radius: var(--ux4g-radius-lg) ; }
+.ux4g-radius-full { border-radius: var(--ux4g-radius-full) ; }
+
+  /* Top Corners (Angle Radius) */
+.ux4g-radius-top-none {
+  border-top-left-radius: var(--ux4g-radius-0) ;
+  border-top-right-radius: var(--ux4g-radius-0) ;
+}
+.ux4g-radius-top-s {
+  border-top-left-radius: var(--ux4g-radius-sm) ;
+  border-top-right-radius: var(--ux4g-radius-sm) ;
+}
+.ux4g-radius-top-m {
+  border-top-left-radius: var(--ux4g-radius-md) ;
+  border-top-right-radius: var(--ux4g-radius-md) ;
+}
+.ux4g-radius-top-l {
+  border-top-left-radius: var(--ux4g-radius-lg) ;
+  border-top-right-radius: var(--ux4g-radius-lg) ;
+}
+
+.ux4g-radius-top-full {
+  border-top-left-radius: var(--ux4g-radius-full) ;
+  border-top-right-radius: var(--ux4g-radius-full) ;
+}
+
+
+   /* Bottom Corners */
+.ux4g-radius-bottom-none {
+  border-bottom-left-radius: var(--ux4g-radius-0) ;
+  border-bottom-right-radius: var(--ux4g-radius-0) ;
+}
+.ux4g-radius-bottom-s {
+  border-bottom-left-radius: var(--ux4g-radius-sm) ;
+  border-bottom-right-radius: var(--ux4g-radius-sm) ;
+}
+.ux4g-radius-bottom-m {
+  border-bottom-left-radius: var(--ux4g-radius-md) ;
+  border-bottom-right-radius: var(--ux4g-radius-md) ;
+}
+.ux4g-radius-bottom-l {
+  border-bottom-left-radius: var(--ux4g-radius-lg) ;
+  border-bottom-right-radius: var(--ux4g-radius-lg) ;
+}
+
+.ux4g-radius-bottom-full {
+  border-bottom-left-radius: var(--ux4g-radius-full) ;
+  border-bottom-right-radius: var(--ux4g-radius-full) ;
+}
+
+   /* left Corners */
+.ux4g-radius-left-none {
+  border-top-left-radius: var(--ux4g-radius-0) ;
+  border-bottom-left-radius: var(--ux4g-radius-0) ;
+}
+.ux4g-radius-left-s {
+  border-top-left-radius: var(--ux4g-radius-sm) ;
+  border-bottom-left-radius: var(--ux4g-radius-sm) ;
+}
+.ux4g-radius-left-m {
+  border-top-left-radius: var(--ux4g-radius-md) ;
+  border-bottom-left-radius: var(--ux4g-radius-md) ;
+}
+.ux4g-radius-left-l {
+  border-top-left-radius: var(--ux4g-radius-lg) ;
+  border-bottom-left-radius: var(--ux4g-radius-lg) ;
+}
+.ux4g-radius-left-full {
+  border-top-left-radius: var(--ux4g-radius-full) ;
+  border-bottom-left-radius: var(--ux4g-radius-full) ;
+}
+
+   /* right Corners */
+.ux4g-radius-right-none {
+  border-top-right-radius: var(--ux4g-radius-0) ;
+  border-bottom-right-radius: var(--ux4g-radius-0) ;
+}
+.ux4g-radius-right-s {
+  border-top-right-radius: var(--ux4g-radius-sm) ;
+  border-bottom-right-radius: var(--ux4g-radius-sm) ;
+}
+.ux4g-radius-right-m {
+  border-top-right-radius: var(--ux4g-radius-md) ;
+  border-bottom-right-radius: var(--ux4g-radius-md) ;
+}
+.ux4g-radius-right-l {
+  border-top-right-radius: var(--ux4g-radius-lg) ;
+  border-bottom-right-radius: var(--ux4g-radius-lg) ;
+}
+.ux4g-radius-right-full {
+  border-top-right-radius: var(--ux4g-radius-full) ;
+  border-bottom-right-radius: var(--ux4g-radius-full) ;
+}
+
+
+   /* Individual Angle (Most Powerful) */
+.ux4g-radius-tl-s { border-top-left-radius: var(--ux4g-radius-sm) ; }
+.ux4g-radius-tr-s { border-top-right-radius: var(--ux4g-radius-sm) ; }
+.ux4g-radius-bl-s { border-bottom-left-radius: var(--ux4g-radius-sm) ; }
+.ux4g-radius-br-s { border-bottom-right-radius: var(--ux4g-radius-sm) ; }
+
+.ux4g-radius-tl-m { border-top-left-radius: var(--ux4g-radius-md) ; }
+.ux4g-radius-tr-m { border-top-right-radius: var(--ux4g-radius-md) ; }
+.ux4g-radius-bl-m { border-bottom-left-radius: var(--ux4g-radius-md) ; }
+.ux4g-radius-br-m { border-bottom-right-radius: var(--ux4g-radius-md) ; }
+
+.ux4g-radius-tl-l { border-top-left-radius: var(--ux4g-radius-lg) ; }
+.ux4g-radius-tr-l { border-top-right-radius: var(--ux4g-radius-lg) ; }
+.ux4g-radius-bl-l { border-bottom-left-radius: var(--ux4g-radius-lg) ; }
+.ux4g-radius-br-l { border-bottom-right-radius: var(--ux4g-radius-lg) ; }
+
+
+.ux4g-radius-tl-full {border-top-left-radius: var(--ux4g-radius-full) ;}
+.ux4g-radius-tr-full {border-top-right-radius: var(--ux4g-radius-full) ;}
+.ux4g-radius-bl-full {border-bottom-left-radius: var(--ux4g-radius-full) ;}
+.ux4g-radius-br-full {border-bottom-right-radius: var(--ux4g-radius-full) ;}

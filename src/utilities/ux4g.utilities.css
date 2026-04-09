@@ -1,0 +1,52 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+
+/* 1. TYPOGRAPHY & TEXT */
+@import "./typography.utilities.css";
+@import "./typescale.utilities.css";
+@import "./colors.utilities.css";
+@import "./text-transform.utilities.css";
+@import "./vertical-align.utilities.css";
+
+/* 2. LAYOUT & SPACING */
+@import "./spacing.utilities.css";
+@import "./sizing.utilities.css";
+@import "./gap.utilities.css";   
+@import "./object-fit.utilities.css";
+@import "./overflow.utilities.css";
+@import "./position.utilities.css";
+@import "./z-index.utilities.css";
+@import "./visibility.utilities.css";
+@import "./display.utilities.css";
+@import "./display-responsive.utilities.css";
+
+/* 3. FLEXBOX & GRID */
+@import "./flex.utilities.css";
+@import "./flex-responsive.utilities.css";
+@import "./align.utilities.css";
+@import "./justify.utilities.css";
+@import "./order.utilities.css";
+
+/* 4. VISUAL EFFECTS */
+@import "./background.utilities.css";
+@import "./border.utilities.css";
+@import "./radius.utilities.css";
+@import "./shadow.utilities.css";
+@import "./opacity.utilities.css";
+@import "./blur.utilities.css";
+
+/* 5. INTERACTION & EMBEDS */
+@import "./interaction.utilities.css";
+@import "./embed.utilities.css";

@@ -1,0 +1,25 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+:root {
+  --ux4g-overflow-auto: auto;
+  --ux4g-overflow-hidden: hidden;
+  --ux4g-overflow-visible: visible;
+  --ux4g-overflow-scroll: scroll;
+
+
+  --ux4g-scrollbar-thumb: var(--ux4g-color-neutral-500);
+  --ux4g-scrollbar-track: transparent;
+  --ux4g-scrollbar-size: 8px;
+  --ux4g-scrollbar-radius: 999px;}

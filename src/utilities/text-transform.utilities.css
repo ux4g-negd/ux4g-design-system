@@ -1,0 +1,93 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+.ux4g-text-none {
+  text-transform: var(--ux4g-text-transform-none);
+}
+
+.ux4g-lowercase {
+  text-transform: var(--ux4g-text-transform-lowercase);
+}
+
+.ux4g-uppercase {
+  text-transform: var(--ux4g-text-transform-uppercase) ;
+}
+.ux4g-capitalize {
+  text-transform: var(--ux4g-text-transform-capitalize) ;
+}
+
+
+
+
+
+
+/* =========================================
+   TEXT UTILITIES
+   Controls appearance and behavior of text.
+   1. Font Weight
+   2. Font Family
+   3. Alignment
+   4. Wrapping & Break
+   5. Transform
+========================================= */
+
+/* Base Typography Engines */
+[class*="ux4g-fw-"]{font-weight:var(--ux4g-fw-current) !important;}
+[class*="ux4g-ff-"]{font-family:var(--ux4g-ff-current, var(--ux4g-ff)) !important;}
+
+/* 1.0 Font Weight */
+.ux4g-fw-regular{--ux4g-fw-current:var(--ux4g-font-weight-regular);}
+.ux4g-fw-medium{--ux4g-fw-current:var(--ux4g-font-weight-medium);}
+.ux4g-fw-semibold{--ux4g-fw-current:var(--ux4g-font-weight-semibold);}
+.ux4g-fw-bold{--ux4g-fw-current:var(--ux4g-font-weight-bold) !important;}
+.ux4g-fw-d-semibold{--ux4g-fw-current:var(--ux4g-font-weight-display-semibold);}
+.ux4g-fw-d-bold{--ux4g-fw-current:var(--ux4g-font-weight-display-bold);}
+
+/* 2.0 Font Family */
+.ux4g-ff-base{--ux4g-ff-current:var(--ux4g-ff);}
+.ux4g-ff-display{--ux4g-ff-current:var(--ux4g-ff-display);}
+
+/* 3.0 Text Alignment (RTL Safe) */
+.ux4g-text-start{text-align:start;}
+.ux4g-text-center{text-align:center;}
+.ux4g-text-end{text-align:end;}
+
+/* 4.0 Text Wrapping */
+.ux4g-text-wrap{white-space:normal;}
+.ux4g-text-nowrap{white-space:nowrap;}
+
+/* 4.1 Word Break */
+.ux4g-text-break{overflow-wrap:break-word;word-break:break-word;}
+
+/* 5.0 Text Transform */
+.ux4g-text-lowercase{text-transform:var(--ux4g-tt-lowercase);}
+.ux4g-text-uppercase{text-transform:var(--ux4g-tt-uppercase);}
+.ux4g-text-capitalize{text-transform:var(--ux4g-tt-capitalize);}
+
+/* 6.0 Text Decoration */
+.ux4g-text-underline { text-decoration: underline !important; }
+.ux4g-text-line-through { text-decoration: line-through !important; }
+.ux4g-text-no-underline { text-decoration: none !important; }
+
+/* 7.0 List Styles */
+.ux4g-list-none { list-style: none !important; padding: 0 !important; margin: 0 !important; }
+.ux4g-list-disc { list-style: disc !important; padding-inline-start: 1.5rem !important; }
+.ux4g-list-decimal { list-style: decimal !important; padding-inline-start: 1.5rem !important; }
+
+/* 8.0 Text Overflow & Truncate */
+.ux4g-text-truncate {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}

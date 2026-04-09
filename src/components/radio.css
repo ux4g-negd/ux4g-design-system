@@ -1,0 +1,350 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+.ux4g-radio {
+     display: inline-flex;
+     align-items: flex-start;
+     gap: var(--ux4g-inline-s);
+     cursor: pointer;
+     position: var(--ux4g-pos-relative);
+     user-select: none;
+     box-sizing: border-box;
+}
+
+.ux4g-radio-reverse {
+    flex-direction: row-reverse;
+}
+
+.ux4g-radio-input {
+    position: var(--ux4g-pos-absolute);
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin: var(--ux4g-margin-none);
+    padding: var(--ux4g-padding-none);
+    pointer-events: none;
+}
+
+.ux4g-radio-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--ux4g-size-20, 1.25rem);
+    width: var(--ux4g-size-20, 1.25rem);
+    flex-shrink: 0;
+    position: var(--ux4g-pos-relative);
+    padding: var(--ux4g-padding-none);
+    aspect-ratio: 1/1;
+}
+
+.ux4g-radiomark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-full);
+    background-color: var(--ux4g-bg-neutral);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    position: var(--ux4g-pos-relative);
+    width: var(--ux4g-size-20);
+    height: var(--ux4g-size-20);
+    box-shadow: var(--ux4g-shadow-level-0-key), 
+                var(--ux4g-shadow-level-0-ambient);
+}
+
+.ux4g-radiomark::after {
+     content: "";
+     position: var(--ux4g-pos-absolute);
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%) scale(0.5);
+     display: block;
+     width: 50%;
+     height: 50%;
+     border-radius: var(--ux4g-radius-full);
+     background-color: var(--ux4g-text-neutral-inverse);
+     opacity: 0;
+     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+}
+
+.ux4g-radio-content {
+     display: inline-flex;
+     flex-direction: column;
+     align-items: flex-start;
+     justify-content: center;
+     gap: var(--ux4g-stack-2xs);
+     flex-shrink: 0;
+}
+
+.ux4g-radio-header {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ux4g-inline-xs);
+    flex-shrink: 0;
+}
+
+.ux4g-radio-label { 
+     font-size: var(--ux4g-fs-14);
+     line-height: var(--ux4g-lh-18);
+     font-weight: var(--ux4g-fw-medium); 
+     white-space: var(--ux4g-tw-nowrap);
+     color: var(--ux4g-text-neutral-primary);
+}
+
+.ux4g-radio-description {
+     display: inline-flex;
+     align-items: center;
+     gap: var(--ux4g-inline-xs);
+     flex-shrink: 0;
+     font-size: var(--ux4g-fs-12);
+     line-height: var(--ux4g-lh-16);
+     font-weight: var(--ux4g-fw-regular); 
+     white-space: var(--ux4g-tw-nowrap);
+     color: var(--ux4g-text-neutral-secondary);
+}
+ .ux4g-radio-desc-icon {
+     width: var(--ux4g-size-16);
+     height: var(--ux4g-size-16);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-shrink: 0;
+     color: var(--ux4g-text-neutral-secondary);
+}
+ .ux4g-radio-icon {
+     width: var(--ux4g-size-20);
+     height: var(--ux4g-size-20);
+     color: var(--ux4g-text-neutral-primary);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-shrink: 0;
+}
+
+/* Base Interactions */
+.ux4g-radio:hover .ux4g-radio-input:not(:disabled):not(:checked) ~ .ux4g-radio-control .ux4g-radiomark,
+.ux4g-radio.is-hovered .ux4g-radio-input:not(:disabled):not(:checked) ~ .ux4g-radio-control .ux4g-radiomark {
+    border-color: var(--ux4g-border-color-neutral-hover);
+    background-color: var(--ux4g-bg-neutral-subtle);
+}
+
+.ux4g-radio:hover .ux4g-radio-input:not(:disabled):checked ~ .ux4g-radio-control .ux4g-radiomark,
+.ux4g-radio.is-hovered .ux4g-radio-input:not(:disabled):checked ~ .ux4g-radio-control .ux4g-radiomark {
+    background-color: var(--ux4g-bg-primary-strong-hover);
+    border-color: var(--ux4g-border-color-primary-hover);
+}
+
+.ux4g-radio:hover .ux4g-radio-input:not(:disabled):checked ~ .ux4g-radio-control .ux4g-radiomark::after,
+.ux4g-radio.is-hovered .ux4g-radio-input:not(:disabled):checked ~ .ux4g-radio-control .ux4g-radiomark::after {
+    background-color: var(--ux4g-bg-neutral);
+}
+
+.ux4g-radio:active .ux4g-radio-input:not(:disabled):not(:checked) ~ .ux4g-radio-control .ux4g-radiomark,
+.ux4g-radio.is-active .ux4g-radio-input:not(:disabled):not(:checked) ~ .ux4g-radio-control .ux4g-radiomark {
+    background-color: var(--ux4g-bg-neutral-emphasis);
+    border-color: var(--ux4g-border-color-neutral-active);
+}
+
+.ux4g-radio:active .ux4g-radio-input:not(:disabled):checked ~ .ux4g-radio-control .ux4g-radiomark,
+.ux4g-radio.is-active .ux4g-radio-input:not(:disabled):checked ~ .ux4g-radio-control .ux4g-radiomark {
+    background-color: var(--ux4g-bg-primary-stronger);
+    border-color: var(--ux4g-bg-primary-stronger);
+}
+
+.ux4g-radio:active .ux4g-radio-input:not(:disabled):checked ~ .ux4g-radio-control .ux4g-radiomark::after,
+.ux4g-radio.is-active .ux4g-radio-input:not(:disabled):checked ~ .ux4g-radio-control .ux4g-radiomark::after {
+    background-color: var(--ux4g-bg-neutral);
+}
+
+/* Checked State */
+.ux4g-radio-input:checked ~ .ux4g-radio-control .ux4g-radiomark {
+    background-color: var(--ux4g-bg-primary-strong);
+    border-color: var(--ux4g-bg-primary-strong);
+}
+
+.ux4g-radio-input:checked ~ .ux4g-radio-control .ux4g-radiomark::after {
+     background-color: var(--ux4g-text-neutral-inverse);
+     opacity: 1;
+     transform: translate(-50%, -50%) scale(1);
+}
+
+/* Focus State */
+.ux4g-radio-input:focus-visible ~ .ux4g-radio-control .ux4g-radiomark,
+.ux4g-radio.is-focused .ux4g-radio-control .ux4g-radiomark {
+    box-shadow: 0 0 0 2px var(--ux4g-bg-neutral), 0 0 0 4px var(--ux4g-bg-primary-strong);
+    outline: none;
+}
+
+/* Disabled State */
+.ux4g-radio-input:disabled ~ .ux4g-radio-control .ux4g-radiomark {
+    background-color: var(--ux4g-bg-neutral-disabled);
+    border-color: var(--ux4g-border-color-neutral-default);
+    cursor: not-allowed;
+}
+
+.ux4g-radio-input:disabled ~ .ux4g-radio-content {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ux4g-radio-input:disabled ~ .ux4g-radio-content * {
+    color: var(--ux4g-text-neutral-disabled);
+}
+
+.ux4g-radio:has(.ux4g-radio-input:disabled) {
+    cursor: not-allowed;
+}
+
+.ux4g-radio-input:disabled:checked ~ .ux4g-radio-control .ux4g-radiomark {
+    background-color: var(--ux4g-bg-neutral-disabled);
+    border-color: var(--ux4g-border-color-neutral-default);
+}
+
+.ux4g-radio-input:disabled:checked ~ .ux4g-radio-control .ux4g-radiomark::after {
+    background-color: var(--ux4g-text-neutral-disabled);
+}
+
+/* Sizes */
+ .ux4g-radio-sm {
+     gap: var(--ux4g-inline-xs);
+}
+ .ux4g-radio-sm .ux4g-radio-control, .ux4g-radio-sm .ux4g-radiomark {
+     height: var(--ux4g-size-16);
+     width: var(--ux4g-size-16);
+}
+ .ux4g-radio-sm .ux4g-radio-label {
+     font-size: var(--ux4g-fs-12);
+     line-height: var(--ux4g-lh-16);
+}
+ .ux4g-radio-sm .ux4g-radio-description {
+     font-size: var(--ux4g-fs-12);
+     line-height: var(--ux4g-lh-16);
+}
+ .ux4g-radio-sm .ux4g-radio-desc-icon {
+     width: var(--ux4g-size-14);
+     height: var(--ux4g-size-14);
+}
+ .ux4g-radio-sm .ux4g-radio-icon {
+     width: var(--ux4g-size-16);
+     height: var(--ux4g-size-16);
+}
+
+ .ux4g-radio-md .ux4g-radiomark, .ux4g-radio-md .ux4g-radio-control {
+     width: var(--ux4g-size-20);
+     height: var(--ux4g-size-20);
+}
+ .ux4g-radio-md .ux4g-radio-label {
+     font-size: var(--ux4g-fs-14);
+     line-height: var(--ux4g-lh-18);
+}
+ .ux4g-radio-md .ux4g-radio-description {
+     font-size: var(--ux4g-fs-12);
+     line-height: var(--ux4g-lh-16);
+}
+ .ux4g-radio-md .ux4g-radio-desc-icon {
+     width: var(--ux4g-size-16);
+     height: var(--ux4g-size-16);
+}
+ .ux4g-radio-md .ux4g-radio-icon {
+     width: var(--ux4g-size-20);
+     height: var(--ux4g-size-20);
+}
+
+ .ux4g-radio-lg {
+     gap: var(--ux4g-inline-m);
+}
+ .ux4g-radio-lg .ux4g-radio-control, .ux4g-radio-lg .ux4g-radiomark {
+     height: var(--ux4g-size-24);
+     width: var(--ux4g-size-24);
+}
+ .ux4g-radio-lg .ux4g-radio-label {
+     font-size: var(--ux4g-fs-16);
+     line-height: var(--ux4g-lh-20);
+}
+ .ux4g-radio-lg .ux4g-radio-description {
+     font-size: var(--ux4g-fs-14);
+     line-height: var(--ux4g-lh-18);
+}
+ .ux4g-radio-lg .ux4g-radio-desc-icon {
+     width: var(--ux4g-size-18);
+     height: var(--ux4g-size-18);
+}
+ .ux4g-radio-lg .ux4g-radio-icon {
+     width: var(--ux4g-size-24);
+     height: var(--ux4g-size-24);
+}
+
+/* Error State */
+
+.ux4g-radio.ux4g-radio-error:hover .ux4g-radio-input:not(:disabled):not(:checked) ~ .ux4g-radio-control .ux4g-radiomark {
+    background-color: var(--ux4g-bg-error-subtlest) !important;
+    border-color: var(--ux4g-border-color-error-strong) !important;
+}
+
+.ux4g-radio.ux4g-radio-error .ux4g-radio-input:not(:checked) ~ .ux4g-radio-control .ux4g-radiomark {
+    border-color: var(--ux4g-border-color-error-strong) !important;
+}
+
+.ux4g-radio.ux4g-radio-error .ux4g-radio-input:not(:checked):focus-visible ~ .ux4g-radio-control .ux4g-radiomark {
+    box-shadow: 0 0 0 2px var(--ux4g-bg-neutral), 0 0 0 4px var(--ux4g-bg-error-strong) !important;
+}
+
+/* Semantic Variants */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Description Variants (Standalone) - Semantic status mapping */
+.ux4g-radio-desc-helper {
+     color: var(--ux4g-text-neutral-secondary);
+}
+.ux4g-radio-desc-error {
+     color: var(--ux4g-text-status-error);
+}
+.ux4g-radio-desc-warning {
+     color: var(--ux4g-text-status-warning);
+}
+.ux4g-radio-desc-success {
+     color: var(--ux4g-text-status-success);
+}
+
+/* Description Variant Icons - Standalone Overrides */
+.ux4g-radio-desc-icon-helper .ux4g-radio-icon {
+     color: var(--ux4g-icon-neutral-secondary);
+}
+.ux4g-radio-desc-icon-error .ux4g-radio-icon {
+     color: var(--ux4g-icon-status-error);
+}
+.ux4g-radio-desc-icon-warning .ux4g-radio-icon {
+     color: var(--ux4g-icon-status-warning);
+}
+.ux4g-radio-desc-icon-success .ux4g-radio-icon {
+     color: var(--ux4g-icon-status-success);
+}

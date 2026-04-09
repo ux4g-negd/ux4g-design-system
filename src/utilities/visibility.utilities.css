@@ -1,0 +1,21 @@
+/*---------------------------- 
+|   |   \   /   |   |    ____ 
+|   |    \ /    |___|   |    
+|   |    / \        |   |  __
+|___|   /   \       |   |___|
+----------------------------
+       DESIGN SYSTEM
+
+-UX4G Design System v3.0
+-Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
+-Copyright 2026 NeGD, MeitY.
+-Licensed under MIT.
+
+----------------------------*/
+.ux4g-visible {
+  visibility: var(--ux4g-visibility-visible) !important;
+}
+
+.ux4g-invisible {
+  visibility: var(--ux4g-visibility-hidden) !important;
+}
