@@ -1,17 +1,3 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 /* =========================================== UX4G ICON BUTTON — Base Styles =========================================== */
 .ux4g-icon-btn {
     display: inline-flex;
@@ -28,6 +14,10 @@
     color: var(--ux4g-text-current, currentColor);
     flex-shrink: 0;
     box-sizing: border-box;
+    
+    /* Default Size - Medium (MD) 40x40 */
+    width: var(--ux4g-sz-40);
+    height: var(--ux4g-sz-40);
 }
 
 .ux4g-icon-btn ux4g-icon,
@@ -36,6 +26,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* Default Icon Size for MD */
+    font-size: var(--ux4g-fs-18);
+    width: var(--ux4g-fs-18);
+    height: var(--ux4g-fs-18);
 }
 
 /* =========================================== UX4G ICON BUTTON — Shapes =========================================== */
@@ -44,10 +38,10 @@
 }
 
 /* =========================================== UX4G ICON BUTTON — Sizes =========================================== */
-/* Size XL - 48x48 as requested */
+/* Size XL - 56x56 */
 .ux4g-icon-btn-xl {
-    width: var(--ux4g-sz-48);
-    height: var(--ux4g-sz-48);
+    width: var(--ux4g-sz-56, 56px);
+    height: var(--ux4g-sz-56, 56px);
 }
 
 .ux4g-icon-btn-xl i,
@@ -58,6 +52,7 @@
     height: var(--ux4g-fs-24);
 }
 
+/* Size LG - 48x48 */
 .ux4g-icon-btn-lg {
     width: var(--ux4g-sz-48);
     height: var(--ux4g-sz-48);
@@ -66,12 +61,12 @@
 .ux4g-icon-btn-lg i,
 .ux4g-icon-btn-lg ux4g-icon,
 .ux4g-icon-btn-lg svg {
-    font-size: var(--ux4g-fs-24);
-    width: var(--ux4g-fs-24);
-    height: var(--ux4g-fs-24);
+    font-size: var(--ux4g-fs-20, 20px);
+    width: var(--ux4g-fs-20, 20px);
+    height: var(--ux4g-fs-20, 20px);
 }
 
-/* Size M - 40x40 */
+/* Size M - 40x40 (Matches default) */
 .ux4g-icon-btn-md {
     width: var(--ux4g-sz-40);
     height: var(--ux4g-sz-40);
@@ -130,7 +125,7 @@
 
 /* OUTLINE PRIMARY */
 .ux4g-icon-btn-outline-primary {
-    background-color: var(--ux4g-bg-neutral-strong);
+    background-color: var(--ux4g-bg-neutral-elevated);
     --ux4g-text-current: var(--ux4g-text-brand-primary-default);
     border-color: var(--ux4g-border-color-primary-default);
 }

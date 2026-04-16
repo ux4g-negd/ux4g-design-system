@@ -1,17 +1,3 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 /* =========================================== UX4G Drawer Component =========================================== */
 body.ux4g-drawer-lock {
     overflow: hidden;;
@@ -42,7 +28,7 @@ body.ux4g-drawer-lock {
 /* Drawer Container */
  .ux4g-drawer {
      position: fixed !important;
-     background-color: var(--ux4g-bg-neutral-strong, #ffffff);
+     background-color: var(--ux4g-bg-neutral-elevated, #ffffff);
      z-index: 1001;
      display: flex;
      flex-direction: column;
@@ -56,7 +42,7 @@ body.ux4g-drawer-lock {
 }
 /* Drawer Positions */
  .ux4g-drawer-right {
-     top: 0 ! ;
+     top: 0 !important;
      right: 0 !important;
      height: 100vh;
      width: 100%;

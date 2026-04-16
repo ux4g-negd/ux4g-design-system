@@ -1,21 +1,7 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 .ux4g-popover {
   --ux4g-popover-arrow-width: var(--ux4g-size-18, 1.125rem);
   --ux4g-popover-arrow-height: var(--ux4g-size-10, 0.625rem);
-  --ux4g-popover-arrow-color: var(--ux4g-bg-neutral-strong);
+  --ux4g-popover-arrow-color: var(--ux4g-bg-neutral-elevated);
   position: var(--ux4g-pos-absolute);
   z-index: var(--ux4g-z-layout-top);
   min-width: 17.5rem;
@@ -31,7 +17,7 @@
   visibility: var(--ux4g-visibility-hide);
   opacity: var(--ux4g-opacity-0);
   transition: opacity 0.15s linear;
-  background-color: var(--ux4g-bg-neutral-strong);
+  background-color: var(--ux4g-bg-neutral-elevated);
   color: var(--ux4g-text-neutral-primary);
 }
 

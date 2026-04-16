@@ -1,17 +1,3 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 .ux4g-combobox {
   --ux4g-combobox-height: var(--ux4g-sz-m, 40px);
   --ux4g-combobox-padding-x: var(--ux4g-padding-s, 12px);
@@ -28,7 +14,7 @@
   --ux4g-combobox-border: var(--ux4g-border-color-neutral-subtle, #e5e5e5);
   --ux4g-combobox-border-hover: var(--ux4g-border-color-neutral-default, #d9d9d9);
   --ux4g-combobox-border-focus: var(--ux4g-border-color-primary-strong, #4a2bc2);
-  --ux4g-combobox-bg: var(--ux4g-bg-neutral-strong, #ffffff);
+  --ux4g-combobox-bg: var(--ux4g-bg-neutral-elevated, #ffffff);
   --ux4g-combobox-menu-width: 100%;
   --ux4g-combobox-focus-shadow: 0 0 0 var(--ux4g-combobox-focus-ring-width) var(--ux4g-combobox-border-focus);
 

@@ -1,17 +1,3 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 /* Container for label and input box */
 .ux4g-input-container {
     display: flex;
@@ -428,5 +414,5 @@
     bottom: var(--ux4g-space-none) !important;
     color: var(--ux4g-text-neutral-tertiary);
     font-size: var(--ux4g-fs-12);
-    background-color: var(--ux4g-bg-neutral-strong);
+    background-color: var(--ux4g-bg-neutral-elevated);
 }

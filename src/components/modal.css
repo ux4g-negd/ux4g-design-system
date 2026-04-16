@@ -1,17 +1,4 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
 
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 /* ========================================================= UX4G MODAL : Overlay ========================================================= */
 .ux4g-modal-backdrop-25 {
     background-color: rgba(0, 0, 0, 0.25);
@@ -89,6 +76,18 @@
 }
 
 /* ========================================================= UX4G MODAL : Header Title - Modal heading typography ========================================================= */
+.ux4g-modal-header-title-content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.ux4g-modal-header-title-content i.ux4g-icon-outlined {
+    height: var(--ux4g-lh-24);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .ux4g-modal-header-title {
     color: var(--ux4g-text-neutral-primary);
     font-size: var(--ux4g-fs-20);

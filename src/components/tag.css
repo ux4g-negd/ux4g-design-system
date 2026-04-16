@@ -1,44 +1,30 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 /* =========================================================
 UX4G TAG – TONAL (Base Shared Styles)
 Applies to all tonal tag variants
 ========================================================= */
 :is(.ux4g-tag-tonal-neutral,
-  .ux4g-tag-tonal-brand,
+  .ux4g-tag-tonal-primary,
   .ux4g-tag-tonal-success,
   .ux4g-tag-tonal-warning,
   .ux4g-tag-tonal-error,
   .ux4g-tag-tonal-info,
  
   .ux4g-tag-filled-neutral,
-  .ux4g-tag-filled-brand,
+  .ux4g-tag-filled-primary,
   .ux4g-tag-filled-success,
   .ux4g-tag-filled-warning,
   .ux4g-tag-filled-error,
   .ux4g-tag-filled-info,
  
   .ux4g-tag-outline-neutral,
-  .ux4g-tag-outline-brand,
+  .ux4g-tag-outline-primary,
   .ux4g-tag-outline-success,
   .ux4g-tag-outline-warning,
   .ux4g-tag-outline-error,
   .ux4g-tag-outline-info,
  
   .ux4g-tag-text-neutral,
-  .ux4g-tag-text-brand,
+  .ux4g-tag-text-primary,
   .ux4g-tag-text-success,
   .ux4g-tag-text-warning,
   .ux4g-tag-text-error,
@@ -65,7 +51,7 @@ Applies to all tonal tag variants
   background-color: var(--ux4g-bg-neutral-subtle);
   color: var(--ux4g-text-neutral-primary);
 }
-.ux4g-tag-tonal-brand {
+.ux4g-tag-tonal-primary {
   background-color: var(--ux4g-bg-primary-soft);
   color: var(--ux4g-bg-primary-strong);
 }
@@ -96,7 +82,7 @@ Applies to all tonal tag variants
   background-color: var(--ux4g-bg-neutral-subtle);
   color: var(--ux4g-text-neutral-primary);
 }
-.ux4g-tag-tonal-brand {
+.ux4g-tag-tonal-primary {
   background-color: var(--ux4g-bg-primary-soft);
   color: var(--ux4g-text-brand-primary-default);
 }
@@ -129,7 +115,7 @@ Applies to all tonal tag variants
 }
 :is(
 .ux4g-tag-filled-neutral, 
-.ux4g-tag-filled-brand, 
+.ux4g-tag-filled-primary, 
 .ux4g-tag-filled-success, 
 .ux4g-tag-filled-warning, 
 .ux4g-tag-filled-error, 
@@ -140,7 +126,7 @@ Applies to all tonal tag variants
 
  
 /* Brand */
-.ux4g-tag-filled-brand {
+.ux4g-tag-filled-primary {
   background-color: var(--ux4g-bg-primary-strong);
   color: var(--ux4g-text-neutral-inverse);
 }

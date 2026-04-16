@@ -1,17 +1,3 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 .ux4g-tooltip-wrapper {
   position: var(--ux4g-pos-relative, relative);
   display: inline-block;
@@ -126,11 +112,11 @@
 }
 
 .ux4g-tooltip-top-left::after {
-  left: var(--ux4g-stack-xs, 8px);
+  left: var(--ux4g-stack-m, 12px);
 }
 
 .ux4g-tooltip-top-right::after {
-  right: var(--ux4g-stack-xs, 8px);
+  right: var(--ux4g-stack-m, 12px);
 }
 
 /* Bottom Placements */
@@ -147,11 +133,11 @@
 }
 
 .ux4g-tooltip-bottom-left {
-  left: 10%;
+  left: 0;
 }
 
 .ux4g-tooltip-bottom-right {
-  right: 10%;
+  right: 0;
 }
 
 /* Hover/Show states for Bottom */

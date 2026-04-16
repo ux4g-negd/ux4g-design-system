@@ -1,17 +1,3 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 :root {
   --ux4g-badge-border: var(--ux4g-bg-neutral);
   --ux4g-badge-dot: var(--ux4g-sz-8);
@@ -115,10 +101,10 @@
 }
 
 .ux4g-badge-profile-l { 
-  --ux4g-badge-dot: 18px; 
-  --ux4g-badge-sz: 18px; 
-  --ux4g-badge-ico: 9px; 
-  --ux4g-badge-fs: 9px; 
+   --ux4g-badge-dot: 14px; 
+  --ux4g-badge-sz: 14px; 
+  --ux4g-badge-ico: 6px; 
+  --ux4g-badge-fs: 6px; 
 }
 .ux4g-badge-profile-xl { 
   --ux4g-badge-dot: 20px; 

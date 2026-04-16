@@ -1,22 +1,9 @@
-/*
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.*/
-
 /*!
  * UX4G.js
  * Components: Dropdown, Collapse/Accordion, Modal, Offcanvas, Tooltip, Popover, Toast, Carousel, Tabs, Scrollspy
  * Compatibility: UX4G markup (data-ux-*)
  * Extras: supports .open-modal/.close-modal, .close-toast, #liveToastBtn (your sample HTML)
- * Version: 3.0
+ * Version: 1.1.0
  */
 
 (function (global) {
@@ -1305,6 +1292,103 @@
   }
 
   // -----------------------------
+  // List
+  // -----------------------------
+  class List {
+    constructor(el) {
+      this.el = el;
+      this._bind();
+    }
+
+    _bind() {
+      U.on(this.el, "click", (e) => {
+        const item = U.closest(e.target, ".ux4g-list-item-row") || U.closest(e.target, ".ux4g-list-select-item");
+        if (!item || item.disabled) return;
+
+        const isMulti = (this.el.id === "ux4g-multiselect-list") || 
+                        this.el.classList.contains("ux4g-multiselect") || 
+                        this.el.classList.contains("ux4g-list-multiselect");
+        const checkbox = U.qs('input[type="checkbox"]', item);
+        const radio = U.qs('input[type="radio"]', item);
+        const switchInput = U.qs('.ux4g-switch-input', item);
+
+        // If clicking on input directly, don't double toggle
+        if (e.target.tagName === 'INPUT') {
+          const inputChecked = e.target.checked;
+          
+          if (!isMulti) {
+            const allItems = U.qsa(".ux4g-list-item-row, .ux4g-list-select-item", this.el);
+            allItems.forEach(i => {
+              if (i !== item) i.classList.remove("active");
+              // Also ensure other inputs are unchecked
+              if (i !== item) {
+                const otherInp = U.qs('input', i);
+                if (otherInp) otherInp.checked = false;
+              }
+            });
+            item.classList.toggle("active", inputChecked);
+          } else {
+            item.classList.toggle("active", inputChecked);
+          }
+          return;
+        }
+
+        if (isMulti) {
+          const isActive = item.classList.toggle("active");
+          if (checkbox) {
+            checkbox.checked = isActive;
+            checkbox.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+          if (switchInput) {
+            switchInput.checked = isActive;
+            switchInput.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+        } else {
+          // Single selection
+          const wasActive = item.classList.contains("active");
+          const allItems = U.qsa(".ux4g-list-item-row, .ux4g-list-select-item", this.el);
+          
+          // Clear all first
+          allItems.forEach(i => {
+            i.classList.remove("active");
+            const cb = U.qs('input[type="checkbox"]', i);
+            const rb = U.qs('input[type="radio"]', i);
+            const sw = U.qs('.ux4g-switch-input', i);
+            if (cb) cb.checked = false;
+            if (rb) rb.checked = false;
+            if (sw) sw.checked = false;
+          });
+
+          // Toggle: only add if it wasn't already active
+          if (!wasActive) {
+            item.classList.add("active");
+            if (checkbox) {
+              checkbox.checked = true;
+              checkbox.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+            if (radio) {
+              radio.checked = true;
+              radio.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+            if (switchInput) {
+              switchInput.checked = true;
+              switchInput.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+          }
+        }
+        
+        U.dispatch(this.el, "ux4g.list.change", { item, active: item.classList.contains("active") });
+      });
+    }
+
+    static getOrCreate(el) {
+      let inst = getI(el, "list");
+      if (!inst) { inst = new List(el); setI(el, "list", inst); }
+      return inst;
+    }
+  }
+
+  // -----------------------------
   // Data API init
   // -----------------------------
   function init(root = document) {
@@ -1332,6 +1416,17 @@
 
     // Table Interactions
     U.qsa(".ux4g-table", root).forEach(Table.getOrCreate);
+
+    // List Interactions
+    U.qsa(".ux4g-list", root).forEach(List.getOrCreate);
+
+    // Validation: Ensure ux4g-multiselect-list ID is only used on .ux4g-list elements
+    const multiselectIdEls = root.querySelectorAll('#ux4g-multiselect-list');
+    multiselectIdEls.forEach(el => {
+      if (!el.classList.contains('ux4g-list')) {
+        console.warn(`[UX4G Validation] The ID 'ux4g-multiselect-list' should only be used on elements with the 'ux4g-list' class. Found on:`, el);
+      }
+    });
   }
 
   // Delegated toggles for Modal & Offcanvas (+ your custom open/close classes)
@@ -1431,6 +1526,7 @@
     Tab,
     ScrollSpy,
     Table,
+    List,
     Theme: {
       get() {
         return document.documentElement.getAttribute("data-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");

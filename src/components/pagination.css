@@ -1,17 +1,3 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 .ux4g-pagination-wrapper {
     display: flex;
     align-items: center;
@@ -63,7 +49,7 @@
 }
 
 .ux4g-page-number:focus {
-    background-color: var(--ux4g-bg-neutral-strong);
+    background-color: var(--ux4g-bg-neutral-elevated);
 }
 
 /* PAGE SIZE */
@@ -84,6 +70,10 @@
 .ux4g-page-size-select-wrapper .ux4g-icon-outlined {
     position: var(--ux4g-pos-absolute);
     pointer-events: none;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--ux4g-fs-16);
 }
 
 .ux4g-page-size-select-wrapper .ux4g-icon-outlined:first-child {
@@ -92,10 +82,7 @@
 
 .ux4g-page-size-select-wrapper .ux4g-icon-outlined.ux4g-select-value-icon {
     left: 55%;
-    transform: translateX(-50%);
-    color: var(--ux4g-text-neutral-tertiary);
-    font-size: var(--ux4g-fs-20);
-    top: 10px;
+    transform: translate(-50%, -50%);
 }
 
 .ux4g-page-size-select-wrapper .ux4g-icon-outlined:last-child {
@@ -157,7 +144,7 @@
 
 /******************************************dotted pagination*******************************/
 .ux4g-pagination-dotted {
-    max-width: 220px;
+    width: 220px;
 }
 
 .ux4g-pagination-solid {
@@ -199,7 +186,7 @@
     width: 24px;
     height: 24px;
     border-radius: var(--ux4g-radius-full);
-    background: var(--ux4g-bg-neutral-strong);
+    background: var(--ux4g-bg-neutral-elevated);
     color: var(--ux4g-text-brand-primary-default);
     font-size: var(--ux4g-fs-20);
     display: flex;
@@ -228,18 +215,18 @@
     display: none;
 }
 
-.ux4g-pagination-prev-right,
+/* .ux4g-pagination-prev-right,
 .ux4g-pagination-next-right {
     position: var(--ux4g-pos-absolute);
-}
+} */
 
-.ux4g-pagination-prev-right {
+/* .ux4g-pagination-prev-right {
     right: var(--ux4g-space-10);
-}
+} */
 
-.ux4g-pagination-next-right {
+/* .ux4g-pagination-next-right {
     right: var(--ux4g-space-none);
-}
+} */
 
 @media screen and (max-width: 768px) {
     .ux4g-pagination-wrapper {

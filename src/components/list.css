@@ -1,17 +1,3 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 .ux4g-list {
   border-radius: var(--ux4g-radius-md);
   box-shadow: var(--ux4g-shadow-l2);
@@ -350,7 +336,7 @@
   transform:scale(.6);
   transition:all .18s ease;
 }
-.ux4g-list-multiselect-item.active .ux4g-check-icon{
+.ux4g-list-item-row.active .ux4g-check-icon{
   opacity:var(--ux4g-opacity-100);
   transform:scale(1);
 }

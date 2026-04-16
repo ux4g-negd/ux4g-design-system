@@ -1,17 +1,3 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 :root {
   --ux4g-interaction-hover-opacity: 0.9;
   --ux4g-interaction-active-opacity: 0.8;
@@ -25,7 +11,3 @@
   --ux4g-outline-offset-default: 2px;
 }
 
-:root[data-theme="dark"] {
-  --ux4g-interaction-hover-opacity: 0.85;
-  --ux4g-outline-color-focus: var(--ux4g-bg-primary-strong);
-}

@@ -1,17 +1,3 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 [class^="ux4g-bg-"],
 [class*=" ux4g-bg-"] {
   background-color: var(--ux4g-bg-current, var(--ux4g-bg-neutral-elevated));
@@ -19,10 +5,10 @@
 }
 
 /* NEUTRAL */
-.ux4g-bg-neutral-subtle   { --ux4g-bg-current: var(--ux4g-bg-neutral-subtle); }
-.ux4g-bg-neutral-soft     { --ux4g-bg-current: var(--ux4g-bg-neutral-soft); }
-.ux4g-bg-neutral          { --ux4g-bg-current: var(--ux4g-bg-neutral); }
 .ux4g-bg-neutral-elevated { --ux4g-bg-current: var(--ux4g-bg-neutral-elevated); }
+.ux4g-bg-neutral          { --ux4g-bg-current: var(--ux4g-bg-neutral); }
+.ux4g-bg-neutral-soft     { --ux4g-bg-current: var(--ux4g-bg-neutral-soft); }
+.ux4g-bg-neutral-subtle   { --ux4g-bg-current: var(--ux4g-bg-neutral-subtle); }
 .ux4g-bg-neutral-emphasis { --ux4g-bg-current: var(--ux4g-bg-neutral-emphasis); }
 .ux4g-bg-neutral-strong   { 
   --ux4g-bg-current: var(--ux4g-bg-neutral-strong);
@@ -32,25 +18,34 @@
   --ux4g-bg-current: var(--ux4g-bg-neutral-stronger);
   --ux4g-text-current: var(--ux4g-text-neutral-inverse);
 }
+.ux4g-bg-neutral-disabled { --ux4g-bg-current: var(--ux4g-bg-neutral-disabled); }
 
 /* PRIMARY */
-.ux4g-bg-primary-subtle   { --ux4g-bg-current: var(--ux4g-bg-primary-subtle); }
-.ux4g-bg-primary-soft     { --ux4g-bg-current: var(--ux4g-bg-primary-soft); }
 .ux4g-bg-primary          { --ux4g-bg-current: var(--ux4g-bg-primary); }
+.ux4g-bg-primary-soft     { --ux4g-bg-current: var(--ux4g-bg-primary-soft); }
+.ux4g-bg-primary-subtle   { --ux4g-bg-current: var(--ux4g-bg-primary-subtle); }
 .ux4g-bg-primary-emphasis { --ux4g-bg-current: var(--ux4g-bg-primary-emphasis); }
 .ux4g-bg-primary-strong   { 
   --ux4g-bg-current: var(--ux4g-bg-primary-strong);
   --ux4g-text-current: var(--ux4g-text-neutral-inverse);
 }
+.ux4g-bg-primary-strong-hover { 
+  --ux4g-bg-current: var(--ux4g-bg-primary-strong-hover);
+  --ux4g-text-current: var(--ux4g-text-neutral-inverse);
+}
 .ux4g-bg-primary-stronger { 
-  --ux4g-bg-current: var(--ux4g-bg-primary-strong);
+  --ux4g-bg-current: var(--ux4g-bg-primary-stronger);
+  --ux4g-text-current: var(--ux4g-text-neutral-inverse);
+}
+.ux4g-bg-primary-stronger-hover { 
+  --ux4g-bg-current: var(--ux4g-bg-primary-stronger-hover);
   --ux4g-text-current: var(--ux4g-text-neutral-inverse);
 }
 
 /* SECONDARY */
-.ux4g-bg-secondary-subtle   { --ux4g-bg-current: var(--ux4g-bg-secondary-subtle); }
-.ux4g-bg-secondary-soft     { --ux4g-bg-current: var(--ux4g-bg-secondary-soft); }
 .ux4g-bg-secondary          { --ux4g-bg-current: var(--ux4g-bg-secondary); }
+.ux4g-bg-secondary-soft     { --ux4g-bg-current: var(--ux4g-bg-secondary-soft); }
+.ux4g-bg-secondary-subtle   { --ux4g-bg-current: var(--ux4g-bg-secondary-subtle); }
 .ux4g-bg-secondary-emphasis { --ux4g-bg-current: var(--ux4g-bg-secondary-emphasis); }
 .ux4g-bg-secondary-strong   { 
   --ux4g-bg-current: var(--ux4g-bg-secondary-strong);
@@ -58,9 +53,9 @@
 }
 
 /* TERTIARY */
-.ux4g-bg-tertiary-subtle   { --ux4g-bg-current: var(--ux4g-bg-tertiary-subtle); }
-.ux4g-bg-tertiary-soft     { --ux4g-bg-current: var(--ux4g-bg-tertiary-soft); }
 .ux4g-bg-tertiary          { --ux4g-bg-current: var(--ux4g-bg-tertiary); }
+.ux4g-bg-tertiary-soft     { --ux4g-bg-current: var(--ux4g-bg-tertiary-soft); }
+.ux4g-bg-tertiary-subtle   { --ux4g-bg-current: var(--ux4g-bg-tertiary-subtle); }
 .ux4g-bg-tertiary-emphasis { --ux4g-bg-current: var(--ux4g-bg-tertiary-emphasis); }
 .ux4g-bg-tertiary-strong   { 
   --ux4g-bg-current: var(--ux4g-bg-tertiary-strong);
@@ -68,9 +63,9 @@
 }
 
 /* SUCCESS */
-.ux4g-bg-success-subtle   { --ux4g-bg-current: var(--ux4g-bg-success-subtle); }
-.ux4g-bg-success-soft     { --ux4g-bg-current: var(--ux4g-bg-success-soft); }
 .ux4g-bg-success          { --ux4g-bg-current: var(--ux4g-bg-success); }
+.ux4g-bg-success-soft     { --ux4g-bg-current: var(--ux4g-bg-success-soft); }
+.ux4g-bg-success-subtle   { --ux4g-bg-current: var(--ux4g-bg-success-subtle); }
 .ux4g-bg-success-emphasis { --ux4g-bg-current: var(--ux4g-bg-success-emphasis); }
 .ux4g-bg-success-strong   { 
   --ux4g-bg-current: var(--ux4g-bg-success-strong);
@@ -78,19 +73,27 @@
 }
 
 /* ERROR */
-.ux4g-bg-error-subtle   { --ux4g-bg-current: var(--ux4g-bg-error-subtle); }
-.ux4g-bg-error-soft     { --ux4g-bg-current: var(--ux4g-bg-error-soft); }
 .ux4g-bg-error          { --ux4g-bg-current: var(--ux4g-bg-error); }
+.ux4g-bg-error-soft     { --ux4g-bg-current: var(--ux4g-bg-error-soft); }
+.ux4g-bg-error-subtle   { --ux4g-bg-current: var(--ux4g-bg-error-subtle); }
 .ux4g-bg-error-emphasis { --ux4g-bg-current: var(--ux4g-bg-error-emphasis); }
 .ux4g-bg-error-strong   { 
   --ux4g-bg-current: var(--ux4g-bg-error-strong);
   --ux4g-text-current: var(--ux4g-text-neutral-inverse);
 }
+.ux4g-bg-error-strong-hover { 
+  --ux4g-bg-current: var(--ux4g-bg-error-strong-hover);
+  --ux4g-text-current: var(--ux4g-text-neutral-inverse);
+}
+.ux4g-bg-error-stronger { 
+  --ux4g-bg-current: var(--ux4g-bg-error-stronger);
+  --ux4g-text-current: var(--ux4g-text-neutral-inverse);
+}
 
 /* WARNING */
-.ux4g-bg-warning-subtle   { --ux4g-bg-current: var(--ux4g-bg-warning-subtle); }
-.ux4g-bg-warning-soft     { --ux4g-bg-current: var(--ux4g-bg-warning-soft); }
 .ux4g-bg-warning          { --ux4g-bg-current: var(--ux4g-bg-warning); }
+.ux4g-bg-warning-soft     { --ux4g-bg-current: var(--ux4g-bg-warning-soft); }
+.ux4g-bg-warning-subtle   { --ux4g-bg-current: var(--ux4g-bg-warning-subtle); }
 .ux4g-bg-warning-emphasis { --ux4g-bg-current: var(--ux4g-bg-warning-emphasis); }
 .ux4g-bg-warning-strong   { 
   --ux4g-bg-current: var(--ux4g-bg-warning-strong);
@@ -98,14 +101,18 @@
 }
 
 /* INFO */
-.ux4g-bg-info-subtle   { --ux4g-bg-current: var(--ux4g-bg-info-subtle); }
-.ux4g-bg-info-soft     { --ux4g-bg-current: var(--ux4g-bg-info-soft); }
 .ux4g-bg-info          { --ux4g-bg-current: var(--ux4g-bg-info); }
+.ux4g-bg-info-soft     { --ux4g-bg-current: var(--ux4g-bg-info-soft); }
+.ux4g-bg-info-subtle   { --ux4g-bg-current: var(--ux4g-bg-info-subtle); }
 .ux4g-bg-info-emphasis { --ux4g-bg-current: var(--ux4g-bg-info-emphasis); }
 .ux4g-bg-info-strong   { 
   --ux4g-bg-current: var(--ux4g-bg-info-strong);
   --ux4g-text-current: var(--ux4g-text-neutral-inverse);
 }
+
+/* OTHER */
+.ux4g-control-bg-default { --ux4g-bg-current: var(--ux4g-control-bg-default); }
+.ux4g-bg-overlay         { --ux4g-bg-current: var(--ux4g-bg-overlay); }
 
 /* UTILITY */
 .ux4g-bg-none {

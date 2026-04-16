@@ -1,17 +1,3 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 /* ==========================================
    UX4G Search Component
    ========================================== */
@@ -28,7 +14,7 @@
     color: var(--ux4g-text-neutral-secondary);
 }
 
-/* Search Wrapper */
+/* Search Wrapper (Medium by default) */
 .ux4g-search {
     display: flex;
     align-items: center;
@@ -38,19 +24,23 @@
     overflow: hidden;
     padding-left: var(--ux4g-padding-s);
     transition: border-color 0.2s ease, outline 0.2s ease;
-    gap: var(--ux4g-space-2)
+    gap: var(--ux4g-space-2);
+    height: var(--ux4g-sz-m);
 }
 
 .ux4g-search:hover {
     border-color: var(--ux4g-border-color-neutral-default);
 }
 
-/* Icons */
+/* Icons & Buttons (Medium by default) */
 .ux4g-search-leading-icon,
+.ux4g-search-action-btn,
 .ux4g-search-btn .ux4g-icon-outlined,
 .ux4g-search-actions .ux4g-icon-outlined {
+    width: var(--ux4g-sz-18);
+    height: var(--ux4g-sz-18);
+    font-size: var(--ux4g-fs-18);
     color: var(--ux4g-text-neutral-secondary);
-    font-size: var(--ux4g-fs-16);
 }
 
 /* Input */
@@ -96,13 +86,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--ux4g-space-3);
+    padding: var(--ux4g-padding-xs);
     height: 100%;
+    width: 40px;
     transition: background-color 0.2s ease;
 }
 
 .ux4g-search-btn .ux4g-icon-outlined {
-    font-size: var(--ux4g-fs-20);
+    font-size: var(--ux4g-fs-18);
     color: var(--ux4g-text-white);
 }
 
@@ -134,19 +125,26 @@
    SIZE VARIANTS
    ========================================== */
 
-/* Small */
+/* Small (ux4g-search-s) */
 .ux4g-search-s .ux4g-search {
     height: var(--ux4g-sz-s);
 }
 
 .ux4g-search-s .ux4g-search-action-btn,
-.ux4g-search-s .ux4g-search-leading-icon {
+.ux4g-search-s .ux4g-search-leading-icon,
+.ux4g-search-s .ux4g-search-actions .ux4g-icon-outlined {
     width: var(--ux4g-sz-16);
     height: var(--ux4g-sz-16);
     font-size: var(--ux4g-fs-16);
 }
 
-/* Medium */
+
+
+.ux4g-search-s .ux4g-search-btn .ux4g-icon-outlined {
+    font-size: var(--ux4g-fs-16);
+}
+
+/* Medium (Explicit class, matches default) */
 .ux4g-search-m .ux4g-search {
     height: var(--ux4g-sz-m);
 }
@@ -165,7 +163,7 @@
 .ux4g-search-m .ux4g-search-leading-icon,
 .ux4g-search-m .ux4g-search-btn .ux4g-icon-outlined,
 .ux4g-search-m .ux4g-search-actions .ux4g-icon-outlined {
-    font-size: var(--ux4g-fs-18);
+    font-size: var(--ux4g-fs-20);
 }
 
 /* Large */
@@ -173,22 +171,23 @@
     height: var(--ux4g-sz-l);
 }
 
+.ux4g-search-l .ux4g-search-action-btn,
+.ux4g-search-l .ux4g-search-leading-icon,
+.ux4g-search-l .ux4g-search-actions .ux4g-icon-outlined,
 .ux4g-search-lg .ux4g-search-action-btn,
-.ux4g-search-lg .ux4g-search-leading-icon {
+.ux4g-search-lg .ux4g-search-leading-icon,
+.ux4g-search-lg .ux4g-search-actions .ux4g-icon-outlined {
     width: var(--ux4g-sz-20);
     height: var(--ux4g-sz-20);
     font-size: var(--ux4g-fs-20);
 }
 
+.ux4g-search-l .ux4g-search-btn,
 .ux4g-search-lg .ux4g-search-btn {
     padding: var(--ux4g-padding-s);
 }
 
-.ux4g-search-lg .ux4g-search-leading-icon,
-.ux4g-search-lg .ux4g-search-actions .ux4g-icon-outlined {
-    font-size: var(--ux4g-fs-20);
-}
-
+.ux4g-search-l .ux4g-search-btn .ux4g-icon-outlined,
 .ux4g-search-lg .ux4g-search-btn .ux4g-icon-outlined {
     font-size: var(--ux4g-fs-24);
     width: var(--ux4g-sz-24);

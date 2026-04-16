@@ -1,20 +1,6 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 /* Base Border Engine */
-.ux4g-border { border-style: solid; border-width: var(--ux4g-border-width-sm); border-color: var(--ux4g-border-current, var(--ux4g-border-color-neutral-default)); }
-.ux4g-border-bold { border-style: solid; border-width: var(--ux4g-border-width-md); border-color: var(--ux4g-border-current, var(--ux4g-border-color-neutral-default)); }
+.ux4g-border { border-style: solid; border-width: var(--ux4g-border-width-sm); border-color: var(--ux4g-border-color-neutral-default); }
+.ux4g-border-bold { border-style: solid; border-width: var(--ux4g-border-width-md); border-color: var(--ux4g-border-color-neutral-default); }
 
 /* Border Width */
 .ux4g-border-none { border-width: var(--ux4g-border-width-none); }
@@ -26,6 +12,10 @@
 .ux4g-bb { border-bottom: var(--ux4g-border-width-sm) solid var(--ux4g-border-current, var(--ux4g-border-color-neutral-default)); }
 .ux4g-bl { border-inline-start: var(--ux4g-border-width-sm) solid var(--ux4g-border-current, var(--ux4g-border-color-neutral-default)); }
 
+/* Border Style */
+.ux4g-border-dashed { border-style: dashed; }
+.ux4g-border-dotted { border-style: dotted; }
+
 /* Remove Border (Atomic Reset) */
 .ux4g-bt-0 { border-top: 0; }
 .ux4g-br-0 { border-inline-end: 0; }
@@ -33,15 +23,68 @@
 .ux4g-bl-0 { border-inline-start: 0; }
 
 /* Border Color Tokens (Engine Setters) */
-.ux4g-border-neutral-subtle { --ux4g-border-current: var(--ux4g-border-color-neutral-subtle); }
-.ux4g-border-neutral-strong { --ux4g-border-current: var(--ux4g-border-color-neutral-strong); }
-.ux4g-border-primary { --ux4g-border-current: var(--ux4g-border-color-primary-default); }
-.ux4g-border-primary-strong { --ux4g-border-current: var(--ux4g-border-color-primary-strong); }
-.ux4g-border-secondary { --ux4g-border-current: var(--ux4g-border-color-secondary-default); }
-.ux4g-border-tertiary { --ux4g-border-current: var(--ux4g-border-color-tertiary-default); }
-.ux4g-border-success { --ux4g-border-current: var(--ux4g-border-color-success-default); }
-.ux4g-border-success-strong { --ux4g-border-current: var(--ux4g-border-color-success-strong); }
-.ux4g-border-info { --ux4g-border-current: var(--ux4g-border-color-info-default); }
-.ux4g-border-info-strong { --ux4g-border-current: var(--ux4g-border-color-info-strong); }
-.ux4g-border-error { --ux4g-border-current: var(--ux4g-border-color-error-default); }
-.ux4g-border-error-strong { --ux4g-border-current: var(--ux4g-border-color-error-strong); }
+/* These update both the variable (for side-support) and direct property (for all-side support) */
+.ux4g-border-neutral-subtle { 
+  --ux4g-border-current: var(--ux4g-border-color-neutral-subtle); 
+  border-color: var(--ux4g-border-color-neutral-subtle);
+}
+.ux4g-border-neutral-strong { 
+  --ux4g-border-current: var(--ux4g-border-color-neutral-strong); 
+  border-color: var(--ux4g-border-color-neutral-strong);
+}
+.ux4g-border-primary { 
+  --ux4g-border-current: var(--ux4g-border-color-primary-default); 
+  border-color: var(--ux4g-border-color-primary-default);
+}
+.ux4g-border-primary-strong { 
+  --ux4g-border-current: var(--ux4g-border-color-primary-strong); 
+  border-color: var(--ux4g-border-color-primary-strong);
+}
+.ux4g-border-secondary { 
+  --ux4g-border-current: var(--ux4g-border-color-secondary-default); 
+  border-color: var(--ux4g-border-color-secondary-default);
+}
+.ux4g-border-tertiary { 
+  --ux4g-border-current: var(--ux4g-border-color-tertiary-default); 
+  border-color: var(--ux4g-border-color-tertiary-default);
+}
+.ux4g-border-success { 
+  --ux4g-border-current: var(--ux4g-border-color-success-default); 
+  border-color: var(--ux4g-border-color-success-default);
+}
+.ux4g-border-success-strong { 
+  --ux4g-border-current: var(--ux4g-border-color-success-strong); 
+  border-color: var(--ux4g-border-color-success-strong);
+}
+.ux4g-border-info { 
+  --ux4g-border-current: var(--ux4g-border-color-info-default); 
+  border-color: var(--ux4g-border-color-info-default);
+}
+.ux4g-border-info-strong { 
+  --ux4g-border-current: var(--ux4g-border-color-info-strong); 
+  border-color: var(--ux4g-border-color-info-strong);
+}
+.ux4g-border-error { 
+  --ux4g-border-current: var(--ux4g-border-color-error-default); 
+  border-color: var(--ux4g-border-color-error-default);
+}
+.ux4g-border-error-strong { 
+  --ux4g-border-current: var(--ux4g-border-color-error-strong); 
+  border-color: var(--ux4g-border-color-error-strong);
+}
+.ux4g-border-warning { 
+  --ux4g-border-current: var(--ux4g-border-color-warning-default); 
+  border-color: var(--ux4g-border-color-warning-default);
+}
+.ux4g-border-warning-strong { 
+  --ux4g-border-current: var(--ux4g-border-color-warning-strong); 
+  border-color: var(--ux4g-border-color-warning-strong);
+}
+.ux4g-border-neutral-elevated { 
+  --ux4g-border-current: var(--ux4g-border-color-neutral-elevated); 
+  border-color: var(--ux4g-border-color-neutral-elevated);
+}
+.ux4g-border-control { 
+  --ux4g-border-current: var(--ux4g-control-border-default); 
+  border-color: var(--ux4g-control-border-default);
+}

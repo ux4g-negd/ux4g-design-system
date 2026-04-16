@@ -1,17 +1,3 @@
-/*---------------------------- 
-|   |   \   /   |   |    ____ 
-|   |    \ /    |___|   |    
-|   |    / \        |   |  __
-|___|   /   \       |   |___|
-----------------------------
-       DESIGN SYSTEM
-
--UX4G Design System v3.0
--Copyright 2026 The UX4G Authors(Nitesh Yadav, Ershad Alam)
--Copyright 2026 NeGD, MeitY.
--Licensed under MIT.
-
-----------------------------*/
 :root {
   /* Primary */
   --Spinner-primary-Color-1: var(--ux4g-bg-primary-strong);
@@ -45,12 +31,4 @@
   --Spinner-warning-Color-1: var(--ux4g-bg-warning-strong);
   --Spinner-warning-Color-2: var(--ux4g-bg-warning-soft);
 }
-
-:root[data-theme="dark"] {
-  /* No overrides needed if we use semantic vars that already handle dark mode */
-  /* But for custom sets like Light, we might still need some overrides if they aren't fully semantic */
-
-  /* Light Dark Mode Overrides */
-  --Spinner-Light-Color-1: var(--ux4g-color-neutral-600);
-  --Spinner-Light-Color-2: var(--ux4g-color-neutral-50);
-}
+
