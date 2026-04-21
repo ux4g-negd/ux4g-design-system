@@ -71,9 +71,6 @@
 .ux4g-end-overflow-sm { --ux4g-end-current: var(--ux4g-pos-end-overflow-sm); }
 .ux4g-end-overflow-md { --ux4g-end-current: var(--ux4g-pos-end-overflow-md); }
 
-/* Custom Floating Offsets (24px) used home (index.html) */
-.ux4g-bottom-8 { --ux4g-bottom-current: var(--ux4g-space-8); }
-.ux4g-end-8    { --ux4g-end-current: var(--ux4g-space-8); }
 
 /* ===== Transform ===== */
 .ux4g-translate-middle   { --ux4g-transform-current: var(--ux4g-pos-translate-middle); }

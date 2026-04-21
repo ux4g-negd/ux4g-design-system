@@ -199,6 +199,81 @@
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
+  const escapeRegExp = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+  function getSearchHighlightRange(originalText, query, mode) {
+    if (!query) return null;
+
+    const text = String(originalText);
+    const trimmedQuery = String(query).trim();
+    if (!trimmedQuery) return null;
+
+    const lowerText = text.toLowerCase();
+    const lowerQuery = trimmedQuery.toLowerCase();
+
+    if (mode === "starts-with") {
+      return lowerText.startsWith(lowerQuery)
+        ? { start: 0, end: trimmedQuery.length }
+        : null;
+    }
+
+    if (mode === "starts-with-term") {
+      const termRegex = new RegExp(`(^|\\s+)(${escapeRegExp(trimmedQuery)})`, "i");
+      const match = termRegex.exec(text);
+      if (!match) return null;
+
+      const prefix = match[1] || "";
+      const matched = match[2] || "";
+      const start = match.index + prefix.length;
+      return { start, end: start + matched.length };
+    }
+
+    const start = lowerText.indexOf(lowerQuery);
+    return start === -1 ? null : { start, end: start + trimmedQuery.length };
+  }
+
+  function renderSearchHighlight(originalText, query, mode) {
+    const text = String(originalText);
+    const range = getSearchHighlightRange(text, query, mode);
+    if (!range) return escapeHtml(text);
+
+    const before = escapeHtml(text.slice(0, range.start));
+    const match = escapeHtml(text.slice(range.start, range.end));
+    const after = escapeHtml(text.slice(range.end));
+    return `<span>${before}<strong>${match}</strong>${after}</span>`;
+  }
+
+  function normalizeFilterCore(filterCore) {
+    const current = filterCore && typeof filterCore === "object" ? filterCore : {};
+    return {
+      ...current,
+      highlight(originalText, query, mode) {
+        if (typeof current.highlight === "function") {
+          const highlighted = current.highlight(originalText, query, mode);
+          if (typeof highlighted === "string" && highlighted !== String(originalText)) {
+            return renderSearchHighlight(originalText, query, mode);
+          }
+        }
+        return renderSearchHighlight(originalText, query, mode);
+      }
+    };
+  }
+
+  function installFilterCoreBridge(target) {
+    let filterCoreValue = normalizeFilterCore(target.filterCore);
+
+    Object.defineProperty(target, "filterCore", {
+      configurable: true,
+      enumerable: true,
+      get() {
+        return filterCoreValue;
+      },
+      set(value) {
+        filterCoreValue = normalizeFilterCore(value);
+      }
+    });
+  }
+
   // -----------------------------
   // Dropdown
   // -----------------------------
@@ -1541,6 +1616,8 @@
       }
     }
   };
+
+  installFilterCoreBridge(global.ux4g);
 
   // Auto-init theme if not set
   U.on(document, "DOMContentLoaded", () => {

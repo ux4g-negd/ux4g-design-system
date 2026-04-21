@@ -1,21 +1,18 @@
 /* =========================================
    DISPLAY UTILITIES
    Author: UX4G
-   Standard display properties including
-   Grid, Flex, Table, and Print variants.
+   Based on Bootstrap's display utilities.
 ========================================= */
 
-/* Base Display */
-.ux4g-d-none { display: none;}
-.ux4g-d-block { display: block;}
-.ux4g-d-inline { display: inline;}
-.ux4g-d-inline-block { display: inline-block;}
-.ux4g-d-flex { display: flex;}
-.ux4g-d-inline-flex { display: inline-flex;}
+.ux4g-d-none { display: none !important; }
+.ux4g-d-inline { display: inline !important; }
+.ux4g-d-inline-block { display: inline-block !important; }
+.ux4g-d-block { display: block !important; }
 
-
-
-/* Table Display */
-.ux4g-d-table { display: table;}
-.ux4g-d-table-row { display: table-row;}
-.ux4g-d-table-cell { display: table-cell;}
+.ux4g-d-table { display: table !important; }
+.ux4g-d-table-row { display: table-row !important; }
+.ux4g-d-table-cell { display: table-cell !important; }
+.ux4g-d-flex { display: flex !important; }
+.ux4g-d-inline-flex { display: inline-flex !important; }
+.ux4g-d-contents { display: contents !important; }
+.ux4g-d-list-item { display: list-item !important; }
