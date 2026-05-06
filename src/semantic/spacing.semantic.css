@@ -44,6 +44,9 @@
   --ux4g-inline-s: var(--ux4g-space-4);
   --ux4g-inline-m: var(--ux4g-space-5);
   --ux4g-inline-l: var(--ux4g-space-6);
+  --ux4g-inline-xl: var(--ux4g-space-9);
+
+
 
   /* Stack Spacing */
    --ux4g-stack-none: var(--ux4g-space-none);
@@ -52,4 +55,5 @@
   --ux4g-stack-s: var(--ux4g-space-5);
   --ux4g-stack-m: var(--ux4g-space-6);
   --ux4g-stack-l: var(--ux4g-space-8);
+  --ux4g-stack-xl: var(--ux4g-space-9);
 }

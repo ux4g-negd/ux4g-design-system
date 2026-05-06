@@ -205,7 +205,7 @@ Applies to all tonal tag variants
 }
  
 /* Brand */
-.ux4g-tag-text-brand {
+.ux4g-tag-text-primary {
   color: var(--ux4g-text-brand-primary-default);
 }
  

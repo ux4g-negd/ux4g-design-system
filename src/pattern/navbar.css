@@ -1,0 +1,41 @@
+/* =========================================
+   UX4G NAVBAR PATTERN
+========================================= */
+
+.ux4g-navbar {
+    background: var(--ux4g-bg-neutral-elevated);
+    box-shadow: var(--ux4g-shadow-l2);
+    width: 100%;
+}
+
+.ux4g-navbar-wrap {
+    display: flex;
+    padding: var(--ux4g-padding-m) 0px;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.ux4g-navbar-logo {
+    height: 40px;
+    width: auto;
+}
+
+.ux4g-navbar-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ux4g-navbar-links {
+    display: flex;
+    align-items: center;
+    column-gap: var(--ux4g-inline-xl);
+}
+.ux4g-navbar-links .ux4g-dropdown-control:hover {
+    text-decoration: none !important;
+}
+
+.ux4g-navbar-links .ux4g-dropdown-control:hover > span:first-child {
+    text-decoration: underline;
+}
+

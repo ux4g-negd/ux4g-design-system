@@ -58,62 +58,63 @@
 }
 
 /* Checked State */
-.ux4g-switch-input:checked ~ .ux4g-switch-control .ux4g-switch-track {
+.ux4g-switch-input:checked~.ux4g-switch-control .ux4g-switch-track {
     background-color: var(--ux4g-bg-primary-strong);
 }
 
-.ux4g-switch-input:checked ~ .ux4g-switch-control .ux4g-switch-thumb {
+.ux4g-switch-input:checked~.ux4g-switch-control .ux4g-switch-thumb {
     transform: translateX(var(--ux4g-size-18));
 }
 
 /* Hover States */
-.ux4g-switch:hover .ux4g-switch-input:not(:disabled):not(:checked) ~ .ux4g-switch-control .ux4g-switch-track,
-.ux4g-switch.is-hovered .ux4g-switch-input:not(:disabled):not(:checked) ~ .ux4g-switch-control .ux4g-switch-track {
-    background-color: var(--ux4g-bg-neutral-subtle-hover, #D1D5DB); /* Fallback to neutral hover if token missing */
+.ux4g-switch:hover .ux4g-switch-input:not(:disabled):not(:checked)~.ux4g-switch-control .ux4g-switch-track,
+.ux4g-switch.is-hovered .ux4g-switch-input:not(:disabled):not(:checked)~.ux4g-switch-control .ux4g-switch-track {
+    background-color: var(--ux4g-bg-neutral-subtle-hover, #D1D5DB);
+    /* Fallback to neutral hover if token missing */
 }
 
-.ux4g-switch:hover .ux4g-switch-input:not(:disabled):checked ~ .ux4g-switch-control .ux4g-switch-track,
-.ux4g-switch.is-hovered .ux4g-switch-input:not(:disabled):checked ~ .ux4g-switch-control .ux4g-switch-track {
+.ux4g-switch:hover .ux4g-switch-input:not(:disabled):checked~.ux4g-switch-control .ux4g-switch-track,
+.ux4g-switch.is-hovered .ux4g-switch-input:not(:disabled):checked~.ux4g-switch-control .ux4g-switch-track {
     background-color: var(--ux4g-bg-primary-strong-hover);
 }
 
 /* Active States */
-.ux4g-switch:active .ux4g-switch-input:not(:disabled):not(:checked) ~ .ux4g-switch-control .ux4g-switch-thumb,
-.ux4g-switch.is-active .ux4g-switch-input:not(:disabled):not(:checked) ~ .ux4g-switch-control .ux4g-switch-thumb {
+.ux4g-switch:active .ux4g-switch-input:not(:disabled):not(:checked)~.ux4g-switch-control .ux4g-switch-thumb,
+.ux4g-switch.is-active .ux4g-switch-input:not(:disabled):not(:checked)~.ux4g-switch-control .ux4g-switch-thumb {
     background-color: var(--ux4g-bg-neutral-emphasis);
 }
 
-.ux4g-switch:active .ux4g-switch-input:not(:disabled):checked ~ .ux4g-switch-control .ux4g-switch-thumb,
-.ux4g-switch.is-active .ux4g-switch-input:not(:disabled):checked ~ .ux4g-switch-control .ux4g-switch-thumb {
+.ux4g-switch:active .ux4g-switch-input:not(:disabled):checked~.ux4g-switch-control .ux4g-switch-thumb,
+.ux4g-switch.is-active .ux4g-switch-input:not(:disabled):checked~.ux4g-switch-control .ux4g-switch-thumb {
     background-color: var(--ux4g-bg-neutral-emphasis);
 }
 
 /* Focus State (Default/LG is 2px outline) */
-.ux4g-switch-input:focus-visible ~ .ux4g-switch-control .ux4g-switch-track,
+.ux4g-switch-input:focus-visible~.ux4g-switch-control .ux4g-switch-track,
 .ux4g-switch.is-focused .ux4g-switch-control .ux4g-switch-track {
     box-shadow: 0 0 0 0.125rem var(--ux4g-bg-neutral), 0 0 0 0.25rem var(--ux4g-bg-primary-strong);
     outline: none;
 }
 
 /* S/M sizes have 1px outline */
-.ux4g-switch-sm .ux4g-switch-input:focus-visible ~ .ux4g-switch-control .ux4g-switch-track,
-.ux4g-switch-md .ux4g-switch-input:focus-visible ~ .ux4g-switch-control .ux4g-switch-track,
+.ux4g-switch-sm .ux4g-switch-input:focus-visible~.ux4g-switch-control .ux4g-switch-track,
+.ux4g-switch-md .ux4g-switch-input:focus-visible~.ux4g-switch-control .ux4g-switch-track,
 .ux4g-switch-sm.is-focused .ux4g-switch-control .ux4g-switch-track,
 .ux4g-switch-md.is-focused .ux4g-switch-control .ux4g-switch-track {
     box-shadow: 0 0 0 0.0625rem var(--ux4g-bg-neutral), 0 0 0 0.125rem var(--ux4g-bg-primary-strong);
 }
 
 /* Disabled State */
-.ux4g-switch-input:disabled ~ .ux4g-switch-control .ux4g-switch-track {
+.ux4g-switch-input:disabled~.ux4g-switch-control .ux4g-switch-track {
     background-color: var(--ux4g-bg-neutral-disabled);
     cursor: not-allowed;
 }
 
-.ux4g-switch-input:disabled ~ .ux4g-switch-control .ux4g-switch-thumb {
+.ux4g-switch-input:disabled~.ux4g-switch-control .ux4g-switch-thumb {
     background-color: var(--ux4g-text-neutral-disabled);
 }
 
-.ux4g-switch-input:disabled ~ .ux4g-switch-content {
+.ux4g-switch-input:disabled~.ux4g-switch-content {
     opacity: 0.6;
     cursor: not-allowed;
 }
@@ -143,7 +144,7 @@
     flex-shrink: 0;
     font-size: var(--ux4g-fs-12);
     line-height: var(--ux4g-lh-16);
-    font-weight: var(--ux4g-fw-regular); 
+    font-weight: var(--ux4g-fw-regular);
     white-space: var(--ux4g-tw-nowrap);
     color: var(--ux4g-text-neutral-secondary);
 }
@@ -173,30 +174,37 @@
 .ux4g-switch-sm {
     gap: var(--ux4g-inline-xs);
 }
+
 .ux4g-switch-sm .ux4g-switch-track {
     width: var(--ux4g-size-32);
     height: var(--ux4g-size-18);
 }
+
 .ux4g-switch-sm .ux4g-switch-thumb {
     width: var(--ux4g-size-14);
     height: var(--ux4g-size-14);
     left: 0.125rem;
 }
-.ux4g-switch-sm .ux4g-switch-input:checked ~ .ux4g-switch-control .ux4g-switch-thumb {
+
+.ux4g-switch-sm .ux4g-switch-input:checked~.ux4g-switch-control .ux4g-switch-thumb {
     transform: translateX(var(--ux4g-size-14));
 }
+
 .ux4g-switch-sm .ux4g-switch-label {
     font-size: var(--ux4g-fs-12);
     line-height: var(--ux4g-lh-16);
 }
+
 .ux4g-switch-sm .ux4g-switch-description {
     font-size: var(--ux4g-fs-12);
     line-height: var(--ux4g-lh-16);
 }
+
 .ux4g-switch-sm .ux4g-switch-desc-icon {
     width: var(--ux4g-size-14);
     height: var(--ux4g-size-14);
 }
+
 .ux4g-switch-sm .ux4g-switch-icon {
     width: var(--ux4g-size-16);
     height: var(--ux4g-size-16);
@@ -207,26 +215,32 @@
     width: var(--ux4g-size-40);
     height: 1.375rem;
 }
+
 .ux4g-switch-md .ux4g-switch-thumb {
     width: var(--ux4g-size-18);
     height: var(--ux4g-size-18);
     left: 0.125rem;
 }
-.ux4g-switch-md .ux4g-switch-input:checked ~ .ux4g-switch-control .ux4g-switch-thumb {
+
+.ux4g-switch-md .ux4g-switch-input:checked~.ux4g-switch-control .ux4g-switch-thumb {
     transform: translateX(var(--ux4g-size-18));
 }
+
 .ux4g-switch-md .ux4g-switch-label {
     font-size: var(--ux4g-fs-14);
     line-height: var(--ux4g-lh-18);
 }
+
 .ux4g-switch-md .ux4g-switch-description {
     font-size: var(--ux4g-fs-12);
     line-height: var(--ux4g-lh-16);
 }
+
 .ux4g-switch-md .ux4g-switch-desc-icon {
     width: var(--ux4g-size-16);
     height: var(--ux4g-size-16);
 }
+
 .ux4g-switch-md .ux4g-switch-icon {
     width: var(--ux4g-size-20);
     height: var(--ux4g-size-20);
@@ -236,70 +250,127 @@
 .ux4g-switch-lg {
     gap: var(--ux4g-inline-m);
 }
+
 .ux4g-switch-lg .ux4g-switch-track {
     width: var(--ux4g-size-48);
     height: var(--ux4g-size-28);
 }
+
 .ux4g-switch-lg .ux4g-switch-thumb {
     width: 1.375rem;
     height: 1.375rem;
     left: 0.1875rem;
 }
-.ux4g-switch-lg .ux4g-switch-input:checked ~ .ux4g-switch-control .ux4g-switch-thumb {
+
+.ux4g-switch-lg .ux4g-switch-input:checked~.ux4g-switch-control .ux4g-switch-thumb {
     transform: translateX(var(--ux4g-size-20));
 }
+
 .ux4g-switch-lg .ux4g-switch-label {
     font-size: var(--ux4g-fs-16);
     line-height: var(--ux4g-lh-20);
 }
+
 .ux4g-switch-lg .ux4g-switch-description {
     font-size: var(--ux4g-fs-14);
     line-height: var(--ux4g-lh-18);
 }
+
 .ux4g-switch-lg .ux4g-switch-desc-icon {
     width: var(--ux4g-size-18);
     height: var(--ux4g-size-18);
 }
+
 .ux4g-switch-lg .ux4g-switch-icon {
     width: var(--ux4g-size-24);
     height: var(--ux4g-size-24);
 }
 
 /* Description Variants (Standalone) */
- .ux4g-switch-desc-helper {
-     color: var(--ux4g-text-neutral-secondary);
+.ux4g-switch-desc-helper {
+    color: var(--ux4g-text-neutral-secondary);
 }
- .ux4g-switch-desc-error {
-     color: var(--ux4g-text-status-error);
+
+.ux4g-switch-desc-error {
+    color: var(--ux4g-text-status-error);
 }
- .ux4g-switch-desc-warning {
-     color: var(--ux4g-text-status-warning);
+
+.ux4g-switch-desc-warning {
+    color: var(--ux4g-text-status-warning);
 }
- .ux4g-switch-desc-success {
-     color: var(--ux4g-text-status-success);
+
+.ux4g-switch-desc-success {
+    color: var(--ux4g-text-status-success);
 }
- .ux4g-switch-desc-info {
-     color: var(--ux4g-text-status-info);
+
+.ux4g-switch-desc-info {
+    color: var(--ux4g-text-status-info);
 }
 
 /* Description Variant Icons - Standalone Overrides */
- .ux4g-switch-desc-icon-helper,
- .ux4g-switch-desc-icon-helper .ux4g-switch-icon {
-     color: var(--ux4g-text-neutral-secondary);
+.ux4g-switch-desc-icon-helper,
+.ux4g-switch-desc-icon-helper .ux4g-switch-icon {
+    color: var(--ux4g-text-neutral-secondary);
 }
- .ux4g-switch-desc-icon-error,
- .ux4g-switch-desc-icon-error .ux4g-switch-icon {
-     color: var(--ux4g-icon-status-error);
+
+.ux4g-switch-desc-icon-error,
+.ux4g-switch-desc-icon-error .ux4g-switch-icon {
+    color: var(--ux4g-icon-status-error);
 }
- .ux4g-switch-desc-icon-warning,
- .ux4g-switch-desc-icon-warning .ux4g-switch-icon {
-     color: var(--ux4g-icon-status-warning);
+
+.ux4g-switch-desc-icon-warning,
+.ux4g-switch-desc-icon-warning .ux4g-switch-icon {
+    color: var(--ux4g-icon-status-warning);
 }
- .ux4g-switch-desc-icon-success,
- .ux4g-switch-desc-icon-success .ux4g-switch-icon {
-     color: var(--ux4g-icon-status-success);
+
+.ux4g-switch-desc-icon-success,
+.ux4g-switch-desc-icon-success .ux4g-switch-icon {
+    color: var(--ux4g-icon-status-success);
 }
- .ux4g-switch-desc-icon-info,
- .ux4g-switch-desc-icon-info .ux4g-switch-icon {
-     color: var(--ux4g-icon-status-info);
+
+.ux4g-switch-desc-icon-info,
+.ux4g-switch-desc-icon-info .ux4g-switch-icon {
+    color: var(--ux4g-icon-status-info);
+}
+
+/* Mobile only: apply mobile variant */
+@media (max-width: 768px) {
+    .ux4g-switch-md {
+        gap: var(--ux4g-inline-m);
+    }
+
+    .ux4g-switch-md .ux4g-switch-track {
+        width: var(--ux4g-size-48);
+        height: var(--ux4g-size-28);
+    }
+
+    .ux4g-switch-md .ux4g-switch-thumb {
+        width: 1.375rem;
+        height: 1.375rem;
+        left: 0.1875rem;
+    }
+
+    .ux4g-switch-md .ux4g-switch-input:checked~.ux4g-switch-control .ux4g-switch-thumb {
+        transform: translateX(var(--ux4g-size-20));
+    }
+
+    .ux4g-switch-md .ux4g-switch-label {
+        font-size: var(--ux4g-fs-16);
+        line-height: var(--ux4g-lh-20);
+    }
+
+    .ux4g-switch-md .ux4g-switch-description {
+        font-size: var(--ux4g-fs-14);
+        line-height: var(--ux4g-lh-18);
+    }
+
+    .ux4g-switch-md .ux4g-switch-desc-icon {
+        width: var(--ux4g-size-18);
+        height: var(--ux4g-size-18);
+    }
+
+    .ux4g-switch-md .ux4g-switch-icon {
+        width: var(--ux4g-size-24);
+        height: var(--ux4g-size-24);
+    }
 }

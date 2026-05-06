@@ -36,6 +36,8 @@
   --ux4g-text-link-neutral-visited: var(--ux4g-color-neutral-800);
   --ux4g-text-link-neutral-inverse: var(--ux4g-color-neutral-200);
   --ux4g-text-link-neutral-disabled: var(--ux4g-color-neutral-400);
+  --ux4g-text-neutral-emphasis: var(--ux4g-color-neutral-300);
+
   
   --ux4g-text-link-visited-default: var(--ux4g-color-primary-600);
   --ux4g-text-link-visited-hover: var(--ux4g-color-primary-700);

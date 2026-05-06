@@ -276,19 +276,19 @@
   flex-shrink: var(--ux4g-spacing-none, 0);
 }
 
-.ux4g-dropdown-sm .ux4g-dropdown-value > .ux4g-icon-outlined {
+.ux4g-dropdown-sm .ux4g-dropdown-value>.ux4g-icon-outlined {
   font-size: var(--ux4g-fs-14, 14px);
   width: var(--ux4g-fs-14, 14px);
   height: var(--ux4g-fs-14, 14px);
 }
 
-.ux4g-dropdown-md .ux4g-dropdown-value > .ux4g-icon-outlined {
+.ux4g-dropdown-md .ux4g-dropdown-value>.ux4g-icon-outlined {
   font-size: var(--ux4g-fs-16, 16px);
   width: var(--ux4g-fs-16, 16px);
   height: var(--ux4g-fs-16, 16px);
 }
 
-.ux4g-dropdown-lg .ux4g-dropdown-value > .ux4g-icon-outlined {
+.ux4g-dropdown-lg .ux4g-dropdown-value>.ux4g-icon-outlined {
   font-size: var(--ux4g-fs-20, 20px);
   width: var(--ux4g-fs-20, 20px);
   height: var(--ux4g-fs-20, 20px);
@@ -365,7 +365,7 @@
   height: var(--ux4g-fs-14, 14px);
 }
 
-.ux4g-dropdown-chip > span:not(.ux4g-icon-outlined) {
+.ux4g-dropdown-chip>span:not(.ux4g-icon-outlined) {
   overflow: var(--ux4g-of-hidden, hidden);
   text-overflow: ellipsis;
   white-space: var(--ux4g-tw-nowrap, nowrap);
@@ -619,4 +619,49 @@
 
 .ux4g-dropdown.ux4g-dropdown-overflow.ux4g-dropdown-lg .ux4g-dropdown-control>.ux4g-icon-outlined {
   font-size: var(--ux4g-dropdown-overflow-icon-lg);
+}
+
+
+/* Mobile only: apply mobile variant */
+@media (max-width: 768px) {
+  .ux4g-dropdown-md .ux4g-dropdown-value>.ux4g-icon-outlined {
+    font-size: var(--ux4g-fs-20, 20px);
+    width: var(--ux4g-fs-20, 20px);
+    height: var(--ux4g-fs-20, 20px);
+  }
+
+  .ux4g-dropdown-multi.ux4g-dropdown-md .ux4g-dropdown-selected-chips {
+    gap: var(--ux4g-padding-s, 12px);
+    padding: var(--ux4g-padding-2xs, 4px);
+
+  }
+
+  .ux4g-dropdown-md {
+    --ux4g-dropdown-height: var(--ux4g-sz-l, 48px);
+    --ux4g-dropdown-menu-chevron-size: var(--ux4g-dropdown-menu-chevron-lg);
+  }
+
+  .ux4g-dropdown:not(.ux4g-dropdown-button):not(.ux4g-dropdown-overflow).ux4g-dropdown-md .ux4g-dropdown-control {
+    font-size: var(--ux4g-fs-16, 16px);
+  }
+
+  .ux4g-dropdown.ux4g-dropdown-overflow.ux4g-dropdown-md {
+    --ux4g-dropdown-overflow-size: var(--ux4g-sz-l, 48px);
+  }
+
+  .ux4g-dropdown.ux4g-dropdown-overflow.ux4g-dropdown-md .ux4g-dropdown-control {
+    width: var(--ux4g-sz-l, 48px);
+    height: var(--ux4g-sz-l, 48px);
+  }
+
+  .ux4g-dropdown.ux4g-dropdown-overflow.ux4g-dropdown-md .ux4g-dropdown-control>.ux4g-icon-outlined {
+    font-size: var(--ux4g-dropdown-overflow-icon-lg);
+  }
+
+  .ux4g-dropdown.ux4g-dropdown-md+.ux4g-dropdown-help {
+    font-size: var(--ux4g-fs-20, 20px);
+    width: var(--ux4g-fs-20, 20px);
+    height: var(--ux4g-fs-20, 20px);
+  }
+
 }

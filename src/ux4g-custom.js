@@ -802,6 +802,8 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         searchInput.value = "";
       }
+      // Trigger filter logic to stay in sync
+      searchInput.dispatchEvent(new Event("input", { bubbles: true }));
       return;
     }
 
@@ -838,10 +840,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const options = dropdown.querySelectorAll(".ux4g-dropdown-single-option");
     options.forEach((option) => {
       const isSelected = option === selectedOption;
-      option.classList.toggle("is-selected", isSelected);
-      option.classList.toggle("active", isSelected);
-      option.setAttribute("aria-selected", String(isSelected));
-      option.setAttribute("aria-pressed", String(isSelected));
+      if (isSelected) {
+        option.classList.add("is-selected", "active");
+        option.setAttribute("aria-selected", "true");
+      } else {
+        option.classList.remove("is-selected", "active");
+        option.setAttribute("aria-selected", "false");
+      }
       const listItem = option.closest(".ux4g-list-item");
       if (listItem) listItem.setAttribute("aria-selected", String(isSelected));
     });
@@ -968,15 +973,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!value) return;
 
       if (isSingle) {
-        const isAlreadySelected = choice.classList.contains("is-selected") || choice.classList.contains("active");
-        if (isAlreadySelected) {
-          setSingleSelectedOption(dropdown, null);
-          applySingleSelection(dropdown, "");
-        } else {
-          setSingleSelectedOption(dropdown, choice);
-          applySingleSelection(dropdown, value);
-        }
+        setSingleSelectedOption(dropdown, choice);
+        applySingleSelection(dropdown, value);
       } else if (!isMulti) {
+        setSingleSelectedOption(dropdown, choice); // Also set option for regular single selection
         applySingleSelection(dropdown, value);
       }
 
@@ -2110,3 +2110,222 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// NPS and Emoji Button interactions
+document.addEventListener('DOMContentLoaded', () => {
+    // NPS interaction
+    const npsButtons = document.querySelectorAll('.feedback-nps-button');
+    npsButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const container = btn.closest('.ux4g-feedback-nps-wrapper') || btn.parentElement;
+            const siblings = Array.from(container.querySelectorAll('.feedback-nps-button'));
+            const clickedIndex = siblings.indexOf(btn);
+            
+            // If clicking the highest active button, reset it (toggle off)
+            const isHighestActive = btn.classList.contains('active') && 
+                (clickedIndex === siblings.length - 1 || !siblings[clickedIndex + 1]?.classList.contains('active'));
+                
+            if (isHighestActive) {
+                siblings.forEach(s => s.classList.remove('active'));
+                container.removeAttribute('data-nps-rating');
+            } else {
+                container.setAttribute('data-nps-rating', clickedIndex);
+                siblings.forEach((s, i) => {
+                    if (i <= clickedIndex) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            }
+        });
+    });
+
+    // Emoji interaction
+    const emojiButtons = document.querySelectorAll('.feedback-emoji-button');
+    emojiButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const wasActive = btn.classList.contains('active');
+            const container = btn.closest('.ux4g-d-flex') || document;
+            container.querySelectorAll('.feedback-emoji-button').forEach(b => b.classList.remove('active'));
+            
+            if (!wasActive) {
+                btn.classList.add('active');
+            }
+        });
+    });
+
+    // Star interaction
+    const stars = document.querySelectorAll('.ux4g-feedback-star');
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            const container = star.parentElement;
+            const siblings = Array.from(container.querySelectorAll('.ux4g-feedback-star'));
+            const clickedIndex = siblings.indexOf(star);
+            
+            // If clicking the only active star, reset it (toggle off)
+            const isOnlyActive = star.classList.contains('active') && 
+                (clickedIndex === siblings.length - 1 || !siblings[clickedIndex + 1].classList.contains('active'));
+                
+            if (isOnlyActive) {
+                siblings.forEach(s => s.classList.remove('active'));
+                container.removeAttribute('data-rating');
+            } else {
+                container.setAttribute('data-rating', clickedIndex + 1);
+                siblings.forEach((s, i) => {
+                    if (i <= clickedIndex) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            }
+        });
+    });
+
+    // Submit and Skip Reset interaction
+    const resetButtons = document.querySelectorAll('.ux4g-feedback .ux4g-btn-primary, .ux4g-feedback .ux4g-btn-text-primary');
+    resetButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const feedbackContainer = btn.closest('.ux4g-feedback');
+            if (feedbackContainer) {
+                // Clear textareas
+                feedbackContainer.querySelectorAll('textarea').forEach(textarea => {
+                    textarea.value = '';
+                });
+                // Clear active states on all feedback interactive elements
+                feedbackContainer.querySelectorAll('.active').forEach(activeEl => {
+                    activeEl.classList.remove('active');
+                });
+            }
+        });
+    });
+});
+
+
+
+/* ========================================================= carousel js ========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const carousels = document.querySelectorAll(".ux4g-carousel");
+
+    carousels.forEach(carousel => {
+        const slidesContainer = carousel.querySelector(".ux4g-carousel-slides");
+        const slideCount = carousel.querySelectorAll(".ux4g-carousel-slide").length;
+        const prevBtn = carousel.querySelector(".ux4g-carousel-arrow-prev");
+        const nextBtn = carousel.querySelector(".ux4g-carousel-arrow-next");
+        const dots = carousel.querySelectorAll(".ux4g-carousel-dot");
+        
+        let currentIndex = 0;
+
+        const updateCarousel = (index) => {
+            let isLooping = false;
+            if (index < 0) {
+                index = slideCount - 1;
+                isLooping = true;
+            }
+            if (index >= slideCount) {
+                index = 0;
+                isLooping = true;
+            }
+            
+            currentIndex = index;
+            
+            if (slidesContainer) {
+                if (isLooping) {
+                    // Disable transition for instant jump to avoid "rewind" effect
+                    const originalTransition = slidesContainer.style.transition;
+                    slidesContainer.style.transition = 'none';
+                    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    
+                    // Force reflow to ensure the jump happens before re-enabling transition
+                    slidesContainer.offsetHeight; 
+                    
+                    setTimeout(() => {
+                        slidesContainer.style.transition = originalTransition;
+                    }, 50);
+                } else {
+                    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+                }
+            }
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle("is-active", i === currentIndex);
+            });
+        };
+
+        if (prevBtn) {
+            prevBtn.addEventListener("click", () => updateCarousel(currentIndex - 1));
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener("click", () => updateCarousel(currentIndex + 1));
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener("click", () => updateCarousel(index));
+        });
+    });
+});
+
+/* ========================================================= range slider js ========================================================= */
+document.addEventListener("input", (e) => {
+    if (e.target.classList.contains("ux4g-slider-input")) {
+        const sliderField = e.target.closest(".ux4g-slider-field");
+        const slider = e.target.closest(".ux4g-slider");
+        if (!slider) return;
+
+        const isDual = slider.classList.contains("ux4g-slider-dual");
+        const fill = slider.querySelector(".ux4g-slider-fill");
+        
+        if (!isDual) {
+            const thumb = slider.querySelector(".ux4g-slider-thumb");
+            const percent = ((e.target.value - e.target.min) / (e.target.max - e.target.min)) * 100;
+            if (fill) fill.style.width = percent + "%";
+            if (thumb) thumb.style.left = percent + "%";
+            
+            if (sliderField) {
+                const badge = sliderField.querySelector(".ux4g-slider-value-badge");
+                if (badge) badge.textContent = e.target.value + "%";
+            }
+        } else {
+            const inputMin = slider.querySelector(".ux4g-slider-input-min");
+            const inputMax = slider.querySelector(".ux4g-slider-input-max");
+            const thumbMin = slider.querySelector(".ux4g-slider-thumb-min");
+            const thumbMax = slider.querySelector(".ux4g-slider-thumb-max");
+            
+            let min = parseFloat(inputMin.value);
+            let max = parseFloat(inputMax.value);
+            const rangeMin = parseFloat(inputMin.min);
+            const rangeMax = parseFloat(inputMin.max);
+            
+            if (e.target.classList.contains("ux4g-slider-input-min")) {
+                if (min > max) {
+                    min = max;
+                    inputMin.value = min;
+                }
+            } else {
+                if (max < min) {
+                    max = min;
+                    inputMax.value = max;
+                }
+            }
+            
+            const left = ((min - rangeMin) / (rangeMax - rangeMin)) * 100;
+            const width = ((max - min) / (rangeMax - rangeMin)) * 100;
+            
+            if (fill) {
+                fill.style.left = left + "%";
+                fill.style.width = width + "%";
+            }
+            if (thumbMin) thumbMin.style.left = left + "%";
+            if (thumbMax) thumbMax.style.left = (left + width) + "%";
+            
+            if (sliderField) {
+                const badges = sliderField.querySelectorAll(".ux4g-slider-value-badge");
+                if (badges.length >= 2) {
+                    badges[0].textContent = min + "%";
+                    badges[1].textContent = max + "%";
+                }
+            }
+        }
+    }
+});

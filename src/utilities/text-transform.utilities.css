@@ -1,3 +1,22 @@
+.ux4g-text-none {
+  text-transform: var(--ux4g-text-transform-none);
+}
+
+.ux4g-lowercase {
+  text-transform: var(--ux4g-text-transform-lowercase);
+}
+
+.ux4g-uppercase {
+  text-transform: var(--ux4g-text-transform-uppercase) ;
+}
+.ux4g-capitalize {
+  text-transform: var(--ux4g-text-transform-capitalize) ;
+}
+
+
+
+
+
 
 /* =========================================
    TEXT UTILITIES
@@ -32,7 +51,7 @@
 
 /* 4.0 Text Wrapping */
 .ux4g-text-wrap{white-space:normal;}
-.ux4g-text-nowrap{white-space:nowrap !important;}
+.ux4g-text-nowrap{white-space:nowrap;}
 
 /* 4.1 Word Break */
 .ux4g-text-break{overflow-wrap:break-word;word-break:break-word;}
@@ -41,8 +60,6 @@
 .ux4g-text-lowercase{text-transform:var(--ux4g-tt-lowercase);}
 .ux4g-text-uppercase{text-transform:var(--ux4g-tt-uppercase);}
 .ux4g-text-capitalize{text-transform:var(--ux4g-tt-capitalize);}
-.ux4g-text-none {text-transform: var(--ux4g-text-transform-none);}
-
 
 /* 6.0 Text Decoration */
 .ux4g-text-underline { text-decoration: underline !important; }

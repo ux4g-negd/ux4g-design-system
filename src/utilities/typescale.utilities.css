@@ -222,3 +222,14 @@
 }
 .ux4g-label-s-default { --ux4g-fw-current: var(--ux4g-font-weight-medium); }
 .ux4g-label-s-strong  { --ux4g-fw-current: var(--ux4g-font-weight-bold); }
+
+/* =====================================================
+   RESPONSIVE LABEL OVERRIDES
+===================================================== */
+
+@media (max-width: 768px) {
+.ux4g-label-m-default {
+  --ux4g-fs-current: var(--ux4g-fs-16);
+  --ux4g-lh-current: var(--ux4g-lh-20);
+}
+}

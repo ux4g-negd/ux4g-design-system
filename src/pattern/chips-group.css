@@ -1,0 +1,104 @@
+/* =========================================================
+   CHIP BASE (all chip-group variants)
+   ========================================================= */
+
+:is(.ux4g-filter-chip-group, .ux4g-choice-chip-group) {
+    color: var(--ux4g-text-neutral-primary);
+  font-size: var(--ux4g-fs-14);
+  border-radius: var(--ux4g-radius-sm);
+  padding: var(--ux4g-space-none) var(--ux4g-padding-xs);
+  border: var(--ux4g-border-thin) solid transparent;
+  transition:
+    background-color 220ms cubic-bezier(.25, .8, .25, 1),
+    border-color 220ms cubic-bezier(.25, .8, .25, 1);
+}
+
+/* Sizes (Responsive) */
+:is(.ux4g-filter-chip-group, .ux4g-choice-chip-group) {
+    min-height: 32px; /* Mobile */
+}
+
+@media (min-width: 768px) {
+    :is(.ux4g-filter-chip-group, .ux4g-choice-chip-group) {
+        min-height: 36px; /* Desktop */
+    }
+}
+
+
+/* =========================================================
+   FILTER CHIP (ux4g-chip-group) states
+   ========================================================= */
+
+.ux4g-filter-chip-group {
+    background-color: var(--ux4g-bg-neutral);
+    border-color: var(--ux4g-border-color-neutral-default);
+}
+
+.ux4g-filter-chip-group:hover {
+    background-color: var(--ux4g-bg-neutral-subtle);
+    border-color: var(--ux4g-border-color-neutral-subtle);
+}
+
+.ux4g-filter-chip-group.active {
+    background-color: var(--ux4g-bg-primary-soft);
+    color: var(--ux4g-bg-primary-strong);
+    border-color: var(--ux4g-bg-primary-emphasis);
+}
+
+.ux4g-filter-chip-group.active:hover {
+    background-color: var(--ux4g-bg-primary-soft);
+    border-color: var(--ux4g-bg-primary-soft);
+}
+
+.ux4g-filter-chip-group.active .ux4g-icon-outlined {
+    color: var(--ux4g-bg-primary-strong);
+}
+
+/* =========================================================
+   CHOICE CHIP (ux4g-choice-chip-group) states
+   ========================================================= */
+.ux4g-choice-chip-group {
+    background-color: var(--ux4g-bg-neutral);
+    border-color: var(--ux4g-border-color-neutral-default);
+}
+
+.ux4g-choice-chip-group.active {
+    background-color: var(--ux4g-bg-primary-strong);
+    color: var(--ux4g-bg-neutral);
+}
+
+.ux4g-choice-chip-group.active .ux4g-icon-outlined {
+    color: var(--ux4g-bg-neutral);
+}
+
+.ux4g-choice-chip-group:hover {
+    box-shadow: var(--ux4g-shadow-l1);
+}
+
+.ux4g-choice-chip-group.active:hover {
+    border-color: var(--ux4g-bg-neutral);
+}
+
+
+
+/* =========================================================
+   DISABLED (shared)
+   ========================================================= */
+
+
+:is(.ux4g-filter-chip-group, .ux4g-choice-chip-group)[disabled] {
+    --ux4g-text-current: var(--ux4g-text-link-disabled);
+    color: var(--ux4g-text-current);
+    cursor: not-allowed;
+    text-decoration: none;
+    pointer-events: none;
+    border-color: var(--ux4g-border-color-neutral-subtle);
+}
+
+.ux4g-choice-chip-group[disabled] {
+    background-color: var(--ux4g-bg-neutral-subtle);
+    --ux4g-text-current: var(--ux4g-text-neutral-disabled);
+    cursor: not-allowed;
+    text-decoration: none;
+    pointer-events: none;
+}

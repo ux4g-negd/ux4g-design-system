@@ -1,5 +1,9 @@
 /* BASE */
 [class^="ux4g-text-"],
+[class*=" ux4g-text-"] {
+  color: var(--ux4g-text-current, var(--ux4g-text-neutral-primary)) !important;
+}
+
 [class*="ux4g-icon-"] {
   color: var(--ux4g-text-current, var(--ux4g-text-neutral-primary));
 }
@@ -9,6 +13,8 @@
 .ux4g-text-neutral-secondary { --ux4g-text-current: var(--ux4g-text-neutral-secondary); }
 .ux4g-text-neutral-tertiary  { --ux4g-text-current: var(--ux4g-text-neutral-tertiary); }
 .ux4g-text-neutral-inverse   { --ux4g-text-current: var(--ux4g-text-neutral-inverse); }
+.ux4g-text-neutral-emphasis   { --ux4g-text-current: var(--ux4g-text-neutral-emphasis); }
+
 
 /* ================= BRAND ================= */
 .ux4g-text-primary   { --ux4g-text-current: var(--ux4g-text-brand-primary-default); }

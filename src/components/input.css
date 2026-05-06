@@ -416,3 +416,72 @@
     font-size: var(--ux4g-fs-12);
     background-color: var(--ux4g-bg-neutral-elevated);
 }
+
+/* Textarea Sizes */
+.ux4g-textarea-sm .ux4g-textarea-input {
+    height: 100px;
+}
+
+.ux4g-textarea-md .ux4g-textarea-input {
+    height: 145px;
+}
+
+.ux4g-textarea-lg .ux4g-textarea-input {
+    height: 180px;
+    font-size: var(--ux4g-fs-16);
+}
+
+/* Helper Text Layout */
+.ux4g-textarea-helper-left {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-xs);
+}
+
+.ux4g-textarea-helper-icon {
+    font-size: var(--ux4g-fs-14) !important;
+}
+
+/* Mobile only: apply mobile variant */
+@media (max-width: 768px) {
+  .ux4g-input-md .ux4g-input-helper-text {
+      font-size: var(--ux4g-fs-14);
+      line-height: var(--ux4g-lh-20);
+      font-weight: var(--ux4g-font-weight-regular);
+  }
+
+  .ux4g-input-md .ux4g-input-helper .ux4g-icon-outlined {
+      font-size: var(--ux4g-fs-16);
+  }
+
+  .ux4g-input-md .ux4g-input-input {
+      font-size: var(--ux4g-fs-16);
+      line-height: var(--ux4g-lh-24);
+      font-weight: var(--ux4g-font-weight-regular);
+  }
+
+  .ux4g-input-md .ux4g-input-action-btn,
+  .ux4g-input-md .ux4g-input-leading-icon {
+      width: 20px;
+      height: 20px;
+  }
+
+  .ux4g-input-md .ux4g-label-m-default {
+      font-size: var(--ux4g-fs-14);
+  }
+
+  .ux4g-input-md .ux4g-input {
+      height: 48px;
+  }
+
+  .ux4g-input-md .ux4g-input-leading-icon,
+  .ux4g-input-md .ux4g-input-actions .ux4g-icon-outlined {
+      font-size: var(--ux4g-fs-20);
+  }
+  
+  .ux4g-textarea-md .ux4g-textarea-input {
+    height: 180px;
+    font-size: var(--ux4g-fs-16);
+}
+
+}

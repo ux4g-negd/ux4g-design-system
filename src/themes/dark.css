@@ -31,6 +31,8 @@
   --ux4g-text-link-visited-inverse: var(--ux4g-color-neutral-800);
   --ux4g-icon-neutral-inverse: var(--ux4g-color-neutral-950);
   --ux4g-text-neutral-disabled: rgba(250, 250, 250, 0.25);
+  --ux4g-text-neutral-emphasis: var(--ux4g-color-neutral-700);
+
 
   /* --- Backgrounds --- */
   --ux4g-bg-neutral-elevated: var(--ux4g-color-neutral-950);
@@ -83,6 +85,9 @@
   --ux4g-bg-info-emphasis: var(--ux4g-color-cyan-600);
   --ux4g-bg-info-strong: var(--ux4g-color-cyan-300);
   --ux4g-bg-overlay: rgba(250, 250, 250, 0.6);
+  --ux4g-bg-yellow-strong: var(--ux4g-color-yellow-300);
+
+
 
   /* --- Borders --- */
   --ux4g-border-color-neutral-default: var(--ux4g-color-neutral-600);

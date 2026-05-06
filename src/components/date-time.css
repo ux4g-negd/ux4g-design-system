@@ -1,0 +1,556 @@
+/* ==========================================================================
+   DATE PICKER COMPONENT
+   ========================================================================== */
+
+.ux4g-date-picker-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+}
+
+.ux4g-date-picker-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.ux4g-date-picker-input {
+    width: 100%;
+    padding: var(--ux4g-padding-s) var(--ux4g-space-10) var(--ux4g-padding-s) var(--ux4g-padding-m);
+    border: 1px solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-md);
+    font-size: var(--ux4g-fs-14);
+    line-height: var(--ux4g-lh-20);
+    color: var(--ux4g-bg-primary-stronger);
+    background: var(--ux4g-bg-neutral-elevated);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    height: 40px;
+}
+
+
+
+.ux4g-date-picker-icon {
+    position: absolute;
+    right: 12px;
+    color: var(--ux4g-bg-primary-strong);
+    pointer-events: none;
+}
+
+/* Dropdown / Calendar */
+.ux4g-date-picker-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background: var(--ux4g-bg-neutral-elevated);
+    border: 1px solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-lg);
+    box-shadow: var(--ux4g-shadow-l2);
+    z-index: 1000;
+    display: none;
+    overflow: hidden;
+}
+
+.ux4g-date-picker-dropdown.is-open {
+    display: block;
+    animation: ux4g-fade-in-up 0.2s ease-out;
+}
+
+@keyframes ux4g-fade-in-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+.ux4g-date-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--ux4g-padding-m);
+    border-bottom: 1px solid var(--ux4g-border-color-neutral-subtle);
+}
+
+.ux4g-date-picker-nav-btn {
+    background: transparent;
+    border: none;
+    padding: var(--ux4g-padding-2xs);
+    cursor: pointer;
+    color: var(--ux4g-bg-primary-stronger);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ux4g-radius-2);
+    transition: background-color 0.2s;
+}
+
+.ux4g-date-picker-nav-btn:hover {
+    background: var(--ux4g-color-neutral-100);
+}
+
+.ux4g-date-picker-current {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: var(--ux4g-fw-semibold);
+    font-size: 14px;
+    color: var(--ux4g-bg-primary-strong);
+    cursor: pointer;
+}
+
+/* Calendar Grid */
+.ux4g-date-picker-calendar {
+    padding: var(--ux4g-padding-s);
+}
+
+.ux4g-date-picker-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: var(--ux4g-margin-xs);
+}
+
+.ux4g-date-picker-weekday {
+    text-align: center;
+    font-size: var(--ux4g-fs-12);
+    line-height: var(--ux4g-lh-18);
+    color: var(--ux4g-text-neutral-secondary);
+    font-weight: var(--ux4g-font-weight-bold);
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ux4g-date-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px 0;
+}
+
+.ux4g-date-picker-day {
+    position: relative;
+    height: 50px;
+    /* width: 50px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--ux4g-fs-14);
+    line-height: var(--ux4g-lh-20);
+    font-weight: var(--ux4g-font-weight-regular);
+    cursor: pointer;
+    border-radius: var(--ux4g-radius-4);
+    transition: background-color 0.2s, color 0.2s;
+    color: var(--ux4g-text-neutral-primary);
+    z-index: 1;
+}
+
+.ux4g-date-picker-day:hover:not(.is-empty) {
+    background: var(--ux4g-color-neutral-100);
+}
+
+.ux4g-date-picker-day.is-muted {
+    color: var(--ux4g-text-neutral-emphasis);
+}
+
+.ux4g-date-picker-day.is-today::after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    width: 4px;
+    height: 4px;
+    background: var(--ux4g-bg-primary-strong);
+    border-radius: var(--ux4g-radius-circular);
+}
+
+.ux4g-date-picker-day.is-selected {
+    background: var(--ux4g-bg-primary-strong) !important;
+    color: var(--ux4g-text-white) !important;
+}
+
+/* Range Styles */
+.ux4g-date-picker-day.is-in-range {
+    border-radius: var(--ux4g-radius-0);
+    background: var(--ux4g-bg-primary);
+    color: var(--ux4g-bg-primary-strong);
+}
+
+.ux4g-date-picker-day.is-range-start {
+    border-radius: var(--ux4g-radius-4) 0 0 var(--ux4g-radius-4);
+    background: var(--ux4g-bg-primary-strong) !important;
+    color: var(--ux4g-text-white) !important;
+}
+
+.ux4g-date-picker-day.is-range-end {
+    border-radius: 0 var(--ux4g-radius-4) var(--ux4g-radius-4) 0;
+    background: var(--ux4g-bg-primary-strong) !important;
+    color: var(--ux4g-text-white) !important;
+}
+
+/* Footer */
+.ux4g-date-picker-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between Cancel and Confirm */
+    gap: var(--ux4g-inline-m);
+    padding: var(--ux4g-padding-m);
+    border-top: 1px solid var(--ux4g-border-color-neutral-subtle);
+}
+.ux4g-date-picker-footer .ux4g-btn-outline-neutral{
+    border-radius: var(--ux4g-radius-md);
+    border: solid 1px var(--ux4g-border-color-neutral-default);
+}
+
+.ux4g-date-picker-footer button {
+    width: 100%;
+    font-weight: var(--ux4g-fw-semibold);
+}
+
+.ux4g-date-picker-footer .ux4g-btn-primary:not(:disabled) {
+    background-color: var(--ux4g-bg-primary-strong);
+    border-color: var(--ux4g-bg-primary-strong);
+    color: var(--ux4g-text-white);
+    opacity: 1;
+}
+
+.ux4g-date-picker-footer .ux4g-btn-primary:disabled {
+    background-color: var(--ux4g-color-neutral-100);
+    border-color: var(--ux4g-color-neutral-100);
+    color: var(--ux4g-text-neutral-emphasis);
+    cursor: not-allowed;
+}
+
+/* Range Picker Layout */
+.ux4g-date-range-picker {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-s);
+    position: relative;
+}
+
+.ux4g-date-range-separator {
+    color: var(--ux4g-text-neutral-tertiary);
+    font-weight: var(--ux4g-fw-medium);
+}
+
+
+.ux4g-date-picker-nav-btn .ux4g-icon-outlined{
+    font-size: var(--ux4g-fs-24);
+}
+
+/* Mobile BottomSheet Styles */
+@media (max-width: 576px) {
+    .ux4g-date-picker-dropdown {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-radius: var(--ux4g-radius-xl) var(--ux4g-radius-xl) 0 0;
+        border: none;
+        animation: ux4g-slide-up 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .ux4g-date-picker-dropdown.is-open {
+        display: block;
+    }
+
+    /* Add a drag handle visual */
+    .ux4g-date-picker-dropdown::before {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 4px;
+        background: var(--ux4g-border-color-neutral-subtle);
+        border-radius: var(--ux4g-radius-xs);
+        margin: var(--ux4g-margin-s) auto 0;
+    }
+
+    .ux4g-date-picker-header {
+        padding-top: var(--ux4g-padding-s);
+    }
+
+    .ux4g-date-picker-day {
+        height: 48px; 
+    }
+}
+
+/* Backdrop */
+.ux4g-date-picker-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    display: none;
+    backdrop-filter: blur(2px);
+    animation: ux4g-fade-in 0.2s ease;
+}
+
+.ux4g-date-picker-backdrop.is-active {
+    display: block;
+}
+
+@keyframes ux4g-slide-up {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes ux4g-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Selection View (Years & Months) */
+.ux4g-date-picker-selection-view {
+    padding: var(--ux4g-padding-s);
+}
+
+.ux4g-date-picker-year-grid,
+.ux4g-date-picker-month-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--ux4g-inline-s);
+    margin-bottom: var(--ux4g-margin-m);
+}
+
+.ux4g-date-picker-month-grid {
+    margin-bottom: 0;
+    border-top: 1px solid var(--ux4g-border-color-neutral-subtle);
+    padding-top: var(--ux4g-padding-m);
+}
+
+.ux4g-date-picker-year-item,
+.ux4g-date-picker-month-item {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--ux4g-fs-14);
+    border-radius: var(--ux4g-radius-md);
+    cursor: pointer;
+    color: var(--ux4g-text-neutral-primary);
+    transition: background-color 0.2s;
+}
+
+.ux4g-date-picker-year-item:hover,
+.ux4g-date-picker-month-item:hover {
+    background: var(--ux4g-color-neutral-100);
+}
+
+.ux4g-date-picker-year-item.is-selected,
+.ux4g-date-picker-month-item.is-selected {
+    background: var(--ux4g-bg-primary) !important;
+    color: var(--ux4g-bg-primary-strong) !important;
+    font-weight: var(--ux4g-fw-semibold);
+}
+
+/* ==========================================================================
+   TIME PICKER COMPONENT
+   ========================================================================== */
+
+.ux4g-time-picker-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.ux4g-time-picker-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.ux4g-time-picker-input {
+    width: 100%;
+    padding: var(--ux4g-padding-s) var(--ux4g-space-10) var(--ux4g-padding-s) var(--ux4g-padding-m);
+    border: 1px solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-md);
+    font-size: var(--ux4g-fs-14);
+    line-height: var(--ux4g-lh-20);
+    color: var(--ux4g-bg-primary-stronger);
+    background: var(--ux4g-bg-neutral-elevated);
+    cursor: pointer;
+    height: 40px;
+}
+
+.ux4g-time-picker-icon {
+    position: absolute;
+    right: 12px;
+    color: var(--ux4g-bg-primary-strong);
+    pointer-events: none;
+}
+
+.ux4g-time-picker-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 200px;
+    background: var(--ux4g-bg-neutral-elevated);
+    border: 1px solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-lg);
+    box-shadow: var(--ux4g-shadow-l2);
+    z-index: 1000;
+    display: none;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.ux4g-time-picker-dropdown.is-open {
+    display: flex;
+    animation: ux4g-fade-in-up 0.2s ease-out;
+}
+
+/* AM/PM Toggle */
+.ux4g-time-picker-ampm {
+    display: flex;
+    padding: 8px;
+    gap: 4px;
+    border-bottom: 1px solid var(--ux4g-border-color-neutral-subtle);
+}
+
+.ux4g-time-picker-ampm-btn {
+    flex: 1;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--ux4g-fs-13);
+    font-weight: var(--ux4g-fw-semibold);
+    border-radius: var(--ux4g-radius-xs);
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-time-picker-ampm-btn.is-active {
+    background: var(--ux4g-bg-primary);
+    color: var(--ux4g-bg-primary-strong);
+}
+
+/* Columns */
+.ux4g-time-picker-body {
+    display: flex;
+    height: 240px;
+}
+
+.ux4g-time-picker-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+    border-right: 1px solid var(--ux4g-border-color-neutral-subtle);
+}
+
+.ux4g-time-picker-column::-webkit-scrollbar {
+    display: none;
+}
+
+.ux4g-time-picker-column:last-child {
+    border-right: none;
+}
+
+.ux4g-time-picker-col-header {
+    position: sticky;
+    top: 0;
+    background: var(--ux4g-bg-neutral-elevated);
+    text-align: center;
+    padding: var(--ux4g-padding-xs) 0;
+    font-size: var(--ux4g-fs-12);
+    font-weight: var(--ux4g-fw-bold);
+    color: var(--ux4g-text-neutral-tertiary);
+    border-bottom: 1px solid var(--ux4g-border-color-neutral-subtle);
+    z-index: 10;
+}
+
+.ux4g-time-picker-item {
+    height: 40px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--ux4g-fs-14);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: var(--ux4g-text-neutral-primary);
+}
+
+.ux4g-time-picker-item:hover {
+    background: var(--ux4g-color-neutral-100);
+}
+
+.ux4g-time-picker-item.is-selected {
+    background: var(--ux4g-bg-primary);
+    color: var(--ux4g-bg-primary-strong);
+    font-weight: var(--ux4g-fw-semibold);
+}
+.ux4g-time-picker-footer{
+    flex-direction: column;
+}
+/* Keyboard accessibility focus outlines */
+.ux4g-date-picker-day:focus,
+.ux4g-date-picker-year-item:focus,
+.ux4g-date-picker-month-item:focus,
+.ux4g-time-picker-item:focus,
+.ux4g-time-picker-ampm-btn:focus,
+.ux4g-date-picker-nav-btn:focus,
+.ux4g-date-picker-current:focus {
+    outline: 2px solid var(--ux4g-bg-primary-strong);
+    outline-offset: -2px;
+}
+
+
+/* Mobile responsive */
+@media (max-width: 576px) {
+    .ux4g-time-picker-dropdown {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-radius: var(--ux4g-radius-xl) var(--ux4g-radius-xl) 0 0;
+        height: auto;
+        max-height: 80vh;
+    }
+
+    .ux4g-time-picker-body {
+        height: 300px;
+    }
+
+    /* Change to side AM/PM for mobile as per screenshot */
+    .ux4g-time-picker-dropdown {
+        display: none; /* Reset for flex */
+    }
+    
+    .ux4g-time-picker-dropdown.is-open {
+        display: grid;
+        grid-template-columns: 1fr 1fr 80px;
+        grid-template-rows: auto 1fr auto;
+    }
+
+    .ux4g-time-picker-ampm {
+        grid-column: 3;
+        grid-row: 2;
+        flex-direction: column;
+        border-bottom: none;
+        border-left: 1px solid var(--ux4g-border-color-neutral-subtle);
+        padding: var(--ux4g-padding-m) var(--ux4g-padding-xs);
+    }
+
+    .ux4g-time-picker-body {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+        height: 300px;
+    }
+
+    .ux4g-time-picker-footer {
+        grid-column: 1 / span 3;
+        grid-row: 3;
+    }
+}
+

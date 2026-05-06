@@ -199,81 +199,6 @@
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
-  const escapeRegExp = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-  function getSearchHighlightRange(originalText, query, mode) {
-    if (!query) return null;
-
-    const text = String(originalText);
-    const trimmedQuery = String(query).trim();
-    if (!trimmedQuery) return null;
-
-    const lowerText = text.toLowerCase();
-    const lowerQuery = trimmedQuery.toLowerCase();
-
-    if (mode === "starts-with") {
-      return lowerText.startsWith(lowerQuery)
-        ? { start: 0, end: trimmedQuery.length }
-        : null;
-    }
-
-    if (mode === "starts-with-term") {
-      const termRegex = new RegExp(`(^|\\s+)(${escapeRegExp(trimmedQuery)})`, "i");
-      const match = termRegex.exec(text);
-      if (!match) return null;
-
-      const prefix = match[1] || "";
-      const matched = match[2] || "";
-      const start = match.index + prefix.length;
-      return { start, end: start + matched.length };
-    }
-
-    const start = lowerText.indexOf(lowerQuery);
-    return start === -1 ? null : { start, end: start + trimmedQuery.length };
-  }
-
-  function renderSearchHighlight(originalText, query, mode) {
-    const text = String(originalText);
-    const range = getSearchHighlightRange(text, query, mode);
-    if (!range) return escapeHtml(text);
-
-    const before = escapeHtml(text.slice(0, range.start));
-    const match = escapeHtml(text.slice(range.start, range.end));
-    const after = escapeHtml(text.slice(range.end));
-    return `<span>${before}<strong>${match}</strong>${after}</span>`;
-  }
-
-  function normalizeFilterCore(filterCore) {
-    const current = filterCore && typeof filterCore === "object" ? filterCore : {};
-    return {
-      ...current,
-      highlight(originalText, query, mode) {
-        if (typeof current.highlight === "function") {
-          const highlighted = current.highlight(originalText, query, mode);
-          if (typeof highlighted === "string" && highlighted !== String(originalText)) {
-            return renderSearchHighlight(originalText, query, mode);
-          }
-        }
-        return renderSearchHighlight(originalText, query, mode);
-      }
-    };
-  }
-
-  function installFilterCoreBridge(target) {
-    let filterCoreValue = normalizeFilterCore(target.filterCore);
-
-    Object.defineProperty(target, "filterCore", {
-      configurable: true,
-      enumerable: true,
-      get() {
-        return filterCoreValue;
-      },
-      set(value) {
-        filterCoreValue = normalizeFilterCore(value);
-      }
-    });
-  }
-
   // -----------------------------
   // Dropdown
   // -----------------------------
@@ -1464,9 +1389,879 @@
   }
 
   // -----------------------------
+  // Upload
+  // -----------------------------
+  class Upload {
+    constructor(el) {
+      this.el = el;
+      this.input = el.querySelector('[data-ux-upload-input], .ux4g-upload-input');
+      this.dropzone = el.querySelector('.ux4g-upload-panel');
+      this.fileList = el.querySelector('.ux4g-upload-file-list');
+      this.errorMsg = el.querySelector('.ux4g-upload-error-msg');
+      this.errorText = el.querySelector('.ux4g-upload-error-text');
+      this.moreButton = el.querySelector('.ux4g-upload-more');
+      this.heading = el.querySelector('.ux4g-upload-heading');
+      this.defaultHeading = this.heading ? this.heading.textContent.trim() : '';
+      this.files = [];
+      this.dragDepth = 0;
+      this.stateClasses = [
+        'ux4g-upload-state-default',
+        'ux4g-upload-state-default-vle',
+        'ux4g-upload-state-selecting',
+        'ux4g-upload-state-scanning',
+        'ux4g-upload-state-uploaded',
+        'ux4g-upload-state-uploaded-vle',
+        'ux4g-upload-state-error'
+      ];
+      this.maxSizeMB = U.num(U.data(el, 'max-size', 5), 5);
+      this.accept = (U.attr(this.input, 'accept', '') || '')
+        .split(',')
+        .map(s => s.trim().toLowerCase())
+        .filter(Boolean);
+      this._bind();
+      this._syncInitialState();
+    }
+
+    _bind() {
+      U.on(this.el, 'click', e => {
+        if (U.closest(e.target, '[data-ux-upload-trigger]')) {
+          this._openPicker();
+          return;
+        }
+        if (U.closest(e.target, '.ux4g-upload-file-remove')) {
+          const item = U.closest(e.target, '.ux4g-upload-file-item');
+          this._removeFile(item);
+          return;
+        }
+        if (U.closest(e.target, '.ux4g-upload-file-retry')) {
+          this._clearError();
+          this._openPicker();
+          return;
+        }
+        if (U.closest(e.target, '.ux4g-upload-more')) {
+          this._openPicker();
+        }
+      });
+
+      U.on(this.dropzone, 'keydown', e => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          this._openPicker();
+        }
+      });
+
+      U.on(this.input, 'click', () => {
+        this.input.setAttribute('data-clicked', 'true');
+      });
+
+      U.on(this.input, 'change', e => this._addFiles(Array.from(e.target.files || [])));
+
+      U.on(this.dropzone, 'dragenter', e => {
+        e.preventDefault();
+        this.dragDepth += 1;
+        this._setState('selecting');
+      });
+
+      U.on(this.dropzone, 'dragover', e => {
+        e.preventDefault();
+        this._setState('selecting');
+      });
+
+      U.on(this.dropzone, 'dragleave', e => {
+        e.preventDefault();
+        this.dragDepth = Math.max(0, this.dragDepth - 1);
+        const nextTarget = e.relatedTarget;
+        if (this.dragDepth === 0 || !nextTarget || !this.dropzone.contains(nextTarget)) {
+          this._clearActive();
+        }
+      });
+
+      U.on(this.dropzone, 'drop', e => {
+        e.preventDefault();
+        this.dragDepth = 0;
+        this._clearActive();
+        this._addFiles(Array.from((e.dataTransfer && e.dataTransfer.files) || []));
+      });
+    }
+
+    _openPicker() {
+      if (!this.input) return;
+      this.input.setAttribute('data-clicked', 'true');
+      this.input.click();
+    }
+
+    _setState(state) {
+      this.el.classList.remove('ux4g-upload-state-selecting', 'ux4g-upload-state-error');
+      if (state === 'selecting') this.el.classList.add('ux4g-upload-state-selecting');
+      if (state === 'error') this.el.classList.add('ux4g-upload-state-error');
+      this._syncDragHeading(state === 'selecting');
+    }
+
+    _clearActive() {
+      this.el.classList.remove('ux4g-upload-state-selecting');
+      this._syncDragHeading(false);
+    }
+
+    _syncDragHeading(isDragging) {
+      if (!this.heading) return;
+      this.heading.textContent = isDragging ? 'Drop file here' : this.defaultHeading;
+    }
+
+    _showError(msg, file) {
+      this.el.classList.remove('ux4g-upload-state-selecting');
+      this.el.classList.add('ux4g-upload-state-error');
+      this._clearErrorRows();
+      this._renderErrorFile(file, msg);
+      if (this.errorMsg) this.errorMsg.classList.add('ux4g-d-none');
+    }
+
+    _clearError() {
+      this.el.classList.remove('ux4g-upload-state-error');
+      if (this.errorMsg) this.errorMsg.classList.add('ux4g-d-none');
+      if (this.errorText) this.errorText.textContent = '';
+      this._clearErrorRows();
+    }
+
+    _clearErrorRows() {
+      if (!this.fileList) return;
+      this.fileList.querySelectorAll('.ux4g-upload-file-item-error[data-ux-upload-error-row="true"]').forEach(item => item.remove());
+    }
+
+    _validate(file) {
+      const parts = file.name.split('.');
+      const ext = parts.length > 1 ? `.${parts.pop().toLowerCase()}` : '';
+      if (this.accept.length && !this.accept.includes(ext)) {
+        return `File type not allowed: ${ext || 'unknown'}`;
+      }
+      if (file.size > this.maxSizeMB * 1024 * 1024) {
+        return `File too large. Max size: ${this.maxSizeMB} MB`;
+      }
+      return null;
+    }
+
+    _addFiles(incoming) {
+      let errorOccurred = false;
+
+      incoming.forEach(file => {
+        const err = this._validate(file);
+        if (err) {
+          errorOccurred = true;
+        this._showError(err, file);
+        U.dispatch(this.el, 'ux4g.upload.error', { file, reason: err });
+        return;
+        }
+
+        this.files.push(file);
+        this._renderFile(file);
+        U.dispatch(this.el, 'ux4g.upload.added', { file });
+      });
+
+      if (!errorOccurred) this._clearError();
+      this._syncHasFiles();
+      this.input.value = '';
+    }
+
+    _renderFile(file) {
+      if (!this.fileList) return;
+
+      const sizeKB = file.size / 1024;
+      const sizeLabel = sizeKB >= 1024
+        ? `${(sizeKB / 1024).toFixed(1)} MB`
+        : `${Math.max(1, Math.round(sizeKB))} KB`;
+
+      const li = document.createElement('li');
+      li.className = 'ux4g-upload-file-item';
+      li.setAttribute('role', 'listitem');
+      li.dataset.fileName = file.name;
+      li.innerHTML = `
+        <div class="ux4g-upload-file-row">
+          <span class="ux4g-upload-file-leading" aria-hidden="true">
+            <span class="ux4g-icon-outlined ux4g-upload-file-icon">token</span>
+          </span>
+          <span class="ux4g-upload-file-copy">
+            <span class="ux4g-body-m-strong ux4g-upload-file-name">${this._escape(file.name)}</span>
+            <span class="ux4g-body-s-default ux4g-upload-file-description">${sizeLabel}</span>
+          </span>
+          <span class="ux4g-upload-file-statusbox" aria-hidden="true">
+            <span class="ux4g-icon-outlined ux4g-upload-file-status">done</span>
+          </span>
+          <button type="button" class="ux4g-upload-file-remove" aria-label="Remove ${this._escape(file.name)}">
+            <span class="ux4g-icon-outlined" aria-hidden="true">close</span>
+          </button>
+        </div>
+      `;
+      this.fileList.appendChild(li);
+    }
+
+    _renderErrorFile(file, reason) {
+      if (!this.fileList) return;
+
+      const label = file && file.name ? file.name : 'Document_name.pdf';
+      const li = document.createElement('li');
+      li.className = 'ux4g-upload-file-item ux4g-upload-file-item-error';
+      li.setAttribute('role', 'listitem');
+      li.dataset.uploadErrorRow = 'true';
+      li.dataset.errorReason = reason || '';
+      li.innerHTML = `
+        <div class="ux4g-upload-file-row">
+          <span class="ux4g-upload-file-leading" aria-hidden="true">
+            <span class="ux4g-icon-outlined ux4g-upload-file-icon">error_outline</span>
+          </span>
+          <span class="ux4g-upload-file-copy">
+            <span class="ux4g-body-m-strong ux4g-upload-file-name">${this._escape(label)}</span>
+            <span class="ux4g-body-s-default ux4g-upload-file-description">${this._escape(reason || 'Description')}</span>
+          </span>
+          <button type="button" class="ux4g-upload-file-retry" aria-label="Retry upload">
+            <span class="ux4g-icon-outlined" aria-hidden="true">replay</span>
+            <span class="ux4g-label-l-default">Retry</span>
+          </button>
+        </div>
+      `;
+      this.fileList.appendChild(li);
+    }
+
+    _removeFile(item) {
+      const name = item && item.dataset.fileName;
+      this.files = this.files.filter(f => f.name !== name);
+      if (item) item.remove();
+      this._syncHasFiles();
+      U.dispatch(this.el, 'ux4g.upload.removed', { name });
+    }
+
+    _syncHasFiles() {
+      const hasSuccessfulRows = this.fileList && this.fileList.querySelector('.ux4g-upload-file-item:not(.ux4g-upload-file-item-error)');
+      const hasErrorRows = this.fileList && this.fileList.querySelector('.ux4g-upload-file-item-error');
+      const hasFiles = this.files.length > 0 || !!hasSuccessfulRows || !!hasErrorRows;
+      if (this.fileList) this.fileList.classList.toggle('ux4g-d-none', !hasFiles);
+      if (this.moreButton) this.moreButton.classList.toggle('ux4g-d-none', !(this.files.length > 0 || !!hasSuccessfulRows));
+      this._deriveBaseState(hasFiles);
+    }
+
+    _syncInitialState() {
+      if (this.fileList) {
+        this.files = Array.from(this.fileList.querySelectorAll('.ux4g-upload-file-item:not(.ux4g-upload-file-item-error)'))
+          .map(item => ({ name: item.dataset.fileName || item.textContent.trim(), size: 0 }));
+      }
+      if (this.el.classList.contains('ux4g-upload-state-error')) {
+        if (this.errorMsg) this.errorMsg.classList.remove('ux4g-d-none');
+      } else {
+        this._clearError();
+      }
+      this._syncHasFiles();
+    }
+
+    _deriveBaseState(hasFiles) {
+      const variant = U.data(this.el, 'variant', 'default');
+      this.stateClasses.forEach(cls => {
+        if (cls !== 'ux4g-upload-state-selecting' && cls !== 'ux4g-upload-state-error') {
+          this.el.classList.remove(cls);
+        }
+      });
+
+      if (this.el.classList.contains('ux4g-upload-state-error')) return;
+      if (variant === 'scanning') {
+        this.el.classList.add('ux4g-upload-state-scanning');
+        return;
+      }
+      if (variant === 'default-vle') {
+        this.el.classList.add(hasFiles ? 'ux4g-upload-state-uploaded-vle' : 'ux4g-upload-state-default-vle');
+        return;
+      }
+      this.el.classList.add(hasFiles ? 'ux4g-upload-state-uploaded' : 'ux4g-upload-state-default');
+    }
+
+    _escape(str) {
+      return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    static getOrCreate(el) {
+      let inst = getI(el, 'upload');
+      if (!inst) { inst = new Upload(el); setI(el, 'upload', inst); }
+      return inst;
+    }
+  }
+
+  // -----------------------------
+  // OTP
+  // -----------------------------
+  class OtpInput {
+    constructor(el) {
+      this.el = el;
+      this.group = U.qs('.ux4g-otp-group', el);
+      this.sourceInput = U.qs('.ux4g-otp-source', el);
+      this.resend = U.qs('[data-ux-otp-resend]', el);
+      this.status = U.qs('[data-ux-otp-status]', el);
+      this.helper = U.qs('[data-ux-otp-helper]', el);
+      this.timerTargets = U.qsa('[data-ux-otp-timer]', el);
+      this.state = U.data(el, 'state', 'default');
+      this.count = Math.max(1, U.num(U.data(el, 'count', 0), 0) || 1);
+      this.placeholder = this.sourceInput?.getAttribute('placeholder') || '-';
+      this.demoErrorOnComplete = U.bool(U.data(el, 'demo-error-on-complete', 'false'), false);
+      this._timerId = null;
+      this._shakeTimer = null;
+      this._completedByUser = false;
+      this._observer = null;
+      this._demoErrorTimer = null;
+
+      this._renderInputs();
+      this.inputs = U.qsa('.ux4g-otp-input', el);
+      this.length = this.count;
+      this._syncInputs();
+      this._observeErrorState();
+      this._bind();
+      this._applyVisualFocus();
+      this._startTimers();
+    }
+
+    _renderInputs() {
+      if (!this.group) return;
+
+      const digits = this._getDigits();
+      this.group.replaceChildren();
+      if (this.sourceInput) this.group.append(this.sourceInput);
+
+      for (let index = 0; index < this.count; index += 1) {
+        const slot = document.createElement('div');
+        slot.className = 'ux4g-input ux4g-otp-slot';
+
+        const input = document.createElement('input');
+        input.className = 'ux4g-input-input ux4g-otp-input ux4g-body-m-default';
+        input.type = 'text';
+        input.setAttribute('aria-label', `Digit ${index + 1}`);
+
+        if (digits[index]) {
+          input.value = digits[index];
+        } else {
+          input.placeholder = this.placeholder;
+        }
+
+        this._syncInputTone(input);
+        slot.append(input);
+        this.group.append(slot);
+
+        if (index < this.count - 1) {
+          const separator = document.createElement('span');
+          separator.className = 'ux4g-otp-separator ux4g-icon-outlined';
+          separator.setAttribute('aria-hidden', 'true');
+          separator.textContent = 'horizontal_rule';
+          this.group.append(separator);
+        }
+      }
+    }
+
+    _getDigits() {
+      return ((this.sourceInput?.value || '').replace(/\D/g, '').slice(0, this.count)).split('');
+    }
+
+    _bind() {
+      this.inputs.forEach((input, index) => {
+        U.on(input, 'focus', () => this._setFocused(index));
+        U.on(input, 'click', () => this._setFocused(index));
+        U.on(input, 'input', e => this._onInput(e, index));
+        U.on(input, 'keydown', e => this._onKeydown(e, index));
+      });
+    }
+
+    _isInteractive() {
+      return this.state === 'default' || this.state === 'partial-filled' || this.state === 'all-filled';
+    }
+
+    _syncInputs() {
+      this.inputs.forEach((input, index) => {
+        input.setAttribute('inputmode', 'numeric');
+        input.setAttribute('pattern', '[0-9]*');
+        input.setAttribute('autocomplete', index === 0 ? 'one-time-code' : 'off');
+        input.setAttribute('maxlength', '1');
+        input.placeholder = input.value ? '' : this.placeholder;
+        this._syncInputTone(input);
+
+        if (!this._isInteractive()) {
+          input.setAttribute('readonly', 'readonly');
+          input.setAttribute('tabindex', '-1');
+        }
+
+        if (this.state === 'locked-out') {
+          input.setAttribute('disabled', 'disabled');
+        }
+      });
+    }
+
+    _syncInputTone(input) {
+      input.classList.toggle('ux4g-title-m-strong', !!input.value);
+      input.classList.toggle('ux4g-body-m-default', !input.value);
+    }
+
+    _setFocused(index) {
+      this.inputs.forEach((input, inputIndex) => {
+        input.closest('.ux4g-otp-slot')?.classList.toggle('ux4g-otp-focus', inputIndex === index);
+        input.classList.toggle('ux4g-otp-caret', inputIndex === index && !input.value);
+        input.placeholder = input.value ? '' : (inputIndex === index ? '' : this.placeholder);
+      });
+    }
+
+    _syncFocusClass() {
+      const active = this.inputs.findIndex(input => input === document.activeElement);
+      if (active >= 0) this._setFocused(active);
+    }
+
+    _clearFocused() {
+      this.inputs.forEach(input => {
+        input.closest('.ux4g-otp-slot')?.classList.remove('ux4g-otp-focus');
+        input.classList.remove('ux4g-otp-caret');
+        input.placeholder = input.value ? '' : this.placeholder;
+      });
+    }
+
+    _applyVisualFocus() {
+      if (this.state === 'default') {
+        this._setFocused(0);
+        return;
+      }
+
+      if (this.state === 'partial-filled') {
+        const emptyIndex = this.inputs.findIndex(input => !input.value);
+        this._setFocused(emptyIndex >= 0 ? emptyIndex : this.inputs.length - 1);
+        return;
+      }
+
+      if (this.state === 'all-filled') {
+        this._setFocused(this.inputs.length - 1);
+        return;
+      }
+
+      this._syncFocusClass();
+    }
+
+    _onInput(e, index) {
+      const input = e.target;
+      const value = (input.value || '').replace(/\D/g, '').slice(-1);
+      input.value = value;
+      input.placeholder = value ? '' : this.placeholder;
+      this._syncInputTone(input);
+      this._clearDemoErrorState();
+
+      this._syncSourceValue();
+
+      if (!value) return;
+
+      if (index < this.inputs.length - 1) {
+        this.inputs[index + 1].focus();
+      }
+
+      this._updateStateFromValue();
+    }
+
+    _onKeydown(e, index) {
+      const input = e.target;
+
+      if (e.key === 'Backspace') {
+        if (input.value) {
+          input.value = '';
+          input.placeholder = this.placeholder;
+          this._syncInputTone(input);
+          this._clearDemoErrorState();
+          this._syncSourceValue();
+          this._completedByUser = false;
+          this._updateStateFromValue();
+          return;
+        }
+
+        if (index > 0) {
+          const prev = this.inputs[index - 1];
+          prev.value = '';
+          prev.placeholder = this.placeholder;
+          this._syncInputTone(prev);
+          prev.focus();
+          this._clearDemoErrorState();
+          this._syncSourceValue();
+          this._completedByUser = false;
+          this._updateStateFromValue();
+        }
+        return;
+      }
+
+      if (e.key === 'ArrowLeft' && index > 0) {
+        e.preventDefault();
+        this.inputs[index - 1].focus();
+        return;
+      }
+
+      if (e.key === 'ArrowRight' && index < this.inputs.length - 1) {
+        e.preventDefault();
+        this.inputs[index + 1].focus();
+      }
+    }
+
+    _syncSourceValue() {
+      if (!this.sourceInput) return;
+      this.sourceInput.value = this.inputs.map(input => input.value).join('');
+    }
+
+    _updateStateFromValue() {
+      if (!this._isInteractive()) return;
+      const filled = this.inputs.filter(input => input.value).length;
+      this._completedByUser = filled === this.length;
+      const next = filled === 0 ? 'default' : (filled === this.length ? 'all-filled' : 'partial-filled');
+      this.el.setAttribute('data-ux-state', next);
+      if (this.demoErrorOnComplete && this._completedByUser) {
+        this._scheduleDemoErrorState();
+      }
+    }
+
+    _isErrorState() {
+      return this.el.classList.contains('ux4g-otp-error') || U.data(this.el, 'state', '') === 'error';
+    }
+
+    _triggerShakeIfError() {
+      if (!this.group) return;
+      if (!this._completedByUser || this.inputs.some(input => !input.value) || !this._isErrorState()) return;
+
+      this.group.classList.remove('ux4g-otp-shake');
+      void this.group.offsetWidth;
+      this.group.classList.add('ux4g-otp-shake');
+
+      if (this._shakeTimer) global.clearTimeout(this._shakeTimer);
+      this._shakeTimer = global.setTimeout(() => {
+        this.group?.classList.remove('ux4g-otp-shake');
+        this._shakeTimer = null;
+      }, 400);
+    }
+
+    _observeErrorState() {
+      this._observer = new MutationObserver(() => this._triggerShakeIfError());
+      this._observer.observe(this.el, {
+        attributes: true,
+        attributeFilter: ['class', 'data-ux-state']
+      });
+    }
+
+    _scheduleDemoErrorState() {
+      if (this._demoErrorTimer) global.clearTimeout(this._demoErrorTimer);
+      this._demoErrorTimer = global.setTimeout(() => {
+        if (!this._completedByUser || this.inputs.some(input => !input.value)) return;
+        this._clearFocused();
+        if (document.activeElement && this.inputs.includes(document.activeElement)) {
+          document.activeElement.blur();
+        }
+        this.el.classList.add('ux4g-otp-error');
+        this.el.setAttribute('data-ux-state', 'error');
+        this.el.setAttribute('aria-invalid', 'true');
+        if (this.helper) {
+          this.helper.outerHTML = '<span class="ux4g-otp-status" data-ux-otp-status><span class="ux4g-icon-outlined" aria-hidden="true">error</span><span>Attempt 2 of 3</span></span>';
+          this.helper = null;
+          this.status = U.qs('[data-ux-otp-status]', this.el);
+        }
+      }, 300);
+    }
+
+    _clearDemoErrorState() {
+      if (!this.demoErrorOnComplete) return;
+      if (this._demoErrorTimer) {
+        global.clearTimeout(this._demoErrorTimer);
+        this._demoErrorTimer = null;
+      }
+      this.el.classList.remove('ux4g-otp-error');
+      this.el.setAttribute('data-ux-state', this.inputs.some(input => input.value) ? 'partial-filled' : 'default');
+      this.el.removeAttribute('aria-invalid');
+      if (!this.helper && this.status) {
+        this.status.outerHTML = '<span class="ux4g-otp-helper" data-ux-otp-helper>Didn’t receive OTP?</span>';
+        this.helper = U.qs('[data-ux-otp-helper]', this.el);
+        this.status = null;
+      }
+    }
+
+    _formatTime(totalSeconds) {
+      const safe = Math.max(0, totalSeconds);
+      const minutes = Math.floor(safe / 60);
+      const seconds = safe % 60;
+      return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    _tickTimer(node) {
+      const total = U.num(node.getAttribute('data-ux-otp-seconds'), 0);
+      const prefix = node.getAttribute('data-ux-otp-prefix') || '';
+      node.textContent = `${prefix}${this._formatTime(total)}`;
+      if (total > 0) {
+        node.setAttribute('data-ux-otp-seconds', String(total - 1));
+      }
+    }
+
+    _startTimers() {
+      if (!this.timerTargets.length) return;
+      this.timerTargets.forEach(node => this._tickTimer(node));
+      this._timerId = global.setInterval(() => {
+        this.timerTargets.forEach(node => this._tickTimer(node));
+      }, 1000);
+    }
+
+    static getOrCreate(el) {
+      let inst = getI(el, 'otp');
+      if (!inst) { inst = new OtpInput(el); setI(el, 'otp', inst); }
+      return inst;
+    }
+  }
+
+  // -----------------------------
+  // SLA Progress
+  // -----------------------------
+  class SlaProgress {
+    constructor(el) {
+      this.el = el;
+      this.valueTargets = U.qsa('.ux4g-sla-linear-value', el);
+      this.circleValue = U.qs('.ux4g-sla-circle-value', el);
+      this.circleMeta = U.qs('.ux4g-sla-circle-meta', el);
+      this.sync();
+    }
+
+    sync() {
+      const progress = Math.min(100, Math.max(0, U.num(U.data(this.el, 'progress', 0), 0)));
+      this.el.style.setProperty('--ux4g-sla-progress', String(progress));
+
+      if (this.el.hasAttribute('data-ux-sla-linear')) {
+        this.valueTargets.forEach(node => {
+          node.textContent = `${Math.round(progress)}%`;
+        });
+        this.el.setAttribute('aria-valuemin', '0');
+        this.el.setAttribute('aria-valuemax', '100');
+        this.el.setAttribute('aria-valuenow', String(Math.round(progress)));
+      }
+
+      if (this.el.hasAttribute('data-ux-sla-circle')) {
+        const days = U.data(this.el, 'days', null);
+        if (days != null && this.circleValue) {
+          this.circleValue.textContent = String(days);
+        }
+        if (this.circleMeta) {
+          this.circleMeta.textContent = Number(days) === 1 ? 'day left' : 'days left';
+        }
+      }
+    }
+
+    static getOrCreate(el) {
+      let inst = getI(el, 'sla-progress');
+      if (!inst) { inst = new SlaProgress(el); setI(el, 'sla-progress', inst); }
+      return inst;
+    }
+  }
+
+  class ProgressIndicator {
+    constructor(el) {
+      this.el = el;
+      this.ensureStructure();
+      this.labelTargets = U.qsa('[data-ux-progress-label]', el);
+      this.descTargets = U.qsa('[data-ux-progress-desc]', el);
+      this.endpointStart = U.qs('[data-ux-progress-start]', el);
+      this.endpointEnd = U.qs('[data-ux-progress-end]', el);
+      this.halfTrackTail = U.qs('.ux4g-progress-half-track-tail', el);
+      this.halfRoundedProgress = U.qs('[data-ux-progress-half-svg-progress]', el);
+      this.halfRoundedTrack = U.qs('[data-ux-progress-half-svg-track]', el);
+      this.halfRoundedTrackCap = U.qs('[data-ux-progress-half-svg-track-cap]', el);
+      this.halfSharpProgress = U.qs('[data-ux-progress-half-svg-progress-sharp]', el);
+      this.halfSharpTrack = U.qs('[data-ux-progress-half-svg-track-sharp]', el);
+      this.sync();
+    }
+
+    ensureStructure() {
+      if (!this.el.hasAttribute('data-ux-progress-half')) return;
+      if (U.qs('.ux4g-progress-half-arc', this.el)) return;
+
+      const size = (this.el.getAttribute('data-ux-size') || 'm').toLowerCase();
+      const shape = this.el.getAttribute('data-ux-shape') || 'sharp';
+      const config = {
+        s: { width: 80, height: 80, radius: 30, stroke: 10, roundedStroke: 8, labelClass: 'ux4g-label-l-strong', descriptionClass: 'ux4g-body-xs-default', endpoints: false },
+        m: { width: 160, height: 160, radius: 70, stroke: 16, roundedStroke: 16, labelClass: 'ux4g-heading-m-strong', descriptionClass: 'ux4g-body-xs-default', endpoints: true },
+        l: { width: 200, height: 200, radius: 90, stroke: 20, roundedStroke: 20, labelClass: 'ux4g-heading-m-strong', descriptionClass: 'ux4g-body-xs-default', endpoints: true },
+        xl: { width: 240, height: 240, radius: 105, stroke: 24, roundedStroke: 24, labelClass: 'ux4g-heading-xl-strong', descriptionClass: 'ux4g-body-s-default', endpoints: true }
+      }[size] || { width: 160, height: 160, radius: 70, stroke: 16, roundedStroke: 16, labelClass: 'ux4g-heading-m-strong', descriptionClass: 'ux4g-body-xs-default', endpoints: true };
+
+      if (!this.el.hasAttribute('data-ux-radius')) {
+        this.el.setAttribute('data-ux-radius', String(config.radius));
+      }
+
+      const description = this.el.getAttribute('data-ux-description') || 'Description';
+      const start = this.el.getAttribute('data-ux-start-label') || '0%';
+      const end = this.el.getAttribute('data-ux-end-label') || '100%';
+
+      const roundedArcMarkup = `
+        <svg class="ux4g-progress-half-svg" viewBox="0 0 ${config.width} ${config.height}" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="ux4g-progress-half-gradient-${size}" x1="0" y1="${config.height / 2}" x2="${config.width}" y2="${config.height / 2}" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="var(--ux4g-progress-fill-start)" />
+              <stop offset="100%" stop-color="var(--ux4g-progress-fill-end)" />
+            </linearGradient>
+          </defs>
+          <path class="ux4g-progress-half-svg-track" d="${progressHalfRoundedArcPath(config.width, config.roundedStroke)}" data-ux-progress-half-svg-track></path>
+          <path class="ux4g-progress-half-svg-progress" d="${progressHalfRoundedArcPath(config.width, config.roundedStroke)}" pathLength="100" data-ux-progress-half-svg-progress></path>
+          <circle class="ux4g-progress-half-svg-track-cap" cx="${config.width - (config.roundedStroke / 2)}" cy="${config.height / 2}" r="${config.roundedStroke / 2}" data-ux-progress-half-svg-track-cap></circle>
+        </svg>`;
+      const sharpArcMarkup = `
+        <svg class="ux4g-progress-half-svg ux4g-progress-half-svg-sharp" viewBox="0 0 ${config.width} ${config.height}" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="ux4g-progress-half-gradient-sharp-${size}" x1="0" y1="${config.height / 2}" x2="${config.width}" y2="${config.height / 2}" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="var(--ux4g-progress-fill-start)" />
+              <stop offset="100%" stop-color="var(--ux4g-progress-fill-end)" />
+            </linearGradient>
+          </defs>
+          <path class="ux4g-progress-half-svg-track ux4g-progress-half-svg-track-sharp" d="${progressHalfRoundedArcPath(config.width, config.stroke)}" data-ux-progress-half-svg-track-sharp></path>
+          <path class="ux4g-progress-half-svg-progress ux4g-progress-half-svg-progress-sharp" d="${progressHalfRoundedArcPath(config.width, config.stroke)}" data-ux-progress-half-svg-progress-sharp></path>
+        </svg>`;
+      const arcMarkup = shape === 'rounded' ? roundedArcMarkup : sharpArcMarkup;
+
+      this.el.innerHTML = `<div class="ux4g-progress-half-arc" aria-hidden="true">${arcMarkup}</div><div class="ux4g-progress-half-copy"><span class="${config.labelClass}" data-ux-progress-label>50%</span><p class="ux4g-progress-half-description ${config.descriptionClass}" data-ux-progress-desc>${description}</p></div>${config.endpoints ? `<div class="ux4g-progress-half-endpoints"><span class="ux4g-body-xs-default" data-ux-progress-start>${start}</span><span class="ux4g-body-xs-default" data-ux-progress-end>${end}</span></div>` : ''}`;
+    }
+
+    sync() {
+      const progress = Math.min(100, Math.max(0, U.num(U.data(this.el, 'progress', 0), 0)));
+      this.el.style.setProperty('--ux4g-progress-value', String(progress));
+
+      this.labelTargets.forEach(node => {
+        node.textContent = `${Math.round(progress)}%`;
+      });
+
+      if (this.el.hasAttribute('data-ux-progress-half')) {
+        const radius = U.num(U.data(this.el, 'radius', 0), 0);
+        this.el.style.setProperty('--ux4g-progress-half-angle', `${progress * 1.8}deg`);
+        if (this.halfRoundedProgress) {
+          const size = this.halfRoundedProgress.ownerSVGElement.viewBox.baseVal.width;
+          const stroke = U.num(getComputedStyle(this.el).getPropertyValue('--ux4g-progress-half-stroke').replace('px', ''), 0);
+          this.halfRoundedProgress.setAttribute('d', progressHalfRoundedArcPath(size, stroke, 180, 180 + (progress * 1.8)));
+          this.halfRoundedProgress.style.strokeDasharray = '';
+          if (this.halfRoundedTrack) {
+            if (progress >= 100) {
+              this.halfRoundedTrack.setAttribute('d', '');
+            } else {
+              const trackStartAngle = progress <= 0 ? 180 : 180 + (progress * 1.8);
+              this.halfRoundedTrack.setAttribute('d', progressHalfRoundedArcPath(size, stroke, trackStartAngle, 360));
+            }
+          }
+          if (this.halfRoundedTrackCap) {
+            this.halfRoundedTrackCap.style.display = progress < 100 ? 'block' : 'none';
+          }
+        }
+        if (this.halfSharpProgress) {
+          const size = this.halfSharpProgress.ownerSVGElement.viewBox.baseVal.width;
+          const stroke = U.num(getComputedStyle(this.el).getPropertyValue('--ux4g-progress-half-stroke').replace('px', ''), 0);
+          this.halfSharpProgress.setAttribute('d', progressHalfRoundedArcPath(size, stroke, 180, 180 + (progress * 1.8)));
+          if (this.halfSharpTrack) {
+            if (progress >= 100) {
+              this.halfSharpTrack.setAttribute('d', '');
+            } else {
+              const trackStartAngle = progress <= 0 ? 180 : 180 + (progress * 1.8);
+              this.halfSharpTrack.setAttribute('d', progressHalfRoundedArcPath(size, stroke, trackStartAngle, 360));
+            }
+          }
+        }
+        if (this.halfTrackTail) {
+          this.halfTrackTail.hidden = true;
+        }
+      }
+
+      const description = this.el.getAttribute('data-ux-description');
+      if (description) {
+        this.descTargets.forEach(node => {
+          node.textContent = description;
+        });
+      }
+
+      const start = this.el.getAttribute('data-ux-start-label');
+      const end = this.el.getAttribute('data-ux-end-label');
+      if (this.endpointStart && start != null) this.endpointStart.textContent = start;
+      if (this.endpointEnd && end != null) this.endpointEnd.textContent = end;
+
+      this.el.setAttribute('aria-valuemin', '0');
+      this.el.setAttribute('aria-valuemax', '100');
+      this.el.setAttribute('aria-valuenow', String(Math.round(progress)));
+    }
+
+    static getOrCreate(el) {
+      let inst = getI(el, 'progress-indicator');
+      if (!inst) { inst = new ProgressIndicator(el); setI(el, 'progress-indicator', inst); }
+      return inst;
+    }
+  }
+
+  function progressCircleLabelClass(size, placement) {
+    if (placement === 'outside') return 'ux4g-label-xl-strong';
+    if (size === 'xs' || size === 's' || size === 'm') return 'ux4g-label-m-strong';
+    if (size === 'l') return 'ux4g-label-l-strong';
+    return 'ux4g-label-xl-strong';
+  }
+
+  function progressCircleDescriptionClass(size, placement) {
+    if (placement === 'outside') return 'ux4g-body-s-default';
+    return (size === 'xl' || size === '2xl' || size === '3xl') ? 'ux4g-body-s-default' : 'ux4g-body-xs-default';
+  }
+
+  function progressHalfLabelClass(size) {
+    return size === 's' ? 'ux4g-label-l-strong' : 'ux4g-heading-m-strong';
+  }
+
+  function progressHalfRoundedArcPath(size, stroke, startAngle = 180, endAngle = 360) {
+    const radius = (size / 2) - (stroke / 2);
+    const center = size / 2;
+    const start = polarPoint(center, radius, startAngle);
+    const end = polarPoint(center, radius, endAngle);
+    const largeArcFlag = Math.abs(endAngle - startAngle) > 180 ? 1 : 0;
+    return `M ${start.x} ${start.y} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${end.x} ${end.y}`;
+  }
+
+  function polarPoint(center, radius, angleDeg) {
+    const angle = (angleDeg * Math.PI) / 180;
+    return {
+      x: center + (radius * Math.cos(angle)),
+      y: center + (radius * Math.sin(angle))
+    };
+  }
+
+  function buildProgressBarDemo(shape, placement, progress) {
+    const inside = placement === 'inside';
+    return `<article class="ux4g-progress-bar" data-ux-progress-bar data-ux-shape="${shape}" data-ux-label-placement="${placement}" data-ux-progress="${progress}" role="progressbar" aria-label="${shape} ${placement} bar ${progress} percent"><div class="ux4g-progress-bar-track"><div class="ux4g-progress-bar-fill">${inside ? `<span class="ux4g-progress-bar-label ux4g-progress-bar-label-inside ux4g-label-s-strong" data-ux-progress-label>${progress}%</span>` : ''}</div></div>${inside ? '' : `<span class="ux4g-progress-bar-label ux4g-progress-bar-label-outside ux4g-label-s-strong" data-ux-progress-label>${progress}%</span>`}</article>`;
+  }
+
+  function buildProgressCircleDemo(shape, size, placement) {
+    const labelClass = progressCircleLabelClass(size, placement);
+    const showInsideDescription = placement === 'inside' && (size === 'xl' || size === '2xl' || size === '3xl');
+    const descClass = progressCircleDescriptionClass(size, placement);
+    return `<div class="ux4g-progress-size-demo"><article class="ux4g-progress-circle" data-ux-progress-circle data-ux-shape="${shape}" data-ux-size="${size}" data-ux-label-placement="${placement}" data-ux-progress="50" ${(placement === 'outside' || showInsideDescription) ? 'data-ux-description="Description"' : ''} role="progressbar" aria-label="${size} ${shape} circle ${placement} 50 percent"><div class="ux4g-progress-circle-indicator"><span class="ux4g-progress-circle-ring"></span>${placement === 'inside' ? `<div class="ux4g-progress-circle-value-wrap"><span class="${labelClass}" data-ux-progress-label>50%</span>${showInsideDescription ? `<p class="ux4g-progress-circle-description ${descClass}" data-ux-progress-desc>Description</p>` : ''}</div>` : ''}</div>${placement === 'outside' ? `<div class="ux4g-progress-circle-copy"><span class="${labelClass}" data-ux-progress-label>50%</span><p class="ux4g-progress-circle-description ${descClass}" data-ux-progress-desc>Description</p></div>` : ''}</article></div>`;
+  }
+
+  function renderProgressIndicatorDemos(root = document) {
+    const steps = [0, 10];
+    const barContainers = [
+      ['sharp-outside', 'sharp', 'outside'],
+      ['rounded-outside', 'rounded', 'outside'],
+      ['sharp-inside', 'sharp', 'inside'],
+      ['rounded-inside', 'rounded', 'inside']
+    ];
+    barContainers.forEach(([key, shape, placement]) => {
+      const container = root.querySelector(`[data-ux-progress-demo-bars="${key}"]`);
+      if (!container) return;
+      container.innerHTML = steps.map(progress => buildProgressBarDemo(shape, placement, progress)).join('');
+    });
+
+    const circleSizes = ['xs', 's', 'm', 'l', 'xl', '2xl', '3xl'];
+    const circleHeadings = root.querySelector('[data-ux-progress-demo-circle-headings]');
+    if (circleHeadings) circleHeadings.innerHTML = '';
+    const circleRows = [
+      ['sharp-inside', 'sharp', 'inside'],
+      ['sharp-outside', 'sharp', 'outside'],
+      ['rounded-inside', 'rounded', 'inside'],
+      ['rounded-outside', 'rounded', 'outside']
+    ];
+    circleRows.forEach(([key, shape, placement]) => {
+      const row = root.querySelector(`[data-ux-progress-demo-circles="${key}"]`);
+      if (!row) return;
+      row.innerHTML = circleSizes.map(size => buildProgressCircleDemo(shape, size, placement)).join('');
+    });
+
+  }
+
+  // -----------------------------
   // Data API init
   // -----------------------------
   function init(root = document) {
+    renderProgressIndicatorDemos(root);
+
     // Dropdown
     U.qsa('[data-bs-toggle="dropdown"],[data-ux-toggle="dropdown"]', root).forEach(Dropdown.getOrCreate);
 
@@ -1494,6 +2289,18 @@
 
     // List Interactions
     U.qsa(".ux4g-list", root).forEach(List.getOrCreate);
+
+    // Upload
+    U.qsa('[data-ux-upload]', root).forEach(Upload.getOrCreate);
+
+    // OTP
+    U.qsa('[data-ux-otp]', root).forEach(OtpInput.getOrCreate);
+
+    // SLA Progress
+    U.qsa('[data-ux-sla-circle],[data-ux-sla-linear]', root).forEach(SlaProgress.getOrCreate);
+
+    // Progress Indicators
+    U.qsa('[data-ux-progress-bar],[data-ux-progress-circle],[data-ux-progress-half]', root).forEach(ProgressIndicator.getOrCreate);
 
     // Validation: Ensure ux4g-multiselect-list ID is only used on .ux4g-list elements
     const multiselectIdEls = root.querySelectorAll('#ux4g-multiselect-list');
@@ -1577,6 +2384,12 @@
     }
   });
 
+  U.on(document, "ux4g.upload.error", (e) => {
+    if (typeof global.showContextAlert === "function") {
+      global.showContextAlert("top-right", "error", "Upload Failed", e.detail.reason);
+    }
+  });
+
   // Auto-init
   if (document.readyState === "loading") {
     U.on(document, "DOMContentLoaded", () => init(document));
@@ -1602,6 +2415,8 @@
     ScrollSpy,
     Table,
     List,
+    Upload,
+    OtpInput,
     Theme: {
       get() {
         return document.documentElement.getAttribute("data-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
@@ -1616,8 +2431,6 @@
       }
     }
   };
-
-  installFilterCoreBridge(global.ux4g);
 
   // Auto-init theme if not set
   U.on(document, "DOMContentLoaded", () => {
@@ -1669,4 +2482,5 @@ const Backdrop = (() => {
 
 
 })(typeof window !== "undefined" ? window : this);
+
 

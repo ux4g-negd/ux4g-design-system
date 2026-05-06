@@ -18,7 +18,7 @@
   --ux4g-bg-primary-stronger: var(--ux4g-color-primary-800);
   --ux4g-bg-primary-stronger-hover: var(--ux4g-color-primary-900);
 
-    --ux4g-bg-secondary: var(--ux4g-color-secondary-50);
+  --ux4g-bg-secondary: var(--ux4g-color-secondary-50);
   --ux4g-bg-secondary-soft: var(--ux4g-color-secondary-100);
   --ux4g-bg-secondary-subtle: var(--ux4g-color-secondary-200);
   --ux4g-bg-secondary-emphasis: var(--ux4g-color-secondary-300);
@@ -57,6 +57,10 @@
   --ux4g-bg-info-subtle: var(--ux4g-color-cyan-200);
   --ux4g-bg-info-emphasis: var(--ux4g-color-cyan-300);
   --ux4g-bg-info-strong: var(--ux4g-color-cyan-600);
+
+
+  --ux4g-bg-yellow-strong: var(--ux4g-color-yellow-600);
+
 
   --ux4g-control-bg-default: var(--ux4g-color-neutral-50);
   --ux4g-bg-overlay: rgba(23, 23, 23, 0.70);

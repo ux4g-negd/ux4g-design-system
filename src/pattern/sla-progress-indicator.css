@@ -1,0 +1,359 @@
+.ux4g-sla-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ux4g-section-2xl, 48px);
+}
+
+.ux4g-sla-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ux4g-stack-l, 24px);
+}
+
+.ux4g-sla-grid {
+  display: grid;
+  gap: var(--ux4g-section-xl, 32px);
+}
+
+.ux4g-sla-grid-circular {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.ux4g-sla-grid-linear {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.ux4g-sla-grid-badge {
+  grid-template-columns: repeat(auto-fit, minmax(110px, max-content));
+  align-items: start;
+}
+
+.ux4g-sla-variant-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ux4g-stack-s, 12px);
+}
+
+.ux4g-sla-variant-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ux4g-stack-m, 16px);
+}
+
+.ux4g-sla-circle {
+  --ux4g-sla-progress: 50;
+  --ux4g-sla-fill-start: var(--ux4g-bg-primary-subtle);
+  --ux4g-sla-fill-end: var(--ux4g-bg-primary-strong);
+  --ux4g-sla-description-color: var(--ux4g-text-neutral-tertiary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ux4g-stack-s);
+  text-align: center;
+}
+
+.ux4g-sla-circle-indicator {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: 80px;
+  block-size: 80px;
+}
+
+.ux4g-sla-circle-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--ux4g-radius-full);
+  background:
+    conic-gradient(from -90deg,
+      var(--ux4g-sla-fill-start) 0,
+      var(--ux4g-sla-fill-end) calc(var(--ux4g-sla-progress) * 1%),
+      var(--ux4g-border-color-neutral-subtle, #e5e5e5) calc(var(--ux4g-sla-progress) * 1%) 100%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 8px), #000 calc(100% - 8px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 8px), #000 calc(100% - 8px));
+}
+
+.ux4g-sla-circle-track {
+  position: absolute;
+  inset: 8px;
+  border-radius: var(--ux4g-radius-full);
+  background: var(--ux4g-bg-neutral-elevated);
+}
+
+.ux4g-sla-circle-metric {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  max-inline-size: 52px;
+}
+
+.ux4g-sla-circle-value {
+  color: var(--ux4g-text-neutral-primary);
+  font-size: var(--ux4g-fs-16);
+  line-height: var(--ux4g-lh-20);
+  font-weight: var(--ux4g-fw-bold);
+}
+
+.ux4g-sla-circle-meta {
+  color: var(--ux4g-text-neutral-tertiary);
+  font-size: var(--ux4g-size-10);
+  line-height: 1.2;
+}
+
+.ux4g-sla-circle-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ux4g-stack-xs);
+}
+
+.ux4g-sla-circle-description {
+  margin: 0;
+  color: var(--ux4g-sla-description-color);
+}
+
+.ux4g-sla-linear {
+  --ux4g-sla-progress: 50;
+  --ux4g-sla-linear-fill: linear-gradient(90deg, var(--ux4g-bg-primary-subtle) 0%, var(--ux4g-bg-primary-strong) 100%);
+  --ux4g-sla-linear-soft-bg: var(--ux4g-bg-primary);
+  --ux4g-sla-linear-icon: var(--ux4g-text-brand-primary-default);
+  display: flex;
+  align-items: center;
+  gap: var(--ux4g-inline-s);
+  inline-size: 100%;
+}
+
+.ux4g-sla-linear-leading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 40px;
+  block-size: 40px;
+  flex-shrink: 0;
+  border-radius: var(--ux4g-radius-full);
+  background: var(--ux4g-sla-linear-soft-bg);
+  color: var(--ux4g-sla-linear-icon);
+}
+
+.ux4g-sla-linear-leading .ux4g-icon-outlined {
+  font-size: var(--ux4g-fs-20);
+  color: var(--ux4g-sla-linear-icon);
+}
+
+.ux4g-sla-linear-body {
+  display: flex;
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  flex-direction: column;
+  gap: var(--ux4g-stack-2xs);
+}
+
+.ux4g-sla-linear-head,
+.ux4g-sla-linear-foot {
+  display: flex;
+  align-items: center;
+  gap: var(--ux4g-inline-s);
+}
+
+.ux4g-sla-linear-head {
+  justify-content: space-between;
+}
+
+.ux4g-sla-linear-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--ux4g-inline-s);
+  min-inline-size: 0;
+}
+
+.ux4g-sla-linear-title,
+.ux4g-sla-linear-hint,
+.ux4g-sla-linear-value {
+  margin: 0;
+}
+
+.ux4g-sla-linear-title {
+  color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-sla-linear-action {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ux4g-text-link-default-default);
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: var(--ux4g-fw-medium);
+  cursor: pointer;
+}
+
+.ux4g-sla-linear .ux4g-sla-linear-hint {
+  color: var(--ux4g-text-neutral-tertiary);
+  font-size: var(--ux4g-fs-12);
+  line-height: var(--ux4g-lh-16);
+  font-weight: var(--ux4g-font-weight-regular);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.ux4g-sla-linear-track {
+  position: relative;
+  overflow: hidden;
+  inline-size: 100%;
+  block-size: 8px;
+  border-radius: 0;
+  background: var(--ux4g-bg-neutral-subtle);
+}
+
+.ux4g-sla-linear-fill {
+  inline-size: calc(var(--ux4g-sla-progress) * 1%);
+  block-size: 100%;
+  border-radius: inherit;
+  background: var(--ux4g-sla-linear-fill);
+}
+
+.ux4g-sla-linear-foot {
+  justify-content: flex-end;
+}
+
+.ux4g-sla-linear-value {
+  color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-sla-linear-rounded .ux4g-sla-linear-track,
+.ux4g-sla-linear-rounded .ux4g-sla-linear-fill {
+  border-radius: var(--ux4g-radius-full);
+}
+
+.ux4g-sla-badge {
+  --ux4g-sla-badge-status: var(--ux4g-text-brand-primary-default);
+  --ux4g-sla-badge-surface: var(--ux4g-bg-neutral-elevated);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ux4g-inline-s);
+  min-block-size: 20px;
+  padding: var(--ux4g-padding-2xs) var(--ux4g-padding-xs);
+  border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+  background: var(--ux4g-sla-badge-surface);
+  color: var(--ux4g-text-neutral-primary);
+}
+
+.ux4g-sla-badge-rect {
+  border-radius: var(--ux4g-radius-sm);
+}
+
+.ux4g-sla-badge-pill {
+  border-radius: var(--ux4g-radius-full);
+}
+
+.ux4g-sla-badge-label,
+.ux4g-sla-badge-status {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.ux4g-sla-badge-label {
+  color: var(--ux4g-text-neutral-primary);
+}
+
+.ux4g-sla-badge-divider {
+  inline-size: 1px;
+  block-size: 12px;
+  align-self: center;
+  background: var(--ux4g-border-color-neutral-subtle);
+}
+
+.ux4g-sla-badge .ux4g-sla-badge-status {
+  color: var(--ux4g-sla-badge-status);
+}
+
+.ux4g-sla-status-default {
+  --ux4g-sla-fill-start: var(--ux4g-bg-primary-subtle);
+  --ux4g-sla-fill-end: var(--ux4g-bg-primary-strong);
+  --ux4g-sla-linear-soft-bg: var(--ux4g-bg-primary);
+  --ux4g-sla-linear-icon: var(--ux4g-text-brand-primary-default);
+  --ux4g-sla-linear-fill: linear-gradient(90deg, var(--ux4g-bg-primary-subtle) 0%, var(--ux4g-bg-primary-strong) 100%);
+  --ux4g-sla-badge-status: var(--ux4g-text-brand-primary-default);
+}
+
+.ux4g-sla-status-warning {
+  --ux4g-sla-fill-start: var(--ux4g-bg-warning-subtle);
+  --ux4g-sla-fill-end: var(--ux4g-bg-warning-strong);
+  --ux4g-sla-linear-soft-bg: var(--ux4g-bg-warning);
+  --ux4g-sla-linear-icon: var(--ux4g-icon-status-warning);
+  --ux4g-sla-linear-fill: linear-gradient(90deg, var(--ux4g-bg-warning-subtle) 0%, var(--ux4g-bg-warning-strong) 100%);
+  --ux4g-sla-badge-status: var(--ux4g-text-status-warning);
+}
+
+.ux4g-sla-status-error {
+  --ux4g-sla-fill-start: var(--ux4g-bg-error-subtle);
+  --ux4g-sla-fill-end: var(--ux4g-bg-error-strong);
+  --ux4g-sla-description-color: var(--ux4g-text-status-error);
+  --ux4g-sla-linear-soft-bg: var(--ux4g-bg-error);
+  --ux4g-sla-linear-icon: var(--ux4g-icon-status-error);
+  --ux4g-sla-linear-fill: linear-gradient(90deg, var(--ux4g-bg-error-subtle) 0%, var(--ux4g-bg-error-strong) 100%);
+  --ux4g-sla-badge-status: var(--ux4g-text-status-error);
+}
+
+.ux4g-sla-status-success {
+  --ux4g-sla-fill-start: var(--ux4g-bg-success-subtle);
+  --ux4g-sla-fill-end: var(--ux4g-bg-success-strong);
+  --ux4g-sla-linear-soft-bg: var(--ux4g-bg-success);
+  --ux4g-sla-linear-icon: var(--ux4g-icon-status-success);
+  --ux4g-sla-linear-fill: linear-gradient(90deg, var(--ux4g-bg-success-subtle) 0%, var(--ux4g-bg-success-strong) 100%);
+  --ux4g-sla-badge-status: var(--ux4g-text-status-success);
+}
+
+.ux4g-sla-status-default .ux4g-badge-dot-primary {
+  background: var(--ux4g-bg-primary-strong);
+}
+
+.ux4g-sla-status-warning .ux4g-badge-dot-warning {
+  background: var(--ux4g-bg-warning-strong);
+}
+
+.ux4g-sla-status-error .ux4g-badge-dot-danger {
+  background: var(--ux4g-bg-error-strong);
+}
+
+.ux4g-sla-status-success .ux4g-badge-dot-success {
+  background: var(--ux4g-bg-success-strong);
+}
+
+.ux4g-sla-status-info .ux4g-badge-dot-info {
+  background: var(--ux4g-bg-info-strong);
+}
+
+.ux4g-sla-status-disabled .ux4g-badge-dot-neutral {
+  background: var(--ux4g-bg-neutral-subtle);
+}
+
+.ux4g-sla-status-info {
+  --ux4g-sla-fill-start: var(--ux4g-bg-info-subtle);
+  --ux4g-sla-fill-end: var(--ux4g-bg-info-strong);
+  --ux4g-sla-linear-icon: var(--ux4g-icon-status-info);
+  --ux4g-sla-linear-fill: var(--ux4g-bg-info-strong);
+  --ux4g-sla-badge-status: var(--ux4g-text-status-info);
+}
+
+.ux4g-sla-status-disabled {
+  --ux4g-sla-fill-start: var(--ux4g-bg-neutral-subtle);
+  --ux4g-sla-fill-end: var(--ux4g-bg-neutral-emphasis);
+  --ux4g-sla-linear-soft-bg: var(--ux4g-bg-neutral-subtle);
+  --ux4g-sla-linear-icon: var(--ux4g-text-neutral-disabled);
+  --ux4g-sla-linear-fill: var(--ux4g-bg-neutral-emphasis);
+  --ux4g-sla-badge-status: var(--ux4g-text-neutral-disabled);
+}
+
+@media (max-width: 767px) {
+  .ux4g-sla-grid-linear {
+    grid-template-columns: 1fr;
+  }
+
+  .ux4g-sla-linear {
+    align-items: flex-start;
+  }
+}

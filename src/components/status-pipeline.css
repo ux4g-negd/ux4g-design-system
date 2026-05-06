@@ -1,0 +1,824 @@
+/* stepper */
+.ux4g-status-pipeline-steps,
+.ux4g-status-pipeline-timeline,
+.ux4g-status-pipeline-stepper {
+    --ux4g-status-pipeline-steps-transition: height 0.2s ease-in-out;
+    position: var(--ux4g-pos-relative);
+    width: 100%;
+    overflow: hidden;
+    transition: var(--ux4g-status-pipeline-steps-transition)
+}
+
+.ux4g-status-pipeline-steps-step,
+.ux4g-status-pipeline-timeline-step,
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-step {
+    width: 100%;
+    height: fit-content;
+    position: var(--ux4g-pos-relative)
+}
+
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-step:not(:last-child):after {
+    top: 3.25rem;
+    height: calc(100% - 2.45rem);
+}
+
+.ux4g-status-pipeline-steps-step-after,
+.ux4g-status-pipeline-timeline-step:after,
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-step:not(:last-child):after {
+    position: var(--ux4g-pos-absolute);
+    left: var(--ux4g-space-10);
+    width: 1px;
+    content: "";
+}
+
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-done:after {
+    background-color: var(--ux4g-bg-primary-strong) !important;
+}
+
+.ux4g-status-pipeline-steps-content,
+.ux4g-status-pipeline-timeline-content,
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-content {
+    padding-block: var(--ux4g-padding-xl);
+    overflow: hidden;
+    padding-top: var(--ux4g-padding-none);
+    padding-bottom: var(--ux4g-padding-xl);
+    padding-right: var(--ux4g-padding-xl)
+}
+
+.ux4g-status-pipeline-steps-head-vertical,
+.ux4g-status-pipeline-timeline-head,
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-head {
+    padding: var(--ux4g-padding-xl) var(--ux4g-padding-xl) var(--ux4g-padding-xl) var(--ux4g-padding-none);
+}
+
+.ux4g-status-pipeline-steps-head-icon-vertical,
+.ux4g-status-pipeline-timeline-head-icon,
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-head-icon {
+    margin-right: var(--ux4g-margin-s)
+}
+
+.ux4g-status-pipeline-steps-head-text-after-vertical,
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-description:after {
+    position: var(--ux4g-pos-absolute)
+}
+
+.ux4g-status-pipeline-steps-head,
+.ux4g-status-pipeline-timeline-head,
+.ux4g-status-pipeline-head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-inline-s);
+}
+
+
+
+.ux4g-status-pipeline-steps-head-hover,
+.ux4g-status-pipeline-head:hover {
+    background-color: var(--ux4g-status-pipeline-steps-head-hover-bgc)
+}
+
+.ux4g-status-pipeline-steps-head-focus,
+.ux4g-status-pipeline-head:focus {
+    outline: none
+}
+
+.ux4g-status-pipeline-steps-head-text,
+.ux4g-status-pipeline-timeline-head-text,
+.ux4g-status-pipeline-description {
+    color: var(--ux4g-text-neutral-tertiary);
+    font-size: var(--ux4g-fs-12);
+    line-height: var(--ux4g-lh-16);
+    font-weight: var(--ux4g-font-weight-medium);
+}
+
+.ux4g-status-pipeline-steps-head-text-after,
+.ux4g-status-pipeline-timeline-head-text:after,
+.ux4g-status-pipeline-description:after {
+    display: flex;
+}
+
+.ux4g-status-pipeline-steps-head-icon,
+.ux4g-status-pipeline-timeline-head-icon,
+.ux4g-status-pipeline-head-icon {
+    font-size: var(--ux4g-fs-14);
+    width: 40px;
+    height: 40px;
+    font-weight: var(--ux4g-fw-medium);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+}
+
+
+.ux4g-status-pipeline-step.ux4g-status-pipeline-horizontal .ux4g-status-pipeline-label,
+.ux4g-status-pipeline-step.ux4g-status-pipeline-horizontal .ux4g-status-pipeline-label-success,
+.ux4g-status-pipeline-step.ux4g-status-pipeline-horizontal .ux4g-status-pipeline-label-inprogress,
+.ux4g-status-pipeline-step.ux4g-status-pipeline-horizontal .ux4g-label-l-default {
+    margin-left: var(--ux4g-space-10);
+}
+
+.ux4g-status-pipeline-step .ux4g-status-pipeline-label {
+    color: var(--ux4g-text-neutral-secondary);
+    font-weight: var(--ux4g-fw-bold);
+}
+.ux4g-status-pipeline-step .ux4g-status-pipeline-status{
+    font-weight: var(--ux4g-font-weight-regular);
+}
+
+.ux4g-status-pipeline-step .ux4g-status-pipeline-label-success {
+    color: var(--ux4g-text-neutral-tertiary);
+}
+
+.ux4g-status-pipeline-step .ux4g-status-pipeline-label-inprogress {
+    color: var(--ux4g-text-neutral-tertiary);
+}
+
+.ux4g-status-pipeline-step .ux4g-status-pipeline-label-success,
+.ux4g-status-pipeline-step .ux4g-status-pipeline-label-inprogress {
+    display: none;
+}
+
+.ux4g-status-pipeline-completed .ux4g-status-pipeline-label-success,
+.ux4g-status-pipeline-completed .ux4g-status-pipeline-label-inprogress,
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-label-success,
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-label-inprogress {
+    display: block !important;
+}
+
+
+
+.ux4g-status-pipeline-stepper:not(.ux4g-status-pipeline-vertical) {
+    display: flex;
+    justify-content: space-between
+}
+
+.ux4g-status-pipeline-stepper:not(.ux4g-status-pipeline-vertical) .ux4g-status-pipeline-content {
+    position: var(--ux4g-pos-absolute);
+    width: 100%;
+
+}
+
+.ux4g-status-pipeline-stepper:not(.ux4g-status-pipeline-vertical) .ux4g-status-pipeline-step {
+    flex: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-s);
+    position: var(--ux4g-pos-relative);
+}
+
+
+.ux4g-status-pipeline-stepper:not(.ux4g-status-pipeline-vertical):not(.ux4g-status-pipeline-center):not(.ux4g-status-pipeline-left):not(.ux4g-status-pipeline-bottom-line) .ux4g-status-pipeline-step:not(:last-child):after {
+    height: 4px;
+    flex: 1;
+    content: "";
+    background-color: var(--ux4g-bg-neutral-subtle);
+}
+
+.ux4g-status-pipeline-stepper:not(.ux4g-status-pipeline-vertical):not(.ux4g-status-pipeline-center):not(.ux4g-status-pipeline-left):not(.ux4g-status-pipeline-bottom-line) .ux4g-status-pipeline-step.ux4g-status-pipeline-done:not(:last-child):after {
+    background-color: var(--ux4g-bg-success-strong) !important;
+}
+
+
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-step:not(:last-child):after {
+    height: calc(100% - 2rem)
+}
+
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-content {
+    padding-left: var(--ux4g-space-13);
+}
+
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-content-hide {
+    margin-top: var(--ux4g-margin-none) !important;
+    margin-bottom: var(--ux4g-margin-none) !important;
+    padding-top: var(--ux4g-padding-none) !important;
+    padding-bottom: var(--ux4g-padding-none) !important;
+    height: 0 !important
+}
+
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-head {
+    padding-bottom: var(--ux4g-padding-xl)
+}
+
+.ux4g-status-pipeline-stepper.ux4g-status-pipeline-mobile {
+    justify-content: center;
+    align-items: flex-end
+}
+
+.ux4g-status-pipeline-stepper.ux4g-status-pipeline-mobile.ux4g-status-pipeline-progress-bar .ux4g-status-pipeline-head-icon {
+    display: none
+}
+
+.ux4g-status-pipeline-stepper.ux4g-status-pipeline-mobile .ux4g-status-pipeline-step {
+    flex: unset;
+    height: fit-content;
+    margin-top: var(--ux4g-margin-m);
+    margin-bottom: var(--ux4g-margin-m)
+}
+
+.ux4g-status-pipeline-stepper.ux4g-status-pipeline-mobile .ux4g-status-pipeline-step:not(:last-child):after {
+    margin-left: var(--ux4g-margin-none)
+}
+
+.ux4g-status-pipeline-stepper.ux4g-status-pipeline-mobile .ux4g-status-pipeline-step:not(:last-child):not(:first-child) .ux4g-status-pipeline-head {
+    padding-left: var(--ux4g-padding-2xs);
+    padding-right: var(--ux4g-padding-2xs)
+}
+
+.ux4g-status-pipeline-stepper.ux4g-status-pipeline-mobile .ux4g-status-pipeline-head-icon {
+    font-size: 0;
+    margin: var(--ux4g-margin-none);
+    height: 8px;
+    width: 8px;
+    z-index: var(--ux4g-z-layout-raised)
+}
+
+.ux4g-status-pipeline-stepper.ux4g-status-pipeline-mobile .ux4g-status-pipeline-description {
+    display: none
+}
+
+.ux4g-status-pipeline-stepper.ux4g-status-pipeline-mobile .ux4g-status-pipeline-content {
+    top: var(--ux4g-space-10)
+}
+
+.ux4g-status-pipeline-form {
+    display: inherit;
+    justify-content: inherit;
+    width: inherit;
+    position: inherit
+}
+
+.ux4g-status-pipeline-content {
+    left: 0
+}
+
+.ux4g-status-pipeline-completed .ux4g-status-pipeline-head-icon {
+    color: var(--ux4g-color-neutral-300);
+    border: solid 2px var(--ux4g-bg-neutral-subtle);
+}
+
+.ux4g-status-pipeline-completed .ux4g-status-pipeline-warning {
+    border-color: var(--ux4g-border-color-error-strong) !important;
+    color: var(--ux4g-text-status-error);
+}
+
+.ux4g-status-pipeline-completed .ux4g-status-pipeline-warning-icon {
+    border-color: var(--ux4g-border-color-error-strong) !important;
+    color: var(--ux4g-icon-status-error);
+}
+
+.ux4g-status-pipeline-completed .ux4g-status-pipeline-warning .ux4g-status-pipeline-warning-icon,
+.ux4g-status-pipeline-completed .ux4g-status-pipeline-warning .ux4g-status-pipeline-warning-icon {
+    color: var(--ux4g-icon-status-error) !important;
+}
+
+.ux4g-status-pipeline-done .ux4g-status-pipeline-warning {
+    border-color: var(--ux4g-bg-primary-strong) !important;
+}
+
+.ux4g-status-pipeline-done .ux4g-status-pipeline-warning .ux4g-status-pipeline-warning-icon {
+    display: none;
+}
+
+.ux4g-status-pipeline-completed .ux4g-status-pipeline-head-icon .ux4g-status-pipeline-head-check {
+    width: 16px;
+    height: 16px;
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ux4g-status-pipeline-completed span.ux4g-status-pipeline-head-icon-active {
+    border-color: var(--ux4g-border-color-primary-strong);
+    background-color: var(--ux4g-bg-primary-strong);
+}
+
+.ux4g-status-pipeline-completed span.ux4g-status-pipeline-head-check-active {
+    background-color: var(--ux4g-bg-neutral) !important;
+    font-size: 0;
+}
+
+.ux4g-status-pipeline-done .ux4g-status-pipeline-content {
+    display: block
+}
+
+.ux4g-status-pipeline-done span.ux4g-status-pipeline-head-icon {
+    background-color: var(--ux4g-bg-success-strong);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='20' viewBox='0 0 21 20' fill='none'%3E%3Cmask id='mask0_2138_6182' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='21' height='20'%3E%3Crect x='0.5' width='20' height='20' fill='%23D9D9D9'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_2138_6182)'%3E%3Cpath d='M8.45825 15L3.70825 10.25L4.89575 9.06252L8.45825 12.625L16.1041 4.97919L17.2916 6.16669L8.45825 15Z' fill='white'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center center;
+    font-size: 0;
+    border-color: var(--ux4g-border-color-success-strong);
+}
+
+/* The horizontal done line is now placed on .ux4g-status-pipeline-step.ux4g-status-pipeline-done:not(:last-child):after */
+
+.ux4g-status-pipeline-done .ux4g-status-pipeline-head-icon .ux4g-status-pipeline-head-check {
+    display: none;
+}
+
+.ux4g-status-pipeline-disabled .ux4g-status-pipeline-head {
+    cursor: default
+}
+
+.ux4g-status-pipeline-mobile-head {
+    position: var(--ux4g-pos-absolute);
+    align-self: normal;
+    height: fit-content;
+
+    width: 100%;
+    padding-top: var(--ux4g-padding-xs);
+    padding-right: var(--ux4g-padding-m);
+    padding-bottom: var(--ux4g-padding-xs);
+    padding-left: var(--ux4g-padding-xs)
+}
+
+.ux4g-status-pipeline-mobile-footer {
+    position: var(--ux4g-pos-absolute);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 40px
+}
+
+.ux4g-status-pipeline-back-btn {
+    display: block;
+    left: var(--ux4g-pos-start-0)
+}
+
+.ux4g-status-pipeline-back-btn .btn-link {
+    color: unset
+}
+
+.ux4g-status-pipeline-back-btn i {
+    margin-right: var(--ux4g-status-pipeline-back-btn-i-margin-right)
+}
+
+.ux4g-status-pipeline-next-btn {
+    display: block;
+    right: var(--ux4g-pos-end-0)
+}
+
+.ux4g-status-pipeline-next-btn .btn-link {
+    color: unset
+}
+
+.ux4g-status-pipeline-next-btn i {
+    margin-left: var(--ux4g-margin-xs)
+}
+
+.ux4g-status-pipeline-mobile-progress-bar {
+    height: 4px;
+
+    width: 0
+}
+
+.ux4g-status-pipeline-mobile-progress {
+    height: 4px;
+    flex-grow: 100;
+}
+
+/* ========================================================== Common Styles: Center & Left Aligned Steppers ========================================================== */
+.ux4g-status-pipeline-stepper:is(.ux4g-status-pipeline-center, .ux4g-status-pipeline-left, .ux4g-status-pipeline-horizontal) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: var(--ux4g-padding-s);
+    gap: var(--ux4g-inline-s);
+}
+
+:is(.ux4g-status-pipeline-center, .ux4g-status-pipeline-left) .ux4g-status-pipeline-step {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: var(--ux4g-pos-relative);
+}
+
+:is(.ux4g-status-pipeline-center, .ux4g-status-pipeline-left) .ux4g-status-pipeline-step:not(:last-child):after {
+    content: "";
+    position: var(--ux4g-pos-absolute);
+    top: var(--ux4g-space-6);
+    height: 4px;
+    background-color: var(--ux4g-bg-neutral-subtle);
+}
+
+/* Small variant line vertical alignment */
+.ux4g-status-pipeline-s:is(.ux4g-status-pipeline-center, .ux4g-status-pipeline-left) .ux4g-status-pipeline-step:not(:last-child):after {
+    top: var(--ux4g-space-4);
+}
+
+:is(.ux4g-status-pipeline-center, .ux4g-status-pipeline-left) .ux4g-status-pipeline-step.ux4g-status-pipeline-done:not(:last-child):after {
+    background-color: var(--ux4g-bg-success-strong) !important;
+}
+
+:is(.ux4g-status-pipeline-center, .ux4g-status-pipeline-left) .ux4g-status-pipeline-head:after {
+    display: none !important;
+}
+
+:is(.ux4g-status-pipeline-center, .ux4g-status-pipeline-left) .ux4g-status-pipeline-head {
+    display: flex;
+    flex-direction: column;
+    padding: var(--ux4g-padding-none);
+}
+
+/* :is(.ux4g-status-pipeline-center, .ux4g-status-pipeline-left) .ux4g-status-pipeline-head-icon {
+    width: 40px;
+    height: 40px;
+    z-index: var(--ux4g-z-layout-overlay);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.ux4g-status-pipeline-s .ux4g-status-pipeline-head-icon {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: var(--ux4g-fs-11) !important;
+}
+
+.ux4g-status-pipeline-s .ux4g-status-pipeline-head-check {
+    width: 10px !important;
+    height: 10px !important;
+}
+
+.ux4g-status-pipeline-s .ux4g-status-pipeline-done span.ux4g-status-pipeline-head-icon {
+    background-size: 12px !important;
+}
+
+/* Small variant line geometry adjustments */
+.ux4g-status-pipeline-s.ux4g-status-pipeline-center .ux4g-status-pipeline-step:not(:last-child):after {
+    left: calc(50% + 14px);
+    width: calc(100% - 28px);
+}
+
+.ux4g-status-pipeline-s.ux4g-status-pipeline-left .ux4g-status-pipeline-step:not(:last-child):after {
+    left: 28px;
+    width: calc(100% - 32px);
+}
+
+:is(.ux4g-status-pipeline-center, .ux4g-status-pipeline-left) .ux4g-status-pipeline-label-success,
+:is(.ux4g-status-pipeline-center, .ux4g-status-pipeline-left) .ux4g-status-pipeline-label-inprogress {
+    display: block !important;
+}
+
+:is(.ux4g-status-pipeline-center, .ux4g-status-pipeline-left) .ux4g-label-l-default {
+    margin: var(--ux4g-margin-none) !important;
+}
+
+/* ========================================================== Center Aligned Specific Adjustments ========================================================== */
+.ux4g-status-pipeline-stepper.ux4g-status-pipeline-horizontal.ux4g-status-pipeline-center .ux4g-status-pipeline-step {
+    align-items: center;
+    text-align: center;
+}
+
+.ux4g-status-pipeline-center .ux4g-status-pipeline-head {
+    align-items: center;
+}
+
+.ux4g-status-pipeline-center .ux4g-status-pipeline-step:not(:last-child):after {
+    left: calc(50% + 24px);
+    width: calc(100% - 40px);
+}
+
+/* ========================================================== Left Aligned Specific Adjustments ========================================================== */
+.ux4g-status-pipeline-stepper.ux4g-status-pipeline-horizontal.ux4g-status-pipeline-left .ux4g-status-pipeline-step {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.ux4g-status-pipeline-left .ux4g-status-pipeline-head {
+    align-items: flex-start;
+}
+
+.ux4g-status-pipeline-left .ux4g-status-pipeline-step:not(:last-child):after {
+    left: calc(32px + var(--ux4g-margin-m, 16px));
+    width: calc(100% - 28px - var(--ux4g-margin-l, 24px));
+}
+
+/* ========================================================== Bottom Line Variant (.ux4g-status-pipeline-bottom-line) Combine with .ux4g-status-pipeline-center ========================================================== */
+.ux4g-status-pipeline-bottom-line {
+    gap: var(--ux4g-space-6);
+}
+
+.ux4g-status-pipeline-bottom-line li {
+    padding-block-start: var(--ux4g-padding-xs);
+}
+
+.ux4g-status-pipeline-bottom-line-fill .ux4g-status-pipeline-done {
+    background-color: var(--ux4g-bg-neutral);
+}
+
+.ux4g-status-pipeline-bottom-line-fill .ux4g-status-pipeline-inprogress {
+    background-color: var(--ux4g-bg-primary);
+}
+
+.ux4g-status-pipeline-stepper.ux4g-status-pipeline-bottom-line .ux4g-status-pipeline-step::after,
+.ux4g-status-pipeline-stepper.ux4g-status-pipeline-bottom-line .ux4g-status-pipeline-step:last-child::after {
+    content: "";
+    position: static;
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--ux4g-bg-neutral-subtle);
+    margin: var(--ux4g-margin-xs, 12px) 0 0 0;
+}
+
+.ux4g-status-pipeline-stepper.ux4g-status-pipeline-bottom-line .ux4g-status-pipeline-step.ux4g-status-pipeline-done::after {
+    background-color: var(--ux4g-bg-primary-strong) !important;
+}
+
+/* ========================================================== VERTICAL STEPPER (with CSS Grid) ========================================================== */
+.ux4g-status-pipeline-vertical-o-lebel li {
+    min-height: 70px;
+}
+
+.ux4g-status-pipeline-vertical-ld li {
+    min-height: 70px;
+}
+
+.ux4g-status-pipeline-vertical-content-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-xs)
+}
+
+.ux4g-status-pipeline-vertical {
+    display: flex;
+    flex-direction: column;
+    padding: var(--ux4g-padding-none);
+    margin: var(--ux4g-margin-none);
+}
+
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-step {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: var(--ux4g-margin-m, 16px);
+    position: var(--ux4g-pos-relative);
+    align-items: center;
+}
+
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-head {
+    grid-column: 1;
+    display: flex;
+    align-items: flex-start;
+    margin: var(--ux4g-margin-none) !important;
+    padding: var(--ux4g-padding-none) !important;
+}
+
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-head-icon {
+    width: 40px;
+    height: 40px;
+    margin: var(--ux4g-margin-none) !important;
+    z-index: 2;
+    background-color: var(--ux4g-bg-neutral);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-step>span {
+    grid-column: 2;
+    margin-left: var(--ux4g-margin-none) !important;
+}
+
+
+
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-description {
+    grid-row: 2;
+}
+
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-step>span:last-child {
+    grid-row: 3;
+}
+
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-step:not(:last-child):after {
+    content: "";
+    position: var(--ux4g-pos-absolute);
+    left: 18px;
+    top: calc(50% + -20px);
+    height: calc(100% - 0px);
+    width: 4px;
+    background-color: var(--ux4g-bg-neutral-subtle, #e0e0e0);
+}
+
+/* Color line when step is completed */
+.ux4g-status-pipeline-vertical .ux4g-status-pipeline-step.ux4g-status-pipeline-done:not(:last-child):after {
+    background-color: var(--ux4g-bg-success-strong) !important;
+}
+
+/* ========================================================== VERTICAL STEPPER (Small Variant : 24px) ========================================================== */
+.ux4g-status-pipeline-vertical.ux4g-status-pipeline-s .ux4g-status-pipeline-step {
+    grid-template-columns: 24px 1fr;
+    column-gap: var(--ux4g-margin-m, 16px);
+}
+
+.ux4g-status-pipeline-vertical.ux4g-status-pipeline-s .ux4g-status-pipeline-head-icon {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+/* Connecting Line (Small: 24px Icon) */
+.ux4g-status-pipeline-vertical.ux4g-status-pipeline-s .ux4g-status-pipeline-step:not(:last-child):after {
+    left: 10px;
+    top: calc(50% + -14px);
+    height: calc(100% - 0px);
+}
+
+/* ========================================================== PROGRESS STEPPER - CORE & UTILITIES ========================================================== */
+.ux4g-status-pipeline-progress {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-space-4);
+    width: 100%;
+}
+
+.ux4g-status-pipeline-progress-header {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-space-12);
+    width: 100%;
+}
+
+/* Track and Segments */
+.ux4g-status-pipeline-progress-track {
+    display: flex;
+    flex: 1;
+    gap: var(--ux4g-space-6);
+    align-items: center;
+    flex-wrap: nowrap;
+    min-width: 0;
+}
+
+.ux4g-status-pipeline-progress-segment {
+    height: 12px;
+    flex: 1;
+    background-color: var(--ux4g-bg-neutral-subtle);
+    border-radius: var(--ux4g-radius-full);
+    transition: background-color 0.3s ease;
+}
+
+.ux4g-status-pipeline-progress-segment-active {
+    background-color: var(--ux4g-bg-primary-strong);
+}
+
+/* Action Buttons */
+.ux4g-status-pipeline-progress-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--ux4g-radius-full);
+    border: 1px solid var(--ux4g-bg-primary-strong);
+    background-color: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: var(--ux4g-padding-xs);
+    transition: all 0.2s ease;
+}
+
+.ux4g-status-pipeline-progress-btn,
+.ux4g-status-pipeline-progress-btn .ux4g-icon-outlined {
+    color: var(--ux4g-text-brand-primary-default);
+    font-size: var(--ux4g-fs-20) !important;
+}
+
+.ux4g-status-pipeline-progress-btn:disabled,
+.ux4g-status-pipeline-progress-btn.ux4g-disabled {
+    border-color: var(--ux4g-bg-neutral-subtle);
+    color: var(--ux4g-text-neutral-disabled);
+    cursor: default;
+}
+
+.ux4g-status-pipeline-progress-btn:disabled .ux4g-icon-outlined,
+.ux4g-status-pipeline-progress-btn.ux4g-disabled .ux4g-icon-outlined {
+    color: var(--ux4g-text-neutral-disabled) !important;
+}
+
+/* Typography Strings */
+.ux4g-status-pipeline-progress-count {
+    font-size: var(--ux4g-fs-16);
+    font-weight: var(--ux4g-fw-bold);
+    color: var(--ux4g-text-neutral-strong);
+    display: block;
+    margin-bottom: var(--ux4g-margin-s);
+}
+
+.ux4g-status-pipeline-progress-label {
+    font-size: var(--ux4g-fs-16);
+    font-weight: var(--ux4g-fw-semibold);
+    color: var(--ux4g-text-brand-primary-default);
+    display: block;
+}
+
+.ux4g-status-pipeline-progress-desc {
+    font-size: var(--ux4g-fs-16);
+    font-weight: var(--ux4g-fw-regular);
+    color: var(--ux4g-text-neutral-tertiary);
+    display: block;
+    margin-top: var(--ux4g-margin-2xs);
+}
+
+/* Helper Utilities for Alignment Variants */
+.ux4g-status-pipeline-progress-split {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.ux4g-status-pipeline-progress-split.ux4g-align-end {
+    align-items: flex-end;
+}
+
+.ux4g-status-pipeline-progress-text-right {
+    text-align: var(--ux4g-ta-end);
+}
+
+.ux4g-status-pipeline-progress-text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.ux4g-status-pipeline-progress-actions-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--ux4g-margin-xs);
+}
+
+.ux4g-status-pipeline-progress-actions-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--ux4g-space-7);
+    margin-bottom: var(--ux4g-margin-xs);
+}
+
+.ux4g-status-pipeline-progress-controls-end {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.ux4g-status-pipeline-progress-btn-group {
+    display: flex;
+    gap: var(--ux4g-space-8);
+}
+
+/* Overrides */
+.ux4g-status-pipeline-progress .ux4g-mb-none {
+    margin-bottom: var(--ux4g-margin-none) !important;
+}
+
+/* stepper status */
+.ux4g-status-pipeline-step-pending .ux4g-status-pipeline-label,
+.ux4g-status-pipeline-step-pending .ux4g-status-pipeline-description,
+.ux4g-status-pipeline-step-pending .ux4g-status-pipeline-status {
+    color: var(--ux4g-text-neutral-disabled);
+}
+
+/* ========================================================== FIX 2: RESPONSIVE MEDIA QUERY FOR MOBILE ========================================================== */
+@media (max-width: 768px) {
+    .ux4g-status-pipeline-progress-segment {
+        height: 6px;
+    }
+
+    .ux4g-status-pipeline-progress-track {
+        gap: var(--ux4g-space-4);
+    }
+
+    .ux4g-status-pipeline-progress-split {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: var(--ux4g-space-8);
+    }
+
+    .ux4g-status-pipeline-progress-text-right {
+        text-align: left;
+    }
+
+    .ux4g-status-pipeline-progress-controls-end {
+        align-items: flex-start;
+    }
+
+    .ux4g-status-pipeline-progress-actions-between {
+        flex-wrap: wrap;
+        gap: var(--ux4g-space-8);
+    }
+
+    .ux4g-status-pipeline-progress-header {
+        gap: var(--ux4g-space-8) !important;
+    }
+
+    .ux4g-status-pipeline-horizontal .ux4g-status-pipeline-head {
+        flex: 1;
+    }
+}
+
+/* stepper end */

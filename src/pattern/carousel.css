@@ -1,0 +1,129 @@
+.ux4g-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.ux4g-carousel-viewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+.ux4g-carousel-slides {
+    display: flex;
+    width: 100%;
+    transition: transform var(--ux4g-transition-duration-slow, 0.5s) var(--ux4g-transition-timing-in-out, ease);
+}
+
+.ux4g-carousel-slide {
+    flex: 0 0 100%;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: var(--ux4g-ta-center, center);
+    padding: var(--ux4g-spacing-xl);
+}
+
+/* Desktop Controls */
+.ux4g-carousel-controls {
+    position: var(--ux4g-pos-absolute);
+    inset: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--ux4g-padding-2xl);
+}
+
+.ux4g-carousel-arrow {
+    pointer-events: auto;
+    background-color: var(--ux4g-bg-primary-soft);
+    border: none;
+    width: var(--ux4g-spacing-2xl, 48px);
+    height: var(--ux4g-spacing-2xl, 48px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ux4g-radius-md);
+    color: var(--ux4g-text-primary-strong);
+    cursor: pointer;
+    transition: background-color var(--ux4g-transition-duration-fast, 0.2s) var(--ux4g-transition-timing-linear);
+}
+
+.ux4g-carousel-arrow:hover {
+    background-color: var(--ux4g-bg-primary-subtle);
+}
+
+.ux4g-carousel-arrow:active {
+    background-color: var(--ux4g-bg-primary-emphasis);
+}
+
+/* Pagination */
+.ux4g-carousel-pagination {
+    position: var(--ux4g-pos-absolute);
+    bottom: var(--ux4g-spacing-l, 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-s, 8px);
+    pointer-events: auto;
+}
+
+/* Dot Badges Design */
+.ux4g-carousel-dot {
+    width: var(--ux4g-spacing-xs, 8px);
+    height: var(--ux4g-spacing-xs, 8px);
+    border-radius: var(--ux4g-radius-full);
+    background-color: var(--ux4g-bg-primary-strong);
+    opacity: var(--ux4g-opacity-20, 0.2);
+    transition: all var(--ux4g-transition-duration-base, 0.3s) var(--ux4g-transition-timing-in-out);
+}
+
+.ux4g-carousel-dot.is-active {
+    width: var(--ux4g-spacing-xl, 24px);
+    opacity: var(--ux4g-opacity-100, 1);
+    border-radius: var(--ux4g-radius-full);
+}
+
+/* Mobile Responsive Overrides */
+@media (max-width: 768px) {
+    .ux4g-carousel-slide {
+        min-height: 500px;
+    }
+
+    .ux4g-carousel-controls {
+        position: var(--ux4g-pos-relative);
+        justify-content: center;
+        padding: var(--ux4g-padding-m, 16px);
+        column-gap: var(--ux4g-inline-l);
+        pointer-events: auto;
+    }
+
+    .ux4g-carousel-pagination {
+        position: var(--ux4g-pos-static);
+        transform: none;
+        gap: var(--ux4g-inline-s, 8px);
+    }
+
+    .ux4g-carousel-arrow {
+        border-radius: var(--ux4g-radius-full);
+        width: var(--ux4g-spacing-xl, 32px);
+        height: var(--ux4g-spacing-xl, 32px);
+    }
+
+    /* In mobile, the layout is [Prev] [Dots] [Next] */
+    .ux4g-carousel-arrow-prev {
+        order: 1;
+    }
+
+    .ux4g-carousel-pagination {
+        order: 2;
+    }
+
+    .ux4g-carousel-arrow-next {
+        order: 3;
+    }
+}
