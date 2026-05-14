@@ -72,12 +72,25 @@
     background-color: var(--ux4g-text-neutral-disabled);
 
 }
+.ux4g-journey-step-completed .ux4g-journey-indicator::after {
+    display: none;
 
-.ux4g-journey-indicator svg {
+}
+
+/* .ux4g-journey-indicator svg {
     width: 12px;
     height: 12px;
     stroke: currentColor;
-}
+} */
+ .ux4g-journey-indicator .ux4g-icon-outlined{
+color: currentColor;
+ }
+ .ux4g-journey-indicator .ux4g-icon-outlined{
+display: none;
+ }
+ .ux4g-journey-step-completed .ux4g-journey-indicator .ux4g-icon-outlined{
+display:  block !important;
+ }
 
 .ux4g-journey-timeline--vertical .ux4g-journey-step:not(:last-child)::after {
     content: "";
@@ -172,25 +185,25 @@
 }
 
 /* States */
-.ux4g-journey-step--completed .ux4g-journey-indicator {
+.ux4g-journey-step-completed .ux4g-journey-indicator {
     background-color: var(--ux4g-bg-primary-strong);
     border-color: var(--ux4g-border-color-primary-strong);
     color: var(--ux4g-color-neutral-0);
 }
 
-.ux4g-journey-step--completed:not(:last-child)::after {
+.ux4g-journey-step-completed:not(:last-child)::after {
     background-color: var(--ux4g-bg-primary-strong) !important;
 }
 
 /* Active State */
-.ux4g-journey-step--active .ux4g-journey-indicator {
+.ux4g-journey-step-active .ux4g-journey-indicator {
     background-color: var(--ux4g-bg-neutral-elevated);
     border-color: var(--ux4g-border-color-primary-strong);
     color: var(--ux4g-text-brand-primary-default);
     position: relative;
 }
 
-.ux4g-journey-step--active .ux4g-journey-indicator::before {
+.ux4g-journey-step-active .ux4g-journey-indicator::before {
     content: "";
     position: absolute;
     width: 10px;

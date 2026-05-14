@@ -18,6 +18,15 @@
   font-weight: var(--ux4g-font-weight-medium);
 }
 
+/* ================================
+   ICON FIX
+================================ */
+.ux4g-text-link-sm .material-icons,
+.ux4g-text-link-md .material-icons,
+.ux4g-text-link-neutral-sm .material-icons,
+.ux4g-text-link-neutral-md .material-icons {
+  font-size: var(--ux4g-fs-16)
+}
 
 /* ================================
    COLOR

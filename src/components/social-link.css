@@ -1,0 +1,5 @@
+.ux4g-social-link {
+    width: var(--ux4g-sz-20);
+    height: var(--ux4g-sz-20);
+    cursor: pointer;
+}

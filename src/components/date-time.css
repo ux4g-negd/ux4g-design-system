@@ -200,6 +200,7 @@
 .ux4g-date-picker-footer .ux4g-btn-outline-neutral{
     border-radius: var(--ux4g-radius-md);
     border: solid 1px var(--ux4g-border-color-neutral-default);
+    color: var(--ux4g-text-neutral-primary);
 }
 
 .ux4g-date-picker-footer button {

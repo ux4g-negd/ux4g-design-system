@@ -57,19 +57,19 @@ Applies to all tonal tag variants
 }
 .ux4g-tag-tonal-success {
   background-color: var(--ux4g-bg-success-soft);
-  color: var(--ux4g-bg-success-strong);
+  color: var(--ux4g-text-status-success);
 }
 .ux4g-tag-tonal-warning {
   background-color: var(--ux4g-bg-warning-soft);
-  color: var(--ux4g-bg-warning-strong);
+  color: var(--ux4g-text-status-warning);
 }
 .ux4g-tag-tonal-error {
   background-color: var(--ux4g-bg-error-soft);
-  color: var(--ux4g-bg-error-strong);
+  color: var(--ux4g-text-status-error);
 }
 .ux4g-tag-tonal-info {
   background-color: var(--ux4g-bg-info-soft);
-  color: var(--ux4g-bg-info-strong);
+  color: var(--ux4g-text-status-info);
 }
  
  
@@ -78,16 +78,16 @@ Applies to all tonal tag variants
    ========================================================= */
  
  
-.ux4g-tag-tonal-neutral {
+/* .ux4g-tag-tonal-neutral {
   background-color: var(--ux4g-bg-neutral-subtle);
   color: var(--ux4g-text-neutral-primary);
-}
-.ux4g-tag-tonal-primary {
+} */
+/* .ux4g-tag-tonal-primary {
   background-color: var(--ux4g-bg-primary-soft);
   color: var(--ux4g-text-brand-primary-default);
-}
+} */
  
-.ux4g-tag-tonal-success {
+/* .ux4g-tag-tonal-success {
   background-color: var(--ux4g-bg-success-soft);
   color: var(--ux4g-bg-success-strong);
 }
@@ -103,7 +103,7 @@ Applies to all tonal tag variants
   background-color: var(--ux4g-bg-info-soft);
   color: var(--ux4g-bg-info-strong);
 }
- 
+  */
 /* =========================================================
    UX4G TAG – FILLED VARIANTS
    ========================================================= */
@@ -166,7 +166,7 @@ Applies to all tonal tag variants
 }
  
 /* Brand */
-.ux4g-tag-outline-brand {
+.ux4g-tag-outline-primary {
   border-color: var(--ux4g-border-color-primary-default);
   color: var(--ux4g-text-brand-primary-default);
 }

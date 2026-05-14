@@ -1,48 +1,93 @@
 .ux4g-carousel {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+    position: var(--ux4g-pos-relative);
+    width: var(--ux4g-sz-full);
+    overflow: var(--ux4g-of-hidden);
 }
 
 .ux4g-carousel-viewport {
-    width: 100%;
-    overflow: hidden;
+    width: var(--ux4g-sz-full);
+    overflow: var(--ux4g-of-hidden);
 }
 
 .ux4g-carousel-slides {
     display: flex;
-    width: 100%;
+    width: var(--ux4g-sz-full);
     transition: transform var(--ux4g-transition-duration-slow, 0.5s) var(--ux4g-transition-timing-in-out, ease);
 }
 
 .ux4g-carousel-slide {
-    flex: 0 0 100%;
+    flex: 0 0 var(--ux4g-sz-full);
     min-height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: var(--ux4g-ta-center, center);
-    padding: var(--ux4g-spacing-xl);
+    padding: var(--ux4g-padding-xl);
+    position: var(--ux4g-pos-relative);
+    overflow: var(--ux4g-of-hidden);
+}
+
+/* Ensure text is white when on primary background or over an image */
+.ux4g-bg-primary .ux4g-carousel-slide,
+.ux4g-carousel-slide:has(img) {
+    color: var(--ux4g-text-white, #ffffff);
+}
+
+.ux4g-carousel-slide img {
+    position: var(--ux4g-pos-absolute);
+    top: var(--ux4g-pos-top-0);
+    left: var(--ux4g-pos-start-0);
+    width: var(--ux4g-sz-full);
+    height: var(--ux4g-sz-full);
+    object-fit: cover;
+    z-index: var(--ux4g-z-layout-base);
+}
+
+/* Overlay for images to ensure text readability */
+.ux4g-carousel-slide::after {
+    content: "";
+    position: var(--ux4g-pos-absolute);
+    top: var(--ux4g-pos-top-0);
+    left: var(--ux4g-pos-start-0);
+    right: var(--ux4g-pos-end-0);
+    bottom: var(--ux4g-pos-bottom-0);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+    z-index: var(--ux4g-z-layout-raised);
+    opacity: var(--ux4g-sz-none);
+    transition: opacity var(--ux4g-transition-duration-base, 0.3s);
+}
+
+.ux4g-carousel-slide:has(img)::after {
+    opacity: 1;
+}
+
+.ux4g-carousel-slide > *:not(img) {
+    position: var(--ux4g-pos-relative);
+    z-index: var(--ux4g-z-layout-overlay);
 }
 
 /* Desktop Controls */
 .ux4g-carousel-controls {
     position: var(--ux4g-pos-absolute);
-    inset: 0;
+    top: var(--ux4g-pos-top-0);
+    left: var(--ux4g-pos-start-0);
+    right: var(--ux4g-pos-end-0);
+    bottom: var(--ux4g-pos-bottom-0);
     pointer-events: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 var(--ux4g-padding-2xl);
+    z-index: var(--ux4g-z-layout-top);
 }
 
 .ux4g-carousel-arrow {
     pointer-events: auto;
     background-color: var(--ux4g-bg-primary-soft);
-    border: none;
-    width: var(--ux4g-spacing-2xl, 48px);
-    height: var(--ux4g-spacing-2xl, 48px);
+    border: var(--ux4g-border-width-none);
+    width: var(--ux4g-sz-l);
+    height: var(--ux4g-sz-l);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,27 +108,29 @@
 /* Pagination */
 .ux4g-carousel-pagination {
     position: var(--ux4g-pos-absolute);
-    bottom: var(--ux4g-spacing-l, 20px);
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 20px;
+    left: var(--ux4g-pos-start-50);
+    transform: var(--ux4g-pos-translate-middle-x);
     display: flex;
     align-items: center;
     gap: var(--ux4g-inline-s, 8px);
     pointer-events: auto;
+    z-index: var(--ux4g-z-layout-top);
 }
 
 /* Dot Badges Design */
 .ux4g-carousel-dot {
-    width: var(--ux4g-spacing-xs, 8px);
-    height: var(--ux4g-spacing-xs, 8px);
+    width: var(--ux4g-sz-8);
+    height: var(--ux4g-sz-8);
     border-radius: var(--ux4g-radius-full);
     background-color: var(--ux4g-bg-primary-strong);
     opacity: var(--ux4g-opacity-20, 0.2);
     transition: all var(--ux4g-transition-duration-base, 0.3s) var(--ux4g-transition-timing-in-out);
+    cursor: pointer;
 }
 
 .ux4g-carousel-dot.is-active {
-    width: var(--ux4g-spacing-xl, 24px);
+    width: var(--ux4g-sz-xs);
     opacity: var(--ux4g-opacity-100, 1);
     border-radius: var(--ux4g-radius-full);
 }
@@ -95,23 +142,28 @@
     }
 
     .ux4g-carousel-controls {
-        position: var(--ux4g-pos-relative);
+        position: var(--ux4g-pos-absolute);
+        bottom: var(--ux4g-pos-bottom-0);
+        top: var(--ux4g-sz-auto);
+        left: var(--ux4g-pos-start-0);
+        right: var(--ux4g-pos-end-0);
         justify-content: center;
-        padding: var(--ux4g-padding-m, 16px);
+        padding: var(--ux4g-padding-l, 24px);
         column-gap: var(--ux4g-inline-l);
         pointer-events: auto;
+        z-index: var(--ux4g-z-layout-top);
     }
 
     .ux4g-carousel-pagination {
         position: var(--ux4g-pos-static);
-        transform: none;
+        transform: var(--ux4g-sz-none);
         gap: var(--ux4g-inline-s, 8px);
     }
 
     .ux4g-carousel-arrow {
         border-radius: var(--ux4g-radius-full);
-        width: var(--ux4g-spacing-xl, 32px);
-        height: var(--ux4g-spacing-xl, 32px);
+        width: var(--ux4g-sz-s);
+        height: var(--ux4g-sz-s);
     }
 
     /* In mobile, the layout is [Prev] [Dots] [Next] */
@@ -125,5 +177,20 @@
 
     .ux4g-carousel-arrow-next {
         order: 3;
+    }
+
+    /* Filled variant for floating pill look on mobile */
+    .ux4g-carousel-filled {
+        width: var(--ux4g-sz-auto);
+        left: var(--ux4g-pos-start-50);
+        right: var(--ux4g-sz-auto);
+        transform: var(--ux4g-pos-translate-middle-x);
+        bottom: 20px;
+        background-color: var(--ux4g-bg-neutral-soft);
+        border-radius: var(--ux4g-radius-full);
+        padding: var(--ux4g-padding-xs, 4px) var(--ux4g-padding-m, 16px);
+        column-gap: var(--ux4g-inline-s, 8px);
+        display: flex;
+        align-items: center;
     }
 }

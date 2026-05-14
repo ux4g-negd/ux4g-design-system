@@ -1,0 +1,344 @@
+/* ==========================================================================
+   FOOTER COMPONENT
+   ========================================================================== */
+
+/* 1. NEED SUPPORT (NS) BLOCKS ============================================== */
+
+[class*="ux4g-ns-t"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--ux4g-stack-l);
+    padding: var(--ux4g-padding-xl) 0;
+    transition: all var(--ux4g-transition-duration-base, 0.3s) var(--ux4g-transition-timing-ease, ease);
+}
+
+[class*="ux4g-ns-t"] .ux4g-body-m-default {
+    --ux4g-text-current: var(--ux4g-text-neutral-secondary);
+}
+
+/* NS Variants */
+.ux4g-ns-t1 { justify-content: space-between; }
+
+.ux4g-ns-t2 {
+    display: grid;
+    justify-content: start;
+    padding: var(--ux4g-padding-m) var(--ux4g-padding-l);
+    row-gap: var(--ux4g-stack-l);
+}
+.ux4g-ns-t2 .ux4g-btn-primary { width: fit-content; }
+
+.ux4g-ns-t3 {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    row-gap: var(--ux4g-stack-l);
+}
+
+.ux4g-ns-t4 {
+    justify-content: space-between;
+    padding: var(--ux4g-space-10) var(--ux4g-padding-2xl);
+    background-color: var(--ux4g-bg-primary-stronger);
+    border-radius: var(--ux4g-radius-md);
+}
+.ux4g-ns-t4 :is(.ux4g-title-m-strong, .ux4g-body-m-default) {
+    --ux4g-text-current: var(--ux4g-text-white);
+    color: var(--ux4g-text-white);
+}
+.ux4g-ns-t4 .ux4g-btn-primary {
+    width: fit-content;
+    background-color: var(--ux4g-bg-neutral-elevated);
+    color: var(--ux4g-text-brand-primary-default);
+}
+
+/* NS Mobile Responsiveness */
+@media (max-width: 768px) {
+    [class*="ux4g-ns-t"] {
+        display: grid;
+        justify-content: start;
+        text-align: left;
+        padding: var(--ux4g-padding-m) var(--ux4g-padding-l);
+        row-gap: var(--ux4g-stack-l);
+    }
+    .ux4g-ns-t3 { justify-items: center; text-align: center; }
+    [class*="ux4g-ns-t"] .ux4g-btn-primary { width: fit-content; }
+}
+
+
+/* 2. FOOTER BOTTOM STRIP (FBS) ============================================= */
+
+[class*="ux4g-fbs-t"] {
+    display: flex;
+    padding: var(--ux4g-padding-m) 80px;
+    align-items: center;
+    background-color: var(--ux4g-bg-primary-stronger);
+    gap: var(--ux4g-inline-l);
+}
+
+/* FBS Link Styles */
+[class*="ux4g-fbs-t"] .ux4g-text-link-neutral-sm {
+    --ux4g-text-current: var(--ux4g-text-white);
+    font-size: var(--ux4g-fs-12);
+    line-height: var(--ux4g-lh-16);
+    font-weight: var(--ux4g-fw-medium);
+    text-decoration: none;
+}
+
+/* FBS Variants */
+.ux4g-fbs-t1 { justify-content: space-between; }
+.ux4g-fbs-t2 { justify-content: center; }
+.ux4g-fbs-t3 { justify-content: space-between; }
+.ux4g-fbs-t4 { justify-content: space-between; }
+
+.ux4g-fbs-logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-m);
+}
+
+.ux4g-fbs-social-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: var(--ux4g-inline-l);
+}
+
+.ux4g-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ux4g-text-neutral-inverse);
+    transition: opacity var(--ux4g-transition-duration-fast, 0.2s) var(--ux4g-transition-timing-ease, ease);
+}
+.ux4g-social-link:hover { opacity: var(--ux4g-interaction-active-opacity, 0.8); }
+
+/* FBS Mobile Responsiveness */
+@media (min-width: 992px) {
+    .ux4g-fbs-t4 .ux4g-fbs-description { display: none; }
+    .ux4g-fbs-t4 .ux4g-fbs-links { flex: 1; justify-content: center; }
+}
+
+@media (max-width: 991px) {
+    .ux4g-fbs-t4 {
+        flex-direction: column;
+        padding: var(--ux4g-padding-l);
+        align-items: flex-start;
+        text-align: left;
+    }
+    .ux4g-fbs-t4 .ux4g-fbs-links { order: 4; }
+    .ux4g-fbs-t4 .ux4g-fbs-social-list { order: 3; }
+    .ux4g-fbs-t4 .ux4g-fbs-logo-wrapper { order: 1; }
+    .ux4g-fbs-t4 .ux4g-fbs-description { order: 2; display: block; }
+}
+
+@media (max-width: 768px) {
+    [class*="ux4g-fbs-t"]:not(.ux4g-fbs-t4) {
+        flex-direction: column;
+        padding: var(--ux4g-padding-l);
+        align-items: flex-start;
+        gap: var(--ux4g-inline-l);
+        text-align: left;
+    }
+    .ux4g-fbs-t2 { align-items: center; text-align: center; }
+    [class*="ux4g-fbs-t"] :is(.ux4g-d-flex, .ux4g-fbs-links) {
+        flex-wrap: wrap;
+        row-gap: var(--ux4g-inline-m);
+    }
+}
+
+
+/* 3. FOOTER LAYOUT & COMPONENTS ============================================ */
+
+.ux4g-footer-wrapper {
+    padding: 64px 80px 0 80px;
+}
+
+.ux4g-footer-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Department Block */
+.ux4g-dept-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-m);
+}
+
+.ux4g-dept-header {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-l);
+}
+
+.ux4g-dept-header svg {
+    width: var(--ux4g-sz-56);
+    height: var(--ux4g-sz-56);
+}
+
+.ux4g-dept-orgs {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-l);
+}
+
+.ux4g-dept-logo {
+    min-height: var(--ux4g-sz-32);
+    max-height: var(--ux4g-sz-32);
+    width: auto;
+    aspect-ratio: 5/2;
+}
+
+/* Footer Links */
+.ux4g-f-links {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--ux4g-inline-xl);
+}
+
+.ux4g-f-links-cols-4 { grid-template-columns: repeat(4, 1fr); }
+.ux4g-f-links a { overflow-wrap: break-word; word-break: break-word; }
+
+.ux4g-f-link-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: grid;
+    row-gap: var(--ux4g-stack-m);
+}
+
+/* Layout Utilities & Responsive */
+.ux4g-f-d-md-flex { display: block; }
+
+.contact-wrapper {
+    display: grid;
+    row-gap: var(--ux4g-stack-s);
+}
+.contact-wrapper p {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-m);
+    margin: 0;
+}
+.contact-wrapper i {
+    font-size: var(--ux4g-sz-24);
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+@media (min-width: 768px) {
+    .ux4g-f-d-md-flex { display: flex !important; }
+    .ux4g-md-text-start { text-align: start !important; }
+    .ux4g-md-text-center { text-align: center !important; }
+}
+
+@media (max-width: 991px) {
+    .ux4g-f-links { grid-template-columns: repeat(3, 1fr); row-gap: var(--ux4g-inline-l); }
+    .ux4g-f-links-cols-1 {
+        grid-template-columns: 1fr !important;
+        justify-items: center !important;
+        justify-content: start !important;
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .ux4g-footer-wrapper { padding: 48px 20px 0 20px; }
+    .ux4g-footer-row { display: block; }
+    .ux4g-dept-header { justify-content: center; }
+    .ux4g-f-links { grid-template-columns: repeat(2, 1fr); row-gap: var(--ux4g-inline-l); }
+}
+
+/* Footer Department Responsive Centering */
+.ux4g-f-dept-responsive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--ux4g-stack-m);
+    order: 1;
+}
+.ux4g-f-dept-responsive :is(.ux4g-dept-orgs, .ux4g-fbs-social-list) { justify-content: center; }
+
+@media (min-width: 768px) {
+    .ux4g-f-dept-responsive { align-items: flex-start; text-align: start; }
+    .ux4g-f-dept-responsive :is(.ux4g-dept-orgs, .ux4g-fbs-social-list) { justify-content: flex-start; }
+}
+
+
+/* 4. FOOTER THEME VARIANTS (PRIMARY & DARK) ================================ */
+
+.ux4g-footer-primary {
+    background-color: var(--ux4g-bg-primary-strong);
+    color: var(--ux4g-text-neutral-inverse);
+}
+
+.ux4g-footer-dark {
+    background-color: var(--ux4g-text-neutral-primary);
+    color: var(--ux4g-text-neutral-inverse);
+}
+
+/* Theme Color Inheritance */
+:is(.ux4g-footer-primary, .ux4g-footer-dark) :is(.ux4g-icon-outlined, .ux4g-social-link, svg) {
+    color: var(--ux4g-text-neutral-inverse) !important;
+}
+
+:is(.ux4g-footer-primary, .ux4g-footer-dark) svg path {
+    fill: currentColor !important;
+}
+
+:is(.ux4g-footer-primary, .ux4g-footer-dark) :is(
+    .ux4g-heading-xs-strong, 
+    .ux4g-body-xs-default, 
+    .ux4g-body-m-default,
+    .ux4g-dept-header h4, 
+    .ux4g-text-neutral-secondary,
+    .ux4g-text-neutral-tertiary,
+    .ux4g-title-s-strong,
+    .ux4g-title-m-strong,
+    .ux4g-label-l-strong,
+    a
+) {
+    --ux4g-text-current: var(--ux4g-text-neutral-inverse) !important;
+    color: var(--ux4g-text-neutral-inverse) !important;
+}
+
+/* Button overrides in variants */
+:is(.ux4g-footer-primary, .ux4g-footer-dark) .ux4g-btn-primary {
+    background-color: var(--ux4g-bg-neutral-elevated) !important;
+    color: var(--ux4g-text-brand-primary-default) !important;
+}
+:is(.ux4g-footer-primary, .ux4g-footer-dark) .ux4g-btn-primary:hover {
+    background-color: var(--ux4g-bg-neutral) !important;
+}
+:is(.ux4g-footer-primary, .ux4g-footer-dark) .ux4g-btn-primary i {
+    color: var(--ux4g-text-brand-primary-default) !important;
+}
+
+/* Tag & UI overrides in variants */
+:is(.ux4g-footer-primary, .ux4g-footer-dark) .ux4g-tag-outline-primary {
+    border-color: var(--ux4g-text-neutral-inverse) !important;
+    color: var(--ux4g-text-neutral-inverse) !important;
+}
+
+:is(.ux4g-footer-primary, .ux4g-footer-dark) .ux4g-tag-tonal-primary {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: var(--ux4g-text-neutral-inverse) !important;
+}
+
+:is(.ux4g-footer-primary, .ux4g-footer-dark) [class*="ux4g-ns-t"] {
+    background-color: transparent !important;
+}
+
+:is(.ux4g-footer-primary, .ux4g-footer-dark) hr {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Variant-specific FBS Overrides */
+.ux4g-footer-dark [class*="ux4g-fbs-t"] {
+    background-color: var(--ux4g-text-neutral-secondary) !important;
+}
+.ux4g-footer-dark [class*="ux4g-fbs-t"] :is(.ux4g-text-link-neutral-sm, .ux4g-text-white, .ux4g-body-xs-default, .ux4g-social-link) {
+    --ux4g-text-current: var(--ux4g-text-neutral-inverse) !important;
+    color: var(--ux4g-text-neutral-inverse) !important;
+}
