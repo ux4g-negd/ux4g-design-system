@@ -7,6 +7,7 @@ This project uses a custom design system characterized by the `ux4g-` prefix for
 - Utility-first principles paired with robust pre-built component classes.
 - High emphasis on accessibility (ARIA attributes, roles).
 - No external CSS frameworks (Tailwind, Bootstrap) are allowed.
+- Prefer pattern-backed composition for full pages and complex sections before combining atomic components manually.
 
 ## 2. Strict Implementation Rules (Master Rules)
 1. **NO EXTERNAL FRAMEWORKS:** Never use Tailwind CSS, Bootstrap, or any other external framework classes.
@@ -14,6 +15,8 @@ This project uses a custom design system characterized by the `ux4g-` prefix for
 3. **ACCESSIBILITY FIRST:** Always reference the structure found in `index.html` for accessibility and layout. Use appropriate `aria-label`, `aria-hidden`, `role`, `tabindex`, and visually hidden spans where necessary.
 4. **SEMANTIC HTML:** Use semantic HTML tags (`<header>`, `<nav>`, `<section>`, `<button>`) alongside the design system's classes.
 5. **ICONS:** Use `<span class="ux4g-icon-outlined">icon_name</span>` or `<i class="ux4g-icon-outlined">icon_name</i>` for rendering Material Icons.
+6. **PATTERN-FIRST PAGE BUILDING:** For pages and large sections, start from known UX4G patterns such as `navbar`, `footer`, `upload`, `empty-state`, `feedback`, and `result-list` before filling with components and utilities.
+7. **SCAFFOLD DISCIPLINE:** Prefer archetype-driven layouts for common use cases such as service landing pages, dashboards, search/results pages, form flows, detail/review pages, and upload/document flows.
 
 ## 3. Utility Classes (Foundations & Layout)
 * **Spacing:** `.ux4g-m-*`, `.ux4g-p-*`, `.ux4g-mt-*`, `.ux4g-mb-*`, `.ux4g-py-*`, `.ux4g-px-*` (Sizes: `xs`, `s`, `m`, `l`, `xl`, `2xl`, etc.)
@@ -146,3 +149,10 @@ Structure extensively utilizes grid and flex layouts for responsive rendering.
 
 ## 5. Implementation Readiness
 I have thoroughly analyzed the components, utility classes, and accessibility structures. I am fully prepared to generate and implement any frontend structures using strictly the `ux4g-` ecosystem of components without relying on external libraries.
+
+## 6. Generation Workflow
+1. Identify whether the request is a full page, a section pattern, or an atomic control.
+2. For full pages and sections, choose an existing UX4G pattern or scaffold first.
+3. Use atomic components only to support the selected pattern, not to improvise a new structure from scratch.
+4. Reuse semantic tokens, utility scales, and documented spacing/type rhythm rather than inventing values.
+5. Validate accessibility structure and required interactive hooks before returning markup.

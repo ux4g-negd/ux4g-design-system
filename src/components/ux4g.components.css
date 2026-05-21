@@ -36,5 +36,19 @@
 @import "../components/journey-timeline.css";
 @import "../components/time-slot.css";
 @import "../components/result-list.css";
+@import "../components/mega-menu.css";
+@import './navbar.css';
+@import './otp.css';
+@import './draft-status-bar.css';
+@import './upload.css';
+@import './empty-state.css';
+@import './feedback.css';
+@import './chips-group.css';
+@import './sla-progress-indicator.css';
+@import './form-field-group.css';
+@import './progress-indicator.css';
+@import './carousel.css';
+@import './footer.css';
+
 
 

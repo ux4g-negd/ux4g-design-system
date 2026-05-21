@@ -1,0 +1,180 @@
+/* ==========================================================================
+   MEGA MENU COMPONENT
+   ========================================================================== */
+
+.ux4g-mega-menu {
+  width: 100%;
+  background-color: var(--ux4g-bg-neutral-elevated);
+  border-radius: var(--ux4g-radius-lg);
+  box-shadow: var(--ux4g-shadow-l2);
+  overflow: hidden;
+  display: flex;
+  font-family: var(--ux4g-font-family-base);
+  border-top: var(--ux4g-border-width-xl) solid var(--ux4g-border-color-primary-strong);
+}
+
+.ux4g-mega-menu__container {
+  display: flex;
+  width: 100%;
+}
+
+.ux4g-mega-menu__sidebar {
+  width: 240px;
+  background-color: var(--ux4g-bg-neutral-elevated);
+  padding: var(--ux4g-padding-xl) 0;
+  flex-shrink: 0;
+}
+
+.ux4g-mega-menu__category-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ux4g-stack-xs);
+}
+
+.ux4g-mega-menu__category-item {
+  padding: var(--ux4g-padding-2xs) var(--ux4g-padding-m);
+  cursor: pointer;
+  transition: all var(--ux4g-transition-duration-base) var(--ux4g-transition-timing-ease);
+}
+
+.ux4g-mega-menu__category-link {
+  text-decoration: none;
+  display: block;
+}
+
+.ux4g-mega-menu__category-item--active,
+.ux4g-mega-menu__category-item:hover {
+  background-color: var(--ux4g-bg-primary);
+}
+
+.ux4g-mega-menu__category-item:not(.ux4g-mega-menu__category-item--active) .ux4g-mega-menu__category-link {
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-mega-menu__category-item--active .ux4g-mega-menu__category-link,
+.ux4g-mega-menu__category-item:hover .ux4g-mega-menu__category-link {
+  color: var(--ux4g-text-brand-primary-default);
+}
+
+.ux4g-mega-menu__content {
+  flex: 1;
+  display: none;
+  padding: var(--ux4g-padding-xl);
+  gap: var(--ux4g-padding-xl);
+  background-color: var(--ux4g-bg-neutral-elevated);
+}
+
+.ux4g-mega-menu__content.ux4g-mega-menu__content--active {
+  display: flex;
+}
+
+.ux4g-mega-menu__column {
+  flex: 1;
+  border-right: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+  padding-right: var(--ux4g-padding-2xl);
+}
+
+.ux4g-mega-menu__column:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.ux4g-mega-menu__title {
+  
+  margin-bottom: var(--ux4g-margin-m);
+  margin-top: 0;
+  padding-inline: var(--ux4g-padding-s);
+}
+
+.ux4g-mega-menu__item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ux4g-stack-xs);
+}
+
+.ux4g-mega-menu__item{
+  padding: var(--ux4g-padding-2xs) var(--ux4g-padding-s);
+}
+
+.ux4g-mega-menu__item a {
+  text-decoration: none;
+  color: var(--ux4g-text-link-neutral-default);
+  transition: color var(--ux4g-transition-duration-base) var(--ux4g-transition-timing-ease);
+}
+
+.ux4g-mega-menu__item a:hover {
+  color: var(--ux4g-text-link-default-hover);
+}
+
+/* Responsive Styles */
+@media (max-width: 48rem) {
+  .ux4g-mega-menu {
+    flex-direction: column;
+  }
+
+  .ux4g-mega-menu__container {
+    flex-direction: column;
+  }
+
+  .ux4g-mega-menu__sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+  }
+
+  .ux4g-mega-menu__content {
+    flex-direction: column;
+    padding: var(--ux4g-padding-m);
+  }
+
+  .ux4g-mega-menu__column {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    padding-bottom: var(--ux4g-padding-m);
+  }
+
+  .ux4g-mega-menu__column:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+/* ==========================================================================
+   DROPDOWN VARIANT
+   ========================================================================== */
+
+.ux4g-mega-menu-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.ux4g-mega-menu--dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  width: 900px;
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.ux4g-mega-menu-wrapper:hover .ux4g-mega-menu--dropdown,
+.ux4g-mega-menu-wrapper.ux4g-mega-menu-wrapper--active .ux4g-mega-menu--dropdown {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Align dropdown to right if it's near screen edge (basic utility) */
+.ux4g-mega-menu--dropdown-right {
+    left: auto;
+    right: 0;
+}

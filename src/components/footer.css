@@ -207,6 +207,20 @@
     display: grid;
     row-gap: var(--ux4g-stack-m);
 }
+.ux4g-f-link-list li a {
+    display: inline-block !important;
+}
+
+.ux4g-f-link-list li a:hover {
+    text-decoration: underline;
+}
+
+.ux4g-f-link-list li a i {
+    display: inline-block !important;
+    text-decoration: none !important;
+    vertical-align: middle;
+    margin-left: var(--ux4g-inline-s);
+}
 
 /* Layout Utilities & Responsive */
 .ux4g-f-d-md-flex { display: block; }

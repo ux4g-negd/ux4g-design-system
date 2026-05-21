@@ -2397,6 +2397,116 @@
     init(document);
   }
 
+  // ------------------------------------------------------------------
+  // SPA Support: Auto-initialization
+  // ------------------------------------------------------------------
+  global.ux4gCustomInitList = global.ux4gCustomInitList || [];
+
+  const attachedGlobalListeners = new Set();
+  
+  // Safe wrapper for global event listeners to prevent double-binding
+  const originalDocAddEventListener = document.addEventListener;
+  const originalWinAddEventListener = window.addEventListener;
+  
+  function safeDocAddEventListener(type, listener, options) {
+    if (type === 'DOMContentLoaded') {
+      return originalDocAddEventListener.call(document, type, listener, options);
+    }
+    const key = 'doc:' + type + ':' + listener.toString().substring(0, 100);
+    if (!attachedGlobalListeners.has(key)) {
+      attachedGlobalListeners.add(key);
+      originalDocAddEventListener.call(document, type, listener, options);
+    }
+  }
+  
+  function safeWinAddEventListener(type, listener, options) {
+    const key = 'win:' + type + ':' + listener.toString().substring(0, 100);
+    if (!attachedGlobalListeners.has(key)) {
+      attachedGlobalListeners.add(key);
+      originalWinAddEventListener.call(window, type, listener, options);
+    }
+  }
+
+  // Safe wrapper for querySelectorAll to prevent double-binding on elements
+  const originalDocQSA = Document.prototype.querySelectorAll;
+  const originalElementQSA = Element.prototype.querySelectorAll;
+  
+  function rewriteSelector(selector) {
+      if (typeof selector === 'string' && selector.includes('.ux4g-') && !selector.includes('[data-ux4g-init]')) {
+          return selector.split(',').map(s => s.trim() + ':not([data-ux4g-init])').join(', ');
+      }
+      return selector;
+  }
+  
+  function tagNodes(nodes) {
+      nodes.forEach(n => {
+          if (n.setAttribute) n.setAttribute('data-ux4g-init', 'true');
+      });
+      return nodes;
+  }
+
+  function safeDocQSA(selector) {
+     const newSelector = rewriteSelector(selector);
+     const nodes = originalDocQSA.call(this, newSelector);
+     return selector !== newSelector ? tagNodes(nodes) : nodes;
+  }
+
+  function safeElementQSA(selector) {
+     const newSelector = rewriteSelector(selector);
+     const nodes = originalElementQSA.call(this, newSelector);
+     return selector !== newSelector ? tagNodes(nodes) : nodes;
+  }
+
+  global.ux4gCustomInit = function() {
+    // Mock the environment
+    document.addEventListener = safeDocAddEventListener;
+    window.addEventListener = safeWinAddEventListener;
+    Document.prototype.querySelectorAll = safeDocQSA;
+    Element.prototype.querySelectorAll = safeElementQSA;
+    document.querySelectorAll = safeDocQSA;
+
+    // Run all registered initializers
+    if (global.ux4gCustomInitList) {
+      global.ux4gCustomInitList.forEach(fn => fn());
+    }
+
+    // Restore the environment
+    document.addEventListener = originalDocAddEventListener;
+    window.addEventListener = originalWinAddEventListener;
+    Document.prototype.querySelectorAll = originalDocQSA;
+    Element.prototype.querySelectorAll = originalElementQSA;
+    document.querySelectorAll = originalDocQSA;
+  };
+
+  if (typeof MutationObserver !== "undefined") {
+    const observer = new MutationObserver((mutations) => {
+      let shouldInit = false;
+      for (let i = 0; i < mutations.length; i++) {
+        if (mutations[i].addedNodes.length > 0) {
+          shouldInit = true;
+          break;
+        }
+      }
+      if (shouldInit) {
+        // Use requestAnimationFrame to debounce and avoid layout thrashing
+        cancelAnimationFrame(global._ux4gInitRaf);
+        global._ux4gInitRaf = requestAnimationFrame(() => {
+          init(document);
+          global.ux4gCustomInit();
+        });
+      }
+    });
+    
+    const startObserving = () => {
+      if (document.body) {
+        observer.observe(document.body, { childList: true, subtree: true });
+      } else {
+        setTimeout(startObserving, 50);
+      }
+    };
+    startObserving();
+  }
+
   // Expose API
   global.ux4g = {
     version: "1.1.0",

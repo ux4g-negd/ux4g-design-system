@@ -16,6 +16,7 @@
     position: relative !important;
     flex-shrink: 0;
     --ux4g-icon-size: 18px; /* Default Icon Size for MD */
+    transition: all .3s ease;
 }
 
 .ux4g-avatar img {
@@ -224,6 +225,7 @@
 .ux4g-avatar-group > .ux4g-avatar:hover {
     z-index: var(--ux4g-z-layout-top, 10);
     transform: scale(1.06);
+    cursor: pointer;
 }
 
 .ux4g-avatar-group[data-max] > .ux4g-avatar {

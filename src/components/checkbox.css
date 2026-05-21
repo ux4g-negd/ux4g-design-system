@@ -87,7 +87,6 @@
      display: flex;
      align-items: center;
      gap: var(--ux4g-inline-xs);
-     width: 100%;
 }
 
 .ux4g-checkbox-label {
@@ -97,6 +96,7 @@
      white-space: normal;
      color: var(--ux4g-text-neutral-primary);
      flex: 1;
+     text-align: left;
 }
 
 .ux4g-checkbox-icon {

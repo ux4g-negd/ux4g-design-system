@@ -150,17 +150,17 @@
     tooltip.style.transition = 'none';
     tooltip.style.display = 'flex';
     tooltip.style.opacity = '0';
-    
+
     // Force reflow
-    tooltip.offsetHeight; 
-    
+    tooltip.offsetHeight;
+
     const rect = tooltip.getBoundingClientRect();
 
     let shiftX = 0;
     let shiftY = 0;
 
     // Check boundaries with some padding
-    const padding = 18; 
+    const padding = 18;
     if (rect.left < padding) {
       shiftX = padding - rect.left;
     } else if (rect.right > vw - padding) {
@@ -191,7 +191,7 @@
   }
 
   // Initialize
-  document.addEventListener("DOMContentLoaded", () => {
+  window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
     // Data API init
     U.qsa('[data-bs-toggle="tooltip"],[data-ux-toggle="tooltip"]').forEach(el => Floating.getOrCreate(el, "tooltip"));
     U.qsa('[data-bs-toggle="popover"],[data-ux-toggle="popover"]').forEach(el => Floating.getOrCreate(el, "popover"));
@@ -224,26 +224,26 @@
   /**
    * Helper to ensure menus stay within viewport
    */
-  ux4g.repositionMenu = function(container, menu) {
+  ux4g.repositionMenu = function (container, menu) {
     if (!menu) return;
-    
+
     // Reset positions to let CSS natural flow work first for measurement
     menu.style.top = "";
     menu.style.bottom = "";
     menu.style.left = "";
     menu.style.right = "";
-    
+
     const vh = window.innerHeight;
     const vw = window.innerWidth;
     const menuRect = menu.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
-    
+
     // Vertical Flip
     if (menuRect.bottom > vh && containerRect.top > menuRect.height) {
       menu.style.top = "auto";
       menu.style.bottom = "100%";
-      const offset = getComputedStyle(menu).getPropertyValue('--ux4g-dropdown-menu-offset-y') || 
-                     getComputedStyle(menu).getPropertyValue('--ux4g-combobox-menu-offset-y') || '6px';
+      const offset = getComputedStyle(menu).getPropertyValue('--ux4g-dropdown-menu-offset-y') ||
+        getComputedStyle(menu).getPropertyValue('--ux4g-combobox-menu-offset-y') || '6px';
       menu.style.marginBottom = offset;
     }
 
@@ -265,8 +265,8 @@
       let container = el;
       let menu = el.querySelector('.ux4g-dropdown-menu, .ux4g-combobox-menu, .ux4g-breadcrumb-menu');
       if (el.classList.contains('ux4g-breadcrumb-toggle')) {
-         container = el.parentElement;
-         menu = container.querySelector('.ux4g-breadcrumb-menu');
+        container = el.parentElement;
+        menu = container.querySelector('.ux4g-breadcrumb-menu');
       }
       if (container && menu) ux4g.repositionMenu(container, menu);
     });
@@ -289,9 +289,13 @@
       switch (mode) {
         case "starts-with":
           return t.startsWith(q);
-        case "starts-with-term":
-          // Matches if any word in the text starts with the query
-          return t.split(/\s+/).some((w) => w.startsWith(q));
+        case "starts-with-term": {
+          // Split query into terms; ALL terms must match the start of some word in the text
+          const qTerms = q.split(/\s+/).filter(Boolean);
+          if (qTerms.length === 0) return true;
+          const tWords = t.split(/\s+/);
+          return qTerms.every((qTerm) => tWords.some((w) => w.startsWith(qTerm)));
+        }
         case "contains":
         default:
           return t.includes(q);
@@ -313,9 +317,13 @@
         case "starts-with":
           regex = new RegExp(`^(${escaped})`, "i");
           break;
-        case "starts-with-term":
-          regex = new RegExp(`\\b(${escaped})`, "i");
-          break;
+        case "starts-with-term": {
+          // Highlight each query term individually at word boundaries
+          const qTerms = q.split(/\s+/).filter(Boolean);
+          if (qTerms.length === 0) return originalText;
+          const escapedTerms = qTerms.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+          return originalText.replace(new RegExp(`\\b(${escapedTerms.join("|")})`, "gi"), "<strong>$1</strong>");
+        }
         case "contains":
         default:
           regex = new RegExp(`(${escaped})`, "i");
@@ -329,7 +337,7 @@
 })(window.ux4g);
 
 /* ========================================================= breadcrumb js ========================================================= */
-document.addEventListener("DOMContentLoaded", () => {
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
   const dropdowns = document.querySelectorAll(".ux4g-breadcrumb-dropdown");
   if (!dropdowns.length) return;
 
@@ -352,7 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toggle.classList.add("show");
     menu.classList.add("show");
-    toggle.setAttribute("aria-expanded", "true");    
+    toggle.setAttribute("aria-expanded", "true");
     if (window.ux4g && window.ux4g.repositionMenu) {
       window.ux4g.repositionMenu(dropdown, menu);
     }
@@ -393,7 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Draggable js
 
-document.addEventListener("DOMContentLoaded", () => {
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
 
   const list = document.querySelector(".ux4g-list-draggable");
   let draggedItem = null;
@@ -439,50 +447,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ========================================================= Modal js ========================================================= */
 
-document.addEventListener('DOMContentLoaded', () => {
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
 
-  const openModalButtons = document.querySelectorAll('[data-modal-target]');
-
-  openModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const targetSelector = button.getAttribute('data-modal-target');
+  document.addEventListener('click', (event) => {
+    // Open Modal
+    const openBtn = event.target.closest('[data-modal-target]');
+    if (openBtn) {
+      const targetSelector = openBtn.getAttribute('data-modal-target');
       const targetModal = document.querySelector(targetSelector);
 
       if (targetModal) {
         targetModal.classList.add('is-open');
         document.body.style.overflow = 'hidden';
       }
-    });
-  });
+    }
 
-  const closeModalButtons = document.querySelectorAll('[data-close-modal]');
-
-  closeModalButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-      const modal = event.target.closest('.ux4g-modal-backdrop');
+    // Close Modal via button
+    const closeBtn = event.target.closest('[data-close-modal]');
+    if (closeBtn) {
+      const modal = closeBtn.closest('.ux4g-modal-backdrop') || document.querySelector('.ux4g-modal-backdrop.is-open');
       if (modal) {
         modal.classList.remove('is-open');
         document.body.style.overflow = '';
       }
-    });
-  });
+    }
 
-  window.addEventListener('click', (event) => {
+    // Close Modal via backdrop click
     if (event.target.classList.contains('ux4g-modal-backdrop')) {
       event.target.classList.remove('is-open');
       document.body.style.overflow = '';
     }
   });
 
-  window.addEventListener('keydown', (event) => {
+  document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       const openModals = document.querySelectorAll('.ux4g-modal-backdrop.is-open');
-      openModals.forEach(modal => {
-        modal.classList.remove('is-open');
-      });
-      document.body.style.overflow = '';
+      if (openModals.length > 0) {
+        openModals.forEach(modal => {
+          modal.classList.remove('is-open');
+        });
+        document.body.style.overflow = '';
+      }
     }
   });
+
 });
 
 /* ========================================================= clear seach btn js ========================================================= */
@@ -501,7 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //   });
 // });
 
-document.addEventListener("DOMContentLoaded", () => {
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
   document.querySelectorAll(".ux4g-search-container").forEach((searchWrap) => {
     const input = searchWrap.querySelector(".ux4g-search-input");
     const clearBtn = searchWrap.querySelector(".ux4g-search-clear");
@@ -557,7 +565,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if (isMatch) visibleCount++;
       });
-      
+
       // Toggle No Results Message
       let noResults = list.querySelector(".ux4g-search-no-results");
       if (visibleCount === 0 && value.trim() !== "") {
@@ -575,7 +583,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Optionally show list only when there's a value or interaction
       list.style.display = (value.trim() === "" && visibleCount === 0 && !searchWrap.classList.contains("ux4g-search-show-empty")) ? "none" : "";
-      
+
       // If list is hidden, don't show no results either
       if (list.style.display === "none" && noResults) noResults.style.display = "none";
     };
@@ -619,7 +627,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // clear input text
-document.addEventListener("DOMContentLoaded", () => {
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
   const toggle = (i) => i.closest(".ux4g-input-container")?.classList.toggle("ux4g-has-value", i.value.length > 0);
 
   document.addEventListener("input", (e) => e.target.tagName === "INPUT" && toggle(e.target));
@@ -641,7 +649,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ========================================================= textarea counter js ========================================================= */
-document.addEventListener("DOMContentLoaded", () => {
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
   const updateCounter = (textarea) => {
     const wrapper = textarea.closest(".ux4g-textarea");
     if (!wrapper) return;
@@ -674,7 +682,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // // ux4g drawer js
 
-document.addEventListener("DOMContentLoaded", () => {
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
 
   const buttons = document.querySelectorAll("[data-drawer]");
 
@@ -767,7 +775,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ========================================================= dropdown js ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
   const dropdowns = Array.from(document.querySelectorAll(".ux4g-dropdown"));
   if (!dropdowns.length) return;
 
@@ -1066,7 +1074,7 @@ document.addEventListener("DOMContentLoaded", () => {
 DROPDOWN SEARCH
 ========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
   document.querySelectorAll("[ux4g-dropdown-search]").forEach((input) => {
 
     const dropdown = input.closest(".ux4g-dropdown");
@@ -1121,7 +1129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ========================================================= combobox js ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
   const comboboxs = Array.from(document.querySelectorAll(".ux4g-combobox"));
   if (!comboboxs.length) return;
 
@@ -1340,16 +1348,16 @@ document.addEventListener("DOMContentLoaded", () => {
       options.forEach((option) => {
         const originalText = option.dataset.originalText;
         const isMatch = window.ux4g.filterCore.matches(originalText, value, filterMode);
-        
+
         option.style.display = isMatch ? "" : "none";
 
         const labelNode = isMulti
           ? option.querySelector(".ux4g-checkbox-label")
           : option.querySelector(".ux4g-list-item-start");
 
-        if (labelNode) {
+       if (labelNode) {
           if (value && isMatch) {
-            labelNode.innerHTML = window.ux4g.filterCore.highlight(originalText, value, filterMode);
+            labelNode.innerHTML = `<span>${window.ux4g.filterCore.highlight(originalText, value, filterMode)}</span>`;
           } else {
             labelNode.textContent = originalText;
           }
@@ -1677,13 +1685,13 @@ document.addEventListener("DOMContentLoaded", () => {
 })(window);
 
 /* Auto init */
-document.addEventListener('DOMContentLoaded', () => {
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
   UX4GTab.initAll();
 });
 
 /* ========================================================= slider js ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
 
   /* =========================================================
      HELPERS
@@ -1752,7 +1760,7 @@ document.addEventListener("DOMContentLoaded", () => {
           e.preventDefault();
         }
       });
-      
+
       badge.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
           e.preventDefault();
@@ -1764,14 +1772,14 @@ document.addEventListener("DOMContentLoaded", () => {
         let raw = badge.textContent.replace(/[^0-9]/g, "");
         let val = parseInt(raw, 10);
         if (isNaN(val)) val = parseFloat(targetInput.value);
-        
+
         // Clamp 0-100
         val = Math.min(max, Math.max(min, val));
-        
+
         targetInput.value = val;
         // Trigger input event to update everything
         targetInput.dispatchEvent(new Event("input"));
-        
+
         // Re-apply suffix if needed
         const suffix = badge.textContent.includes("%") ? "%" : "";
         badge.textContent = val + suffix;
@@ -1851,7 +1859,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!badge) return;
       badge.setAttribute("contenteditable", "true");
       badge.style.cursor = "text";
-      
+
       // Strict number only entry
       badge.addEventListener("keypress", (e) => {
         if (!/[0-9]/.test(e.key) && e.key !== "Enter") {
@@ -1870,10 +1878,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let raw = badge.textContent.replace(/[^0-9]/g, "");
         let val = parseInt(raw, 10);
         if (isNaN(val)) val = parseFloat(targetInput.value);
-        
+
         // Clamp min-max
         val = Math.min(max, Math.max(min, val));
-        
+
         targetInput.value = val;
         // Trigger change to validate cross limits
         targetInput.dispatchEvent(new Event("input"));
@@ -1934,7 +1942,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (rangeBoxes?.[1] && document.activeElement !== rangeBoxes[1]) {
         rangeBoxes[1].textContent = vMax + (rangeBoxes[1].textContent.includes("%") ? "%" : "");
       }
-      
+
       /* Thumb overlap fix */
 
       if (pMax - pMin < 10) {
@@ -1976,16 +1984,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ========================================================= context alert js ========================================================= */
 /* Trigger Toast alerts via data attributes */
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('[data-ux4g-toggle="toast"]').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const position = btn.dataset.ux4gPosition || 'top-right';
-            const variant = btn.dataset.ux4gVariant || btn.dataset.ux4gStatus;
-            const title = btn.dataset.ux4gTitle;
-            const body = btn.dataset.ux4gBody;
-            showContextAlert(position, variant, title, body);
-        });
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+  document.querySelectorAll('[data-ux4g-toggle="toast"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const position = btn.dataset.ux4gPosition || 'top-right';
+      const variant = btn.dataset.ux4gVariant || btn.dataset.ux4gStatus;
+      const title = btn.dataset.ux4gTitle;
+      const body = btn.dataset.ux4gBody;
+      showContextAlert(position, variant, title, body);
     });
+  });
 });
 
 let alertCount = 0;
@@ -1998,43 +2006,43 @@ let alertCount = 0;
  * @param {string} [customBody] - Optional custom body text
  */
 function showContextAlert(position, variant, customTitle, customBody) {
-    const statuses = {
-        'info': { icon: 'info', title: 'Info ' },
-        'success': { icon: 'check_circle', title: 'Success ' },
-        'warning': { icon: 'warning', title: 'Warning ' },
-        'error': { icon: 'error', title: 'Error ' },
-        'none': { icon: null, title: 'Alert Title' }
-    };
+  const statuses = {
+    'info': { icon: 'info', title: 'Info ' },
+    'success': { icon: 'check_circle', title: 'Success ' },
+    'warning': { icon: 'warning', title: 'Warning ' },
+    'error': { icon: 'error', title: 'Error ' },
+    'none': { icon: null, title: 'Alert Title' }
+  };
 
-    // Determine type (use variant, or cycle through if not provided)
-    const types = Object.keys(statuses).filter(t => t !== 'none');
-    const type = variant || types[alertCount++ % types.length];
-    const status = statuses[type] || statuses['info'];
+  // Determine type (use variant, or cycle through if not provided)
+  const types = Object.keys(statuses).filter(t => t !== 'none');
+  const type = variant || types[alertCount++ % types.length];
+  const status = statuses[type] || statuses['info'];
 
-    const title = customTitle || status.title;
-    const bodyText = customBody || `This is a ${type} alert shown at the ${position.replace('-', ' ')} corner.`;
+  const title = customTitle || status.title;
+  const bodyText = customBody || `This is a ${type} alert shown at the ${position.replace('-', ' ')} corner.`;
 
-    const containerId = `ux4g-alert-container-${position}`;
-    let container = document.getElementById(containerId);
-    
-    if (!container) {
-        container = document.createElement('div');
-        container.id = containerId;
-        container.className = `ux4g-alert-container ux4g-alert-${position}`;
-        document.body.appendChild(container);
-    }
+  const containerId = `ux4g-alert-container-${position}`;
+  let container = document.getElementById(containerId);
 
-    const alert = document.createElement('div');
-    const animationClass = position.includes('left') ? 'ux4g-animate-left' : 'ux4g-animate-right';
-    
-    // Apply correct status class (fallback to info if variant is 'none' for styling)
-    const statusClass = type === 'none' ? 'info' : type;
-    alert.className = `ux4g-context-alert ux4g-alert-${statusClass} ${animationClass}`;
-    
-    // Icon Logic: None means no icon HTML
-    const iconHtml = status.icon ? `<i class="ux4g-icon ux4g-alert-icon">${status.icon}</i>` : '';
+  if (!container) {
+    container = document.createElement('div');
+    container.id = containerId;
+    container.className = `ux4g-alert-container ux4g-alert-${position}`;
+    document.body.appendChild(container);
+  }
 
-    alert.innerHTML = `
+  const alert = document.createElement('div');
+  const animationClass = position.includes('left') ? 'ux4g-animate-left' : 'ux4g-animate-right';
+
+  // Apply correct status class (fallback to info if variant is 'none' for styling)
+  const statusClass = type === 'none' ? 'info' : type;
+  alert.className = `ux4g-context-alert ux4g-alert-${statusClass} ${animationClass}`;
+
+  // Icon Logic: None means no icon HTML
+  const iconHtml = status.icon ? `<i class="ux4g-icon ux4g-alert-icon">${status.icon}</i>` : '';
+
+  alert.innerHTML = `
         ${iconHtml}
         <span class="ux4g-alert-title">${title}</span>
         <div class="ux4g-alert-actions">
@@ -2045,544 +2053,544 @@ function showContextAlert(position, variant, customTitle, customBody) {
         <div class="ux4g-alert-message">${bodyText}</div>
     `;
 
-    if (position.includes('bottom')) {
-        container.insertBefore(alert, container.firstChild);
-    } else {
-        container.appendChild(alert);
-    }
+  if (position.includes('bottom')) {
+    container.insertBefore(alert, container.firstChild);
+  } else {
+    container.appendChild(alert);
+  }
 
-    setTimeout(() => {
-        if (alert.parentNode) closeAlertWithAnimation(alert);
-    }, 5000);
+  setTimeout(() => {
+    if (alert.parentNode) closeAlertWithAnimation(alert);
+  }, 5000);
 }
 
 /**
  * Handles manual close click
  */
 function closeContextAlert(button) {
-    const alert = button.closest('.ux4g-context-alert');
-    if (alert) {
-        closeAlertWithAnimation(alert);
-    }
+  const alert = button.closest('.ux4g-context-alert');
+  if (alert) {
+    closeAlertWithAnimation(alert);
+  }
 }
 
 /**
  * Closes an alert with a slide-out animation
  */
 function closeAlertWithAnimation(alert) {
-    if (!alert) return;
-    
-    const isLeft = alert.classList.contains('ux4g-animate-left');
-    alert.style.transition = 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
-    alert.style.transform = isLeft ? 'translateX(-100%)' : 'translateX(100%)';
-    alert.style.opacity = '0';
-    
-    // Remove element after animation completes
-    setTimeout(() => {
-        if (alert.parentNode) {
-            alert.parentNode.removeChild(alert);
-        }
-    }, 400);
+  if (!alert) return;
+
+  const isLeft = alert.classList.contains('ux4g-animate-left');
+  alert.style.transition = 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+  alert.style.transform = isLeft ? 'translateX(-100%)' : 'translateX(100%)';
+  alert.style.opacity = '0';
+
+  // Remove element after animation completes
+  setTimeout(() => {
+    if (alert.parentNode) {
+      alert.parentNode.removeChild(alert);
+    }
+  }, 400);
 }
 
 
 /* ========================================================= pagination js ========================================================= */
-document.addEventListener("DOMContentLoaded", () => {
-    const pageSelects = document.querySelectorAll(".ux4g-page-size select");
-    
-    pageSelects.forEach(select => {
-        const wrapper = select.closest(".ux4g-page-size-select-wrapper");
-        
-        const updateState = () => {
-            if (wrapper) {
-                // If there's a selected option that isn't empty (or for simplicity, any selection)
-                if (select.value) {
-                    wrapper.classList.add("has-value");
-                } else {
-                    wrapper.classList.remove("has-value");
-                }
-            }
-        };
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+  const pageSelects = document.querySelectorAll(".ux4g-page-size select");
 
-        select.addEventListener("change", updateState);
-        // Do not run on load, so we show the placeholder icon by default
-    });
+  pageSelects.forEach(select => {
+    const wrapper = select.closest(".ux4g-page-size-select-wrapper");
+
+    const updateState = () => {
+      if (wrapper) {
+        // If there's a selected option that isn't empty (or for simplicity, any selection)
+        if (select.value) {
+          wrapper.classList.add("has-value");
+        } else {
+          wrapper.classList.remove("has-value");
+        }
+      }
+    };
+
+    select.addEventListener("change", updateState);
+    // Do not run on load, so we show the placeholder icon by default
+  });
 });
 
 
 // NPS and Emoji Button interactions
-document.addEventListener('DOMContentLoaded', () => {
-    // NPS interaction
-    const npsButtons = document.querySelectorAll('.feedback-nps-button');
-    npsButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const container = btn.closest('.ux4g-feedback-nps-wrapper') || btn.parentElement;
-            const siblings = Array.from(container.querySelectorAll('.feedback-nps-button'));
-            const clickedIndex = siblings.indexOf(btn);
-            
-            // If clicking the highest active button, reset it (toggle off)
-            const isHighestActive = btn.classList.contains('active') && 
-                (clickedIndex === siblings.length - 1 || !siblings[clickedIndex + 1]?.classList.contains('active'));
-                
-            if (isHighestActive) {
-                siblings.forEach(s => s.classList.remove('active'));
-                container.removeAttribute('data-nps-rating');
-            } else {
-                container.setAttribute('data-nps-rating', clickedIndex);
-                siblings.forEach((s, i) => {
-                    if (i <= clickedIndex) {
-                        s.classList.add('active');
-                    } else {
-                        s.classList.remove('active');
-                    }
-                });
-            }
-        });
-    });
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+  // NPS interaction
+  const npsButtons = document.querySelectorAll('.feedback-nps-button');
+  npsButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const container = btn.closest('.ux4g-feedback-nps-wrapper') || btn.parentElement;
+      const siblings = Array.from(container.querySelectorAll('.feedback-nps-button'));
+      const clickedIndex = siblings.indexOf(btn);
 
-    // Emoji interaction
-    const emojiButtons = document.querySelectorAll('.feedback-emoji-button');
-    emojiButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const wasActive = btn.classList.contains('active');
-            const container = btn.closest('.ux4g-d-flex') || document;
-            container.querySelectorAll('.feedback-emoji-button').forEach(b => b.classList.remove('active'));
-            
-            if (!wasActive) {
-                btn.classList.add('active');
-            }
-        });
-    });
+      // If clicking the highest active button, reset it (toggle off)
+      const isHighestActive = btn.classList.contains('active') &&
+        (clickedIndex === siblings.length - 1 || !siblings[clickedIndex + 1]?.classList.contains('active'));
 
-    // Star interaction
-    const stars = document.querySelectorAll('.ux4g-feedback-star');
-    stars.forEach(star => {
-        star.addEventListener('click', () => {
-            const container = star.parentElement;
-            const siblings = Array.from(container.querySelectorAll('.ux4g-feedback-star'));
-            const clickedIndex = siblings.indexOf(star);
-            
-            // If clicking the only active star, reset it (toggle off)
-            const isOnlyActive = star.classList.contains('active') && 
-                (clickedIndex === siblings.length - 1 || !siblings[clickedIndex + 1].classList.contains('active'));
-                
-            if (isOnlyActive) {
-                siblings.forEach(s => s.classList.remove('active'));
-                container.removeAttribute('data-rating');
-            } else {
-                container.setAttribute('data-rating', clickedIndex + 1);
-                siblings.forEach((s, i) => {
-                    if (i <= clickedIndex) {
-                        s.classList.add('active');
-                    } else {
-                        s.classList.remove('active');
-                    }
-                });
-            }
+      if (isHighestActive) {
+        siblings.forEach(s => s.classList.remove('active'));
+        container.removeAttribute('data-nps-rating');
+      } else {
+        container.setAttribute('data-nps-rating', clickedIndex);
+        siblings.forEach((s, i) => {
+          if (i <= clickedIndex) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
         });
+      }
     });
+  });
 
-    // Submit and Skip Reset interaction
-    const resetButtons = document.querySelectorAll('.ux4g-feedback .ux4g-btn-primary, .ux4g-feedback .ux4g-btn-text-primary');
-    resetButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const feedbackContainer = btn.closest('.ux4g-feedback');
-            if (feedbackContainer) {
-                // Clear textareas
-                feedbackContainer.querySelectorAll('textarea').forEach(textarea => {
-                    textarea.value = '';
-                });
-                // Clear active states on all feedback interactive elements
-                feedbackContainer.querySelectorAll('.active').forEach(activeEl => {
-                    activeEl.classList.remove('active');
-                });
-            }
-        });
+  // Emoji interaction
+  const emojiButtons = document.querySelectorAll('.feedback-emoji-button');
+  emojiButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const wasActive = btn.classList.contains('active');
+      const container = btn.closest('.ux4g-d-flex') || document;
+      container.querySelectorAll('.feedback-emoji-button').forEach(b => b.classList.remove('active'));
+
+      if (!wasActive) {
+        btn.classList.add('active');
+      }
     });
+  });
+
+  // Star interaction
+  const stars = document.querySelectorAll('.ux4g-feedback-star');
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      const container = star.parentElement;
+      const siblings = Array.from(container.querySelectorAll('.ux4g-feedback-star'));
+      const clickedIndex = siblings.indexOf(star);
+
+      // If clicking the only active star, reset it (toggle off)
+      const isOnlyActive = star.classList.contains('active') &&
+        (clickedIndex === siblings.length - 1 || !siblings[clickedIndex + 1].classList.contains('active'));
+
+      if (isOnlyActive) {
+        siblings.forEach(s => s.classList.remove('active'));
+        container.removeAttribute('data-rating');
+      } else {
+        container.setAttribute('data-rating', clickedIndex + 1);
+        siblings.forEach((s, i) => {
+          if (i <= clickedIndex) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+      }
+    });
+  });
+
+  // Submit and Skip Reset interaction
+  const resetButtons = document.querySelectorAll('.ux4g-feedback .ux4g-btn-primary, .ux4g-feedback .ux4g-btn-text-primary');
+  resetButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const feedbackContainer = btn.closest('.ux4g-feedback');
+      if (feedbackContainer) {
+        // Clear textareas
+        feedbackContainer.querySelectorAll('textarea').forEach(textarea => {
+          textarea.value = '';
+        });
+        // Clear active states on all feedback interactive elements
+        feedbackContainer.querySelectorAll('.active').forEach(activeEl => {
+          activeEl.classList.remove('active');
+        });
+      }
+    });
+  });
 });
 
 
 
 /* ========================================================= carousel js ========================================================= */
-document.addEventListener("DOMContentLoaded", () => {
-    const carousels = document.querySelectorAll(".ux4g-carousel");
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+  const carousels = document.querySelectorAll(".ux4g-carousel");
 
-    carousels.forEach(carousel => {
-        const slidesContainer = carousel.querySelector(".ux4g-carousel-slides");
-        const slides = carousel.querySelectorAll(".ux4g-carousel-slide");
-        const slideCount = slides.length;
-        const prevBtn = carousel.querySelector(".ux4g-carousel-arrow-prev");
-        const nextBtn = carousel.querySelector(".ux4g-carousel-arrow-next");
-        const dots = carousel.querySelectorAll(".ux4g-carousel-dot");
-        
-        if (slideCount === 0) return;
+  carousels.forEach(carousel => {
+    const slidesContainer = carousel.querySelector(".ux4g-carousel-slides");
+    const slides = carousel.querySelectorAll(".ux4g-carousel-slide");
+    const slideCount = slides.length;
+    const prevBtn = carousel.querySelector(".ux4g-carousel-arrow-prev");
+    const nextBtn = carousel.querySelector(".ux4g-carousel-arrow-next");
+    const dots = carousel.querySelectorAll(".ux4g-carousel-dot");
 
-        let currentIndex = 0;
+    if (slideCount === 0) return;
 
-        // Initialize: find if any slide is already marked as active
-        slides.forEach((slide, index) => {
-            if (slide.classList.contains("is-active")) {
-                currentIndex = index;
-            }
-        });
+    let currentIndex = 0;
 
-        const updateCarousel = (index) => {
-            // Handle looping
-            if (index < 0) {
-                index = slideCount - 1;
-            } else if (index >= slideCount) {
-                index = 0;
-            }
-            
-            currentIndex = index;
-            
-            // Move slides
-            if (slidesContainer) {
-                slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }
-            
-            // Update slides active state
-            slides.forEach((slide, i) => {
-                slide.classList.toggle("is-active", i === currentIndex);
-                slide.setAttribute("aria-hidden", i !== currentIndex);
-            });
-
-            // Update dots active state
-            dots.forEach((dot, i) => {
-                dot.classList.toggle("is-active", i === currentIndex);
-                dot.setAttribute("aria-current", i === currentIndex ? "step" : "false");
-            });
-        };
-
-        // Event Listeners
-        if (prevBtn) {
-            prevBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                updateCarousel(currentIndex - 1);
-            });
-        }
-
-        if (nextBtn) {
-            nextBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                updateCarousel(currentIndex + 1);
-            });
-        }
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener("click", (e) => {
-                e.preventDefault();
-                updateCarousel(index);
-            });
-        });
-
-        // Initial update to ensure everything is synced
-        updateCarousel(currentIndex);
+    // Initialize: find if any slide is already marked as active
+    slides.forEach((slide, index) => {
+      if (slide.classList.contains("is-active")) {
+        currentIndex = index;
+      }
     });
+
+    const updateCarousel = (index) => {
+      // Handle looping
+      if (index < 0) {
+        index = slideCount - 1;
+      } else if (index >= slideCount) {
+        index = 0;
+      }
+
+      currentIndex = index;
+
+      // Move slides
+      if (slidesContainer) {
+        slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+
+      // Update slides active state
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("is-active", i === currentIndex);
+        slide.setAttribute("aria-hidden", i !== currentIndex);
+      });
+
+      // Update dots active state
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("is-active", i === currentIndex);
+        dot.setAttribute("aria-current", i === currentIndex ? "step" : "false");
+      });
+    };
+
+    // Event Listeners
+    if (prevBtn) {
+      prevBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        updateCarousel(currentIndex - 1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        updateCarousel(currentIndex + 1);
+      });
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", (e) => {
+        e.preventDefault();
+        updateCarousel(index);
+      });
+    });
+
+    // Initial update to ensure everything is synced
+    updateCarousel(currentIndex);
+  });
 });
 
 /* ========================================================= range slider js ========================================================= */
 document.addEventListener("input", (e) => {
-    if (e.target.classList.contains("ux4g-slider-input")) {
-        const sliderField = e.target.closest(".ux4g-slider-field");
-        const slider = e.target.closest(".ux4g-slider");
-        if (!slider) return;
+  if (e.target.classList.contains("ux4g-slider-input")) {
+    const sliderField = e.target.closest(".ux4g-slider-field");
+    const slider = e.target.closest(".ux4g-slider");
+    if (!slider) return;
 
-        const isDual = slider.classList.contains("ux4g-slider-dual");
-        const fill = slider.querySelector(".ux4g-slider-fill");
-        
-        if (!isDual) {
-            const thumb = slider.querySelector(".ux4g-slider-thumb");
-            const percent = ((e.target.value - e.target.min) / (e.target.max - e.target.min)) * 100;
-            if (fill) fill.style.width = percent + "%";
-            if (thumb) thumb.style.left = percent + "%";
-            
-            if (sliderField) {
-                const badge = sliderField.querySelector(".ux4g-slider-value-badge");
-                if (badge) badge.textContent = e.target.value + "%";
-            }
-        } else {
-            const inputMin = slider.querySelector(".ux4g-slider-input-min");
-            const inputMax = slider.querySelector(".ux4g-slider-input-max");
-            const thumbMin = slider.querySelector(".ux4g-slider-thumb-min");
-            const thumbMax = slider.querySelector(".ux4g-slider-thumb-max");
-            
-            let min = parseFloat(inputMin.value);
-            let max = parseFloat(inputMax.value);
-            const rangeMin = parseFloat(inputMin.min);
-            const rangeMax = parseFloat(inputMin.max);
-            
-            if (e.target.classList.contains("ux4g-slider-input-min")) {
-                if (min > max) {
-                    min = max;
-                    inputMin.value = min;
-                }
-            } else {
-                if (max < min) {
-                    max = min;
-                    inputMax.value = max;
-                }
-            }
-            
-            const left = ((min - rangeMin) / (rangeMax - rangeMin)) * 100;
-            const width = ((max - min) / (rangeMax - rangeMin)) * 100;
-            
-            if (fill) {
-                fill.style.left = left + "%";
-                fill.style.width = width + "%";
-            }
-            if (thumbMin) thumbMin.style.left = left + "%";
-            if (thumbMax) thumbMax.style.left = (left + width) + "%";
-            
-            if (sliderField) {
-                const badges = sliderField.querySelectorAll(".ux4g-slider-value-badge");
-                if (badges.length >= 2) {
-                    badges[0].textContent = min + "%";
-                    badges[1].textContent = max + "%";
-                }
-            }
+    const isDual = slider.classList.contains("ux4g-slider-dual");
+    const fill = slider.querySelector(".ux4g-slider-fill");
+
+    if (!isDual) {
+      const thumb = slider.querySelector(".ux4g-slider-thumb");
+      const percent = ((e.target.value - e.target.min) / (e.target.max - e.target.min)) * 100;
+      if (fill) fill.style.width = percent + "%";
+      if (thumb) thumb.style.left = percent + "%";
+
+      if (sliderField) {
+        const badge = sliderField.querySelector(".ux4g-slider-value-badge");
+        if (badge) badge.textContent = e.target.value + "%";
+      }
+    } else {
+      const inputMin = slider.querySelector(".ux4g-slider-input-min");
+      const inputMax = slider.querySelector(".ux4g-slider-input-max");
+      const thumbMin = slider.querySelector(".ux4g-slider-thumb-min");
+      const thumbMax = slider.querySelector(".ux4g-slider-thumb-max");
+
+      let min = parseFloat(inputMin.value);
+      let max = parseFloat(inputMax.value);
+      const rangeMin = parseFloat(inputMin.min);
+      const rangeMax = parseFloat(inputMin.max);
+
+      if (e.target.classList.contains("ux4g-slider-input-min")) {
+        if (min > max) {
+          min = max;
+          inputMin.value = min;
         }
+      } else {
+        if (max < min) {
+          max = min;
+          inputMax.value = max;
+        }
+      }
+
+      const left = ((min - rangeMin) / (rangeMax - rangeMin)) * 100;
+      const width = ((max - min) / (rangeMax - rangeMin)) * 100;
+
+      if (fill) {
+        fill.style.left = left + "%";
+        fill.style.width = width + "%";
+      }
+      if (thumbMin) thumbMin.style.left = left + "%";
+      if (thumbMax) thumbMax.style.left = (left + width) + "%";
+
+      if (sliderField) {
+        const badges = sliderField.querySelectorAll(".ux4g-slider-value-badge");
+        if (badges.length >= 2) {
+          badges[0].textContent = min + "%";
+          badges[1].textContent = max + "%";
+        }
+      }
     }
+  }
 });
 
 
 /********************************* UX4G DatePicker & TimePicker JS ***********************************/
 
 (function (global) {
-    "use strict";
+  "use strict";
 
-    console.log('UX4G Components Script Loaded');
+  console.log('UX4G Components Script Loaded');
 
-    const makeKeyboardClickable = (el) => {
-        if (!el) return;
-        if (el.tagName !== 'BUTTON' && el.tagName !== 'INPUT') {
-            if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
-            el.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    el.click();
-                }
-            });
+  const makeKeyboardClickable = (el) => {
+    if (!el) return;
+    if (el.tagName !== 'BUTTON' && el.tagName !== 'INPUT') {
+      if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          el.click();
         }
-    };
+      });
+    }
+  };
 
-    // Shared Backdrop
-    let backdrop = document.querySelector('.ux4g-date-picker-backdrop');
-    const getBackdrop = () => {
-        if (!backdrop) {
-            backdrop = document.createElement('div');
-            backdrop.className = 'ux4g-date-picker-backdrop'; 
-            document.body.appendChild(backdrop);
+  // Shared Backdrop
+  let backdrop = document.querySelector('.ux4g-date-picker-backdrop');
+  const getBackdrop = () => {
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'ux4g-date-picker-backdrop';
+      document.body.appendChild(backdrop);
+    }
+    return backdrop;
+  };
+
+  const isMobile = () => window.innerWidth <= 576;
+
+  class DatePicker {
+    constructor(container) {
+      this.container = container;
+      this.input = container.querySelector('.ux4g-date-picker-input');
+      this.dropdown = container.querySelector('.ux4g-date-picker-dropdown');
+      this.calendarGrid = container.querySelector('.ux4g-date-picker-grid');
+      this.monthLabel = container.querySelector('.ux4g-date-picker-current');
+
+      const navBtns = container.querySelectorAll('.ux4g-date-picker-nav-btn');
+      this.prevBtn = navBtns[0];
+      this.nextBtn = navBtns[1];
+
+      this.confirmBtn = container.querySelector('.ux4g-btn-primary');
+      this.cancelBtn = container.querySelector('.ux4g-btn-outline-neutral');
+
+      this.currentDate = new Date();
+      this.viewDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
+      this.selectedDate = null;
+      this.tempSelectedDate = null;
+
+      this.isSelectingYearMonth = false;
+
+      this._init();
+    }
+
+    _init() {
+      if (!this.input || !this.dropdown) return;
+
+      if (this.input.value) {
+        const parts = this.input.value.split('/');
+        if (parts.length === 3) {
+          this.selectedDate = new Date(parts[2], parts[1] - 1, parts[0]);
+          this.viewDate = new Date(parts[2], parts[1] - 1, 1);
+          this.tempSelectedDate = new Date(this.selectedDate);
         }
-        return backdrop;
-    };
+      }
 
-    const isMobile = () => window.innerWidth <= 576;
-
-    class DatePicker {
-        constructor(container) {
-            this.container = container;
-            this.input = container.querySelector('.ux4g-date-picker-input');
-            this.dropdown = container.querySelector('.ux4g-date-picker-dropdown');
-            this.calendarGrid = container.querySelector('.ux4g-date-picker-grid');
-            this.monthLabel = container.querySelector('.ux4g-date-picker-current');
-            
-            const navBtns = container.querySelectorAll('.ux4g-date-picker-nav-btn');
-            this.prevBtn = navBtns[0];
-            this.nextBtn = navBtns[1];
-            
-            this.confirmBtn = container.querySelector('.ux4g-btn-primary');
-            this.cancelBtn = container.querySelector('.ux4g-btn-outline-neutral');
-            
-            this.currentDate = new Date();
-            this.viewDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
-            this.selectedDate = null;
-            this.tempSelectedDate = null;
-            
-            this.isSelectingYearMonth = false;
-            
-            this._init();
+      // Keyboard accessibility
+      this.input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.open();
         }
+      });
 
-        _init() {
-            if (!this.input || !this.dropdown) return;
+      this.input.addEventListener('focus', (e) => {
+        this.open();
+      });
 
-            if (this.input.value) {
-                const parts = this.input.value.split('/');
-                if (parts.length === 3) {
-                    this.selectedDate = new Date(parts[2], parts[1] - 1, parts[0]);
-                    this.viewDate = new Date(parts[2], parts[1] - 1, 1);
-                    this.tempSelectedDate = new Date(this.selectedDate);
-                }
-            }
+      this.input.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.open();
+      });
 
-            // Keyboard accessibility
-            this.input.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.open();
-                }
-            });
+      if (this.prevBtn) {
+        makeKeyboardClickable(this.prevBtn);
+        this.prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (this.isSelectingYearMonth) {
+            this.changeYearRange(-8);
+          } else {
+            this.changeMonth(-1);
+          }
+        });
+      }
 
-            this.input.addEventListener('focus', (e) => {
-                this.open();
-            });
+      if (this.nextBtn) {
+        makeKeyboardClickable(this.nextBtn);
+        this.nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (this.isSelectingYearMonth) {
+            this.changeYearRange(8);
+          } else {
+            this.changeMonth(1);
+          }
+        });
+      }
 
-            this.input.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.open();
-            });
-            
-            if (this.prevBtn) {
-                makeKeyboardClickable(this.prevBtn);
-                this.prevBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (this.isSelectingYearMonth) {
-                        this.changeYearRange(-8);
-                    } else {
-                        this.changeMonth(-1);
-                    }
-                });
-            }
-            
-            if (this.nextBtn) {
-                makeKeyboardClickable(this.nextBtn);
-                this.nextBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (this.isSelectingYearMonth) {
-                        this.changeYearRange(8);
-                    } else {
-                        this.changeMonth(1);
-                    }
-                });
-            }
-
-            if (this.monthLabel) {
-                makeKeyboardClickable(this.monthLabel);
-                this.monthLabel.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.isSelectingYearMonth = !this.isSelectingYearMonth;
-                    this.render();
-                    setTimeout(() => {
-                        if (this.isSelectingYearMonth) {
-                            const calendarContainer = this.container.querySelector('.ux4g-date-picker-calendar');
-                            let el = calendarContainer.querySelector('.ux4g-date-picker-year-item.is-selected') || calendarContainer.querySelector('.ux4g-date-picker-year-item');
-                            if (el) el.focus();
-                        } else {
-                            let el = this.calendarGrid.querySelector('.is-selected') || this.calendarGrid.querySelector('.is-today') || this.calendarGrid.querySelector('.ux4g-date-picker-day:not(.is-muted)');
-                            if (el) el.focus();
-                        }
-                    }, 0);
-                });
-            }
-
-            if (this.confirmBtn) {
-                makeKeyboardClickable(this.confirmBtn);
-                this.confirmBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (this.isSelectingYearMonth) {
-                        this.isSelectingYearMonth = false;
-                        this.render();
-                        setTimeout(() => {
-                            let el = this.calendarGrid.querySelector('.is-selected') || this.calendarGrid.querySelector('.is-today') || this.calendarGrid.querySelector('.ux4g-date-picker-day:not(.is-muted)');
-                            if (el) el.focus();
-                        }, 0);
-                    } else {
-                        this.confirmSelection();
-                    }
-                });
-            }
-
-            if (this.cancelBtn) {
-                makeKeyboardClickable(this.cancelBtn);
-                this.cancelBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.cancelSelection();
-                });
-            }
-
-            document.addEventListener('click', (e) => {
-                if (!this.container.contains(e.target) && !getBackdrop().contains(e.target)) {
-                    this.close();
-                }
-            });
-
-            getBackdrop().addEventListener('click', () => {
-                this.close();
-            });
-
-            this.render();
-        }
-
-        open() {
-            if (this.dropdown) {
-                this.tempSelectedDate = this.selectedDate ? new Date(this.selectedDate) : null;
-                this.isSelectingYearMonth = false;
-                this.dropdown.classList.add('is-open');
-                if (isMobile()) {
-                    getBackdrop().classList.add('is-active');
-                    document.body.style.overflow = 'hidden';
-                }
-                this.render();
-            }
-        }
-
-        close() {
-            if (this.dropdown) {
-                this.dropdown.classList.remove('is-open');
-                getBackdrop().classList.remove('is-active');
-                document.body.style.overflow = '';
-            }
-        }
-
-        confirmSelection() {
-            this.selectedDate = this.tempSelectedDate ? new Date(this.tempSelectedDate) : null;
-            if (this.selectedDate) {
-                const day = String(this.selectedDate.getDate()).padStart(2, '0');
-                const month = String(this.selectedDate.getMonth() + 1).padStart(2, '0');
-                const year = this.selectedDate.getFullYear();
-                this.input.value = `${day}/${month}/${year}`;
-            } else {
-                this.input.value = '';
-            }
-            this.close();
-        }
-
-        cancelSelection() {
-            this.tempSelectedDate = this.selectedDate ? new Date(this.selectedDate) : null;
-            this.close();
-        }
-
-        changeMonth(delta) {
-            this.viewDate.setMonth(this.viewDate.getMonth() + delta);
-            this.render();
-        }
-
-        changeYearRange(delta) {
-            this.viewDate.setFullYear(this.viewDate.getFullYear() + delta);
-            this.render();
-        }
-
-        render() {
+      if (this.monthLabel) {
+        makeKeyboardClickable(this.monthLabel);
+        this.monthLabel.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.isSelectingYearMonth = !this.isSelectingYearMonth;
+          this.render();
+          setTimeout(() => {
             if (this.isSelectingYearMonth) {
-                this.renderYearMonthSelection();
+              const calendarContainer = this.container.querySelector('.ux4g-date-picker-calendar');
+              let el = calendarContainer.querySelector('.ux4g-date-picker-year-item.is-selected') || calendarContainer.querySelector('.ux4g-date-picker-year-item');
+              if (el) el.focus();
             } else {
-                this.renderCalendar();
+              let el = this.calendarGrid.querySelector('.is-selected') || this.calendarGrid.querySelector('.is-today') || this.calendarGrid.querySelector('.ux4g-date-picker-day:not(.is-muted)');
+              if (el) el.focus();
             }
+          }, 0);
+        });
+      }
+
+      if (this.confirmBtn) {
+        makeKeyboardClickable(this.confirmBtn);
+        this.confirmBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (this.isSelectingYearMonth) {
+            this.isSelectingYearMonth = false;
+            this.render();
+            setTimeout(() => {
+              let el = this.calendarGrid.querySelector('.is-selected') || this.calendarGrid.querySelector('.is-today') || this.calendarGrid.querySelector('.ux4g-date-picker-day:not(.is-muted)');
+              if (el) el.focus();
+            }, 0);
+          } else {
+            this.confirmSelection();
+          }
+        });
+      }
+
+      if (this.cancelBtn) {
+        makeKeyboardClickable(this.cancelBtn);
+        this.cancelBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.cancelSelection();
+        });
+      }
+
+      document.addEventListener('click', (e) => {
+        if (!this.container.contains(e.target) && !getBackdrop().contains(e.target)) {
+          this.close();
         }
+      });
 
-        renderCalendar() {
-            const year = this.viewDate.getFullYear();
-            const month = this.viewDate.getMonth();
-            const monthNames = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"
-            ];
-            
-            if (this.monthLabel) {
-                this.monthLabel.innerHTML = `${monthNames[month]} ${year} <span class="ux4g-icon-outlined ux4g-fs-18">keyboard_arrow_down</span>`;
-            }
+      getBackdrop().addEventListener('click', () => {
+        this.close();
+      });
 
-            const calendarHtml = `
+      this.render();
+    }
+
+    open() {
+      if (this.dropdown) {
+        this.tempSelectedDate = this.selectedDate ? new Date(this.selectedDate) : null;
+        this.isSelectingYearMonth = false;
+        this.dropdown.classList.add('is-open');
+        if (isMobile()) {
+          getBackdrop().classList.add('is-active');
+          document.body.style.overflow = 'hidden';
+        }
+        this.render();
+      }
+    }
+
+    close() {
+      if (this.dropdown) {
+        this.dropdown.classList.remove('is-open');
+        getBackdrop().classList.remove('is-active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    confirmSelection() {
+      this.selectedDate = this.tempSelectedDate ? new Date(this.tempSelectedDate) : null;
+      if (this.selectedDate) {
+        const day = String(this.selectedDate.getDate()).padStart(2, '0');
+        const month = String(this.selectedDate.getMonth() + 1).padStart(2, '0');
+        const year = this.selectedDate.getFullYear();
+        this.input.value = `${day}/${month}/${year}`;
+      } else {
+        this.input.value = '';
+      }
+      this.close();
+    }
+
+    cancelSelection() {
+      this.tempSelectedDate = this.selectedDate ? new Date(this.selectedDate) : null;
+      this.close();
+    }
+
+    changeMonth(delta) {
+      this.viewDate.setMonth(this.viewDate.getMonth() + delta);
+      this.render();
+    }
+
+    changeYearRange(delta) {
+      this.viewDate.setFullYear(this.viewDate.getFullYear() + delta);
+      this.render();
+    }
+
+    render() {
+      if (this.isSelectingYearMonth) {
+        this.renderYearMonthSelection();
+      } else {
+        this.renderCalendar();
+      }
+    }
+
+    renderCalendar() {
+      const year = this.viewDate.getFullYear();
+      const month = this.viewDate.getMonth();
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+
+      if (this.monthLabel) {
+        this.monthLabel.innerHTML = `${monthNames[month]} ${year} <span class="ux4g-icon-outlined ux4g-fs-18">keyboard_arrow_down</span>`;
+      }
+
+      const calendarHtml = `
                 <div class="ux4g-date-picker-weekdays">
                     <div class="ux4g-date-picker-weekday">Mo</div>
                     <div class="ux4g-date-picker-weekday">Tu</div>
@@ -2594,316 +2602,316 @@ document.addEventListener("input", (e) => {
                 </div>
                 <div class="ux4g-date-picker-grid"></div>
             `;
-            
-            const calendarContainer = this.container.querySelector('.ux4g-date-picker-calendar');
-            calendarContainer.innerHTML = calendarHtml;
-            this.calendarGrid = calendarContainer.querySelector('.ux4g-date-picker-grid');
 
-            const firstDayOfMonth = new Date(year, month, 1).getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            let startDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
-            const prevMonthLastDay = new Date(year, month, 0).getDate();
-            
-            let html = '';
-            for (let i = startDay - 1; i >= 0; i--) {
-                html += `<div class="ux4g-date-picker-day is-muted">${prevMonthLastDay - i}</div>`;
-            }
-            
-            for (let i = 1; i <= daysInMonth; i++) {
-                const date = new Date(year, month, i);
-                const isToday = date.toDateString() === this.currentDate.toDateString();
-                const isSelected = this.tempSelectedDate && date.toDateString() === this.tempSelectedDate.toDateString();
-                
-                let classes = 'ux4g-date-picker-day';
-                if (isToday) classes += ' is-today';
-                if (isSelected) classes += ' is-selected';
-                
-                html += `<div class="${classes}" data-date="${i}" tabindex="0">${i}</div>`;
-            }
-            
-            const totalCells = 42;
-            const remainingCells = totalCells - (startDay + daysInMonth);
-            for (let i = 1; i <= remainingCells; i++) {
-                html += `<div class="ux4g-date-picker-day is-muted">${i}</div>`;
-            }
-            
-            this.calendarGrid.innerHTML = html;
-            this.calendarGrid.querySelectorAll('.ux4g-date-picker-day:not(.is-muted)').forEach(dayEl => {
-                makeKeyboardClickable(dayEl);
-                dayEl.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const day = e.target.dataset.date;
-                    this.selectDate(new Date(year, month, day));
-                });
-            });
+      const calendarContainer = this.container.querySelector('.ux4g-date-picker-calendar');
+      calendarContainer.innerHTML = calendarHtml;
+      this.calendarGrid = calendarContainer.querySelector('.ux4g-date-picker-grid');
 
-            if (this.confirmBtn) {
-                this.confirmBtn.innerHTML = 'Confirm';
-                this.confirmBtn.disabled = !this.tempSelectedDate;
-            }
-        }
+      const firstDayOfMonth = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      let startDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
+      const prevMonthLastDay = new Date(year, month, 0).getDate();
 
-        renderYearMonthSelection() {
-            const currentYear = this.viewDate.getFullYear();
-            const startYear = Math.floor(currentYear / 8) * 8;
-            const endYear = startYear + 7;
-            
-            if (this.monthLabel) {
-                this.monthLabel.innerHTML = `${startYear}-${endYear} <span class="ux4g-icon-outlined ux4g-fs-18">keyboard_arrow_down</span>`;
-            }
+      let html = '';
+      for (let i = startDay - 1; i >= 0; i--) {
+        html += `<div class="ux4g-date-picker-day is-muted">${prevMonthLastDay - i}</div>`;
+      }
 
-            let html = '<div class="ux4g-date-picker-selection-view">';
-            html += '<div class="ux4g-date-picker-year-grid">';
-            for (let y = startYear; y <= endYear; y++) {
-                const isSelected = y === this.viewDate.getFullYear();
-                html += `<div class="ux4g-date-picker-year-item ${isSelected ? 'is-selected' : ''}" data-year="${y}" tabindex="0">${y}</div>`;
-            }
-            html += '</div>';
+      for (let i = 1; i <= daysInMonth; i++) {
+        const date = new Date(year, month, i);
+        const isToday = date.toDateString() === this.currentDate.toDateString();
+        const isSelected = this.tempSelectedDate && date.toDateString() === this.tempSelectedDate.toDateString();
 
-            const monthNamesShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            html += '<div class="ux4g-date-picker-month-grid">';
-            monthNamesShort.forEach((m, i) => {
-                const isSelected = i === this.viewDate.getMonth();
-                html += `<div class="ux4g-date-picker-month-item ${isSelected ? 'is-selected' : ''}" data-month="${i}" tabindex="0">${m}</div>`;
-            });
-            html += '</div></div>';
+        let classes = 'ux4g-date-picker-day';
+        if (isToday) classes += ' is-today';
+        if (isSelected) classes += ' is-selected';
 
-            const calendarContainer = this.container.querySelector('.ux4g-date-picker-calendar');
-            calendarContainer.innerHTML = html;
+        html += `<div class="${classes}" data-date="${i}" tabindex="0">${i}</div>`;
+      }
 
-            calendarContainer.querySelectorAll('.ux4g-date-picker-year-item').forEach(el => {
-                makeKeyboardClickable(el);
-                el.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.viewDate.setFullYear(parseInt(e.target.dataset.year));
-                    this.renderYearMonthSelection();
-                    setTimeout(() => {
-                        const selectedMonth = this.container.querySelector('.ux4g-date-picker-month-item.is-selected');
-                        if (selectedMonth) selectedMonth.focus();
-                    }, 0);
-                });
-            });
+      const totalCells = 42;
+      const remainingCells = totalCells - (startDay + daysInMonth);
+      for (let i = 1; i <= remainingCells; i++) {
+        html += `<div class="ux4g-date-picker-day is-muted">${i}</div>`;
+      }
 
-            calendarContainer.querySelectorAll('.ux4g-date-picker-month-item').forEach(el => {
-                makeKeyboardClickable(el);
-                el.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.viewDate.setMonth(parseInt(e.target.dataset.month));
-                    this.renderYearMonthSelection();
-                    if (this.confirmBtn) setTimeout(() => this.confirmBtn.focus(), 0);
-                });
-            });
+      this.calendarGrid.innerHTML = html;
+      this.calendarGrid.querySelectorAll('.ux4g-date-picker-day:not(.is-muted)').forEach(dayEl => {
+        makeKeyboardClickable(dayEl);
+        dayEl.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const day = e.target.dataset.date;
+          this.selectDate(new Date(year, month, day));
+        });
+      });
 
-            if (this.confirmBtn) {
-                this.confirmBtn.innerHTML = 'Select date';
-                this.confirmBtn.disabled = false;
-            }
-        }
-
-        selectDate(date) {
-            this.tempSelectedDate = date;
-            this.render();
-            if (this.confirmBtn && !this.confirmBtn.disabled) {
-                setTimeout(() => this.confirmBtn.focus(), 0);
-            }
-        }
+      if (this.confirmBtn) {
+        this.confirmBtn.innerHTML = 'Confirm';
+        this.confirmBtn.disabled = !this.tempSelectedDate;
+      }
     }
 
-    class RangeDatePicker {
-        constructor(container) {
-            this.container = container;
-            this.inputs = container.querySelectorAll('.ux4g-date-picker-input');
-            this.dropdown = container.querySelector('.ux4g-date-picker-dropdown');
-            this.calendarGrid = container.querySelector('.ux4g-date-picker-grid');
-            this.monthLabel = container.querySelector('.ux4g-date-picker-current');
-            
-            const navBtns = container.querySelectorAll('.ux4g-date-picker-nav-btn');
-            this.prevBtn = navBtns[0];
-            this.nextBtn = navBtns[1];
-            
-            this.confirmBtn = container.querySelector('.ux4g-btn-primary');
-            this.cancelBtn = container.querySelector('.ux4g-btn-outline-neutral');
-            
-            this.currentDate = new Date();
-            this.viewDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
-            this.startDate = null;
-            this.endDate = null;
-            this.tempStartDate = null;
-            this.tempEndDate = null;
-            this.selectingEnd = false;
-            this.isSelectingYearMonth = false;
-            
-            this._init();
-        }
+    renderYearMonthSelection() {
+      const currentYear = this.viewDate.getFullYear();
+      const startYear = Math.floor(currentYear / 8) * 8;
+      const endYear = startYear + 7;
 
-        _init() {
-            if (!this.inputs.length || !this.dropdown) return;
+      if (this.monthLabel) {
+        this.monthLabel.innerHTML = `${startYear}-${endYear} <span class="ux4g-icon-outlined ux4g-fs-18">keyboard_arrow_down</span>`;
+      }
 
-            this.inputs.forEach(input => {
-                // Keyboard accessibility
-                input.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        this.open();
-                    }
-                });
+      let html = '<div class="ux4g-date-picker-selection-view">';
+      html += '<div class="ux4g-date-picker-year-grid">';
+      for (let y = startYear; y <= endYear; y++) {
+        const isSelected = y === this.viewDate.getFullYear();
+        html += `<div class="ux4g-date-picker-year-item ${isSelected ? 'is-selected' : ''}" data-year="${y}" tabindex="0">${y}</div>`;
+      }
+      html += '</div>';
 
-                input.addEventListener('focus', (e) => {
-                    this.open();
-                });
+      const monthNamesShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      html += '<div class="ux4g-date-picker-month-grid">';
+      monthNamesShort.forEach((m, i) => {
+        const isSelected = i === this.viewDate.getMonth();
+        html += `<div class="ux4g-date-picker-month-item ${isSelected ? 'is-selected' : ''}" data-month="${i}" tabindex="0">${m}</div>`;
+      });
+      html += '</div></div>';
 
-                input.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.open();
-                });
-            });
-            
-            if (this.prevBtn) {
-                makeKeyboardClickable(this.prevBtn);
-                this.prevBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (this.isSelectingYearMonth) {
-                        this.changeYearRange(-8);
-                    } else {
-                        this.changeMonth(-1);
-                    }
-                });
-            }
-            
-            if (this.nextBtn) {
-                makeKeyboardClickable(this.nextBtn);
-                this.nextBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (this.isSelectingYearMonth) {
-                        this.changeYearRange(8);
-                    } else {
-                        this.changeMonth(1);
-                    }
-                });
-            }
+      const calendarContainer = this.container.querySelector('.ux4g-date-picker-calendar');
+      calendarContainer.innerHTML = html;
 
-            if (this.monthLabel) {
-                makeKeyboardClickable(this.monthLabel);
-                this.monthLabel.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.isSelectingYearMonth = !this.isSelectingYearMonth;
-                    this.render();
-                    setTimeout(() => {
-                        if (this.isSelectingYearMonth) {
-                            const calendarContainer = this.container.querySelector('.ux4g-date-picker-calendar');
-                            let el = calendarContainer.querySelector('.ux4g-date-picker-year-item.is-selected') || calendarContainer.querySelector('.ux4g-date-picker-year-item');
-                            if (el) el.focus();
-                        } else {
-                            let el = this.calendarGrid.querySelector('.is-range-start') || this.calendarGrid.querySelector('.is-selected') || this.calendarGrid.querySelector('.is-today') || this.calendarGrid.querySelector('.ux4g-date-picker-day:not(.is-muted)');
-                            if (el) el.focus();
-                        }
-                    }, 0);
-                });
-            }
+      calendarContainer.querySelectorAll('.ux4g-date-picker-year-item').forEach(el => {
+        makeKeyboardClickable(el);
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.viewDate.setFullYear(parseInt(e.target.dataset.year));
+          this.renderYearMonthSelection();
+          setTimeout(() => {
+            const selectedMonth = this.container.querySelector('.ux4g-date-picker-month-item.is-selected');
+            if (selectedMonth) selectedMonth.focus();
+          }, 0);
+        });
+      });
 
-            if (this.confirmBtn) {
-                makeKeyboardClickable(this.confirmBtn);
-                this.confirmBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (this.isSelectingYearMonth) {
-                        this.isSelectingYearMonth = false;
-                        this.render();
-                        setTimeout(() => {
-                            let el = this.calendarGrid.querySelector('.is-range-start') || this.calendarGrid.querySelector('.is-selected') || this.calendarGrid.querySelector('.is-today') || this.calendarGrid.querySelector('.ux4g-date-picker-day:not(.is-muted)');
-                            if (el) el.focus();
-                        }, 0);
-                    } else {
-                        this.confirmSelection();
-                    }
-                });
-            }
+      calendarContainer.querySelectorAll('.ux4g-date-picker-month-item').forEach(el => {
+        makeKeyboardClickable(el);
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.viewDate.setMonth(parseInt(e.target.dataset.month));
+          this.renderYearMonthSelection();
+          if (this.confirmBtn) setTimeout(() => this.confirmBtn.focus(), 0);
+        });
+      });
 
-            if (this.cancelBtn) {
-                this.cancelBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.cancelSelection();
-                });
-            }
+      if (this.confirmBtn) {
+        this.confirmBtn.innerHTML = 'Select date';
+        this.confirmBtn.disabled = false;
+      }
+    }
 
-            document.addEventListener('click', (e) => {
-                if (!this.container.contains(e.target) && !getBackdrop().contains(e.target)) {
-                    this.close();
-                }
-            });
+    selectDate(date) {
+      this.tempSelectedDate = date;
+      this.render();
+      if (this.confirmBtn && !this.confirmBtn.disabled) {
+        setTimeout(() => this.confirmBtn.focus(), 0);
+      }
+    }
+  }
 
-            getBackdrop().addEventListener('click', () => {
-                this.close();
-            });
+  class RangeDatePicker {
+    constructor(container) {
+      this.container = container;
+      this.inputs = container.querySelectorAll('.ux4g-date-picker-input');
+      this.dropdown = container.querySelector('.ux4g-date-picker-dropdown');
+      this.calendarGrid = container.querySelector('.ux4g-date-picker-grid');
+      this.monthLabel = container.querySelector('.ux4g-date-picker-current');
 
-            this.render();
-        }
+      const navBtns = container.querySelectorAll('.ux4g-date-picker-nav-btn');
+      this.prevBtn = navBtns[0];
+      this.nextBtn = navBtns[1];
 
-        open() {
-            if (this.dropdown) {
-                this.tempStartDate = this.startDate ? new Date(this.startDate) : null;
-                this.tempEndDate = this.endDate ? new Date(this.endDate) : null;
-                this.selectingEnd = this.tempStartDate && !this.tempEndDate;
-                this.isSelectingYearMonth = false;
-                this.dropdown.classList.add('is-open');
-                if (isMobile()) {
-                    getBackdrop().classList.add('is-active');
-                    document.body.style.overflow = 'hidden';
-                }
-                this.render();
-            }
-        }
+      this.confirmBtn = container.querySelector('.ux4g-btn-primary');
+      this.cancelBtn = container.querySelector('.ux4g-btn-outline-neutral');
 
-        close() {
-            if (this.dropdown) {
-                this.dropdown.classList.remove('is-open');
-                getBackdrop().classList.remove('is-active');
-                document.body.style.overflow = '';
-            }
-        }
+      this.currentDate = new Date();
+      this.viewDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
+      this.startDate = null;
+      this.endDate = null;
+      this.tempStartDate = null;
+      this.tempEndDate = null;
+      this.selectingEnd = false;
+      this.isSelectingYearMonth = false;
 
-        confirmSelection() {
-            this.startDate = this.tempStartDate ? new Date(this.tempStartDate) : null;
-            this.endDate = this.tempEndDate ? new Date(this.tempEndDate) : null;
-            this.updateInputs();
-            this.close();
-        }
+      this._init();
+    }
 
-        cancelSelection() {
-            this.tempStartDate = this.startDate ? new Date(this.tempStartDate) : null;
-            this.tempEndDate = this.endDate ? new Date(this.endDate) : null;
-            this.close();
-        }
+    _init() {
+      if (!this.inputs.length || !this.dropdown) return;
 
-        changeMonth(delta) {
-            this.viewDate.setMonth(this.viewDate.getMonth() + delta);
-            this.render();
-        }
+      this.inputs.forEach(input => {
+        // Keyboard accessibility
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.open();
+          }
+        });
 
-        changeYearRange(delta) {
-            this.viewDate.setFullYear(this.viewDate.getFullYear() + delta);
-            this.render();
-        }
+        input.addEventListener('focus', (e) => {
+          this.open();
+        });
 
-        render() {
+        input.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.open();
+        });
+      });
+
+      if (this.prevBtn) {
+        makeKeyboardClickable(this.prevBtn);
+        this.prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (this.isSelectingYearMonth) {
+            this.changeYearRange(-8);
+          } else {
+            this.changeMonth(-1);
+          }
+        });
+      }
+
+      if (this.nextBtn) {
+        makeKeyboardClickable(this.nextBtn);
+        this.nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (this.isSelectingYearMonth) {
+            this.changeYearRange(8);
+          } else {
+            this.changeMonth(1);
+          }
+        });
+      }
+
+      if (this.monthLabel) {
+        makeKeyboardClickable(this.monthLabel);
+        this.monthLabel.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.isSelectingYearMonth = !this.isSelectingYearMonth;
+          this.render();
+          setTimeout(() => {
             if (this.isSelectingYearMonth) {
-                this.renderYearMonthSelection();
+              const calendarContainer = this.container.querySelector('.ux4g-date-picker-calendar');
+              let el = calendarContainer.querySelector('.ux4g-date-picker-year-item.is-selected') || calendarContainer.querySelector('.ux4g-date-picker-year-item');
+              if (el) el.focus();
             } else {
-                this.renderCalendar();
+              let el = this.calendarGrid.querySelector('.is-range-start') || this.calendarGrid.querySelector('.is-selected') || this.calendarGrid.querySelector('.is-today') || this.calendarGrid.querySelector('.ux4g-date-picker-day:not(.is-muted)');
+              if (el) el.focus();
             }
+          }, 0);
+        });
+      }
+
+      if (this.confirmBtn) {
+        makeKeyboardClickable(this.confirmBtn);
+        this.confirmBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (this.isSelectingYearMonth) {
+            this.isSelectingYearMonth = false;
+            this.render();
+            setTimeout(() => {
+              let el = this.calendarGrid.querySelector('.is-range-start') || this.calendarGrid.querySelector('.is-selected') || this.calendarGrid.querySelector('.is-today') || this.calendarGrid.querySelector('.ux4g-date-picker-day:not(.is-muted)');
+              if (el) el.focus();
+            }, 0);
+          } else {
+            this.confirmSelection();
+          }
+        });
+      }
+
+      if (this.cancelBtn) {
+        this.cancelBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.cancelSelection();
+        });
+      }
+
+      document.addEventListener('click', (e) => {
+        if (!this.container.contains(e.target) && !getBackdrop().contains(e.target)) {
+          this.close();
         }
+      });
 
-        renderCalendar() {
-            const year = this.viewDate.getFullYear();
-            const month = this.viewDate.getMonth();
-            const monthNames = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"
-            ];
-            
-            if (this.monthLabel) {
-                this.monthLabel.innerHTML = `${monthNames[month]} ${year} <span class="ux4g-icon-outlined ux4g-fs-18">keyboard_arrow_down</span>`;
-            }
+      getBackdrop().addEventListener('click', () => {
+        this.close();
+      });
 
-            const calendarHtml = `
+      this.render();
+    }
+
+    open() {
+      if (this.dropdown) {
+        this.tempStartDate = this.startDate ? new Date(this.startDate) : null;
+        this.tempEndDate = this.endDate ? new Date(this.endDate) : null;
+        this.selectingEnd = this.tempStartDate && !this.tempEndDate;
+        this.isSelectingYearMonth = false;
+        this.dropdown.classList.add('is-open');
+        if (isMobile()) {
+          getBackdrop().classList.add('is-active');
+          document.body.style.overflow = 'hidden';
+        }
+        this.render();
+      }
+    }
+
+    close() {
+      if (this.dropdown) {
+        this.dropdown.classList.remove('is-open');
+        getBackdrop().classList.remove('is-active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    confirmSelection() {
+      this.startDate = this.tempStartDate ? new Date(this.tempStartDate) : null;
+      this.endDate = this.tempEndDate ? new Date(this.tempEndDate) : null;
+      this.updateInputs();
+      this.close();
+    }
+
+    cancelSelection() {
+      this.tempStartDate = this.startDate ? new Date(this.tempStartDate) : null;
+      this.tempEndDate = this.endDate ? new Date(this.endDate) : null;
+      this.close();
+    }
+
+    changeMonth(delta) {
+      this.viewDate.setMonth(this.viewDate.getMonth() + delta);
+      this.render();
+    }
+
+    changeYearRange(delta) {
+      this.viewDate.setFullYear(this.viewDate.getFullYear() + delta);
+      this.render();
+    }
+
+    render() {
+      if (this.isSelectingYearMonth) {
+        this.renderYearMonthSelection();
+      } else {
+        this.renderCalendar();
+      }
+    }
+
+    renderCalendar() {
+      const year = this.viewDate.getFullYear();
+      const month = this.viewDate.getMonth();
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+
+      if (this.monthLabel) {
+        this.monthLabel.innerHTML = `${monthNames[month]} ${year} <span class="ux4g-icon-outlined ux4g-fs-18">keyboard_arrow_down</span>`;
+      }
+
+      const calendarHtml = `
                 <div class="ux4g-date-picker-weekdays">
                     <div class="ux4g-date-picker-weekday">Mo</div>
                     <div class="ux4g-date-picker-weekday">Tu</div>
@@ -2915,685 +2923,771 @@ document.addEventListener("input", (e) => {
                 </div>
                 <div class="ux4g-date-picker-grid"></div>
             `;
-            
-            const calendarContainer = this.container.querySelector('.ux4g-date-picker-calendar');
-            calendarContainer.innerHTML = calendarHtml;
-            this.calendarGrid = calendarContainer.querySelector('.ux4g-date-picker-grid');
 
-            const firstDayOfMonth = new Date(year, month, 1).getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            let startDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
-            const prevMonthLastDay = new Date(year, month, 0).getDate();
-            
-            let html = '';
-            for (let i = startDay - 1; i >= 0; i--) {
-                html += `<div class="ux4g-date-picker-day is-muted">${prevMonthLastDay - i}</div>`;
-            }
-            
-            for (let i = 1; i <= daysInMonth; i++) {
-                const date = new Date(year, month, i);
-                const isToday = date.toDateString() === this.currentDate.toDateString();
-                
-                let classes = 'ux4g-date-picker-day';
-                if (isToday) classes += ' is-today';
-                
-                if (this.tempStartDate && date.toDateString() === this.tempStartDate.toDateString()) {
-                    classes += ' is-selected is-range-start';
-                } else if (this.tempEndDate && date.toDateString() === this.tempEndDate.toDateString()) {
-                    classes += ' is-selected is-range-end';
-                } else if (this.tempStartDate && this.tempEndDate && date > this.tempStartDate && date < this.tempEndDate) {
-                    classes += ' is-in-range';
-                }
-                
-                html += `<div class="${classes}" data-date="${i}" tabindex="0">${i}</div>`;
-            }
-            
-            const totalCells = 42;
-            const remainingCells = totalCells - (startDay + daysInMonth);
-            for (let i = 1; i <= remainingCells; i++) {
-                html += `<div class="ux4g-date-picker-day is-muted">${i}</div>`;
-            }
-            
-            this.calendarGrid.innerHTML = html;
-            this.calendarGrid.querySelectorAll('.ux4g-date-picker-day:not(.is-muted)').forEach(dayEl => {
-                makeKeyboardClickable(dayEl);
-                dayEl.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const day = e.target.dataset.date;
-                    this.handleDateSelection(new Date(year, month, day));
-                });
-            });
+      const calendarContainer = this.container.querySelector('.ux4g-date-picker-calendar');
+      calendarContainer.innerHTML = calendarHtml;
+      this.calendarGrid = calendarContainer.querySelector('.ux4g-date-picker-grid');
 
-            if (this.confirmBtn) {
-                this.confirmBtn.innerHTML = 'Confirm';
-                this.confirmBtn.disabled = !this.tempStartDate || !this.tempEndDate;
-            }
+      const firstDayOfMonth = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      let startDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
+      const prevMonthLastDay = new Date(year, month, 0).getDate();
+
+      let html = '';
+      for (let i = startDay - 1; i >= 0; i--) {
+        html += `<div class="ux4g-date-picker-day is-muted">${prevMonthLastDay - i}</div>`;
+      }
+
+      for (let i = 1; i <= daysInMonth; i++) {
+        const date = new Date(year, month, i);
+        const isToday = date.toDateString() === this.currentDate.toDateString();
+
+        let classes = 'ux4g-date-picker-day';
+        if (isToday) classes += ' is-today';
+
+        if (this.tempStartDate && date.toDateString() === this.tempStartDate.toDateString()) {
+          classes += ' is-selected is-range-start';
+        } else if (this.tempEndDate && date.toDateString() === this.tempEndDate.toDateString()) {
+          classes += ' is-selected is-range-end';
+        } else if (this.tempStartDate && this.tempEndDate && date > this.tempStartDate && date < this.tempEndDate) {
+          classes += ' is-in-range';
         }
 
-        renderYearMonthSelection() {
-            const currentYear = this.viewDate.getFullYear();
-            const startYear = Math.floor(currentYear / 8) * 8;
-            const endYear = startYear + 7;
-            
-            if (this.monthLabel) {
-                this.monthLabel.innerHTML = `${startYear}-${endYear} <span class="ux4g-icon-outlined ux4g-fs-18">keyboard_arrow_down</span>`;
-            }
+        html += `<div class="${classes}" data-date="${i}" tabindex="0">${i}</div>`;
+      }
 
-            let html = '<div class="ux4g-date-picker-selection-view">';
-            html += '<div class="ux4g-date-picker-year-grid">';
-            for (let y = startYear; y <= endYear; y++) {
-                const isSelected = y === this.viewDate.getFullYear();
-                html += `<div class="ux4g-date-picker-year-item ${isSelected ? 'is-selected' : ''}" data-year="${y}" tabindex="0">${y}</div>`;
-            }
-            html += '</div>';
+      const totalCells = 42;
+      const remainingCells = totalCells - (startDay + daysInMonth);
+      for (let i = 1; i <= remainingCells; i++) {
+        html += `<div class="ux4g-date-picker-day is-muted">${i}</div>`;
+      }
 
-            const monthNamesShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            html += '<div class="ux4g-date-picker-month-grid">';
-            monthNamesShort.forEach((m, i) => {
-                const isSelected = i === this.viewDate.getMonth();
-                html += `<div class="ux4g-date-picker-month-item ${isSelected ? 'is-selected' : ''}" data-month="${i}" tabindex="0">${m}</div>`;
-            });
-            html += '</div></div>';
+      this.calendarGrid.innerHTML = html;
+      this.calendarGrid.querySelectorAll('.ux4g-date-picker-day:not(.is-muted)').forEach(dayEl => {
+        makeKeyboardClickable(dayEl);
+        dayEl.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const day = e.target.dataset.date;
+          this.handleDateSelection(new Date(year, month, day));
+        });
+      });
 
-            const calendarContainer = this.container.querySelector('.ux4g-date-picker-calendar');
-            calendarContainer.innerHTML = html;
-
-            calendarContainer.querySelectorAll('.ux4g-date-picker-year-item').forEach(el => {
-                makeKeyboardClickable(el);
-                el.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.viewDate.setFullYear(parseInt(e.target.dataset.year));
-                    this.renderYearMonthSelection();
-                    setTimeout(() => {
-                        const selectedMonth = this.container.querySelector('.ux4g-date-picker-month-item.is-selected');
-                        if (selectedMonth) selectedMonth.focus();
-                    }, 0);
-                });
-            });
-
-            calendarContainer.querySelectorAll('.ux4g-date-picker-month-item').forEach(el => {
-                makeKeyboardClickable(el);
-                el.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.viewDate.setMonth(parseInt(e.target.dataset.month));
-                    this.renderYearMonthSelection();
-                    if (this.confirmBtn) setTimeout(() => this.confirmBtn.focus(), 0);
-                });
-            });
-
-            if (this.confirmBtn) {
-                this.confirmBtn.innerHTML = 'Select date';
-                this.confirmBtn.disabled = false;
-            }
-        }
-
-        handleDateSelection(date) {
-            if (!this.tempStartDate || (this.tempStartDate && this.tempEndDate)) {
-                this.tempStartDate = date;
-                this.tempEndDate = null;
-                this.selectingEnd = true;
-            } else if (this.selectingEnd) {
-                if (date < this.tempStartDate) {
-                    this.tempEndDate = this.tempStartDate;
-                    this.tempStartDate = date;
-                } else {
-                    this.tempEndDate = date;
-                }
-                this.selectingEnd = false;
-            }
-            this.render();
-            if (!this.selectingEnd && this.confirmBtn && !this.confirmBtn.disabled) {
-                setTimeout(() => this.confirmBtn.focus(), 0);
-            } else if (this.selectingEnd) {
-                setTimeout(() => {
-                    const selectedEl = this.calendarGrid.querySelector('.is-range-start');
-                    if (selectedEl) selectedEl.focus();
-                }, 0);
-            }
-        }
-
-        updateInputs() {
-            if (this.startDate) {
-                const d = String(this.startDate.getDate()).padStart(2, '0');
-                const m = String(this.startDate.getMonth() + 1).padStart(2, '0');
-                const y = this.startDate.getFullYear();
-                this.inputs[0].value = `${d}/${m}/${y}`;
-            } else {
-                this.inputs[0].value = '';
-            }
-            if (this.endDate) {
-                const d = String(this.endDate.getDate()).padStart(2, '0');
-                const m = String(this.endDate.getMonth() + 1).padStart(2, '0');
-                const y = this.endDate.getFullYear();
-                this.inputs[1].value = `${d}/${m}/${y}`;
-            } else {
-                this.inputs[1].value = '';
-            }
-        }
+      if (this.confirmBtn) {
+        this.confirmBtn.innerHTML = 'Confirm';
+        this.confirmBtn.disabled = !this.tempStartDate || !this.tempEndDate;
+      }
     }
 
-    class TimePicker {
-        constructor(container) {
-            this.container = container;
-            this.input = container.querySelector('.ux4g-time-picker-input');
-            this.dropdown = container.querySelector('.ux4g-time-picker-dropdown');
-            this.hhColumn = container.querySelector('[data-column="hh"]');
-            this.mmColumn = container.querySelector('[data-column="mm"]');
-            this.ampmBtns = container.querySelectorAll('.ux4g-time-picker-ampm-btn');
-            this.confirmBtn = container.querySelector('.ux4g-btn-primary');
-            this.cancelBtn = container.querySelector('.ux4g-btn-outline-neutral');
+    renderYearMonthSelection() {
+      const currentYear = this.viewDate.getFullYear();
+      const startYear = Math.floor(currentYear / 8) * 8;
+      const endYear = startYear + 7;
 
-            this.selectedHH = null;
-            this.selectedMM = null;
-            this.selectedAMPM = "PM";
+      if (this.monthLabel) {
+        this.monthLabel.innerHTML = `${startYear}-${endYear} <span class="ux4g-icon-outlined ux4g-fs-18">keyboard_arrow_down</span>`;
+      }
 
-            this.tempHH = null;
-            this.tempMM = null;
+      let html = '<div class="ux4g-date-picker-selection-view">';
+      html += '<div class="ux4g-date-picker-year-grid">';
+      for (let y = startYear; y <= endYear; y++) {
+        const isSelected = y === this.viewDate.getFullYear();
+        html += `<div class="ux4g-date-picker-year-item ${isSelected ? 'is-selected' : ''}" data-year="${y}" tabindex="0">${y}</div>`;
+      }
+      html += '</div>';
 
-            this._init();
-        }
+      const monthNamesShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      html += '<div class="ux4g-date-picker-month-grid">';
+      monthNamesShort.forEach((m, i) => {
+        const isSelected = i === this.viewDate.getMonth();
+        html += `<div class="ux4g-date-picker-month-item ${isSelected ? 'is-selected' : ''}" data-month="${i}" tabindex="0">${m}</div>`;
+      });
+      html += '</div></div>';
 
-        _init() {
-            if (!this.input || !this.dropdown) return;
+      const calendarContainer = this.container.querySelector('.ux4g-date-picker-calendar');
+      calendarContainer.innerHTML = html;
 
-            // Keyboard accessibility
-            this.input.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.open();
-                }
-            });
+      calendarContainer.querySelectorAll('.ux4g-date-picker-year-item').forEach(el => {
+        makeKeyboardClickable(el);
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.viewDate.setFullYear(parseInt(e.target.dataset.year));
+          this.renderYearMonthSelection();
+          setTimeout(() => {
+            const selectedMonth = this.container.querySelector('.ux4g-date-picker-month-item.is-selected');
+            if (selectedMonth) selectedMonth.focus();
+          }, 0);
+        });
+      });
 
-            this.input.addEventListener('focus', (e) => {
-                this.open();
-            });
+      calendarContainer.querySelectorAll('.ux4g-date-picker-month-item').forEach(el => {
+        makeKeyboardClickable(el);
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.viewDate.setMonth(parseInt(e.target.dataset.month));
+          this.renderYearMonthSelection();
+          if (this.confirmBtn) setTimeout(() => this.confirmBtn.focus(), 0);
+        });
+      });
 
-            this.input.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.open();
-            });
-
-            this.ampmBtns.forEach(btn => {
-                makeKeyboardClickable(btn);
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.selectedAMPM = e.target.dataset.value;
-                    this.updateAMPMUI();
-                });
-            });
-
-            if (this.confirmBtn) {
-                makeKeyboardClickable(this.confirmBtn);
-                this.confirmBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (!this.confirmBtn.disabled) {
-                        this.confirmSelection();
-                    }
-                });
-            }
-
-            if (this.cancelBtn) {
-                makeKeyboardClickable(this.cancelBtn);
-                this.cancelBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.close();
-                });
-            }
-
-            document.addEventListener('click', (e) => {
-                if (!this.container.contains(e.target) && !getBackdrop().contains(e.target)) {
-                    this.close();
-                }
-            });
-
-            this.renderColumns();
-            this.updateAMPMUI();
-            this.validate();
-        }
-
-        open() {
-            this.tempHH = this.selectedHH;
-            this.tempMM = this.selectedMM;
-            
-            this.dropdown.classList.add('is-open');
-            if (isMobile()) {
-                getBackdrop().classList.add('is-active');
-                document.body.style.overflow = 'hidden';
-            }
-            
-            this.renderColumns();
-            this.scrollToSelected();
-            this.validate();
-        }
-
-        close() {
-            this.dropdown.classList.remove('is-open');
-            getBackdrop().classList.remove('is-active');
-            document.body.style.overflow = '';
-        }
-
-        validate() {
-            if (this.confirmBtn) {
-                this.confirmBtn.disabled = !(this.tempHH && this.tempMM);
-            }
-        }
-
-        confirmSelection() {
-            this.selectedHH = this.tempHH;
-            this.selectedMM = this.tempMM;
-            this.input.value = `${this.selectedHH} : ${this.selectedMM} ${this.selectedAMPM}`;
-            this.close();
-        }
-
-        updateAMPMUI() {
-            this.ampmBtns.forEach(btn => {
-                btn.classList.toggle('is-active', btn.dataset.value === this.selectedAMPM);
-            });
-        }
-
-        renderColumns() {
-            // Hours (1-12)
-            let hhHtml = '<div class="ux4g-time-picker-col-header">HH</div>';
-            for (let i = 1; i <= 12; i++) {
-                const val = String(i).padStart(2, '0');
-                const isSelected = val === this.tempHH;
-                hhHtml += `<div class="ux4g-time-picker-item ${isSelected ? 'is-selected' : ''}" data-value="${val}" tabindex="0">${val}</div>`;
-            }
-            this.hhColumn.innerHTML = hhHtml;
-
-            // Minutes (0-55, step 5)
-            let mmHtml = '<div class="ux4g-time-picker-col-header">MM</div>';
-            for (let i = 0; i < 60; i += 5) {
-                const val = String(i).padStart(2, '0');
-                const isSelected = val === this.tempMM;
-                mmHtml += `<div class="ux4g-time-picker-item ${isSelected ? 'is-selected' : ''}" data-value="${val}" tabindex="0">${val}</div>`;
-            }
-            this.mmColumn.innerHTML = mmHtml;
-
-            // Click events
-            this.hhColumn.querySelectorAll('.ux4g-time-picker-item').forEach(el => {
-                makeKeyboardClickable(el);
-                el.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.tempHH = e.target.dataset.value;
-                    this.updateColumnSelection(this.hhColumn, this.tempHH);
-                    this.validate();
-                    if (!this.confirmBtn.disabled) {
-                        setTimeout(() => this.confirmBtn.focus(), 0);
-                    } else if (!this.tempMM) {
-                        const firstMM = this.mmColumn.querySelector('.ux4g-time-picker-item');
-                        if (firstMM) setTimeout(() => firstMM.focus(), 0);
-                    }
-                });
-            });
-
-            this.mmColumn.querySelectorAll('.ux4g-time-picker-item').forEach(el => {
-                makeKeyboardClickable(el);
-                el.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.tempMM = e.target.dataset.value;
-                    this.updateColumnSelection(this.mmColumn, this.tempMM);
-                    this.validate();
-                    if (!this.confirmBtn.disabled) {
-                        setTimeout(() => this.confirmBtn.focus(), 0);
-                    }
-                });
-            });
-        }
-
-        updateColumnSelection(column, value) {
-            column.querySelectorAll('.ux4g-time-picker-item').forEach(el => {
-                el.classList.toggle('is-selected', el.dataset.value === value);
-            });
-        }
-
-        scrollToSelected() {
-            const columns = [this.hhColumn, this.mmColumn];
-            columns.forEach(col => {
-                const selected = col.querySelector('.is-selected');
-                if (selected) {
-                    col.scrollTop = selected.offsetTop - col.offsetTop - 80;
-                }
-            });
-        }
+      if (this.confirmBtn) {
+        this.confirmBtn.innerHTML = 'Select date';
+        this.confirmBtn.disabled = false;
+      }
     }
 
-    const init = () => {
-        document.querySelectorAll('.ux4g-date-picker-container').forEach(container => {
-            if (!container.closest('.ux4g-date-range-picker')) new DatePicker(container);
-        });
-        document.querySelectorAll('.ux4g-date-range-picker').forEach(container => {
-            new RangeDatePicker(container);
-        });
-        document.querySelectorAll('.ux4g-time-picker-container').forEach(container => {
-            new TimePicker(container);
-        });
-    };
+    handleDateSelection(date) {
+      if (!this.tempStartDate || (this.tempStartDate && this.tempEndDate)) {
+        this.tempStartDate = date;
+        this.tempEndDate = null;
+        this.selectingEnd = true;
+      } else if (this.selectingEnd) {
+        if (date < this.tempStartDate) {
+          this.tempEndDate = this.tempStartDate;
+          this.tempStartDate = date;
+        } else {
+          this.tempEndDate = date;
+        }
+        this.selectingEnd = false;
+      }
+      this.render();
+      if (!this.selectingEnd && this.confirmBtn && !this.confirmBtn.disabled) {
+        setTimeout(() => this.confirmBtn.focus(), 0);
+      } else if (this.selectingEnd) {
+        setTimeout(() => {
+          const selectedEl = this.calendarGrid.querySelector('.is-range-start');
+          if (selectedEl) selectedEl.focus();
+        }, 0);
+      }
+    }
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-    else init();
+    updateInputs() {
+      if (this.startDate) {
+        const d = String(this.startDate.getDate()).padStart(2, '0');
+        const m = String(this.startDate.getMonth() + 1).padStart(2, '0');
+        const y = this.startDate.getFullYear();
+        this.inputs[0].value = `${d}/${m}/${y}`;
+      } else {
+        this.inputs[0].value = '';
+      }
+      if (this.endDate) {
+        const d = String(this.endDate.getDate()).padStart(2, '0');
+        const m = String(this.endDate.getMonth() + 1).padStart(2, '0');
+        const y = this.endDate.getFullYear();
+        this.inputs[1].value = `${d}/${m}/${y}`;
+      } else {
+        this.inputs[1].value = '';
+      }
+    }
+  }
 
-    global.DatePicker = DatePicker;
-    global.RangeDatePicker = RangeDatePicker;
-    global.TimePicker = TimePicker;
+  class TimePicker {
+    constructor(container) {
+      this.container = container;
+      this.input = container.querySelector('.ux4g-time-picker-input');
+      this.dropdown = container.querySelector('.ux4g-time-picker-dropdown');
+      this.hhColumn = container.querySelector('[data-column="hh"]');
+      this.mmColumn = container.querySelector('[data-column="mm"]');
+      this.ampmBtns = container.querySelectorAll('.ux4g-time-picker-ampm-btn');
+      this.confirmBtn = container.querySelector('.ux4g-btn-primary');
+      this.cancelBtn = container.querySelector('.ux4g-btn-outline-neutral');
+
+      this.selectedHH = null;
+      this.selectedMM = null;
+      this.selectedAMPM = "PM";
+
+      this.tempHH = null;
+      this.tempMM = null;
+
+      this._init();
+    }
+
+    _init() {
+      if (!this.input || !this.dropdown) return;
+
+      // Keyboard accessibility
+      this.input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.open();
+        }
+      });
+
+      this.input.addEventListener('focus', (e) => {
+        this.open();
+      });
+
+      this.input.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.open();
+      });
+
+      this.ampmBtns.forEach(btn => {
+        makeKeyboardClickable(btn);
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.selectedAMPM = e.target.dataset.value;
+          this.updateAMPMUI();
+        });
+      });
+
+      if (this.confirmBtn) {
+        makeKeyboardClickable(this.confirmBtn);
+        this.confirmBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (!this.confirmBtn.disabled) {
+            this.confirmSelection();
+          }
+        });
+      }
+
+      if (this.cancelBtn) {
+        makeKeyboardClickable(this.cancelBtn);
+        this.cancelBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.close();
+        });
+      }
+
+      document.addEventListener('click', (e) => {
+        if (!this.container.contains(e.target) && !getBackdrop().contains(e.target)) {
+          this.close();
+        }
+      });
+
+      this.renderColumns();
+      this.updateAMPMUI();
+      this.validate();
+    }
+
+    open() {
+      this.tempHH = this.selectedHH;
+      this.tempMM = this.selectedMM;
+
+      this.dropdown.classList.add('is-open');
+      if (isMobile()) {
+        getBackdrop().classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      this.renderColumns();
+      this.scrollToSelected();
+      this.validate();
+    }
+
+    close() {
+      this.dropdown.classList.remove('is-open');
+      getBackdrop().classList.remove('is-active');
+      document.body.style.overflow = '';
+    }
+
+    validate() {
+      if (this.confirmBtn) {
+        this.confirmBtn.disabled = !(this.tempHH && this.tempMM);
+      }
+    }
+
+    confirmSelection() {
+      this.selectedHH = this.tempHH;
+      this.selectedMM = this.tempMM;
+      this.input.value = `${this.selectedHH} : ${this.selectedMM} ${this.selectedAMPM}`;
+      this.close();
+    }
+
+    updateAMPMUI() {
+      this.ampmBtns.forEach(btn => {
+        btn.classList.toggle('is-active', btn.dataset.value === this.selectedAMPM);
+      });
+    }
+
+    renderColumns() {
+      // Hours (1-12)
+      let hhHtml = '<div class="ux4g-time-picker-col-header">HH</div>';
+      for (let i = 1; i <= 12; i++) {
+        const val = String(i).padStart(2, '0');
+        const isSelected = val === this.tempHH;
+        hhHtml += `<div class="ux4g-time-picker-item ${isSelected ? 'is-selected' : ''}" data-value="${val}" tabindex="0">${val}</div>`;
+      }
+      this.hhColumn.innerHTML = hhHtml;
+
+      // Minutes (0-55, step 5)
+      let mmHtml = '<div class="ux4g-time-picker-col-header">MM</div>';
+      for (let i = 0; i < 60; i += 5) {
+        const val = String(i).padStart(2, '0');
+        const isSelected = val === this.tempMM;
+        mmHtml += `<div class="ux4g-time-picker-item ${isSelected ? 'is-selected' : ''}" data-value="${val}" tabindex="0">${val}</div>`;
+      }
+      this.mmColumn.innerHTML = mmHtml;
+
+      // Click events
+      this.hhColumn.querySelectorAll('.ux4g-time-picker-item').forEach(el => {
+        makeKeyboardClickable(el);
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.tempHH = e.target.dataset.value;
+          this.updateColumnSelection(this.hhColumn, this.tempHH);
+          this.validate();
+          if (!this.confirmBtn.disabled) {
+            setTimeout(() => this.confirmBtn.focus(), 0);
+          } else if (!this.tempMM) {
+            const firstMM = this.mmColumn.querySelector('.ux4g-time-picker-item');
+            if (firstMM) setTimeout(() => firstMM.focus(), 0);
+          }
+        });
+      });
+
+      this.mmColumn.querySelectorAll('.ux4g-time-picker-item').forEach(el => {
+        makeKeyboardClickable(el);
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.tempMM = e.target.dataset.value;
+          this.updateColumnSelection(this.mmColumn, this.tempMM);
+          this.validate();
+          if (!this.confirmBtn.disabled) {
+            setTimeout(() => this.confirmBtn.focus(), 0);
+          }
+        });
+      });
+    }
+
+    updateColumnSelection(column, value) {
+      column.querySelectorAll('.ux4g-time-picker-item').forEach(el => {
+        el.classList.toggle('is-selected', el.dataset.value === value);
+      });
+    }
+
+    scrollToSelected() {
+      const columns = [this.hhColumn, this.mmColumn];
+      columns.forEach(col => {
+        const selected = col.querySelector('.is-selected');
+        if (selected) {
+          col.scrollTop = selected.offsetTop - col.offsetTop - 80;
+        }
+      });
+    }
+  }
+
+  const init = () => {
+    document.querySelectorAll('.ux4g-date-picker-container').forEach(container => {
+      if (!container.closest('.ux4g-date-range-picker')) new DatePicker(container);
+    });
+    document.querySelectorAll('.ux4g-date-range-picker').forEach(container => {
+      new RangeDatePicker(container);
+    });
+    document.querySelectorAll('.ux4g-time-picker-container').forEach(container => {
+      new TimePicker(container);
+    });
+  };
+
+  window.ux4gCustomInitList = window.ux4gCustomInitList || [];
+  window.ux4gCustomInitList.push(init);
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+
+  global.DatePicker = DatePicker;
+  global.RangeDatePicker = RangeDatePicker;
+  global.TimePicker = TimePicker;
 
 })(window);
 
 
-/********************************* Time Slot JS ***********************************/ 
+/********************************* Time Slot JS ***********************************/
 
 class TimeSlotCalendar {
-    constructor(container) {
-        this.container = container;
-        this.calendarGrid = container.querySelector('.ux4g-time-slot-compact-grid');
-        this.monthLabel = container.querySelector('.ux4g-time-slot-compact-month');
-        this.slotTitle = container.querySelector('.ux4g-time-slot-compact-desktop-header');
-        this.slotsList = container.querySelector('.ux4g-time-slot-compact-list');
-        this.confirmBtn = container.querySelector('.ux4g-btn-primary');
-        
-        const navBtns = container.querySelectorAll('.ux4g-btn-icon');
-        this.prevBtn = navBtns[0];
-        this.nextBtn = navBtns[1];
+  constructor(container) {
+    this.container = container;
+    this.calendarGrid = container.querySelector('.ux4g-time-slot-compact-grid');
+    this.monthLabel = container.querySelector('.ux4g-time-slot-compact-month');
+    this.slotTitle = container.querySelector('.ux4g-time-slot-compact-desktop-header');
+    this.slotsList = container.querySelector('.ux4g-time-slot-compact-list');
+    this.confirmBtn = container.querySelector('.ux4g-btn-primary');
 
-        this.currentDate = new Date();
-        this.viewDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
-        this.selectedDate = new Date(2026, 3, 23); // Default from design: April 23, 2026
+    const navBtns = container.querySelectorAll('.ux4g-btn-icon');
+    this.prevBtn = navBtns[0];
+    this.nextBtn = navBtns[1];
 
-        // Mock Data for Statuses
-        this.holidays = ['2026-04-09', '2026-04-21'];
-        this.weeklyOffs = [0, 6]; // Sunday, Saturday
-        this.noSlotsDates = ['2026-04-08', '2026-04-13'];
+    this.currentDate = new Date();
+    this.viewDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
+    this.selectedDate = new Date(2026, 3, 23); // Default from design: April 23, 2026
 
-        this._init();
+    // Mock Data for Statuses
+    this.holidays = ['2026-04-09', '2026-04-21'];
+    this.weeklyOffs = [0, 6]; // Sunday, Saturday
+    this.noSlotsDates = ['2026-04-08', '2026-04-13'];
+
+    this._init();
+  }
+
+  _init() {
+    if (this.prevBtn) {
+      this.prevBtn.addEventListener('click', () => this.changeMonth(-1));
+    }
+    if (this.nextBtn) {
+      this.nextBtn.addEventListener('click', () => this.changeMonth(1));
     }
 
-    _init() {
-        if (this.prevBtn) {
-            this.prevBtn.addEventListener('click', () => this.changeMonth(-1));
-        }
-        if (this.nextBtn) {
-            this.nextBtn.addEventListener('click', () => this.changeMonth(1));
-        }
+    // Cancel Button Reset Logic
+    const cancelBtn = this.container.querySelector('.ux4g-btn-outline-neutral');
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', () => {
+        this.selectedDate = null; // Reset selection
+        this.render(); // Re-render calendar to clear highlights
+        if (this.slotTitle) this.slotTitle.innerText = "Select a Date"; // Reset slot header
+        this.resetSlots(); // Clear slot selection and disable confirm button
+      });
+    }
 
-        // Cancel Button Reset Logic
-        const cancelBtn = this.container.querySelector('.ux4g-btn-outline-neutral');
-        if (cancelBtn) {
-            cancelBtn.addEventListener('click', () => {
-                this.selectedDate = null; // Reset selection
-                this.render(); // Re-render calendar to clear highlights
-                if (this.slotTitle) this.slotTitle.innerText = "Select a Date"; // Reset slot header
-                this.resetSlots(); // Clear slot selection and disable confirm button
-            });
-        }
+    this.render();
+  }
 
+  changeMonth(delta) {
+    this.viewDate.setMonth(this.viewDate.getMonth() + delta);
+    this.render();
+  }
+
+  render() {
+    this.renderCalendar();
+  }
+
+  renderCalendar() {
+    const year = this.viewDate.getFullYear();
+    const month = this.viewDate.getMonth();
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    // Update Month Label
+    if (this.monthLabel) {
+      this.monthLabel.innerText = `${monthNames[month]} ${year}`;
+    }
+
+    const firstDayOfMonth = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    // Adjust for Monday start
+    let startDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
+    const prevMonthLastDay = new Date(year, month, 0).getDate();
+
+    // Clear and rebuild grid
+    this.calendarGrid.innerHTML = '';
+
+    // Add Weekday Names
+    const days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+    days.forEach(day => {
+      const dayEl = document.createElement('div');
+      dayEl.className = 'ux4g-time-slot-day-name';
+      dayEl.innerText = day;
+      this.calendarGrid.appendChild(dayEl);
+    });
+
+    // Previous Month Days
+    for (let i = startDay - 1; i >= 0; i--) {
+      const dateEl = document.createElement('div');
+      dateEl.className = 'ux4g-time-slot-date muted';
+      dateEl.innerText = prevMonthLastDay - i;
+      this.calendarGrid.appendChild(dateEl);
+    }
+
+    // Current Month Days
+    for (let i = 1; i <= daysInMonth; i++) {
+      const date = new Date(year, month, i);
+      const dateStr = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(i).padStart(2, '0');
+      const isToday = date.toDateString() === this.currentDate.toDateString();
+      const isSelected = this.selectedDate && date.toDateString() === this.selectedDate.toDateString();
+      const isHoliday = this.holidays.includes(dateStr);
+      const isWeeklyOff = this.weeklyOffs.includes(date.getDay());
+      const isNoSlots = this.noSlotsDates.includes(dateStr);
+
+      const dateEl = document.createElement('div');
+      dateEl.className = 'ux4g-time-slot-date';
+      if (isToday) dateEl.classList.add('today');
+      if (isSelected) dateEl.classList.add('selected');
+      if (isHoliday) dateEl.classList.add('holiday');
+      if (isWeeklyOff) dateEl.classList.add('weekly-off');
+      if (isNoSlots) dateEl.classList.add('no-slots');
+
+      dateEl.innerText = i;
+      dateEl.dataset.date = i;
+
+      dateEl.addEventListener('click', () => {
+        this.selectedDate = new Date(year, month, i);
         this.render();
+        this.updateSlotHeader();
+        this.resetSlots();
+      });
+
+      this.calendarGrid.appendChild(dateEl);
     }
 
-    changeMonth(delta) {
-        this.viewDate.setMonth(this.viewDate.getMonth() + delta);
-        this.render();
+    // Next Month Days
+    const totalCells = 42 + 7; // Including header row
+    const currentCells = this.calendarGrid.children.length;
+    const remainingCells = totalCells - currentCells;
+    for (let i = 1; i <= remainingCells; i++) {
+      const dateEl = document.createElement('div');
+      dateEl.className = 'ux4g-time-slot-date muted';
+      dateEl.innerText = i;
+      this.calendarGrid.appendChild(dateEl);
     }
+  }
 
-    render() {
-        this.renderCalendar();
+  updateSlotHeader() {
+    if (this.slotTitle && this.selectedDate) {
+      const day = this.selectedDate.getDate();
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      const month = monthNames[this.selectedDate.getMonth()];
+      const year = this.selectedDate.getFullYear();
+      this.slotTitle.innerText = `${day}${this.getOrdinal(day)} ${month} ${year}`;
     }
+  }
 
-    renderCalendar() {
-        const year = this.viewDate.getFullYear();
-        const month = this.viewDate.getMonth();
-        const monthNames = ["January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-        ];
+  resetSlots() {
+    // Reset slot selection and disable confirm button
+    const slots = this.container.querySelectorAll('.ux4g-time-slot-compact-slot-item:not(.disabled)');
+    slots.forEach(s => s.style.backgroundColor = 'transparent');
+    if (this.confirmBtn) this.confirmBtn.setAttribute('disabled', 'true');
 
-        // Update Month Label
-        if (this.monthLabel) {
-            this.monthLabel.innerText = `${monthNames[month]} ${year}`;
-        }
-
-        const firstDayOfMonth = new Date(year, month, 1).getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        
-        // Adjust for Monday start
-        let startDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
-        const prevMonthLastDay = new Date(year, month, 0).getDate();
-
-        // Clear and rebuild grid
-        this.calendarGrid.innerHTML = '';
-
-        // Add Weekday Names
-        const days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
-        days.forEach(day => {
-            const dayEl = document.createElement('div');
-            dayEl.className = 'ux4g-time-slot-day-name';
-            dayEl.innerText = day;
-            this.calendarGrid.appendChild(dayEl);
-        });
-
-        // Previous Month Days
-        for (let i = startDay - 1; i >= 0; i--) {
-            const dateEl = document.createElement('div');
-            dateEl.className = 'ux4g-time-slot-date muted';
-            dateEl.innerText = prevMonthLastDay - i;
-            this.calendarGrid.appendChild(dateEl);
-        }
-
-        // Current Month Days
-        for (let i = 1; i <= daysInMonth; i++) {
-            const date = new Date(year, month, i);
-            const dateStr = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(i).padStart(2, '0');
-            const isToday = date.toDateString() === this.currentDate.toDateString();
-            const isSelected = this.selectedDate && date.toDateString() === this.selectedDate.toDateString();
-            const isHoliday = this.holidays.includes(dateStr);
-            const isWeeklyOff = this.weeklyOffs.includes(date.getDay());
-            const isNoSlots = this.noSlotsDates.includes(dateStr);
-
-            const dateEl = document.createElement('div');
-            dateEl.className = 'ux4g-time-slot-date';
-            if (isToday) dateEl.classList.add('today');
-            if (isSelected) dateEl.classList.add('selected');
-            if (isHoliday) dateEl.classList.add('holiday');
-            if (isWeeklyOff) dateEl.classList.add('weekly-off');
-            if (isNoSlots) dateEl.classList.add('no-slots');
-            
-            dateEl.innerText = i;
-            dateEl.dataset.date = i;
-
-            dateEl.addEventListener('click', () => {
-                this.selectedDate = new Date(year, month, i);
-                this.render();
-                this.updateSlotHeader();
-                this.resetSlots();
-            });
-
-            this.calendarGrid.appendChild(dateEl);
-        }
-
-        // Next Month Days
-        const totalCells = 42 + 7; // Including header row
-        const currentCells = this.calendarGrid.children.length;
-        const remainingCells = totalCells - currentCells;
-        for (let i = 1; i <= remainingCells; i++) {
-            const dateEl = document.createElement('div');
-            dateEl.className = 'ux4g-time-slot-date muted';
-            dateEl.innerText = i;
-            this.calendarGrid.appendChild(dateEl);
-        }
-    }
-
-    updateSlotHeader() {
-        if (this.slotTitle && this.selectedDate) {
-            const day = this.selectedDate.getDate();
-            const monthNames = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"
-            ];
-            const month = monthNames[this.selectedDate.getMonth()];
-            const year = this.selectedDate.getFullYear();
-            this.slotTitle.innerText = `${day}${this.getOrdinal(day)} ${month} ${year}`;
-        }
-    }
-
-    resetSlots() {
-        // Reset slot selection and disable confirm button
-        const slots = this.container.querySelectorAll('.ux4g-time-slot-compact-slot-item:not(.disabled)');
+    // Re-attach slot selection listeners
+    slots.forEach(slot => {
+      slot.addEventListener('click', () => {
         slots.forEach(s => s.style.backgroundColor = 'transparent');
-        if (this.confirmBtn) this.confirmBtn.setAttribute('disabled', 'true');
-        
-        // Re-attach slot selection listeners
-        slots.forEach(slot => {
-            slot.addEventListener('click', () => {
-                slots.forEach(s => s.style.backgroundColor = 'transparent');
-                slot.style.backgroundColor = 'var(--ux4g-bg-neutral-subtle)';
-                if (this.confirmBtn) this.confirmBtn.removeAttribute('disabled');
-            });
-        });
-    }
+        slot.style.backgroundColor = 'var(--ux4g-bg-neutral-subtle)';
+        if (this.confirmBtn) this.confirmBtn.removeAttribute('disabled');
+      });
+    });
+  }
 
-    getOrdinal(n) {
-        const s = ["th", "st", "nd", "rd"];
-        const v = n % 100;
-        return (s[(v - 20) % 10] || s[v] || s[0]);
-    }
+  getOrdinal(n) {
+    const s = ["th", "st", "nd", "rd"];
+    const v = n % 100;
+    return (s[(v - 20) % 10] || s[v] || s[0]);
+  }
 }
 
 // Initialize on Load
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Compact Calendar
-    const compactContainer = document.querySelector('.ux4g-time-slot-compact-container');
-    if (compactContainer) {
-        new TimeSlotCalendar(compactContainer);
-    }
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+  // Initialize Compact Calendar
+  const compactContainer = document.querySelector('.ux4g-time-slot-compact-container');
+  if (compactContainer) {
+    new TimeSlotCalendar(compactContainer);
+  }
 
-    // Initialize Weekly Grid Selection
-    const weeklyGrid = document.querySelector('.ux4g-time-slot-weekly-grid');
-    if (weeklyGrid) {
-        const cells = weeklyGrid.querySelectorAll('.ux4g-time-slot-cell.available, .ux4g-time-slot-cell.limited');
-        const confirmBtn = weeklyGrid.parentElement.querySelector('.ux4g-time-slot-weekly-actions .ux4g-btn-primary');
-        const cancelBtn = weeklyGrid.parentElement.querySelector('.ux4g-time-slot-weekly-actions .ux4g-btn-outline-neutral');
+  // Initialize Weekly Grid Selection
+  const weeklyGrid = document.querySelector('.ux4g-time-slot-weekly-grid');
+  if (weeklyGrid) {
+    const cells = weeklyGrid.querySelectorAll('.ux4g-time-slot-cell.available, .ux4g-time-slot-cell.limited');
+    const confirmBtn = weeklyGrid.parentElement.querySelector('.ux4g-time-slot-weekly-actions .ux4g-btn-primary');
+    const cancelBtn = weeklyGrid.parentElement.querySelector('.ux4g-time-slot-weekly-actions .ux4g-btn-outline-neutral');
 
-        cells.forEach(cell => {
-            // Store original content to restore later
-            const originalHTML = cell.innerHTML;
+    cells.forEach(cell => {
+      // Store original content to restore later
+      const originalHTML = cell.innerHTML;
 
-            cell.addEventListener('click', () => {
-                if (cell.classList.contains('selected')) return;
+      cell.addEventListener('click', () => {
+        if (cell.classList.contains('selected')) return;
 
-                // 1. Restore all other cells to their original state
-                cells.forEach(c => {
-                    if (c.classList.contains('selected')) {
-                        c.classList.remove('selected');
-                        if (c._originalContent) {
-                            c.innerHTML = c._originalContent;
-                        }
-                    }
-                });
-
-                // 2. Select this cell
-                cell.classList.add('selected');
-                cell._originalContent = originalHTML;
-                cell.innerHTML = `<span class="ux4g-icon-filled">check_circle</span> Selected`;
-
-                // 3. Enable Confirm Button
-                if (confirmBtn) confirmBtn.removeAttribute('disabled');
-            });
+        // 1. Restore all other cells to their original state
+        cells.forEach(c => {
+          if (c.classList.contains('selected')) {
+            c.classList.remove('selected');
+            if (c._originalContent) {
+              c.innerHTML = c._originalContent;
+            }
+          }
         });
 
-        // Cancel Button logic for Weekly Grid
-        if (cancelBtn) {
-            cancelBtn.addEventListener('click', () => {
-                cells.forEach(c => {
-                    if (c.classList.contains('selected')) {
-                        c.classList.remove('selected');
-                        if (c._originalContent) {
-                            c.innerHTML = c._originalContent;
-                        }
-                    }
-                });
-                if (confirmBtn) confirmBtn.setAttribute('disabled', 'true');
-            });
-        }
+        // 2. Select this cell
+        cell.classList.add('selected');
+        cell._originalContent = originalHTML;
+        cell.innerHTML = `<span class="ux4g-icon-filled">check_circle</span> Selected`;
+
+        // 3. Enable Confirm Button
+        if (confirmBtn) confirmBtn.removeAttribute('disabled');
+      });
+    });
+
+    // Cancel Button logic for Weekly Grid
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', () => {
+        cells.forEach(c => {
+          if (c.classList.contains('selected')) {
+            c.classList.remove('selected');
+            if (c._originalContent) {
+              c.innerHTML = c._originalContent;
+            }
+          }
+        });
+        if (confirmBtn) confirmBtn.setAttribute('disabled', 'true');
+      });
+    }
+  }
+
+  // Initialize Weekly Grid Mobile Navigation (Dynamic approach)
+  const mobileNav = document.querySelector('.ux4g-time-slot-mobile-nav');
+  if (weeklyGrid && mobileNav) {
+    const mobileDateLabel = mobileNav.querySelector('.ux4g-time-slot-mobile-date');
+    const navBtns = mobileNav.querySelectorAll('.ux4g-btn-icon');
+    const prevBtn = navBtns[0];
+    const nextBtn = navBtns[1];
+
+    // 1. Dynamically assign data-day attributes to cells based on grid position
+    // Grid has 8 columns: Time, Mon, Tue, Wed, Thu, Fri, Sat, Sun
+    const children = weeklyGrid.children;
+    for (let i = 0; i < children.length; i++) {
+      const colIndex = i % 8;
+      if (colIndex > 0) { // Skip Time column
+        children[i].setAttribute('data-day', colIndex - 1);
+      }
     }
 
-    // Initialize Weekly Grid Mobile Navigation (Dynamic approach)
-    const mobileNav = document.querySelector('.ux4g-time-slot-mobile-nav');
-    if (weeklyGrid && mobileNav) {
-        const mobileDateLabel = mobileNav.querySelector('.ux4g-time-slot-mobile-date');
-        const navBtns = mobileNav.querySelectorAll('.ux4g-btn-icon');
-        const prevBtn = navBtns[0];
-        const nextBtn = navBtns[1];
+    // 2. Navigation Logic
+    let activeDay = 0;
+    weeklyGrid.setAttribute('data-active-day', activeDay);
 
-        // 1. Dynamically assign data-day attributes to cells based on grid position
-        // Grid has 8 columns: Time, Mon, Tue, Wed, Thu, Fri, Sat, Sun
-        const children = weeklyGrid.children;
-        for (let i = 0; i < children.length; i++) {
-            const colIndex = i % 8;
-            if (colIndex > 0) { // Skip Time column
-                children[i].setAttribute('data-day', colIndex - 1);
-            }
-        }
+    const daysData = [
+      { day: "Mon 14 Apr", status: "Today" },
+      { day: "Tue 15 Apr", status: "" },
+      { day: "Wed 16 Apr", status: "" },
+      { day: "Thu 17 Apr", status: "Public Holiday" },
+      { day: "Fri 18 Apr", status: "" },
+      { day: "Sat 19 Apr", status: "Weekly off" },
+      { day: "Sun 20 Apr", status: "Weekly off" }
+    ];
 
-        // 2. Navigation Logic
-        let activeDay = 0;
-        weeklyGrid.setAttribute('data-active-day', activeDay);
-
-        const daysData = [
-            { day: "Mon 14 Apr", status: "Today" },
-            { day: "Tue 15 Apr", status: "" },
-            { day: "Wed 16 Apr", status: "" },
-            { day: "Thu 17 Apr", status: "Public Holiday" },
-            { day: "Fri 18 Apr", status: "" },
-            { day: "Sat 19 Apr", status: "Weekly off" },
-            { day: "Sun 20 Apr", status: "Weekly off" }
-        ];
-
-        const updateMobileNav = (index) => {
-            weeklyGrid.setAttribute('data-active-day', index);
-            const data = daysData[index];
-            if (mobileDateLabel) {
-                mobileDateLabel.innerHTML = `
+    const updateMobileNav = (index) => {
+      weeklyGrid.setAttribute('data-active-day', index);
+      const data = daysData[index];
+      if (mobileDateLabel) {
+        mobileDateLabel.innerHTML = `
                     <strong>${data.day}</strong>
                     ${data.status ? `<span class="${data.status === 'Today' ? 'ux4g-text-success-600' : 'ux4g-text-neutral-secondary'}">${data.status}</span>` : ''}
                 `;
-            }
-        };
+      }
+    };
 
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                activeDay = (activeDay > 0) ? activeDay - 1 : 6;
-                updateMobileNav(activeDay);
-            });
-        }
-
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                activeDay = (activeDay < 6) ? activeDay + 1 : 0;
-                updateMobileNav(activeDay);
-            });
-        }
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        activeDay = (activeDay > 0) ? activeDay - 1 : 6;
+        updateMobileNav(activeDay);
+      });
     }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        activeDay = (activeDay < 6) ? activeDay + 1 : 0;
+        updateMobileNav(activeDay);
+      });
+    }
+  }
 });
 
 
-/********************************* Result list JS ***********************************/ 
+/********************************* Result list JS ***********************************/
 
 // Accordion Toggle
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtns = document.querySelectorAll('.ux4g-result-list-accordion-toggle');
-    toggleBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const toggle = e.target;
-            const card = toggle.closest('.ux4g-result-list');
-            const content = card.querySelector('.ux4g-result-list-content');
-            if (!content) return;
-            
-            const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-            
-            if (isExpanded) {
-                toggle.setAttribute('aria-expanded', 'false');
-                toggle.innerText = 'expand_more';
-            } else {
-                toggle.setAttribute('aria-expanded', 'true');
-                toggle.innerText = 'expand_less';
-            }
-        });
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+  const toggleBtns = document.querySelectorAll('.ux4g-result-list-accordion-toggle');
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const toggle = e.target;
+      const card = toggle.closest('.ux4g-result-list');
+      const content = card.querySelector('.ux4g-result-list-content');
+      if (!content) return;
+
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+      if (isExpanded) {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.innerText = 'expand_more';
+      } else {
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.innerText = 'expand_less';
+      }
     });
+  });
 });
+
+
+
+/********************************* Mega menu category list JS ***********************************/
+
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+  const categoryItems = document.querySelectorAll('.ux4g-mega-menu__category-item');
+  const contentBlocks = document.querySelectorAll('.ux4g-mega-menu__content');
+
+  if (!categoryItems.length || !contentBlocks.length) return;
+
+  categoryItems.forEach((item, index) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // Remove active class from all categories
+      categoryItems.forEach(cat => cat.classList.remove('ux4g-mega-menu__category-item--active'));
+      // Add active class to clicked category
+      item.classList.add('ux4g-mega-menu__category-item--active');
+
+      // Hide all content blocks
+      contentBlocks.forEach(block => block.classList.remove('ux4g-mega-menu__content--active'));
+
+      // Show the corresponding content block by ID matching category-1, category-2, etc.
+      const targetId = `category-${index + 1}`;
+      const targetBlock = document.getElementById(targetId);
+
+      if (targetBlock) {
+        targetBlock.classList.add('ux4g-mega-menu__content--active');
+      }
+    });
+  });
+});
+
+/* ========================================================= checkbox js ========================================================= */
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+
+  // 1. Standalone indeterminate checkboxes — add data-ux4g-indeterminate attribute to set on init
+  document.querySelectorAll('.ux4g-checkbox-input[data-ux4g-indeterminate]').forEach(input => {
+    input.indeterminate = true;
+  });
+
+  // 2. Parent-child checkbox groups — wrap the group in data-ux4g-parent-child.
+  //    Mark the select-all input with data-ux4g-select-all.
+  //    Mark each child input with data-ux4g-child.
+  document.querySelectorAll('[data-ux4g-parent-child]').forEach(container => {
+    const parentInput = container.querySelector('.ux4g-checkbox-input[data-ux4g-select-all]');
+    const childInputs = Array.from(container.querySelectorAll('.ux4g-checkbox-input[data-ux4g-child]'));
+
+    if (!parentInput || !childInputs.length) return;
+
+    function updateParent() {
+      const checkedCount = childInputs.filter(cb => cb.checked).length;
+      if (checkedCount === 0) {
+        parentInput.checked = false;
+        parentInput.indeterminate = false;
+      } else if (checkedCount === childInputs.length) {
+        parentInput.checked = true;
+        parentInput.indeterminate = false;
+      } else {
+        parentInput.checked = false;
+        parentInput.indeterminate = true;
+      }
+    }
+
+    // Use click (not change) so we can read the children's state BEFORE any changes,
+    // giving consistent "select all / unselect all" behaviour regardless of browser
+    // handling of indeterminate → click → checked transitions.
+    parentInput.addEventListener('click', function () {
+      const checkedCount = childInputs.filter(cb => cb.checked).length;
+      const checkAll = checkedCount < childInputs.length;
+      parentInput.checked = checkAll;
+      parentInput.indeterminate = false;
+      childInputs.forEach(cb => { cb.checked = checkAll; });
+    });
+
+    childInputs.forEach(cb => cb.addEventListener('change', updateParent));
+    updateParent();
+  });
+});
+
+
+

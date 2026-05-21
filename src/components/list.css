@@ -46,6 +46,11 @@
   gap: var(--ux4g-space-4);
 }
 
+.ux4g-list-item-start > :is(.ux4g-checkbox, .ux4g-radio) {
+  width: auto;
+  flex: 0 0 auto;
+}
+
 .ux4g-list-default .ux4g-list-item-end{
   color: var(--ux4g-text-neutral-tertiary);
 }
@@ -323,11 +328,6 @@
 /* Drag and drop styles */
 .ux4g-list-draggable .ux4g-list-item-start .ux4g-icon-outlined {
   cursor: grab;
-}
-.ux4g-list-draggable .ux4g-list-item-row,
-.ux4g-list-action .ux4g-list-item-row,
-.ux4g-list-switch .ux4g-list-item-row{
-  cursor: auto;
 }
 
 /* multiselect with check mark */

@@ -3,3 +3,10 @@
     height: var(--ux4g-sz-20);
     cursor: pointer;
 }
+
+
+.ux4g-social-link-light li,
+.ux4g-social-link-dark li,
+.ux4g-social-link-default li {
+    list-style: none;
+}

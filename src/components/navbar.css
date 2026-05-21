@@ -10,7 +10,7 @@
 
 .ux4g-navbar-wrap {
     display: flex;
-    padding: var(--ux4g-padding-m) 0px;
+    padding: var(--ux4g-padding-m) 0;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
@@ -26,11 +26,39 @@
     justify-content: flex-end;
 }
 
+/* ===== REMOVE ALL BULLETS / DOTS ===== */
+
 .ux4g-navbar-links {
     display: flex;
     align-items: center;
     column-gap: var(--ux4g-inline-xl);
+
+    list-style: none !important;
+    margin: 0;
+    padding: 0;
 }
+
+.ux4g-navbar-links > li {
+    display: flex;
+    align-items: center;
+
+    list-style: none !important;
+    margin: 0;
+    padding: 0;
+}
+
+.ux4g-navbar-links > li::marker {
+    content: none !important;
+}
+
+.ux4g-navbar-links > li::before,
+.ux4g-navbar-links > li::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* ===================================== */
+
 .ux4g-navbar-links .ux4g-dropdown-control:hover {
     text-decoration: none !important;
 }
@@ -38,4 +66,3 @@
 .ux4g-navbar-links .ux4g-dropdown-control:hover > span:first-child {
     text-decoration: underline;
 }
-
