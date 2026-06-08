@@ -20,10 +20,10 @@
     --ux4g-accordion-body-weight: var(--ux4g-fw-regular);
 
     --ux4g-accordion-button-min-height: var(--ux4g-spacing-14, 56px);
-    --ux4g-accordion-button-padding-x: var(--ux4g-padding-m);
+    --ux4g-accordion-button-padding-x: var(--ux4g-padding-s);
     --ux4g-accordion-button-padding-y: var(--ux4g-padding-s);
-    --ux4g-accordion-body-padding-x: var(--ux4g-padding-m);
-    --ux4g-accordion-body-padding-y: var(--ux4g-padding-m);
+    --ux4g-accordion-body-padding-x: var(--ux4g-padding-s);
+    --ux4g-accordion-body-padding-y: var(--ux4g-padding-s);
 
     --ux4g-accordion-title-padding-x: var(--ux4g-padding-xs);
 
@@ -86,7 +86,6 @@
     line-height: inherit;
     font-weight: inherit;
     word-break: var(--ux4g-wb-break, break-word);
-    padding-left: var(--ux4g-accordion-title-padding-x);
 }
 
 .ux4g-accordion__button::after {

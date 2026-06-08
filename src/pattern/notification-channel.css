@@ -1,0 +1,164 @@
+.noti-channel {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.noti-channel-container {
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.noti-channel-layout {
+  display: flex;
+  width: 100%;
+}
+
+.noti-channel-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  height: max-content;
+  border-radius: var(--ux4g-radius-md);
+  border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+  background: var(--ux4g-bg-neutral-elevated);
+  padding: var(--ux4g-padding-s);
+}
+
+.noti-channel-content {
+  flex-grow: 1;
+}
+
+.noti-channel-panel {
+  border-radius: var(--ux4g-radius-md);
+  border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+  background: var(--ux4g-bg-neutral-elevated);
+  padding: var(--ux4g-padding-xl);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.noti-channel-list-item {
+  border-bottom: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+}
+
+.noti-channel-list-item:last-child {
+  border-bottom: none;
+}
+
+.noti-channel-header {
+  margin-bottom: var(--ux4g-margin-xl);
+}
+
+.noti-channel-content .ux4g-list {
+  box-shadow: none !important;
+  background: none;
+  padding: 0;
+}
+
+.noti-channel-content .ux4g-btn-primary:disabled {
+  background-color: var(--ux4g-bg-primary-subtle) !important;
+  color: var(--ux4g-text-white) !important;
+}
+
+.noti-channel-success-box {
+  border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-success-default);
+}
+
+/* Map tab is-active class to choice chip active styles */
+.noti-channel-sidebar .ux4g-choice-chip-md.active {
+  background-color: var(--ux4g-bg-primary-strong);
+  color: var(--ux4g-text-white);
+}
+.noti-channel-sidebar .ux4g-choice-chip-md.active .ux4g-icon-outlined {
+  color: var(--ux4g-text-white);
+}
+
+.noti-channel-nowrap {
+  white-space: nowrap !important;
+  word-wrap: normal !important;
+}
+
+@media (max-width: 768px) {
+  .noti-channel-layout {
+    flex-direction: column;
+  }
+
+  .noti-channel-panel {
+    padding: var(--ux4g-padding-l);
+  }
+
+  .noti-channel-sidebar {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 0 0 var(--ux4g-padding-l) 0;
+  }
+
+  .noti-channel-sidebar .ux4g-tab-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: var(--ux4g-padding-2xs);
+    padding: var(--ux4g-padding-2xs) var(--ux4g-padding-2xs) var(--ux4g-padding-s) var(--ux4g-padding-2xs);
+    /* Space for outline and scrollbar */
+  }
+
+  /* Make tabs look like chips on mobile */
+  .noti-channel-sidebar .ux4g-tab-item {
+    width: max-content;
+    flex-shrink: 0;
+    font-size: var(--ux4g-fs-14);
+    border-radius: var(--ux4g-radius-sm);
+    padding: var(--ux4g-space-none) var(--ux4g-padding-xs);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+    background-color: var(--ux4g-bg-neutral);
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ux4g-text-neutral-primary);
+    border-radius: var(--ux4g-radius-md);
+
+  }
+
+  .noti-channel-sidebar .ux4g-tab-item.active {
+    background-color: var(--ux4g-bg-primary-strong);
+    color: var(--ux4g-bg-neutral);
+    border-color: transparent;
+    font-weight: var(--ux4g-fw-regular);
+  }
+
+  .noti-channel-content {
+    width: 100%;
+  }
+
+  /* Prevent text truncation in list items on mobile */
+  .noti-channel-panel .ux4g-list-default .ux4g-list-item-row .ux4g-list-item-start .ux4g-d-flex>span {
+    white-space: normal;
+    text-overflow: clip;
+    overflow: visible;
+  }
+
+  /* Ensure switches are perfectly right-aligned */
+  .noti-channel-panel .ux4g-list-item-row.ux4g-toggles {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .noti-channel-panel .ux4g-list-item-row.ux4g-toggles .ux4g-list-item-start {
+    flex-grow: 1;
+    margin-right: var(--ux4g-margin-l);
+  }
+
+  .noti-channel-panel .ux4g-list-item-row.ux4g-toggles .ux4g-list-item-end {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* Make full width buttons on mobile */
+  .noti-channel-panel .ux4g-btn {
+    width: 100%;
+  }
+}

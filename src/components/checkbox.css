@@ -1,6 +1,6 @@
 .ux4g-checkbox {
      display: flex;
-     align-items: flex-start;
+     align-items: baseline;
      gap: var(--ux4g-inline-s);
      cursor: pointer;
      position: var(--ux4g-pos-relative);

@@ -33,12 +33,12 @@
 [class*="ux4g-ff-"]{font-family:var(--ux4g-ff-current, var(--ux4g-ff)) !important;}
 
 /* 1.0 Font Weight */
-.ux4g-fw-regular{--ux4g-fw-current:var(--ux4g-font-weight-regular);}
-.ux4g-fw-medium{--ux4g-fw-current:var(--ux4g-font-weight-medium);}
-.ux4g-fw-semibold{--ux4g-fw-current:var(--ux4g-font-weight-semibold);}
-.ux4g-fw-bold{--ux4g-fw-current:var(--ux4g-font-weight-bold) !important;}
-.ux4g-fw-d-semibold{--ux4g-fw-current:var(--ux4g-font-weight-display-semibold);}
-.ux4g-fw-d-bold{--ux4g-fw-current:var(--ux4g-font-weight-display-bold);}
+.ux4g-fw-regular{--ux4g-fw-current:var(--ux4g-fw-regular);}
+.ux4g-fw-medium{--ux4g-fw-current:var(--ux4g-fw-medium);}
+.ux4g-fw-semibold{--ux4g-fw-current:var(--ux4g-fw-semibold);}
+.ux4g-fw-bold{--ux4g-fw-current:var(--ux4g-fw-bold) !important;}
+.ux4g-fw-d-semibold{--ux4g-fw-current:var(--ux4g-fw-display-semibold);}
+.ux4g-fw-d-bold{--ux4g-fw-current:var(--ux4g-fw-display-bold);}
 
 /* 2.0 Font Family */
 .ux4g-ff-base{--ux4g-ff-current:var(--ux4g-ff);}

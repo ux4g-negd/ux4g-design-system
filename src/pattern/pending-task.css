@@ -1,0 +1,137 @@
+/* Main content */
+.ux4g-pending-task-main {
+    display: flex;
+    padding: var(--ux4g-padding-xl);
+    flex-direction: column;
+    gap: var(--ux4g-stack-l);
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+/* Disable active, focus, and hover states for the empty state icon button */
+.ux4g-pending-task-main .ux4g-empty-state .ux4g-icon-btn-primary {
+    pointer-events: none;
+}
+
+/* Center Empty State */
+.ux4g-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--ux4g-stack-m, 16px);
+    flex: 1;
+    min-height: 60vh; /* Make sure it takes up most of the page height to center vertically */
+}
+
+.ux4g-empty-state-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-2xs, 4px);
+    align-items: center;
+}
+
+.ux4g-empty-state-content p {
+    max-width: 300px;
+    margin: 0;
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+/* Mobile Responsiveness for Pending Task Result List (Overrides generic result-list.css) */
+@media (max-width: 768px) {
+    .ux4g-pending-task-main {
+        padding: var(--ux4g-padding-m);
+    }
+
+    /* Override grid layout for the card */
+    .ux4g-pending-task-main .ux4g-result-list-v1 {
+        grid-template-columns: auto 1fr auto !important; /* Icon, Title/Meta, Toggle */
+        gap: var(--ux4g-stack-xs) var(--ux4g-inline-m) !important;
+    }
+
+    /* Un-hide the icon */
+    .ux4g-pending-task-main .ux4g-result-list-v1 .ux4g-result-list-icon {
+        display: flex !important;
+        grid-column: 1 !important;
+        grid-row: 1 / span 2 !important;
+        align-self: start !important;
+    }
+
+    /* Position the Title */
+    .ux4g-pending-task-main .ux4g-result-list-v1 .ux4g-result-list-title {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        align-self: end !important;
+        font-size: var(--ux4g-fs-16) !important;
+    }
+
+    /* Position the Meta */
+    .ux4g-pending-task-main .ux4g-result-list-v1 .ux4g-result-list-meta {
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+        align-self: start !important;
+        display: flex !important;
+    }
+
+    /* Flatten actions container to separate toggle and button */
+    .ux4g-pending-task-main .ux4g-result-list-v1 .ux4g-result-list-actions {
+        display: contents !important;
+    }
+
+    /* Position Toggle */
+    .ux4g-pending-task-main .ux4g-result-list-v1 .ux4g-result-list-accordion-toggle {
+        grid-column: 3 !important;
+        grid-row: 1 !important;
+        align-self: center !important;
+        justify-self: end !important;
+    }
+
+    /* Position Tag */
+    .ux4g-pending-task-main .ux4g-result-list-v1 [class*="ux4g-tag-"] {
+        grid-column: 1 / span 3 !important;
+        grid-row: 3 !important;
+        margin-top: var(--ux4g-margin-xs) !important;
+        margin-bottom: 0 !important;
+        width: fit-content !important;
+    }
+
+    /* Expanded Content */
+    .ux4g-pending-task-main .ux4g-result-list-v1 .ux4g-result-list-content {
+        grid-column: 1 / span 3 !important;
+        grid-row: 4 !important;
+        display: block !important; /* Un-flattens it so the top border (divider) comes back! */
+        margin-top: var(--ux4g-margin-s) !important;
+        padding-top: var(--ux4g-padding-m) !important;
+        border-top: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default) !important;
+    }
+
+    /* Details Grid inside Expanded Content */
+    .ux4g-pending-task-main .ux4g-result-list-v1 .ux4g-result-list-details {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: var(--ux4g-stack-m) var(--ux4g-inline-m) !important;
+    }
+    
+    .ux4g-pending-task-main .ux4g-result-list-v1 .ux4g-result-list-detail-item {
+        grid-column: auto !important; /* Override generic nth-child placements */
+        grid-row: auto !important;
+    }
+
+    /* Position Action Button */
+    .ux4g-pending-task-main .ux4g-result-list-v1 .ux4g-result-list-actions > button,
+    .ux4g-pending-task-main .ux4g-result-list-v1 .ux4g-result-list-actions > a {
+        grid-column: 1 / span 3 !important;
+        grid-row: 5 !important;
+        width: 100% !important;
+        justify-content: center !important;
+        margin-top: var(--ux4g-margin-m) !important;
+    }
+    
+    /* Make sure Desktop items don't break the layout if not hidden properly */
+    .ux4g-pending-task-main .ux4g-result-list-v1 > .ux4g-result-list-id,
+    .ux4g-pending-task-main .ux4g-result-list-v1 > .ux4g-result-list-date,
+    .ux4g-pending-task-main .ux4g-result-list-v1 > .ux4g-result-list-dept {
+        display: none !important;
+    }
+}

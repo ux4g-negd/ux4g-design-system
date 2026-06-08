@@ -29,7 +29,7 @@
      color: var(--ux4g-text-neutral-primary);
  }
 
- .ux4g-tab-item.is-active {
+ .ux4g-tab-item.active {
      color: var(--ux4g-text-brand-primary-default);
  }
 
@@ -61,7 +61,7 @@
      transition: color var(--ux4g-motion-duration-productive) var(--ux4g-motion-easing-standard);
  }
 
- .ux4g-tab-more.is-active .ux4g-tab-more-icon,
+ .ux4g-tab-more.active .ux4g-tab-more-icon,
  .ux4g-tab-more:hover .ux4g-tab-more-icon {
      color: var(--ux4g-text-brand-primary-default);
  }
@@ -95,7 +95,7 @@
      }
  }
 
- .ux4g-tab-dropdown-item.is-active {
+ .ux4g-tab-dropdown-item.active {
      background-color: var(--ux4g-bg-neutral-emphasis);
  }
 
@@ -108,7 +108,7 @@
      color: var(--ux4g-text-neutral-secondary);
  }
 
- .ux4g-tab-panel.is-active {
+ .ux4g-tab-panel.active {
      display: block;
  }
 
@@ -124,11 +124,11 @@
      transition: color var(--ux4g-motion-duration-productive) var(--ux4g-motion-easing-standard), border-bottom-color var(--ux4g-motion-duration-productive) var(--ux4g-motion-easing-standard);
  }
 
- .ux4g-tab-underline .ux4g-tab-item.is-active {
+ .ux4g-tab-underline .ux4g-tab-item.active {
      border-bottom-color: var(--ux4g-border-color-primary-strong);
  }
 
- .ux4g-tab-underline .ux4g-tab-item:hover:not(.is-active):not(.ux4g-tab-item-disabled) {
+ .ux4g-tab-underline .ux4g-tab-item:hover:not(.active):not(.ux4g-tab-item-disabled) {
      border-bottom-color: var(--ux4g-border-color-neutral-strong);
  }
 
@@ -142,12 +142,13 @@
      background: transparent;
  }
 
- .ux4g-tab-pill .ux4g-tab-item.is-active {
+ .ux4g-tab-pill .ux4g-tab-item.active {
      background: var(--ux4g-bg-primary-soft);
      color: var(--ux4g-text-brand-primary-default);
+     font-weight: var(--ux4g-fw-bold);
  }
 
- .ux4g-tab-pill .ux4g-tab-item:hover:not(.is-active):not(.ux4g-tab-item-disabled) {
+ .ux4g-tab-pill .ux4g-tab-item:hover:not(.active):not(.ux4g-tab-item-disabled) {
      background: var(--ux4g-bg-neutral-soft);
      color: var(--ux4g-text-neutral-primary);
  }
@@ -226,7 +227,7 @@
 
  .ux4g-tab-vertical .ux4g-tab-panel {
      flex: 1;
-     padding: 0 var(--ux4g-padding-l);
+     padding: 0 var(--ux4g-padding-xs);
  }
 
  .ux4g-tab-vertical.ux4g-tab-underline .ux4g-tab-list {
@@ -242,11 +243,11 @@
      transition: color var(--ux4g-motion-duration-productive) var(--ux4g-motion-easing-standard), border-left-color var(--ux4g-motion-duration-productive) var(--ux4g-motion-easing-standard);
  }
 
- .ux4g-tab-vertical.ux4g-tab-underline .ux4g-tab-item.is-active {
+ .ux4g-tab-vertical.ux4g-tab-underline .ux4g-tab-item.active {
      border-left-color: var(--ux4g-border-color-primary-strong);
  }
 
- .ux4g-tab-vertical.ux4g-tab-underline .ux4g-tab-item:hover:not(.is-active):not(.ux4g-tab-item-disabled) {
+ .ux4g-tab-vertical.ux4g-tab-underline .ux4g-tab-item:hover:not(.active):not(.ux4g-tab-item-disabled) {
      border-left-color: var(--ux4g-border-color-neutral-strong);
  }
 

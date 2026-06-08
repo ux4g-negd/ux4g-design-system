@@ -163,12 +163,16 @@
 }
 
 .ux4g-stepper:not(.ux4g-stepper-vertical) .ux4g-stepper-step {
-    flex: auto;
+    flex: 1;
     /* height: var(--ux4g-stepper-step-height) */
     display: flex;
     align-items: center;
     gap: var(--ux4g-inline-s);
     position: var(--ux4g-pos-relative);
+}
+
+.ux4g-stepper:not(.ux4g-stepper-vertical):not(.ux4g-stepper-center):not(.ux4g-stepper-left) .ux4g-stepper-step:last-child {
+    flex: none;
 }
 
 /* .ux4g-stepper:not(.ux4g-stepper-vertical) .ux4g-stepper-step:first-child .ux4g-stepper-head {
@@ -447,21 +451,21 @@
     align-items: center;
 }
 
-.ux4g-stepper-s .ux4g-stepper-head-icon {
+:is(.ux4g-stepper-s, .ux4g-stepper-small) .ux4g-stepper-head-icon {
     width: 20px !important;
     height: 20px !important;
 }
 
-.ux4g-stepper-s .ux4g-stepper-head-check {
+:is(.ux4g-stepper-s, .ux4g-stepper-small) .ux4g-stepper-head-check {
     width: 9px !important;
     height: 9px !important;
 }
 
-.ux4g-stepper-s .ux4g-stepper-done span.ux4g-stepper-head-icon {
+:is(.ux4g-stepper-s, .ux4g-stepper-small) .ux4g-stepper-done span.ux4g-stepper-head-icon {
     background-size: 12px;
 }
 
-.ux4g-stepper-s .ux4g-stepper-head-icon {
+:is(.ux4g-stepper-s, .ux4g-stepper-small) .ux4g-stepper-head-icon {
     font-size: var(--ux4g-fs-11);
 }
 
@@ -502,6 +506,10 @@
 .ux4g-stepper-left .ux4g-stepper-step:not(:last-child):after {
     left: calc(32px + var(--ux4g-margin-m, 16px));
     width: calc(100% - 28px - var(--ux4g-margin-l, 24px));
+}
+
+.ux4g-stepper-left .ux4g-stepper-step:last-child {
+    flex: none;
 }
 
 /* ========================================================== Bottom Line Variant (.ux4g-stepper-bottom-line) Combine with .ux4g-stepper-center ========================================================== */
@@ -620,18 +628,18 @@
 }
 
 /* ========================================================== VERTICAL STEPPER (Small Variant : 24px) ========================================================== */
-.ux4g-stepper-vertical.ux4g-stepper-s .ux4g-stepper-step {
+.ux4g-stepper-vertical:is(.ux4g-stepper-s, .ux4g-stepper-small) .ux4g-stepper-step {
     grid-template-columns: 24px 1fr;
     column-gap: var(--ux4g-margin-m, 16px);
 }
 
-.ux4g-stepper-vertical.ux4g-stepper-s .ux4g-stepper-head-icon {
+.ux4g-stepper-vertical:is(.ux4g-stepper-s, .ux4g-stepper-small) .ux4g-stepper-head-icon {
     width: 24px !important;
     height: 24px !important;
 }
 
 /* Connecting Line (Small: 24px Icon) */
-.ux4g-stepper-vertical.ux4g-stepper-s .ux4g-stepper-step:not(:last-child):after {
+.ux4g-stepper-vertical:is(.ux4g-stepper-s, .ux4g-stepper-small) .ux4g-stepper-step:not(:last-child):after {
     left: 10px;
     top: calc(50% + -14px);
     height: calc(100% - 0px);

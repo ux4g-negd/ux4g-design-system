@@ -1,0 +1,276 @@
+/* ==========================================================================
+   UX4G Consultation Slot Booking Custom Styles
+   ========================================================================== */
+
+.ux4g-csb-advocates-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-m);
+}
+
+.ux4g-csb-advocate-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--ux4g-bg-neutral-elevated);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-md);
+    padding: var(--ux4g-padding-l);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.ux4g-csb-advocate-card:hover {
+    box-shadow: var(--ux4g-shadow-l1);
+    border-color: var(--ux4g-border-color-neutral-default);
+}
+
+.ux4g-csb-advocate-left {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-m);
+}
+
+.ux4g-csb-advocate-icon-wrap {
+    width: var(--ux4g-sz-48);
+    height: var(--ux4g-sz-48);
+    background-color: var(--ux4g-bg-primary-soft);
+    color: var(--ux4g-text-brand-primary-default);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ux4g-csb-advocate-icon-wrap .ux4g-icon-outlined {
+    font-size: var(--ux4g-fs-24);
+    color: inherit;
+}
+.ux4g-csb-advocate-header-row{
+         display: flex;
+         gap: var(--ux4g-inline-m);
+    }
+
+
+.ux4g-csb-advocate-details {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+    .ux4g-csb-advocate-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--ux4g-stack-m);
+        padding: var(--ux4g-padding-m);
+    }
+    
+    .ux4g-csb-advocate-left {
+        gap: var(--ux4g-inline-s);
+        align-items: flex-start;
+    }
+    
+    .ux4g-csb-advocate-card .ux4g-btn {
+        width: 100%;
+    }
+    .ux4g-csb-advocate-info{
+         flex: 1;
+    }
+    .ux4g-csb-advocate-header-row{
+         justify-content: space-between;
+    }
+
+    
+}
+
+/* ==========================================================================
+   Confirmation Page Custom Styles
+   ========================================================================== */
+
+.ux4g-csb-confirm-container {
+    max-width: var(--ux4g-sz-720, 720px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--ux4g-stack-l);
+}
+
+.ux4g-csb-confirm-header {
+    text-align: center;
+    margin-bottom: var(--ux4g-margin-s);
+}
+
+.ux4g-csb-confirm-card {
+    width: 100%;
+    background-color: var(--ux4g-color-primary-50);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-color-primary-200);
+    border-radius: var(--ux4g-radius-lg);
+    padding: var(--ux4g-padding-xl);
+    box-sizing: border-box;
+}
+
+.ux4g-csb-confirm-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    row-gap: var(--ux4g-stack-m);
+    column-gap: var(--ux4g-inline-l);
+}
+
+/* Alert Warning Banner Overrides */
+.ux4g-csb-confirm-alert {
+    border-radius: var(--ux4g-radius-md);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-warning-default);
+}
+
+/* Actions */
+.ux4g-csb-confirm-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--ux4g-inline-m);
+    margin-top: var(--ux4g-margin-s);
+    width: 100%;
+}
+
+.ux4g-csb-confirm-actions .ux4g-btn {
+    min-width: 180px;
+}
+
+/* Responsive Overrides for Confirmation Page */
+@media (max-width: 768px) {
+    .ux4g-csb-confirm-grid {
+        grid-template-columns: 1fr;
+        row-gap: var(--ux4g-stack-xs);
+    }
+    
+    .ux4g-csb-confirm-card {
+        padding: var(--ux4g-padding-l);
+    }
+
+    .ux4g-csb-confirm-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--ux4g-stack-s);
+    }
+
+    .ux4g-csb-confirm-actions .ux4g-btn {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+/* Success Page Confirmation Icon */
+.ux4g-csb-success-icon-wrap {
+    width: var(--ux4g-sz-64, 64px);
+    height: var(--ux4g-sz-64, 64px);
+    background-color: var(--ux4g-bg-success-soft);
+    color: var(--ux4g-bg-success-strong);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--ux4g-margin-s);
+}
+
+.ux4g-csb-success-icon-wrap .ux4g-icon-outlined {
+    font-size: var(--ux4g-fs-32, 32px);
+}
+
+/* Center wrapper to vertically and horizontally center the content */
+.ux4g-csb-center-wrapper {
+    min-height: calc(100vh - var(--ux4g-sz-80, 80px));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Reschedule Card Styles */
+.ux4g-csb-reschedule-card {
+    width: 100%;
+    max-width: var(--ux4g-sz-920, 920px);
+    margin: 0 auto;
+    background-color: var(--ux4g-bg-neutral-elevated);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-lg);
+    padding: var(--ux4g-padding-2xl);
+    box-sizing: border-box;
+}
+
+.ux4g-csb-reschedule-select-container {
+    width: 100%;
+    margin-bottom: var(--ux4g-margin-l);
+}
+
+.ux4g-csb-reschedule-select-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+}
+
+.ux4g-csb-reschedule-select {
+    width: 100%;
+    height: 40px;
+    padding: 0 var(--ux4g-padding-m);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+    border-radius: var(--ux4g-radius-md);
+    background-color: var(--ux4g-color-neutral-0);
+    font-size: var(--ux4g-fs-14);
+    font-family: inherit;
+    color: var(--ux4g-text-neutral-primary);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.ux4g-csb-reschedule-select-wrapper::after {
+    content: "expand_more";
+    font-family: "Material Icons Outlined", "Material Icons";
+    position: absolute;
+    right: var(--ux4g-padding-m);
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: var(--ux4g-fs-20);
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-csb-reschedule-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--ux4g-inline-m);
+    margin-top: var(--ux4g-margin-xl);
+    width: 100%;
+}
+
+.ux4g-csb-reschedule-actions .ux4g-btn {
+    min-width: 160px;
+}
+
+/* Mobile Responsiveness for Reschedule Page */
+@media (max-width: 860px) {
+    .ux4g-csb-reschedule-card {
+        padding: var(--ux4g-padding-l);
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    .ux4g-csb-reschedule-select-wrapper {
+        max-width: 100%;
+    }
+    
+    .ux4g-csb-reschedule-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--ux4g-stack-s);
+    }
+    
+    .ux4g-csb-reschedule-actions .ux4g-btn {
+        width: 100%;
+        min-width: 0;
+    }
+}

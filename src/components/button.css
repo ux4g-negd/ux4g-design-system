@@ -1,5 +1,5 @@
 /* =========================================== UX4G BUTTON — Primary (Size XL) + States Default / Hover / Active / Focused =========================================== */
- .ux4g-btn, .ux4g-btn-primary, .ux4g-btn-outline-primary, .ux4g-btn-text-primary, .ux4g-btn-tonal-primary, .ux4g-btn-danger, .ux4g-btn-outline-danger, .ux4g-btn-text-danger{
+ .ux4g-btn, .ux4g-btn-primary, .ux4g-btn-outline-primary, .ux4g-btn-text-primary, .ux4g-btn-tonal-primary, .ux4g-btn-danger, .ux4g-btn-outline-danger, .ux4g-btn-text-danger, .ux4g-btn-outline-neutral, .ux4g-btn-text-neutral{
      display: inline-flex;
      align-items: center;
      justify-content: center;
@@ -112,6 +112,45 @@
      background-color: var(--ux4g-bg-neutral-disabled);
     color: var(--ux4g-text-neutral-disabled);
      border-color: var(--ux4g-border-color-neutral-subtle);
+     pointer-events: none;
+}
+/* =========================================== Neutral Outline =========================================== */
+/* Default */
+ .ux4g-btn-outline-neutral{
+     background-color: var(--ux4g-bg-neutral-elevated);
+     color: var(--ux4g-text-neutral-primary);
+     border-color: var(--ux4g-border-color-neutral-default);
+}
+ .ux4g-btn-outline-neutral:hover{
+     background-color: var(--ux4g-bg-neutral-subtle);
+}
+ .ux4g-btn-outline-neutral:active{
+     background-color: var(--Action-Neutral-Secondary-Active-Background, #E5E5E5);
+     border-color: var(--Action-Neutral-Secondary-Active-Border, #D9D9D9);
+}
+/* Disabled */
+ .ux4g-btn-outline-neutral:disabled, .ux4g-btn-outline-neutral[aria-disabled="true"]{
+     background-color: var(--ux4g-bg-neutral-elevated);
+     color: var(--ux4g-text-neutral-disabled);
+     border-color: var(--Action-Neutral-Secondary-Disabled-Border, #E5E5E5);
+     pointer-events: none;
+}
+/* =========================================== Neutral Text =========================================== */
+/* Default */
+ .ux4g-btn-text-neutral{
+     background-color: transparent;
+     color: var(--ux4g-text-neutral-primary);
+}
+ .ux4g-btn-text-neutral:hover{
+     background-color: var(--ux4g-bg-neutral-subtle);
+}
+ .ux4g-btn-text-neutral:active{
+     background-color: var(--Action-Neutral-Secondary-Active-Background, #E5E5E5);
+}
+/* Disabled */
+ .ux4g-btn-text-neutral:disabled, .ux4g-btn-text-neutral[aria-disabled="true"]{
+     background-color: transparent;
+     color: var(--ux4g-text-neutral-disabled);
      pointer-events: none;
 }
 /* =========================================== Danger =========================================== */

@@ -1,0 +1,110 @@
+/* Custom CSS for Payment Pattern */
+
+.ux4g-payment-footer {
+    position: var(--ux4g-pos-absolute);
+    bottom: var(--ux4g-sz-20);
+    left: var(--ux4g-pos-start-0);
+    right: var(--ux4g-pos-end-0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ux4g-inline-s);
+}
+
+/* ==========================================================================
+   Payment Layouts (Full Screen & Card)
+   ========================================================================== */
+
+
+
+.ux4g-payment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(var(--ux4g-sz-screen-h) - var(--ux4g-sz-48) - var(--ux4g-sz-24));
+    width: var(--ux4g-sz-full);
+    overflow: hidden;
+    position: var(--ux4g-pos-relative);
+    padding: var(--ux4g-padding-xl);
+}
+
+.ux4g-payment-card {
+    background-color: var(--ux4g-bg-primary-soft);
+    padding: var(--ux4g-sz-80) 0;
+}
+
+.ux4g-payment-full {
+    background-color: var(--ux4g-bg-neutral);
+    padding: var(--ux4g-sz-80) 0;
+}
+
+.ux4g-payment .ux4g-payment-wrapper {
+    width: var(--ux4g-sz-full);
+    max-width: 500px;
+}
+
+.ux4g-payment-card .ux4g-payment-wrapper {
+    background-color: var(--ux4g-bg-neutral-elevated);
+    border-radius: var(--ux4g-radius-lg);
+    box-shadow: var(--ux4g-shadow-l2);
+    padding: var(--ux4g-padding-xl);
+}
+
+@media (max-width: 767px) {
+    .ux4g-payment {
+        padding: var(--ux4g-padding-m);
+        min-height: auto;
+    }
+    
+    .ux4g-payment .ux4g-payment-wrapper {
+        padding: var(--ux4g-padding-m);
+        max-width: var(--ux4g-sz-full);
+    }
+    
+    .ux4g-payment-footer {
+        position: var(--ux4g-pos-relative);
+        bottom: auto;
+        margin-top: var(--ux4g-margin-2xl);
+    }
+}
+
+
+/* Payment Summary Table */
+.ux4g-payment .ux4g-table-responsive {
+    border-radius: var(--ux4g-radius-md) !important;
+}
+
+.ux4g-payment .ux4g-table th,
+.ux4g-payment .ux4g-table td {
+    border: none !important;
+}
+
+.ux4g-payment .ux4g-table tbody tr:last-child td {
+    border-top: 1px solid var(--ux4g-color-neutral-border) !important;
+}
+
+.ux4g-payment .ux4g-table th {
+    text-align: left !important;
+}
+
+
+/* Payment List Styling */
+.ux4g-payment .ux4g-list {
+    box-shadow: none !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-space-4);
+}
+
+.ux4g-payment .ux4g-list-item {
+    border-radius: var(--ux4g-radius-md) !important;
+    background-color: var(--ux4g-bg-neutral-soft) !important;
+}
+
+.ux4g-payment .ux4g-list-item-row:has(input[type="radio"]:checked) {
+    background-color: var(--ux4g-bg-primary-soft) !important;
+    border-radius: var(--ux4g-radius-md) !important;
+}

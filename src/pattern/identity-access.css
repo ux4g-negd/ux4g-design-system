@@ -1,0 +1,1044 @@
+/* Custom CSS for Identity & Access Body Pattern */
+ 
+.ux4g-identity-access-container {
+    box-sizing: border-box;
+    width: var(--ux4g-sz-full);
+}
+ 
+.ux4g-identity-access-layout {
+    display: flex;
+    min-height: calc(var(--ux4g-sz-screen-h) - var(--ux4g-sz-48) - var(--ux4g-sz-24)); /* Fits remaining viewport height below navbar */
+    background-color: var(--ux4g-bg-neutral-elevated);
+    overflow: var(--ux4g-of-hidden);
+    position: var(--ux4g-pos-relative);
+    width: var(--ux4g-sz-full);
+}
+ 
+/* Left Sidebar Panel */
+.ux4g-identity-access-sidebar {
+    width: var(--ux4g-sz-half);
+    background-color: var(--ux4g-bg-primary-strong); /* Premium brand deep purple */
+    padding: var(--ux4g-section-2xl);
+    position: var(--ux4g-pos-relative);
+    overflow: var(--ux4g-of-hidden);
+    box-sizing: border-box;
+    z-index: var(--ux4g-z-layout-raised);
+}
+ 
+.ux4g-sidebar-top {
+    position: var(--ux4g-pos-relative);
+    z-index: var(--ux4g-z-layout-overlay);
+}
+.ux4g-sidebar-top .ux4g-heading-l-default{
+    color: var(--ux4g-text-white);
+}
+.ux4g-sidebar-bottom {
+    position: var(--ux4g-pos-relative);
+    z-index: var(--ux4g-z-layout-overlay);
+}
+ 
+.ux4g-logo-white {
+    filter: brightness(0) invert(1);
+    height: var(--ux4g-sz-l);
+}
+ 
+.ux4g-opacity-80 {
+    opacity: 0.8;
+}
+ 
+.ux4g-opacity-60 {
+    opacity: 0.6;
+}
+ 
+/* Background circles styling */
+.ux4g-sidebar-ring {
+    position: var(--ux4g-pos-absolute);
+    border-radius: var(--ux4g-radius-full);
+    border: var(--ux4g-sz-36) solid color-mix(in srgb, var(--ux4g-text-white) 4%, transparent);
+    pointer-events: none;
+    z-index: var(--ux4g-z-layout-base);
+}
+.ux4g-sidebar-ring-bottom{
+    border: var(--ux4g-sz-20) solid color-mix(in srgb, var(--ux4g-text-white) 4%, transparent) !important;
+}
+ 
+.ux4g-ring-1 {
+    width: calc(var(--ux4g-sz-120) * 3.75);
+    height: calc(var(--ux4g-sz-120) * 3.75);
+    top: calc(-1 * var(--ux4g-sz-120));
+    left: calc(-1 * var(--ux4g-sz-120));
+}
+ 
+.ux4g-ring-2 {
+    width: calc(var(--ux4g-sz-80) * 4);
+    height: calc(var(--ux4g-sz-80) * 4);
+    bottom: calc(-1 * var(--ux4g-sz-80));
+    right: calc(-1 * var(--ux4g-sz-80));
+}
+ 
+/* Right Main Panel */
+.ux4g-identity-access-column {
+    flex: 1;
+    background-color: var(--ux4g-bg-neutral); /* Premium subtle grey background */
+    padding: var(--ux4g-padding-xl) var(--ux4g-padding-3xl);
+}
+ 
+.ux4g-identity-access-column.ux4g-identity-access-column-centered {
+    flex: 1;
+    width: var(--ux4g-sz-full);
+    padding: var(--ux4g-padding-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.ux4g-form-box {    
+    box-sizing: border-box;
+    /* margin-inline: auto;
+    margin-block: auto !important; */
+    width: var(--ux4g-sz-full);
+}
+
+.ux4g-identity-access-column .ux4g-form-box {
+    max-width: 500px;
+}
+
+ 
+ 
+ 
+/* Input Code Prefix */
+.ux4g-input-prefix {
+    font-size: var(--ux4g-fs-14);
+    font-weight: var(--ux4g-fw-medium);
+    color: var(--ux4g-text-neutral-secondary);
+    margin-inline-end: var(--ux4g-margin-s);
+    padding-inline-end: var(--ux4g-padding-s);
+    border-inline-end: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+ 
+/* Alert styling overrides */
+.ux4g-form-alert {
+    padding: var(--ux4g-padding-s) var(--ux4g-padding-m);
+    border-radius: var(--ux4g-radius-md);
+    background-color: var(--ux4g-bg-error);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-error-default);
+    align-items: flex-start;
+}
+ 
+.ux4g-form-alert .ux4g-alert-icon {
+    color: var(--ux4g-icon-status-error);
+}
+ 
+.ux4g-form-alert .ux4g-alert-message {
+    color: var(--ux4g-text-status-error);
+}
+ 
+/* Warning form alert override */
+.ux4g-form-alert.ux4g-alert-warning {
+    background-color: var(--ux4g-bg-warning);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-warning-default);
+}
+ 
+.ux4g-form-alert.ux4g-alert-warning .ux4g-alert-icon {
+    color: var(--ux4g-icon-status-warning);
+}
+ 
+.ux4g-form-alert.ux4g-alert-warning .ux4g-alert-message {
+    color: var(--ux4g-text-status-warning);
+}
+ 
+.ux4g-form-alert.ux4g-alert-warning .ux4g-alert-counter {
+    color: var(--ux4g-text-status-warning);
+    background-color: var(--ux4g-bg-warning-soft);
+}
+ 
+ 
+ 
+.ux4g-form-alert-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-2xs);
+    flex: 1;
+    min-width: 0;
+}
+ 
+.ux4g-form-alert-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: var(--ux4g-sz-full);
+    gap: var(--ux4g-inline-s);
+    
+}
+.ux4g-form-alert-footer span:first-child{
+    flex: 1;
+
+}
+ 
+.ux4g-alert-counter {
+    color: var(--ux4g-text-status-error);
+    background-color: var(--ux4g-bg-error-soft);
+    padding: var(--ux4g-padding-2xs) var(--ux4g-padding-xs);
+    border-radius: var(--ux4g-radius-sm);
+    display: flex;
+    align-items: center;
+}
+ 
+/* Divider with Label Text */
+.ux4g-divider-horizontal-text {
+    position: var(--ux4g-pos-relative);
+    text-align: var(--ux4g-ta-center);
+    margin-block: var(--ux4g-margin-m);
+}
+ 
+.ux4g-divider-horizontal-text::before {
+    content: "";
+    position: var(--ux4g-pos-absolute);
+    top: var(--ux4g-sz-half);
+    left: 0;
+    width: var(--ux4g-sz-full);
+    height: var(--ux4g-border-width-sm);
+    background-color: var(--ux4g-border-color-neutral-subtle);
+    z-index: var(--ux4g-z-layout-raised);
+}
+ 
+.ux4g-divider-label {
+    position: var(--ux4g-pos-relative);
+    background-color: var(--ux4g-bg-neutral);
+    padding-inline: var(--ux4g-padding-s);
+    z-index: var(--ux4g-z-layout-overlay);
+}
+ 
+.ux4g-form-footer {
+    margin-top: auto !important;
+    padding-top: var(--ux4g-padding-2xl);
+}
+ 
+ 
+/* custom css */
+.ux4g-input-container .ux4g-label-l-default{
+    color: var(--ux4g-text-neutral-secondary);
+}
+.ux4g-form-footer .ux4g-label-m-default{
+    color: var(--ux4g-text-neutral-tertiary);
+}
+.ux4g-sidebar-stat{
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-inline-2xs);
+}
+/* Mobile Breakpoint Overrides */
+@media (max-width: 767px) {
+    .ux4g-identity-access-layout {
+        min-height: auto;
+        flex-direction: column;
+    }
+    .ux4g-identity-access-column {
+        width: var(--ux4g-sz-full);
+        padding: var(--ux4g-padding-xl) var(--ux4g-padding-m);
+       
+    }
+    .ux4g-form-box {
+        max-width: var(--ux4g-sz-full);
+        box-shadow: none;
+        background-color: transparent;
+    }
+   
+    .ux4g-identity-access-column-otp .ux4g-form-box,
+    .ux4g-identity-access-column-adhar .ux4g-form-box,
+    .ux4g-identity-access-column-success .ux4g-form-box
+    {
+        padding-block: var(--ux4g-padding-3xl);
+ 
+    }
+    .ux4g-form-footer{
+        flex-direction: column;
+        gap: var(--ux4g-stack-xs);
+        padding-block-start: var(--ux4g-padding-2xl);
+    }
+}
+ 
+/* Redirect Success Screen Components */
+.ux4g-success-badge-outer {
+    width: var(--ux4g-sz-64);
+    height: var(--ux4g-sz-64);
+    background-color: var(--ux4g-bg-success-soft);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--ux4g-margin-xl);
+}
+ 
+.ux4g-success-badge-inner {
+    width: var(--ux4g-sz-40);
+    height: var(--ux4g-sz-40);
+    background-color: var(--ux4g-bg-success-strong);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.ux4g-success-icon {
+    font-size: var(--ux4g-fs-24) !important;
+    color: var(--ux4g-text-white);
+}
+ 
+.ux4g-loader-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--ux4g-margin-2xl);
+}
+ 
+.ux4g-loader-dot {
+    width: var(--ux4g-sz-10);
+    height: var(--ux4g-sz-10);
+    border-radius: var(--ux4g-radius-full);
+    background-color: var(--ux4g-bg-primary-subtle);
+    display: inline-block;
+}
+ 
+.ux4g-loader-dot-active {
+    background-color: var(--ux4g-bg-primary-strong);
+}
+ 
+/* Brand-Subtle Background Layout Variation (Pattern 3) */
+.ux4g-identity-access-layout-card,
+.ux4g-identity-access-full {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(var(--ux4g-sz-screen-h) - var(--ux4g-sz-48) - var(--ux4g-sz-24));
+    width: var(--ux4g-sz-full);
+    padding-block: var(--ux4g-padding-2xl);
+}
+
+
+.ux4g-identity-access-layout-card .ux4g-form-box {
+    background-color: var(--ux4g-bg-neutral-elevated);
+    border-radius: var(--ux4g-radius-lg);
+    box-shadow: var(--ux4g-shadow-l2);
+    padding: var(--ux4g-padding-xl);
+    max-width: 550px;
+
+}
+
+.ux4g-identity-access-full .ux4g-form-box {
+    max-width: 550px;
+
+}
+
+
+ 
+/* Mobile Breakpoint Overrides for Pattern 3 */
+@media (max-width: 767px) {
+    .ux4g-identity-access-layout-card,
+    .ux4g-identity-access-full {
+        padding-inline: var(--ux4g-padding-m);
+        padding-block: var(--ux4g-padding-xl);
+        min-height: auto;
+    }
+    .ux4g-identity-access-layout-card .ux4g-form-box,
+    .ux4g-identity-access-full .ux4g-form-box {
+        padding: var(--ux4g-padding-xl) var(--ux4g-padding-m);
+        max-width: var(--ux4g-sz-full);
+    }
+}
+ 
+/* Lock/Error Badge Components */
+.ux4g-error-badge-outer {
+    width: var(--ux4g-sz-64);
+    height: var(--ux4g-sz-64);
+    background-color: var(--ux4g-bg-error-soft);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--ux4g-margin-xl);
+}
+ 
+.ux4g-error-badge-inner {
+    width: var(--ux4g-sz-40);
+    height: var(--ux4g-sz-40);
+    background-color: var(--ux4g-bg-error-strong);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+/* ==========================================================================
+   Session Timeout Modals Styles (Format 4)
+   ========================================================================== */
+ 
+/* Wrapper handles only height block constraints */
+.session-out-bg{
+    background-image: url('../assets/images/session-out-bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+.ux4g-session-timeout-wrapper {
+    min-height: 540px;
+}
+ 
+/* Card details handles container constraint overrides */
+.ux4g-session-card {
+    padding: var(--ux4g-padding-l);
+    max-width: 500px;
+}
+
+@media (min-width: 576px) {
+    .ux4g-session-card {
+        min-width: 500px;
+    }
+}
+ 
+@media (max-width: 576px) {
+    .ux4g-session-card {
+        padding: var(--ux4g-padding-xl);
+    }
+}
+ 
+/* Tabular countdown timers with custom size variables */
+.ux4g-session-timer {
+    font-size: var(--ux4g-fs-48);
+    font-weight: var(--ux4g-fw-bold);
+    font-variant-numeric: tabular-nums;
+}
+ 
+/* Smooth width updates for indicator fill */
+.ux4g-session-progress-fill {
+    transition: width 0.3s ease;
+}
+ 
+/* Actions handles responsive side-by-side flex layout & outline neutral state styling */
+.ux4g-session-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-xs);
+    width: var(--ux4g-sz-full);
+}
+ 
+@media (min-width: 576px) {
+    .ux4g-session-actions {
+        flex-direction: row;
+        gap: var(--ux4g-inline-m);
+    }
+}
+ 
+.ux4g-session-actions button,
+.ux4g-session-actions a {
+    flex: 1;
+    justify-content: center;
+}
+ 
+.ux4g-session-actions .ux4g-btn-outline-neutral {
+    border-color: var(--ux4g-border-color-neutral-default);
+    color: var(--ux4g-text-neutral-primary);
+}
+ 
+.ux4g-session-actions .ux4g-btn-outline-neutral:hover {
+    background-color: var(--ux4g-bg-neutral-subtle);
+    border-color: var(--ux4g-border-color-neutral-default);
+}
+ 
+.ux4g-session-actions .ux4g-btn-outline-neutral:active {
+    background-color: var(--ux4g-bg-neutral-emphasis);
+    border-color: var(--ux4g-border-color-neutral-default);
+}
+ 
+/* Auth Errors & Lockout Pattern */
+.ux4g-lockout-icon {
+    width: var(--ux4g-sz-64);
+    height: var(--ux4g-sz-64);
+    background-color: var(--ux4g-bg-error-soft);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--ux4g-margin-xl);
+}
+ 
+.ux4g-lockout-icon-inner {
+    width: var(--ux4g-sz-40);
+    height: var(--ux4g-sz-40);
+    background-color: var(--ux4g-bg-error-strong);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.ux4g-lockout-timer {
+    font-size: var(--ux4g-fs-20);
+    font-weight: var(--ux4g-fw-semibold);
+    color: var(--ux4g-text-error-default);
+    margin-block: var(--ux4g-margin-m);
+}
+ 
+.ux4g-suspicious-icon {
+    width: var(--ux4g-sz-64);
+    height: var(--ux4g-sz-64);
+    background-color: var(--ux4g-bg-warning-soft);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--ux4g-margin-xl);
+}
+ 
+.ux4g-suspicious-icon-inner {
+    width: var(--ux4g-sz-40);
+    height: var(--ux4g-sz-40);
+    background-color: var(--ux4g-bg-warning-strong);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.ux4g-unlock-icon {
+    width: var(--ux4g-sz-64);
+    height: var(--ux4g-sz-64);
+    background-color: var(--ux4g-bg-success-soft);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--ux4g-margin-xl);
+}
+ 
+.ux4g-unlock-icon-inner {
+    width: var(--ux4g-sz-40);
+    height: var(--ux4g-sz-40);
+    background-color: var(--ux4g-bg-success-strong);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.ux4g-alert-warning-custom {
+    border-color: var(--ux4g-border-color-warning-default);
+}
+ 
+.ux4g-alert-warning-custom .ux4g-alert-icon {
+    color: var(--ux4g-icon-status-warning);
+}
+ 
+.ux4g-disabled-input {
+    opacity: var(--ux4g-opacity-50);
+    pointer-events: none;
+}
+ 
+/* Form box width variants */
+ 
+/* Column variant: primary-100 background on form column (right side) */
+.ux4g-identity-access-column-centered {
+    background-color: var(--ux4g-bg-primary-soft);
+}
+ 
+/* Card variant: light purple background (primary-100), centered card */
+.ux4g-identity-access-layout-card {
+    background-color: var(--ux4g-bg-primary-soft);
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    position: relative;
+    padding: var(--ux4g-padding-2xl) var(--ux4g-padding-xl);
+}
+ 
+.ux4g-identity-access-layout-card .ux4g-identity-access-column {
+    background: transparent;
+    padding: 0;
+    width: auto;
+    flex: initial;
+    position: relative;
+    z-index: var(--ux4g-z-layout-overlay);
+}
+ 
+/* Locked state: lock icon in red soft circle */
+.ux4g-locked-icon-circle {
+    width: var(--ux4g-sz-80);
+    height: var(--ux4g-sz-80);
+    border-radius: var(--ux4g-radius-full);
+    background-color: var(--ux4g-bg-error-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.ux4g-locked-icon-circle .ux4g-icon-outlined {
+    font-size: var(--ux4g-sz-40);
+    color: var(--ux4g-icon-status-error);
+}
+ 
+ 
+ 
+/* Mobile preview frame for showcasing mobile variants on desktop page */
+.ux4g-mobile-frame {
+    container-type: inline-size;
+    max-width: 412px;
+    margin: 0 auto var(--ux4g-margin-xl);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-lg);
+    overflow: hidden;
+}
+ 
+.ux4g-mobile-frame .ux4g-identity-access-layout {
+    min-height: auto;
+    flex-direction: column;
+    background: var(--ux4g-bg-neutral);
+}
+ 
+.ux4g-mobile-frame .ux4g-identity-access-column {
+    padding: var(--ux4g-padding-xl);
+    width: var(--ux4g-w-100);
+}
+ 
+/* Mobile Card variant: white card on neutral bg */
+.ux4g-mobile-frame.ux4g-mobile-frame-card .ux4g-identity-access-layout {
+    padding: var(--ux4g-padding-m);
+}
+ 
+.ux4g-mobile-frame.ux4g-mobile-frame-card .ux4g-identity-access-column {
+    padding: 0;
+    background: transparent;
+}
+ 
+.ux4g-mobile-frame.ux4g-mobile-frame-card .ux4g-card {
+    padding: var(--ux4g-padding-l);
+    background: var(--ux4g-bg-neutral-elevated);
+}
+ 
+/* Mobile alert stacking: title, message, counter as 3 separate rows (block layout) */
+.ux4g-mobile-frame .ux4g-alert-content > .ux4g-d-flex {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: var(--ux4g-stack-2xs);
+}
+ 
+.ux4g-mobile-frame .ux4g-alert-counter {
+    margin-inline-start: 0 !important;
+}
+
+
+/* ================== Aadhar Authentication styles ================== */
+.ux4g-aadhaar-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-s);
+    width: var(--ux4g-w-100);
+}
+
+.ux4g-aadhaar-option-card {
+    display: flex;
+    align-items: flex-start;
+    padding: var(--ux4g-padding-m) var(--ux4g-padding-l);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-md);
+    background-color: var(--ux4g-bg-neutral-elevated);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    gap: var(--ux4g-inline-m);
+    box-sizing: border-box;
+    width: var(--ux4g-w-100);
+}
+
+.ux4g-aadhaar-option-card:hover {
+    border-color: var(--ux4g-bg-primary-emphasis);
+    background-color: var(--ux4g-bg-primary-soft);
+}
+
+.ux4g-aadhaar-option-card.is-selected,
+.ux4g-aadhaar-option-card:has(.ux4g-radio-input:checked) {
+    border-color: var(--ux4g-bg-primary-strong);
+    background-color: var(--ux4g-bg-primary-soft);
+    box-shadow: 0 0 0 1px var(--ux4g-bg-primary-strong);
+}
+
+.ux4g-aadhaar-option-card .ux4g-radio-content {
+    text-align: left;
+    flex: 1;
+    min-width: 0;
+}
+
+.ux4g-aadhaar-option-card .ux4g-radio-label {
+    font-size: var(--ux4g-fs-current) !important;
+    line-height: var(--ux4g-lh-current) !important;
+    font-weight: var(--ux4g-fw-current) !important;
+    white-space: normal;
+}
+
+.ux4g-aadhaar-option-card .ux4g-radio-description {
+    font-size: var(--ux4g-fs-current) !important;
+    line-height: var(--ux4g-lh-current) !important;
+    font-weight: var(--ux4g-fw-current) !important;
+    white-space: normal;
+    display: block;
+}
+
+.ux4g-aadhaar-option-card:has(.ux4g-radio-input:checked) .ux4g-radio-label {
+    color: var(--ux4g-text-brand-primary-default) !important;
+}
+
+.ux4g-aadhaar-option-card:has(.ux4g-radio-input:checked) .ux4g-radio-description {
+    color: var(--ux4g-text-brand-primary-default) !important;
+}
+
+
+
+/* Face auth scanner mockup styles */
+.ux4g-face-auth-scanner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--ux4g-padding-xl);
+    background-color: var(--ux4g-bg-neutral-soft);
+    border: var(--ux4g-border-width-sm) dashed var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-lg);
+    margin-bottom: var(--ux4g-margin-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.ux4g-face-auth-avatar-wrap {
+    width: 120px;
+    height: 120px;
+    border-radius: var(--ux4g-radius-full);
+    border: 2px solid var(--ux4g-bg-primary-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--ux4g-bg-neutral-elevated);
+    margin-bottom: var(--ux4g-margin-m);
+    position: relative;
+}
+
+.ux4g-face-auth-avatar-wrap .ux4g-icon-outlined {
+    font-size: 64px;
+    color: var(--ux4g-text-neutral-tertiary);
+}
+
+.ux4g-face-auth-scanner-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ux4g-bg-primary-strong), transparent);
+    animation: scanner-move 2.5s ease-in-out infinite;
+}
+
+@keyframes scanner-move {
+    0% { top: 10%; }
+    50% { top: 90%; }
+    100% { top: 10%; }
+}
+
+/* Transaction details box */
+.ux4g-transaction-details {
+    background-color: var(--ux4g-bg-neutral-soft);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-md);
+    padding: var(--ux4g-padding-m) var(--ux4g-padding-l);
+    width: var(--ux4g-w-100);
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-xs);
+    box-sizing: border-box;
+}
+
+.ux4g-transaction-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--ux4g-fs-14);
+}
+
+.ux4g-transaction-label {
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-transaction-value {
+    font-weight: var(--ux4g-fw-semibold);
+    color: var(--ux4g-text-neutral-primary);
+}
+
+/* Card Aadhaar flow: reference screen alignment */
+.ux4g-identity-access-layout-card {
+    --ux4g-aadhaar-card-width: 500px;
+    min-height: calc(100vh - 80px);
+    justify-content: flex-start;
+    padding: 112px var(--ux4g-padding-m) 48px;
+}
+/*
+.ux4g-identity-access-layout-card .ux4g-form-box {
+    max-width: var(--ux4g-aadhaar-card-width);
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}*/
+
+.ux4g-identity-access-layout-card .ux4g-form-box > .ux4g-text-link:first-child {
+    margin-bottom: 40px !important;
+    color: var(--ux4g-text-brand-primary-default);
+}
+
+.ux4g-identity-access-layout-card .ux4g-heading-l-strong {
+    margin-bottom: var(--ux4g-margin-s) !important;
+    font-size: 30px;
+    line-height: 38px;
+}
+
+.ux4g-identity-access-layout-card .ux4g-body-m-default {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.ux4g-identity-access-layout-card .ux4g-signin-form {
+    gap: 0;
+}
+
+.ux4g-identity-access-layout-card .ux4g-aadhaar-options {
+    margin-bottom: 32px !important;
+}
+
+.ux4g-identity-access-layout-card .ux4g-aadhaar-option-card {
+    min-height: 72px;
+    align-items: center;
+    padding: 14px 16px;
+    border: 0;
+    background-color: var(--ux4g-bg-neutral-soft);
+    border-radius: var(--ux4g-radius-sm);
+    box-shadow: none;
+}
+
+.ux4g-identity-access-layout-card .ux4g-aadhaar-option-card.is-selected,
+.ux4g-identity-access-layout-card .ux4g-aadhaar-option-card:has(.ux4g-radio-input:checked) {
+    background-color: var(--ux4g-bg-primary-soft);
+    border: 0;
+    box-shadow: none;
+}
+
+
+
+.ux4g-identity-access-layout-card .ux4g-input-container {
+    max-width: 500px;
+    margin-top: 32px;
+}
+
+
+.ux4g-identity-access-layout-card .ux4g-otp-group {
+    justify-content: center;
+    gap: 8px;
+}
+
+
+
+.ux4g-identity-access-layout-card .ux4g-otp-input {
+    text-align: center;
+    font-size: 22px;
+}
+
+.ux4g-identity-access-layout-card .ux4g-otp-meta {
+    justify-content: flex-start;
+    gap: 10px;
+    color: var(--ux4g-text-neutral-tertiary);
+}
+
+.ux4g-identity-access-layout-card .ux4g-form-actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: var(--ux4g-inline-m);
+    padding-top: 32px;
+    border-top: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+}
+
+.ux4g-identity-access-layout-card .ux4g-form-actions .ux4g-text-link {
+    text-align: left !important;
+}
+
+.ux4g-identity-access-layout-card .ux4g-form-footer {
+    margin-top: auto !important;
+    padding-top: 96px;
+    gap: 8px;
+}
+
+.ux4g-identity-access-layout-card .ux4g-alert-warning {
+    display: block;
+    margin-top: 32px;
+    margin-bottom: 32px !important;
+    padding: 18px 36px;
+    border: 0;
+    background-color: var(--ux4g-bg-warning-soft);
+    text-align: center;
+}
+
+.ux4g-identity-access-layout-card .ux4g-alert-warning .ux4g-alert-icon {
+    display: none;
+}
+
+.ux4g-identity-access-layout-card .ux4g-alert-warning .ux4g-alert-message {
+    color: var(--ux4g-text-neutral-primary);
+    font-size: 0;
+}
+
+.ux4g-identity-access-layout-card .ux4g-alert-warning .ux4g-alert-message::before {
+    content: "Camera Access Required";
+    display: block;
+    margin-bottom: 14px;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: var(--ux4g-fw-semibold);
+}
+
+.ux4g-identity-access-layout-card .ux4g-alert-warning .ux4g-alert-message::after {
+    content: "Your face scan data is processed locally and never stored on our servers.";
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: var(--ux4g-fw-regular);
+}
+
+.ux4g-identity-access-layout-card .ux4g-face-auth-scanner {
+    display: none;
+}
+
+.ux4g-identity-access-layout-card .ux4g-success-badge-outer {
+    width: 100%;
+    height: auto;
+    min-height: 44px;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 32px;
+    padding: 10px 16px;
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-success-default);
+    border-radius: var(--ux4g-radius-sm);
+    background-color: var(--ux4g-bg-success-soft);
+    box-sizing: border-box;
+}
+
+.ux4g-identity-access-layout-card .ux4g-success-badge-outer::after {
+    content: "Aadhaar identity verified successfully";
+    color: var(--ux4g-text-status-success);
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.ux4g-identity-access-layout-card .ux4g-success-badge-inner {
+    width: 18px;
+    height: 18px;
+}
+
+.ux4g-identity-access-layout-card .ux4g-success-icon {
+    font-size: 14px !important;
+}
+
+.ux4g-identity-access-layout-card .ux4g-form-box.ux4g-ai-center {
+    align-items: flex-start !important;
+}
+
+.ux4g-identity-access-layout-card .ux4g-form-box.ux4g-ai-center .ux4g-heading-l-strong,
+.ux4g-identity-access-layout-card .ux4g-form-box.ux4g-ai-center .ux4g-body-m-default {
+    text-align: left !important;
+}
+
+.ux4g-identity-access-layout-card .ux4g-form-box.ux4g-ai-center .ux4g-form-actions .ux4g-btn-primary {
+    width: 100%;
+}
+
+.ux4g-identity-access-layout-card .ux4g-transaction-details {
+    margin-top: 8px;
+    padding: 24px;
+    border: 0;
+    border-radius: var(--ux4g-radius-sm);
+    background-color: var(--ux4g-bg-primary-soft);
+}
+
+.ux4g-identity-access-layout-card .ux4g-transaction-row {
+    display: none;
+}
+
+.ux4g-identity-access-layout-card .ux4g-transaction-row:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.ux4g-identity-access-layout-card .ux4g-transaction-label,
+.ux4g-identity-access-layout-card .ux4g-transaction-value {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.ux4g-identity-access-layout-card .ux4g-transaction-value {
+    font-size: 16px;
+    font-weight: var(--ux4g-fw-semibold);
+}
+
+@media (max-width: 767px) {
+    .ux4g-identity-access-layout-card {
+        min-height: auto;
+        padding: 48px var(--ux4g-padding-m);
+    }
+
+    .ux4g-identity-access-layout-card .ux4g-heading-l-strong {
+        font-size: 26px;
+        line-height: 34px;
+    }
+
+    .ux4g-identity-access-layout-card .ux4g-form-actions {
+        flex-direction: column !important;
+        align-items: stretch;
+    }
+
+    .ux4g-identity-access-layout-card .ux4g-form-actions .ux4g-btn-primary {
+        width: 100%;
+    }
+}
+
+
+/* AAdhar Authentication  */
+.ux4g-aadhaar-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: var(--ux4g-sz-full);
+    padding-top: var(--ux4g-padding-xl);
+    border-top: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    gap: var(--ux4g-inline-m);
+    box-sizing: border-box;
+}
+
+.ux4g-aadhaar-form-actions .ux4g-text-link {
+    text-align: left;
+    color: var(--ux4g-text-brand-primary-default);
+    text-decoration: none;
+}
+
+@media (max-width: 767px) {
+    .ux4g-aadhaar-form-actions {
+        flex-direction: column !important;
+        align-items: stretch;
+        gap: var(--ux4g-stack-s);
+        padding-top: var(--ux4g-padding-l);
+    }
+    
+    .ux4g-aadhaar-form-actions .ux4g-text-link {
+        text-align: center;
+        display: block;
+    }
+}
+

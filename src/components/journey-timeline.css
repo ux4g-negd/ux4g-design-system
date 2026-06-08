@@ -6,6 +6,7 @@
     padding: var(--ux4g-padding-l);
     gap: var(--ux4g-stack-xl);
     flex-direction: column;
+    min-height: var(--ux4g-sz-80);
 }
 
 
@@ -15,8 +16,8 @@
 
 
 .ux4g-journey-header-icon {
-    width: 24px;
-    height: 24px;
+    width: var(--ux4g-sz-24);
+    height: var(--ux4g-sz-24);
     color: var(--ux4g-text-neutral-tertiary);
 }
 
@@ -41,13 +42,13 @@
 }
 
 .ux4g-journey-step:last-child {
-    padding-bottom: 0;
+    padding-bottom: var(--ux4g-padding-none);
 }
 
 /* Indicator and Connector */
 .ux4g-journey-indicator {
-    width: 24px;
-    height: 24px;
+    width: var(--ux4g-sz-24);
+    height: var(--ux4g-sz-24);
     border-radius: var(--ux4g-radius-full);
     background-color: var(--ux4g-bg-neutral-elevated);
     border: var(--ux4g-border-thick) solid var(--ux4g-border-color-neutral-default);
@@ -57,17 +58,16 @@
     flex-shrink: 0;
     z-index: 2;
     position: var(--ux4g-pos-relative);
-    margin-top: 10px;
-    /* Align with card top */
+    margin-top: var(--ux4g-sz-24);
     color: transparent;
     transition: all 0.3s ease;
 }
 
 .ux4g-journey-indicator::after {
     content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
+    position: var(--ux4g-pos-absolute);
+    width: var(--ux4g-sz-10);
+    height: var(--ux4g-sz-10);
     border-radius: var(--ux4g-radius-full);
     background-color: var(--ux4g-text-neutral-disabled);
 
@@ -95,9 +95,9 @@ display:  block !important;
 .ux4g-journey-timeline--vertical .ux4g-journey-step:not(:last-child)::after {
     content: "";
     position: var(--ux4g-pos-absolute);
-    left: 11px;
-    top: 34px;
-    bottom: -10px;
+    left: var(--ux4g-sz-11);
+    top: calc(var(--ux4g-sz-24) + var(--ux4g-sz-24));
+    bottom: calc(var(--ux4g-sz-24) * -1);
     width: 4px;
     background-color: var(--ux4g-border-color-neutral-default);
     z-index: 1;
@@ -128,15 +128,21 @@ display:  block !important;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: var(--ux4g-space-14);
 }
 
 .ux4g-journey-card--standard .ux4g-journey-info> :nth-child(2) {
     grid-column: 2;
     justify-self: center;
-    text-align: center;
+    text-align: var(--ux4g-ta-center);
     align-items: center;
-    margin: 0;
+    margin: var(--ux4g-margin-none);
+}
+
+.ux4g-journey-card--standard .ux4g-journey-info> :nth-child(2):last-child {
+    grid-column: 3;
+    justify-self: start;
+    text-align: var(--ux4g-ta-start);
+    align-items: flex-start;
 }
 
 .ux4g-journey-card--standard .ux4g-tag,
@@ -158,7 +164,7 @@ display:  block !important;
 }
 
 .ux4g-journey-card--condensed .ux4g-journey-title {
-    margin: 0;
+    margin: var(--ux4g-margin-none);
 }
 
 /* Common Typography */
@@ -185,6 +191,14 @@ display:  block !important;
 }
 
 /* States */
+/* Pending / Disabled State (Default) */
+.ux4g-journey-step:not(.ux4g-journey-step-completed):not(.ux4g-journey-step-active) {
+    pointer-events: none;
+}
+/* .ux4g-journey-step:not(.ux4g-journey-step-completed):not(.ux4g-journey-step-active) .ux4g-journey-title {
+    color: var(--ux4g-text-neutral-tertiary);
+} */
+
 .ux4g-journey-step-completed .ux4g-journey-indicator {
     background-color: var(--ux4g-bg-primary-strong);
     border-color: var(--ux4g-border-color-primary-strong);
@@ -200,30 +214,35 @@ display:  block !important;
     background-color: var(--ux4g-bg-neutral-elevated);
     border-color: var(--ux4g-border-color-primary-strong);
     color: var(--ux4g-text-brand-primary-default);
-    position: relative;
+    position: var(--ux4g-pos-relative);
 }
 
 .ux4g-journey-step-active .ux4g-journey-indicator::before {
     content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
+    position: var(--ux4g-pos-absolute);
+    width: var(--ux4g-sz-10);
+    height: var(--ux4g-sz-10);
     border-radius: var(--ux4g-radius-full);
     background-color: var(--ux4g-bg-primary-strong);
+}
+
+.ux4g-journey-step-active .ux4g-journey-card {
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-primary-default);
+    background: var(--ux4g-bg-primary-soft);
 }
 
 /* Horizontal Timeline */
 .ux4g-journey-timeline--horizontal {
     flex-direction: row;
-    gap: 0;
+    gap: var(--ux4g-spacing-none);
     align-items: center;
-    padding: 0 var(--ux4g-padding-l);
+    padding: var(--ux4g-padding-none) var(--ux4g-padding-l);
 }
 
 .ux4g-journey-timeline--horizontal .ux4g-journey-step {
     flex: 1;
     flex-direction: column;
-    padding-bottom: 0;
+    padding-bottom: var(--ux4g-padding-none);
     gap: var(--ux4g-inline-s);
     align-items: flex-start;
 }
@@ -233,15 +252,15 @@ display:  block !important;
 }
 
 .ux4g-journey-timeline--horizontal .ux4g-journey-indicator {
-    margin-top: 0;
+    margin-top: var(--ux4g-margin-none);
 }
 
 .ux4g-journey-timeline--horizontal .ux4g-journey-step:not(:last-child)::after {
     content: "";
     position: var(--ux4g-pos-absolute);
-    left: calc(24px + var(--ux4g-space-4));
-    top: 10px;
-    width: calc(100% - 24px - (var(--ux4g-space-4) * 2));
+    left: calc(var(--ux4g-sz-24) + var(--ux4g-space-4));
+    top: var(--ux4g-sz-10);
+    width: calc(100% - var(--ux4g-sz-24) - (var(--ux4g-space-4) * 2));
     height: 4px;
     background-color: var(--ux4g-border-color-neutral-default);
     z-index: 1;
@@ -257,7 +276,6 @@ display:  block !important;
 
 .ux4g-journey-status {
     display: flex;
-    height: 20px;
     padding: var(--ux4g-padding-2xs) var(--ux4g-padding-xs);
     align-items: center;
     gap: var(--ux4g-stack-xs);
@@ -267,8 +285,8 @@ display:  block !important;
 }
 
 .ux4g-journey-status-dot {
-    width: 8px;
-    height: 8px;
+    width: var(--ux4g-sz-8);
+    height: var(--ux4g-sz-8);
     border-radius: var(--ux4g-radius-full);
     margin-right: var(--ux4g-margin-xs);
     background-color: var(--ux4g-bg-neutral-default);
@@ -281,8 +299,9 @@ display:  block !important;
 
 /* Responsive */
 @media (max-width: 768px) {
-
-
+    .ux4g-journey-card {
+        padding: var(--ux4g-padding-m);
+    }
     .ux4g-journey-card--standard .ux4g-journey-info {
         grid-template-columns: 1fr auto;
         row-gap: var(--ux4g-space-6);
@@ -301,11 +320,12 @@ display:  block !important;
         justify-self: end;
     }
 
-    .ux4g-journey-card--standard .ux4g-journey-info> :nth-child(2) {
+    .ux4g-journey-card--standard .ux4g-journey-info> :nth-child(2),
+    .ux4g-journey-card--standard .ux4g-journey-info> :nth-child(2):last-child {
         grid-column: 1 / -1;
         grid-row: 2;
         justify-self: start;
-        text-align: left;
+        text-align: var(--ux4g-ta-start);
         align-items: flex-start;
     }
 }

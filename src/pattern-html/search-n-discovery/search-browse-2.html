@@ -1,0 +1,526 @@
+﻿<!DOCTYPE html>
+<html data-theme="light" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../components/search-browse.css">
+    <link rel="stylesheet" href="../../index.css">
+    <script src="../../ux4g.js"></script>
+    <script src="../../ux4g-custom.js"></script>
+</head>
+
+<body class="ux4g-sb-page-search-results">
+    <section>
+        <nav class="ux4g-navbar ux4g-navbar-right ux4g-shadow-l0 ux4g-md-d-flex">
+            <div class="ux4g-container">
+                <div class="ux4g-navbar-wrap">
+                    <!-- Logo & Brand -->
+                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+                        <img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+                        <span class="ux4g-divider-vertical "></span>
+                        <img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+                        <div class="ux4g-d-flex ux4g-flex-column">
+                            <span class="ux4g-label-m-strong">Title</span>
+                            <span class="ux4g-body-xs-default">Description</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Group: Nav Links + Actions -->
+                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-l">
+                        <!-- Navigation Links -->
+                        <ul class="ux4g-navbar-links">
+                            <li><a href="#" class="ux4g-text-link-sm">Label</a></li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label</a></li>
+                            <li class="ux4g-dropdown ux4g-dropdown-button" data-ux4g-init="true">
+                                <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown"
+                                    id="ux4g-dropdown-control-6" aria-haspopup="listbox" aria-expanded="false">
+                                    <span>Label</span>
+                                    <span class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret"
+                                        data-ux4g-init="true">arrow_drop_down</span>
+                                </a>
+                                <div class="ux4g-dropdown-menu" aria-labelledby="ux4g-dropdown-control-6">
+                                    <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                        <li class="ux4g-list-item" role="option" data-ux4g-init="true">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                        <li class="ux4g-list-item" role="option" data-ux4g-init="true">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label</a></li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label</a></li>
+                        </ul>
+
+                        <!-- Actions -->
+                        <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+                            <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20" data-ux4g-init="true">search</i>
+                            <button class="ux4g-btn-primary ux4g-btn-md">Button</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="ux4g-bg-neutral ux4g-sb-search-discovery-main-2">
+            <div class="ux4g-container">
+
+                <div class="ux4g-sb-search-browse-75">
+                    <!-- Center Search input bar styled with semantic component class overridden with utilities -->
+                    <div class="ux4g-search-container ux4g-search-lg" ux4g-search-filter="contains">
+                        <div class="ux4g-search">
+                            <span class="ux4g-icon-outlined ux4g-search-leading-icon">search</span>
+                            <input class="ux4g-search-input" id="ux4g-searchContain" placeholder="Search for fruits..."
+                                type="text" />
+                            <div class="ux4g-search-actions">
+                                <button aria-label="Voice search" class="ux4g-search-action-btn" type="button">
+                                    <span class="ux4g-icon-outlined">mic</span>
+                                </button>
+                                <button aria-label="Clear search" class="ux4g-search-action-btn ux4g-search-clear"
+                                    type="button">
+                                    <span class="ux4g-icon-outlined">close</span>
+                                </button>
+                            </div>
+                            <button class="ux4g-search-btn" type="button">
+                                <span class="ux4g-icon-outlined">search</span>
+                            </button>
+                        </div>
+                        <ul class="ux4g-list ux4g-list-default ux4g-list-m ux4g-search-list">
+                            <li class="ux4g-list-item">
+                                <div class="ux4g-list-item-row"><span class="ux4g-list-item-start">Apple</span></div>
+                            </li>
+                            <li class="ux4g-list-item">
+                                <div class="ux4g-list-item-row"><span class="ux4g-list-item-start">Pineapple</span>
+                                </div>
+                            </li>
+                            <li class="ux4g-list-item">
+                                <div class="ux4g-list-item-row"><span class="ux4g-list-item-start">Banana</span></div>
+                            </li>
+                            <li class="ux4g-list-item">
+                                <div class="ux4g-list-item-row"><span class="ux4g-list-item-start">Grapefruit</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Search Results Section -->
+                <div class="ux4g-search-results-section ux4g-mt-2xl">
+
+                    <!-- Header: Results Count and Sort -->
+                    <!-- Desktop Header -->
+                    <div class="ux4g-sb-results-header ux4g-mb-xl ux4g-d-none ux4g-md-d-flex">
+                        <h1 class="ux4g-title-m-strong">Showing 48 results for &ldquo;income&rdquo;</h1>
+                        <div class="ux4g-sort-by ux4g-body-m-default ux4g-text-neutral-secondary">
+                            Sort by: Relevance
+                        </div>
+                    </div>
+                    <!-- Mobile Header -->
+                    <div class="ux4g-sb-results-header ux4g-mb-xl ux4g-d-flex ux4g-md-d-none ux4g-ai-center ux4g-jc-space-between ux4g-w-100">
+                        <span class="ux4g-title-s-strong">48 results</span>
+                        <button class="ux4g-btn ux4g-btn-sm ux4g-btn-outline-neutral ux4g-d-flex ux4g-ai-center ux4g-inline-gap-xs">
+                            <i class="ux4g-icon-outlined ux4g-fs-18">tune</i>
+                            <span>Filters</span>
+                        </button>
+                    </div>
+
+                    <!-- Filter Chips/Tabs -->
+                    <div class="ux4g-d-flex ux4g-inline-gap-s ux4g-mb-2xl ux4g-choice-chips-container">
+                        <button class="ux4g-choice-chip-md">All &middot; 48</button>
+                        <button class="ux4g-choice-chip-md active">Certificates &middot; 22</button>
+                        <button class="ux4g-choice-chip-md">Schemes &middot; 14</button>
+                        <button class="ux4g-choice-chip-md">Services &middot; 12</button>
+                    </div>
+
+                    <!-- Main Grid Layout -->
+                    <div class="ux4g-sb-search-results-layout">
+
+                        <!-- Left Sidebar: Filters Panel -->
+                        <div class="ux4g-sb-filter-panel">
+                            <div class="ux4g-sb-filter-header">
+                                <h2 class="ux4g-title-s-default">Filters</h2>
+                                <a href="#" class="ux4g-text-link ux4g-body-s-strong ux4g-fw-medium">Clear all</a>
+                            </div>
+
+                            <!-- State Filter -->
+                            <div class="ux4g-sb-filter-section">
+                                <span class="ux4g-label-l-strong ux4g-text-neutral-secondary">State</span>
+                                <div class="ux4g-dropdown ux4g-dropdown-md ux4g-w-100">
+                                    <div class="ux4g-dropdown-control">
+                                        <div class="ux4g-dropdown-value">
+                                            <span class="ux4g-dropdown-text">Maharashtra</span>
+                                        </div>
+                                        <span class="ux4g-icon-outlined ux4g-dropdown-caret">expand_more</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Department Filter -->
+                            <div class="ux4g-sb-filter-section">
+                                <span class="ux4g-label-l-strong ux4g-text-neutral-secondary">Department</span>
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-s">
+                                    <label class="ux4g-checkbox ux4g-checkbox-md">
+                                        <input type="checkbox" class="ux4g-checkbox-input" checked />
+                                        <span class="ux4g-checkbox-control">
+                                            <span class="ux4g-checkmark"></span>
+                                        </span>
+                                        <span class="ux4g-checkbox-content">
+                                            <span class="ux4g-checkbox-label">Revenue Department</span>
+                                        </span>
+                                    </label>
+                                    <label class="ux4g-checkbox ux4g-checkbox-md">
+                                        <input type="checkbox" class="ux4g-checkbox-input" />
+                                        <span class="ux4g-checkbox-control">
+                                            <span class="ux4g-checkmark"></span>
+                                        </span>
+                                        <span class="ux4g-checkbox-content">
+                                            <span class="ux4g-checkbox-label">Social Welfare Dept</span>
+                                        </span>
+                                    </label>
+                                    <label class="ux4g-checkbox ux4g-checkbox-md">
+                                        <input type="checkbox" class="ux4g-checkbox-input" />
+                                        <span class="ux4g-checkbox-control">
+                                            <span class="ux4g-checkmark"></span>
+                                        </span>
+                                        <span class="ux4g-checkbox-content">
+                                            <span class="ux4g-checkbox-label">Income Tax Dept</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Fee Filter -->
+                            <div class="ux4g-sb-filter-section">
+                                <span class="ux4g-label-l-strong ux4g-text-neutral-secondary">Fee</span>
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-s">
+                                    <label class="ux4g-radio ux4g-radio-md">
+                                        <input type="radio" name="fee" class="ux4g-radio-input" />
+                                        <span class="ux4g-radio-control">
+                                            <span class="ux4g-radiomark"></span>
+                                        </span>
+                                        <span class="ux4g-radio-content">
+                                            <span class="ux4g-radio-label">All fees</span>
+                                        </span>
+                                    </label>
+                                    <label class="ux4g-radio ux4g-radio-md">
+                                        <input type="radio" name="fee" class="ux4g-radio-input" checked />
+                                        <span class="ux4g-radio-control">
+                                            <span class="ux4g-radiomark"></span>
+                                        </span>
+                                        <span class="ux4g-radio-content">
+                                            <span class="ux4g-radio-label">Free only</span>
+                                        </span>
+                                    </label>
+                                    <label class="ux4g-radio ux4g-radio-md">
+                                        <input type="radio" name="fee" class="ux4g-radio-input" />
+                                        <span class="ux4g-radio-control">
+                                            <span class="ux4g-radiomark"></span>
+                                        </span>
+                                        <span class="ux4g-radio-content">
+                                            <span class="ux4g-radio-label">Paid only</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Content: Results List -->
+                        <div class="ux4g-sb-results-list">
+
+                            <!-- Row 1: Income Certificate -->
+                            <div class="ux4g-sb-result-row">
+                                <div class="ux4g-sb-result-left">
+                                    <div class="ux4g-sb-result-icon-wrap ux4g-d-none ux4g-md-d-flex">
+                                        <i class="ux4g-icon-outlined">description</i>
+                                    </div>
+                                    <div class="ux4g-sb-result-content">
+                                        <h3 class="ux4g-title-s-default">Income Certificate</h3>
+                                        <span class="ux4g-label-m-strong ux4g-text-primary ux4g-d-none ux4g-md-d-inline">Revenue Department</span>
+                                        <div class="ux4g-sb-result-meta ux4g-d-flex ux4g-md-d-none ux4g-mt-xs">
+                                            <span class="ux4g-sb-service-badge">Free</span>
+                                            <span class="ux4g-d-inline-flex ux4g-ai-center ux4g-inline-gap-2xs ux4g-body-s-default ux4g-text-neutral-secondary">
+                                                <i class="ux4g-icon-outlined ux4g-fs-16">schedule</i> 20 mins
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ux4g-sb-result-right">
+                                    <div class="ux4g-sb-result-meta ux4g-d-none ux4g-md-d-flex">
+                                        <span class="ux4g-sb-service-badge">Free</span>
+                                        <span class="ux4g-d-inline-flex ux4g-ai-center ux4g-inline-gap-2xs ux4g-body-s-default ux4g-text-neutral-secondary">
+                                            <i class="ux4g-icon-outlined ux4g-fs-16">schedule</i> 20 mins
+                                        </span>
+                                    </div>
+                                    <button class="ux4g-btn ux4g-btn-sm ux4g-btn-outline-neutral">Apply</button>
+                                    <div class="ux4g-dropdown ux4g-dropdown-button ux4g-sb-result-dropdown">
+                                        <button class="ux4g-dropdown-control" type="button" aria-haspopup="listbox" aria-expanded="false" data-ux-toggle="dropdown">
+                                            <i class="ux4g-icon-outlined ux4g-text-neutral-secondary ux4g-fs-20 ux4g-dropdown-caret">expand_more</i>
+                                        </button>
+                                        <div class="ux4g-dropdown-menu">
+                                            <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                                <li class="ux4g-list-item" role="option">
+                                                    <button class="ux4g-list-item-row" type="button">
+                                                        <span class="ux4g-list-item-start">
+                                                            <span>Apply Service</span>
+                                                        </span>
+                                                    </button>
+                                                </li>
+                                                <li class="ux4g-list-item" role="option">
+                                                    <button class="ux4g-list-item-row" type="button">
+                                                        <span class="ux4g-list-item-start">
+                                                            <span>View Details</span>
+                                                        </span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Row 2: Income Tax Return (ITR) Filing -->
+                            <div class="ux4g-sb-result-row">
+                                <div class="ux4g-sb-result-left">
+                                    <div class="ux4g-sb-result-icon-wrap ux4g-d-none ux4g-md-d-flex">
+                                        <i class="ux4g-icon-outlined">assignment</i>
+                                    </div>
+                                    <div class="ux4g-sb-result-content">
+                                        <h3 class="ux4g-title-s-default">Income Tax Return (ITR) Filing</h3>
+                                        <span class="ux4g-label-m-strong ux4g-text-primary ux4g-d-none ux4g-md-d-inline">Income Tax Department</span>
+                                        <div class="ux4g-sb-result-meta ux4g-d-flex ux4g-md-d-none ux4g-mt-xs">
+                                            <span class="ux4g-sb-service-badge">Free</span>
+                                            <span class="ux4g-d-inline-flex ux4g-ai-center ux4g-inline-gap-2xs ux4g-body-s-default ux4g-text-neutral-secondary">
+                                                <i class="ux4g-icon-outlined ux4g-fs-16">schedule</i> 30 mins
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ux4g-sb-result-right">
+                                    <div class="ux4g-sb-result-meta ux4g-d-none ux4g-md-d-flex">
+                                        <span class="ux4g-sb-service-badge">Free</span>
+                                        <span class="ux4g-d-inline-flex ux4g-ai-center ux4g-inline-gap-2xs ux4g-body-s-default ux4g-text-neutral-secondary">
+                                            <i class="ux4g-icon-outlined ux4g-fs-16">schedule</i> 30 mins
+                                        </span>
+                                    </div>
+                                    <button class="ux4g-btn ux4g-btn-sm ux4g-btn-outline-neutral">Apply</button>
+                                    <div class="ux4g-dropdown ux4g-dropdown-button ux4g-sb-result-dropdown">
+                                        <button class="ux4g-dropdown-control" type="button" aria-haspopup="listbox" aria-expanded="false" data-ux-toggle="dropdown">
+                                            <i class="ux4g-icon-outlined ux4g-text-neutral-secondary ux4g-fs-20 ux4g-dropdown-caret">expand_more</i>
+                                        </button>
+                                        <div class="ux4g-dropdown-menu">
+                                            <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                                <li class="ux4g-list-item" role="option">
+                                                    <button class="ux4g-list-item-row" type="button">
+                                                        <span class="ux4g-list-item-start">
+                                                            <span>Apply Service</span>
+                                                        </span>
+                                                    </button>
+                                                </li>
+                                                <li class="ux4g-list-item" role="option">
+                                                    <button class="ux4g-list-item-row" type="button">
+                                                        <span class="ux4g-list-item-start">
+                                                            <span>View Details</span>
+                                                        </span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Row 3: Low Income Group (LIG) Certificate -->
+                            <div class="ux4g-sb-result-row">
+                                <div class="ux4g-sb-result-left">
+                                    <div class="ux4g-sb-result-icon-wrap ux4g-d-none ux4g-md-d-flex">
+                                        <i class="ux4g-icon-outlined">corporate_fare</i>
+                                    </div>
+                                    <div class="ux4g-sb-result-content">
+                                        <h3 class="ux4g-title-s-default">Low Income Group (LIG) Certificate</h3>
+                                        <span class="ux4g-label-m-strong ux4g-text-primary ux4g-d-none ux4g-md-d-inline">Social Welfare Department</span>
+                                        <div class="ux4g-sb-result-meta ux4g-d-flex ux4g-md-d-none ux4g-mt-xs">
+                                            <span class="ux4g-sb-service-badge">Free</span>
+                                            <span class="ux4g-d-inline-flex ux4g-ai-center ux4g-inline-gap-2xs ux4g-body-s-default ux4g-text-neutral-secondary">
+                                                <i class="ux4g-icon-outlined ux4g-fs-16">schedule</i> 7 days
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ux4g-sb-result-right">
+                                    <div class="ux4g-sb-result-meta ux4g-d-none ux4g-md-d-flex">
+                                        <span class="ux4g-sb-service-badge">Free</span>
+                                        <span class="ux4g-d-inline-flex ux4g-ai-center ux4g-inline-gap-2xs ux4g-body-s-default ux4g-text-neutral-secondary">
+                                            <i class="ux4g-icon-outlined ux4g-fs-16">schedule</i> 7 days
+                                        </span>
+                                    </div>
+                                    <button class="ux4g-btn ux4g-btn-sm ux4g-btn-outline-neutral">Apply</button>
+                                    <div class="ux4g-dropdown ux4g-dropdown-button ux4g-sb-result-dropdown">
+                                        <button class="ux4g-dropdown-control" type="button" aria-haspopup="listbox" aria-expanded="false" data-ux-toggle="dropdown">
+                                            <i class="ux4g-icon-outlined ux4g-text-neutral-secondary ux4g-fs-20 ux4g-dropdown-caret">expand_more</i>
+                                        </button>
+                                        <div class="ux4g-dropdown-menu">
+                                            <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                                <li class="ux4g-list-item" role="option">
+                                                    <button class="ux4g-list-item-row" type="button">
+                                                        <span class="ux4g-list-item-start">
+                                                            <span>Apply Service</span>
+                                                        </span>
+                                                    </button>
+                                                </li>
+                                                <li class="ux4g-list-item" role="option">
+                                                    <button class="ux4g-list-item-row" type="button">
+                                                        <span class="ux4g-list-item-start">
+                                                            <span>View Details</span>
+                                                        </span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Row 4: Income & Asset Certificate -->
+                            <div class="ux4g-sb-result-row">
+                                <div class="ux4g-sb-result-left">
+                                    <div class="ux4g-sb-result-icon-wrap ux4g-d-none ux4g-md-d-flex">
+                                        <i class="ux4g-icon-outlined">account_balance_wallet</i>
+                                    </div>
+                                    <div class="ux4g-sb-result-content">
+                                        <h3 class="ux4g-title-s-default">Income & Asset Certificate</h3>
+                                        <span class="ux4g-label-m-strong ux4g-text-primary ux4g-d-none ux4g-md-d-inline">Revenue Department</span>
+                                        <div class="ux4g-sb-result-meta ux4g-d-flex ux4g-md-d-none ux4g-mt-xs">
+                                            <span class="ux4g-sb-service-badge">Paid</span>
+                                            <span class="ux4g-body-s-default ux4g-text-neutral-primary">â‚¹ 50/-</span>
+                                            <span class="ux4g-d-inline-flex ux4g-ai-center ux4g-inline-gap-2xs ux4g-body-s-default ux4g-text-neutral-secondary">
+                                                <i class="ux4g-icon-outlined ux4g-fs-16">schedule</i> 15 days
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ux4g-sb-result-right">
+                                    <div class="ux4g-sb-result-meta ux4g-d-none ux4g-md-d-flex">
+                                        <span class="ux4g-sb-service-badge">Paid</span>
+                                        <span class="ux4g-body-s-default ux4g-text-neutral-primary">â‚¹ 50/-</span>
+                                        <span class="ux4g-d-inline-flex ux4g-ai-center ux4g-inline-gap-2xs ux4g-body-s-default ux4g-text-neutral-secondary">
+                                            <i class="ux4g-icon-outlined ux4g-fs-16">schedule</i> 15 days
+                                        </span>
+                                    </div>
+                                    <button class="ux4g-btn ux4g-btn-sm ux4g-btn-outline-neutral">Apply</button>
+                                    <div class="ux4g-dropdown ux4g-dropdown-button ux4g-sb-result-dropdown">
+                                        <button class="ux4g-dropdown-control" type="button" aria-haspopup="listbox" aria-expanded="false" data-ux-toggle="dropdown">
+                                            <i class="ux4g-icon-outlined ux4g-text-neutral-secondary ux4g-fs-20 ux4g-dropdown-caret">expand_more</i>
+                                        </button>
+                                        <div class="ux4g-dropdown-menu">
+                                            <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                                <li class="ux4g-list-item" role="option">
+                                                    <button class="ux4g-list-item-row" type="button">
+                                                        <span class="ux4g-list-item-start">
+                                                            <span>Apply Service</span>
+                                                        </span>
+                                                    </button>
+                                                </li>
+                                                <li class="ux4g-list-item" role="option">
+                                                    <button class="ux4g-list-item-row" type="button">
+                                                        <span class="ux4g-list-item-start">
+                                                            <span>View Details</span>
+                                                        </span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Row 5: EWS Certificate -->
+                            <div class="ux4g-sb-result-row">
+                                <div class="ux4g-sb-result-left">
+                                    <div class="ux4g-sb-result-icon-wrap ux4g-d-none ux4g-md-d-flex">
+                                        <i class="ux4g-icon-outlined">groups</i>
+                                    </div>
+                                    <div class="ux4g-sb-result-content">
+                                        <h3 class="ux4g-title-s-default">EWS Certificate</h3>
+                                        <span class="ux4g-label-m-strong ux4g-text-primary ux4g-d-none ux4g-md-d-inline">Revenue Department</span>
+                                        <div class="ux4g-sb-result-meta ux4g-d-flex ux4g-md-d-none ux4g-mt-xs">
+                                            <span class="ux4g-sb-service-badge">Free</span>
+                                            <span class="ux4g-d-inline-flex ux4g-ai-center ux4g-inline-gap-2xs ux4g-body-s-default ux4g-text-neutral-secondary">
+                                                <i class="ux4g-icon-outlined ux4g-fs-16">schedule</i> 10 days
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ux4g-sb-result-right">
+                                    <div class="ux4g-sb-result-meta ux4g-d-none ux4g-md-d-flex">
+                                        <span class="ux4g-sb-service-badge">Free</span>
+                                        <span class="ux4g-d-inline-flex ux4g-ai-center ux4g-inline-gap-2xs ux4g-body-s-default ux4g-text-neutral-secondary">
+                                            <i class="ux4g-icon-outlined ux4g-fs-16">schedule</i> 10 days
+                                        </span>
+                                    </div>
+                                    <button class="ux4g-btn ux4g-btn-sm ux4g-btn-outline-neutral">Apply</button>
+                                    <div class="ux4g-dropdown ux4g-dropdown-button ux4g-sb-result-dropdown">
+                                        <button class="ux4g-dropdown-control" type="button" aria-haspopup="listbox" aria-expanded="false" data-ux-toggle="dropdown">
+                                            <i class="ux4g-icon-outlined ux4g-text-neutral-secondary ux4g-fs-20 ux4g-dropdown-caret">expand_more</i>
+                                        </button>
+                                        <div class="ux4g-dropdown-menu">
+                                            <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                                <li class="ux4g-list-item" role="option">
+                                                    <button class="ux4g-list-item-row" type="button">
+                                                        <span class="ux4g-list-item-start">
+                                                            <span>Apply Service</span>
+                                                        </span>
+                                                    </button>
+                                                </li>
+                                                <li class="ux4g-list-item" role="option">
+                                                    <button class="ux4g-list-item-row" type="button">
+                                                        <span class="ux4g-list-item-start">
+                                                            <span>View Details</span>
+                                                        </span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pagination Block -->
+                        <div class="ux4g-pagination ux4g-pagination-dotted ux4g-d-flex ux4g-md-d-none ux4g-jc-center ux4g-ai-center ux4g-w-100 ux4g-mt-xl">
+                            <button class="ux4g-pagination-prev ux4g-icon-outlined">chevron_left</button>
+                            <div class="ux4g-pagination-dots">
+                                <span class="ux4g-page-dot ux4g-active"></span>
+                                <span class="ux4g-page-dot"></span>
+                                <span class="ux4g-page-dot"></span>
+                                <span class="ux4g-page-dot"></span>
+                                <span class="ux4g-page-dot"></span>
+                                <span class="ux4g-page-dot"></span>
+                                <span class="ux4g-page-dot"></span>
+                            </div>
+                            <button class="ux4g-pagination-next ux4g-icon-outlined">chevron_right</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
+

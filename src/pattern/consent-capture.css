@@ -1,0 +1,339 @@
+/* Custom CSS for Consent Capture Pattern */
+
+.ux4g-consent-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: var(--ux4g-ta-center);
+    gap: var(--ux4g-stack-xs);
+    margin-bottom: var(--ux4g-margin-xl);
+}
+
+.ux4g-consent-header .ux4g-icon-btn {
+    margin-bottom: var(--ux4g-margin-xs);
+}
+.ux4g-consent-header .ux4g-body-s-default{
+    width: 80%;
+}
+
+.ux4g-consent-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--ux4g-stack-m);
+}
+
+/* Fixed form footer at the bottom */
+.ux4g-consent-footer {
+    position: var(--ux4g-pos-absolute);
+    bottom: var(--ux4g-sz-20);
+    left: var(--ux4g-pos-start-0);
+    right: var(--ux4g-pos-end-0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ux4g-inline-s);
+}
+
+/* ==========================================================================
+   Consent Captures (Full Screen & Card)
+   ========================================================================== */
+
+.ux4g-consent-capture-container {
+    box-sizing: border-box;
+    width: var(--ux4g-sz-full);
+}
+
+.ux4g-consent-capture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(var(--ux4g-sz-screen-h) - var(--ux4g-sz-48) - var(--ux4g-sz-24));
+    width: var(--ux4g-sz-full);
+    overflow: hidden;
+    position: var(--ux4g-pos-relative);
+    padding: var(--ux4g-padding-xl);
+}
+
+.ux4g-consent-capture-card {
+    background-color: var(--ux4g-bg-primary-soft);
+    padding: var(--ux4g-sz-80) 0;
+    
+}
+
+.ux4g-consent-capture-full {
+    background-color: var(--ux4g-bg-neutral);
+    padding: var(--ux4g-sz-80) 0;
+
+}
+
+.ux4g-consent-capture .ux4g-consent-capture-wrapper {
+    width: var(--ux4g-sz-full);
+    max-width: 800px;
+}
+
+.ux4g-consent-capture-card .ux4g-consent-capture-wrapper {
+    background-color: var(--ux4g-bg-neutral-elevated);
+    border-radius: var(--ux4g-radius-lg);
+    box-shadow: var(--ux4g-shadow-l2);
+    padding: var(--ux4g-padding-xl);
+}
+
+
+@media (max-width: 767px) {
+    .ux4g-consent-capture {
+        padding: var(--ux4g-padding-m);
+        min-height: auto;
+    }
+    
+    .ux4g-consent-capture .ux4g-consent-capture-wrapper {
+        padding: var(--ux4g-padding-m);
+        max-width: var(--ux4g-sz-full);
+    }
+
+    /* Mobile responsive table for consent capture */
+    .ux4g-consent-capture-wrapper .ux4g-table-responsive {
+        border: none !important;
+        overflow: hidden;
+    }
+    
+    .ux4g-consent-capture-wrapper .ux4g-table {
+        display: flex;
+        flex-direction: column;
+        gap: var(--ux4g-stack-s);
+        border: none !important;
+    }
+    
+    .ux4g-consent-capture-wrapper .ux4g-table thead {
+        display: none;
+    }
+    
+    .ux4g-consent-capture-wrapper .ux4g-table tbody {
+        display: flex;
+        flex-direction: column;
+        gap: var(--ux4g-stack-s);
+    }
+    
+    .ux4g-consent-capture-wrapper .ux4g-table tr {
+        display: flex;
+        flex-direction: column;
+        gap: var(--ux4g-stack-xs);
+        position: var(--ux4g-pos-relative);
+        border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+        border-radius: var(--ux4g-radius-md);
+        padding: var(--ux4g-padding-s) var(--ux4g-padding-m);
+        background: var(--ux4g-bg-neutral)
+    }
+    
+    .ux4g-consent-capture-wrapper .ux4g-table td {
+        display: block;
+        padding: 0 !important;
+        border: none !important;
+        background-color: transparent !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+    
+    /* Mobile responsive table columns */
+    .ux4g-consent-capture-wrapper .ux4g-table td:nth-child(1) {
+        padding-right: var(--ux4g-padding-xl) !important;
+    }
+    
+    .ux4g-consent-capture-wrapper .ux4g-table-cell-avatar {
+        display: inline;
+    }
+    
+    /* Table 1: Consent Required */
+    .ux4g-consent-table-req td:nth-child(4) { position: var(--ux4g-pos-absolute); top: var(--ux4g-padding-s); right: var(--ux4g-padding-m); }
+    .ux4g-consent-table-req td:nth-child(2) { color: var(--ux4g-text-neutral-secondary); }
+    .ux4g-consent-table-req td:nth-child(2)::before { content: "Purpose \00B7 "; }
+    .ux4g-consent-table-req td:nth-child(3) { color: var(--ux4g-text-neutral-secondary); }
+    .ux4g-consent-table-req td:nth-child(3)::before { content: "Retention \00B7 "; }
+
+    /* Table 2: Data Sharing Consent */
+    .ux4g-consent-table-share td:nth-child(5) { position: var(--ux4g-pos-absolute); top: var(--ux4g-padding-s); right: var(--ux4g-padding-m); }
+    .ux4g-consent-table-share td:nth-child(2),
+    .ux4g-consent-table-share td:nth-child(3),
+    .ux4g-consent-table-share td:nth-child(4) { color: var(--ux4g-text-neutral-secondary); }
+    .ux4g-consent-table-share td:nth-child(2)::before { content: "Data shared \00B7 "; }
+    .ux4g-consent-table-share td:nth-child(3)::before { content: "Purpose \00B7 "; }
+    .ux4g-consent-table-share td:nth-child(4)::before { content: "Duration \00B7 "; }
+
+    /* Table 3: Manage Consents */
+    .ux4g-consent-table-manage td:nth-child(3) { position: var(--ux4g-pos-absolute); top: var(--ux4g-padding-s); right: var(--ux4g-padding-m); }
+    .ux4g-consent-table-manage td:nth-child(2) { color: var(--ux4g-text-neutral-secondary); }
+    .ux4g-consent-table-manage td:nth-child(2)::before { content: "Data shared \00B7 "; }
+    .ux4g-consent-table-manage td:nth-child(4) { color: var(--ux4g-text-neutral-secondary); }
+    .ux4g-consent-table-manage td:nth-child(4):has(.ux4g-tag-tonal-error)::before { content: "Status \00B7 "; }
+
+    /* Table 4: Consent History */
+    .ux4g-consent-table-hist td:nth-child(2) { order: -1; padding-right: var(--ux4g-padding-xl) !important; color: var(--ux4g-text-neutral-primary); }
+    .ux4g-consent-table-hist td:nth-child(5) { position: var(--ux4g-pos-absolute); top: var(--ux4g-padding-s); right: var(--ux4g-padding-m); }
+    .ux4g-consent-table-hist td:nth-child(1),
+    .ux4g-consent-table-hist td:nth-child(3),
+    .ux4g-consent-table-hist td:nth-child(4) { color: var(--ux4g-text-neutral-secondary); }
+    .ux4g-consent-table-hist td:nth-child(1)::before { content: "Scheme \00B7 "; }
+    .ux4g-consent-table-hist td:nth-child(3)::before { content: "Data \00B7 "; }
+    .ux4g-consent-table-hist td:nth-child(4)::before { content: "Given \00B7 "; }
+    .ux4g-consent-footer {
+        position: var(--ux4g-pos-relative);
+        bottom: auto;
+        margin-top: var(--ux4g-margin-2xl);
+    }
+    
+    .ux4g-consent-history-footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--ux4g-stack-s);
+        text-align: var(--ux4g-ta-center);
+    }
+
+    .ux4g-consent-header .ux4g-body-s-default {
+        width: 90%;
+    }
+
+    .ux4g-consent-title-wrap {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: var(--ux4g-stack-xs);
+    }
+    
+  
+    
+    .ux4g-consent-tabs .ux4g-filter-chip-md {
+        flex-shrink: 0;
+    }
+
+     .ux4g-consent-button-row {
+            display: block !important;
+    }
+    
+    .ux4g-consent-button-row > * + * {
+            margin-top: var(--ux4g-margin-s);
+    }
+}
+
+
+/* ==========================================================================
+   Data Sharing (Full Screen & Card)
+   ========================================================================== */
+
+.ux4g-consent-header-left {
+    align-items: flex-start;
+    text-align: var(--ux4g-ta-start);
+}
+.ux4g-consent-header-left .ux4g-body-s-default {
+    width: 100%;
+}
+
+.ux4g-consent-button-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--ux4g-inline-s);
+}
+
+.ux4g-consent-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ux4g-inline-s);
+    margin-bottom: var(--ux4g-margin-m);
+}
+
+.ux4g-consent-history-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--ux4g-margin-m);
+}
+
+/* Disable hover and active states for the warning icon button in the consent capture modal */
+.ux4g-modal-center-content .ux4g-modal-body .ux4g-icon-btn.ux4g-bg-warning-soft {
+    pointer-events: none;
+}
+
+
+
+/* ==========================================================================
+   Declaration before Submission (Full Screen & Card)
+   ========================================================================== */
+
+.ux4g-consent-list {
+    padding-left: var(--ux4g-padding-l);
+    margin-bottom: var(--ux4g-margin-l);
+    list-style-type: decimal;
+}
+
+.ux4g-consent-list li {
+    margin-bottom: var(--ux4g-margin-s);
+}
+
+.ux4g-consent-list li:last-child {
+    margin-bottom: 0;
+}
+
+.ux4g-consent-decl-btn-wrap {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Declaration Scroll Box */
+.ux4g-declaration-scroll-box {
+    position: var(--ux4g-pos-relative);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+    border-radius: var(--ux4g-radius-md);
+    background-color: var(--ux4g-bg-neutral);
+    overflow: hidden;
+}
+
+.ux4g-declaration-content {
+    max-height: 240px;
+    overflow-y: auto;
+    padding: var(--ux4g-padding-l);
+}
+
+.ux4g-declaration-scroll-hint {
+    position: var(--ux4g-pos-absolute);
+    bottom: var(--ux4g-pos-end-0);
+    left: var(--ux4g-pos-start-0);
+    width: var(--ux4g-sz-full);
+    height: var(--ux4g-sz-80);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: var(--ux4g-padding-m);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+
+
+.ux4g-signature-input-wrap .ux4g-input-wrapper {
+    max-width: var(--ux4g-sz-full);
+}
+
+@media (max-width: 767px) {
+    .ux4g-consent-list {
+        padding-left: var(--ux4g-padding-m);
+    }
+    
+    .ux4g-consent-decl-btn-wrap {
+        flex-direction: column;
+    }
+    
+    .ux4g-consent-decl-btn-wrap .ux4g-btn-primary {
+        width: var(--ux4g-sz-full);
+    }
+}
+
+.ux4g-consent-decl-btn-wrap .ux4g-btn-primary:disabled {
+    background-color: var(--ux4g-bg-primary-subtle) !important;
+    color: var(--ux4g-text-white) !important;
+}
+
+.ux4g-declaration-scroll-hint .ux4g-tag-tonal-primary {
+    background-color: var(--ux4g-bg-neutral-elevated) !important;
+    box-shadow: var(--ux4g-shadow-l2);
+}

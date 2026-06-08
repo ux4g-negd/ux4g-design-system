@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Consent Capture Pattern</title>
+  <link href="../../index.css" rel="stylesheet" />
+  <script src="../../ux4g.js"></script>
+  <script src="../../ux4g-custom.js"></script>
+  <style>
+    .theme-toggle { 
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 999;
+      padding: 10px 16px;
+      border-radius: 99px;
+      cursor: pointer;
+      background: var(--ux4g-bg-neutral-elevated);
+      color: var(--ux4g-text-neutral-primary);
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      background: var(--ux4g-bg-primary-soft);
+    }
+
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+
+
+<body class="ux4g-bg-neutral ux4g-ff-base ux4g-body-m-default ux4g-py-xl ux4g-px-m">
+
+  <button class="theme-toggle" onclick="ux4g.Theme.toggle()">🌓 Toggle Mode</button>
+
+  <h1 class="ux4g-text-center ux4g-bg-primary">Notification Center</h1>
+  <section>
+    <!-- Variant: Accessibility Bar - Desktop Wide Layout -->
+    <header class="ux4g-topbar ux4g-topbar-wide" role="banner">
+      <div class="ux4g-container">
+        <div class="ux4g-topbar__wrap ux4g-d-flex ux4g-jc-between ux4g-ai-center">
+          <div>
+            <a aria-label="Government of India (opens in new tab)" class=" ux4g-d-flex ux4g-ai-center"
+              href="https://www.india.gov.in/" target="_blank" rel="noopener">
+              <span class="india-flag"></span>
+              <span class="ux4g-label-m-default">Government of India</span>
+              <sup class="ux4g-icon-outlined">open_in_new</sup>
+            </a>
+          </div>
+          <nav aria-label="Top utilities" class="ux4g-d-none ux4g-md-d-flex ux4g-ai-center">
+            <a class="ux4g-label-m-default ux4g-topbar__skip" href="#main-content">Skip to Main Content</a>
+            <span class="ux4g-bl acc-top-divider"></span>
+            <div aria-label="Text size controls" class="ux4g-topbar__group ux4g-d-flex ux4g-ai-center" role="group">
+              <button aria-label="Decrease text size"
+                class="ux4g-topbar__iconbtn ux4g-d-flex ux4g-jc-center ux4g-ai-center" type="button">
+                <span class="ux4g-icon-outlined ux4g-top-bar-icon">text_decrease</span>
+              </button>
+              <button aria-label="Reset text size"
+                class="ux4g-topbar__iconbtn ux4g-d-flex ux4g-jc-center ux4g-ai-center" type="button">
+                <span class="ux4g-icon-outlined ux4g-top-bar-icon">font_download</span>
+              </button>
+              <button aria-label="Increase text size"
+                class="ux4g-topbar__iconbtn ux4g-d-flex ux4g-jc-center ux4g-ai-center" type="button">
+                <span class="ux4g-icon-outlined ux4g-top-bar-icon">text_increase</span>
+              </button>
+            </div>
+            <span class="ux4g-bl acc-top-divider"></span>
+            <span aria-label="Accessibility options"
+              class="ux4g-topbar__iconbtn ux4g-d-flex ux4g-jc-center ux4g-ai-center ux4g-icon ux4g-fs-20" type="button">
+              <span class="ux4g-icon-outlined ux4g-top-bar-icon">accessibility_new</span>
+            </span>
+            <span class="ux4g-bl acc-top-divider"></span>
+            <div class="ux4g-topbar__select">
+              <button aria-expanded="false" aria-haspopup="listbox"
+                class="ux4g-topbar__selectbtn ux4g-d-inline-flex ux4g-ai-center" type="button">
+                <span class="ux4g-icon-outlined ux4g-top-bar-icon icon-language">language</span>
+                <span class="ux4g-label-m-default">English</span>
+                <span class="ux4g-icon-outlined">arrow_drop_down</span>
+              </button>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- Variant: Navbar Default -->
+    <nav class="ux4g-navbar">
+      <div class="ux4g-container">
+        <div class="ux4g-navbar-wrap">
+          <!-- Logo & Brand -->
+          <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+            <img src="https://cdn.ux4g.gov.in/UX4G@3.0.12/assets/images/national_emblem.svg" alt="National Emblem"
+              class="ux4g-navbar-logo">
+            <span class="ux4g-divider-vertical "></span>
+            <img src="https://cdn.ux4g.gov.in/UX4G@3.0.12/assets/images/navbar-logo.svg" alt="Logo"
+              class="ux4g-navbar-logo">
+            <div class="ux4g-d-flex ux4g-flex-column">
+              <span class="ux4g-label-m-strong">Title</span>
+              <span class="ux4g-body-xs-default">Description</span>
+            </div>
+          </div>
+          <!-- Navigation Links -->
+          <ul class="ux4g-navbar-links">
+
+            <li class="ux4g-dropdown ux4g-dropdown-button">
+              <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown">
+                <span>Label</span>
+                <span class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret">arrow_drop_down</span>
+              </a>
+              <div class="ux4g-dropdown-menu">
+                <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                  <li class="ux4g-list-item" role="option">
+                    <button class="ux4g-list-item-row" type="button">
+                      <div class="ux4g-list-item-start">
+                        <span aria-hidden="true">Label</span>
+                        </span>
+                    </button>
+                  </li>
+                  <li class="ux4g-list-item" role="option">
+                    <button class="ux4g-list-item-row" type="button">
+                      <div class="ux4g-list-item-start">
+                        <span aria-hidden="true">Label</span>
+                        </span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+          </ul>
+          <!-- Actions -->
+          <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+            <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-cursor-pointer"
+              data-drawer="ux4g-drawerRight">notifications</i>
+            <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-cursor-pointer"
+              data-drawer="ux4g-drawerLeft">notifications</i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- //drawer -->
+    <div class="ux4g-drawer-overlay">
+      <div class="ux4g-drawer ux4g-drawer-right" id="ux4g-drawerRight">
+        <div class="ux4g-drawer-header ux4g-notification-drawer-header ux4g-d-flex ux4g-jc-between ux4g-ai-center">
+          <span class="ux4g-title-m-default">Notification</span>
+          <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+            <a href="#" class="ux4g-text-link-sm">Mark as read</a>
+            <button class="ux4g-drawer-close ux4g-notification-close-btn" data-drawer-close="">
+              <i class="ux4g-icon-outlined">close</i>
+            </button>
+          </div>
+        </div>
+
+        <div class="ux4g-drawer-body ux4g-notification-drawer-body">
+          <!-- Group: TODAY -->
+          <div class="ux4g-notification-group-header">
+            <span class="ux4g-body-xs-strong">TODAY</span>
+          </div>
+
+          <!-- Item 1 -->
+          <div class="ux4g-notification-item">
+            <span class="ux4g-badge-dot-danger"></span>
+            <div class="ux4g-notification-content">
+              <div class="ux4g-notification-top-row">
+                <span class="ux4g-body-xs-strong">Action required</span>
+                <span class="ux4g-body-xs-default">10:24 AM</span>
+              </div>
+              <span class="ux4g-body-s-strong">Income Certificate · Action required</span>
+              <span class="ux4g-body-xs-default">Upload your income proof by 15 Apr to avoid rejection.</span>
+              <a class="ux4g-text-link-sm ux4g-notification-action-link" href="#" target="_blank">Upload now</a>
+            </div>
+          </div>
+
+          <div class="ux4g-notification-item">
+            <span class="ux4g-badge-dot-danger"></span>
+            <div class="ux4g-notification-content">
+              <div class="ux4g-notification-top-row">
+                <span class="ux4g-body-xs-strong">Action required</span>
+                <span class="ux4g-body-xs-default">10:24 AM</span>
+              </div>
+              <span class="ux4g-body-s-strong">Income Certificate · Action required</span>
+              <span class="ux4g-body-xs-default">Upload your income proof by 15 Apr to avoid rejection.</span>
+              <a class="ux4g-text-link-sm ux4g-notification-action-link" href="#" target="_blank">View Details</a>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="ux4g-notification-item">
+            <span class="ux4g-badge-dot-primary"></span>
+            <div class="ux4g-notification-content">
+              <div class="ux4g-notification-top-row">
+                <span class="ux4g-body-xs-strong">Status Update</span>
+                <span class="ux4g-body-xs-default">8:03 AM</span>
+              </div>
+              <span class="ux4g-body-s-strong">Income Certificate · Action required</span>
+              <span class="ux4g-body-xs-default">Upload your income proof by 15 Apr to avoid rejection.</span>
+            </div>
+          </div>
+
+          <!-- Group: YESTERDAY -->
+          <div class="ux4g-notification-group-header">
+            <span class="ux4g-body-xs-strong">YESTERDAY</span>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="ux4g-notification-item">
+            <span class="ux4g-badge-dot-warning"></span>
+            <div class="ux4g-notification-content">
+              <div class="ux4g-notification-top-row">
+                <span class="ux4g-body-xs-strong">Reminder</span>
+                <span class="ux4g-body-xs-default">8:03 AM</span>
+              </div>
+              <span class="ux4g-body-s-strong">Draft expiring · Income Certificate</span>
+              <span class="ux4g-body-xs-default">Your draft expires in 5 days.</span>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="ux4g-notification-item">
+            <span class="ux4g-badge-dot-info"></span>
+            <div class="ux4g-notification-content">
+              <div class="ux4g-notification-top-row">
+                <span class="ux4g-body-xs-strong">Info</span>
+                <span class="ux4g-body-xs-default">8:03 AM</span>
+              </div>
+              <span class="ux4g-body-s-strong">PAN Correction · Status update</span>
+              <span class="ux4g-body-xs-default">Under review by Income Tax Dept.</span>
+            </div>
+          </div>
+
+          <!-- Group: EARLIER THIS WEEK -->
+          <div class="ux4g-notification-group-header">
+            <span class="ux4g-body-xs-strong">EARLIER THIS WEEK</span>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="ux4g-notification-item">
+            <span class="ux4g-badge-dot-info"></span>
+            <div class="ux4g-notification-content">
+              <div class="ux4g-notification-top-row">
+                <span class="ux4g-body-xs-strong">Info</span>
+                <span class="ux4g-body-xs-default">8:03 AM</span>
+              </div>
+              <span class="ux4g-body-s-strong">Birth Certificate · Submitted</span>
+              <span class="ux4g-body-xs-default">Reference: BC-2026-MH-001.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- //empty notifications drawer -->
+    <div class="ux4g-drawer-overlay">
+      <div class="ux4g-drawer ux4g-drawer-left" id="ux4g-drawerLeft">
+        <div class="ux4g-drawer-header ux4g-notification-drawer-header ux4g-d-flex ux4g-jc-between ux4g-ai-center">
+          <span class="ux4g-title-m-default">Notification</span>
+          <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+            <button class="ux4g-drawer-close ux4g-notification-close-btn" data-drawer-close="">
+              <i class="ux4g-icon-outlined">close</i>
+            </button>
+          </div>
+        </div>
+
+        <div class="ux4g-drawer-body ux4g-notification-drawer-body">
+
+
+
+          <div class="ux4g-empty-state">
+            <button class="ux4g-icon-btn ux4g-icon-btn-primary ux4g-icon-btn-pill ux4g-bg-primary-soft">
+              <i class="ux4g-icon-outlined ux4g-text-primary ">notifications</i>
+            </button>
+
+            <div class="ux4g-empty-state-content">
+              <h3 class="ux4g-title-l-strong">No notifications</h3>
+              <p class="ux4g-body-m-default">You're all caught up! New notifications will appear here.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <h1 class="ux4g-text-center ux4g-bg-error-strong ux4g-p-l">Notification Channels</h1>
+    <!-- Variant: Fluid Layout - Info -->
+    <div class="ux4g-alert ux4g-alert-info" data-auto-dismiss="5000">
+      <i class="ux4g-icon ux4g-alert-icon">info</i>
+      <div class="ux4g-alert-content">
+        <span class="ux4g-alert-title">Status updated just now</span>
+        <span class="ux4g-alert-message">Your application moved to Under Review. This banner auto-dismisses in 5
+          seconds.</span>
+      </div>
+      <div class="ux4g-alert-actions">
+        <button class="ux4g-alert-close">
+          <i class="ux4g-icon">close</i>
+        </button>
+      </div>
+    </div>
+    <div class="ux4g-application-main">
+      <div class="ux4g-py-l">
+        <a class="ux4g-text-link-md" href="" target="_blank">
+          <i class="ux4g-icon">arrow_back</i> Back
+        </a>
+      </div>
+
+      <!-- Variant: Application Result List -->
+      <div class="ux4g-result-list ux4g-result-list-v1 ux4g-mb-m">
+        <div class="ux4g-result-list-header">
+          <div class="ux4g-result-list-info">
+            <div class="ux4g-result-list-title-group">
+              <h2 class="ux4g-result-list-title ux4g-title-s-default">Income Certificate</h2>
+              <div class="ux4g-result-list-meta">
+                <span class="ux4g-result-list-id ux4g-body-s-default ux4g-text-neutral-secondary">
+                  Application ID &middot;
+                  <span class="ux4g-body-s-default ux4g-text-neutral-secondary">INC-2026-MH-04127</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="ux4g-result-list-actions-container ux4g-d-flex">
+            <div class="ux4g-result-list-status-date ux4g-d-flex ux4g-flex-column">
+              <span class="ux4g-tag-tonal-neutral">Under review</span>
+            </div>
+          </div>
+        </div>
+        <article class="ux4g-sla-linear ux4g-sla-linear-rounded ux4g-sla-status-warning" data-ux-sla-linear
+          data-ux-progress="50" aria-label="Warning rounded linear SLA progress at 50 percent">
+          <div class="ux4g-sla-linear-body">
+            <div class="ux4g-sla-linear-head">
+              <div class="ux4g-sla-linear-title-wrap">
+                <span class="ux4g-label-l-strong ux4g-sla-linear-title">8 days left</span>
+              </div>
+            </div>
+            <div class="ux4g-sla-linear-track" aria-hidden="true">
+              <div class="ux4g-sla-linear-fill"></div>
+            </div>
+
+          </div>
+        </article>
+      </div>
+
+      <!-- Variant: Vertical Timeline -->
+      <div class="journey-timeline-card journey-timeline-card-vertical ux4g-mb-xl ux4g-d-flex">
+        <div class=" ux4g-d-flex ux4g-jc-between ">
+          <div class="journey-timeline-title ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+            <span class="ux4g-title-m-default">Application journey</span>
+            <span class="s journey-timeline-description">Every step from
+              submission to issuance</span>
+          </div>
+        </div>
+        <div class="ux4g-journey-timeline ux4g-journey-timeline--vertical">
+          <!-- Step 1: Completed -->
+          <div class="ux4g-journey-step ux4g-journey-step-completed">
+            <div class="ux4g-journey-indicator">
+              <span class="ux4g-icon-outlined">check</span>
+            </div>
+            <div class="ux4g-journey-card ux4g-journey-card--standard">
+              <div class="ux4g-journey-info">
+                <span class="ux4g-journey-date">07 Apr 2026, 10:24 AM</span>
+                <span class="ux4g-journey-title">Application Submitted</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Completed -->
+          <div class="ux4g-journey-step ux4g-journey-step-completed">
+            <div class="ux4g-journey-indicator">
+              <span class="ux4g-icon-outlined">check</span>
+            </div>
+            <div class="ux4g-journey-card ux4g-journey-card--standard">
+              <div class="ux4g-journey-info">
+                <span class="ux4g-journey-date">08 Apr 2026, 11:33 AM</span>
+                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                  <span class="ux4g-journey-title">Documents Verified</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Active -->
+          <div class="ux4g-journey-step ux4g-journey-step-active">
+            <div class="ux4g-journey-indicator">
+              <span class="ux4g-icon-outlined">check</span>
+            </div>
+            <div class="ux4g-journey-card ux4g-journey-card--standard">
+              <div class="ux4g-journey-info">
+                <span class="ux4g-journey-date"> 10 Apr 2026, 11:33 AM</span>
+                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                  <span class="ux4g-journey-title">Officer Review</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Pending -->
+          <div class="ux4g-journey-step">
+            <div class="ux4g-journey-indicator">
+              <span class="ux4g-icon-outlined">check</span>
+            </div>
+            <div class="ux4g-journey-card ux4g-journey-card--standard">
+              <div class="ux4g-journey-info">
+                <span class="ux4g-journey-date">11 Apr 2026 (Est)</span>
+                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                  <span class="ux4g-journey-title">Certificate Will Be Issued</span>
+                  <div class="ux4g-journey-status">
+                    <span class="ux4g-journey-status-dot ux4g-journey-status-dot--warning" aria-hidden="true"></span>
+                    <span class="ux4g-label-m-default ux4g-text-neutral-primary">11 days remaining</span>
+                    <span class="ux4g-divider-vertical"></span>
+                    <span class="ux4g-label-s-default ux4g-text-warning">Pending</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+  <!-- //Reminder Sequence Alert -->
+  <section>
+    <!-- info reminder -->
+    <div class="ux4g-reminder-alert">
+      <div class="ux4g-context-alert ux4g-alert-info">
+        <i class="ux4g-icon ux4g-alert-icon">info</i>
+        <span class="ux4g-alert-title">30 days before expiry</span>
+        <div class="ux4g-alert-actions">
+          <button class="ux4g-alert-close">
+            <i class="ux4g-icon">close</i>
+          </button>
+        </div>
+        <div class="ux4g-alert-message">Your Income Certificate expires on 15 May 2026 (30 days away). Renew early to
+          avoid a service gap: bit.ly/renew-mh.</div>
+      </div>
+    </div>
+
+
+    <!-- suceess reminder -->
+    <!-- <div class="ux4g-reminder-alert">
+      <div class="ux4g-context-alert ux4g-alert-success">
+        <i class="ux4g-icon ux4g-alert-icon">check_circle</i>
+        <span class="ux4g-alert-title">1 hour before: Sent 10:13 AM</span>
+        <div class="ux4g-alert-actions">
+          <button class="ux4g-alert-close">
+            <i class="ux4g-icon">close</i>
+          </button>
+        </div>
+        <div class="ux4g-alert-message">In 1 hour: Your 11:00 AM field inspection. Revenue Inspector, Sector 12 office.
+          Directions: bit.ly/dir-mh.</div>
+      </div>
+    </div> -->
+
+
+    <!-- warning reminder -->
+    <!-- <div class="ux4g-reminder-alert">
+      <div class="ux4g-context-alert ux4g-alert-warning">
+        <i class="ux4g-icon ux4g-alert-icon">warning</i>
+        <span class="ux4g-alert-title">5 days before expiry</span>
+        <div class="ux4g-alert-actions">
+          <button class="ux4g-alert-close">
+            <i class="ux4g-icon">close</i>
+          </button>
+        </div>
+        <div class="ux4g-alert-message">Your Income Certificate draft expires in 5 days (16 Apr). Resume now:
+          bit.ly/resume-mh.</div>
+      </div>
+    </div> -->
+
+
+    <!-- error reminder -->
+    <!-- <div class="ux4g-reminder-alert">
+      <div class="ux4g-context-alert ux4g-alert-error">
+        <i class="ux4g-icon ux4g-alert-icon">error</i>
+        <span class="ux4g-alert-title">2 days before expiry</span>
+        <div class="ux4g-alert-actions">
+          <button class="ux4g-alert-close">
+            <i class="ux4g-icon">close</i>
+          </button>
+        </div>
+        <div class="ux4g-alert-message">Only 2 days left. Submit your Income Certificate before16 Apr or your draft will
+          be deleted. Resume: bit.ly/resume-mh.</div>
+
+      </div>
+    </div> -->
+
+    <!-- expiry On day -->
+    <!-- <div class="ux4g-reminder-alert">
+      <div class="ux4g-context-alert ux4g-alert-error">
+        <i class="ux4g-icon ux4g-alert-icon">error</i>
+        <span class="ux4g-alert-title">On expiry day</span>
+        <div class="ux4g-alert-actions">
+          <button class="ux4g-alert-close">
+            <i class="ux4g-icon">close</i>
+          </button>
+        </div>
+        <div class="ux4g-alert-message">Your Income Certificate draft expired on 16 Apr. Your saved data has been
+          removed. Start a new application: bit.ly/apply-mh.</div>
+        <div class="ux4g-alert-footer">
+          <a href="#" class="ux4g-alert-link"> Action</a>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+
+    <h1 class="ux4g-text-center ux4g-bg-primary-strong ux4g-p-l">Notification Channels</h1>
+    <section class="noti-channel">
+      <div class="noti-channel-container">
+        <div class="noti-channel-header ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+          <h1 class="ux4g-title-l-strong">Notification Preferences</h1>
+          <p class="s">Control how and when the portal contacts you.
+            Changes are saved automatically.</p>
+        </div>
+
+        <div class="noti-channel-layout ux4g-tab ux4g-tab-vertical ux4g-tab-pill ux4g-tab-md" data-ux4g-tab>
+          <div class="noti-channel-sidebar ux4g-py-m">
+            <div class="ux4g-tab-list" role="tablist">
+              <button class="ux4g-tab-item active" role="tab" tabindex="0" data-panel="pill-md-1">
+                Notification Channels
+              </button>
+              <button class="ux4g-tab-item" role="tab" tabindex="-1" data-panel="pill-md-2">
+                Update Frequency
+              </button>
+              <button class="ux4g-tab-item" role="tab" tabindex="-1" data-panel="pill-md-3">
+                Per Service Preferences
+              </button>
+              <button class="ux4g-tab-item" role="tab" tabindex="-1" data-panel="pill-md-4">
+                Mandatory Notifications
+              </button>
+              <button class="ux4g-tab-item" role="tab" tabindex="-1" data-panel="pill-md-5">
+                Whatsapp Notifications
+              </button>
+              <button class="ux4g-tab-item" role="tab" tabindex="-1" data-panel="pill-md-6">
+                Manage all Subscriptions
+              </button>
+            </div>
+          </div>
+
+          <div class="noti-channel-content">
+            <div class="ux4g-tab-panel active" id="pill-md-1">
+              <div class="noti-channel-panel">
+                <div class="ux4g-pb-m">
+                  <h2 class="ux4g-heading-s-strong ux4g-pb-xs">Notification channels</h2>
+                  <p class="s">Choose which channels the portal can use to
+                    reach you.</p>
+                </div>
+
+                <ul class="ux4g-list ux4g-list-default ux4g-list-m ux4g-list-switch">
+                  <li class="ux4g-list-item noti-channel-list-item" role="option">
+                    <div class="ux4g-list-item-row ux4g-toggles">
+                      <div class="ux4g-list-item-start">
+                        <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                          <span class="ux4g-body-m-strong">SMS</span>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary noti-channel-nowrap">+91 98765
+                            43210</span>
+                        </div>
+                      </div>
+                      <div class="ux4g-list-item-end">
+                        <label class="ux4g-switch ux4g-switch-md">
+                          <input class="ux4g-switch-input" type="checkbox" role="switch">
+                          <div class="ux4g-switch-control">
+                            <span class="ux4g-switch-track">
+                              <span class="ux4g-switch-thumb"></span>
+                            </span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="ux4g-list-item noti-channel-list-item" role="option">
+                    <div class="ux4g-list-item-row ux4g-toggles">
+                      <div class="ux4g-list-item-start">
+                        <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                          <span class="ux4g-body-m-strong">Email</span>
+                          <span
+                            class="ux4g-body-s-default ux4g-text-neutral-secondary noti-channel-nowrap">r•••••h@gmail.com</span>
+                        </div>
+                      </div>
+                      <div class="ux4g-list-item-end">
+                        <label class="ux4g-switch ux4g-switch-md">
+                          <input class="ux4g-switch-input" type="checkbox" role="switch">
+                          <div class="ux4g-switch-control">
+                            <span class="ux4g-switch-track">
+                              <span class="ux4g-switch-thumb"></span>
+                            </span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="ux4g-list-item noti-channel-list-item" role="option">
+                    <div class="ux4g-list-item-row ux4g-toggles">
+                      <div class="ux4g-list-item-start">
+                        <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                          <span class="ux4g-body-m-strong">App notifications</span>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Push alerts on this
+                            device</span>
+                        </div>
+                      </div>
+                      <div class="ux4g-list-item-end">
+                        <label class="ux4g-switch ux4g-switch-md">
+                          <input class="ux4g-switch-input" type="checkbox" role="switch">
+                          <div class="ux4g-switch-control">
+                            <span class="ux4g-switch-track">
+                              <span class="ux4g-switch-thumb"></span>
+                            </span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="ux4g-list-item noti-channel-list-item" role="option">
+                    <div class="ux4g-list-item-row ux4g-toggles">
+                      <div class="ux4g-list-item-start">
+                        <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                          <span class="ux4g-body-m-strong">WhatsApp</span>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Opt-in required </span>
+                        </div>
+                      </div>
+                      <div class="ux4g-list-item-end">
+                        <label class="ux4g-switch ux4g-switch-md">
+                          <input class="ux4g-switch-input" type="checkbox" role="switch">
+                          <div class="ux4g-switch-control">
+                            <span class="ux4g-switch-track">
+                              <span class="ux4g-switch-thumb"></span>
+                            </span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="ux4g-tab-panel" id="pill-md-2">
+              <div class="noti-channel-panel">
+                <div class="ux4g-mb-xl">
+                  <h2 class="ux4g-heading-s-strong ux4g-pb-xs">Update frequency</h2>
+                  <p class="s">Decide how often the portal batches and
+                    sends your notifications.</p>
+                </div>
+
+                <ul class="ux4g-list ux4g-list-default ux4g-list-m ux4g-mb-l">
+                  <li class="ux4g-list-item" role="option">
+                    <button class="ux4g-list-item-row ux4g-list-select-item" type="button">
+                      <div class="ux4g-list-item-start">
+                        <label class="ux4g-radio ux4g-radio-md ux4g-w-auto">
+                          <input class="ux4g-radio-input" name="radio_single_tab" type="radio">
+                          <div class="ux4g-radio-control">
+                            <span class="ux4g-radiomark"></span>
+                          </div>
+                        </label>
+                        <span class="ux4g-d-flex ux4g-flex-column">
+                          <span class="ux4g-body-m-strong" aria-hidden="true">Immediately</span>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Get each notification the moment
+                            it happens.</span>
+                        </span>
+                      </div>
+                    </button>
+                  </li>
+                  <li class="ux4g-list-item" role="option">
+                    <button class="ux4g-list-item-row ux4g-list-select-item" type="button">
+                      <div class="ux4g-list-item-start">
+                        <label class="ux4g-radio ux4g-radio-md ux4g-w-auto">
+                          <input class="ux4g-radio-input" name="radio_single_tab" type="radio">
+                          <div class="ux4g-radio-control">
+                            <span class="ux4g-radiomark"></span>
+                          </div>
+                        </label>
+                        <span class="ux4g-d-flex ux4g-flex-column">
+                          <span class="ux4g-body-m-strong" aria-hidden="true">Daily Summary</span>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Get a single email with all
+                            updates at the end of the day.</span>
+                        </span>
+                      </div>
+                    </button>
+                  </li>
+                  <li class="ux4g-list-item" role="option">
+                    <button class="ux4g-list-item-row ux4g-list-select-item" type="button">
+                      <div class="ux4g-list-item-start">
+                        <label class="ux4g-radio ux4g-radio-md ux4g-w-auto">
+                          <input class="ux4g-radio-input" name="radio_single_tab" type="radio">
+                          <div class="ux4g-radio-control">
+                            <span class="ux4g-radiomark"></span>
+                          </div>
+                        </label>
+                        <span class="ux4g-d-flex ux4g-flex-column">
+                          <span class="ux4g-body-m-strong" aria-hidden="true">Weekly Digest</span>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Get a summary of all
+                            notifications once a week.</span>
+                        </span>
+                      </div>
+                    </button>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+
+            <div class="ux4g-tab-panel" id="pill-md-3">
+              <div class="noti-channel-panel">
+                <div class="ux4g-mb-xl">
+                  <h2 class="ux4g-heading-s-strong ux4g-pb-xs">Per-service preferences</h2>
+                  <p class="ux4g-body-s-default ux4g-text-neutral-secondary">Fine-tune which notifications you receive
+                    for each service you use.</p>
+                </div>
+
+                <div class="ux4g-accordion ux4g-accordion-arrow-right" id="accordionPerService">
+                  <div class="ux4g-accordion__item">
+                    <h3 class="ux4g-accordion__header">
+                      <button aria-controls="perServiceOne" aria-expanded="true" class="ux4g-accordion__button"
+                        type="button" ux4g-target="#perServiceOne" ux4g-toggle="collapse">
+                        <span class="ux4g-accordion__button-content ux4g-d-flex ux4g-flex-column ux4g-ai-start">
+                          <span class="ux4g-accordion__title ux4g-body-m-strong ux4g-text-neutral-secondary">Income
+                            Certificate</span>
+                        </span>
+                      </button>
+                    </h3>
+                    <div class="ux4g-accordion__collapse collapse show" id="perServiceOne"
+                      ux4g-parent="#accordionPerService">
+                      <div class="ux4g-accordion__body">
+                        <ul class="ux4g-list ux4g-list-default ux4g-list-m ux4g-list-switch">
+                          <li class="ux4g-list-item noti-channel-list-item" role="option">
+                            <div class="ux4g-list-item-row ux4g-toggles">
+                              <div class="ux4g-list-item-start">
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                                  <span class="ux4g-body-m-strong">Status updates</span>
+                                  <span class="ux4g-body-s-default ux4g-text-neutral-secondary">When your application
+                                    changes stage</span>
+                                </div>
+                              </div>
+                              <div class="ux4g-list-item-end">
+                                <label class="ux4g-switch ux4g-switch-md">
+                                  <input class="ux4g-switch-input" type="checkbox" role="switch">
+                                  <div class="ux4g-switch-control">
+                                    <span class="ux4g-switch-track">
+                                      <span class="ux4g-switch-thumb"></span>
+                                    </span>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="ux4g-list-item noti-channel-list-item" role="option">
+                            <div class="ux4g-list-item-row ux4g-toggles">
+                              <div class="ux4g-list-item-start">
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                                  <span class="ux4g-body-m-strong">Action reminders</span>
+                                  <span class="ux4g-body-s-default ux4g-text-neutral-secondary">When you need to upload
+                                    or pay</span>
+                                </div>
+                              </div>
+                              <div class="ux4g-list-item-end">
+                                <label class="ux4g-switch ux4g-switch-md">
+                                  <input class="ux4g-switch-input" type="checkbox" role="switch">
+                                  <div class="ux4g-switch-control">
+                                    <span class="ux4g-switch-track">
+                                      <span class="ux4g-switch-thumb"></span>
+                                    </span>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="ux4g-list-item noti-channel-list-item" role="option">
+                            <div class="ux4g-list-item-row ux4g-toggles">
+                              <div class="ux4g-list-item-start">
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                                  <span class="ux4g-body-m-strong">Certificate expiry</span>
+                                  <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Renewal reminders before
+                                    expiry</span>
+                                </div>
+                              </div>
+                              <div class="ux4g-list-item-end">
+                                <label class="ux4g-switch ux4g-switch-md">
+                                  <input class="ux4g-switch-input" type="checkbox" role="switch">
+                                  <div class="ux4g-switch-control">
+                                    <span class="ux4g-switch-track">
+                                      <span class="ux4g-switch-thumb"></span>
+                                    </span>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ux4g-accordion__item">
+                    <h3 class="ux4g-accordion__header">
+                      <button aria-controls="perServiceTwo" aria-expanded="false"
+                        class="ux4g-accordion__button collapsed" type="button" ux4g-target="#perServiceTwo"
+                        ux4g-toggle="collapse">
+                        <span class="ux4g-accordion__button-content ux4g-d-flex ux4g-flex-column ux4g-ai-start">
+                          <span class="ux4g-accordion__title ux4g-body-m-strong ux4g-text-neutral-secondary">Ration Card
+                            Renewal</span>
+                        </span>
+                      </button>
+                    </h3>
+                    <div class="ux4g-accordion__collapse collapse" id="perServiceTwo"
+                      ux4g-parent="#accordionPerService">
+                      <div class="ux4g-accordion__body">
+                        <ul class="ux4g-list ux4g-list-default ux4g-list-m ux4g-list-switch">
+                          <li class="ux4g-list-item noti-channel-list-item" role="option">
+                            <div class="ux4g-list-item-row ux4g-toggles">
+                              <div class="ux4g-list-item-start">
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                                  <span class="ux4g-body-m-strong">Status updates</span>
+                                  <span class="ux4g-body-s-default ux4g-text-neutral-secondary">When your application
+                                    changes stage</span>
+                                </div>
+                              </div>
+                              <div class="ux4g-list-item-end">
+                                <label class="ux4g-switch ux4g-switch-md">
+                                  <input class="ux4g-switch-input" type="checkbox" role="switch">
+                                  <div class="ux4g-switch-control">
+                                    <span class="ux4g-switch-track">
+                                      <span class="ux4g-switch-thumb"></span>
+                                    </span>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="ux4g-list-item noti-channel-list-item" role="option">
+                            <div class="ux4g-list-item-row ux4g-toggles">
+                              <div class="ux4g-list-item-start">
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                                  <span class="ux4g-body-m-strong">Action reminders</span>
+                                  <span class="ux4g-body-s-default ux4g-text-neutral-secondary">When you need to upload
+                                    or pay</span>
+                                </div>
+                              </div>
+                              <div class="ux4g-list-item-end">
+                                <label class="ux4g-switch ux4g-switch-md">
+                                  <input class="ux4g-switch-input" type="checkbox" role="switch">
+                                  <div class="ux4g-switch-control">
+                                    <span class="ux4g-switch-track">
+                                      <span class="ux4g-switch-thumb"></span>
+                                    </span>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="ux4g-list-item noti-channel-list-item" role="option">
+                            <div class="ux4g-list-item-row ux4g-toggles">
+                              <div class="ux4g-list-item-start">
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                                  <span class="ux4g-body-m-strong">Certificate expiry</span>
+                                  <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Renewal reminders before
+                                    expiry</span>
+                                </div>
+                              </div>
+                              <div class="ux4g-list-item-end">
+                                <label class="ux4g-switch ux4g-switch-md">
+                                  <input class="ux4g-switch-input" type="checkbox" role="switch">
+                                  <div class="ux4g-switch-control">
+                                    <span class="ux4g-switch-track">
+                                      <span class="ux4g-switch-thumb"></span>
+                                    </span>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ux4g-accordion__item">
+                    <h3 class="ux4g-accordion__header">
+                      <button aria-controls="perServiceThree" aria-expanded="false"
+                        class="ux4g-accordion__button collapsed" type="button" ux4g-target="#perServiceThree"
+                        ux4g-toggle="collapse">
+                        <span class="ux4g-accordion__button-content ux4g-d-flex ux4g-flex-column ux4g-ai-start">
+                          <span class="ux4g-accordion__title ux4g-body-m-strong ux4g-text-neutral-secondary">PAN
+                            Correction</span>
+                        </span>
+                      </button>
+                    </h3>
+                    <div class="ux4g-accordion__collapse collapse" id="perServiceThree"
+                      ux4g-parent="#accordionPerService">
+                      <div class="ux4g-accordion__body">
+                        <ul class="ux4g-list ux4g-list-default ux4g-list-m ux4g-list-switch">
+                          <li class="ux4g-list-item noti-channel-list-item" role="option">
+                            <div class="ux4g-list-item-row ux4g-toggles">
+                              <div class="ux4g-list-item-start">
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                                  <span class="ux4g-body-m-strong">Status updates</span>
+                                  <span class="ux4g-body-s-default ux4g-text-neutral-secondary">When your application
+                                    changes stage</span>
+                                </div>
+                              </div>
+                              <div class="ux4g-list-item-end">
+                                <label class="ux4g-switch ux4g-switch-md">
+                                  <input class="ux4g-switch-input" type="checkbox" role="switch">
+                                  <div class="ux4g-switch-control">
+                                    <span class="ux4g-switch-track">
+                                      <span class="ux4g-switch-thumb"></span>
+                                    </span>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="ux4g-list-item noti-channel-list-item" role="option">
+                            <div class="ux4g-list-item-row ux4g-toggles">
+                              <div class="ux4g-list-item-start">
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                                  <span class="ux4g-body-m-strong">Action reminders</span>
+                                  <span class="ux4g-body-s-default ux4g-text-neutral-secondary">When you need to upload
+                                    or pay</span>
+                                </div>
+                              </div>
+                              <div class="ux4g-list-item-end">
+                                <label class="ux4g-switch ux4g-switch-md">
+                                  <input class="ux4g-switch-input" type="checkbox" role="switch">
+                                  <div class="ux4g-switch-control">
+                                    <span class="ux4g-switch-track">
+                                      <span class="ux4g-switch-thumb"></span>
+                                    </span>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="ux4g-list-item noti-channel-list-item" role="option">
+                            <div class="ux4g-list-item-row ux4g-toggles">
+                              <div class="ux4g-list-item-start">
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                                  <span class="ux4g-body-m-strong">Certificate expiry</span>
+                                  <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Renewal reminders before
+                                    expiry</span>
+                                </div>
+                              </div>
+                              <div class="ux4g-list-item-end">
+                                <label class="ux4g-switch ux4g-switch-md">
+                                  <input class="ux4g-switch-input" type="checkbox" role="switch">
+                                  <div class="ux4g-switch-control">
+                                    <span class="ux4g-switch-track">
+                                      <span class="ux4g-switch-thumb"></span>
+                                    </span>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ux4g-accordion__item">
+                    <h3 class="ux4g-accordion__header">
+                      <button aria-controls="perServiceFour" aria-expanded="false"
+                        class="ux4g-accordion__button collapsed" type="button" ux4g-target="#perServiceFour"
+                        ux4g-toggle="collapse">
+                        <span class="ux4g-accordion__button-content ux4g-d-flex ux4g-flex-column ux4g-ai-start">
+                          <span class="ux4g-accordion__title ux4g-body-m-strong ux4g-text-neutral-secondary">Birth
+                            Certificate</span>
+                        </span>
+                      </button>
+                    </h3>
+                    <div class="ux4g-accordion__collapse collapse" id="perServiceFour"
+                      ux4g-parent="#accordionPerService">
+                      <div class="ux4g-accordion__body">
+                        <ul class="ux4g-list ux4g-list-default ux4g-list-m ux4g-list-switch">
+                          <li class="ux4g-list-item noti-channel-list-item" role="option">
+                            <div class="ux4g-list-item-row ux4g-toggles">
+                              <div class="ux4g-list-item-start">
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                                  <span class="ux4g-body-m-strong">Status updates</span>
+                                  <span class="ux4g-body-s-default ux4g-text-neutral-secondary">When your application
+                                    changes stage</span>
+                                </div>
+                              </div>
+                              <div class="ux4g-list-item-end">
+                                <label class="ux4g-switch ux4g-switch-md">
+                                  <input class="ux4g-switch-input" type="checkbox" role="switch">
+                                  <div class="ux4g-switch-control">
+                                    <span class="ux4g-switch-track">
+                                      <span class="ux4g-switch-thumb"></span>
+                                    </span>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="ux4g-list-item noti-channel-list-item" role="option">
+                            <div class="ux4g-list-item-row ux4g-toggles">
+                              <div class="ux4g-list-item-start">
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                                  <span class="ux4g-body-m-strong">Action reminders</span>
+                                  <span class="ux4g-body-s-default ux4g-text-neutral-secondary">When you need to upload
+                                    or pay</span>
+                                </div>
+                              </div>
+                              <div class="ux4g-list-item-end">
+                                <label class="ux4g-switch ux4g-switch-md">
+                                  <input class="ux4g-switch-input" type="checkbox" role="switch">
+                                  <div class="ux4g-switch-control">
+                                    <span class="ux4g-switch-track">
+                                      <span class="ux4g-switch-thumb"></span>
+                                    </span>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="ux4g-list-item noti-channel-list-item" role="option">
+                            <div class="ux4g-list-item-row ux4g-toggles">
+                              <div class="ux4g-list-item-start">
+                                <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                                  <span class="ux4g-body-m-strong">Certificate expiry</span>
+                                  <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Renewal reminders before
+                                    expiry</span>
+                                </div>
+                              </div>
+                              <div class="ux4g-list-item-end">
+                                <label class="ux4g-switch ux4g-switch-md">
+                                  <input class="ux4g-switch-input" type="checkbox" role="switch">
+                                  <div class="ux4g-switch-control">
+                                    <span class="ux4g-switch-track">
+                                      <span class="ux4g-switch-thumb"></span>
+                                    </span>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ux4g-tab-panel" id="pill-md-4">
+              <div class="noti-channel-panel">
+                <div class="ux4g-mb-xl">
+                  <h2 class="ux4g-heading-s-strong ux4g-pb-xs">Mandatory notifications</h2>
+                  <p class="s">These critical alerts keep you informed of
+                    legal and time-sensitive actions. Government policy requires that they stay on.</p>
+                </div>
+
+                <ul class="ux4g-list ux4g-list-default ux4g-list-m ux4g-list-switch">
+                  <li class="ux4g-list-item noti-channel-list-item" role="option">
+                    <div class="ux4g-list-item-row ux4g-toggles">
+                      <div class="ux4g-list-item-start">
+                        <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                          <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+                            <span class="ux4g-body-m-strong">SLA breach alerts</span>
+                            <span class="ux4g-tag-tonal-neutral ux4g-tag-s">Locked</span>
+                          </div>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Sent when an application crosses
+                            its service guarantee deadline.</span>
+                        </div>
+                      </div>
+                      <div class="ux4g-list-item-end">
+                        <label class="ux4g-switch ux4g-switch-md">
+                          <input disabled class="ux4g-switch-input" type="checkbox" checked />
+                          <div class="ux4g-switch-control">
+                            <span class="ux4g-switch-track">
+                              <span class="ux4g-switch-thumb"></span>
+                            </span>
+                          </div>
+                          <div class="ux4g-switch-content">
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="ux4g-list-item noti-channel-list-item" role="option">
+                    <div class="ux4g-list-item-row ux4g-toggles">
+                      <div class="ux4g-list-item-start">
+                        <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                          <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+                            <span class="ux4g-body-m-strong">Rejection notices</span>
+                            <span class="ux4g-tag-tonal-neutral ux4g-tag-s">Locked</span>
+                          </div>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Sent if an application is
+                            rejected, with the reason and next steps.</span>
+                        </div>
+                      </div>
+                      <div class="ux4g-list-item-end">
+                        <label class="ux4g-switch ux4g-switch-md">
+                          <input disabled class="ux4g-switch-input" type="checkbox" checked />
+                          <div class="ux4g-switch-control">
+                            <span class="ux4g-switch-track">
+                              <span class="ux4g-switch-thumb"></span>
+                            </span>
+                          </div>
+                          <div class="ux4g-switch-content">
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="ux4g-list-item noti-channel-list-item" role="option">
+                    <div class="ux4g-list-item-row ux4g-toggles">
+                      <div class="ux4g-list-item-start">
+                        <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                          <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+                            <span class="ux4g-body-m-strong">Legal & payment deadlines</span>
+                            <span class="ux4g-tag-tonal-neutral ux4g-tag-s">Locked</span>
+                          </div>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Sent for statutory deadlines and
+                            fee payment due dates.</span>
+                        </div>
+                      </div>
+                      <div class="ux4g-list-item-end">
+                        <label class="ux4g-switch ux4g-switch-md">
+                          <input disabled class="ux4g-switch-input" type="checkbox" checked />
+                          <div class="ux4g-switch-control">
+                            <span class="ux4g-switch-track">
+                              <span class="ux4g-switch-thumb"></span>
+                            </span>
+                          </div>
+                          <div class="ux4g-switch-content">
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="ux4g-tab-panel" id="pill-md-5">
+              <div class="noti-channel-panel">
+                <div class="ux4g-mb-xl">
+                  <h2 class="ux4g-heading-s-strong ux4g-pb-xs">WhatsApp notifications</h2>
+                  <p class="s">Receive updates on WhatsApp. This channel
+                    is strictly opt-in and needs your explicit consent.</p>
+                </div>
+
+                <div class="ux4g-p-l ux4g-radius-m ux4g-mb-xl ux4g-bg-success-soft noti-channel-success-box">
+                  <h3 class="ux4g-body-m-strong ux4g-mb-m">What you will receive on WhatsApp</h3>
+                  <ul class="ux4g-list ux4g-d-flex ux4g-flex-column ux4g-stack-gap-s">
+                    <li class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+                      <span class="ux4g-icon-outlined ">check</span>
+                      <span class="ux4g-body-s-default">Application status changes</span>
+                    </li>
+                    <li class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+                      <span class="ux4g-icon-outlined ">check</span>
+                      <span class="ux4g-body-s-default">Appointment reminders (D-1 and H-1)</span>
+                    </li>
+                    <li class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+                      <span class="ux4g-icon-outlined ">check</span>
+                      <span class="ux4g-body-s-default">Action-required alerts with quick links</span>
+                    </li>
+                  </ul>
+                </div>
+                <label class="ux4g-checkbox ux4g-checkbox-md">
+                  <input id="whatsapp-consent-checkbox" data-ux4g-toggle-disable="#whatsapp-enable-btn"
+                    class="ux4g-checkbox-input" type="checkbox" />
+                  <div class="ux4g-checkbox-control">
+                    <span class="ux4g-checkmark"></span>
+                  </div>
+                  <div class="ux4g-checkbox-content">
+                    <div class="ux4g-checkbox-header">
+                      <span class="ux4g-checkbox-label">I consent to receiving notifications on WhatsApp at +91 98765
+                        43210. <sup class="ux4g-text-error-default">*</sup></span>
+                    </div>
+                    <div class="ux4g-checkbox-description">
+                      You can withdraw this consent at any time. This checkbox is never pre-ticked (DPDP Act 2023).
+                    </div>
+                  </div>
+                </label>
+
+                <button id="whatsapp-enable-btn" class=" ux4g-btn-primary ux4g-my-xl" disabled>
+                  <span class="ux4g-btn-content">Enable WhatsApp notifications</span>
+                </button>
+              </div>
+
+
+            </div>
+
+            <div class="ux4g-tab-panel" id="pill-md-6">
+              <div class="noti-channel-panel">
+                <div class="ux4g-mb-xl">
+                  <h2 class="ux4g-heading-s-strong ux4g-pb-xs">Manage all subscriptions</h2>
+                  <p class="s">A complete overview of every notification
+                    type and a quick way to opt out of optional ones.</p>
+                </div>
+                <div class="ux4g-mb-m">
+                  <span class="ux4g-body-xs-strong ux4g-text-neutral-secondary ux4g-tt-uppercase">Optional — You can
+                    turn
+                    these off</span>
+                </div>
+                <ul class="ux4g-list ux4g-list-default ux4g-list-m ux4g-list-switch ux4g-mb-xl">
+                  <li class="ux4g-list-item noti-channel-list-item" role="option">
+                    <div class="ux4g-list-item-row ux4g-toggles">
+                      <div class="ux4g-list-item-start">
+                        <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                          <span class="ux4g-body-m-strong">Status updates</span>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Stage changes across all your
+                            applications</span>
+                        </div>
+                      </div>
+                      <div class="ux4g-list-item-end">
+                        <label class="ux4g-switch ux4g-switch-md">
+                          <input class="ux4g-switch-input" type="checkbox" role="switch">
+                          <div class="ux4g-switch-control"><span class="ux4g-switch-track"><span
+                                class="ux4g-switch-thumb"></span></span></div>
+                        </label>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="ux4g-list-item noti-channel-list-item" role="option">
+                    <div class="ux4g-list-item-row ux4g-toggles">
+                      <div class="ux4g-list-item-start">
+                        <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                          <span class="ux4g-body-m-strong">Action reminders</span>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Upload and payment
+                            reminders</span>
+                        </div>
+                      </div>
+                      <div class="ux4g-list-item-end">
+                        <label class="ux4g-switch ux4g-switch-md">
+                          <input class="ux4g-switch-input" type="checkbox" role="switch">
+                          <div class="ux4g-switch-control"><span class="ux4g-switch-track"><span
+                                class="ux4g-switch-thumb"></span></span></div>
+                        </label>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="ux4g-list-item noti-channel-list-item" role="option">
+                    <div class="ux4g-list-item-row ux4g-toggles">
+                      <div class="ux4g-list-item-start">
+                        <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                          <span class="ux4g-body-m-strong">Certificate expiry</span>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Renewal reminders before
+                            documents
+                            expire</span>
+                        </div>
+                      </div>
+                      <div class="ux4g-list-item-end">
+                        <label class="ux4g-switch ux4g-switch-md">
+                          <input class="ux4g-switch-input" type="checkbox" role="switch">
+                          <div class="ux4g-switch-control"><span class="ux4g-switch-track"><span
+                                class="ux4g-switch-thumb"></span></span></div>
+                        </label>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="ux4g-list-item noti-channel-list-item" role="option">
+                    <div class="ux4g-list-item-row ux4g-toggles">
+                      <div class="ux4g-list-item-start">
+                        <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                          <span class="ux4g-body-m-strong">Promotional updates</span>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">New services and scheme
+                            announcements</span>
+                        </div>
+                      </div>
+                      <div class="ux4g-list-item-end">
+                        <label class="ux4g-switch ux4g-switch-md">
+                          <input class="ux4g-switch-input" type="checkbox" role="switch">
+                          <div class="ux4g-switch-control"><span class="ux4g-switch-track"><span
+                                class="ux4g-switch-thumb"></span></span></div>
+                        </label>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+
+                <div class="ux4g-mb-m">
+                  <span class="ux4g-body-xs-strong ux4g-text-neutral-secondary ux4g-tt-uppercase">Mandatory — Required
+                    by
+                    government policy</span>
+                </div>
+                <ul class="ux4g-list ux4g-list-default ux4g-list-m ux4g-mb-xl">
+                  <li class="ux4g-list-item noti-channel-list-item" role="option">
+                    <div class="ux4g-list-item-row">
+                      <div class="ux4g-list-item-start">
+                        <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                          <span class="ux4g-body-m-strong">SLA breach alerts</span>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Service guarantee deadline
+                            notifications</span>
+                        </div>
+                      </div>
+                      <div class="ux4g-list-item-end">
+                        <span class="ux4g-tag-tonal-neutral ux4g-tag-s">Always on</span>
+                        </span>
+                      </div>
+                  </li>
+                  <li class="ux4g-list-item noti-channel-list-item" role="option">
+                    <div class="ux4g-list-item-row">
+                      <div class="ux4g-list-item-start">
+                        <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                          <span class="ux4g-body-m-strong">Rejection notices</span>
+                          <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Application rejection with
+                            reasons</span>
+                        </div>
+                      </div>
+                      <div class="ux4g-list-item-end">
+                        <span class="ux4g-tag-tonal-neutral ux4g-tag-s">Always on</span>
+                        </span>
+                      </div>
+                  </li>
+                </ul>
+
+                <button class="ux4g-btn ux4g-btn-outline-danger">
+                  <span class="ux4g-btn-content">Turn off all optional notifications</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <h1 class="ux4g-text-center ux4g-bg-error-strong ux4g-p-l">sms-email-notifications</h1>
+
+    <!-- //sms-email-notifications -->
+    <section class="ux4g-py-xl ux4g-px-m ux4g-bg-neutral">
+      <div class="ux4g-sms-email-notification">
+        <!-- Header -->
+        <div class="ux4g-sms-email-notification-header">
+          <h2 class="ux4g-title-m-strong">Your Income Certificate application has been submitted</h2>
+          <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+            <span class="ux4g-body-s-default">From: revenue@maharashtra.gov.in</span>
+            <span class="ux4g-body-s-default">To: ramesh.kumar@gmail.com</span>
+            <span class="ux4g-body-s-default">Date: 7 Apr 2026, 10:24 AM</span>
+          </div>
+        </div>
+
+        <!-- Department Banner -->
+        <div class="ux4g-p-m ux4g-bg-primary-soft ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+          <label class="ux4g-radio ux4g-radio-md ux4g-w-auto">
+            <input class="ux4g-radio-input" name="dept_radio" type="radio" checked>
+            <div class="ux4g-radio-control">
+              <span class="ux4g-radiomark"></span>
+            </div>
+          </label>
+          <div class="ux4g-d-flex ux4g-flex-column">
+            <span class="ux4g-body-m-strong ux4g-text-primary">Revenue Department</span>
+            <span class="ux4g-body-s-default ux4g-text-primary" style="opacity: 0.8;">Government of Maharashtra -
+              Government of India</span>
+          </div>
+        </div>
+
+        <!-- Body Content -->
+        <div class="ux4g-p-l">
+          <h2 class="ux4g-title-m-strong">Your Income Certificate application has been submitted</h2>
+          <p class="ux4g-body-m-default ux4g-py-m">Dear Ramesh Kumar,</p>
+          <p class="ux4g-body-m-default ux4g-pb-m">We have received your application. The Revenue Department will review
+            and notify you of the decision. The processing time is typically 7-10 working days.</p>
+
+          <!-- Info Table -->
+          <div class="ux4g-bg-primary-soft ux4g-p-m ux4g-radius-m ux4g-mb-l">
+            <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-s">
+              <div class="ux4g-sen-info-row">
+                <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Application reference</span>
+                <span class="ux4g-body-s-default ux4g-text-neutral-primary">INC-2026-MH-04127</span>
+              </div>
+              <div class="ux4g-sen-info-row">
+                <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Submitted on</span>
+                <span class="ux4g-body-s-default ux4g-text-neutral-primary">7 Apr 2026, 10:24 AM</span>
+              </div>
+              <div class="ux4g-sen-info-row">
+                <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Department</span>
+                <span class="ux4g-body-s-default ux4g-text-neutral-primary">Revenue Dept, Maharashtra Govt</span>
+              </div>
+              <div class="ux4g-sen-info-row">
+                <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Expected by</span>
+                <span class="ux4g-body-s-default ux4g-text-neutral-primary">22 Apr 2026 (Est)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline section -->
+          <h3 class="ux4g-title-s-strong ux4g-pb-m">What happens next</h3>
+          <div class="journey-timeline-card journey-timeline-card-vertical ux4g-mb-xl ux4g-d-flex ">
+            <div class="ux4g-journey-timeline ux4g-journey-timeline--vertical">
+              <!-- Step 1: Completed -->
+              <div class="ux4g-journey-step ux4g-journey-step-completed">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Submitted</span>
+                      <span class="ux4g-journey-date">Today, 10:24 AM</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Active -->
+              <div class="ux4g-journey-step ux4g-journey-step-active">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card active">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Documents Verified</span>
+                      <span class="ux4g-journey-date">Est. 10 Apr</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: Pending -->
+              <div class="ux4g-journey-step">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Officer Review</span>
+                      <span class="ux4g-journey-date">Est. 13 Apr</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4: Pending -->
+              <div class="ux4g-journey-step">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Decision</span>
+                      <span class="ux4g-journey-date">Est. 18 Apr</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 5: Pending -->
+              <div class="ux4g-journey-step">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Issued</span>
+                      <span class="ux4g-journey-date">Est. 22 Apr</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div>
+            <button class=" ux4g-btn-primary" type="button">
+              <span class="ux4g-btn-content">Track your application</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- //sms-email-notifications -->
+    <section class="ux4g-py-xl ux4g-px-m ux4g-bg-neutral">
+      <div class="ux4g-sms-email-notification">
+        <!-- Header -->
+        <div class="ux4g-sms-email-notification-header">
+          <h2 class="ux4g-title-m-strong">Action required on your Income Certificate application</h2>
+          <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+            <span class="ux4g-body-s-default">From: revenue@maharashtra.gov.in</span>
+            <span class="ux4g-body-s-default">To: ramesh.kumar@gmail.com</span>
+            <span class="ux4g-body-s-default">Date: 7 Apr 2026, 10:24 AM</span>
+          </div>
+        </div>
+
+        <div class="ux4g-alert ux4g-alert-error">
+          <div class="ux4g-alert-content">
+            <span class="ux4g-alert-title ux4g-text-error">Action required by 15 Apr 2026</span>
+          </div>
+
+        </div>
+        <!-- Department Banner -->
+        <div class="ux4g-p-m ux4g-bg-primary-soft ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+          <label class="ux4g-radio ux4g-radio-md ux4g-w-auto">
+            <input class="ux4g-radio-input" name="dept_radio" type="radio" checked>
+            <div class="ux4g-radio-control">
+              <span class="ux4g-radiomark"></span>
+            </div>
+          </label>
+          <div class="ux4g-d-flex ux4g-flex-column">
+            <span class="ux4g-body-m-strong ux4g-text-primary">Revenue Department</span>
+            <span class="ux4g-body-s-default ux4g-text-primary" style="opacity: 0.8;">Government of Maharashtra -
+              Government of India</span>
+          </div>
+        </div>
+
+        <!-- Body Content -->
+        <div class="ux4g-p-l">
+          <h2 class="ux4g-title-m-strong">Action required on your Income Certificate application</h2>
+          <p class="ux4g-body-m-default ux4g-py-m">Dear Ramesh Kumar,</p>
+          <p class="ux4g-body-m-default ux4g-pb-m">To continue processing your application, we need an updated income
+            proof. Please upload a clearer copy by the deadline below. If you do not respond, your application may be
+            rejected.</p>
+
+          <!-- Info Table -->
+          <div class="ux4g-bg-primary-soft ux4g-p-m ux4g-radius-m ux4g-mb-l">
+            <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-s">
+              <div class="ux4g-sen-info-row">
+                <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Application reference</span>
+                <span class="ux4g-body-s-default ux4g-text-neutral-primary">INC-2026-MH-04127</span>
+              </div>
+              <div class="ux4g-sen-info-row">
+                <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Required document</span>
+                <span class="ux4g-body-s-default ux4g-text-neutral-primary">Updated income proof (PDF, JPG · max 5
+                  MB)</span>
+              </div>
+              <div class="ux4g-sen-info-row">
+                <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Deadline</span>
+                <span class="ux4g-body-s-default ux4g-text-neutral-primary">22 Apr 2026 (Est)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline section -->
+          <h3 class="ux4g-title-s-strong ux4g-pb-m">What happens next</h3>
+          <div class="journey-timeline-card journey-timeline-card-vertical ux4g-mb-xl ux4g-d-flex ">
+            <div class="ux4g-journey-timeline ux4g-journey-timeline--vertical">
+              <!-- Step 1: Completed -->
+              <div class="ux4g-journey-step ux4g-journey-step-completed">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Submitted</span>
+                      <span class="ux4g-journey-date">Today, 10:24 AM</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Active -->
+              <div class="ux4g-journey-step ux4g-journey-step-active">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card active">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Documents Verified</span>
+                      <span class="ux4g-journey-date">Est. 10 Apr</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: Pending -->
+              <div class="ux4g-journey-step">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Officer Review</span>
+                      <span class="ux4g-journey-date">Est. 13 Apr</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4: Pending -->
+              <div class="ux4g-journey-step">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Decision</span>
+                      <span class="ux4g-journey-date">Est. 18 Apr</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 5: Pending -->
+              <div class="ux4g-journey-step">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Issued</span>
+                      <span class="ux4g-journey-date">Est. 22 Apr</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div>
+            <button class=" ux4g-btn-primary" type="button">
+              <span class="ux4g-btn-content">Update now</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- //sms-email-notifications -->
+    <section class="ux4g-py-xl ux4g-px-m ux4g-bg-neutral">
+      <div class="ux4g-sms-email-notification">
+        <!-- Header -->
+        <div class="ux4g-sms-email-notification-header">
+          <h2 class="ux4g-title-m-strong">Your application status has been updated</h2>
+          <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+            <span class="ux4g-body-s-default">From: revenue@maharashtra.gov.in</span>
+            <span class="ux4g-body-s-default">To: ramesh.kumar@gmail.com</span>
+            <span class="ux4g-body-s-default">Date: 7 Apr 2026, 10:24 AM</span>
+          </div>
+        </div>
+
+        <div class="ux4g-alert ux4g-alert-error">
+          <div class="ux4g-alert-content">
+            <span class="ux4g-alert-title ux4g-text-error">Action required by 15 Apr 2026</span>
+          </div>
+
+        </div>
+        <!-- Department Banner -->
+        <div class="ux4g-p-m ux4g-bg-primary-soft ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+          <label class="ux4g-radio ux4g-radio-md ux4g-w-auto">
+            <input class="ux4g-radio-input" name="dept_radio" type="radio" checked>
+            <div class="ux4g-radio-control">
+              <span class="ux4g-radiomark"></span>
+            </div>
+          </label>
+          <div class="ux4g-d-flex ux4g-flex-column">
+            <span class="ux4g-body-m-strong ux4g-text-primary">Revenue Department</span>
+            <span class="ux4g-body-s-default ux4g-text-primary" style="opacity: 0.8;">Government of Maharashtra -
+              Government of India</span>
+          </div>
+        </div>
+
+        <!-- Body Content -->
+        <div class="ux4g-p-l">
+          <h2 class="ux4g-title-m-strong">Your application status has been updated</h2>
+          <p class="ux4g-body-m-default ux4g-py-m">Dear Ramesh Kumar,</p>
+          <p class="ux4g-body-m-default ux4g-pb-m">Your Income Certificate application has moved to the Officer Review
+            stage. We will notify you again when a decision is made (typically within 3 working days).</p>
+
+          <!-- Info Table -->
+          <div class="ux4g-bg-primary-soft ux4g-p-m ux4g-radius-m ux4g-mb-l">
+            <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-s">
+              <div class="ux4g-sen-info-row">
+                <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Application reference</span>
+                <span class="ux4g-body-s-default ux4g-text-neutral-primary">INC-2026-MH-04127</span>
+              </div>
+              <div class="ux4g-sen-info-row">
+                <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Current Status</span>
+                <span class="ux4g-body-s-default ux4g-text-neutral-primary">Under review</span>
+              </div>
+              <div class="ux4g-sen-info-row">
+                <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Required document</span>
+                <span class="ux4g-body-s-default ux4g-text-neutral-primary">Document Verified</span>
+              </div>
+              <div class="ux4g-sen-info-row">
+                <span class="ux4g-body-s-default ux4g-text-neutral-secondary">Updated on</span>
+                <span class="ux4g-body-s-default ux4g-text-neutral-primary">11 Apr 2026, 09:03 AM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline section -->
+          <h3 class="ux4g-title-s-strong ux4g-pb-m">What happens next</h3>
+          <div class="journey-timeline-card journey-timeline-card-vertical ux4g-mb-xl ux4g-d-flex ">
+            <div class="ux4g-journey-timeline ux4g-journey-timeline--vertical">
+              <!-- Step 1: Completed -->
+              <div class="ux4g-journey-step ux4g-journey-step-completed">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Submitted</span>
+                      <span class="ux4g-journey-date">Today, 10:24 AM</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Active -->
+              <div class="ux4g-journey-step ux4g-journey-step-active">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card active">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Documents Verified</span>
+                      <span class="ux4g-journey-date">Est. 10 Apr</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: Pending -->
+              <div class="ux4g-journey-step">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Officer Review</span>
+                      <span class="ux4g-journey-date">Est. 13 Apr</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4: Pending -->
+              <div class="ux4g-journey-step">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Decision</span>
+                      <span class="ux4g-journey-date">Est. 18 Apr</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 5: Pending -->
+              <div class="ux4g-journey-step">
+                <div class="ux4g-journey-indicator">
+                  <span class="ux4g-icon-outlined">check</span>
+                </div>
+                <div class="ux4g-journey-card ux4g-journey-card--standard ux4g-sen-timeline-card">
+                  <div class="ux4g-journey-info">
+                    <div class="ux4g-d-flex ux4g-flex-column ux4g-stack-gap-xs">
+                      <span class="ux4g-journey-title">Issued</span>
+                      <span class="ux4g-journey-date">Est. 22 Apr</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div>
+            <button class=" ux4g-btn-primary" type="button">
+              <span class="ux4g-btn-content">View timeline</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+</body>

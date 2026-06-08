@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html data-theme="light" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../components/search-browse.css">
+    <link rel="stylesheet" href="../../index.css">
+    <script src="../../ux4g.js"></script>
+    <script src="../../ux4g-custom.js"></script>
+</head>
+
+<body>
+    <section>
+        <nav class="ux4g-navbar ux4g-navbar-right ux4g-shadow-l0">
+            <div class="ux4g-container">
+                <!-- Mobile Header -->
+                <div class="ux4g-sb-navbar-mobile ux4g-d-flex ux4g-md-d-none ux4g-ai-center ux4g-inline-gap-s">
+                    <a href="#" class="ux4g-text-white"><i class="ux4g-icon-outlined ux4g-fs-24">arrow_back</i></a>
+                    <span class="ux4g-title-s-strong ux4g-text-white">National Services Portal</span>
+                </div>
+                <!-- Desktop Header -->
+                <div class="ux4g-navbar-wrap ux4g-d-none ux4g-md-d-flex">
+                    <!-- Logo & Brand -->
+                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+                        <img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+                        <span class="ux4g-divider-vertical "></span>
+                        <img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+                        <div class="ux4g-d-flex ux4g-flex-column">
+                            <span class="ux4g-label-m-strong">Title</span>
+                            <span class="ux4g-body-xs-default">Description</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Group: Nav Links + Actions -->
+                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-l">
+                        <!-- Navigation Links -->
+                        <ul class="ux4g-navbar-links">
+                            <li><a href="#" class="ux4g-text-link-sm">Label</a></li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label</a></li>
+                            <li class="ux4g-dropdown ux4g-dropdown-button" data-ux4g-init="true">
+                                <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown"
+                                    id="ux4g-dropdown-control-6" aria-haspopup="listbox" aria-expanded="false">
+                                    <span>Label</span>
+                                    <span class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret"
+                                        data-ux4g-init="true">arrow_drop_down</span>
+                                </a>
+                                <div class="ux4g-dropdown-menu" aria-labelledby="ux4g-dropdown-control-6">
+                                    <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                        <li class="ux4g-list-item" role="option" data-ux4g-init="true">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                        <li class="ux4g-list-item" role="option" data-ux4g-init="true">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label</a></li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label</a></li>
+                        </ul>
+
+                        <!-- Actions -->
+                        <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+                            <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20" data-ux4g-init="true">search</i>
+                            <button class="ux4g-btn-primary ux4g-btn-md">Button</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Top Search Section with Lavender/Primary background on mobile, styled responsively -->
+        <div class="ux4g-search-hero-container ux4g-bg-neutral ux4g-pt-xl ">
+            <div class="ux4g-container">
+                <div class="ux4g-sb-search-browse-75 ux4g-m-auto ux4g-text-center ux4g-mt-2xl">
+                    
+                    <!-- Search Input Bar -->
+                    <div class="ux4g-search-container ux4g-search-lg" ux4g-search-filter="contains">
+                        <div class="ux4g-search">
+                            <span class="ux4g-icon-outlined ux4g-search-leading-icon">search</span>
+                            <input class="ux4g-search-input" id="ux4g-searchContain" placeholder="Search for services..."
+                                type="text" value="income" />
+                            <div class="ux4g-search-actions">
+                                <button aria-label="Voice search" class="ux4g-search-action-btn" type="button">
+                                    <span class="ux4g-icon-outlined">mic</span>
+                                </button>
+                                <button aria-label="Clear search" class="ux4g-search-action-btn ux4g-search-clear"
+                                    type="button">
+                                    <span class="ux4g-icon-outlined">close</span>
+                                </button>
+                            </div>
+                            <button class="ux4g-search-btn" type="button">
+                                <span class="ux4g-icon-outlined">search</span>
+                            </button>
+                        </div>
+                        <ul class="ux4g-list ux4g-list-default ux4g-list-m ux4g-search-list">
+                            <li class="ux4g-sb-search-header-item ux4g-px-m ux4g-py-xs ux4g-body-s-default ux4g-text-neutral-secondary">
+                                Searching for '<strong>income</strong>'
+                            </li>
+                            <li class="ux4g-list-item">
+                                <div class="ux4g-list-item-row">
+                                    <span class="ux4g-list-item-start">
+                                        <i class="ux4g-icon-outlined ux4g-text-neutral-secondary ux4g-fs-18">manage_search</i>
+                                        <span>Income Certificate</span>
+                                    </span>
+                                    <span class="ux4g-list-item-end ux4g-body-s-default ux4g-text-neutral-tertiary">Revenue Dept</span>
+                                </div>
+                            </li>
+                            <li class="ux4g-list-item">
+                                <div class="ux4g-list-item-row">
+                                    <span class="ux4g-list-item-start">
+                                        <i class="ux4g-icon-outlined ux4g-text-neutral-secondary ux4g-fs-18">manage_search</i>
+                                        <span>Income Tax Return...</span>
+                                    </span>
+                                    <span class="ux4g-list-item-end ux4g-body-s-default ux4g-text-neutral-tertiary">Income Tax Dept</span>
+                                </div>
+                            </li>
+                            <li class="ux4g-list-item">
+                                <div class="ux4g-list-item-row">
+                                    <span class="ux4g-list-item-start">
+                                        <i class="ux4g-icon-outlined ux4g-text-neutral-secondary ux4g-fs-18">manage_search</i>
+                                        <span>Low Income Group...</span>
+                                    </span>
+                                    <span class="ux4g-list-item-end ux4g-body-s-default ux4g-text-neutral-tertiary">Social Welfare</span>
+                                </div>
+                            </li>
+                            <li class="ux4g-list-item">
+                                <div class="ux4g-list-item-row">
+                                    <span class="ux4g-list-item-start">
+                                        <i class="ux4g-icon-outlined ux4g-text-neutral-secondary ux4g-fs-18">manage_search</i>
+                                        <span>Income & Asset Cer...</span>
+                                    </span>
+                                    <span class="ux4g-list-item-end ux4g-body-s-default ux4g-text-neutral-tertiary">Revenue Dept</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="ux4g-py-2xl ux4g-sb-search-discovery-main-4">
+                <div class="ux4g-empty-state">
+                        <span class="ux4g-icon-outlined ux4g-empty-state-icon ux4g-text-primary" data-ux4g-init="true">search</span>
+                        <div class="ux4g-empty-state-content">
+                            <h3 class="ux4g-title-l-strong">No results found</h3>
+                            <p class="ux4g-body-m-default">Did you mean:</p>
+                            <div>
+                                <a href="" class="ux4g-text-link-md">Income Certificate,</a> <a href="" class="ux4g-text-link-md">Income & Asset Certificate</a>
+                            </div>
+                        </div>
+                        <button class="ux4g-btn-tonal-primary ux4g-btn-md">Clear all filters</button>
+                    </div>
+            </div>
+        </div>
+
+
+        <!-- Main Content Area -->
+        <div class="ux4g-bg-neutral ux4g-sb-search-discovery-main-2">
+           
+
+            <!-- Popular Services Section -->
+            <section class="ux4g-popular-services-section ux4g-bg-neutral ux4g-pt-xl ux4g-pb-2xl">
+                <div class="ux4g-container">
+                    <h2 class="ux4g-heading-m-strong ux4g-mb-m">Popular services</h2>
+                    <div class="ux4g-grid ux4g-grid-cols-1 ux4g-grid-cols-sm-2 ux4g-grid-cols-md-4 ux4g-inline-gap-l ux4g-stack-gap-m">
+                        <!-- Card 1: Income Certificate -->
+                        <div class="ux4g-sb-popular-service-card">
+                            <div class="ux4g-sb-popular-service-card-body">
+                                <h3 class="ux4g-title-s-strong ux4g-text-neutral-primary">Income Certificate</h3>
+                                <p class="ux4g-body-s-default ux4g-text-neutral-secondary">Revenue Department</p>
+                                <div class="ux4g-sb-popular-service-meta">
+                                    <span class="ux4g-body-s-strong ux4g-text-success">Free</span>
+                                    <span class="ux4g-text-neutral-tertiary">Â·</span>
+                                    <span class="ux4g-body-s-default ux4g-text-neutral-secondary">20 mins</span>
+                                </div>
+                            </div>
+                            <div class="ux4g-sb-popular-service-card-footer">
+                                <button class="ux4g-btn ux4g-btn-outline-primary">Apply</button>
+                            </div>
+                        </div>
+                        <!-- Card 2: Caste Certificate -->
+                        <div class="ux4g-sb-popular-service-card">
+                            <div class="ux4g-sb-popular-service-card-body">
+                                <h3 class="ux4g-title-s-strong ux4g-text-neutral-primary">Caste Certificate</h3>
+                                <p class="ux4g-body-s-default ux4g-text-neutral-secondary">Social Welfare Dept</p>
+                                <div class="ux4g-sb-popular-service-meta">
+                                    <span class="ux4g-body-s-strong ux4g-text-success">Free</span>
+                                    <span class="ux4g-text-neutral-tertiary">Â·</span>
+                                    <span class="ux4g-body-s-default ux4g-text-neutral-secondary">15 mins</span>
+                                </div>
+                            </div>
+                            <div class="ux4g-sb-popular-service-card-footer">
+                                <button class="ux4g-btn ux4g-btn-outline-primary">Apply</button>
+                            </div>
+                        </div>
+                        <!-- Card 3: Driving Licence -->
+                        <div class="ux4g-sb-popular-service-card">
+                            <div class="ux4g-sb-popular-service-card-body">
+                                <h3 class="ux4g-title-s-strong ux4g-text-neutral-primary">Driving Licence</h3>
+                                <p class="ux4g-body-s-default ux4g-text-neutral-secondary">Transport Department</p>
+                                <div class="ux4g-sb-popular-service-meta">
+                                    <span class="ux4g-body-s-strong ux4g-text-neutral-primary">â‚¹200</span>
+                                    <span class="ux4g-text-neutral-tertiary">Â·</span>
+                                    <span class="ux4g-body-s-default ux4g-text-neutral-secondary">30 days</span>
+                                </div>
+                            </div>
+                            <div class="ux4g-sb-popular-service-card-footer">
+                                <button class="ux4g-btn ux4g-btn-outline-primary">Apply</button>
+                            </div>
+                        </div>
+                        <!-- Card 4: PAN Card -->
+                        <div class="ux4g-sb-popular-service-card">
+                            <div class="ux4g-sb-popular-service-card-body">
+                                <h3 class="ux4g-title-s-strong ux4g-text-neutral-primary">PAN Card</h3>
+                                <p class="ux4g-body-s-default ux4g-text-neutral-secondary">Income Tax Dept</p>
+                                <div class="ux4g-sb-popular-service-meta">
+                                    <span class="ux4g-body-s-strong ux4g-text-neutral-primary">â‚¹107</span>
+                                    <span class="ux4g-text-neutral-tertiary">Â·</span>
+                                    <span class="ux4g-body-s-default ux4g-text-neutral-secondary">15 days</span>
+                                </div>
+                            </div>
+                            <div class="ux4g-sb-popular-service-card-footer">
+                                <button class="ux4g-btn ux4g-btn-outline-primary">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+</body>
+
+</html>
+

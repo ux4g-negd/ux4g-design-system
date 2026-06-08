@@ -1,0 +1,757 @@
+/* ==========================================================================
+   UX4G Search & Browse Custom Component Styles
+   ========================================================================== */
+
+/* 1. Hero Search Section Styles */
+.ux4g-gsd-search-browse-75{
+    width: 75%;
+}
+.ux4g-gsd-search-hero-section {
+    padding-block: var(--ux4g-section-2xl);
+    padding-inline: var(--ux4g-padding-m);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.ux4g-gsd-search-hero-bar {
+    max-width: 680px;
+    width: var(--ux4g-sz-full);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    overflow: hidden;
+}
+
+.ux4g-gsd-search-hero-bar-inner {
+    height: var(--ux4g-sz-52);
+    padding: 0 0 0 var(--ux4g-padding-m);
+    border: none;
+    background-color: var(--ux4g-bg-neutral-elevated);
+}
+.ux4g-gsd-search-hero-section-inner{
+    max-width: 760px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+/* 2. Category Browse Grid Styles */
+
+.ux4g-gsd-category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ux4g-stack-xs);
+    background-color: var(--ux4g-bg-neutral-elevated);
+    border-radius: var(--ux4g-radius-md);
+    border: var(--ux4g-border-thin) solid var(--ux4g-border-color-neutral-default);
+}
+
+
+.ux4g-gsd-category-icon-wrap {
+    width: var(--ux4g-sz-48);
+    height: var(--ux4g-sz-48);
+    background-color: var(--ux4g-bg-primary) !important;
+    border-radius: var(--ux4g-radius-full);
+}
+
+.ux4g-gsd-category-card-icon {
+    font-size: var(--ux4g-fs-24);
+}
+
+
+
+.ux4g-gsd-card-category {
+    gap: var(--ux4g-inline-l)
+}
+
+/* Category-specific icon wrap backgrounds and icon text colors */
+.ux4g-gsd-category-health .ux4g-gsd-category-icon-wrap {
+    background-color: var(--ux4g-bg-primary-soft) !important;
+}
+.ux4g-gsd-category-health .ux4g-gsd-category-card-icon {
+    color: var(--ux4g-text-brand-primary-default) !important;
+}
+
+.ux4g-gsd-category-education .ux4g-gsd-category-icon-wrap {
+    background-color: var(--ux4g-bg-primary-soft) !important;
+}
+.ux4g-gsd-category-education .ux4g-gsd-category-card-icon {
+    color: var(--ux4g-text-brand-primary-default) !important;
+}
+
+.ux4g-gsd-category-agriculture .ux4g-gsd-category-icon-wrap {
+    background-color: var(--ux4g-bg-success-soft) !important;
+}
+.ux4g-gsd-category-agriculture .ux4g-gsd-category-card-icon {
+    color: var(--ux4g-text-status-success) !important;
+}
+
+.ux4g-gsd-category-land-records .ux4g-gsd-category-icon-wrap {
+    background-color: var(--ux4g-bg-info-soft) !important;
+}
+.ux4g-gsd-category-land-records .ux4g-gsd-category-card-icon {
+    color: var(--ux4g-text-status-info) !important;
+}
+
+.ux4g-gsd-category-transport .ux4g-gsd-category-icon-wrap {
+    background-color: var(--ux4g-bg-primary-soft) !important;
+}
+.ux4g-gsd-category-transport .ux4g-gsd-category-card-icon {
+    color: var(--ux4g-text-brand-primary-default) !important;
+}
+
+.ux4g-gsd-category-social-welfare .ux4g-gsd-category-icon-wrap {
+    background-color: var(--ux4g-bg-error-soft) !important;
+}
+.ux4g-gsd-category-social-welfare .ux4g-gsd-category-card-icon {
+    color: var(--ux4g-text-status-error) !important;
+}
+
+.ux4g-gsd-category-utilities .ux4g-gsd-category-icon-wrap {
+    background-color: var(--ux4g-bg-primary-soft) !important;
+}
+.ux4g-gsd-category-utilities .ux4g-gsd-category-card-icon {
+    color: var(--ux4g-text-brand-primary-default) !important;
+}
+
+.ux4g-gsd-category-finance .ux4g-gsd-category-icon-wrap {
+    background-color: var(--ux4g-bg-primary-soft) !important;
+}
+.ux4g-gsd-category-finance .ux4g-gsd-category-card-icon {
+    color: var(--ux4g-text-brand-primary-default) !important;
+}
+
+/* 3. Featured Scheme Section Styles */
+.ux4g-gsd-featured-scheme-section {
+    background-color: var(--ux4g-bg-neutral);
+}
+
+.ux4g-gsd-featured-scheme-card {
+    background-color: var(--ux4g-bg-primary);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-primary-default);
+    border-radius: var(--ux4g-radius-md);
+    box-shadow: var(--ux4g-shadow-l1);
+    transition: box-shadow 0.3s ease;
+}
+
+.ux4g-gsd-featured-scheme-card:hover {
+    box-shadow: var(--ux4g-shadow-l2);
+}
+
+.ux4g-gsd-featured-scheme-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ux4g-stack-s);
+}
+
+
+
+.ux4g-gsd-featured-scheme-graphic-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--ux4g-sz-full);
+}
+
+.ux4g-gsd-featured-scheme-graphic {
+    background-color: var(--ux4g-bg-primary-soft);
+    border-radius: var(--ux4g-radius-sm);
+    height: 180px;
+    width: var(--ux4g-sz-full);
+}
+
+@media (max-width: 768px) {
+    .ux4g-gsd-featured-scheme-graphic {
+        height: 140px;
+    }
+    .ux4g-gsd-search-browse-75{
+    width: 100%;
+}
+.ux4g-gsd-search-discovery-main-2{
+    padding-block-start: var(--ux4g-padding-xl) !important;
+}
+}
+
+/* 4. Popular Services Section Styles */
+
+.ux4g-gsd-popular-service-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--ux4g-bg-neutral-elevated);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-md);
+    padding: var(--ux4g-padding-m);
+    height: var(--ux4g-sz-full);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.ux4g-gsd-popular-service-card:hover {
+    box-shadow: var(--ux4g-shadow-l1);
+    border-color: var(--ux4g-border-color-neutral-default);
+}
+
+.ux4g-gsd-popular-service-card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: var(--ux4g-stack-s);
+}
+
+.ux4g-gsd-popular-service-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-s);
+}
+
+.ux4g-gsd-popular-service-card-footer {
+    margin-block-start: var(--ux4g-margin-s);
+}
+
+/* 5. Recommended Section Styles */
+.ux4g-gsd-recommended-section {
+    padding-block-end: var(--ux4g-section-2xl);
+}
+
+.ux4g-gsd-recommended-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--ux4g-bg-neutral-elevated);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-md);
+    padding: var(--ux4g-padding-m);
+    height: var(--ux4g-sz-full);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.ux4g-gsd-recommended-card:hover {
+    box-shadow: var(--ux4g-shadow-l1);
+    border-color: var(--ux4g-border-color-neutral-default);
+}
+
+.ux4g-gsd-recommended-card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: var(--ux4g-stack-s);
+}
+
+.ux4g-gsd-recommended-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-s);
+}
+
+.ux4g-gsd-recommended-card-footer {
+    margin-block-start: var(--ux4g-margin-s);
+}
+
+/* 6. Quiz Banner Section Styles */
+.ux4g-gsd-quiz-section {
+    padding-block-end: var(--ux4g-section-2xl);
+}
+
+.ux4g-gsd-quiz-banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--ux4g-bg-primary);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-primary-default);
+    border-radius: var(--ux4g-radius-md);
+    padding: var(--ux4g-padding-xl) var(--ux4g-padding-2xl);
+    gap: var(--ux4g-inline-l);
+}
+
+.ux4g-gsd-quiz-banner-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-2xs);
+}
+
+.ux4g-gsd-quiz-banner-footer {
+    display: flex;
+    flex-shrink: 0;
+}
+
+
+
+/* search browse second screen */
+.ux4g-gsd-search-discovery-main-2{
+    padding-block: var(--ux4g-section-2xl);
+}
+
+.ux4g-gsd-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--ux4g-inline-m);
+}
+
+.ux4g-gsd-search-results-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--ux4g-inline-xl);
+}
+
+.ux4g-gsd-filter-panel {
+    background-color: var(--ux4g-bg-neutral-elevated);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-md);
+    padding: var(--ux4g-padding-l);
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-m);
+    height: fit-content;
+}
+
+.ux4g-gsd-filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ux4g-gsd-filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-xs);
+}
+
+
+.ux4g-gsd-results-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.ux4g-gsd-result-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--ux4g-padding-m) var(--ux4g-padding-l);
+    border-block-end: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    background-color: var(--ux4g-bg-neutral-elevated);
+
+}
+
+.ux4g-gsd-result-row:last-child {
+    border-block-end: none;
+}
+
+.ux4g-gsd-result-left {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-m);
+}
+
+.ux4g-gsd-result-icon-wrap {
+    width: var(--ux4g-sz-40);
+    height: var(--ux4g-sz-40);
+    background-color: var(--ux4g-bg-primary-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ux4g-text-brand-primary-default);
+}
+
+.ux4g-gsd-result-icon-wrap .ux4g-icon-outlined {
+    font-size: var(--ux4g-fs-24);
+    color: inherit;
+}
+
+.ux4g-gsd-result-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-2xs);
+}
+
+.ux4g-gsd-result-right {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-l);
+}
+
+.ux4g-gsd-result-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-m);
+}
+
+
+
+.ux4g-gsd-service-badge {
+    background-color: var(--ux4g-bg-neutral-subtle);
+    color: var(--ux4g-text-neutral-primary);
+    padding: var(--ux4g-padding-3xs) var(--ux4g-padding-xs);
+    border-radius: var(--ux4g-radius-sm);
+    font-size: var(--ux4g-fs-12);
+    font-weight: var(--ux4g-fw-medium);
+    height: 20px;
+}
+
+@media (max-width: 768px) {
+    /* 1. Category Browse Section mobile overrides */
+    .ux4g-gsd-card-category {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: var(--ux4g-inline-s) !important;
+    }
+    
+    .ux4g-gsd-card-category .ux4g-gsd-category-card {
+        padding: var(--ux4g-padding-m) !important;
+    }
+
+    /* 2. Featured Scheme Section mobile overrides */
+    .ux4g-gsd-featured-scheme-graphic-wrap {
+        display: none !important;
+    }
+
+    .ux4g-gsd-featured-scheme-card {
+        padding: var(--ux4g-padding-l) !important;
+    }
+
+    .ux4g-gsd-featured-scheme-btn {
+        width: 100% !important;
+    }
+
+    /* 3. Popular Services Card background mobile override */
+    .ux4g-gsd-popular-service-card {
+        background-color: var(--ux4g-bg-neutral-soft) !important;
+    }
+
+    /* 4. Quiz Banner mobile overrides */
+    .ux4g-gsd-quiz-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--ux4g-stack-m);
+        padding: var(--ux4g-padding-l) !important;
+    }
+
+    .ux4g-gsd-quiz-banner-footer {
+        width: 100% !important;
+    }
+
+    .ux4g-gsd-quiz-banner-footer .ux4g-btn {
+        width: 100% !important;
+    }
+
+    /* 5. Search Hero Container mobile overrides */
+    .ux4g-search-hero-container {
+        background-color: var(--ux4g-bg-primary) !important;
+        padding-block: var(--ux4g-padding-l) !important;
+    }
+
+   
+    /* search browse second screen */
+    .ux4g-gsd-results-header {
+        gap: var(--ux4g-stack-xs);
+    }
+
+    .ux4g-gsd-search-results-layout {
+        grid-template-columns: 1fr;
+        gap: var(--ux4g-stack-l);
+    }
+
+    .ux4g-gsd-result-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--ux4g-stack-m);
+    }
+    
+    .ux4g-gsd-result-right {
+        justify-content: space-between;
+        width: var(--ux4g-sz-full);
+    }
+}
+
+/* 7. Dropdown Toggles in Search Results */
+.ux4g-gsd-result-dropdown {
+    display: inline-flex;
+    position: var(--ux4g-pos-relative);
+}
+
+.ux4g-gsd-result-dropdown .ux4g-dropdown-control {
+    background: transparent;
+    border: none;
+    padding: var(--ux4g-padding-none);
+    min-height: auto;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ux4g-gsd-result-dropdown .ux4g-dropdown-control:focus-visible {
+    outline: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-primary-strong);
+    border-radius: var(--ux4g-radius-sm);
+}
+
+.ux4g-gsd-result-dropdown .ux4g-dropdown-menu {
+    min-width: var(--ux4g-sz-120);
+    width: auto;
+    right: var(--ux4g-spacing-none);
+    left: auto;
+}
+
+/* 8. Mobile Navbar and Search List Styles */
+.ux4g-gsd-navbar-mobile {
+    padding: var(--ux4g-padding-m) var(--ux4g-padding-none);
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-s);
+}
+
+.ux4g-gsd-search-header-item {
+    padding: var(--ux4g-padding-s) var(--ux4g-padding-m);
+    border-bottom: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    list-style: none;
+}
+
+/* ==========================================================================
+   Responsive Overrides for search-browse-2.html (scoped via body class)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+
+    .ux4g-gsd-page-search-results .ux4g-gsd-search-discovery-main-2 {
+        padding-block: var(--ux4g-padding-m) !important;
+    }
+
+    .ux4g-gsd-page-search-results .ux4g-gsd-filter-panel {
+        display: none !important;
+    }
+
+    .ux4g-gsd-page-search-results .ux4g-choice-chips-container {
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+        padding-block: var(--ux4g-padding-xs) !important;
+    }
+
+    .ux4g-gsd-page-search-results .ux4g-choice-chips-container::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .ux4g-gsd-page-search-results .ux4g-gsd-results-list {
+        background-color: transparent !important;
+        gap: var(--ux4g-stack-m) !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .ux4g-gsd-page-search-results .ux4g-gsd-result-row {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background-color: var(--ux4g-bg-neutral-elevated) !important;
+        border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle) !important;
+        border-block-end: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle) !important;
+        border-radius: var(--ux4g-radius-md) !important;
+        box-shadow: var(--ux4g-shadow-l0) !important;
+        padding: var(--ux4g-padding-m) !important;
+    }
+
+    .ux4g-gsd-page-search-results .ux4g-gsd-result-right {
+        width: auto !important;
+        gap: var(--ux4g-inline-s) !important;
+        justify-content: flex-end !important;
+    }
+
+    .ux4g-gsd-page-search-results .ux4g-pagination-dotted {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: var(--ux4g-inline-m) !important;
+        margin-inline: auto !important;
+        margin-top: var(--ux4g-margin-xl) !important;
+        width: 100% !important;
+    }
+
+    .ux4g-gsd-page-search-results .ux4g-pagination-dots {
+        display: flex !important;
+        align-items: center !important;
+        gap: var(--ux4g-inline-s) !important;
+        width: auto !important;
+    }
+
+    .ux4g-gsd-page-search-results .ux4g-page-dot {
+        width: 8px !important;
+        height: 8px !important;
+        border: none !important;
+        background-color: var(--ux4g-bg-primary-soft) !important;
+    }
+
+    .ux4g-gsd-page-search-results .ux4g-page-dot.ux4g-active {
+        width: 28px !important;
+        height: 8px !important;
+        border-radius: var(--ux4g-radius-full) !important;
+        background-color: var(--ux4g-bg-primary-strong) !important;
+    }
+
+    .ux4g-gsd-page-search-results .ux4g-pagination-prev,
+    .ux4g-gsd-page-search-results .ux4g-pagination-next {
+        width: 32px !important;
+        height: 32px !important;
+        background-color: var(--ux4g-bg-primary-soft) !important;
+        color: var(--ux4g-text-brand-primary-default) !important;
+        border-radius: var(--ux4g-radius-full) !important;
+        border: none !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+}
+
+/* ==========================================================================
+   Health Services Search Results custom classes
+   ========================================================================== */
+.ux4g-gsd-health-services-header-card {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-m);
+}
+
+.ux4g-gsd-health-header-icon-wrap {
+    width: var(--ux4g-sz-64);
+    height: var(--ux4g-sz-64);
+    background-color: var(--ux4g-bg-primary-soft);
+    color: var(--ux4g-text-brand-primary-default);
+    border-radius: var(--ux4g-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ux4g-gsd-health-header-icon-wrap .ux4g-icon-outlined {
+    font-size: var(--ux4g-sz-32);
+    color: var(--ux4g-text-brand-primary-default);
+}
+
+/* Ensure result row icons are rounded-md square icon wraps */
+.ux4g-gsd-result-icon-wrap {
+    border-radius: var(--ux4g-radius-md) !important;
+}
+
+/* Adjust page size selector padding for search discovery results */
+.ux4g-gsd-search-discovery-main-2 .ux4g-page-size-select-wrapper select {
+    padding-left: var(--ux4g-padding-s);
+}
+
+/* ==========================================================================
+   GSD Screen 3: Birth Certificate Detail Page Styles
+   ========================================================================== */
+.ux4g-gsd-detail-hero-card {
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-primary-default);
+    border-radius: var(--ux4g-radius-md);
+    background-color: var(--ux4g-bg-neutral-elevated);
+    padding: var(--ux4g-padding-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--ux4g-inline-l);
+    width: 100%;
+}
+
+.ux4g-gsd-detail-hero-left {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-m);
+}
+
+.ux4g-gsd-detail-hero-icon-wrap {
+    width: var(--ux4g-sz-64);
+    height: var(--ux4g-sz-64);
+    background-color: var(--ux4g-bg-primary-soft);
+    color: var(--ux4g-text-brand-primary-default);
+    border-radius: var(--ux4g-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ux4g-gsd-detail-hero-icon-wrap .ux4g-icon-outlined {
+    font-size: var(--ux4g-fs-32);
+    color: var(--ux4g-text-brand-primary-default);
+}
+
+.ux4g-gsd-detail-hero-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-3xs);
+}
+
+.ux4g-gsd-detail-hero-title {
+    color: var(--ux4g-text-brand-primary-default);
+}
+
+.ux4g-gsd-detail-hero-meta-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--ux4g-inline-s);
+    margin-top: var(--ux4g-margin-xs);
+}
+
+.ux4g-gsd-meta-separator {
+    color: var(--ux4g-text-neutral-tertiary);
+}
+
+.ux4g-gsd-verified-badge {
+    color: var(--ux4g-text-status-success);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ux4g-inline-3xs);
+}
+
+.ux4g-gsd-info-card {
+    background-color: var(--ux4g-bg-primary-soft);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-primary-default);
+    border-radius: var(--ux4g-radius-md);
+    padding: var(--ux4g-padding-l);
+    height: 100%;
+}
+
+.ux4g-gsd-info-card-title {
+    color: var(--ux4g-text-brand-primary-default);
+}
+
+@media (max-width: 768px) {
+    .ux4g-gsd-detail-hero-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--ux4g-stack-m);
+    }
+    
+    .ux4g-gsd-detail-hero-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--ux4g-stack-s);
+    }
+    
+    .ux4g-gsd-detail-hero-card .ux4g-btn {
+        width: 100%;
+    }
+    
+    .ux4g-gsd-info-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Scoped horizontal scroll for tabs on mobile */
+    .ux4g-gsd-page-search-results .ux4g-tab-underline .ux4g-tab-list {
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        flex-wrap: nowrap !important;
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+    }
+    .ux4g-gsd-page-search-results .ux4g-tab-underline .ux4g-tab-list::-webkit-scrollbar {
+        display: none !important;
+    }
+}

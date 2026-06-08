@@ -50,6 +50,7 @@
 /* ================= STATIC COLORS ================= */
 .ux4g-text-white { --ux4g-text-current: var(--ux4g-text-white); }
 .ux4g-text-black { --ux4g-text-current: var(--ux4g-text-black); }
+.ux4g-text-error-default   { --ux4g-text-current: var(--ux4g-text-error-default); }
 
 /* ================= LINK DISABLED ================= */
 .ux4g-text-link:is(:disabled, [aria-disabled="true"]), .ux4g-text-link-neutral:is(:disabled, [aria-disabled="true"]) { --ux4g-text-current: var(--ux4g-text-link-disabled); color: var(--ux4g-text-current); cursor: not-allowed; text-decoration: none; pointer-events: none; }

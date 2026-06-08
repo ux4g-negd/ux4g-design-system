@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html data-theme="light" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../index.css">
+    <script src="../../ux4g.js"></script>
+    <script src="../../ux4g-custom.js"></script>
+</head>
+
+<body>
+    <section>
+        <nav class="ux4g-navbar ux4g-navbar-right ux4g-shadow-l0">
+            <div class="ux4g-container">
+                <div class="ux4g-navbar-wrap">
+                    <!-- Logo & Brand -->
+                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+                        <img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+                        <span class="ux4g-divider-vertical "></span>
+                        <img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+                        <div class="ux4g-d-flex ux4g-flex-column">
+                            <span class="ux4g-label-m-strong">UX4G</span>
+                            <span class="ux4g-body-xs-default">National Services Portal</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Group: Nav Links + Actions -->
+                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-l">
+                        <!-- Navigation Links -->
+                        <ul class="ux4g-navbar-links">
+                            <li><a href="#" class="ux4g-text-link-sm">Home</a></li>
+                            <li><a href="#" class="ux4g-text-link-sm">Services</a></li>
+                            <li class="ux4g-dropdown ux4g-dropdown-button" data-ux4g-init="true">
+                                <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown"
+                                    id="ux4g-dropdown-control-6" aria-haspopup="listbox" aria-expanded="false">
+                                    <span>Schemes</span>
+                                    <span class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret"
+                                        data-ux4g-init="true">arrow_drop_down</span>
+                                </a>
+                                <div class="ux4g-dropdown-menu" aria-labelledby="ux4g-dropdown-control-6">
+                                    <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                        <li class="ux4g-list-item" role="option" data-ux4g-init="true">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Schemes List</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="#" class="ux4g-text-link-sm">Track</a></li>
+                            <li><a href="#" class="ux4g-text-link-sm">Help</a></li>
+                        </ul>
+
+                        <!-- Actions -->
+                        <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+                            <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20" data-ux4g-init="true">search</i>
+                            <button class="ux4g-btn-primary ux4g-btn-md">Sign In</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </section>
+    
+    <section class="ux4g-bg-neutral ux4g-py-2xl ux4g-csb-center-wrapper">
+        <div class="ux4g-container">
+            <div class="ux4g-csb-reschedule-card">
+                <!-- Header -->
+                <h1 class="ux4g-heading-xl-strong ux4g-mb-3xs">Request reschedule</h1>
+                <p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-xl">Original: Thu, 18 Apr 2026 &middot; 11:00 &ndash; 11:30 AM with Adv. M. Sharma</p>
+
+                <!-- Dropdown -->
+                <div class="ux4g-csb-reschedule-select-container">
+                    <span class="ux4g-label-l-strong ux4g-mb-xs ux4g-d-block">Reason for reschedule</span>
+                    <div class="ux4g-csb-reschedule-select-wrapper">
+                        <select class="ux4g-csb-reschedule-select">
+                            <option value="conflict" selected>Schedule conflict</option>
+                            <option value="personal">Personal emergency</option>
+                            <option value="other">Other reason</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Select a new slot title -->
+                <h2 class="ux4g-title-l-strong ux4g-mb-m">Select a new slot</h2>
+
+                <!-- Compact Calendar Component -->
+                <div class="ux4g-time-slot-compact-container">
+                    <!-- Left Pane: Calendar -->
+                    <div class="ux4g-time-slot-compact-calendar">
+                        <div class="ux4g-time-slot-compact-header">
+                            <button class="ux4g-btn-icon ux4g-btn-text-neutral ux4g-btn-sm"><span class="ux4g-icon-outlined">arrow_back</span></button>
+                            <span class="ux4g-time-slot-compact-month">April 2026</span>
+                            <button class="ux4g-btn-icon ux4g-btn-text-neutral ux4g-btn-sm"><span class="ux4g-icon-outlined">arrow_forward</span></button>
+                        </div>
+                        <div class="ux4g-time-slot-compact-grid">
+                            <div class="ux4g-time-slot-day-name">Mo</div>
+                            <div class="ux4g-time-slot-day-name">Tu</div>
+                            <div class="ux4g-time-slot-day-name">We</div>
+                            <div class="ux4g-time-slot-day-name">Th</div>
+                            <div class="ux4g-time-slot-day-name">Fr</div>
+                            <div class="ux4g-time-slot-day-name">Sa</div>
+                            <div class="ux4g-time-slot-day-name">Su</div>
+                            <div class="ux4g-time-slot-date muted">29</div>
+                            <div class="ux4g-time-slot-date muted">30</div>
+                            <div class="ux4g-time-slot-date" data-date="1">1</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="2">2</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="3">3</div>
+                            <div class="ux4g-time-slot-date" data-date="4">4</div>
+                            <div class="ux4g-time-slot-date" data-date="5">5</div>
+                            <div class="ux4g-time-slot-date" data-date="6">6</div>
+                            <div class="ux4g-time-slot-date" data-date="7">7</div>
+                            <div class="ux4g-time-slot-date" data-date="8">8</div>
+                            <div class="ux4g-time-slot-date holiday" data-date="9">9</div>
+                            <div class="ux4g-time-slot-date" data-date="10">10</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="11">11</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="12">12</div>
+                            <div class="ux4g-time-slot-date" data-date="13">13</div>
+                            <div class="ux4g-time-slot-date" data-date="14">14</div>
+                            <div class="ux4g-time-slot-date today" data-date="15">15</div>
+                            <div class="ux4g-time-slot-date" data-date="16">16</div>
+                            <div class="ux4g-time-slot-date" data-date="17">17</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="18">18</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="19">19</div>
+                            <div class="ux4g-time-slot-date" data-date="20">20</div>
+                            <div class="ux4g-time-slot-date holiday" data-date="21">21</div>
+                            <div class="ux4g-time-slot-date" data-date="22">22</div>
+                            <div class="ux4g-time-slot-date selected" data-date="23">23</div>
+                            <div class="ux4g-time-slot-date" data-date="24">24</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="25">25</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="26">26</div>
+                            <div class="ux4g-time-slot-date" data-date="27">27</div>
+                            <div class="ux4g-time-slot-date" data-date="28">28</div>
+                            <div class="ux4g-time-slot-date" data-date="29">29</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="30">30</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="31">31</div>
+                            <div class="ux4g-time-slot-date muted">1</div>
+                            <div class="ux4g-time-slot-date muted">2</div>
+                            <div class="ux4g-time-slot-date muted">3</div>
+                        </div>
+
+                        <div class="ux4g-time-slot-compact-legend">
+                            <div class="ux4g-time-slot-legend-item"><span class="ux4g-legend-box no-slots"></span> No slots</div>
+                            <div class="ux4g-time-slot-legend-item"><span class="ux4g-legend-box holiday"></span> Public holiday</div>
+                            <div class="ux4g-time-slot-legend-item"><span class="ux4g-legend-box weekly-off"></span> Weekly off</div>
+                        </div>
+                    </div>
+
+                    <!-- Right Pane: Slots -->
+                    <div class="ux4g-time-slot-compact-slots">
+                        <div class="ux4g-time-slot-compact-desktop-header">23rd April 2026</div>
+                        <div class="ux4g-time-slot-compact-list grid-2">
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>9:00 AM</span><span class="ux4g-slot-badge success">6</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>9:30 AM</span><span class="ux4g-slot-badge success">7</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>10:00 AM</span><span class="ux4g-slot-badge warning">1</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>10:30 AM</span><span class="ux4g-slot-badge success">9</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item disabled">
+                                <span>11:00 AM</span><span class="ux4g-slot-badge ux4g-slot-badge-neutral">0</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>11:30 AM</span><span class="ux4g-slot-badge warning">2</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>12:00 PM</span><span class="ux4g-slot-badge warning">2</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item selected" style="background-color: var(--ux4g-bg-neutral-subtle);">
+                                <span>12:30 PM</span><span class="ux4g-icon-filled" style="color: var(--ux4g-bg-primary-strong); font-size: 16px;">check_circle</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item disabled">
+                                <span>1:00 PM</span><span class="ux4g-slot-badge ux4g-slot-badge-neutral">0</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>1:30 PM</span><span class="ux4g-slot-badge success">7</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>2:00 PM</span><span class="ux4g-slot-badge success">3</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>2:30 PM</span><span class="ux4g-slot-badge warning">2</span>
+                            </div>
+                        </div>
+
+                        <div class="ux4g-time-slot-compact-actions">
+                            <button class="ux4g-btn ux4g-btn-outline-neutral">Cancel</button>
+                            <button class="ux4g-btn ux4g-btn-primary">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page Footer Actions -->
+                <div class="ux4g-csb-reschedule-actions">
+                    <button class="ux4g-btn ux4g-btn-md ux4g-btn-outline-primary">Cancel</button>
+                    <button class="ux4g-btn ux4g-btn-md ux4g-btn-primary">Request reschedule</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+

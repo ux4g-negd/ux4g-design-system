@@ -1,8 +1,7 @@
 /*!
  * UX4G.js
- * Components: Dropdown, Collapse/Accordion, Modal, Offcanvas, Tooltip, Popover, Toast, Carousel, Tabs, Scrollspy
+ * Components: Dropdown, Collapse/Accordion, Offcanvas, Tooltip, Popover, Toast, Carousel, Tabs, Scrollspy
  * Compatibility: UX4G markup (data-ux-*)
- * Extras: supports .open-modal/.close-modal, .close-toast, #liveToastBtn (your sample HTML)
  * Version: 1.1.0
  */
 
@@ -375,119 +374,6 @@
     static getOrCreate(el) {
       let inst = getI(el, "collapse");
       if (!inst) { inst = new Collapse(el); setI(el, "collapse", inst); }
-      return inst;
-    }
-  }
-
-  // -----------------------------
-  // Modal
-  // -----------------------------
-  class Modal {
-    constructor(el) {
-      this.el = el;
-      this._shown = false;
-      this._bdKind = "modal";
-      this._lastFocus = null;
-      this.duration = this._readDuration(el, 250);
-
-      // Dismiss buttons inside
-      U.on(this.el, "click", (e) => {
-        const dismiss = U.closest(e.target, '[data-bs-dismiss="modal"],[data-ux-dismiss="modal"],.close-modal');
-        if (dismiss) {
-          e.preventDefault();
-          this.hide();
-        }
-      });
-
-      // ESC + trap
-      U.on(document, "keydown", (e) => {
-        if (!this._shown) return;
-        if (e.key === "Escape") {
-          const kb = U.bool(U.data(this.el, "keyboard", "true"), true);
-          if (kb) this.hide();
-        } else if (e.key === "Tab") {
-          this._trapTab(e);
-        }
-      });
-    }
-
-    _readDuration(el, fallbackMs) {
-      if (!el) return fallbackMs;
-      const d = getComputedStyle(el).transitionDuration || "";
-      const ms = d.includes("ms") ? parseFloat(d) : (d.includes("s") ? parseFloat(d) * 1000 : NaN);
-      return Number.isFinite(ms) && ms > 0 ? ms : fallbackMs;
-    }
-
-    _trapTab(e) {
-      const f = U.focusables(this.el);
-      if (!f.length) return;
-      const first = f[0], last = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    }
-
-    show(trigger) {
-      if (this._shown) return;
-      this._shown = true;
-      this._lastFocus = document.activeElement;
-
-      const backdropOpt = U.data(this.el, "backdrop", "true");
-      const backdrop = backdropOpt !== "false";
-
-      if (backdrop) {
-        const bd = U.ensureBackdrop(this._bdKind);
-        bd.classList.add("show");
-        U.on(bd, "click", () => {
-          if (backdropOpt === "static") return;
-          this.hide();
-        });
-      }
-
-      U.lockBody(true);
-
-      // ux4g expects display none -> block
-      this.el.style.display = "block";
-      this.el.removeAttribute("aria-hidden");
-      this.el.setAttribute("aria-modal", "true");
-      this.el.setAttribute("role", this.el.getAttribute("role") || "dialog");
-
-      U.reflow(this.el);
-      this.el.classList.add("show");
-
-      const focus = U.bool(U.data(this.el, "focus", "true"), true);
-      if (focus) {
-        const f = U.focusables(this.el);
-        (f[0] || this.el).focus({ preventScroll: true });
-      }
-
-      U.dispatch(this.el, "ux4g.modal.shown", { relatedTarget: trigger || null });
-    }
-
-    hide() {
-      if (!this._shown) return;
-      this._shown = false;
-
-      this.el.classList.remove("show");
-      this.el.setAttribute("aria-hidden", "true");
-      this.el.removeAttribute("aria-modal");
-
-      window.setTimeout(() => {
-        this.el.style.display = "none";
-        U.lockBody(false);
-        U.removeBackdrop(this._bdKind);
-
-        if (this._lastFocus && typeof this._lastFocus.focus === "function") {
-          this._lastFocus.focus({ preventScroll: true });
-        }
-        U.dispatch(this.el, "ux4g.modal.hidden", {});
-      }, this.duration);
-    }
-
-    toggle(trigger) { this._shown ? this.hide() : this.show(trigger); }
-
-    static getOrCreate(el) {
-      let inst = getI(el, "modal");
-      if (!inst) { inst = new Modal(el); setI(el, "modal", inst); }
       return inst;
     }
   }
@@ -1305,12 +1191,19 @@
         const item = U.closest(e.target, ".ux4g-list-item-row") || U.closest(e.target, ".ux4g-list-select-item");
         if (!item || item.disabled) return;
 
-        const isMulti = (this.el.id === "ux4g-multiselect-list") || 
-                        this.el.classList.contains("ux4g-multiselect") || 
-                        this.el.classList.contains("ux4g-list-multiselect");
         const checkbox = U.qs('input[type="checkbox"]', item);
         const radio = U.qs('input[type="radio"]', item);
         const switchInput = U.qs('.ux4g-switch-input', item);
+
+        const isMulti = (this.el.id === "ux4g-multiselect-list") || 
+                        this.el.classList.contains("ux4g-multiselect") || 
+                        this.el.classList.contains("ux4g-list-multiselect") ||
+                        (switchInput !== null);
+
+        // If clicking on a label (but NOT the input itself), let the native browser behavior trigger the input click
+        if (e.target.tagName !== 'INPUT' && (e.target.tagName === 'LABEL' || U.closest(e.target, 'label'))) {
+          return;
+        }
 
         // If clicking on input directly, don't double toggle
         if (e.target.tagName === 'INPUT') {
@@ -1697,6 +1590,7 @@
       this.count = Math.max(1, U.num(U.data(el, 'count', 0), 0) || 1);
       this.placeholder = this.sourceInput?.getAttribute('placeholder') || '-';
       this.demoErrorOnComplete = U.bool(U.data(el, 'demo-error-on-complete', 'false'), false);
+      this.noSeparator = U.bool(U.data(el, 'no-separator', 'false'), false);
       this._timerId = null;
       this._shakeTimer = null;
       this._completedByUser = false;
@@ -1739,7 +1633,7 @@
         slot.append(input);
         this.group.append(slot);
 
-        if (index < this.count - 1) {
+        if (index < this.count - 1 && !this.noSeparator) {
           const separator = document.createElement('span');
           separator.className = 'ux4g-otp-separator ux4g-icon-outlined';
           separator.setAttribute('aria-hidden', 'true');
@@ -2311,27 +2205,8 @@
     });
   }
 
-  // Delegated toggles for Modal & Offcanvas (+ your custom open/close classes)
+  // Delegated toggles for Offcanvas, Toast & other components
   U.on(document, "click", (e) => {
-    // UX4G modal toggle
-    const modalBtn = U.closest(e.target, '[data-bs-toggle="modal"],[data-ux-toggle="modal"]');
-    if (modalBtn) {
-      e.preventDefault();
-      const sel = U.data(modalBtn, "target") || U.attr(modalBtn, "href");
-      const modalEl = sel && sel.startsWith("#") ? U.qs(sel) : null;
-      if (modalEl) Modal.getOrCreate(modalEl).toggle(modalBtn);
-      return;
-    }
-
-    // YOUR custom modal open (.open-modal) — assumes #exampleModal (your HTML)
-    const openModal = U.closest(e.target, ".open-modal");
-    if (openModal) {
-      e.preventDefault();
-      const modalEl = U.qs("#exampleModal");
-      if (modalEl) Modal.getOrCreate(modalEl).show(openModal);
-      return;
-    }
-
     // UX4G offcanvas toggle
     const offBtn = U.closest(e.target, '[data-bs-toggle="offcanvas"],[data-ux-toggle="offcanvas"]');
     if (offBtn) {
@@ -2351,14 +2226,6 @@
       return;
     }
 
-    // Modal close class bridge (your HTML)
-    const closeModal = U.closest(e.target, ".close-modal");
-    if (closeModal) {
-      e.preventDefault();
-      const modalEl = U.closest(closeModal, ".modal");
-      if (modalEl) Modal.getOrCreate(modalEl).hide();
-      return;
-    }
   });
 
   // Switch keyboard support (Enter to toggle)
@@ -2432,7 +2299,7 @@
   const originalElementQSA = Element.prototype.querySelectorAll;
   
   function rewriteSelector(selector) {
-      if (typeof selector === 'string' && selector.includes('.ux4g-') && !selector.includes('[data-ux4g-init]')) {
+      if (typeof selector === 'string' && !selector.includes('[data-ux4g-init]')) {
           return selector.split(',').map(s => s.trim() + ':not([data-ux4g-init])').join(', ');
       }
       return selector;
@@ -2467,10 +2334,12 @@
 
     // Run all registered initializers
     if (global.ux4gCustomInitList) {
-      global.ux4gCustomInitList.forEach(fn => fn());
+      global.ux4gCustomInitList.forEach(fn => {
+        try { fn(); } catch (e) {}
+      });
     }
 
-    // Restore the environment
+    // Restore the environment (always runs, even if an init function throws)
     document.addEventListener = originalDocAddEventListener;
     window.addEventListener = originalWinAddEventListener;
     Document.prototype.querySelectorAll = originalDocQSA;
@@ -2480,21 +2349,18 @@
 
   if (typeof MutationObserver !== "undefined") {
     const observer = new MutationObserver((mutations) => {
-      let shouldInit = false;
-      for (let i = 0; i < mutations.length; i++) {
-        if (mutations[i].addedNodes.length > 0) {
-          shouldInit = true;
-          break;
+      cancelAnimationFrame(global._ux4gInitRaf);
+      global._ux4gInitRaf = requestAnimationFrame(() => {
+        for (let i = 0; i < mutations.length; i++) {
+          for (let j = 0; j < mutations[i].addedNodes.length; j++) {
+            const node = mutations[i].addedNodes[j];
+            if (node.nodeType === 1) {
+              init(node);
+            }
+          }
         }
-      }
-      if (shouldInit) {
-        // Use requestAnimationFrame to debounce and avoid layout thrashing
-        cancelAnimationFrame(global._ux4gInitRaf);
-        global._ux4gInitRaf = requestAnimationFrame(() => {
-          init(document);
-          global.ux4gCustomInit();
-        });
-      }
+        global.ux4gCustomInit();
+      });
     });
     
     const startObserving = () => {
@@ -2517,7 +2383,6 @@
     init,
     Dropdown,
     Collapse,
-    Modal,
     Offcanvas,
     Toast,
     Carousel,
@@ -2549,47 +2414,6 @@
       document.documentElement.setAttribute("data-theme", preferred);
     }
   });
-
-const Backdrop = (() => {
-  let count = 0;
-
-  function create() {
-    const bd = document.createElement("div");
-    bd.className = "modal-backdrop fade";
-    document.body.appendChild(bd);
-    // force reflow to enable transition
-    bd.offsetHeight; // eslint-disable-line no-unused-expressions
-    bd.classList.add("show");
-    return bd;
-  }
-
-  function show(onClick) {
-    count += 1;
-    const bd = create();
-    if (typeof onClick === "function") {
-      bd.addEventListener("click", onClick);
-    }
-    return bd;
-  }
-
-  function hide(bd, duration = 250) {
-    if (!bd) return;
-    bd.classList.remove("show");
-
-    // Remove after transition
-    window.setTimeout(() => {
-      try { bd.remove(); } catch (_) {}
-    }, duration);
-  }
-
-  function dec() {
-    count = Math.max(0, count - 1);
-    return count;
-  }
-
-  return { show, hide, dec, get count() { return count; } };
-})();
-
 
 })(typeof window !== "undefined" ? window : this);
 

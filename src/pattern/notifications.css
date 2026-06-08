@@ -1,0 +1,118 @@
+/* Notification Styles */
+.ux4g-notification-group-header {
+    background: var(--ux4g-bg-neutral-soft);
+    padding: var(--ux4g-padding-s) var(--ux4g-padding-l);
+}
+.ux4g-notification-item {
+    padding: var(--ux4g-padding-s) var(--ux4g-padding-l);
+    border-bottom: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+    background: var(--ux4g-bg-neutral);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ux4g-stack-s);
+}
+.ux4g-notification-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-2xs);
+    flex: 1;
+}
+.ux4g-notification-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.ux4g-notification-action-link {
+    margin-top: var(--ux4g-margin-2xs);
+}
+
+.ux4g-notification-drawer-header {
+    padding: var(--ux4g-padding-m) var(--ux4g-padding-l);
+    border-bottom: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-default);
+}
+.ux4g-notification-drawer-body {
+    padding: var(--ux4g-padding-none);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.ux4g-notification-drawer-body .ux4g-empty-state {
+    margin: auto;
+}
+.ux4g-notification-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--ux4g-padding-none);
+    display: flex;
+    align-items: center;
+}
+.ux4g-notification-group-header span {
+    text-transform: uppercase;
+}
+.ux4g-notification-item > [class^="ux4g-badge-dot"] {
+    margin-top: var(--ux4g-margin-2xs);
+}
+
+.ux4g-application-main {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--ux4g-section-m) var(--ux4g-padding-2xl);
+}
+
+@media (max-width: 768px) {
+    .ux4g-application-main {
+        padding: var(--ux4g-padding-xl) var(--ux4g-padding-l);
+    }
+}
+
+/* Empty State Icon Button Styles */
+.ux4g-empty-state .ux4g-icon-btn {
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.ux4g-empty-state .ux4g-icon-btn.ux4g-bg-primary-soft:hover {
+    background-color: var(--ux4g-bg-primary-subtle) !important;
+}
+
+.ux4g-empty-state .ux4g-icon-btn.ux4g-bg-primary-soft:active {
+    background-color: var(--ux4g-bg-primary-emphasis) !important;
+}
+
+.ux4g-empty-state .ux4g-icon-btn:disabled,
+.ux4g-empty-state .ux4g-icon-btn[disabled] {
+    background-color: var(--ux4g-bg-neutral-disabled) !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.ux4g-empty-state .ux4g-icon-btn:disabled .ux4g-icon-outlined,
+.ux4g-empty-state .ux4g-icon-btn[disabled] .ux4g-icon-outlined {
+    color: var(--ux4g-text-neutral-disabled) !important;
+}
+
+/* Reminder Alert Fixed Bottom Right */
+.ux4g-reminder-alert {
+    position: fixed;
+    bottom: var(--ux4g-padding-l);
+    right: var(--ux4g-padding-l);
+    z-index: 1000;
+    max-width: calc(100% - 48px);
+    animation: slideInUp 0.3s ease-out forwards;
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

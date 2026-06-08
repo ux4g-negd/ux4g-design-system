@@ -447,50 +447,46 @@ window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomIn
 
 /* ========================================================= Modal js ========================================================= */
 
-window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
-
-  document.addEventListener('click', (event) => {
-    // Open Modal
-    const openBtn = event.target.closest('[data-modal-target]');
-    if (openBtn) {
-      const targetSelector = openBtn.getAttribute('data-modal-target');
-      const targetModal = document.querySelector(targetSelector);
-
-      if (targetModal) {
-        targetModal.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
-      }
+// Single delegated click handler â€” works with any framework, no re-init needed
+document.addEventListener('click', (e) => {
+  const openBtn = e.target.closest('[data-modal-target], [data-target], .open-modal-btn, .modal-backdrop-btn-trigger');
+  if (openBtn) {
+    let targetSelector = openBtn.getAttribute('data-modal-target') || openBtn.dataset.target;
+    if (targetSelector && targetSelector.indexOf('#') !== 0 && targetSelector.indexOf('.') !== 0) {
+      targetSelector = '#' + targetSelector;
     }
-
-    // Close Modal via button
-    const closeBtn = event.target.closest('[data-close-modal]');
-    if (closeBtn) {
-      const modal = closeBtn.closest('.ux4g-modal-backdrop') || document.querySelector('.ux4g-modal-backdrop.is-open');
-      if (modal) {
-        modal.classList.remove('is-open');
-        document.body.style.overflow = '';
-      }
+    const targetModal = targetSelector ? document.querySelector(targetSelector) : null;
+    if (targetModal) {
+      targetModal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
     }
+    return;
+  }
 
-    // Close Modal via backdrop click
-    if (event.target.classList.contains('ux4g-modal-backdrop')) {
-      event.target.classList.remove('is-open');
+  const closeBtn = e.target.closest('[data-close-modal], .close-modal-btn');
+  if (closeBtn) {
+    const modal = closeBtn.closest('.ux4g-modal-backdrop');
+    if (modal) {
+      modal.classList.remove('is-open');
       document.body.style.overflow = '';
     }
-  });
+    return;
+  }
 
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      const openModals = document.querySelectorAll('.ux4g-modal-backdrop.is-open');
-      if (openModals.length > 0) {
-        openModals.forEach(modal => {
-          modal.classList.remove('is-open');
-        });
-        document.body.style.overflow = '';
-      }
-    }
-  });
+  if (e.target.classList.contains('ux4g-modal-backdrop') && e.target.classList.contains('is-open')) {
+    const modals = document.querySelectorAll('.ux4g-modal-backdrop.is-open');
+    modals.forEach(m => m.classList.remove('is-open'));
+    document.body.style.overflow = '';
+  }
+});
 
+// Escape key to close all open modals â€” registered once, never duplicates
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const openModals = document.querySelectorAll('.ux4g-modal-backdrop.is-open');
+    openModals.forEach(modal => modal.classList.remove('is-open'));
+    document.body.style.overflow = '';
+  }
 });
 
 /* ========================================================= clear seach btn js ========================================================= */
@@ -680,95 +676,71 @@ window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomIn
 
 
 
-// // ux4g drawer js
+// ux4g drawer js
 
-window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+/* ---------------- */
+/* CLOSE DRAWER FUNCTION */
+/* ---------------- */
 
-  const buttons = document.querySelectorAll("[data-drawer]");
+function closeDrawer() {
+  const openDrawer = document.querySelector(".ux4g-drawer.ux4g-drawer-open");
+  const openOverlay = document.querySelector(".ux4g-drawer-overlay.ux4g-drawer-open");
 
+  if (!openDrawer || !openOverlay) return;
 
-  /* ---------------- */
-  /* CLOSE DRAWER FUNCTION */
-  /* ---------------- */
+  openDrawer.classList.remove("ux4g-drawer-open");
+  openOverlay.classList.remove("ux4g-drawer-open");
 
-  function closeDrawer() {
+  document.body.classList.remove("ux4g-drawer-lock");
+}
 
-    const openDrawer = document.querySelector(".ux4g-drawer.ux4g-drawer-open");
-    const openOverlay = document.querySelector(".ux4g-drawer-overlay.ux4g-drawer-open");
+/* ---------------- */
+/* DELEGATED CLICK HANDLERS */
+/* ---------------- */
 
-    if (!openDrawer || !openOverlay) return;
-
-    openDrawer.classList.remove("ux4g-drawer-open");
-    openOverlay.classList.remove("ux4g-drawer-open");
-
-    document.body.classList.remove("ux4g-drawer-lock");
-  }
-
-
-
-  /* ---------------- */
-  /* OPEN DRAWER */
-  /* ---------------- */
-
-  buttons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-      const drawer = document.getElementById(button.dataset.drawer);
+document.addEventListener("click", (e) => {
+  // OPEN DRAWER
+  const openTrigger = e.target.closest("[data-drawer]");
+  if (openTrigger) {
+    const drawerId = openTrigger.getAttribute("data-drawer");
+    const drawer = document.getElementById(drawerId);
+    
+    if (drawer) {
       const overlay = drawer.closest(".ux4g-drawer-overlay");
 
       document.querySelectorAll(".ux4g-drawer-open")
         .forEach(el => el.classList.remove("ux4g-drawer-open"));
 
-      overlay.classList.add("ux4g-drawer-open");
+      if (overlay) overlay.classList.add("ux4g-drawer-open");
       drawer.classList.add("ux4g-drawer-open");
 
       document.body.classList.add("ux4g-drawer-lock");
-
-    });
-
-  });
-
-
-
-  /* ---------------- */
-  /* CLOSE VIA BUTTONS */
-  /* ---------------- */
-
-  document.addEventListener("click", (e) => {
-
-    const closeTrigger = e.target.closest("[data-drawer-close]");
-
-    if (closeTrigger) {
-      closeDrawer();
-      return;
     }
+    return;
+  }
 
+  // CLOSE VIA BUTTONS
+  const closeTrigger = e.target.closest("[data-drawer-close]");
+  if (closeTrigger) {
+    closeDrawer();
+    return;
+  }
 
-    /* CLOSE VIA OVERLAY CLICK */
+  /* CLOSE VIA OVERLAY CLICK */
+  const overlay = e.target.closest(".ux4g-drawer-overlay");
+  if (overlay && !e.target.closest(".ux4g-drawer")) {
+    closeDrawer();
+  }
+});
 
-    const overlay = e.target.closest(".ux4g-drawer-overlay");
+/* ---------------- */
+/* CLOSE VIA ESC KEY */
+/* ---------------- */
 
-    if (overlay && !e.target.closest(".ux4g-drawer")) {
-      closeDrawer();
-    }
-
-  });
-
-
-
-  /* ---------------- */
-  /* CLOSE VIA ESC KEY */
-  /* ---------------- */
-
-  document.addEventListener("keydown", (e) => {
-
-    if (e.key === "Escape") {
-      closeDrawer();
-    }
-
-  });
-
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeDrawer();
+  }
 });
 
 /* ========================================================= dropdown js ========================================================= */
@@ -1611,7 +1583,7 @@ window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomIn
       if (item.classList.contains('ux4g-tab-item-disabled')) return;
 
       this._resetActive();
-      item.classList.add('is-active');
+      item.classList.add('active');
 
       const panelId = item.dataset.panel;
       if (panelId) this._showPanel(panelId);
@@ -1624,8 +1596,8 @@ window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomIn
     _activateDropdownItem(dItem, moreBtn) {
       this._resetActive();
 
-      moreBtn.classList.add('is-active');
-      dItem.classList.add('is-active');
+      moreBtn.classList.add('active');
+      dItem.classList.add('active');
 
       const panelId = dItem.dataset.panel;
       if (panelId) this._showPanel(panelId);
@@ -1637,17 +1609,17 @@ window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomIn
     /* Reset active states */
     _resetActive() {
       this.list.querySelectorAll('.ux4g-tab-item')
-        .forEach(i => i.classList.remove('is-active'));
+        .forEach(i => i.classList.remove('active'));
 
       this.root.querySelectorAll('.ux4g-tab-dropdown-item')
-        .forEach(i => i.classList.remove('is-active'));
+        .forEach(i => i.classList.remove('active'));
     }
 
     /* Show panel */
     _showPanel(panelId) {
-      this.panels.forEach(p => p.classList.remove('is-active'));
+      this.panels.forEach(p => p.classList.remove('active'));
       const target = this.root.querySelector('#' + panelId);
-      if (target) target.classList.add('is-active');
+      if (target) target.classList.add('active');
     }
 
     /* Toggle dropdown */
@@ -2119,96 +2091,156 @@ window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomIn
 
 
 // NPS and Emoji Button interactions
-window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
-  // NPS interaction
-  const npsButtons = document.querySelectorAll('.feedback-nps-button');
-  npsButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const container = btn.closest('.ux4g-feedback-nps-wrapper') || btn.parentElement;
-      const siblings = Array.from(container.querySelectorAll('.feedback-nps-button'));
-      const clickedIndex = siblings.indexOf(btn);
+// Using global event delegation so it works seamlessly with dynamic HTML, React, Angular, etc.
+document.addEventListener('click', (e) => {
+  // 1. NPS interaction
+  const npsBtn = e.target.closest('.feedback-nps-button');
+  if (npsBtn) {
+    const container = npsBtn.closest('.ux4g-feedback-nps-wrapper') || npsBtn.parentElement;
+    const siblings = Array.from(container.querySelectorAll('.feedback-nps-button'));
+    const clickedIndex = siblings.indexOf(npsBtn);
 
-      // If clicking the highest active button, reset it (toggle off)
-      const isHighestActive = btn.classList.contains('active') &&
-        (clickedIndex === siblings.length - 1 || !siblings[clickedIndex + 1]?.classList.contains('active'));
+    const isHighestActive = npsBtn.classList.contains('active') &&
+      (clickedIndex === siblings.length - 1 || !siblings[clickedIndex + 1]?.classList.contains('active'));
 
-      if (isHighestActive) {
-        siblings.forEach(s => s.classList.remove('active'));
-        container.removeAttribute('data-nps-rating');
-      } else {
-        container.setAttribute('data-nps-rating', clickedIndex);
-        siblings.forEach((s, i) => {
-          if (i <= clickedIndex) {
-            s.classList.add('active');
-          } else {
-            s.classList.remove('active');
-          }
-        });
+    if (isHighestActive) {
+      siblings.forEach(s => s.classList.remove('active'));
+      container.removeAttribute('data-nps-rating');
+    } else {
+      container.setAttribute('data-nps-rating', clickedIndex);
+      siblings.forEach((s, i) => {
+        if (i <= clickedIndex) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+    }
+    return;
+  }
+
+  // 2. Emoji interaction
+  const emojiBtn = e.target.closest('.feedback-emoji-button');
+  if (emojiBtn) {
+    const wasActive = emojiBtn.classList.contains('active');
+    const container = emojiBtn.closest('.ux4g-d-flex') || document;
+    container.querySelectorAll('.feedback-emoji-button').forEach(b => b.classList.remove('active'));
+
+    if (!wasActive) {
+      emojiBtn.classList.add('active');
+    }
+    return;
+  }
+
+  // 3. Star interaction
+  const starBtn = e.target.closest('.ux4g-feedback-star');
+  if (starBtn) {
+    const container = starBtn.parentElement;
+    const siblings = Array.from(container.querySelectorAll('.ux4g-feedback-star'));
+    const clickedIndex = siblings.indexOf(starBtn);
+
+    const isOnlyActive = starBtn.classList.contains('active') &&
+      (clickedIndex === siblings.length - 1 || !siblings[clickedIndex + 1]?.classList.contains('active'));
+
+    if (isOnlyActive) {
+      siblings.forEach(s => s.classList.remove('active'));
+      container.removeAttribute('data-rating');
+    } else {
+      container.setAttribute('data-rating', clickedIndex + 1);
+      siblings.forEach((s, i) => {
+        if (i <= clickedIndex) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+    }
+
+    // Toggle Submit button state based on rating
+    const feedbackCard = starBtn.closest('.ux4g-feedback');
+    if (feedbackCard) {
+      const submitBtn = feedbackCard.querySelector('.ux4g-btn-primary');
+      if (submitBtn) {
+        const hasRating = container.hasAttribute('data-rating') && container.getAttribute('data-rating') !== '';
+        if (hasRating) {
+          submitBtn.removeAttribute('disabled');
+        } else {
+          submitBtn.setAttribute('disabled', '');
+        }
       }
-    });
-  });
+    }
+    return;
+  }
 
-  // Emoji interaction
-  const emojiButtons = document.querySelectorAll('.feedback-emoji-button');
-  emojiButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const wasActive = btn.classList.contains('active');
-      const container = btn.closest('.ux4g-d-flex') || document;
-      container.querySelectorAll('.feedback-emoji-button').forEach(b => b.classList.remove('active'));
-
-      if (!wasActive) {
-        btn.classList.add('active');
+  // 4. Submit button showing success card delegator
+  const submitBtn = e.target.closest('.ux4g-feedback:not(.ux4g-text-center) .ux4g-btn-primary');
+  if (submitBtn) {
+    const ratingCard = submitBtn.closest('.ux4g-feedback');
+    if (ratingCard) {
+      const container = ratingCard.parentElement;
+      if (container) {
+        const successCard = container.querySelector('.ux4g-feedback.ux4g-text-center');
+        if (successCard) {
+          e.preventDefault();
+          ratingCard.style.display = 'none';
+          successCard.style.display = 'flex';
+          return;
+        }
       }
-    });
-  });
+    }
+  }
 
-  // Star interaction
-  const stars = document.querySelectorAll('.ux4g-feedback-star');
-  stars.forEach(star => {
-    star.addEventListener('click', () => {
-      const container = star.parentElement;
-      const siblings = Array.from(container.querySelectorAll('.ux4g-feedback-star'));
-      const clickedIndex = siblings.indexOf(star);
+  // 5. Close button redirect delegator
+  const closeBtn = e.target.closest('.feedback-submitted-close-btn');
+  if (closeBtn) {
+    e.preventDefault();
+    window.location.href = './global-service-discovery.html';
+    return;
+  }
 
-      // If clicking the only active star, reset it (toggle off)
-      const isOnlyActive = star.classList.contains('active') &&
-        (clickedIndex === siblings.length - 1 || !siblings[clickedIndex + 1].classList.contains('active'));
-
-      if (isOnlyActive) {
-        siblings.forEach(s => s.classList.remove('active'));
-        container.removeAttribute('data-rating');
-      } else {
-        container.setAttribute('data-rating', clickedIndex + 1);
-        siblings.forEach((s, i) => {
-          if (i <= clickedIndex) {
-            s.classList.add('active');
-          } else {
-            s.classList.remove('active');
-          }
-        });
-      }
-    });
-  });
-
-  // Submit and Skip Reset interaction
-  const resetButtons = document.querySelectorAll('.ux4g-feedback .ux4g-btn-primary, .ux4g-feedback .ux4g-btn-text-primary');
-  resetButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const feedbackContainer = btn.closest('.ux4g-feedback');
-      if (feedbackContainer) {
-        // Clear textareas
-        feedbackContainer.querySelectorAll('textarea').forEach(textarea => {
-          textarea.value = '';
-        });
-        // Clear active states on all feedback interactive elements
-        feedbackContainer.querySelectorAll('.active').forEach(activeEl => {
-          activeEl.classList.remove('active');
-        });
-      }
-    });
-  });
+  // 6. Submit and Skip Reset interaction
+  const resetBtn = e.target.closest('.ux4g-feedback .ux4g-btn-primary, .ux4g-feedback .ux4g-btn-text-primary');
+  if (resetBtn) {
+    const feedbackContainer = resetBtn.closest('.ux4g-feedback');
+    if (feedbackContainer) {
+      feedbackContainer.querySelectorAll('textarea').forEach(textarea => {
+        textarea.value = '';
+      });
+      feedbackContainer.querySelectorAll('.active').forEach(activeEl => {
+        activeEl.classList.remove('active');
+      });
+    }
+  }
 });
 
+// rating enabled btn js
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+  // Initialize all feedback cards' submit buttons on load/open
+  const syncAllFeedbackSubmitButtons = () => {
+    document.querySelectorAll('.ux4g-feedback').forEach(feedbackCard => {
+      const starContainer = feedbackCard.querySelector('[data-rating]');
+      const submitBtn = feedbackCard.querySelector('.ux4g-btn-primary');
+      if (submitBtn) {
+        const hasRating = starContainer && starContainer.hasAttribute('data-rating') && starContainer.getAttribute('data-rating') !== '';
+        if (hasRating) {
+          submitBtn.removeAttribute('disabled');
+        } else {
+          submitBtn.setAttribute('disabled', '');
+        }
+      }
+    });
+  };
+
+  syncAllFeedbackSubmitButtons();
+
+  // Also sync when modals/popups are shown/opened
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-modal-target], [data-target], .open-modal-btn, .modal-backdrop-btn-trigger');
+    if (trigger) {
+      setTimeout(syncAllFeedbackSubmitButtons, 300);
+    }
+  });
+});
 
 
 /* ========================================================= carousel js ========================================================= */
@@ -2358,8 +2390,6 @@ document.addEventListener("input", (e) => {
 
 (function (global) {
   "use strict";
-
-  console.log('UX4G Components Script Loaded');
 
   const makeKeyboardClickable = (el) => {
     if (!el) return;
@@ -3294,318 +3324,341 @@ document.addEventListener("input", (e) => {
 /********************************* Time Slot JS ***********************************/
 
 class TimeSlotCalendar {
-  constructor(container) {
-    this.container = container;
-    this.calendarGrid = container.querySelector('.ux4g-time-slot-compact-grid');
-    this.monthLabel = container.querySelector('.ux4g-time-slot-compact-month');
-    this.slotTitle = container.querySelector('.ux4g-time-slot-compact-desktop-header');
-    this.slotsList = container.querySelector('.ux4g-time-slot-compact-list');
-    this.confirmBtn = container.querySelector('.ux4g-btn-primary');
+    constructor(container) {
+        this.container = container;
+        this.calendarGrid = container.querySelector('.ux4g-time-slot-compact-grid');
+        this.monthLabel = container.querySelector('.ux4g-time-slot-compact-month');
+        this.slotTitle = container.querySelector('.ux4g-time-slot-compact-desktop-header');
+        this.slotsList = container.querySelector('.ux4g-time-slot-compact-list');
+        this.confirmBtn = container.querySelector('.ux4g-btn-primary');
+        
+        const navBtns = container.querySelectorAll('.ux4g-btn-icon');
+        this.prevBtn = navBtns[0];
+        this.nextBtn = navBtns[1];
 
-    const navBtns = container.querySelectorAll('.ux4g-btn-icon');
-    this.prevBtn = navBtns[0];
-    this.nextBtn = navBtns[1];
+        this.currentDate = new Date();
+        this.viewDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
+        this.selectedDate = new Date(2026, 3, 23); // Default from design: April 23, 2026
 
-    this.currentDate = new Date();
-    this.viewDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
-    this.selectedDate = new Date(2026, 3, 23); // Default from design: April 23, 2026
+        // Mock Data for Statuses
+        this.holidays = ['2026-04-09', '2026-04-21'];
+        this.weeklyOffs = [0, 6]; // Sunday, Saturday
+        this.noSlotsDates = ['2026-04-08', '2026-04-13'];
 
-    // Mock Data for Statuses
-    this.holidays = ['2026-04-09', '2026-04-21'];
-    this.weeklyOffs = [0, 6]; // Sunday, Saturday
-    this.noSlotsDates = ['2026-04-08', '2026-04-13'];
-
-    this._init();
-  }
-
-  _init() {
-    if (this.prevBtn) {
-      this.prevBtn.addEventListener('click', () => this.changeMonth(-1));
-    }
-    if (this.nextBtn) {
-      this.nextBtn.addEventListener('click', () => this.changeMonth(1));
+        this._init();
     }
 
-    // Cancel Button Reset Logic
-    const cancelBtn = this.container.querySelector('.ux4g-btn-outline-neutral');
-    if (cancelBtn) {
-      cancelBtn.addEventListener('click', () => {
-        this.selectedDate = null; // Reset selection
-        this.render(); // Re-render calendar to clear highlights
-        if (this.slotTitle) this.slotTitle.innerText = "Select a Date"; // Reset slot header
-        this.resetSlots(); // Clear slot selection and disable confirm button
-      });
-    }
+    _init() {
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => this.changeMonth(-1));
+        }
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => this.changeMonth(1));
+        }
 
-    this.render();
-  }
+        // Cancel Button Reset Logic
+        const cancelBtn = this.container.querySelector('.ux4g-btn-outline-neutral');
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', () => {
+                this.selectedDate = null; // Reset selection
+                this.render(); // Re-render calendar to clear highlights
+                if (this.slotTitle) this.slotTitle.innerText = "Select a Date"; // Reset slot header
+                this.resetSlots(); // Clear slot selection and disable confirm button
+            });
+        }
 
-  changeMonth(delta) {
-    this.viewDate.setMonth(this.viewDate.getMonth() + delta);
-    this.render();
-  }
-
-  render() {
-    this.renderCalendar();
-  }
-
-  renderCalendar() {
-    const year = this.viewDate.getFullYear();
-    const month = this.viewDate.getMonth();
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
-
-    // Update Month Label
-    if (this.monthLabel) {
-      this.monthLabel.innerText = `${monthNames[month]} ${year}`;
-    }
-
-    const firstDayOfMonth = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-    // Adjust for Monday start
-    let startDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
-    const prevMonthLastDay = new Date(year, month, 0).getDate();
-
-    // Clear and rebuild grid
-    this.calendarGrid.innerHTML = '';
-
-    // Add Weekday Names
-    const days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
-    days.forEach(day => {
-      const dayEl = document.createElement('div');
-      dayEl.className = 'ux4g-time-slot-day-name';
-      dayEl.innerText = day;
-      this.calendarGrid.appendChild(dayEl);
-    });
-
-    // Previous Month Days
-    for (let i = startDay - 1; i >= 0; i--) {
-      const dateEl = document.createElement('div');
-      dateEl.className = 'ux4g-time-slot-date muted';
-      dateEl.innerText = prevMonthLastDay - i;
-      this.calendarGrid.appendChild(dateEl);
-    }
-
-    // Current Month Days
-    for (let i = 1; i <= daysInMonth; i++) {
-      const date = new Date(year, month, i);
-      const dateStr = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(i).padStart(2, '0');
-      const isToday = date.toDateString() === this.currentDate.toDateString();
-      const isSelected = this.selectedDate && date.toDateString() === this.selectedDate.toDateString();
-      const isHoliday = this.holidays.includes(dateStr);
-      const isWeeklyOff = this.weeklyOffs.includes(date.getDay());
-      const isNoSlots = this.noSlotsDates.includes(dateStr);
-
-      const dateEl = document.createElement('div');
-      dateEl.className = 'ux4g-time-slot-date';
-      if (isToday) dateEl.classList.add('today');
-      if (isSelected) dateEl.classList.add('selected');
-      if (isHoliday) dateEl.classList.add('holiday');
-      if (isWeeklyOff) dateEl.classList.add('weekly-off');
-      if (isNoSlots) dateEl.classList.add('no-slots');
-
-      dateEl.innerText = i;
-      dateEl.dataset.date = i;
-
-      dateEl.addEventListener('click', () => {
-        this.selectedDate = new Date(year, month, i);
         this.render();
-        this.updateSlotHeader();
-        this.resetSlots();
-      });
-
-      this.calendarGrid.appendChild(dateEl);
     }
 
-    // Next Month Days
-    const totalCells = 42 + 7; // Including header row
-    const currentCells = this.calendarGrid.children.length;
-    const remainingCells = totalCells - currentCells;
-    for (let i = 1; i <= remainingCells; i++) {
-      const dateEl = document.createElement('div');
-      dateEl.className = 'ux4g-time-slot-date muted';
-      dateEl.innerText = i;
-      this.calendarGrid.appendChild(dateEl);
+    changeMonth(delta) {
+        this.viewDate.setMonth(this.viewDate.getMonth() + delta);
+        this.render();
     }
-  }
 
-  updateSlotHeader() {
-    if (this.slotTitle && this.selectedDate) {
-      const day = this.selectedDate.getDate();
-      const monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-      ];
-      const month = monthNames[this.selectedDate.getMonth()];
-      const year = this.selectedDate.getFullYear();
-      this.slotTitle.innerText = `${day}${this.getOrdinal(day)} ${month} ${year}`;
+    render() {
+        this.renderCalendar();
     }
-  }
 
-  resetSlots() {
-    // Reset slot selection and disable confirm button
-    const slots = this.container.querySelectorAll('.ux4g-time-slot-compact-slot-item:not(.disabled)');
-    slots.forEach(s => s.style.backgroundColor = 'transparent');
-    if (this.confirmBtn) this.confirmBtn.setAttribute('disabled', 'true');
+    renderCalendar() {
+        const year = this.viewDate.getFullYear();
+        const month = this.viewDate.getMonth();
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
 
-    // Re-attach slot selection listeners
-    slots.forEach(slot => {
-      slot.addEventListener('click', () => {
+        // Update Month Label
+        if (this.monthLabel) {
+            this.monthLabel.innerText = `${monthNames[month]} ${year}`;
+        }
+
+        const firstDayOfMonth = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        
+        // Adjust for Monday start
+        let startDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
+        const prevMonthLastDay = new Date(year, month, 0).getDate();
+
+        // Clear and rebuild grid
+        this.calendarGrid.innerHTML = '';
+
+        // Add Weekday Names
+        const days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+        days.forEach(day => {
+            const dayEl = document.createElement('div');
+            dayEl.className = 'ux4g-time-slot-day-name';
+            dayEl.innerText = day;
+            this.calendarGrid.appendChild(dayEl);
+        });
+
+        // Previous Month Days
+        for (let i = startDay - 1; i >= 0; i--) {
+            const dateEl = document.createElement('div');
+            dateEl.className = 'ux4g-time-slot-date muted';
+            dateEl.innerText = prevMonthLastDay - i;
+            this.calendarGrid.appendChild(dateEl);
+        }
+
+        // Current Month Days
+        for (let i = 1; i <= daysInMonth; i++) {
+            const date = new Date(year, month, i);
+            const dateStr = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(i).padStart(2, '0');
+            const isToday = date.toDateString() === this.currentDate.toDateString();
+            const isSelected = this.selectedDate && date.toDateString() === this.selectedDate.toDateString();
+            const isHoliday = this.holidays.includes(dateStr);
+            const isWeeklyOff = this.weeklyOffs.includes(date.getDay());
+            const isNoSlots = this.noSlotsDates.includes(dateStr);
+
+            const dateEl = document.createElement('div');
+            dateEl.className = 'ux4g-time-slot-date';
+            if (isToday) dateEl.classList.add('today');
+            if (isSelected) dateEl.classList.add('selected');
+            if (isHoliday) dateEl.classList.add('holiday');
+            if (isWeeklyOff) dateEl.classList.add('weekly-off');
+            if (isNoSlots) dateEl.classList.add('no-slots');
+            
+            dateEl.innerText = i;
+            dateEl.dataset.date = i;
+
+            dateEl.addEventListener('click', () => {
+                this.selectedDate = new Date(year, month, i);
+                this.render();
+                this.updateSlotHeader();
+                this.resetSlots();
+            });
+
+            this.calendarGrid.appendChild(dateEl);
+        }
+
+        // Next Month Days
+        const totalCells = 42 + 7; // Including header row
+        const currentCells = this.calendarGrid.children.length;
+        const remainingCells = totalCells - currentCells;
+        for (let i = 1; i <= remainingCells; i++) {
+            const dateEl = document.createElement('div');
+            dateEl.className = 'ux4g-time-slot-date muted';
+            dateEl.innerText = i;
+            this.calendarGrid.appendChild(dateEl);
+        }
+    }
+
+    updateSlotHeader() {
+        if (this.slotTitle && this.selectedDate) {
+            const day = this.selectedDate.getDate();
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            const month = monthNames[this.selectedDate.getMonth()];
+            const year = this.selectedDate.getFullYear();
+            this.slotTitle.innerText = `${day}${this.getOrdinal(day)} ${month} ${year}`;
+        }
+    }
+
+    resetSlots() {
+        // Reset slot selection and disable confirm button
+        const slots = this.container.querySelectorAll('.ux4g-time-slot-compact-slot-item:not(.disabled)');
         slots.forEach(s => s.style.backgroundColor = 'transparent');
-        slot.style.backgroundColor = 'var(--ux4g-bg-neutral-subtle)';
-        if (this.confirmBtn) this.confirmBtn.removeAttribute('disabled');
-      });
-    });
-  }
+        if (this.confirmBtn) this.confirmBtn.setAttribute('disabled', 'true');
+        
+        // Re-attach slot selection listeners
+        slots.forEach(slot => {
+            slot.addEventListener('click', () => {
+                slots.forEach(s => s.style.backgroundColor = 'transparent');
+                slot.style.backgroundColor = 'var(--ux4g-bg-neutral-subtle)';
+                if (this.confirmBtn) this.confirmBtn.removeAttribute('disabled');
+            });
+        });
+    }
 
-  getOrdinal(n) {
-    const s = ["th", "st", "nd", "rd"];
-    const v = n % 100;
-    return (s[(v - 20) % 10] || s[v] || s[0]);
-  }
+    getOrdinal(n) {
+        const s = ["th", "st", "nd", "rd"];
+        const v = n % 100;
+        return (s[(v - 20) % 10] || s[v] || s[0]);
+    }
 }
 
 // Initialize on Load
-window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
-  // Initialize Compact Calendar
-  const compactContainer = document.querySelector('.ux4g-time-slot-compact-container');
-  if (compactContainer) {
-    new TimeSlotCalendar(compactContainer);
-  }
-
-  // Initialize Weekly Grid Selection
-  const weeklyGrid = document.querySelector('.ux4g-time-slot-weekly-grid');
-  if (weeklyGrid) {
-    const cells = weeklyGrid.querySelectorAll('.ux4g-time-slot-cell.available, .ux4g-time-slot-cell.limited');
-    const confirmBtn = weeklyGrid.parentElement.querySelector('.ux4g-time-slot-weekly-actions .ux4g-btn-primary');
-    const cancelBtn = weeklyGrid.parentElement.querySelector('.ux4g-time-slot-weekly-actions .ux4g-btn-outline-neutral');
-
-    cells.forEach(cell => {
-      // Store original content to restore later
-      const originalHTML = cell.innerHTML;
-
-      cell.addEventListener('click', () => {
-        if (cell.classList.contains('selected')) return;
-
-        // 1. Restore all other cells to their original state
-        cells.forEach(c => {
-          if (c.classList.contains('selected')) {
-            c.classList.remove('selected');
-            if (c._originalContent) {
-              c.innerHTML = c._originalContent;
-            }
-          }
-        });
-
-        // 2. Select this cell
-        cell.classList.add('selected');
-        cell._originalContent = originalHTML;
-        cell.innerHTML = `<span class="ux4g-icon-filled">check_circle</span> Selected`;
-
-        // 3. Enable Confirm Button
-        if (confirmBtn) confirmBtn.removeAttribute('disabled');
-      });
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Compact Calendar
+    const compactContainers = document.querySelectorAll('.ux4g-time-slot-compact-container, #ux4g-time-slot, [id^="ux4g-time-slot-compact"]');
+    compactContainers.forEach(container => {
+        new TimeSlotCalendar(container);
     });
 
-    // Cancel Button logic for Weekly Grid
-    if (cancelBtn) {
-      cancelBtn.addEventListener('click', () => {
-        cells.forEach(c => {
-          if (c.classList.contains('selected')) {
-            c.classList.remove('selected');
-            if (c._originalContent) {
-              c.innerHTML = c._originalContent;
-            }
-          }
+    // Initialize Weekly Grid Selection
+    const weeklyGrids = document.querySelectorAll('.ux4g-time-slot-weekly-grid, [id^="ux4g-time-slot-weekly"]');
+    weeklyGrids.forEach(weeklyGrid => {
+        const cells = weeklyGrid.querySelectorAll('.ux4g-time-slot-cell.available, .ux4g-time-slot-cell.limited');
+        const confirmBtn = weeklyGrid.parentElement.querySelector('.ux4g-time-slot-weekly-actions .ux4g-btn-primary');
+        const cancelBtn = weeklyGrid.parentElement.querySelector('.ux4g-time-slot-weekly-actions .ux4g-btn-outline-neutral');
+
+        cells.forEach(cell => {
+            // Store original content to restore later
+            const originalHTML = cell.innerHTML;
+
+            cell.addEventListener('click', () => {
+                if (cell.classList.contains('selected')) return;
+
+                // 1. Restore all other cells to their original state
+                cells.forEach(c => {
+                    if (c.classList.contains('selected')) {
+                        c.classList.remove('selected');
+                        if (c._originalContent) {
+                            c.innerHTML = c._originalContent;
+                        }
+                    }
+                });
+
+                // 2. Select this cell
+                cell.classList.add('selected');
+                cell._originalContent = originalHTML;
+                cell.innerHTML = `<span class="ux4g-icon-filled">check_circle</span> Selected`;
+
+                // 3. Enable Confirm Button
+                if (confirmBtn) confirmBtn.removeAttribute('disabled');
+            });
         });
-        if (confirmBtn) confirmBtn.setAttribute('disabled', 'true');
-      });
-    }
-  }
 
-  // Initialize Weekly Grid Mobile Navigation (Dynamic approach)
-  const mobileNav = document.querySelector('.ux4g-time-slot-mobile-nav');
-  if (weeklyGrid && mobileNav) {
-    const mobileDateLabel = mobileNav.querySelector('.ux4g-time-slot-mobile-date');
-    const navBtns = mobileNav.querySelectorAll('.ux4g-btn-icon');
-    const prevBtn = navBtns[0];
-    const nextBtn = navBtns[1];
+        // Cancel Button logic for Weekly Grid
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', () => {
+                cells.forEach(c => {
+                    if (c.classList.contains('selected')) {
+                        c.classList.remove('selected');
+                        if (c._originalContent) {
+                            c.innerHTML = c._originalContent;
+                        }
+                    }
+                });
+                if (confirmBtn) confirmBtn.setAttribute('disabled', 'true');
+            });
+        }
 
-    // 1. Dynamically assign data-day attributes to cells based on grid position
-    // Grid has 8 columns: Time, Mon, Tue, Wed, Thu, Fri, Sat, Sun
-    const children = weeklyGrid.children;
-    for (let i = 0; i < children.length; i++) {
-      const colIndex = i % 8;
-      if (colIndex > 0) { // Skip Time column
-        children[i].setAttribute('data-day', colIndex - 1);
-      }
-    }
+        // Initialize Weekly Grid Mobile Navigation (Dynamic approach)
+        const container = weeklyGrid.closest('.ux4g-time-slot-weekly-container');
+        if (container) {
+            const mobileNav = container.querySelector('.ux4g-time-slot-mobile-nav');
+            if (mobileNav) {
+                const mobileDateLabel = mobileNav.querySelector('.ux4g-time-slot-mobile-date');
+                const navBtns = mobileNav.querySelectorAll('.ux4g-btn-icon');
+                const prevBtn = navBtns[0];
+                const nextBtn = navBtns[1];
 
-    // 2. Navigation Logic
-    let activeDay = 0;
-    weeklyGrid.setAttribute('data-active-day', activeDay);
+                // 1. Dynamically assign data-day attributes to cells based on grid position
+                // Grid has 8 columns: Time, Mon, Tue, Wed, Thu, Fri, Sat, Sun
+                const children = weeklyGrid.children;
+                for (let i = 0; i < children.length; i++) {
+                    const colIndex = i % 8;
+                    if (colIndex > 0) { // Skip Time column
+                        children[i].setAttribute('data-day', colIndex - 1);
+                    }
+                }
 
-    const daysData = [
-      { day: "Mon 14 Apr", status: "Today" },
-      { day: "Tue 15 Apr", status: "" },
-      { day: "Wed 16 Apr", status: "" },
-      { day: "Thu 17 Apr", status: "Public Holiday" },
-      { day: "Fri 18 Apr", status: "" },
-      { day: "Sat 19 Apr", status: "Weekly off" },
-      { day: "Sun 20 Apr", status: "Weekly off" }
-    ];
+                // 2. Navigation Logic
+                let activeDay = 0;
+                weeklyGrid.setAttribute('data-active-day', activeDay);
 
-    const updateMobileNav = (index) => {
-      weeklyGrid.setAttribute('data-active-day', index);
-      const data = daysData[index];
-      if (mobileDateLabel) {
-        mobileDateLabel.innerHTML = `
-                    <strong>${data.day}</strong>
-                    ${data.status ? `<span class="${data.status === 'Today' ? 'ux4g-text-success-600' : 'ux4g-text-neutral-secondary'}">${data.status}</span>` : ''}
-                `;
-      }
-    };
+                const daysData = [
+                    { day: "Mon 14 Apr", status: "Today" },
+                    { day: "Tue 15 Apr", status: "" },
+                    { day: "Wed 16 Apr", status: "" },
+                    { day: "Thu 17 Apr", status: "Public Holiday" },
+                    { day: "Fri 18 Apr", status: "" },
+                    { day: "Sat 19 Apr", status: "Weekly off" },
+                    { day: "Sun 20 Apr", status: "Weekly off" }
+                ];
 
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        activeDay = (activeDay > 0) ? activeDay - 1 : 6;
-        updateMobileNav(activeDay);
-      });
-    }
+                const updateMobileNav = (index) => {
+                    weeklyGrid.setAttribute('data-active-day', index);
+                    const data = daysData[index];
+                    if (mobileDateLabel) {
+                        mobileDateLabel.innerHTML = `
+                            <strong>${data.day}</strong>
+                            ${data.status ? `<span class="${data.status === 'Today' ? 'ux4g-text-success-600' : 'ux4g-text-neutral-secondary'}">${data.status}</span>` : ''}
+                        `;
+                    }
+                };
 
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        activeDay = (activeDay < 6) ? activeDay + 1 : 0;
-        updateMobileNav(activeDay);
-      });
-    }
-  }
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        activeDay = (activeDay > 0) ? activeDay - 1 : 6;
+                        updateMobileNav(activeDay);
+                    });
+                }
+
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        activeDay = (activeDay < 6) ? activeDay + 1 : 0;
+                        updateMobileNav(activeDay);
+                    });
+                }
+            }
+        }
+    });
 });
+
 
 
 /********************************* Result list JS ***********************************/
 
 // Accordion Toggle
 window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
-  const toggleBtns = document.querySelectorAll('.ux4g-result-list-accordion-toggle');
-  toggleBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const toggle = e.target;
+  if (window.ux4gResultListAccordionInitialized) return;
+  window.ux4gResultListAccordionInitialized = true;
+  
+  document.addEventListener('click', (e) => {
+    const toggle = e.target.closest('.ux4g-result-list-accordion-toggle');
+    if (!toggle) return;
+
+    let content = null;
+    
+    // 1. Support ID-based target via aria-controls or data-ux-target
+    const targetId = toggle.getAttribute('aria-controls') || toggle.getAttribute('data-ux-target');
+    if (targetId) {
+      const selector = targetId.startsWith('#') ? targetId : `#${targetId}`;
+      content = document.querySelector(selector);
+    }
+    
+    // 2. Fallback to structural targeting
+    if (!content) {
       const card = toggle.closest('.ux4g-result-list');
-      const content = card.querySelector('.ux4g-result-list-content');
-      if (!content) return;
-
-      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-
-      if (isExpanded) {
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.innerText = 'expand_more';
-      } else {
-        toggle.setAttribute('aria-expanded', 'true');
-        toggle.innerText = 'expand_less';
+      if (card) {
+        content = card.querySelector('.ux4g-result-list-content');
       }
-    });
+    }
+
+    if (!content) return;
+
+    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+    if (isExpanded) {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.innerText = 'expand_more';
+      content.style.display = 'none';
+    } else {
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.innerText = 'expand_less';
+      content.style.display = '';
+    }
   });
 });
 
@@ -3645,12 +3698,12 @@ window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomIn
 /* ========================================================= checkbox js ========================================================= */
 window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
 
-  // 1. Standalone indeterminate checkboxes — add data-ux4g-indeterminate attribute to set on init
+  // 1. Standalone indeterminate checkboxes â€” add data-ux4g-indeterminate attribute to set on init
   document.querySelectorAll('.ux4g-checkbox-input[data-ux4g-indeterminate]').forEach(input => {
     input.indeterminate = true;
   });
 
-  // 2. Parent-child checkbox groups — wrap the group in data-ux4g-parent-child.
+  // 2. Parent-child checkbox groups â€” wrap the group in data-ux4g-parent-child.
   //    Mark the select-all input with data-ux4g-select-all.
   //    Mark each child input with data-ux4g-child.
   document.querySelectorAll('[data-ux4g-parent-child]').forEach(container => {
@@ -3675,7 +3728,7 @@ window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomIn
 
     // Use click (not change) so we can read the children's state BEFORE any changes,
     // giving consistent "select all / unselect all" behaviour regardless of browser
-    // handling of indeterminate → click → checked transitions.
+    // handling of indeterminate â†’ click â†’ checked transitions.
     parentInput.addEventListener('click', function () {
       const checkedCount = childInputs.filter(cb => cb.checked).length;
       const checkAll = checkedCount < childInputs.length;
@@ -3691,3 +3744,581 @@ window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomIn
 
 
 
+
+/* ========================================================= 
+   Aadhaar & PAN Validation Logic
+========================================================= */
+window.ux4gCustomInitList = window.ux4gCustomInitList || [];
+window.ux4gCustomInitList.push(() => {
+    
+    // Helper function to toggle error state
+    const toggleErrorState = (input, isError) => {
+        const container = input.closest('.ux4g-input-container');
+        if (!container) return;
+        
+        let helper = container.querySelector('.ux4g-input-helper');
+
+        if (isError) {
+            container.classList.add('ux4g-input-error');
+            input.setAttribute('aria-invalid', 'true');
+            if (helper) helper.style.display = 'flex';
+        } else {
+            container.classList.remove('ux4g-input-error');
+            input.removeAttribute('aria-invalid');
+            if (helper) helper.style.display = 'none';
+        }
+    };
+
+    // ---------------------------------------------------------
+    // Aadhaar Card Input Handling
+    // ---------------------------------------------------------
+    const handleAadhaar = (e) => {
+        const input = e.target;
+        if (!input.matches('input[id="aadhaarInput"], input[name="aadhaar"]')) return;
+
+        let val = input.value.replace(/[^\d]/g, '').substring(0, 12);
+        let formatted = '';
+        for (let i = 0; i < val.length; i++) {
+            if (i > 0 && i % 4 === 0) formatted += ' ';
+            formatted += val[i];
+        }
+        if (input.value !== formatted) {
+            input.value = formatted;
+        }
+
+        // Validate using HTML5 pattern attribute
+        if (input.value.length === 0) {
+            toggleErrorState(input, false);
+        } else if (!input.checkValidity()) {
+            toggleErrorState(input, true);
+        } else {
+            toggleErrorState(input, false);
+        }
+    };
+
+    // ---------------------------------------------------------
+    // PAN Card Input Handling
+    // ---------------------------------------------------------
+    const handlePan = (e) => {
+        const input = e.target;
+        if (!input.matches('input[id="panInput"], input[name="pan"]')) return;
+
+        let val = input.value.toUpperCase().replace(/[^A-Z0-9]/g, '').substring(0, 10);
+        if (input.value !== val) {
+            input.value = val;
+        }
+
+        // Validate using HTML5 pattern attribute
+        if (input.value.length === 0) {
+            toggleErrorState(input, false);
+        } else if (!input.checkValidity()) {
+            toggleErrorState(input, true);
+        } else {
+            toggleErrorState(input, false);
+        }
+    };
+
+    // Use event delegation to handle dynamically created inputs (e.g. inside Playground)
+    document.addEventListener('input', (e) => {
+        if (e.target && e.target.tagName === 'INPUT') {
+            handleAadhaar(e);
+            handlePan(e);
+        }
+    });
+
+    document.addEventListener('focusout', (e) => {
+        if (e.target && e.target.tagName === 'INPUT') {
+            handleAadhaar(e);
+            handlePan(e);
+        }
+    });
+});
+
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+    const wrappers = document.querySelectorAll('.ux4g-consent-capture-wrapper');
+    
+    wrappers.forEach(wrapper => {
+        const scrollBox = wrapper.querySelector('.ux4g-declaration-content');
+        const hint = wrapper.querySelector('.ux4g-declaration-scroll-hint');
+        const checkbox = wrapper.querySelector('.ux4g-checkbox-input');
+        const nameInputGroup = wrapper.querySelector('.ux4g-input-container');
+        const nameInput = wrapper.querySelector('.ux4g-input-input');
+        const submitBtn = wrapper.querySelector('.ux4g-consent-decl-btn-wrap .ux4g-btn-primary');
+
+        if (!checkbox || !scrollBox || !submitBtn) return;
+
+        let hasScrolledToBottom = false;
+
+        function validateForm() {
+            const isNameValid = nameInput ? nameInput.value.trim().length > 0 : true;
+            const isChecked = checkbox.checked;
+
+            if (hasScrolledToBottom && isNameValid && isChecked) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        }
+
+        scrollBox.addEventListener('scroll', function() {
+            if (Math.abs(this.scrollHeight - this.clientHeight - this.scrollTop) <= 10) {
+                if (hint) {
+                    hint.style.opacity = '0';
+                    hint.style.pointerEvents = 'none';
+                }
+                hasScrolledToBottom = true;
+                validateForm();
+            }
+        });
+
+        checkbox.addEventListener('change', function() {
+            if (nameInputGroup) {
+                if (this.checked) {
+                    nameInputGroup.classList.remove('ux4g-d-none');
+                } else {
+                    nameInputGroup.classList.add('ux4g-d-none');
+                    if (nameInput) nameInput.value = '';
+                }
+            }
+            validateForm();
+        });
+        
+        if (nameInput) {
+            nameInput.addEventListener('input', validateForm);
+        }
+        
+        // Initial validation
+        validateForm();
+    });
+});
+
+/* ========================================================= alert js ========================================================= */
+
+// Single delegated click handler for alert close (Framework Agnostic)
+document.addEventListener('click', (e) => {
+  const closeBtn = e.target.closest('.ux4g-alert-close');
+  if (closeBtn) {
+    const alert = closeBtn.closest('.ux4g-alert');
+    if (alert) {
+      alert.style.display = 'none';
+    }
+  }
+});
+
+// Auto-dismiss logic using MutationObserver (Works perfectly with React/Angular)
+function initAutoDismissAlerts() {
+  const setAutoDismiss = (alert) => {
+    if (alert.dataset.ux4gDismissTimeout) return; // already set
+    const time = parseInt(alert.getAttribute('data-auto-dismiss'), 10);
+    if (!isNaN(time) && time > 0) {
+      const timerId = setTimeout(() => {
+        alert.style.display = 'none';
+      }, time);
+      alert.dataset.ux4gDismissTimeout = timerId;
+    }
+  };
+
+  // 1. Check existing alerts on page
+  document.querySelectorAll('.ux4g-alert[data-auto-dismiss]').forEach(setAutoDismiss);
+
+  // 2. Watch for dynamically added alerts (React, Angular, etc.)
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (node.nodeType === 1) { // Element node
+          if (node.classList && node.classList.contains('ux4g-alert') && node.hasAttribute('data-auto-dismiss')) {
+            setAutoDismiss(node);
+          }
+          // Also check children if a container was added
+          const innerAlerts = node.querySelectorAll ? node.querySelectorAll('.ux4g-alert[data-auto-dismiss]') : [];
+          innerAlerts.forEach(setAutoDismiss);
+        }
+      });
+    });
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+}
+
+window.ux4gCustomInitList = window.ux4gCustomInitList || [];
+window.ux4gCustomInitList.push(initAutoDismissAlerts);
+
+
+/* ========================================================= reminder alert close js ========================================================= */
+// Delegated event listener for reminder alert close buttons so it works with dynamic frameworks (React, Angular, Next.js)
+document.addEventListener('click', (e) => {
+  const closeBtn = e.target.closest('.ux4g-reminder-alert .ux4g-alert-close');
+  if (closeBtn) {
+    const alertBox = closeBtn.closest('.ux4g-reminder-alert');
+    if (alertBox) {
+      alertBox.style.display = 'none';
+    }
+        if (isError) {
+            container.classList.add('ux4g-input-error');
+            input.setAttribute('aria-invalid', 'true');
+            if (helper) helper.style.display = 'flex';
+        } else {
+            container.classList.remove('ux4g-input-error');
+            input.removeAttribute('aria-invalid');
+            if (helper) helper.style.display = 'none';
+        }
+    };
+
+    // ---------------------------------------------------------
+    // Aadhaar Card Input Handling
+    // ---------------------------------------------------------
+    const handleAadhaar = (e) => {
+        const input = e.target;
+        if (!input.matches('input[id="aadhaarInput"], input[name="aadhaar"]')) return;
+
+        let val = input.value.replace(/[^\d]/g, '').substring(0, 12);
+        let formatted = '';
+        for (let i = 0; i < val.length; i++) {
+            if (i > 0 && i % 4 === 0) formatted += ' ';
+            formatted += val[i];
+        }
+        if (input.value !== formatted) {
+            input.value = formatted;
+        }
+
+        // Validate using HTML5 pattern attribute
+        if (input.value.length === 0) {
+            toggleErrorState(input, false);
+        } else if (!input.checkValidity()) {
+            toggleErrorState(input, true);
+        } else {
+            toggleErrorState(input, false);
+        }
+    };
+
+    // ---------------------------------------------------------
+    // PAN Card Input Handling
+    // ---------------------------------------------------------
+    const handlePan = (e) => {
+        const input = e.target;
+        if (!input.matches('input[id="panInput"], input[name="pan"]')) return;
+
+        let val = input.value.toUpperCase().replace(/[^A-Z0-9]/g, '').substring(0, 10);
+        if (input.value !== val) {
+            input.value = val;
+        }
+
+        // Validate using HTML5 pattern attribute
+        if (input.value.length === 0) {
+            toggleErrorState(input, false);
+        } else if (!input.checkValidity()) {
+            toggleErrorState(input, true);
+        } else {
+            toggleErrorState(input, false);
+        }
+    };
+
+    // Use event delegation to handle dynamically created inputs (e.g. inside Playground)
+    document.addEventListener('input', (e) => {
+        if (e.target && e.target.tagName === 'INPUT') {
+            handleAadhaar(e);
+            handlePan(e);
+        }
+    });
+
+    document.addEventListener('focusout', (e) => {
+        if (e.target && e.target.tagName === 'INPUT') {
+            handleAadhaar(e);
+            handlePan(e);
+        }
+    });
+});
+
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+    const wrappers = document.querySelectorAll('.ux4g-consent-capture-wrapper');
+    
+    wrappers.forEach(wrapper => {
+        const scrollBox = wrapper.querySelector('.ux4g-declaration-content');
+        const hint = wrapper.querySelector('.ux4g-declaration-scroll-hint');
+        const checkbox = wrapper.querySelector('.ux4g-checkbox-input');
+        const nameInputGroup = wrapper.querySelector('.ux4g-input-container');
+        const nameInput = wrapper.querySelector('.ux4g-input-input');
+        const submitBtn = wrapper.querySelector('.ux4g-consent-decl-btn-wrap .ux4g-btn-primary');
+
+        if (!checkbox || !scrollBox || !submitBtn) return;
+
+        let hasScrolledToBottom = false;
+
+        function validateForm() {
+            const isNameValid = nameInput ? nameInput.value.trim().length > 0 : true;
+            const isChecked = checkbox.checked;
+
+            if (hasScrolledToBottom && isNameValid && isChecked) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        }
+
+        scrollBox.addEventListener('scroll', function() {
+            if (Math.abs(this.scrollHeight - this.clientHeight - this.scrollTop) <= 10) {
+                if (hint) {
+                    hint.style.opacity = '0';
+                    hint.style.pointerEvents = 'none';
+                }
+                hasScrolledToBottom = true;
+                validateForm();
+            }
+        });
+
+        checkbox.addEventListener('change', function() {
+            if (nameInputGroup) {
+                if (this.checked) {
+                    nameInputGroup.classList.remove('ux4g-d-none');
+                } else {
+                    nameInputGroup.classList.add('ux4g-d-none');
+                    if (nameInput) nameInput.value = '';
+                }
+            }
+            validateForm();
+        });
+        
+        if (nameInput) {
+            nameInput.addEventListener('input', validateForm);
+        }
+        
+        // Initial validation
+        validateForm();
+    });
+});
+
+/* ========================================================= alert js ========================================================= */
+
+// Single delegated click handler for alert close (Framework Agnostic)
+document.addEventListener('click', (e) => {
+  const closeBtn = e.target.closest('.ux4g-alert-close');
+  if (closeBtn) {
+    const alert = closeBtn.closest('.ux4g-alert');
+    if (alert) {
+      alert.style.display = 'none';
+    }
+  }
+});
+
+// Auto-dismiss logic using MutationObserver (Works perfectly with React/Angular)
+function initAutoDismissAlerts() {
+  const setAutoDismiss = (alert) => {
+    if (alert.dataset.ux4gDismissTimeout) return; // already set
+    const time = parseInt(alert.getAttribute('data-auto-dismiss'), 10);
+    if (!isNaN(time) && time > 0) {
+      const timerId = setTimeout(() => {
+        alert.style.display = 'none';
+      }, time);
+      alert.dataset.ux4gDismissTimeout = timerId;
+    }
+  };
+
+  // 1. Check existing alerts on page
+  document.querySelectorAll('.ux4g-alert[data-auto-dismiss]').forEach(setAutoDismiss);
+
+  // 2. Watch for dynamically added alerts (React, Angular, etc.)
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (node.nodeType === 1) { // Element node
+          if (node.classList && node.classList.contains('ux4g-alert') && node.hasAttribute('data-auto-dismiss')) {
+            setAutoDismiss(node);
+          }
+          // Also check children if a container was added
+          const innerAlerts = node.querySelectorAll ? node.querySelectorAll('.ux4g-alert[data-auto-dismiss]') : [];
+          innerAlerts.forEach(setAutoDismiss);
+        }
+      });
+    });
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+}
+
+window.ux4gCustomInitList = window.ux4gCustomInitList || [];
+window.ux4gCustomInitList.push(initAutoDismissAlerts);
+
+
+/* ========================================================= reminder alert close js ========================================================= */
+// Delegated event listener for reminder alert close buttons so it works with dynamic frameworks (React, Angular, Next.js)
+document.addEventListener('click', (e) => {
+  const closeBtn = e.target.closest('.ux4g-reminder-alert .ux4g-alert-close');
+  if (closeBtn) {
+    const alertBox = closeBtn.closest('.ux4g-reminder-alert');
+    if (alertBox) {
+      alertBox.style.display = 'none';
+    }
+  }
+});
+
+
+/* ========================================================= list switch JS appended ========================================================= */
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+  document.addEventListener('click', (e) => {
+    const row = e.target.closest('.ux4g-list-item-row.ux4g-toggles, span.ux4g-list-item-row, .ux4g-list-item-row-fixed');
+    if (row && e.target.tagName !== 'INPUT' && !e.target.closest('.ux4g-switch, .ux4g-checkbox, .ux4g-radio')) {
+      e.stopPropagation();
+    }
+  }, true);
+});
+/* ========================================================= toggle disable JS ========================================================= */
+// Generic script to enable/disable target elements based on checkbox state. Works with dynamic HTML, React, Angular, etc.
+document.addEventListener('change', function(e) {
+  if (e.target && e.target.hasAttribute('data-ux4g-toggle-disable')) {
+    const targetSelector = e.target.getAttribute('data-ux4g-toggle-disable');
+    if (targetSelector) {
+      const targetEls = document.querySelectorAll(targetSelector);
+      targetEls.forEach(el => {
+        el.disabled = !e.target.checked;
+      });
+    }
+  }
+});
+/* ========================================================= filter chip JS ========================================================= */
+// Generic script to toggle filter chips (active mode)
+document.addEventListener('click', (e) => {
+  const filterChip = e.target.closest('.ux4g-filter-chip-md, .ux4g-filter-chip-sm');
+  if (filterChip) {
+    if (filterChip.hasAttribute('disabled') || filterChip.classList.contains('ux4g-disabled')) return;
+
+    // Check if the chip is part of a feedback card
+    const isFeedbackChip = filterChip.closest('.ux4g-feedback');
+    if (isFeedbackChip) {
+      const wrapper = filterChip.closest('.ux4g-feedback-chip-wrapper');
+      if (wrapper) {
+        const siblings = wrapper.querySelectorAll('.ux4g-filter-chip-md, .ux4g-filter-chip-sm');
+        const wasActive = filterChip.classList.contains('active');
+        siblings.forEach(c => c.classList.remove('active'));
+        if (!wasActive) {
+          filterChip.classList.add('active');
+        }
+      }
+    } else {
+      filterChip.classList.toggle('active');
+    }
+  }
+});
+
+// Execute all registered initialization functions (uses ux4g.js's safe init to prevent double-binding)
+// Initialize selection state in custom list dropdowns
+const initCustomListDropdowns = () => {
+  document.querySelectorAll('.ux4g-custom-list-dropdown').forEach(dropdown => {
+    const btn = dropdown.querySelector('.ux4g-custom-dropdown-btn');
+    const items = dropdown.querySelectorAll('.ux4g-custom-dropdown-item');
+    if (!btn || !items.length) return;
+
+    const currentValue = btn.getAttribute('data-value');
+    const span = btn.querySelector('span:first-child');
+    const currentText = span ? span.textContent.trim() : '';
+
+    items.forEach(item => {
+      const itemVal = item.getAttribute('data-value');
+      const textEl = item.querySelector('.ux4g-custom-dropdown-text');
+      const itemText = textEl ? textEl.textContent.trim() : item.textContent.trim();
+      
+      const isSelected = (currentValue && itemVal === currentValue) || (!currentValue && currentText && itemText === currentText);
+      if (isSelected) {
+        item.classList.add('is-selected', 'active');
+        item.setAttribute('aria-selected', 'true');
+      } else {
+        item.classList.remove('is-selected', 'active');
+        item.setAttribute('aria-selected', 'false');
+      }
+    });
+  });
+};
+
+// Execute all registered initialization functions
+const ux4gInitAll = () => {
+  if (window.ux4gCustomInit) {
+    window.ux4gCustomInit();
+  } else if (window.ux4gCustomInitList) {
+    window.ux4gCustomInitList.forEach(fn => {
+      if (typeof fn === 'function') fn();
+    });
+  }
+};
+
+const ux4gCustomInitAllCombined = () => {
+  ux4gInitAll();
+  initCustomListDropdowns();
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', ux4gCustomInitAllCombined);
+} else {
+  ux4gCustomInitAllCombined();
+}
+
+
+/* ========================================================= custom list dropdown JS ========================================================= */
+document.addEventListener('click', (e) => {
+  // 1. Handle toggle button click
+  const btn = e.target.closest('.ux4g-custom-dropdown-btn');
+  if (btn) {
+    e.stopPropagation();
+    const dropdown = btn.closest('.ux4g-custom-list-dropdown');
+    if (dropdown) {
+      const menu = dropdown.querySelector('.ux4g-custom-dropdown-menu');
+      if (menu) {
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        // Close other custom dropdowns
+        document.querySelectorAll('.ux4g-custom-list-dropdown').forEach(d => {
+          if (d !== dropdown) {
+            const otherBtn = d.querySelector('.ux4g-custom-dropdown-btn');
+            const otherMenu = d.querySelector('.ux4g-custom-dropdown-menu');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+            if (otherMenu) otherMenu.style.display = 'none';
+          }
+        });
+        
+        btn.setAttribute('aria-expanded', String(!isExpanded));
+        menu.style.display = isExpanded ? 'none' : 'block';
+      }
+    }
+    return;
+  }
+
+  // 2. Handle item selection
+  const item = e.target.closest('.ux4g-custom-list-dropdown .ux4g-custom-dropdown-item');
+  if (item) {
+    e.stopPropagation();
+    const dropdown = item.closest('.ux4g-custom-list-dropdown');
+    if (dropdown) {
+      const btn = dropdown.querySelector('.ux4g-custom-dropdown-btn');
+      const menu = dropdown.querySelector('.ux4g-custom-dropdown-menu');
+      
+      // Toggle selected class and aria-selected attribute
+      const items = dropdown.querySelectorAll('.ux4g-custom-dropdown-item');
+      items.forEach(el => {
+        if (el === item) {
+          el.classList.add('is-selected', 'active');
+          el.setAttribute('aria-selected', 'true');
+        } else {
+          el.classList.remove('is-selected', 'active');
+          el.setAttribute('aria-selected', 'false');
+        }
+      });
+
+      const span = btn ? btn.querySelector('span:first-child') : null;
+      if (span) {
+        const textEl = item.querySelector('.ux4g-custom-dropdown-text');
+        span.textContent = textEl ? textEl.textContent.trim() : item.textContent.trim();
+      }
+      if (btn) {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('data-value', item.getAttribute('data-value') || '');
+      }
+      if (menu) menu.style.display = 'none';
+    }
+    return;
+  }
+
+  // 3. Clicked outside - close all custom dropdowns
+  document.querySelectorAll('.ux4g-custom-list-dropdown').forEach(d => {
+    const otherBtn = d.querySelector('.ux4g-custom-dropdown-btn');
+    const otherMenu = d.querySelector('.ux4g-custom-dropdown-menu');
+    if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+    if (otherMenu) otherMenu.style.display = 'none';
+  });
+});

@@ -1,0 +1,15 @@
+@import "./identity-access.css";
+@import "./consent-capture.css";
+@import "./notifications.css";
+@import "./notification-channel.css";
+@import "./application-submission.css";
+@import "./sms-email-notifications.css";
+@import "./payment.css";
+@import "./dashboard-application.css";
+@import "./pending-task.css";
+@import "./profile.css";
+@import "./status-tracker.css";
+@import './search-browse.css';
+@import './global-service-discovery.css';
+@import './consultation-slot-booking.css';
+@import './feedback-communication.css';

@@ -1,0 +1,220 @@
+<!doctype html>
+<html data-theme="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Application & Submission - Pattern Index</title>
+    <link href="../../index.css" rel="stylesheet" />
+    <script src="../../ux4g.js"></script>
+    <script src="../../ux4g-custom.js"></script>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .pattern-card {
+        background: var(--ux4g-bg-neutral-elevated, #fff);
+        border: 1px solid var(--ux4g-border-neutral-default, #e0e0e0);
+        border-radius: 12px;
+        padding: 24px;
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
+      }
+      .pattern-card:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+      }
+      .pattern-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 24px;
+      }
+      .variant-tag {
+        display: inline-block;
+        background: var(--ux4g-bg-primary-subtle, #e8f0fe);
+        color: var(--ux4g-text-primary, #1a73e8);
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+        margin-right: 6px;
+        margin-bottom: 6px;
+        text-decoration: none;
+        transition: background 0.2s ease, transform 0.15s ease;
+      }
+      .variant-tag:hover {
+        background: var(--ux4g-bg-primary-soft, #d2e3fc);
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+
+  <body class="ux4g-bg-neutral ux4g-ff-base ux4g-body-m-default">
+    <!-- Header -->
+    <header
+      class="ux4g-bg-primary-subtle ux4g-p-2xl ux4g-text-center ux4g-mb-2xl"
+    >
+      <h1 class="ux4g-heading-xl-default ux4g-text-primary ux4g-mb-s">
+        Application & Submission Patterns
+      </h1>
+      <p class="ux4g-body-m-default ux4g-text-neutral-secondary">
+        Browse all pattern categories and their layout variants
+      </p>
+    </header>
+
+    <!-- Pattern Cards Grid -->
+    <div class="ux4g-container ux4g-pb-2xl">
+      <div class="pattern-grid">
+        <!-- 1. Check Eligibility -->
+        <div class="pattern-card">
+          <div class="ux4g-d-flex ux4g-ai-center ux4g-mb-m">
+            <span
+              class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-mr-s"
+              >check_circle</span
+            >
+            <h2 class="ux4g-heading-m-default">Check Eligibility</h2>
+          </div>
+          <p class="ux4g-body-s-default ux4g-text-neutral-secondary ux4g-mb-m">
+            Eligibility check wizard with multi-step form flow, results
+            screens, and error states.
+          </p>
+          <div>
+            <a class="variant-tag" href="check-eligibility.html#column-layout">Column Layout</a>
+            <a class="variant-tag" href="check-eligibility.html#card-layout">Card Layout</a>
+            <a class="variant-tag" href="check-eligibility.html#fullscreen-layout">FullScreen Layout</a>
+          </div>
+        </div>
+
+        <!-- 2. Journey Progress Indicator -->
+        <div class="pattern-card">
+          <div class="ux4g-d-flex ux4g-ai-center ux4g-mb-m">
+            <span
+              class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-mr-s"
+              >linear_scale</span
+            >
+            <h2 class="ux4g-heading-m-default">Journey Progress Indicator</h2>
+          </div>
+          <p class="ux4g-body-s-default ux4g-text-neutral-secondary ux4g-mb-m">
+            Step-based progress indicators showing journey status across
+            application workflows.
+          </p>
+          <div>
+            <a class="variant-tag" href="journey-progress-indicator.html#column-layout">Column Layout</a>
+            <a class="variant-tag" href="journey-progress-indicator.html#card-layout">Card Layout</a>
+            <a class="variant-tag" href="journey-progress-indicator.html#fullscreen-layout">Full Screen Layout</a>
+          </div>
+        </div>
+
+        <!-- 3. Government Form with Validation -->
+        <div class="pattern-card">
+          <div class="ux4g-d-flex ux4g-ai-center ux4g-mb-m">
+            <span
+              class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-mr-s"
+              >description</span
+            >
+            <h2 class="ux4g-heading-m-default">
+              Government Form with Validation
+            </h2>
+          </div>
+          <p class="ux4g-body-s-default ux4g-text-neutral-secondary ux4g-mb-m">
+            Form patterns with inline validation, multi-field error states,
+            and success confirmations.
+          </p>
+          <div>
+            <a class="variant-tag" href="government-form-with-validation.html#desktop-layout">Desktop Layout</a>
+            <a class="variant-tag" href="government-form-with-validation.html#card-layout">Card Layout</a>
+            <a class="variant-tag" href="government-form-with-validation.html#desktop-workspace-layout">Desktop Workspace</a>
+          </div>
+        </div>
+
+        <!-- 4. Document Scan and Upload -->
+        <div class="pattern-card">
+          <div class="ux4g-d-flex ux4g-ai-center ux4g-mb-m">
+            <span
+              class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-mr-s"
+              >cloud_upload</span
+            >
+            <h2 class="ux4g-heading-m-default">Document Scan and Upload</h2>
+          </div>
+          <p class="ux4g-body-s-default ux4g-text-neutral-secondary ux4g-mb-m">
+            Document upload flows with checklist, uploading state, AI warning,
+            and completion screens.
+          </p>
+          <div>
+            <a class="variant-tag" href="document-scan-and-upload.html#desktop-workspace-layout">Desktop Workspace</a>
+            <a class="variant-tag" href="document-scan-and-upload.html#card-layout">Card Layout</a>
+            <a class="variant-tag" href="document-scan-and-upload.html#fullscreen-layout">Full Screen Layout</a>
+          </div>
+        </div>
+
+        <!-- 5. Save and Resume -->
+        <div class="pattern-card">
+          <div class="ux4g-d-flex ux4g-ai-center ux4g-mb-m">
+            <span
+              class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-mr-s"
+              >bookmark</span
+            >
+            <h2 class="ux4g-heading-m-default">Save and Resume</h2>
+          </div>
+          <p class="ux4g-body-s-default ux4g-text-neutral-secondary ux4g-mb-m">
+            Draft saving, resume, autosave, expiry, and discard flows with
+            modals for unsaved changes.
+          </p>
+          <p class="ux4g-label-s-strong ux4g-text-neutral-secondary ux4g-mb-xs">Desktop Full</p>
+          <div class="ux4g-mb-s">
+            <a class="variant-tag" href="save-and-resume.html#draft-banner-landing-full">Draft Banner Landing</a>
+            <a class="variant-tag" href="save-and-resume.html#resume-screen-full">Resume Screen</a>
+            <a class="variant-tag" href="save-and-resume.html#incomplete-resume-full">Incomplete Resume</a>
+            <a class="variant-tag" href="save-and-resume.html#autosave-full">Autosave</a>
+            <a class="variant-tag" href="save-and-resume.html#draft-expiry-full">Draft Expiry</a>
+            <a class="variant-tag" href="save-and-resume.html#unsaved-changes-modal-full">Unsaved Changes Modal</a>
+            <a class="variant-tag" href="save-and-resume.html#discard-draft-modal-full">Discard Draft Modal</a>
+          </div>
+          <p class="ux4g-label-s-strong ux4g-text-neutral-secondary ux4g-mb-xs">Desktop Card</p>
+          <div>
+            <a class="variant-tag" href="save-and-resume.html#draft-banner-landing-card">Draft Banner Landing</a>
+            <a class="variant-tag" href="save-and-resume.html#resume-screen-card">Resume Screen</a>
+            <a class="variant-tag" href="save-and-resume.html#incomplete-resume-card">Incomplete Resume</a>
+            <a class="variant-tag" href="save-and-resume.html#autosave-card">Autosave</a>
+            <a class="variant-tag" href="save-and-resume.html#draft-expiry-card">Draft Expiry</a>
+            <a class="variant-tag" href="save-and-resume.html#unsaved-changes-modal-card">Unsaved Changes Modal</a>
+            <a class="variant-tag" href="save-and-resume.html#discard-draft-modal-card">Discard Draft Modal</a>
+          </div>
+        </div>
+
+        <!-- 6. Submission Acknowledgement -->
+        <div class="pattern-card">
+          <div class="ux4g-d-flex ux4g-ai-center ux4g-mb-m">
+            <span
+              class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-mr-s"
+              >task_alt</span
+            >
+            <h2 class="ux4g-heading-m-default">Submission Acknowledgement</h2>
+          </div>
+          <p class="ux4g-body-s-default ux4g-text-neutral-secondary ux4g-mb-m">
+            Post-submission confirmation screens including success, queued, and
+            error states.
+          </p>
+          <div>
+            <a class="variant-tag" href="submission-acknowledgement.html#success-full">Success (Desktop Full)</a>
+            <a class="variant-tag" href="submission-acknowledgement.html#success-card">Success (Desktop Card)</a>
+            <a class="variant-tag" href="submission-acknowledgement.html#queued-full">Queued (Desktop Full)</a>
+            <a class="variant-tag" href="submission-acknowledgement.html#error-full">Error (Desktop Full)</a>
+            <a class="variant-tag" href="submission-acknowledgement.html#error-card">Error (Desktop Card)</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full File Link -->
+      <div class="ux4g-mt-2xl ux4g-p-l ux4g-text-center" style="border-top: 1px solid var(--ux4g-border-neutral-default, #e0e0e0);">
+        <p class="ux4g-body-s-default ux4g-text-neutral-secondary ux4g-mb-s">
+          View all patterns in a single file
+        </p>
+        <a
+          href="application-submission.html"
+          class="ux4g-btn-primary ux4g-btn-md"
+          >Open Complete File</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

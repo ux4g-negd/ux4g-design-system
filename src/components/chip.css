@@ -6,6 +6,7 @@
     .ux4g-choice-chip-md, .ux4g-choice-chip-sm,
     .ux4g-input-chip-md, .ux4g-input-chip-sm,
     .ux4g-input-chip-xs) {
+  width: fit-content;
   color: var(--ux4g-text-neutral-primary);
   font-size: var(--ux4g-fs-14);
   border-radius: var(--ux4g-radius-sm);

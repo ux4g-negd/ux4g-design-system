@@ -1,0 +1,50 @@
+.ux4g-sms-email-notification {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--ux4g-bg-neutral-elevated, #ffffff);
+  border-radius: var(--ux4g-border-radius-l, 12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.ux4g-sms-email-notification-header {
+  display: flex;
+  padding: var(--Padding-L, 20px);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--Stack-XS, 8px);
+  border-bottom: 1px solid var(--Border-Neutral-Subtle, #E5E5E5);
+  background: var(--Background-Neutral-Default, #FAFAFA);
+}
+
+.ux4g-sen-info-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: center;
+  gap: var(--ux4g-spacing-l, 24px);
+}
+
+@media (max-width: 768px) {
+  .ux4g-sen-info-row {
+    grid-template-columns: 1fr;
+    gap: var(--ux4g-spacing-xs, 4px);
+  }
+}
+
+.ux4g-sms-email-notification .journey-timeline-card {
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.ux4g-sen-timeline-card {
+  background: var(--ux4g-bg-neutral-elevated, #ffffff) !important;
+  border-color: var(--ux4g-border-neutral, #e0e0e0) !important;
+}
+
+.ux4g-sen-timeline-card.active {
+  background: var(--ux4g-bg-primary-soft, #f3e8ff) !important;
+  border-color: var(--ux4g-border-primary, #6200ea) !important;
+}

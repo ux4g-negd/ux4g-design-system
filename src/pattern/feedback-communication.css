@@ -1,0 +1,546 @@
+/* ==========================================================================
+   UX4G Feedback Communication Component Styles
+   ========================================================================== */
+
+.ux4g-feedback-annual-income-section,
+.ux4g-feedback-mobile-section,
+.ux4g-feedback-identity-section,
+.ux4g-feedback-category-section,
+.ux4g-feedback-citizen-note-section,
+.ux4g-feedback-verification-section,
+.ux4g-feedback-completion-section {
+    background-color: var(--ux4g-bg-primary-soft);
+    min-height: calc(100vh - var(--ux4g-sz-72, 72px));
+    display: flex;
+    justify-content: center;
+    padding: var(--ux4g-padding-2xl);
+    box-sizing: border-box;
+}
+
+/* Ensure the layout container centers its child card horizontally and vertically */
+.ux4g-feedback-annual-income-section .ux4g-container,
+.ux4g-feedback-mobile-section .ux4g-container,
+.ux4g-feedback-identity-section .ux4g-container,
+.ux4g-feedback-category-section .ux4g-container,
+.ux4g-feedback-citizen-note-section .ux4g-container,
+.ux4g-feedback-verification-section .ux4g-container,
+.ux4g-feedback-completion-section .ux4g-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--ux4g-sz-full);
+}
+
+.ux4g-feedback-annual-income-card,
+.ux4g-feedback-mobile-card,
+.ux4g-feedback-identity-card,
+.ux4g-feedback-category-card,
+.ux4g-feedback-citizen-note-card,
+.ux4g-feedback-verification-card,
+.ux4g-feedback-completion-card {
+    background-color: var(--ux4g-bg-neutral-elevated);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-lg);
+    width: var(--ux4g-sz-full);
+    max-width: 700px;
+    padding: var(--ux4g-padding-2xl);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-m);
+}
+
+.ux4g-feedback-back-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.ux4g-feedback-back-link {
+    color: var(--ux4g-text-brand-primary-default);
+    font-weight: var(--ux4g-fw-medium);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ux4g-inline-xs);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.ux4g-feedback-back-link:hover {
+    text-decoration: underline;
+}
+
+.ux4g-feedback-header-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-xs);
+}
+
+.ux4g-feedback-title {
+    color: var(--ux4g-text-neutral-primary);
+}
+
+.ux4g-feedback-subtitle {
+    color: var(--ux4g-text-neutral-secondary);
+}
+
+.ux4g-feedback-input-container {
+    width: var(--ux4g-sz-full);
+}
+
+.ux4g-feedback-currency-prefix {
+    color: var(--ux4g-text-neutral-primary);
+    font-size: var(--ux4g-fs-16);
+    margin-right: var(--ux4g-padding-2xs);
+    font-weight: var(--ux4g-fw-medium);
+    user-select: none;
+}
+
+.ux4g-feedback-input {
+    border: var(--ux4g-border-width-none) !important;
+    outline: none !important;
+    padding-left: var(--ux4g-padding-none) !important;
+    font-size: var(--ux4g-fs-16);
+    font-weight: var(--ux4g-fw-semibold);
+}
+
+.ux4g-feedback-btn-wrapper {
+    margin-top: var(--ux4g-margin-l);
+    display: flex;
+    justify-content: flex-start;
+}
+
+.ux4g-feedback-submit-btn {
+    width: auto;
+}
+
+/* Category Page Specific Styles */
+.ux4g-feedback-combobox {
+    width: var(--ux4g-sz-full);
+}
+
+.ux4g-feedback-alert {
+    align-items: flex-start !important;
+    gap: var(--ux4g-inline-m) !important;
+    padding: var(--ux4g-padding-m) !important;
+}
+
+.ux4g-feedback-alert .ux4g-alert-icon {
+    margin-top: var(--ux4g-space-1, 2px);
+}
+
+
+/* Mobile responsive style matching Image 1 */
+@media (max-width: 768px) {
+    .ux4g-feedback-annual-income-section,
+    .ux4g-feedback-mobile-section,
+    .ux4g-feedback-identity-section,
+    .ux4g-feedback-category-section,
+    .ux4g-feedback-citizen-note-section,
+    .ux4g-feedback-verification-section,
+    .ux4g-feedback-completion-section {
+        background-color: var(--ux4g-bg-neutral);
+        padding: var(--ux4g-padding-none);
+        min-height: calc(100vh - var(--ux4g-sz-72, 72px));
+        align-items: stretch;
+    }
+
+    .ux4g-feedback-annual-income-section .ux4g-container,
+    .ux4g-feedback-mobile-section .ux4g-container,
+    .ux4g-feedback-identity-section .ux4g-container,
+    .ux4g-feedback-category-section .ux4g-container,
+    .ux4g-feedback-citizen-note-section .ux4g-container,
+    .ux4g-feedback-verification-section .ux4g-container,
+    .ux4g-feedback-completion-section .ux4g-container {
+        display: block;
+        width: var(--ux4g-sz-full);
+        height: var(--ux4g-sz-full);
+    }
+
+    .ux4g-feedback-annual-income-card,
+    .ux4g-feedback-mobile-card,
+    .ux4g-feedback-identity-card,
+    .ux4g-feedback-category-card,
+    .ux4g-feedback-citizen-note-card,
+    .ux4g-feedback-verification-card,
+    .ux4g-feedback-completion-card {
+        border: var(--ux4g-border-width-none);
+        border-radius: var(--ux4g-radius-none);
+        box-shadow: none;
+        min-height: var(--ux4g-sz-full);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: var(--ux4g-padding-xl);
+    }
+
+    /* Push button to bottom */
+    .ux4g-feedback-btn-wrapper {
+        margin-top: auto;
+        width: var(--ux4g-sz-full);
+    }
+
+    .ux4g-feedback-submit-btn {
+        width: var(--ux4g-sz-full);
+    }
+}
+
+/* Verification Page Specific Styles */
+.ux4g-feedback-doc-status-card {
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-lg);
+    padding: var(--ux4g-padding-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-m);
+    background-color: var(--ux4g-bg-neutral-elevated);
+}
+
+.ux4g-feedback-doc-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.ux4g-feedback-doc-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-space-1, 2px);
+}
+
+.ux4g-feedback-doc-title {
+    color: var(--ux4g-text-neutral-primary);
+}
+
+.ux4g-feedback-progress-bar {
+    --ux4g-progress-fill-start: var(--ux4g-bg-warning-soft);
+    --ux4g-progress-fill-end: var(--ux4g-bg-warning-strong);
+}
+
+.ux4g-feedback-timeline-container {
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-lg);
+    padding: var(--ux4g-padding-xl);
+    background-color: var(--ux4g-bg-neutral-elevated);
+}
+
+/* Override active timeline card color in feedback flow to look normal */
+.ux4g-feedback-verification-card .ux4g-journey-step-active .ux4g-journey-card {
+    border: var(--ux4g-border-thin) solid var(--ux4g-border-color-neutral-subtle) !important;
+    background: var(--ux4g-bg-neutral-elevated) !important;
+}
+
+/* Mobile responsive overrides for timeline container and doc status card */
+@media (max-width: 768px) {
+    .ux4g-feedback-doc-status-card,
+    .ux4g-feedback-timeline-container {
+        border: var(--ux4g-border-width-none);
+        padding: var(--ux4g-padding-none);
+        border-radius: var(--ux4g-radius-none);
+        background-color: transparent;
+    }
+}
+
+/* Service Completion Specific Layout & Styles */
+.ux4g-feedback-completion-section .ux4g-container {
+    flex-direction: column;
+    gap: var(--ux4g-stack-m);
+}
+.ux4g-feedback-completion-section .ux4g-feedback{
+        width: var(--ux4g-sz-full);
+    max-width: 700px;
+}
+
+.ux4g-feedback-doc-box {
+    background-color: var(--ux4g-bg-neutral-soft, #f4f4f5);
+    border-radius: var(--ux4g-radius-md, 8px);
+    padding: var(--ux4g-padding-m) var(--ux4g-padding-l);
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-s, 8px);
+    box-sizing: border-box;
+    width: var(--ux4g-sz-full);
+}
+
+.ux4g-feedback-doc-name {
+    font-weight: var(--ux4g-fw-semibold, 600);
+    color: var(--ux4g-text-neutral-primary);
+    font-size: var(--ux4g-fs-14, 14px);
+}
+
+.ux4g-feedback-doc-meta {
+    color: var(--ux4g-text-neutral-secondary);
+    font-size: var(--ux4g-fs-14, 14px);
+}
+
+.ux4g-feedback-completion-btn-row {
+    display: flex;
+    gap: var(--ux4g-inline-m, 16px);
+    width: var(--ux4g-sz-full);
+    margin-top: var(--ux4g-margin-s);
+}
+
+.ux4g-feedback-completion-btn-row .ux4g-btn-primary,
+.ux4g-feedback-completion-btn-row .ux4g-btn-outline-primary {
+    flex: 1;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   UX4G Help Centre Contact Options Component Refinements (Page 3)
+   ========================================================================== */
+.ux4g-support-channels-list {
+    margin-top: var(--ux4g-space-4);
+    display: flex;
+    flex-direction: column ;
+    gap: var(--ux4g-stack-s);
+}
+
+.ux4g-support-channel-card {
+    background-color: var(--ux4g-bg-neutral-soft);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-md);
+    padding: var(--ux4g-padding-m);
+    min-height: 80px;
+    gap: var(--ux4g-space-3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ux4g-support-channel-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--ux4g-shadow-l1);
+}
+
+.ux4g-support-icon-wrapper {
+    width: var(--ux4g-sz-48);
+    height: var(--ux4g-sz-48);
+    background-color: var(--ux4g-bg-primary-soft);
+    border-radius: var(--ux4g-radius-full, 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ux4g-support-icon-wrapper .ux4g-icon-outlined {
+    color: var(--ux4g-text-brand-primary-default);
+    font-size: var(--ux4g-fs-24);
+}
+
+.ux4g-support-complaint-link {
+    color: var(--ux4g-text-brand-primary-default);
+    font-size: var(--ux4g-fs-16);
+    font-weight: var(--ux4g-fw-medium);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ux4g-support-complaint-link:hover {
+    color: var(--ux4g-text-brand-primary-default);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   UX4G Help Centre Contact Options Component Refinements (Page 4)
+   ========================================================================== */
+   .ux4g-chat-support-card{
+       min-height: 455px;
+    }
+    .ux4g-chat-support-card .ux4g-form-action-footer{
+        margin-block-start: auto;
+    }
+    .ux4g-chat-support-card .ux4g-live-chat-support{
+        margin-inline-end: var(--ux4g-margin-s);
+        margin-block-end: var(--ux4g-margin-s);
+    }
+/* ==========================================================================
+UX4G Help Centre Contact Options Component Refinements (Page 6)
+========================================================================== */
+/* Parent wrapper positioning */
+.ux4g-custom-list-dropdown {
+    position: relative;
+}
+/* Trigger styling */
+.ux4g-custom-dropdown-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-md);
+    padding: 10px 16px;
+    font-size: var(--ux4g-fs-14);
+    cursor: pointer;
+}
+/* Custom list layout */
+.ux4g-custom-list-dropdown .ux4g-custom-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    margin-top: 4px;
+    padding: 8px 0;
+    background: #ffffff;
+    border: 1px solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-md);
+    box-shadow: var(--ux4g-shadow-l2);
+    list-style: none;
+    display: none; /* Toggled to block via JS when button is clicked */
+}
+/* Individual list item layout and states */
+.ux4g-custom-list-dropdown .ux4g-custom-dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--ux4g-padding-s) var(--ux4g-padding-l);
+    font-size: var(--ux4g-fs-14);
+    line-height: var(--ux4g-lh-20);
+    font-weight: var(--ux4g-fw-regular);
+    color: var(--ux4g-text-neutral-primary);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.ux4g-custom-list-dropdown .ux4g-custom-dropdown-item:hover {
+    background-color: var(--ux4g-bg-primary-soft);
+    color: var(--ux4g-text-brand-primary-default);
+}
+.ux4g-custom-list-dropdown .ux4g-custom-dropdown-item.is-selected,
+.ux4g-custom-list-dropdown .ux4g-custom-dropdown-item.active {
+    background-color: var(--ux4g-bg-primary-soft);
+    color: var(--ux4g-text-brand-primary-default);
+    font-weight: var(--ux4g-fw-medium);
+}
+.ux4g-custom-list-dropdown .ux4g-custom-dropdown-item .ux4g-dropdown-single-check {
+    opacity: 0;
+    font-size: 20px;
+    color: var(--ux4g-text-brand-primary-default);
+    transition: opacity 0.2s ease;
+}
+.ux4g-custom-list-dropdown .ux4g-custom-dropdown-item.is-selected .ux4g-dropdown-single-check,
+.ux4g-custom-list-dropdown .ux4g-custom-dropdown-item.active .ux4g-dropdown-single-check {
+    opacity: 1;
+}
+
+
+/* Ensure mobile layout switches cards to column stack */
+@media (max-width: 576px) {
+    .ux4g-support-channel-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--ux4g-space-3);
+        padding: var(--ux4g-padding-m);
+    }
+    
+    .ux4g-support-channel-card button {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   UX4G Help Centre Contact Options Component Refinements (Page 7)
+   ========================================================================== */
+
+.ux4g-nearest-csc-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-space-2, 8px);
+}
+
+.ux4g-csc-search-container {
+    width: 100%;
+}
+
+.ux4g-nearest-csc-info-box {
+    background-color: var(--ux4g-bg-neutral-soft);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    border-radius: var(--ux4g-radius-md);
+    padding: var(--ux4g-padding-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-xs);
+}
+
+
+
+.ux4g-nearest-csc-info-box .ux4g-csc-address {
+    font-size: var(--ux4g-fs-14, 14px);
+    color: var(--ux4g-text-neutral-secondary);
+    margin: 0;
+}
+
+.ux4g-nearest-csc-info-box .ux4g-csc-meta {
+    font-size: var(--ux4g-fs-12, 12px);
+    color: var(--ux4g-text-neutral-tertiary);
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+.ux4g-csc-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-xs, 8px);
+    width: 100%;
+}
+
+/* ==========================================================================
+   UX4G Language Switcher Component Refinements (Page Language Switcher 1)
+   ========================================================================== */
+.ux4g-language-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-space-2, 8px);
+}
+
+.ux4g-custom-dropdown-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.ux4g-custom-dropdown-wrapper .ux4g-dropdown-leading-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ux4g-text-neutral-secondary);
+    font-size: var(--ux4g-fs-18, 18px);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.ux4g-custom-dropdown-wrapper .ux4g-custom-dropdown-btn {
+    padding-left: 44px; /* Make room for the leading globe icon */
+}
+
+
+@media (max-width: 768px) {
+    .ux4g-feedback-completion-section .ux4g-container {
+        display: flex;
+        flex-direction: column;
+        height: var(--ux4g-sz-full);
+    }
+    
+    .ux4g-feedback-completion-card {
+        flex: 1;
+    }
+
+    .ux4g-feedback-completion-btn-row {
+        flex-direction: column-reverse;
+        gap: var(--ux4g-stack-s);
+        margin-top: auto;
+        width: var(--ux4g-sz-full);
+    }
+    
+    .ux4g-feedback-completion-btn-row .ux4g-btn-primary,
+    .ux4g-feedback-completion-btn-row .ux4g-btn-outline-primary {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .ux4g-feedback-completion-section .ux4g-form-footer {
+        padding-block: var(--ux4g-padding-xl) var(--ux4g-padding-l);
+        width: 100%;
+        text-align: center;
+        background-color: var(--ux4g-bg-neutral);
+    }
+}
+

@@ -15,6 +15,7 @@
         .theme-toggle {
             position: fixed;
             top: 20px;
+            right: 20px;
             z-index: 999;
             padding: 10px 16px;
             border-radius: 99px;
@@ -720,21 +721,24 @@
                     <div class="ux4g-sla-variant-column">
                         <span class="ux4g-label-m-default">Rectangular</span>
                         <div class="ux4g-sla-variant-stack">
-                            <span class="ux4g-sla-badge ux4g-sla-badge-rect ux4g-sla-status-default"><span
-                                    class="ux4g-badge-dot-primary ux4g-badge-s" aria-hidden="true"></span><span
+                            <span class="ux4g-sla-badge ux4g-sla-badge-rect ux4g-sla-status-default">
+                                <span class="ux4g-badge-dot-primary ux4g-badge-s" aria-hidden="true"></span><span
                                     class="ux4g-label-m-default ux4g-sla-badge-label">Label</span><span
                                     class="ux4g-sla-badge-divider" aria-hidden="true"></span><span
                                     class="ux4g-label-s-default ux4g-sla-badge-status">Status</span></span>
+
                             <span class="ux4g-sla-badge ux4g-sla-badge-rect ux4g-sla-status-warning"><span
                                     class="ux4g-badge-dot-warning ux4g-badge-s" aria-hidden="true"></span><span
                                     class="ux4g-label-m-default ux4g-sla-badge-label">Label</span><span
                                     class="ux4g-sla-badge-divider" aria-hidden="true"></span><span
                                     class="ux4g-label-s-default ux4g-sla-badge-status">Status</span></span>
+
                             <span class="ux4g-sla-badge ux4g-sla-badge-rect ux4g-sla-status-error"><span
                                     class="ux4g-badge-dot-danger ux4g-badge-s" aria-hidden="true"></span><span
                                     class="ux4g-label-m-default ux4g-sla-badge-label">Label</span><span
                                     class="ux4g-sla-badge-divider" aria-hidden="true"></span><span
                                     class="ux4g-label-s-default ux4g-sla-badge-status">Status</span></span>
+
                             <span class="ux4g-sla-badge ux4g-sla-badge-rect ux4g-sla-status-success"><span
                                     class="ux4g-badge-dot-success ux4g-badge-s" aria-hidden="true"></span><span
                                     class="ux4g-label-m-default ux4g-sla-badge-label">Label</span><span
@@ -927,7 +931,7 @@
 
     <!-- //Navbar Pattern -->
     <!-- Type-1 - Navbar Pattern -->
-    <section class="ux4g-mt-xl ux4g-d-none ux4g-md-d-block">
+    <section class="ux4g-mt-xl ">
         <h2 class="ux4g-heading-m-strong ux4g-mb-l">Navbar Pattern</h2>
         <nav class="ux4g-navbar">
             <div class="ux4g-container">
@@ -943,49 +947,65 @@
                         </div>
                     </div>
 
-                    <!-- Navigation Links -->
-                    <ul class="ux4g-navbar-links">
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                        <li class="ux4g-dropdown ux4g-dropdown-button">
-                            <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown">
-                                <span>Label</span>
-                                <span
-                                    class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret">arrow_drop_down</span>
-                            </a>
-                            <div class="ux4g-dropdown-menu">
-                                <ul class="ux4g-list ux4g-list-default ux4g-list-s">
-                                    <li class="ux4g-list-item" role="option">
-                                        <button class="ux4g-list-item-row" type="button">
-                                            <span class="ux4g-list-item-start">
-                                                <span aria-hidden="true">Label</span>
-                                            </span>
-                                        </button>
-                                    </li>
-                                    <li class="ux4g-list-item" role="option">
-                                        <button class="ux4g-list-item-row" type="button">
-                                            <span class="ux4g-list-item-start">
-                                                <span aria-hidden="true">Label</span>
-                                            </span>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                    </ul>
+                    <!-- Desktop Navigation & Actions -->
+                    <div class="ux4g-navbar-desktop ux4g-d-flex ux4g-ai-center ux4g-inline-gap-l">
+                        <!-- Navigation Links -->
+                        <ul class="ux4g-navbar-links">
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                            <li class="ux4g-dropdown ux4g-dropdown-button">
+                                <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown">
+                                    <span>Label</span>
+                                    <span
+                                        class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret">arrow_drop_down</span>
+                                </a>
+                                <div class="ux4g-dropdown-menu">
+                                    <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                        <li class="ux4g-list-item" role="option">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                        <li class="ux4g-list-item" role="option">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                        </ul>
 
-                    <!-- Actions -->
-                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
-                        <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20">search</i>
-                        <button class="ux4g-btn-primary ux4g-btn-md">Button</button>
+                        <!-- Actions -->
+                        <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+                            <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20">search</i>
+                            <button class="ux4g-btn-primary ux4g-btn-md">Button</button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu -->
+                    <div class="ux4g-navbar-mobile">
+                        <div class="ux4g-relative ux4g-d-flex ux4g-flex-col ux4g-stack-gap-2xs">
+                            <div class="ux4g-dropdown ux4g-dropdown-default ux4g-dropdown-overflow ux4g-dropdown-md">
+                                <button aria-label="Overflow dropdown outlined medium"
+                                    class="ux4g-dropdown-control ux4g-btn-outline-primary" type="button"
+                                    data-ux-toggle="dropdown">
+                                    <span class="ux4g-icon-outlined">menu</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </nav>
     </section>
     <!-- Type-1.1 - Navbar Pattern with two button -->
-    <section class="ux4g-mt-xl ux4g-d-none ux4g-md-d-block">
+    <section class="ux4g-mt-xl ">
         <h2 class="ux4g-heading-m-strong ux4g-mb-l">Navbar Pattern</h2>
         <nav class="ux4g-navbar">
             <div class="ux4g-container">
@@ -1001,44 +1021,60 @@
                         </div>
                     </div>
 
-                    <!-- Navigation Links -->
-                    <ul class="ux4g-navbar-links">
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                        <li class="ux4g-dropdown ux4g-dropdown-button">
-                            <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown">
-                                <span>Label</span>
-                                <span
-                                    class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret">arrow_drop_down</span>
-                            </a>
-                            <div class="ux4g-dropdown-menu">
-                                <ul class="ux4g-list ux4g-list-default ux4g-list-s">
-                                    <li class="ux4g-list-item" role="option">
-                                        <button class="ux4g-list-item-row" type="button">
-                                            <span class="ux4g-list-item-start">
-                                                <span aria-hidden="true">Label</span>
-                                            </span>
-                                        </button>
-                                    </li>
-                                    <li class="ux4g-list-item" role="option">
-                                        <button class="ux4g-list-item-row" type="button">
-                                            <span class="ux4g-list-item-start">
-                                                <span aria-hidden="true">Label</span>
-                                            </span>
-                                        </button>
-                                    </li>
-                                </ul>
+                    <!-- Desktop Navigation & Actions -->
+                    <div class="ux4g-navbar-desktop ux4g-d-flex ux4g-ai-center ux4g-inline-gap-l">
+                        <!-- Navigation Links -->
+                        <ul class="ux4g-navbar-links">
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                            <li class="ux4g-dropdown ux4g-dropdown-button">
+                                <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown">
+                                    <span>Label</span>
+                                    <span
+                                        class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret">arrow_drop_down</span>
+                                </a>
+                                <div class="ux4g-dropdown-menu">
+                                    <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                        <li class="ux4g-list-item" role="option">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                        <li class="ux4g-list-item" role="option">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                        </ul>
+
+                        <!-- Actions -->
+                        <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+                            <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20">search</i>
+                            <button class="ux4g-btn-outline-primary ux4g-btn-md">Button</button>
+                            <button class="ux4g-btn-primary ux4g-btn-md">Button</button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu -->
+                    <div class="ux4g-navbar-mobile">
+                        <div class="ux4g-relative ux4g-d-flex ux4g-flex-col ux4g-stack-gap-2xs">
+                            <div class="ux4g-dropdown ux4g-dropdown-default ux4g-dropdown-overflow ux4g-dropdown-md">
+                                <button aria-label="Overflow dropdown outlined medium"
+                                    class="ux4g-dropdown-control ux4g-btn-outline-primary" type="button"
+                                    data-ux-toggle="dropdown">
+                                    <span class="ux4g-icon-outlined">menu</span>
+                                </button>
+
                             </div>
-                        </li>
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                    </ul>
-
-                    <!-- Actions -->
-                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
-                        <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20">search</i>
-                        <button class="ux4g-btn-outline-primary ux4g-btn-md">Button</button>
-
-                        <button class="ux4g-btn-primary ux4g-btn-md">Button</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1047,7 +1083,7 @@
     </section>
 
     <!-- Type-1.2 - Navbar Pattern after login-->
-    <section class="ux4g-mt-xl ux4g-d-none ux4g-md-d-block">
+    <section class="ux4g-mt-xl ">
         <h2 class="ux4g-heading-m-strong ux4g-mb-l">Navbar Pattern</h2>
         <nav class="ux4g-navbar">
             <div class="ux4g-container">
@@ -1063,44 +1099,61 @@
                         </div>
                     </div>
 
-                    <!-- Navigation Links -->
-                    <ul class="ux4g-navbar-links">
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                        <li class="ux4g-dropdown ux4g-dropdown-button">
-                            <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown">
-                                <span>Label</span>
-                                <span
-                                    class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret">arrow_drop_down</span>
-                            </a>
-                            <div class="ux4g-dropdown-menu">
-                                <ul class="ux4g-list ux4g-list-default ux4g-list-s">
-                                    <li class="ux4g-list-item" role="option">
-                                        <button class="ux4g-list-item-row" type="button">
-                                            <span class="ux4g-list-item-start">
-                                                <span aria-hidden="true">Label</span>
-                                            </span>
-                                        </button>
-                                    </li>
-                                    <li class="ux4g-list-item" role="option">
-                                        <button class="ux4g-list-item-row" type="button">
-                                            <span class="ux4g-list-item-start">
-                                                <span aria-hidden="true">Label</span>
-                                            </span>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                    </ul>
+                    <!-- Desktop Navigation & Actions -->
+                    <div class="ux4g-navbar-desktop ux4g-d-flex ux4g-ai-center ux4g-inline-gap-l">
+                        <!-- Navigation Links -->
+                        <ul class="ux4g-navbar-links">
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                            <li class="ux4g-dropdown ux4g-dropdown-button">
+                                <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown">
+                                    <span>Label</span>
+                                    <span
+                                        class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret">arrow_drop_down</span>
+                                </a>
+                                <div class="ux4g-dropdown-menu">
+                                    <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                        <li class="ux4g-list-item" role="option">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                        <li class="ux4g-list-item" role="option">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                        </ul>
 
-                    <!-- Actions -->
-                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
-                        <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20">search</i>
-                        <div class="ux4g-avatar ux4g-relative">
-                            <img src="https://i.pravatar.cc/150?u=s1" alt="avatar">
-                            <span class="ux4g-badge-dot-success avatar-badge ux4g-badge-m"></span>
+                        <!-- Actions -->
+                        <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+                            <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20">search</i>
+                            <div class="ux4g-avatar ux4g-relative">
+                                <img src="https://i.pravatar.cc/150?u=s1" alt="avatar">
+                                <span class="ux4g-badge-dot-success avatar-badge ux4g-badge-m"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu -->
+                    <div class="ux4g-navbar-mobile">
+                        <div class="ux4g-relative ux4g-d-flex ux4g-flex-col ux4g-stack-gap-2xs">
+                            <div class="ux4g-dropdown ux4g-dropdown-default ux4g-dropdown-overflow ux4g-dropdown-md">
+                                <button aria-label="Overflow dropdown outlined medium"
+                                    class="ux4g-dropdown-control ux4g-btn-outline-primary" type="button"
+                                    data-ux-toggle="dropdown">
+                                    <span class="ux4g-icon-outlined">menu</span>
+                                </button>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1111,7 +1164,7 @@
 
 
     <!-- Type-1.3 - Navbar Pattern with hamburger icon-->
-    <section class="ux4g-mt-xl ux4g-d-none ux4g-md-d-block">
+    <section class="ux4g-mt-xl ">
         <h2 class="ux4g-heading-m-strong ux4g-mb-l">Navbar Pattern with hamburger icon</h2>
         <nav class="ux4g-navbar">
             <div class="ux4g-container">
@@ -1127,46 +1180,63 @@
                         </div>
                     </div>
 
-                    <!-- Navigation Links -->
-                    <ul class="ux4g-navbar-links">
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                        <li class="ux4g-dropdown ux4g-dropdown-button">
-                            <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown">
-                                <span>Label</span>
-                                <span
-                                    class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret">arrow_drop_down</span>
-                            </a>
-                            <div class="ux4g-dropdown-menu">
-                                <ul class="ux4g-list ux4g-list-default ux4g-list-s">
-                                    <li class="ux4g-list-item" role="option">
-                                        <button class="ux4g-list-item-row" type="button">
-                                            <span class="ux4g-list-item-start">
-                                                <span aria-hidden="true">Label</span>
-                                            </span>
-                                        </button>
-                                    </li>
-                                    <li class="ux4g-list-item" role="option">
-                                        <button class="ux4g-list-item-row" type="button">
-                                            <span class="ux4g-list-item-start">
-                                                <span aria-hidden="true">Label</span>
-                                            </span>
-                                        </button>
-                                    </li>
-                                </ul>
+                    <!-- Desktop Navigation & Actions -->
+                    <div class="ux4g-navbar-desktop ux4g-d-flex ux4g-ai-center ux4g-inline-gap-l">
+                        <!-- Navigation Links -->
+                        <ul class="ux4g-navbar-links">
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                            <li class="ux4g-dropdown ux4g-dropdown-button">
+                                <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown">
+                                    <span>Label</span>
+                                    <span
+                                        class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret">arrow_drop_down</span>
+                                </a>
+                                <div class="ux4g-dropdown-menu">
+                                    <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                        <li class="ux4g-list-item" role="option">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                        <li class="ux4g-list-item" role="option">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                        </ul>
+
+                        <!-- Actions -->
+                        <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+                            <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20">token</i>
+
+                            <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20">search</i>
+                            <button class="ux4g-icon-btn ux4g-icon-btn-outline-primary">
+                                <i class="ux4g-icon-outlined">menu</i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu -->
+                    <div class="ux4g-navbar-mobile">
+                        <div class="ux4g-relative ux4g-d-flex ux4g-flex-col ux4g-stack-gap-2xs">
+                            <div class="ux4g-dropdown ux4g-dropdown-default ux4g-dropdown-overflow ux4g-dropdown-md">
+                                <button aria-label="Overflow dropdown outlined medium"
+                                    class="ux4g-dropdown-control ux4g-btn-outline-primary" type="button"
+                                    data-ux-toggle="dropdown">
+                                    <span class="ux4g-icon-outlined">menu</span>
+                                </button>
+
                             </div>
-                        </li>
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                    </ul>
-
-                    <!-- Actions -->
-                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
-                        <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20">token</i>
-
-                        <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20">search</i>
-                        <button class="ux4g-icon-btn ux4g-icon-btn-outline-primary">
-                            <i class="ux4g-icon-outlined">menu</i>
-                        </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1176,7 +1246,7 @@
 
 
     <!-- Type-1.2  Navbar Pattern Pills -->
-    <section class="ux4g-mt-xl ux4g-d-none ux4g-md-d-block">
+    <section class="ux4g-mt-xl ">
         <h2 class="ux4g-heading-m-strong ux4g-mb-l">Navbar Pattern with pills</h2>
         <nav class="ux4g-navbar ux4g-radius-full">
             <div class="ux4g-container">
@@ -1192,42 +1262,59 @@
                         </div>
                     </div>
 
-                    <!-- Navigation Links -->
-                    <ul class="ux4g-navbar-links">
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                        <li class="ux4g-dropdown ux4g-dropdown-button">
-                            <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown">
-                                <span>Label</span>
-                                <span
-                                    class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret">arrow_drop_down</span>
-                            </a>
-                            <div class="ux4g-dropdown-menu">
-                                <ul class="ux4g-list ux4g-list-default ux4g-list-s">
-                                    <li class="ux4g-list-item" role="option">
-                                        <button class="ux4g-list-item-row" type="button">
-                                            <span class="ux4g-list-item-start">
-                                                <span aria-hidden="true">Label</span>
-                                            </span>
-                                        </button>
-                                    </li>
-                                    <li class="ux4g-list-item" role="option">
-                                        <button class="ux4g-list-item-row" type="button">
-                                            <span class="ux4g-list-item-start">
-                                                <span aria-hidden="true">Label</span>
-                                            </span>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
-                    </ul>
+                    <!-- Desktop Navigation & Actions -->
+                    <div class="ux4g-navbar-desktop ux4g-d-flex ux4g-ai-center ux4g-inline-gap-l">
+                        <!-- Navigation Links -->
+                        <ul class="ux4g-navbar-links">
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                            <li class="ux4g-dropdown ux4g-dropdown-button">
+                                <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown">
+                                    <span>Label</span>
+                                    <span
+                                        class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret">arrow_drop_down</span>
+                                </a>
+                                <div class="ux4g-dropdown-menu">
+                                    <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                        <li class="ux4g-list-item" role="option">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                        <li class="ux4g-list-item" role="option">
+                                            <button class="ux4g-list-item-row" type="button">
+                                                <span class="ux4g-list-item-start">
+                                                    <span aria-hidden="true">Label</span>
+                                                </span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="#" class="ux4g-text-link-sm">Label </a></li>
+                        </ul>
 
-                    <!-- Actions -->
-                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
-                        <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20">search</i>
-                        <button class="ux4g-btn-primary ux4g-btn-md">Button</button>
+                        <!-- Actions -->
+                        <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+                            <i class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20">search</i>
+                            <button class="ux4g-btn-primary ux4g-btn-md">Button</button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu -->
+                    <div class="ux4g-navbar-mobile">
+                        <div class="ux4g-relative ux4g-d-flex ux4g-flex-col ux4g-stack-gap-2xs">
+                            <div class="ux4g-dropdown ux4g-dropdown-default ux4g-dropdown-overflow ux4g-dropdown-md">
+                                <button aria-label="Overflow dropdown outlined medium"
+                                    class="ux4g-dropdown-control ux4g-btn-outline-primary" type="button"
+                                    data-ux-toggle="dropdown">
+                                    <span class="ux4g-icon-outlined">menu</span>
+                                </button>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1237,7 +1324,7 @@
     </section>
 
     <!-- Type-2 - Right Aligned Navbar Pattern -->
-    <section class="ux4g-mt-xl ux4g-d-none ux4g-md-d-block">
+    <section class="ux4g-mt-xl ">
         <h2 class="ux4g-heading-m-strong ux4g-mb-l">Right Aligned Navbar Pattern</h2>
         <nav class="ux4g-navbar ux4g-navbar-right">
             <div class="ux4g-container">
@@ -1253,8 +1340,8 @@
                         </div>
                     </div>
 
-                    <!-- Right Group: Nav Links + Actions -->
-                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-l">
+                    <!-- Right Group: Nav Links + Actions (Desktop) -->
+                    <div class="ux4g-navbar-desktop ux4g-d-flex ux4g-ai-center ux4g-inline-gap-l">
                         <!-- Navigation Links -->
                         <ul class="ux4g-navbar-links">
                             <li><a href="#" class="ux4g-text-link-sm">Label</a></li>
@@ -1294,13 +1381,27 @@
                             <button class="ux4g-btn-primary ux4g-btn-md">Button</button>
                         </div>
                     </div>
+
+                    <!-- Mobile Menu -->
+                    <div class="ux4g-navbar-mobile">
+                        <div class="ux4g-relative ux4g-d-flex ux4g-flex-col ux4g-stack-gap-2xs">
+                            <div class="ux4g-dropdown ux4g-dropdown-default ux4g-dropdown-overflow ux4g-dropdown-md">
+                                <button aria-label="Overflow dropdown outlined medium"
+                                    class="ux4g-dropdown-control ux4g-btn-outline-primary" type="button"
+                                    data-ux-toggle="dropdown">
+                                    <span class="ux4g-icon-outlined">menu</span>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
     </section>
 
     <!-- Type-2.1 - Right Aligned Navbar Pattern Pills -->
-    <section class="ux4g-mt-xl ux4g-d-none ux4g-md-d-block">
+    <section class="ux4g-mt-xl ">
         <h2 class="ux4g-heading-m-strong ux4g-mb-l">Right Aligned Navbar Pattern with pills</h2>
         <nav class="ux4g-navbar ux4g-radius-full">
             <div class="ux4g-container">
@@ -1316,8 +1417,8 @@
                         </div>
                     </div>
 
-                    <!-- Right Group: Nav Links + Actions -->
-                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-l">
+                    <!-- Right Group: Nav Links + Actions (Desktop) -->
+                    <div class="ux4g-navbar-desktop ux4g-d-flex ux4g-ai-center ux4g-inline-gap-l">
                         <!-- Navigation Links -->
                         <ul class="ux4g-navbar-links">
                             <li><a href="#" class="ux4g-text-link-sm">Label</a></li>
@@ -1357,13 +1458,27 @@
                             <button class="ux4g-btn-primary ux4g-btn-md">Button</button>
                         </div>
                     </div>
+
+                    <!-- Mobile Menu -->
+                    <div class="ux4g-navbar-mobile">
+                        <div class="ux4g-relative ux4g-d-flex ux4g-flex-col ux4g-stack-gap-2xs">
+                            <div class="ux4g-dropdown ux4g-dropdown-default ux4g-dropdown-overflow ux4g-dropdown-md">
+                                <button aria-label="Overflow dropdown outlined medium"
+                                    class="ux4g-dropdown-control ux4g-btn-outline-primary" type="button"
+                                    data-ux-toggle="dropdown">
+                                    <span class="ux4g-icon-outlined">menu</span>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
     </section>
 
     <!-- Type 3 Extended navbar with search -->
-    <section class="ux4g-mt-xl ux4g-d-none ux4g-md-d-block">
+    <section class="ux4g-mt-xl ">
         <h2 class="ux4g-heading-m-strong ux4g-mb-l">Extended Navbar with Search</h2>
         <nav class="ux4g-navbar">
             <div class="ux4g-container">
@@ -1381,7 +1496,7 @@
                     </div>
 
                     <!-- Center: Search Component -->
-                    <div class="ux4g-mx-l ux4g-w-100 ux4g-d-none ux4g-md-d-block" style="max-width: 480px;">
+                    <div class="ux4g-navbar-desktop ux4g-mx-l ux4g-w-100" style="max-width: 480px;">
                         <div class="ux4g-search-container">
                             <div class="ux4g-search">
                                 <span class="ux4g-icon-outlined ux4g-search-leading-icon">search</span>
@@ -1394,16 +1509,31 @@
                     </div>
 
                     <!-- Right Group: Actions -->
-                    <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
+                    <div class="ux4g-navbar-desktop ux4g-d-flex ux4g-ai-center ux4g-inline-gap-m">
                         <button class="ux4g-btn-primary ux4g-btn-md">Button</button>
                     </div>
+
+                    <!-- Mobile Menu -->
+                    <div class="ux4g-navbar-mobile">
+                        <div class="ux4g-relative ux4g-d-flex ux4g-flex-col ux4g-stack-gap-2xs">
+                            <div class="ux4g-dropdown ux4g-dropdown-default ux4g-dropdown-overflow ux4g-dropdown-md">
+                                <button aria-label="Overflow dropdown outlined medium"
+                                    class="ux4g-dropdown-control ux4g-btn-outline-primary" type="button"
+                                    data-ux-toggle="dropdown">
+                                    <span class="ux4g-icon-outlined">menu</span>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
 
                 <!-- Horizontal Divider -->
-                <hr class="ux4g-divider-horizontal ux4g-m-none">
+                <hr class="ux4g-navbar-desktop ux4g-divider-horizontal ux4g-m-none">
 
                 <!-- Bottom Row: Navigation Links -->
-                <div class="ux4g-navbar-wrap ux4g-py-xs">
+                <div class="ux4g-navbar-desktop ux4g-navbar-wrap ux4g-py-xs">
                     <ul class="ux4g-navbar-links ux4g-d-flex ux4g-ai-center ux4g-jc-between ux4g-w-100">
                         <li><a href="#" class="ux4g-text-link-sm">Label</a></li>
                         <li><a href="#" class="ux4g-text-link-sm">Label</a></li>
@@ -1441,7 +1571,7 @@
         </nav>
     </section>
 
-    <!-- //mobile view -->
+        <!-- //mobile view -->
     <section class="ux4g-mt-xl ">
         <h2 class="ux4g-heading-m-strong ux4g-mb-l">Mobile Navbar Patterns</h2>
 
@@ -1633,11 +1763,27 @@
         </div>
     </section>
 
+
+
     <!-- Empty State Patterns -->
     <section class="ux4g-mt-xl">
         <h2 class="ux4g-heading-m-strong ux4g-mb-l">Empty State Patterns</h2>
         <div class="ux4g-row ux4g-jc-center">
-            <!-- 1. Search -->
+            <!-- 1. notifications -->
+
+            <div class="ux4g-col-md-6 ux4g-col-lg-6 ux4g-mb-xl">
+                <div class="ux4g-empty-state">
+                    <button class="ux4g-icon-btn ux4g-icon-btn-primary ux4g-icon-btn-pill ux4g-bg-primary-soft">
+                        <i class="ux4g-icon-outlined ux4g-text-primary ">notifications</i>
+                    </button>
+
+                    <div class="ux4g-empty-state-content">
+                        <h3 class="ux4g-title-l-strong">No notifications</h3>
+                        <p class="ux4g-body-m-default">You're all caught up! New notifications will appear here.</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="ux4g-col-md-6 ux4g-col-lg-6 ux4g-mb-xl">
                 <div class="ux4g-empty-state">
                     <span class="ux4g-icon-outlined ux4g-empty-state-icon ux4g-text-primary">search</span>
@@ -1821,7 +1967,7 @@
                     <p class="ux4g-body-s-default ux4g-text-neutral-secondary">Thank you for your feedback. This helps
                         improve government services.</p>
                 </div>
-                <button class=" feedback-submitted-close-btn">Close</button>
+                <button class="ux4g-btn-outline-neutral">Close</button>
             </div>
         </div>
 
@@ -1911,7 +2057,7 @@
                     </div>
 
                     <!-- 50% -->
-                    <div class="ux4g-col-6 ">
+                    <div class="ux4g-col-12 ux4g-col-md-6 ">
                         <div class="ux4g-input-container ux4g-input-md">
                             <label class="ux4g-label-m-default" for="m-first-name">First Name</label>
                             <div class="ux4g-input">
@@ -1920,7 +2066,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ux4g-col-6 ">
+                    <div class="ux4g-col-12 ux4g-col-md-6 ">
                         <div class="ux4g-input-container ux4g-input-md">
                             <label class="ux4g-label-m-default" for="m-last-name">Last Name</label>
                             <div class="ux4g-input">
@@ -1930,7 +2076,7 @@
                     </div>
 
                     <!-- 33% -->
-                    <div class="ux4g-col-4 ">
+                    <div class="ux4g-col-12 ux4g-col-md-4 ">
                         <div class="ux4g-input-container ux4g-input-md">
                             <label class="ux4g-label-m-default" for="m-day">Day</label>
                             <div class="ux4g-input">
@@ -1938,7 +2084,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ux4g-col-4 ">
+                    <div class="ux4g-col-12 ux4g-col-md-4 ">
                         <div class="ux4g-input-container ux4g-input-md">
                             <label class="ux4g-label-m-default" for="m-month">Month</label>
                             <div class="ux4g-input">
@@ -1946,7 +2092,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ux4g-col-4 ">
+                    <div class="ux4g-col-12 ux4g-col-md-4 ">
                         <div class="ux4g-input-container ux4g-input-md">
                             <label class="ux4g-label-m-default" for="m-year">Year</label>
                             <div class="ux4g-input">
@@ -1988,7 +2134,7 @@
                         </div>
                     </div>
                     <!-- 50% -->
-                    <div class="ux4g-col-6">
+                    <div class="ux4g-col-12 ux4g-col-md-6">
                         <div class="ux4g-input-container">
                             <span class="ux4g-label-m-default">State</span>
                             <div
@@ -2006,7 +2152,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ux4g-col-6">
+                    <div class="ux4g-col-12 ux4g-col-md-6">
                         <div class="ux4g-input-container">
                             <span class="ux4g-label-m-default">District</span>
                             <div
@@ -2026,7 +2172,7 @@
                     </div>
 
                     <!-- 33% -->
-                    <div class="ux4g-col-4">
+                    <div class="ux4g-col-12 ux4g-col-md-4">
                         <div class="ux4g-input-container">
                             <span class="ux4g-label-m-default">Day</span>
                             <div
@@ -2040,7 +2186,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ux4g-col-4">
+                    <div class="ux4g-col-12 ux4g-col-md-4">
                         <div class="ux4g-input-container">
                             <span class="ux4g-label-m-default">Month</span>
                             <div
@@ -2054,7 +2200,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ux4g-col-4">
+                    <div class="ux4g-col-12 ux4g-col-md-4">
                         <div class="ux4g-input-container">
                             <span class="ux4g-label-m-default">Year</span>
                             <div
@@ -3765,7 +3911,132 @@
         <section class="ux4g-mt-xl ux4g-pb-xl">
             <div class="ux4g-container">
                 <h1 class="ux4g-heading-m-strong ux4g-mb-l">Time Slot / Compact</h1>
-                <div class="ux4g-time-slot-compact-container">
+                <div id="ux4g-time-slot-1" class="ux4g-time-slot-compact-container">
+                    <!-- Left Pane: Calendar -->
+                    <div class="ux4g-time-slot-compact-calendar">
+                        <div class="ux4g-time-slot-compact-header">
+                            <button class="ux4g-btn-icon ux4g-btn-text-neutral ux4g-btn-sm"><span
+                                    class="ux4g-icon-outlined">arrow_back</span></button>
+                            <span class="ux4g-time-slot-compact-month">May 2026</span>
+                            <button class="ux4g-btn-icon ux4g-btn-text-neutral ux4g-btn-sm"><span
+                                    class="ux4g-icon-outlined">arrow_forward</span></button>
+                        </div>
+                        <div class="ux4g-time-slot-compact-grid">
+                            <div class="ux4g-time-slot-day-name">Mo</div>
+                            <div class="ux4g-time-slot-day-name">Tu</div>
+                            <div class="ux4g-time-slot-day-name">We</div>
+                            <div class="ux4g-time-slot-day-name">Th</div>
+                            <div class="ux4g-time-slot-day-name">Fr</div>
+                            <div class="ux4g-time-slot-day-name">Sa</div>
+                            <div class="ux4g-time-slot-day-name">Su</div>
+                            <div class="ux4g-time-slot-date muted">27</div>
+                            <div class="ux4g-time-slot-date muted">28</div>
+                            <div class="ux4g-time-slot-date muted">29</div>
+                            <div class="ux4g-time-slot-date muted">30</div>
+                            <div class="ux4g-time-slot-date" data-date="1">1</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="2">2</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="3">3</div>
+                            <div class="ux4g-time-slot-date" data-date="4">4</div>
+                            <div class="ux4g-time-slot-date" data-date="5">5</div>
+                            <div class="ux4g-time-slot-date" data-date="6">6</div>
+                            <div class="ux4g-time-slot-date" data-date="7">7</div>
+                            <div class="ux4g-time-slot-date" data-date="8">8</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="9">9</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="10">10</div>
+                            <div class="ux4g-time-slot-date" data-date="11">11</div>
+                            <div class="ux4g-time-slot-date today" data-date="12">12</div>
+                            <div class="ux4g-time-slot-date" data-date="13">13</div>
+                            <div class="ux4g-time-slot-date" data-date="14">14</div>
+                            <div class="ux4g-time-slot-date" data-date="15">15</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="16">16</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="17">17</div>
+                            <div class="ux4g-time-slot-date" data-date="18">18</div>
+                            <div class="ux4g-time-slot-date" data-date="19">19</div>
+                            <div class="ux4g-time-slot-date" data-date="20">20</div>
+                            <div class="ux4g-time-slot-date" data-date="21">21</div>
+                            <div class="ux4g-time-slot-date" data-date="22">22</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="23">23</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="24">24</div>
+                            <div class="ux4g-time-slot-date" data-date="25">25</div>
+                            <div class="ux4g-time-slot-date" data-date="26">26</div>
+                            <div class="ux4g-time-slot-date" data-date="27">27</div>
+                            <div class="ux4g-time-slot-date" data-date="28">28</div>
+                            <div class="ux4g-time-slot-date" data-date="29">29</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="30">30</div>
+                            <div class="ux4g-time-slot-date weekly-off" data-date="31">31</div>
+                            <div class="ux4g-time-slot-date muted">1</div>
+                            <div class="ux4g-time-slot-date muted">2</div>
+                            <div class="ux4g-time-slot-date muted">3</div>
+                            <div class="ux4g-time-slot-date muted">4</div>
+                            <div class="ux4g-time-slot-date muted">5</div>
+                            <div class="ux4g-time-slot-date muted">6</div>
+                            <div class="ux4g-time-slot-date muted">7</div>
+                        </div>
+
+                        <div class="ux4g-time-slot-compact-legend">
+                            <div class="ux4g-time-slot-legend-item"><span class="ux4g-legend-box no-slots"></span> No
+                                slots</div>
+                            <div class="ux4g-time-slot-legend-item"><span class="ux4g-legend-box holiday"></span> Public
+                                holiday</div>
+                            <div class="ux4g-time-slot-legend-item"><span class="ux4g-legend-box weekly-off"></span>
+                                Weekly off</div>
+                        </div>
+                    </div>
+
+                    <!-- Right Pane: Slots -->
+                    <div class="ux4g-time-slot-compact-slots">
+                        <div class="ux4g-time-slot-compact-desktop-header">23rd April 2026</div>
+                        <div class="ux4g-time-slot-compact-list grid-2">
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>9:00 AM</span><span class="ux4g-slot-badge success">6</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>9:30 AM</span><span class="ux4g-slot-badge success">7</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>10:00 AM</span><span class="ux4g-slot-badge warning">1</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>10:30 AM</span><span class="ux4g-slot-badge success">9</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item disabled">
+                                <span>11:00 AM</span><span class="ux4g-slot-badge ux4g-slot-badge-neutral">0</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>11:30 AM</span><span class="ux4g-slot-badge warning">2</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>12:00 PM</span><span class="ux4g-slot-badge warning">2</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>12:30 PM</span><span class="ux4g-slot-badge success">3</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item disabled">
+                                <span>1:00 PM</span><span class="ux4g-slot-badge ux4g-slot-badge-neutral">0</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>1:30 PM</span><span class="ux4g-slot-badge success">7</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>2:00 PM</span><span class="ux4g-slot-badge success">3</span>
+                            </div>
+                            <div class="ux4g-time-slot-compact-slot-item">
+                                <span>2:30 PM</span><span class="ux4g-slot-badge warning">2</span>
+                            </div>
+                        </div>
+
+                        <div class="ux4g-time-slot-compact-actions">
+                            <button class="ux4g-btn ux4g-btn-outline-neutral">Cancel</button>
+                            <button class="ux4g-btn ux4g-btn-primary" disabled="">Confirm</button>
+                        </div>
+        </section>
+
+
+
+          <section class="ux4g-mt-xl ux4g-pb-xl">
+            <div class="ux4g-container">
+                <h1 class="ux4g-heading-m-strong ux4g-mb-l">Time Slot / Compact</h1>
+                <div id="ux4g-time-slot-2" class="ux4g-time-slot-compact-container">
                     <!-- Left Pane: Calendar -->
                     <div class="ux4g-time-slot-compact-calendar">
                         <div class="ux4g-time-slot-compact-header">
@@ -3937,20 +4208,20 @@
                     <div class="ux4g-result-list-content accordion-content">
                         <div class="ux4g-result-list-details">
                             <div class="ux4g-result-list-detail-item">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Submitted Date</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">1 Apr 2026</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Submitted Date</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">1 Apr 2026</span>
                             </div>
                             <div class="ux4g-result-list-detail-item">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Assigned Officer</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Rahul Sharma</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Assigned Officer</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Rahul Sharma</span>
                             </div>
                             <div class="ux4g-result-list-detail-item">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Next Step</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Verification</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Next Step</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Verification</span>
                             </div>
                             <div class="ux4g-result-list-detail-item ux4g-result-list-full-width">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Documents</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">ID Proof, Address
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Documents</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">ID Proof, Address
                                     Proof</span>
                             </div>
                         </div>
@@ -4004,49 +4275,49 @@
                         <div class="ux4g-result-list-details">
                             <!-- Mobile Specific Grid Items -->
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Issued</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">05 Apr 2026</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Issued</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">05 Apr 2026</span>
                             </div>
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Valid till</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">05 Apr 2027</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Valid till</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">05 Apr 2027</span>
                             </div>
 
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Reference Number</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">INC-2026-MH-04127</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Reference Number</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">INC-2026-MH-04127</span>
                             </div>
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Last Updated
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Last Updated
                                     Date</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">10 Apr 2026</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">10 Apr 2026</span>
                             </div>
 
                             <!-- Common & Desktop Specific Grid Items -->
                             <div class="ux4g-result-list-detail-item">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Submitted Date</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">1 Apr 2026</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Submitted Date</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">1 Apr 2026</span>
                             </div>
                             <div class="ux4g-result-list-detail-item">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Assigned Officer</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Rahul Sharma</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Assigned Officer</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Rahul Sharma</span>
                             </div>
                             <div class="ux4g-result-list-detail-item ux4g-d-none ux4g-md-d-flex">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Next Step</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Verification</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Next Step</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Verification</span>
                             </div>
 
                             <!-- Mobile Specific Department -->
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Department</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Revenue
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Department</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Revenue
                                     Department</span>
                             </div>
 
                             <!-- Documents (Full width on desktop, regular on mobile) -->
                             <div class="ux4g-result-list-detail-item ux4g-result-list-full-width">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Documents</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">ID Proof, Address
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Documents</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">ID Proof, Address
                                     Proof</span>
                             </div>
                         </div>
@@ -4097,40 +4368,40 @@
                         <div class="ux4g-result-list-details">
                             <!-- Mobile Specific Grid Items -->
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Reference Number</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">INC-2026-MH-04127</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Reference Number</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">INC-2026-MH-04127</span>
                             </div>
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Last Updated
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Last Updated
                                     Date</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">10 Apr 2026</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">10 Apr 2026</span>
                             </div>
 
                             <!-- Common & Desktop Specific Grid Items -->
                             <div class="ux4g-result-list-detail-item">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Submitted Date</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">1 Apr 2026</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Submitted Date</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">1 Apr 2026</span>
                             </div>
                             <div class="ux4g-result-list-detail-item">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Assigned Officer</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Rahul Sharma</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Assigned Officer</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Rahul Sharma</span>
                             </div>
                             <div class="ux4g-result-list-detail-item ux4g-d-none ux4g-md-d-flex">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Next Step</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Verification</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Next Step</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Verification</span>
                             </div>
 
                             <!-- Mobile Specific Department -->
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Department</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Revenue
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Department</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Revenue
                                     Department</span>
                             </div>
 
                             <!-- Documents -->
                             <div class="ux4g-result-list-detail-item ux4g-result-list-full-width">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Documents</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">ID Proof, Address
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Documents</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">ID Proof, Address
                                     Proof</span>
                             </div>
                         </div>
@@ -4179,42 +4450,42 @@
                         <div class="ux4g-result-list-details">
                             <!-- Mobile Specific (Reference & SLA) -->
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Reference Number</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">GRV-2026-04127</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Reference Number</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">GRV-2026-04127</span>
                             </div>
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">SLA Status</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">SLA Status</span>
                                 <span
-                                    class="ux4g-result-list-detail-value ux4g-body-s-default ux4g-result-list-metadata-warning">
+                                    class="ux4g-text-neutral-secondary ux4g-body-s-default ux4g-result-list-metadata-warning">
                                     <span class="ux4g-icon-outlined ux4g-fs-14">priority_high</span> SLA 3 days overdue
                                 </span>
                             </div>
 
                             <!-- Common & Desktop Specific Grid Items -->
                             <div class="ux4g-result-list-detail-item">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Submitted Date</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">1 Apr 2026</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Submitted Date</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">1 Apr 2026</span>
                             </div>
                             <div class="ux4g-result-list-detail-item">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Assigned Officer</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Rahul Sharma</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Assigned Officer</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Rahul Sharma</span>
                             </div>
                             <div class="ux4g-result-list-detail-item ux4g-d-none ux4g-md-d-flex">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Next Step</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Verification</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Next Step</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Verification</span>
                             </div>
 
                             <!-- Mobile Specific Department -->
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Department</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Revenue
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Department</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Revenue
                                     Department</span>
                             </div>
 
                             <!-- Documents -->
                             <div class="ux4g-result-list-detail-item ux4g-result-list-full-width">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Documents</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">ID Proof, Address
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Documents</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">ID Proof, Address
                                     Proof</span>
                             </div>
                         </div>
@@ -4265,39 +4536,39 @@
                         <div class="ux4g-result-list-details">
                             <!-- Mobile Specific (Amount & Paid Date) -->
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Amount paid</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">₹400/-</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Amount paid</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">₹400/-</span>
                             </div>
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Paid on</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">12 Apr 2026</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Paid on</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">12 Apr 2026</span>
                             </div>
 
                             <!-- Common & Desktop Specific Grid Items -->
                             <div class="ux4g-result-list-detail-item">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Submitted Date</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">1 Apr 2026</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Submitted Date</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">1 Apr 2026</span>
                             </div>
                             <div class="ux4g-result-list-detail-item">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Assigned Officer</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Rahul Sharma</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Assigned Officer</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Rahul Sharma</span>
                             </div>
                             <div class="ux4g-result-list-detail-item ux4g-d-none ux4g-md-d-flex">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Next Step</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Verification</span>
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Next Step</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Verification</span>
                             </div>
 
                             <!-- Mobile Specific Department -->
                             <div class="ux4g-result-list-detail-item ux4g-md-d-none">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Department</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">Revenue
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Department</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Revenue
                                     Department</span>
                             </div>
 
                             <!-- Documents -->
                             <div class="ux4g-result-list-detail-item ux4g-result-list-full-width">
-                                <span class="ux4g-result-list-detail-label ux4g-label-s-default">Documents</span>
-                                <span class="ux4g-result-list-detail-value ux4g-body-s-default">ID Proof, Address
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Documents</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">ID Proof, Address
                                     Proof</span>
                             </div>
                         </div>
@@ -5451,6 +5722,40 @@
                                     fill="#0057FF" />
                                 <path d="M15.6443 5.12169H21.62V6.64929H15.6443V5.12169Z" fill="#0057FF" />
                             </svg>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18"
+                                fill="none">
+                                <g clip-path="url(#clip0_9162_21271)">
+                                    <path
+                                        d="M13.0332 3.09473L13.1426 3.28027L13.3525 3.32812L15.9707 3.92285L15.7246 6.59961L15.7051 6.81348L15.8457 6.97461L17.6172 9L15.8457 11.0254L15.7051 11.1865L15.7246 11.4004L15.9707 14.0762L13.3525 14.6719L13.1426 14.7197L13.0332 14.9043L11.6621 17.2178L9.19727 16.1592L8.99902 16.0742L8.80176 16.1602L6.33691 17.2246L4.9668 14.9131L4.85742 14.7275L4.64746 14.6807L2.02832 14.085L2.27539 11.3994L2.29492 11.1865L2.1543 11.0254L0.381836 8.99902L2.1543 6.96582L2.29492 6.80469L2.27539 6.5918L2.02832 3.90723L4.64648 3.32031L4.85645 3.27246L4.9668 3.08691L6.33691 0.772461L8.80273 1.83203L9 1.91699L9.19727 1.83203L11.6621 0.772461L13.0332 3.09473Z"
+                                        fill="#3271EA" stroke="var(--ux4g-bg-neutral)" />
+                                    <path
+                                        d="M6.78935 12.3834L4.78122 10.3584C4.45216 10.0293 4.45216 9.49777 4.78122 9.16871L4.84028 9.10965C5.16935 8.78059 5.70935 8.78059 6.03841 9.10965L7.39685 10.4765L11.7422 6.12277C12.0712 5.79371 12.6112 5.79371 12.9403 6.12277L12.9993 6.18184C13.3284 6.5109 13.3284 7.04246 12.9993 7.37152L8.00435 12.3834C7.65841 12.7125 7.12685 12.7125 6.78935 12.3834Z"
+                                        fill="#FAFAFA" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_9162_21271">
+                                        <rect width="18" height="18" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18"
+                                fill="none">
+                                <g clip-path="url(#clip0_9162_21342)">
+                                    <path
+                                        d="M8.49609 0.854492C8.68586 0.381642 9.31414 0.381642 9.50391 0.854492V0.856445L11.4922 5.76465L11.6064 6.04785L11.9111 6.0752L16.9912 6.52637H16.9941C17.4435 6.56381 17.7098 7.21096 17.2998 7.58301L17.2988 7.58398L13.4395 11.083L13.2236 11.2783L13.2871 11.5625L14.4443 16.7568C14.5047 17.0287 14.3963 17.2589 14.2246 17.3896C14.0561 17.5179 13.8388 17.5444 13.6328 17.4141H13.6318L9.26758 14.6523L9.00098 14.4834L8.7334 14.6514L4.36816 17.4023L4.36719 17.4033C4.16127 17.5336 3.9439 17.5062 3.77539 17.3779C3.60391 17.2472 3.49549 17.0177 3.55566 16.7461L4.71289 11.5518L4.77637 11.2676L4.56055 11.0723L0.701172 7.57227H0.700195C0.289989 7.20024 0.556461 6.55309 1.00586 6.51562H1.00879L6.08887 6.06348L6.39258 6.03711L6.50781 5.75391L8.49609 0.856445V0.854492Z"
+                                        fill="#FFC327" stroke="var(--ux4g-bg-neutral)" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_9162_21342">
+                                        <rect width="18" height="18" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+
                         </li>
 
                     </ul>

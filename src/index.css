@@ -15,7 +15,7 @@
 @import "./components/ux4g.components.css";
 
 @import "./pattern/ux4g-pattern.css";
-@import "./pattern/otp.css";
+@import "./pattern/identity-access.css";
 
 /* 4. Utilities (Moved to bottom to win specificity battles) */
 @import "./utilities/ux4g.utilities.css";

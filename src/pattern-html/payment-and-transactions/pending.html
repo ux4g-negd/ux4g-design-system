@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Application Pattern</title>
+     <link href="../../index.css" rel="stylesheet" />
+  <script src="../../ux4g.js"></script>
+  <script src="../../ux4g-custom.js"></script>
+    <style>
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 999;
+            padding: 10px 16px;
+            border-radius: 99px;
+            cursor: pointer;
+            background: var(--ux4g-bg-neutral-elevated);
+            color: var(--ux4g-text-neutral-primary);
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            background: var(--ux4g-bg-primary-soft);
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+
+<body class="ux4g-bg-neutral ">
+    <button class="theme-toggle" onclick="ux4g.Theme.toggle()">🌓 Toggle Mode</button>
+    <header class="ux4g-topbar ux4g-topbar-wide" role="banner">
+        <div class="ux4g-container">
+            <div class="ux4g-topbar__wrap ux4g-d-flex ux4g-jc-between ux4g-ai-center">
+                <div>
+                    <a aria-label="Government of India (opens in new tab)" class=" ux4g-d-flex ux4g-ai-center"
+                        href="https://www.india.gov.in/" target="_blank" rel="noopener">
+                        <span class="india-flag"></span>
+                        <span class="ux4g-label-m-default">Government of India</span>
+                        <sup class="ux4g-icon-outlined">open_in_new</sup>
+                    </a>
+                </div>
+                <nav aria-label="Top utilities" class="ux4g-d-none ux4g-md-d-flex ux4g-ai-center">
+                    <a class="ux4g-label-m-default ux4g-topbar__skip" href="#pending-task">Skip to Main Content</a>
+                    <span class="ux4g-bl acc-top-divider"></span>
+                    <div aria-label="Text size controls" class="ux4g-topbar__group ux4g-d-flex ux4g-ai-center"
+                        role="group">
+                        <button aria-label="Decrease text size"
+                            class="ux4g-topbar__iconbtn ux4g-d-flex ux4g-jc-center ux4g-ai-center" type="button">
+                            <span class="ux4g-icon-outlined ux4g-top-bar-icon">text_decrease</span>
+                        </button>
+                        <button aria-label="Reset text size"
+                            class="ux4g-topbar__iconbtn ux4g-d-flex ux4g-jc-center ux4g-ai-center" type="button">
+                            <span class="ux4g-icon-outlined ux4g-top-bar-icon">font_download</span>
+                        </button>
+                        <button aria-label="Increase text size"
+                            class="ux4g-topbar__iconbtn ux4g-d-flex ux4g-jc-center ux4g-ai-center" type="button">
+                            <span class="ux4g-icon-outlined ux4g-top-bar-icon">text_increase</span>
+                        </button>
+                    </div>
+                    <span class="ux4g-bl acc-top-divider"></span>
+                    <span aria-label="Accessibility options"
+                        class="ux4g-topbar__iconbtn ux4g-d-flex ux4g-jc-center ux4g-ai-center ux4g-icon ux4g-fs-20"
+                        type="button">
+                        <span class="ux4g-icon-outlined ux4g-top-bar-icon">accessibility_new</span>
+                    </span>
+                    <span class="ux4g-bl acc-top-divider"></span>
+                    <div class="ux4g-topbar__select">
+                        <button aria-expanded="false" aria-haspopup="listbox"
+                            class="ux4g-topbar__selectbtn ux4g-d-inline-flex ux4g-ai-center" type="button">
+                            <span class="ux4g-icon-outlined ux4g-top-bar-icon icon-language">language</span>
+                            <span class="ux4g-label-m-default">English</span>
+                            <span class="ux4g-icon-outlined">arrow_drop_down</span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <nav class="ux4g-navbar">
+        <div class="ux4g-container">
+            <div class="ux4g-navbar-wrap">
+                <!-- Logo & Brand -->
+                <div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+                    <img src="https://cdn.ux4g.gov.in/UX4G@3.0.12/assets/images/national_emblem.svg"
+                        alt="National Emblem" class="ux4g-navbar-logo">
+                    <span class="ux4g-divider-vertical "></span>
+                    <img src="https://cdn.ux4g.gov.in/UX4G@3.0.12/assets/images/navbar-logo.svg" alt="Logo"
+                        class="ux4g-navbar-logo">
+                    <div class="ux4g-d-flex ux4g-flex-column">
+                        <span class="ux4g-label-m-strong">Title</span>
+                        <span class="ux4g-body-xs-default">Description</span>
+                    </div>
+                </div>
+                <!-- Navigation Links -->
+                <ul class="ux4g-navbar-links">
+                    <li class="ux4g-dropdown ux4g-dropdown-button">
+                        <a href="#" class="ux4g-text-link-sm ux4g-dropdown-control " data-ux-toggle="dropdown">
+                            <span>Label</span>
+                            <span
+                                class="ux4g-icon-outlined ux4g-text-primary ux4g-fs-20 ux4g-dropdown-caret">arrow_drop_down</span>
+                        </a>
+                        <div class="ux4g-dropdown-menu">
+                            <ul class="ux4g-list ux4g-list-default ux4g-list-s">
+                                <li class="ux4g-list-item" role="option">
+                                    <button class="ux4g-list-item-row" type="button">
+                                        <div class="ux4g-list-item-start">
+                                            <span aria-hidden="true">Label</span>
+                                            </span>
+                                    </button>
+                                </li>
+                                <li class="ux4g-list-item" role="option">
+                                    <button class="ux4g-list-item-row" type="button">
+                                        <div class="ux4g-list-item-start">
+                                            <span aria-hidden="true">Label</span>
+                                            </span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="ux4g-dashboard-layout-container">
+        <!-- //sidebar -->
+        <aside class="ux4g-dashboard-sidebar ux4g-d-none ux4g-lg-d-flex">
+            <div class="ux4g-dashboard-sidebar-profile">
+                <div class="ux4g-avatar ux4g-avatar-l ux4g-relative">
+                    <img src="https://i.pravatar.cc/150?u=54" alt="avatar">
+                    <span class="ux4g-badge-icon-primary avatar-badge ux4g-badge-profile-l">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18" fill="none">
+                            <g clip-path="url(#clip0_9162_21271)">
+                                <path
+                                    d="M13.0332 3.09473L13.1426 3.28027L13.3525 3.32812L15.9707 3.92285L15.7246 6.59961L15.7051 6.81348L15.8457 6.97461L17.6172 9L15.8457 11.0254L15.7051 11.1865L15.7246 11.4004L15.9707 14.0762L13.3525 14.6719L13.1426 14.7197L13.0332 14.9043L11.6621 17.2178L9.19727 16.1592L8.99902 16.0742L8.80176 16.1602L6.33691 17.2246L4.9668 14.9131L4.85742 14.7275L4.64746 14.6807L2.02832 14.085L2.27539 11.3994L2.29492 11.1865L2.1543 11.0254L0.381836 8.99902L2.1543 6.96582L2.29492 6.80469L2.27539 6.5918L2.02832 3.90723L4.64648 3.32031L4.85645 3.27246L4.9668 3.08691L6.33691 0.772461L8.80273 1.83203L9 1.91699L9.19727 1.83203L11.6621 0.772461L13.0332 3.09473Z"
+                                    fill="#3271EA" stroke="var(--ux4g-bg-neutral)" />
+                                <path
+                                    d="M6.78935 12.3834L4.78122 10.3584C4.45216 10.0293 4.45216 9.49777 4.78122 9.16871L4.84028 9.10965C5.16935 8.78059 5.70935 8.78059 6.03841 9.10965L7.39685 10.4765L11.7422 6.12277C12.0712 5.79371 12.6112 5.79371 12.9403 6.12277L12.9993 6.18184C13.3284 6.5109 13.3284 7.04246 12.9993 7.37152L8.00435 12.3834C7.65841 12.7125 7.12685 12.7125 6.78935 12.3834Z"
+                                    fill="#FAFAFA" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_9162_21271">
+                                    <rect width="18" height="18" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg> </span>
+                </div>
+                <div class="ux4g-title-m-strong ux4g-pt-m">Ramesh Kumar</div>
+            </div>
+
+            <div class="ux4g-w-100 ux4g-pb-s">
+                <hr class="ux4g-divider-horizontal">
+            </div>
+
+            <nav class="ux4g-dashboard-sidebar-nav ux4g-w-100">
+                <button
+                    class="ux4g-btn-text-neutral ux4g-d-flex ux4g-ai-center ux4g-jc-start ux4g-inline-gap-xs ux4g-w-100">
+                    <span class="ux4g-icon-outlined">grid_view</span>
+                    My Applications
+                </button>
+                <button class="ux4g-btn-primary ux4g-d-flex ux4g-ai-center ux4g-jc-start ux4g-inline-gap-xs ux4g-w-100">
+                    <span class="ux4g-icon-outlined">task_alt</span>
+                    Pending Tasks
+                </button>
+                <button
+                    class="ux4g-btn-text-neutral ux4g-d-flex ux4g-ai-center ux4g-jc-start ux4g-inline-gap-xs ux4g-w-100">
+                    <span class="ux4g-icon-outlined">notifications</span>
+                    Notifications
+                </button>
+                <button class="ux4g-btn-text-neutral ux4g-d-flex ux4g-ai-center ux4g-jc-start ux4g-inline-gap-xs ux4g-w-100">
+                    <span class="ux4g-icon-outlined">person</span>
+                    Profile
+                </button>
+                <button class="ux4g-btn-text-neutral ux4g-d-flex ux4g-ai-center ux4g-jc-start ux4g-inline-gap-xs ux4g-w-100">
+                    <span class="ux4g-icon-outlined">help_outline</span>
+                    Help
+                </button>
+            </nav>
+
+            <div class="ux4g-dashboard-sidebar-footer ux4g-w-100">
+                <hr class="ux4g-divider-horizontal ux4g-mb-m">
+                <button class="-text-neutral ux4g-d-flex ux4g-ai-center ux4g-jc-start ux4g-inline-gap-xs ux4g-w-100">
+                    <span class="ux4g-icon-outlined">logout</span>
+                    Sign Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- <h1">page 1</h1> -->
+        <section class="ux4g-pending-task-main ">
+            <!-- Overview Header -->
+            <div class="ux4g-pb-s">
+                <h1 class="ux4g-heading-xl-strong">Pending Tasks</h1>
+                <p class="ux4g-body-m-default ux4g-text-neutral-secondary">3 tasks need your attention</p>
+            </div>
+
+            <div class="ux4g-alert ux4g-alert-error ux4g-alert-wide">
+                <i class="ux4g-icon ux4g-alert-icon">error</i>
+                <div class="ux4g-alert-content">
+                    <span class="ux4g-alert-title">1 task is overdue</span>
+                    <span class="ux4g-alert-message">Upload income proof for your Income Certificate before your
+                        application is rejected.</span>
+                </div>
+                <div class="ux4g-alert-actions">
+                    <button class="ux4g-alert-close">
+                        <i class="ux4g-icon">close</i>
+                    </button>
+                </div>
+            </div>
+
+
+
+            <!-- Applications Section -->
+            <div class="ux4g-pb-s">
+                <!-- Chips -->
+                <div class="ux4g-d-flex ux4g-inline-gap-s ux4g-stack-gap-s ux4g-wrap">
+                    <button class="ux4g-choice-chip-group ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+                        All
+                        <span class="ux4g-badge-digit-primary">8</span>
+                    </button>
+                    <button class="ux4g-choice-chip-group ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+                        Pending
+                        <span class="ux4g-badge-digit-primary">2</span>
+                    </button>
+
+                    <button class="ux4g-choice-chip-group ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s active">
+                        Under Review
+                        <span class="ux4g-badge-digit-primary">1</span>
+                    </button>
+
+                    <button class="ux4g-choice-chip-group ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s ">
+                        Approved
+                        <span class="ux4g-badge-digit-primary">5</span>
+                    </button>
+                    <button class="ux4g-choice-chip-group ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s ">
+                        Rejected
+                        <span class="ux4g-badge-digit-primary">0</span>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Results List Container -->
+            <div class="ux4g-pending-result-lists">
+
+                <!-- Application 1 -->
+                <div class="ux4g-result-list ux4g-result-list-v1 ux4g-mb-m">
+                    <!-- Header -->
+                    <div class="ux4g-result-list-header">
+                        <div class="ux4g-result-list-info">
+                            <!-- Icon Placeholder -->
+                            <div class="ux4g-result-list-icon ux4g-bg-neutral-soft">
+                                <span class="ux4g-icon-outlined ux4g-text-neutral-secondary">cloud_upload</span>
+                            </div>
+                            <!-- Titles -->
+                            <div class="ux4g-result-list-title-group">
+                                <h2 class="ux4g-result-list-title ux4g-title-s-strong ux4g-mb-2xs">Upload income proof
+                                </h2>
+                                <div class="ux4g-result-list-meta">
+                                    <span class="ux4g-body-s-default ux4g-text-neutral-secondary">
+                                        Income Certificate &middot; INC-2026-MH-04127
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ux4g-result-list-actions-container ux4g-d-flex ux4g-ai-center">
+                            <span class="ux4g-tag-tonal-error">
+                                Overdue by 2 days
+                            </span>
+                            <div class="ux4g-result-list-actions">
+                                <button class="ux4g-btn-primary ux4g-btn-md">Upload now</button>
+                                <span class="ux4g-icon-outlined ux4g-cursor-pointer ux4g-result-list-accordion-toggle"
+                                    aria-expanded="true">expand_less</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expanded Content -->
+                    <div class="ux4g-result-list-content accordion-content">
+                        <div class="ux4g-result-list-details">
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Deadline</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">10 Apr 2026</span>
+                            </div>
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Department</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Revenue Department</span>
+                            </div>
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Reference</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">INC-2026-MH-04127</span>
+                            </div>
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Have issues?</span>
+                                <a class="ux4g-text-link-md" href="#" target="_blank">
+                                    Contact support
+                                    <i class="ux4g-icon-outlined">arrow_forward</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Application 2 -->
+
+                <!-- Application 2 -->
+                <div class="ux4g-result-list ux4g-result-list-v1 ux4g-mb-m">
+                    <!-- Header -->
+                    <div class="ux4g-result-list-header">
+                        <div class="ux4g-result-list-info">
+                            <!-- Icon Placeholder -->
+                            <div class="ux4g-result-list-icon ux4g-bg-neutral-soft">
+                                <span class="ux4g-icon-outlined ux4g-text-neutral-secondary">cloud_upload</span>
+                            </div>
+                            <!-- Titles -->
+                            <div class="ux4g-result-list-title-group">
+                                <h2 class="ux4g-result-list-title ux4g-title-s-strong ux4g-mb-2xs">Pay application fee
+                                </h2>
+                                <div class="ux4g-result-list-meta">
+                                    <span class="ux4g-body-s-default ux4g-text-neutral-secondary">
+                                        Birth Certificate &middot; ₹50 application fee
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ux4g-result-list-actions-container ux4g-d-flex ux4g-ai-center">
+                            <span class="ux4g-tag-tonal-warning">Due in 5 days</span>
+                            <div class="ux4g-result-list-actions">
+                                <button class="ux4g-btn-primary ux4g-btn-md">Pay now</button>
+                                <span class="ux4g-icon-outlined ux4g-cursor-pointer ux4g-result-list-accordion-toggle"
+                                    aria-expanded="false">expand_more</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expanded Content -->
+                    <div class="ux4g-result-list-content accordion-content">
+                        <div class="ux4g-result-list-details">
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Deadline</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">10 Apr 2026</span>
+                            </div>
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Department</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Revenue Department</span>
+                            </div>
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Reference</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">INC-2026-MH-04127</span>
+                            </div>
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Have issues?</span>
+                                <a class="ux4g-text-link-md" href="#" target="_blank">
+                                    Contact support
+                                    <i class="ux4g-icon-outlined">arrow_forward</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Application 3 -->
+                <div class="ux4g-result-list ux4g-result-list-v1 ux4g-mb-m">
+                    <!-- Header -->
+                    <div class="ux4g-result-list-header">
+                        <div class="ux4g-result-list-info">
+                            <!-- Icon Placeholder -->
+                            <div class="ux4g-result-list-icon ux4g-bg-neutral-soft">
+                                <span class="ux4g-icon-outlined ux4g-text-neutral-secondary">cloud_upload</span>
+                            </div>
+                            <!-- Titles -->
+                            <div class="ux4g-result-list-title-group">
+                                <h2 class="ux4g-result-list-title ux4g-title-s-strong ux4g-mb-2xs">Schedule field
+                                    inspection</h2>
+                                <div class="ux4g-result-list-meta">
+                                    <span class="ux4g-body-s-default ux4g-text-neutral-secondary">
+                                        Land Records Update &middot; LRU-2026-MH-00231
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ux4g-result-list-actions-container ux4g-d-flex ux4g-ai-center">
+                            <span class="ux4g-tag-tonal-info">Due in 9 days</span>
+                            <div class="ux4g-result-list-actions">
+                                <button class="ux4g-btn-outline-primary ux4g-btn-md">Schedule slot</button>
+                                <span class="ux4g-icon-outlined ux4g-cursor-pointer ux4g-result-list-accordion-toggle"
+                                    aria-expanded="false">expand_more</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expanded Content -->
+                    <div class="ux4g-result-list-content accordion-content">
+                        <div class="ux4g-result-list-details">
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Deadline</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">10 Apr 2026</span>
+                            </div>
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Department</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Revenue Department</span>
+                            </div>
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Reference</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">INC-2026-MH-04127</span>
+                            </div>
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Have issues?</span>
+                                <a class="ux4g-text-link-md" href="#" target="_blank">
+                                    Contact support
+                                    <i class="ux4g-icon-outlined">arrow_forward</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="ux4g-title-s-strong ux4g-text-neutral-secondary ux4g-my-m">Completed today</h2>
+                <!-- Application 4 -->
+                <div class="ux4g-result-list ux4g-result-list-v1 ux4g-mb-m">
+                    <!-- Header -->
+                    <div class="ux4g-result-list-header">
+                        <div class="ux4g-result-list-info">
+                            <!-- Icon Placeholder -->
+                            <div class="ux4g-result-list-icon ux4g-bg-neutral-soft">
+                                <span class="ux4g-icon-outlined ux4g-text-neutral-secondary">cloud_upload</span>
+                            </div>
+                            <!-- Titles -->
+                            <div class="ux4g-result-list-title-group">
+                                <h2 class="ux4g-result-list-title ux4g-title-s-strong ux4g-mb-2xs">Aadhaar e-KYC
+                                    verification</h2>
+                                <div class="ux4g-result-list-meta">
+                                    <span class="ux4g-body-s-default ux4g-text-neutral-secondary">
+                                        Ration Card Renewal &middot; RCR-2026-MH-00917
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ux4g-result-list-actions-container ux4g-d-flex ux4g-ai-center">
+                            <span class="ux4g-tag-tonal-success">Completed</span>
+                            <div class="ux4g-result-list-actions">
+                                <a href="#" class="ux4g-text-link-md ux4g-d-inline-flex ux4g-ai-center" style="text-decoration: none; color: var(--ux4g-text-brand-primary-default);">View receipt</a>
+                                <span class="ux4g-icon-outlined ux4g-cursor-pointer ux4g-result-list-accordion-toggle"
+                                    aria-expanded="false">expand_more</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expanded Content -->
+                    <div class="ux4g-result-list-content accordion-content">
+                        <div class="ux4g-result-list-details">
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Deadline</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">10 Apr 2026</span>
+                            </div>
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Department</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">Revenue Department</span>
+                            </div>
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Reference</span>
+                                <span class="ux4g-text-neutral-secondary ux4g-body-s-default">INC-2026-MH-04127</span>
+                            </div>
+                            <div class="ux4g-result-list-detail-item">
+                                <span class="ux4g-text-neutral-tertiary ux4g-label-s-default">Have issues?</span>
+                                <a class="ux4g-text-link-md" href="#" target="_blank">
+                                    Contact support
+                                    <i class="ux4g-icon-outlined">arrow_forward</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <h1">page 2</h1> -->
+        <section class="ux4g-pending-task-main ux4g-d-none">
+            <div>
+                <a class="ux4g-text-link-sm ux4g-d-inline-flex ux4g-ai-center ux4g-inline-gap-2xs" href="#">
+                    <i class="ux4g-icon-outlined">arrow_back</i>
+                    Back to home
+                </a>
+            </div>
+            <div class="ux4g-empty-state">
+                <button class="ux4g-icon-btn ux4g-icon-btn-primary ux4g-bg-success-strong ux4g-icon-btn-pill">
+                    <i class="ux4g-icon-outlined">check</i>
+                </button>
+                <div class="ux4g-empty-state-content">
+                    <h3 class="ux4g-title-l-strong">No pending tasks</h3>
+                    <p class="ux4g-body-m-default">You have no pending tasks right now. All your applications are
+                        progressing smoothly.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>

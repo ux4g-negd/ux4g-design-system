@@ -52,7 +52,7 @@
 /* ================= Content ================= */
 .ux4g-alert-content {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: var(--ux4g-inline-xs);
   flex: 1;
   min-width: 0;
@@ -331,21 +331,19 @@
   .ux4g-context-alert {
     width: 100%;
     min-width: 0;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
     grid-template-areas:
-      "icon actions"
-      "title title"
-      "message message";
+      "icon title actions"
+      ". message message";
   }
 
   .ux4g-context-alert:has(.ux4g-alert-progress-wrapper),
   .ux4g-context-alert:has(.ux4g-alert-footer) {
     grid-template-areas:
-      "icon actions"
-      "title title"
-      "message message"
-      "progress progress"
-      "footer footer";
+      "icon title actions"
+      ". message message"
+      ". progress progress"
+      ". footer footer";
   }
 
   .ux4g-context-alert .ux4g-alert-actions {

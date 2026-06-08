@@ -1,0 +1,313 @@
+@media (min-width:768px) {
+    .ux4g-application-submission .ux4g-identity-access-column {
+        padding: var(--ux4g-padding-xl) 0
+    }
+}
+
+@media (max-width:767px) {
+    .ux4g-application-submission .ux4g-identity-access-column {
+        justify-content: space-between;
+        min-height: calc(100vh - 120px)
+    }
+
+    .ux4g-application-submission .ux4g-form-actions-bottom {
+        border-top: 1px solid var(--ux4g-border-color-neutral-default);
+        padding-top: var(--ux4g-padding-xl);
+        margin-top: auto
+    }
+}
+
+.ux4g-application-submission .ux4g-list {
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0
+}
+
+.ux4g-application-submission .ux4g-list-item {
+    background-color: var(--ux4g-bg-neutral-soft)
+}
+
+.ux4g-application-submission .ux4g-list-item-row:has(input[type=radio]:checked) {
+    background-color: var(--ux4g-bg-primary-soft)
+}
+
+.ux4g-application-submission .ux4g-gov-form-wrapper {
+    max-width: 500px;
+    margin: 0 auto
+}
+
+.ux4g-application-submission .ux4g-identity-access-layout-card .ux4g-success-badge-outer::after {
+    content: none
+}
+
+.ux4g-application-submission .ux4g-identity-access-layout-card .ux4g-success-badge-outer {
+    width: 72px;
+    height: 72px;
+    min-height: unset;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
+    border-radius: var(--ux4g-radius-full);
+    background-color: var(--ux4g-bg-success-subtle);
+    box-sizing: border-box
+}
+
+.ux4g-application-submission .ux4g-identity-access-layout-card .ux4g-success-badge-inner {
+    width: var(--ux4g-size-32);
+    height: var(--ux4g-size-32);
+    border-radius: var(--ux4g-radius-full);
+    background-color: var(--ux4g-bg-success-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.ux4g-application-submission .ux4g-identity-access-layout-card .ux4g-success-badge-inner .ux4g-success-icon {
+    font-size: var(--ux4g-fs-24) !important;
+    color: var(--ux4g-text-neutral-inverse) !important
+}
+
+.ux4g-application-submission .ux4g-save-resume-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 774px;
+    padding: var(--ux4g-padding-xl)
+}
+
+.ux4g-application-submission .ux4g-save-resume-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--ux4g-stack-m);
+    width: var(--ux4g-sz-full);
+}
+
+.ux4g-application-submission .ux4g-save-resume-skeleton {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--ux4g-stack-m);
+    justify-content: center
+}
+
+.ux4g-application-submission .ux4g-save-resume-skeleton-grid {
+    grid-template-columns: 1fr 400px;
+    gap: var(--ux4g-padding-xl);
+    align-items: start
+}
+
+@media (max-width:991px) {
+    .ux4g-application-submission .ux4g-save-resume-skeleton-grid {
+        grid-template-columns: 1fr
+    }
+}
+
+.ux4g-application-submission .ux4g-skeleton-block {
+    background-color: var(--ux4g-bg-neutral-subtle);
+    border-radius: var(--ux4g-radius-sm)
+}
+
+.ux4g-application-submission .ux4g-skeleton-title {
+    width: 200px;
+    height: var(--ux4g-sz-32)
+}
+
+.ux4g-application-submission .ux4g-skeleton-subtitle {
+    width: 320px;
+    height: var(--ux4g-sz-16)
+}
+
+.ux4g-application-submission .ux4g-skeleton-circle {
+    width: var(--ux4g-sz-40);
+    height: var(--ux4g-sz-40);
+    border-radius: var(--ux4g-radius-full)
+}
+
+.ux4g-application-submission .ux4g-skeleton-btn {
+    width: var(--ux4g-sz-120);
+    height: var(--ux4g-sz-40);
+    border-radius: var(--ux4g-radius-md)
+}
+
+.ux4g-application-submission .ux4g-skeleton-main {
+    height: 400px;
+    border-radius: var(--ux4g-radius-lg)
+}
+
+.ux4g-application-submission .ux4g-skeleton-sidebar-card {
+    height: var(--ux4g-sz-120);
+    border-radius: var(--ux4g-radius-lg)
+}
+
+.ux4g-application-submission .ux4g-draft-status-bar-mobile {
+    padding-inline: var(--ux4g-padding-m);
+    padding-block: var(--ux4g-padding-s);
+    border-radius: var(--ux4g-radius-md)
+}
+
+.ux4g-application-submission .ux4g-save-resume-mobile-actions {
+    width: var(--ux4g-sz-full);
+    padding-top: var(--ux4g-padding-xl)
+}
+
+@media (max-width:767px) {
+    .ux4g-application-submission .ux4g-save-resume-body {
+        min-height: unset;
+        padding-inline: var(--ux4g-padding-m);
+        justify-content: space-between
+    }
+}
+
+.ux4g-gov-workspace-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: var(--ux4g-padding-xl);
+    align-items: start
+}
+
+@media (max-width:991px) {
+    .ux4g-gov-workspace-grid {
+        grid-template-columns: 1fr
+    }
+}
+
+.ux4g-gov-workspace-success-card {
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: var(--ux4g-bg-neutral-elevated);
+    border-radius: var(--ux4g-radius-md);
+    padding: var(--ux4g-padding-2xl)
+}
+
+/* ==================== Save and Resume – Resume Screen ==================== */
+
+/* Form column centered layout */
+.ux4g-application-submission .ux4g-save-resume-form-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-padding-xl);
+    max-width: 500px;
+    width: var(--ux4g-sz-full);
+    padding-block: var(--ux4g-section-2xl);
+}
+
+/* Steps container */
+.ux4g-application-submission .ux4g-save-resume-steps {
+    display: flex;
+    flex-direction: column;
+    width: var(--ux4g-sz-full);
+}
+
+/* Step row */
+.ux4g-application-submission .ux4g-save-resume-step-row {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-m);
+    padding-block: var(--ux4g-padding-s);
+}
+
+/* Step icon base */
+.ux4g-application-submission .ux4g-save-resume-step-icon {
+    width: var(--ux4g-sz-20);
+    height: var(--ux4g-sz-20);
+    border-radius: var(--ux4g-radius-full);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Step icon: completed */
+.ux4g-application-submission .ux4g-save-resume-step-done {
+    background-color: var(--ux4g-bg-success-strong);
+}
+
+.ux4g-application-submission .ux4g-save-resume-step-done .ux4g-icon-outlined {
+    font-size: var(--ux4g-fs-16);
+    color: var(--ux4g-text-neutral-inverse);
+}
+
+/* Step icon: pending */
+.ux4g-application-submission .ux4g-save-resume-step-pending {
+    border: 1.5px solid var(--ux4g-border-color-neutral-default);
+}
+
+/* Resume screen actions row */
+.ux4g-application-submission .ux4g-save-resume-actions {
+    display: flex;
+    gap: var(--ux4g-inline-s);
+    width: var(--ux4g-sz-full);
+}
+
+/* Step icon: warning (incomplete) */
+.ux4g-application-submission .ux4g-save-resume-step-warning {
+    background-color: var(--ux4g-bg-warning-strong);
+}
+
+.ux4g-application-submission .ux4g-save-resume-step-warning .ux4g-icon-outlined {
+    font-size: var(--ux4g-fs-16);
+    color: var(--ux4g-text-neutral-inverse);
+}
+
+@media (max-width: 767px) {
+    .ux4g-application-submission .ux4g-save-resume-actions {
+        flex-direction: column-reverse;
+    }
+
+    /* Modal action buttons stack vertically on mobile */
+    .ux4g-application-submission .ux4g-modal-box>.ux4g-d-flex:last-child {
+        flex-direction: column;
+        gap: var(--ux4g-stack-xs);
+        padding: var(--ux4g-padding-m) var(--ux4g-padding-l);
+    }
+
+    /* Modal container needs min-height on mobile */
+    .ux4g-application-submission.ux4g-relative {
+        min-height: 844px;
+    }
+
+    /* Notification row stacks on mobile */
+    .ux4g-application-submission .ux4g-submission-notification-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--ux4g-stack-xs);
+    }
+}
+
+/* Modal scoped to pattern container (not viewport-fixed) */
+.ux4g-application-submission .ux4g-modal-backdrop {
+    position: absolute;
+}
+
+/* ==================== Submission Acknowledgement ==================== */
+
+/* Hero icon badge (64px) */
+.ux4g-application-submission .ux4g-submission-hero-icon {
+    width: var(--ux4g-sz-64);
+    height: var(--ux4g-sz-64);
+}
+
+/* Reference card */
+.ux4g-application-submission .ux4g-submission-ref-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-xs);
+    padding: var(--ux4g-padding-m);
+    border-radius: var(--ux4g-radius-md);
+    background-color: var(--ux4g-bg-primary);
+    border: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-primary-default);
+    width: var(--ux4g-sz-full);
+}
+
+/* Submission info card (white, no border) */
+.ux4g-application-submission .ux4g-submission-info-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ux4g-stack-xs);
+    padding: var(--ux4g-padding-l);
+    background-color: var(--ux4g-bg-neutral-elevated);
+    border-radius: var(--ux4g-radius-md);
+}

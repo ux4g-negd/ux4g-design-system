@@ -66,3 +66,29 @@
 .ux4g-navbar-links .ux4g-dropdown-control:hover > span:first-child {
     text-decoration: underline;
 }
+
+/* ===================================== */
+/* Mobile Responsiveness                 */
+/* ===================================== */
+
+.ux4g-navbar-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .ux4g-navbar-desktop {
+        display: none !important;
+    }
+    .ux4g-navbar-mobile {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+    }
+    .ux4g-navbar-mobile .ux4g-dropdown-menu {
+        right: 0;
+        left: auto;
+    }
+    .ux4g-navbar.ux4g-radius-full {
+        border-radius: 0 !important;
+    }
+}

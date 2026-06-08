@@ -1,0 +1,182 @@
+.ux4g-profile-container {
+    display: flex;
+    padding: var(--ux4g-padding-xl);
+    flex-direction: column;
+    gap: var(--ux4g-stack-l);
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.ux4g-profile-header {
+    border-radius: var(--ux4g-radius-md, 8px);
+    border: 1px solid var(--ux4g-border-color-neutral-subtle, #E5E5E5);
+    background: var(--ux4g-bg-neutral-elevated, #FFF);
+    padding: var(--ux4g-padding-xl, 24px);
+}
+
+
+
+.ux4g-profile-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.ux4g-profile-header-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Custom Modal Styles for Profile */
+.profile-model .ux4g-modal-header,
+.profile-model .ux4g-modal-actions {
+    border: none !important;
+}
+
+.profile-model .ux4g-modal-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--ux4g-inline-m, 16px);
+    width: 100%;
+}
+
+.profile-model .ux4g-modal-actions button {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Mobile Responsiveness for Profile Sections */
+@media (max-width: 768px) {
+    .ux4g-profile-header {
+        padding: var(--ux4g-padding-l);
+    }
+
+    .ux4g-profile-header-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--ux4g-stack-m, 16px);
+    }
+
+    .ux4g-profile-header .ux4g-btn-outline-danger {
+        width: 100%;
+        justify-content: center;
+        margin-top: var(--ux4g-margin-s, 12px);
+    }
+
+    .profile-model .ux4g-modal-actions {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* Custom List Styles for Profile */
+.ux4g-profile-header .ux4g-list {
+    box-shadow: none !important;
+    background: none;
+    padding: 0;
+}
+
+.ux4g-profile-header .ux4g-list-item {
+    border-bottom: var(--ux4g-border-width-sm) solid var(--ux4g-border-color-neutral-subtle);
+    padding-top: var(--ux4g-padding-m, 16px);
+    padding-bottom: var(--ux4g-padding-m, 16px);
+}
+
+.ux4g-profile-header .ux4g-list-item:last-child {
+    border-bottom: none;
+}
+
+.ux4g-profile-header .ux4g-list-switch .ux4g-list-item:nth-last-child(2) {
+    border-bottom: none;
+}
+
+.ux4g-profile-header .ux4g-list-m .ux4g-list-item .ux4g-list-item-row {
+    padding: 0;
+}
+
+/* Disable list item active/checked states inside profile header */
+.ux4g-profile-header .ux4g-list-item-row:hover,
+.ux4g-profile-header .ux4g-list-item-row:active,
+.ux4g-profile-header .ux4g-list-item-row.active,
+.ux4g-profile-header .ux4g-list-item-row.ux4g-toggles.active,
+.ux4g-profile-header .ux4g-list-item-row:has(input:checked) {
+    background-color: transparent !important;
+}
+
+/* Revert text colors when active or checked */
+.ux4g-profile-header .ux4g-list-default .ux4g-list-item-row.active .ux4g-list-item-start *,
+.ux4g-profile-header .ux4g-list-default .ux4g-list-item-row.active .ux4g-list-item-end *,
+.ux4g-profile-header .ux4g-list-default .ux4g-list-item-row:has(input:not(:disabled):checked) .ux4g-list-item-start *,
+.ux4g-profile-header .ux4g-list-default .ux4g-list-item-row:has(input:not(:disabled):checked) .ux4g-list-item-end * {
+    color: var(--ux4g-text-neutral-primary) !important;
+}
+
+.ux4g-profile-header .ux4g-list-item-row.active .ux4g-text-neutral-secondary,
+.ux4g-profile-header .ux4g-list-item-row:has(input:not(:disabled):checked) .ux4g-text-neutral-secondary {
+    color: var(--ux4g-text-neutral-secondary) !important;
+}
+
+/* User Profile Card */
+.profile-user-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ux4g-stack-m, 16px);
+}
+
+.profile-user-details {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-m, 16px);
+}
+
+.profile-user-tags {
+    display: flex;
+    align-items: center;
+    gap: var(--ux4g-inline-xs, 8px);
+    flex-wrap: wrap;
+}
+
+/* Allow text to wrap instead of truncating with ellipsis in profile lists */
+.ux4g-profile-header .ux4g-list-default .ux4g-list-item-row .ux4g-list-item-start .ux4g-d-flex > span {
+    text-overflow: unset;
+    overflow: visible;
+    white-space: normal;
+}
+
+@media (max-width: 768px) {
+    .profile-user-card {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+    
+    .profile-user-details {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .profile-user-tags {
+        justify-content: center;
+    }
+    
+    .profile-user-card .profile-edit-btn {
+        width: 100%;
+        margin-top: var(--ux4g-margin-s, 12px);
+    }
+
+    .profile-linked-accounts-list .ux4g-list-item-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--ux4g-stack-s, 12px);
+    }
+    
+    .profile-linked-accounts-list .ux4g-list-item-end {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+

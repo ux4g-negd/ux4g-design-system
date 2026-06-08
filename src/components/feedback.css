@@ -42,6 +42,7 @@
 /* Default active color (for ratings 3, 4, 5) */
 .ux4g-feedback-star.active {
     color: var(--ux4g-bg-yellow-strong) !important;
+    font-variation-settings: 'FILL' 1;
 }
 
 /* Error color for ratings 1 and 2 */
@@ -205,12 +206,4 @@
     padding-block: var(--ux4g-padding-s);
     padding-inline: var(--ux4g-padding-m);
     row-gap: 16px;
-}
-
-.feedback-submitted-close-btn {
-    color: var(--ux4g-text-neutral-primary);
-    border: 1px solid var(--ux4g-border-color-neutral-subtle);
-    width: 100%;
-    height: var(--ux4g-fs-32);
-    border-radius: var(--ux4g-radius-md)
 }

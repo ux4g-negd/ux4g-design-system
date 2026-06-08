@@ -1,0 +1,1404 @@
+﻿<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<title>Document</title>
+	  <link href="../../index.css" rel="stylesheet" />
+  <script src="../../ux4g.js"></script>
+  <script src="../../ux4g-custom.js"></script>
+	<style>
+		.theme-toggle {
+			position: fixed;
+			top: 20px;
+			right: 20px;
+			z-index: 999;
+			padding: 10px 16px;
+			border-radius: 99px;
+			cursor: pointer;
+			background: var(--ux4g-bg-neutral-elevated);
+			color: var(--ux4g-text-neutral-primary);
+			font-weight: 600;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			transition: all 0.2s ease;
+		}
+
+		.theme-toggle:hover {
+			transform: scale(1.05);
+			background: var(--ux4g-bg-primary-soft);
+		}
+
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		body {
+			padding: 0;
+			margin: 0;
+		}
+	</style>
+</head>
+
+<body class="ux4g-bg-neutral ux4g-ff-base ux4g-body-m-default ux4g-py-xl ux4g-px-m">
+	<button class="theme-toggle" onclick="ux4g.Theme.toggle()">ðŸŒ“ Toggle Mode</button>
+	<!-- Auth Errors & Lockout Pattern -->
+	<h1 class='ux4g-my-l ux4g-text-center ux4g-bg-secondary-strong'>Identity & Access (Auth Errors & Lockout)</h1>
+
+	<h3 class="ux4g-body-m-strong ux4g-bg-tertiary ux4g-p-m ux4g-text-center ux4g-m-m">Desktop - Column Layout</h3>
+	<!-- Column State 1: OTP Verification (Error) -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center">Column â€” OTP Verification (Error)</h4>
+	<section class="ux4g-identity-access-container ux4g-mb-4xl">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout">
+			<div class="ux4g-identity-access-sidebar ux4g-d-none ux4g-md-d-flex ux4g-flex-column ux4g-jc-between">
+				<div class="ux4g-sidebar-top">
+					<div class="ux4g-sidebar-logo-container ux4g-mb-xl">
+						<img src="../../assets/images/navbar-logo.svg" alt="UX4G Logo" class="ux4g-logo-white">
+					</div>
+					<h1 class="ux4g-heading-l-default ux4g-mb-m">Secure Digital Access to Government Services</h1>
+					<p class="ux4g-body-l-default ux4g-text-neutral-inverse">Access certificates, documents, and
+						identity verification seamlessly across all government platforms through a unified citizen
+						login.</p>
+				</div>
+				<div class="ux4g-sidebar-bottom ux4g-d-flex ux4g-gap-m">
+					<div class="ux4g-sidebar-stat">
+						<span class="ux4g-label-s-default ux4g-text-neutral-inverse">TRUSTED BY</span>
+						<span class="ux4g-label-l-default ux4g-text-neutral-inverse">800M+ Citizens</span>
+					</div>
+					<div class="ux4g-sidebar-stat">
+						<span class="ux4g-label-s-default ux4g-text-neutral-inverse">AVAILABLE SERVICES</span>
+						<span class="ux4g-label-l-default ux4g-text-neutral-inverse">5000+ Integrated</span>
+					</div>
+				</div>
+				<div class="ux4g-sidebar-ring ux4g-ring-1"></div>
+				<div class="ux4g-sidebar-ring ux4g-ring-2 ux4g-sidebar-ring-bottom"></div>
+			</div>
+			<div
+				class="ux4g-identity-access-column ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-flex-column">
+				<div class="ux4g-form-box">
+					<button class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block" type="button">
+						<span class="ux4g-icon-outlined" aria-hidden="true">arrow_back</span>
+						Back
+					</button>
+					<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs" id="ux4g-otp-col-otp-label">
+						OTP Verification</h2>
+					<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">Enter the 6-digit code sent
+						to +91 98XXX XXXXX</p>
+					<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+						onsubmit="return false;">
+						<div class="ux4g-otp ux4g-otp-error ux4g-w-100" data-ux-otp data-ux-state="error" data-ux-count="6" data-ux-no-separator
+							role="group" aria-labelledby="ux4g-otp-col-otp-label" aria-invalid="true">
+							<div class="ux4g-otp-group"></div>
+							<input class="ux4g-otp-source" type="hidden" value="555555" placeholder="â€”">
+							<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="assertive">
+								<span class="ux4g-otp-status" data-ux-otp-status>
+									<span class="ux4g-icon-outlined" aria-hidden="true">error</span>
+									<span>Incorrect OTP</span>
+								</span>
+								<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+									data-ux-otp-prefix="Resend OTP in " data-ux-otp-seconds="17">Resend OTP in
+									00:17</span>
+							</div>
+						</div>
+						<div class="ux4g-form-actions">
+							<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify OTP</button>
+						</div>
+					</form>
+				</div>
+				<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+					<span class="ux4g-label-m-default">Powered by -</span>
+					<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Column State 2: First Attempt (Error with warning) -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Column â€” First Attempt (Error)</h4>
+	<section class="ux4g-identity-access-container ux4g-mb-4xl">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout">
+			<div class="ux4g-identity-access-sidebar ux4g-d-none ux4g-md-d-flex ux4g-flex-column ux4g-jc-between">
+				<div class="ux4g-sidebar-top">
+					<div class="ux4g-sidebar-logo-container ux4g-mb-xl">
+						<img src="../../assets/images/navbar-logo.svg" alt="UX4G Logo" class="ux4g-logo-white">
+					</div>
+					<h1 class="ux4g-heading-l-default ux4g-mb-m">Secure Digital Access to Government Services</h1>
+					<p class="ux4g-body-l-default ux4g-text-neutral-inverse">Access certificates, documents, and
+						identity verification seamlessly across all government platforms through a unified citizen
+						login.</p>
+				</div>
+				<div class="ux4g-sidebar-bottom ux4g-d-flex ux4g-gap-m">
+					<div class="ux4g-sidebar-stat">
+						<span class="ux4g-label-s-default ux4g-text-neutral-inverse">TRUSTED BY</span>
+						<span class="ux4g-label-l-default ux4g-text-neutral-inverse">800M+ Citizens</span>
+					</div>
+					<div class="ux4g-sidebar-stat">
+						<span class="ux4g-label-s-default ux4g-text-neutral-inverse">AVAILABLE SERVICES</span>
+						<span class="ux4g-label-l-default ux4g-text-neutral-inverse">5000+ Integrated</span>
+					</div>
+				</div>
+				<div class="ux4g-sidebar-ring ux4g-ring-1"></div>
+				<div class="ux4g-sidebar-ring ux4g-ring-2 ux4g-sidebar-ring-bottom"></div>
+			</div>
+			<div
+				class="ux4g-identity-access-column ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-flex-column">
+				<div class="ux4g-form-box">
+					<button class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block" type="button">
+						<span class="ux4g-icon-outlined" aria-hidden="true">arrow_back</span>
+						Back
+					</button>
+					<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs"
+						id="ux4g-otp-col-first-label">OTP Verification</h2>
+					<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">Enter the 6-digit code sent
+						to +91 98XXX XXXXX</p>
+					<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+						onsubmit="return false;">
+						<div class="ux4g-otp ux4g-otp-error ux4g-w-100" data-ux-otp data-ux-state="error" data-ux-count="6" data-ux-no-separator
+							role="group" aria-labelledby="ux4g-otp-col-first-label" aria-invalid="true">
+							<div class="ux4g-otp-group"></div>
+							<input class="ux4g-otp-source" type="hidden" value="555555" placeholder="â€”">
+							<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="assertive">
+								<span class="ux4g-otp-status" data-ux-otp-status>
+									<span class="ux4g-icon-outlined" aria-hidden="true">error</span>
+									<span>Incorrect OTP</span>
+								</span>
+								<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+									data-ux-otp-prefix="Resend OTP in " data-ux-otp-seconds="17">Resend OTP in
+									00:17</span>
+							</div>
+						</div>
+						<!-- Warning Alert Block -->
+						<div class="ux4g-alert ux4g-alert-warning ux4g-form-alert ux4g-mb-m">
+							<i class="ux4g-icon-outlined ux4g-alert-icon">error</i>
+							<div class="ux4g-form-alert-body">
+								<span class="ux4g-alert-message ux4g-body-s-strong">Incorrect OTP</span>
+								<div class="ux4g-form-alert-footer ux4g-d-flex ux4g-ai-center ux4g-jc-between">
+									<span class="ux4g-body-s-default ux4g-text-warning">2 more incorrect entry
+										before 30-min lockout</span>
+									<span class="ux4g-alert-counter ux4g-text-warning ux4g-label-m-default">Attempt
+										1 of 3</span>
+								</div>
+							</div>
+						</div>
+						<div class="ux4g-form-actions">
+							<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify OTP</button>
+						</div>
+					</form>
+				</div>
+				<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+					<span class="ux4g-label-m-default">Powered by -</span>
+					<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Column State 3: Final Attempt (Critical Error) -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Column â€” Final Attempt (Critical Error)</h4>
+	<section class="ux4g-identity-access-container ux4g-mb-4xl">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout">
+			<div class="ux4g-identity-access-sidebar ux4g-d-none ux4g-md-d-flex ux4g-flex-column ux4g-jc-between">
+				<div class="ux4g-sidebar-top">
+					<div class="ux4g-sidebar-logo-container ux4g-mb-xl">
+						<img src="../../assets/images/navbar-logo.svg" alt="UX4G Logo" class="ux4g-logo-white">
+					</div>
+					<h1 class="ux4g-heading-l-default ux4g-mb-m">Secure Digital Access to Government Services</h1>
+					<p class="ux4g-body-l-default ux4g-text-neutral-inverse">Access certificates, documents, and
+						identity verification seamlessly across all government platforms through a unified citizen
+						login.</p>
+				</div>
+				<div class="ux4g-sidebar-bottom ux4g-d-flex ux4g-gap-m">
+					<div class="ux4g-sidebar-stat">
+						<span class="ux4g-label-s-default ux4g-text-neutral-inverse">TRUSTED BY</span>
+						<span class="ux4g-label-l-default ux4g-text-neutral-inverse">800M+ Citizens</span>
+					</div>
+					<div class="ux4g-sidebar-stat">
+						<span class="ux4g-label-s-default ux4g-text-neutral-inverse">AVAILABLE SERVICES</span>
+						<span class="ux4g-label-l-default ux4g-text-neutral-inverse">5000+ Integrated</span>
+					</div>
+				</div>
+				<div class="ux4g-sidebar-ring ux4g-ring-1"></div>
+				<div class="ux4g-sidebar-ring ux4g-ring-2 ux4g-sidebar-ring-bottom"></div>
+			</div>
+			<div class="ux4g-identity-access-column ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-flex-column">
+				<div class="ux4g-form-box">
+					<button class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block" type="button">
+						<span class="ux4g-icon-outlined" aria-hidden="true">arrow_back</span>
+						Back
+					</button>
+					<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs" id="ux4g-otp-col-final-label">OTP Verification</h2>
+					<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">Enter the 6-digit code sent to +91 98XXX XXXXX</p>
+					<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l" onsubmit="return false;">
+						<div class="ux4g-otp ux4g-otp-error ux4g-w-100" data-ux-otp data-ux-state="error" data-ux-count="6" data-ux-no-separator
+							role="group" aria-labelledby="ux4g-otp-col-final-label" aria-invalid="true">
+							<div class="ux4g-otp-group"></div>
+							<input class="ux4g-otp-source" type="hidden" value="555555" placeholder="â€”">
+							<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="assertive">
+								<span class="ux4g-otp-status" data-ux-otp-status>
+									<span class="ux4g-icon-outlined" aria-hidden="true">error</span>
+									<span>Incorrect OTP</span>
+								</span>
+								<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+									data-ux-otp-prefix="Resend OTP in " data-ux-otp-seconds="17">Resend OTP in
+									00:17</span>
+							</div>
+						</div>
+						<!-- Error Alert Block -->
+						<div class="ux4g-alert ux4g-alert-error ux4g-form-alert ux4g-mb-m">
+							<i class="ux4g-icon-outlined ux4g-alert-icon">error</i>
+							<div class="ux4g-form-alert-body">
+								<span class="ux4g-alert-message">Incorrect OTP</span>
+								<div class="ux4g-form-alert-footer ux4g-d-flex ux4g-ai-center ux4g-jc-between">
+									<span class="ux4g-body-s-strong ux4g-text-error">This is your last attempt before a 30-min lockout</span>
+									<span class="ux4g-alert-counter ux4g-text-error ux4g-label-m-default">Attempt 3 of 3</span>
+								</div>
+							</div>
+						</div>
+						<div class="ux4g-form-actions">
+							<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify OTP</button>
+						</div>
+					</form>
+				</div>
+				<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+					<span class="ux4g-label-m-default">Powered by -</span>
+					<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Column State 4: Locked -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Column â€” Locked</h4>
+	<section class="ux4g-identity-access-container ux4g-mb-4xl">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout">
+			<div class="ux4g-identity-access-sidebar ux4g-d-none ux4g-md-d-flex ux4g-flex-column ux4g-jc-between">
+				<div class="ux4g-sidebar-top">
+					<div class="ux4g-sidebar-logo-container ux4g-mb-xl">
+						<img src="../../assets/images/navbar-logo.svg" alt="UX4G Logo" class="ux4g-logo-white">
+					</div>
+					<h1 class="ux4g-heading-l-default ux4g-mb-m">Secure Digital Access to Government Services</h1>
+					<p class="ux4g-body-l-default ux4g-text-neutral-inverse">Access certificates, documents, and
+						identity verification seamlessly across all government platforms through a unified citizen
+						login.</p>
+				</div>
+				<div class="ux4g-sidebar-bottom ux4g-d-flex ux4g-gap-m">
+					<div class="ux4g-sidebar-stat">
+						<span class="ux4g-label-s-default ux4g-text-neutral-inverse">TRUSTED BY</span>
+						<span class="ux4g-label-l-default ux4g-text-neutral-inverse">800M+ Citizens</span>
+					</div>
+					<div class="ux4g-sidebar-stat">
+						<span class="ux4g-label-s-default ux4g-text-neutral-inverse">AVAILABLE SERVICES</span>
+						<span class="ux4g-label-l-default ux4g-text-neutral-inverse">5000+ Integrated</span>
+					</div>
+				</div>
+				<div class="ux4g-sidebar-ring ux4g-ring-1"></div>
+				<div class="ux4g-sidebar-ring ux4g-ring-2 ux4g-sidebar-ring-bottom"></div>
+			</div>
+			<div
+				class="ux4g-identity-access-column ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-flex-column">
+				<div class="ux4g-form-box">
+					<button class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block" type="button">
+						<span class="ux4g-icon-outlined" aria-hidden="true">arrow_back</span>
+						Back
+					</button>
+					<div class="ux4g-d-flex ux4g-flex-column ux4g-ai-center ux4g-stack-gap-s ux4g-mb-l">
+						<div class="ux4g-locked-icon-circle">
+							<span class="ux4g-icon-outlined" aria-hidden="true">lock</span>
+						</div>
+						<h2 class="ux4g-heading-m-default ux4g-text-neutral-primary ux4g-text-center"
+							id="ux4g-otp-col-locked-label">Too many incorrect attempts</h2>
+					</div>
+					<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+						onsubmit="return false;">
+						<div class="ux4g-otp ux4g-otp-locked ux4g-w-100" data-ux-otp data-ux-state="locked-out"  data-ux-count="6" data-ux-no-separator
+							role="group" aria-labelledby="ux4g-otp-col-locked-label" aria-disabled="true">
+							<div class="ux4g-otp-group"></div>
+							<input class="ux4g-otp-source" type="hidden" placeholder="â€”" disabled>
+							<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="polite">
+								<span class="ux4g-otp-status">
+									<span class="ux4g-icon-outlined" aria-hidden="true">lock</span>
+									<span class="ux4g-text-neutral-tertiary">Locked for 28:43</span>
+								</span>
+								<span class="ux4g-text-link-disabled">Resend OTP</span>
+							</div>
+						</div>
+						<div class="ux4g-alert ux4g-alert-error ux4g-form-alert">
+							<i class="ux4g-icon ux4g-alert-icon">error</i>
+							<div class="ux4g-alert-content">
+								<span class="ux4g-alert-message">Account locked. Please wait for the countdown to
+									complete</span>
+							</div>
+						</div>
+					</form>
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s ux4g-mt-l">
+						<span class="ux4g-body-s-default ux4g-text-neutral-secondary">Need help?</span>
+						<a href="tel:18001111111" class="ux4g-text-link ux4g-label-l-default">Call 1800-XXX-XXXX</a>
+					</div>
+				</div>
+				<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+					<span class="ux4g-label-m-default">Powered by -</span>
+					<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Column State 5: Auto Unlock -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Column â€” Auto Unlock</h4>
+	<section class="ux4g-identity-access-container ux4g-mb-4xl">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout">
+			<div class="ux4g-identity-access-sidebar ux4g-d-none ux4g-md-d-flex ux4g-flex-column ux4g-jc-between">
+				<div class="ux4g-sidebar-top">
+					<div class="ux4g-sidebar-logo-container ux4g-mb-xl">
+						<img src="../../assets/images/navbar-logo.svg" alt="UX4G Logo" class="ux4g-logo-white">
+					</div>
+					<h1 class="ux4g-heading-l-default ux4g-mb-m">Secure Digital Access to Government Services</h1>
+					<p class="ux4g-body-l-default ux4g-text-neutral-inverse">Access certificates, documents, and
+						identity verification seamlessly across all government platforms through a unified citizen
+						login.</p>
+				</div>
+				<div class="ux4g-sidebar-bottom ux4g-d-flex ux4g-gap-m">
+					<div class="ux4g-sidebar-stat">
+						<span class="ux4g-label-s-default ux4g-text-neutral-inverse">TRUSTED BY</span>
+						<span class="ux4g-label-l-default ux4g-text-neutral-inverse">800M+ Citizens</span>
+					</div>
+					<div class="ux4g-sidebar-stat">
+						<span class="ux4g-label-s-default ux4g-text-neutral-inverse">AVAILABLE SERVICES</span>
+						<span class="ux4g-label-l-default ux4g-text-neutral-inverse">5000+ Integrated</span>
+					</div>
+				</div>
+				<div class="ux4g-sidebar-ring ux4g-ring-1"></div>
+				<div class="ux4g-sidebar-ring ux4g-ring-2 ux4g-sidebar-ring-bottom"></div>
+			</div>
+			<div
+				class="ux4g-identity-access-column ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-flex-column">
+				<div class="ux4g-form-box">
+					<button class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block" type="button">
+						<span class="ux4g-icon-outlined" aria-hidden="true">arrow_back</span>
+						Back
+					</button>
+					<div class="ux4g-alert ux4g-alert-success ux4g-radius-m ux4g-mb-l">
+						<i class="ux4g-icon ux4g-alert-icon">check_circle</i>
+						<div class="ux4g-alert-content">
+							<span class="ux4g-alert-message">You can now try signing in again.</span>
+						</div>
+					</div>
+					<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs"
+						id="ux4g-otp-col-unlock-label">OTP Verification</h2>
+					<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">Enter the 6-digit code sent
+						to +91 98XXX XXXXX</p>
+					<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+						onsubmit="return false;">
+						<div class="ux4g-otp" data-ux-otp data-ux-count="6" data-ux-no-separator role="group"
+							aria-labelledby="ux4g-otp-col-unlock-label">
+							<div class="ux4g-otp-group"></div>
+							<input class="ux4g-otp-source" type="hidden" placeholder="â€”">
+							<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="polite">
+								<span class="ux4g-text-neutral-tertiary">Didn't receive OTP?</span>
+								<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+									data-ux-otp-prefix="Resend in " data-ux-otp-seconds="17">Resend in 00:17</span>
+							</div>
+						</div>
+						<div class="ux4g-form-actions">
+							<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify OTP</button>
+						</div>
+					</form>
+				</div>
+				<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+					<span class="ux4g-label-m-default">Powered by -</span>
+					<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Column State 6: Suspicious Activity -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Column â€” Suspicious Activity</h4>
+	<section class="ux4g-identity-access-container ux4g-mb-4xl">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<!-- Variant: Fluid Layout - Warning -->
+		<div class="ux4g-alert ux4g-alert-warning">
+			<i class="ux4g-icon ux4g-alert-icon">warning</i>
+			<div class="ux4g-alert-content">
+				<span class="ux4g-alert-title">Suspicious activity detected</span>
+				<span class="ux4g-alert-message">We detected a sign-in from a new device. Please verify your identity before continuing.</span>
+			</div>
+			<div class="ux4g-alert-actions">
+				<button class="ux4g-alert-close">
+					<i class="ux4g-icon">close</i>
+				</button>
+			</div>
+		</div>
+		<div class="ux4g-identity-access-layout">
+			<div class="ux4g-identity-access-sidebar ux4g-d-none ux4g-md-d-flex ux4g-flex-column ux4g-jc-between">
+				<div class="ux4g-sidebar-top">
+					<div class="ux4g-sidebar-logo-container ux4g-mb-xl">
+						<img src="../../assets/images/navbar-logo.svg" alt="UX4G Logo" class="ux4g-logo-white">
+					</div>
+					<h1 class="ux4g-heading-l-default ux4g-mb-m">Secure Digital Access to Government Services</h1>
+					<p class="ux4g-body-l-default ux4g-text-neutral-inverse">Access certificates, documents, and
+						identity verification seamlessly across all government platforms through a unified citizen
+						login.</p>
+				</div>
+				<div class="ux4g-sidebar-bottom ux4g-d-flex ux4g-gap-m">
+					<div class="ux4g-sidebar-stat">
+						<span class="ux4g-label-s-default ux4g-text-neutral-inverse">TRUSTED BY</span>
+						<span class="ux4g-label-l-default ux4g-text-neutral-inverse">800M+ Citizens</span>
+					</div>
+					<div class="ux4g-sidebar-stat">
+						<span class="ux4g-label-s-default ux4g-text-neutral-inverse">AVAILABLE SERVICES</span>
+						<span class="ux4g-label-l-default ux4g-text-neutral-inverse">5000+ Integrated</span>
+					</div>
+				</div>
+				<div class="ux4g-sidebar-ring ux4g-ring-1"></div>
+				<div class="ux4g-sidebar-ring ux4g-ring-2 ux4g-sidebar-ring-bottom"></div>
+			</div>
+			<div
+				class="ux4g-identity-access-column ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-flex-column">
+				<div class="ux4g-form-box">
+					<button class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block" type="button">
+						<span class="ux4g-icon-outlined" aria-hidden="true">arrow_back</span>
+						Back
+					</button>
+					<!-- Warning Alert Block -->
+					<div class="ux4g-alert ux4g-alert-warning ux4g-form-alert ux4g-mb-m">
+						<i class="ux4g-icon-outlined ux4g-alert-icon">error</i>
+						<div class="ux4g-form-alert-body">
+							<span class="ux4g-alert-message ux4g-body-s-strong">Suspicious activity detected</span>
+							<div class="ux4g-form-alert-footer ux4g-d-flex ux4g-ai-center ux4g-jc-between">
+								<span class="ux4g-text-warning">We detected a sign-in from a new device. Please verify your identity before continuing.</span>
+							</div>
+						</div>
+					</div>
+					<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs"
+						id="ux4g-otp-col-suspicious-label">OTP Verification</h2>
+					<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">A verification code has been
+						sent to your registered number for security verification.</p>
+					<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+						onsubmit="return false;">
+						<div class="ux4g-otp" data-ux-otp data-ux-count="6" data-ux-no-separator role="group"
+							aria-labelledby="ux4g-otp-col-suspicious-label">
+							<div class="ux4g-otp-group"></div>
+							<input class="ux4g-otp-source" type="hidden" placeholder="â€”">
+							<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="polite">
+								<span class="ux4g-text-neutral-tertiary">Didn't receive OTP?</span>
+								<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+									data-ux-otp-prefix="Resend in " data-ux-otp-seconds="17">Resend in 00:17</span>
+							</div>
+						</div>
+						<div class="ux4g-form-actions">
+							<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify OTP</button>
+						</div>
+					</form>
+				</div>
+				<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+					<span class="ux4g-label-m-default">Powered by -</span>
+					<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<h3 class="ux4g-body-m-strong ux4g-bg-tertiary ux4g-p-m ux4g-text-center ux4g-m-m">Desktop - FullScreen Layout</h3>
+
+	<!-- Fullscreen State 1: OTP Verification (Error) -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Fullscreen â€” OTP Verification (Error)</h4>
+	<section class="ux4g-identity-access-container">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout ux4g-jc-center">
+			<div
+				class="ux4g-identity-access-full ux4g-bg-neutral">
+				<div class="ux4g-form-box">
+					<button class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block" type="button">
+						<span class="ux4g-icon-outlined" aria-hidden="true">arrow_back</span>
+						Back
+					</button>
+					<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs">OTP Verification</h2>
+					<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">Enter the 6-digit code sent
+						to +91 98XXX XXXXX</p>
+					<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+						onsubmit="return false;">
+						<div class="ux4g-otp ux4g-otp-error ux4g-w-100" data-ux-otp data-ux-state="error" data-ux-count="6" data-ux-no-separator
+							role="group" aria-labelledby="ux4g-otp-fs-otp-label" aria-invalid="true">
+							<div class="ux4g-otp-group"></div>
+							<input class="ux4g-otp-source" type="hidden" value="555555" placeholder="â€”">
+							<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="assertive">
+								<span class="ux4g-otp-status" data-ux-otp-status>
+									<span class="ux4g-icon-outlined" aria-hidden="true">error</span>
+									<span>Incorrect OTP</span>
+								</span>
+								<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+									data-ux-otp-prefix="Resend OTP in " data-ux-otp-seconds="17">Resend OTP in
+									00:17</span>
+							</div>
+						</div>
+						<div class="ux4g-form-actions">
+							<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify OTP</button>
+						</div>
+					</form>
+				</div>
+				<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+					<span class="ux4g-label-m-default">Powered by -</span>
+					<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Fullscreen State 2: First Attempt (Error) -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Fullscreen â€” First Attempt (Error)</h4>
+	<section class="ux4g-identity-access-container">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout ux4g-jc-center">
+			<div
+				class="ux4g-identity-access-full ux4g-bg-neutral">
+				<div class="ux4g-form-box">
+					<button class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block" type="button">
+						<span class="ux4g-icon-outlined" aria-hidden="true">arrow_back</span>
+						Back
+					</button>
+					<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs">OTP Verification</h2>
+					<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">Enter the 6-digit code sent
+						to +91 98XXX XXXXX</p>
+					<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+						onsubmit="return false;">
+						<div class="ux4g-otp ux4g-otp-error ux4g-w-100" data-ux-otp data-ux-state="error" data-ux-count="6" data-ux-no-separator
+							role="group" aria-labelledby="ux4g-otp-fs-first-label" aria-invalid="true">
+							<div class="ux4g-otp-group"></div>
+							<input class="ux4g-otp-source" type="hidden" value="555555" placeholder="â€”">
+							<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="assertive">
+								<span class="ux4g-otp-status" data-ux-otp-status>
+									<span class="ux4g-icon-outlined" aria-hidden="true">error</span>
+									<span>Incorrect OTP</span>
+								</span>
+								<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+									data-ux-otp-prefix="Resend OTP in " data-ux-otp-seconds="17">Resend OTP in
+									00:17</span>
+							</div>
+						</div>
+						<!-- Warning Alert Block -->
+						<div class="ux4g-alert ux4g-alert-warning ux4g-form-alert ux4g-mb-m">
+							<i class="ux4g-icon-outlined ux4g-alert-icon">error</i>
+							<div class="ux4g-form-alert-body">
+								<span class="ux4g-alert-message">Incorrect OTP</span>
+								<div class="ux4g-form-alert-footer ux4g-d-flex ux4g-ai-center ux4g-jc-between">
+									<span class="ux4g-body-s-default ux4g-text-warning">1 more incorrect entry before 30-min lockout</span>
+									<span class="ux4g-alert-counter ux4g-text-warning ux4g-label-m-default">Attempt 1 of 3</span>
+								</div>
+							</div>
+						</div>
+						<div class="ux4g-form-actions">
+							<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify OTP</button>
+						</div>
+					</form>
+				</div>
+				<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+					<span class="ux4g-label-m-default">Powered by -</span>
+					<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Fullscreen State 3: Final Attempt (Critical Error) -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Fullscreen â€” Final Attempt (Critical Error)</h4>
+	<section class="ux4g-identity-access-container">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout ux4g-jc-center">
+			<div
+				class="ux4g-identity-access-full ux4g-bg-neutral">
+				<div class="ux4g-form-box">
+					<button class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block" type="button">
+						<span class="ux4g-icon-outlined" aria-hidden="true">arrow_back</span>
+						Back
+					</button>
+					<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs">OTP Verification</h2>
+					<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">Enter the 6-digit code sent
+						to +91 98XXX XXXXX</p>
+					<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+						onsubmit="return false;">
+						<div class="ux4g-otp ux4g-otp-error ux4g-w-100" data-ux-otp data-ux-state="error" data-ux-count="6" data-ux-no-separator
+							role="group" aria-labelledby="ux4g-otp-fs-final-label" aria-invalid="true">
+							<div class="ux4g-otp-group"></div>
+							<input class="ux4g-otp-source" type="hidden" value="555555" placeholder="â€”">
+							<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="assertive">
+								<span class="ux4g-otp-status" data-ux-otp-status>
+									<span class="ux4g-icon-outlined" aria-hidden="true">error</span>
+									<span>Incorrect OTP</span>
+								</span>
+								<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+									data-ux-otp-prefix="Resend OTP in " data-ux-otp-seconds="17">Resend OTP in
+									00:17</span>
+							</div>
+						</div>
+						<!-- Error Alert Block -->
+						<div class="ux4g-alert ux4g-alert-error ux4g-form-alert ux4g-mb-m">
+							<i class="ux4g-icon-outlined ux4g-alert-icon">error</i>
+							<div class="ux4g-form-alert-body">
+								<span class="ux4g-alert-message">Incorrect OTP</span>
+								<div class="ux4g-form-alert-footer ux4g-d-flex ux4g-ai-center ux4g-jc-between">
+									<span class="ux4g-body-s-strong ux4g-text-error">This is your last attempt before a 30-min lockout</span>
+									<span class="ux4g-alert-counter ux4g-text-error ux4g-label-m-default">Attempt 3 of 3</span>
+								</div>
+							</div>
+						</div>
+						<div class="ux4g-form-actions">
+							<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify OTP</button>
+						</div>
+					</form>
+				</div>
+				<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+					<span class="ux4g-label-m-default">Powered by -</span>
+					<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Fullscreen State 4: Locked -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Fullscreen â€” Locked</h4>
+	<section class="ux4g-identity-access-container">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout ux4g-jc-center">
+			<div
+				class="ux4g-identity-access-full ux4g-bg-neutral">
+				<div class="ux4g-form-box">
+					<button class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block" type="button">
+						<span class="ux4g-icon-outlined" aria-hidden="true">arrow_back</span>
+						Back
+					</button>
+					<div class="ux4g-d-flex ux4g-flex-column ux4g-ai-center ux4g-stack-gap-s ux4g-mb-l">
+						<div class="ux4g-locked-icon-circle">
+							<span class="ux4g-icon-outlined" aria-hidden="true">lock</span>
+						</div>
+						<h2 class="ux4g-heading-m-default ux4g-text-neutral-primary ux4g-text-center">Too many incorrect
+							attempts</h2>
+					</div>
+					<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+						onsubmit="return false;">
+						<div class="ux4g-otp ux4g-otp-locked ux4g-w-100" data-ux-otp data-ux-state="locked-out"  data-ux-count="6" data-ux-no-separator
+							role="group" aria-labelledby="ux4g-otp-col-locked-label" aria-disabled="true">
+							<div class="ux4g-otp-group"></div>
+							<input class="ux4g-otp-source" type="hidden" placeholder="â€”" disabled>
+							<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="polite">
+								<span class="ux4g-otp-status">
+									<span class="ux4g-icon-outlined" aria-hidden="true">lock</span>
+									<span class="ux4g-text-neutral-tertiary">Locked for 28:43</span>
+								</span>
+								<span class="ux4g-text-link-disabled">Resend OTP</span>
+							</div>
+						</div>
+						<div class="ux4g-alert ux4g-alert-error ux4g-form-alert">
+							<i class="ux4g-icon ux4g-alert-icon">error</i>
+							<div class="ux4g-alert-content">
+								<span class="ux4g-alert-message">Account locked. Please wait for the countdown to complete</span>
+							</div>
+						</div>
+					</form>
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s ux4g-mt-l">
+						<span class="ux4g-body-s-default ux4g-text-neutral-secondary">Need help?</span>
+						<a href="tel:18001111111" class="ux4g-text-link ux4g-label-l-default">Call 1800-XXX-XXXX</a>
+					</div>
+				</div>
+				<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+					<span class="ux4g-label-m-default">Powered by -</span>
+					<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Fullscreen State 5: Auto Unlock -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Fullscreen â€” Auto Unlock</h4>
+	<section class="ux4g-identity-access-container">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout ux4g-jc-center">
+			<div
+				class="ux4g-identity-access-full ux4g-bg-neutral">
+				<div class="ux4g-form-box">
+					<button class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block" type="button">
+						<span class="ux4g-icon-outlined" aria-hidden="true">arrow_back</span>
+						Back
+					</button>
+					<div class="ux4g-alert ux4g-alert-success ux4g-radius-m ux4g-mb-l">
+						<i class="ux4g-icon ux4g-alert-icon">check_circle</i>
+						<div class="ux4g-alert-content">
+							<span class="ux4g-alert-message">You can now try signing in again.</span>
+						</div>
+					</div>
+					<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs">OTP Verification</h2>
+					<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">Enter the 6-digit code sent
+						to +91 98XXX XXXXX</p>
+					<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+						onsubmit="return false;">
+						<div class="ux4g-otp" data-ux-otp data-ux-count="6" data-ux-no-separator role="group"
+							aria-labelledby="ux4g-otp-fs-unlock-label">
+							<div class="ux4g-otp-group"></div>
+							<input class="ux4g-otp-source" type="hidden" placeholder="â€”">
+							<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="polite">
+								<span class="ux4g-text-neutral-tertiary">Didn't receive OTP?</span>
+								<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+									data-ux-otp-prefix="Resend in " data-ux-otp-seconds="17">Resend in 00:17</span>
+							</div>
+						</div>
+						<div class="ux4g-form-actions">
+							<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify OTP</button>
+						</div>
+					</form>
+				</div>
+				<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+					<span class="ux4g-label-m-default">Powered by -</span>
+					<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Fullscreen State 6: Suspicious Activity -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Fullscreen â€” Suspicious Activity</h4>
+	<section class="ux4g-identity-access-container">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<!-- Variant: Fluid Layout - Warning -->
+		<div class="ux4g-alert ux4g-alert-warning">
+			<i class="ux4g-icon ux4g-alert-icon">warning</i>
+			<div class="ux4g-alert-content">
+				<span class="ux4g-alert-title">Suspicious activity detected</span>
+				<span class="ux4g-alert-message">We detected a sign-in from a new device. Please verify your identity before continuing.</span>
+			</div>
+			<div class="ux4g-alert-actions">
+				<button class="ux4g-alert-close">
+					<i class="ux4g-icon">close</i>
+				</button>
+			</div>
+		</div>
+		<div class="ux4g-identity-access-layout ux4g-jc-center">
+			<div
+				class="ux4g-identity-access-full ux4g-bg-neutral">
+				<div class="ux4g-form-box">
+					<button class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block" type="button">
+						<span class="ux4g-icon-outlined" aria-hidden="true">arrow_back</span>
+						Back
+					</button>
+					<!-- Warning Alert Block -->
+					<div class="ux4g-alert ux4g-alert-warning ux4g-form-alert ux4g-mb-m">
+						<i class="ux4g-icon-outlined ux4g-alert-icon">error</i>
+						<div class="ux4g-form-alert-body">
+							<span class="ux4g-alert-message ux4g-body-s-strong">Suspicious activity detected</span>
+							<div class="ux4g-form-alert-footer ux4g-d-flex ux4g-ai-center ux4g-jc-between">
+								<span class="ux4g-text-warning">We detected a sign-in from a new device. Please verify your identity before continuing.</span>
+							</div>
+						</div>
+					</div>
+					<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs">OTP Verification</h2>
+					<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">A verification code has been
+						sent to your registered number for security verification.</p>
+					<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+						onsubmit="return false;">
+						<div class="ux4g-otp" data-ux-otp data-ux-count="6" data-ux-no-separator role="group"
+							aria-labelledby="ux4g-otp-fs-suspicious-label">
+							<div class="ux4g-otp-group"></div>
+							<input class="ux4g-otp-source" type="hidden" placeholder="â€”">
+							<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="polite">
+								<span class="ux4g-text-neutral-tertiary">Didn't receive OTP?</span>
+								<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+									data-ux-otp-prefix="Resend in " data-ux-otp-seconds="17">Resend in 00:17</span>
+							</div>
+						</div>
+						<div class="ux4g-form-actions">
+							<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify OTP</button>
+						</div>
+					</form>
+				</div>
+				<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+					<span class="ux4g-label-m-default">Powered by -</span>
+					<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<h3 class="ux4g-body-m-strong ux4g-bg-tertiary ux4g-p-m ux4g-text-center ux4g-m-m">Desktop - Card Layout</h3>
+
+	
+	<!-- Card State 1: OTP Verification (Error) -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Card â€” OTP Verification (Error)</h4>
+	<section class="ux4g-identity-access-container">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout-card ux4g-bg-primary-soft">
+			<div class="ux4g-form-box">
+				<a href="#" class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block"><span class="ux4g-icon-outlined ux4g-fs-14" data-ux4g-init="true">arrow_back</span> Back</a>
+				<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs">OTP Verification</h2>
+				<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">Enter the 6-digit code
+					sent to +91 98XXX XXXXX</p>
+				<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+					onsubmit="return false;">
+					<div class="ux4g-otp ux4g-otp-error ux4g-w-100" data-ux-otp data-ux-state="error" data-ux-count="6" data-ux-no-separator
+						role="group" aria-labelledby="ux4g-otp-card-otp-label" aria-invalid="true">
+						<div class="ux4g-otp-group"></div>
+						<input class="ux4g-otp-source" type="hidden" value="555555" placeholder="â€”">
+						<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default"
+							aria-live="assertive">
+							<span class="ux4g-otp-status" data-ux-otp-status>
+								<span class="ux4g-icon-outlined" aria-hidden="true">error</span>
+								<span>Incorrect OTP</span>
+							</span>
+							<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+								data-ux-otp-prefix="Resend OTP in " data-ux-otp-seconds="17">Resend OTP in
+								00:17</span>
+						</div>
+					</div>
+					<div class="ux4g-form-actions">
+						<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify
+							OTP</button>
+					</div>
+				</form>
+			</div>
+			<div
+				class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+				<span class="ux4g-label-m-default">Powered by -</span>
+				<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+			</div>
+		</div>
+	</section>
+
+	<!-- Card State 2: First Attempt (Error) -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Card â€” First Attempt (Error)</h4>
+	<section class="ux4g-identity-access-container">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout-card ux4g-bg-primary-soft">
+			<div class="ux4g-form-box">
+				<a href="#" class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block"><span class="ux4g-icon-outlined ux4g-fs-14" data-ux4g-init="true">arrow_back</span> Back</a>
+				<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs">OTP Verification</h2>
+				<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">Enter the 6-digit code
+					sent to +91 98XXX XXXXX</p>
+				<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+					onsubmit="return false;">
+					<div class="ux4g-otp ux4g-otp-error ux4g-w-100" data-ux-otp data-ux-state="error" data-ux-count="6" data-ux-no-separator
+						role="group" aria-labelledby="ux4g-otp-card-first-label" aria-invalid="true">
+						<div class="ux4g-otp-group"></div>
+						<input class="ux4g-otp-source" type="hidden" value="555555" placeholder="â€”">
+						<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default"
+							aria-live="assertive">
+							<span class="ux4g-otp-status" data-ux-otp-status>
+								<span class="ux4g-icon-outlined" aria-hidden="true">error</span>
+								<span>Incorrect OTP</span>
+							</span>
+							<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+								data-ux-otp-prefix="Resend OTP in " data-ux-otp-seconds="17">Resend OTP in
+								00:17</span>
+						</div>
+					</div>
+					<!-- Warning Alert Block -->
+					<div class="ux4g-alert ux4g-alert-warning ux4g-form-alert ux4g-mb-m">
+						<i class="ux4g-icon-outlined ux4g-alert-icon">error</i>
+						<div class="ux4g-form-alert-body">
+							<span class="ux4g-alert-message ux4g-body-s-strong">Incorrect OTP</span>
+							<div class="ux4g-form-alert-footer ux4g-d-flex ux4g-ai-center ux4g-jc-between">
+								<span class="ux4g-body-s-default ux4g-text-warning">1 more incorrect entry
+									before 30-min lockout. </span>
+								<span class="ux4g-alert-counter ux4g-text-warning ux4g-label-m-default">Attempt
+									1 of 3</span>
+							</div>
+						</div>
+					</div>
+					<div class="ux4g-form-actions">
+						<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify
+							OTP</button>
+					</div>
+				</form>
+			</div>
+			<div
+				class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+				<span class="ux4g-label-m-default">Powered by -</span>
+				<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+			</div>
+		</div>
+	</section>
+
+	<!-- Card State 3: Final Attempt (Critical Error) -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Card â€” Final Attempt (Critical Error)</h4>
+	<section class="ux4g-identity-access-container ux4g-mb-4xl">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout-card ux4g-bg-primary-soft">
+			<div class="ux4g-form-box">
+						<a href="#" class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block"><span class="ux4g-icon-outlined ux4g-fs-14" data-ux4g-init="true">arrow_back</span> Back</a>
+						<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs">OTP Verification</h2>
+						<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">Enter the 6-digit code
+							sent to +91 98XXX XXXXX</p>
+						<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+							onsubmit="return false;">
+							<div class="ux4g-otp ux4g-otp-error ux4g-w-100" data-ux-otp data-ux-state="error" data-ux-count="6" data-ux-no-separator
+								role="group" aria-labelledby="ux4g-otp-card-final-label" aria-invalid="true">
+								<div class="ux4g-otp-group"></div>
+								<input class="ux4g-otp-source" type="hidden" value="555555" placeholder="â€”">
+								<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default"
+									aria-live="assertive">
+									<span class="ux4g-otp-status" data-ux-otp-status>
+										<span class="ux4g-icon-outlined" aria-hidden="true">error</span>
+										<span>Incorrect OTP</span>
+									</span>
+									<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+										data-ux-otp-prefix="Resend OTP in " data-ux-otp-seconds="17">Resend OTP in
+										00:17</span>
+								</div>
+							</div>
+							<div class="ux4g-alert ux4g-alert-warning ux4g-form-alert ux4g-mb-m">
+								<i class="ux4g-icon-outlined ux4g-alert-icon">error</i>
+								<div class="ux4g-form-alert-body">
+									<span class="ux4g-alert-message ux4g-body-s-strong">Incorrect OTP</span>
+									<div class="ux4g-form-alert-footer ux4g-d-flex ux4g-ai-center ux4g-jc-between">
+										<span class="ux4g-body-s-default ux4g-text-warning">This is your last attempt before a 30-min lockout</span>
+										<span class="ux4g-alert-counter ux4g-text-warning ux4g-label-m-default">Attempt 2 of 3</span>
+									</div>
+								</div>
+							</div>
+							<div class="ux4g-form-actions ux4g-d-flex ux4g-flex-column">
+								<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify OTP</button>
+							</div>
+						</form>
+			</div>
+			<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+				<span class="ux4g-label-m-default">Powered by -</span>
+				<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+			</div>
+		</div>
+	</section>
+
+	<!-- Card State 4: Locked -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Card â€” Locked</h4>
+	<section class="ux4g-identity-access-container ux4g-mb-4xl">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout-card ux4g-bg-primary-soft">
+			<div class="ux4g-form-box">
+						<button class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block" type="button">
+							<span class="ux4g-icon-outlined" aria-hidden="true">arrow_back</span>
+							Back
+						</button>
+						<div class="ux4g-d-flex ux4g-flex-column ux4g-ai-center ux4g-stack-gap-s ux4g-mb-l">
+							<div class="ux4g-locked-icon-circle">
+								<span class="ux4g-icon-outlined" aria-hidden="true">lock</span>
+							</div>
+							<h2 class="ux4g-heading-m-default ux4g-text-neutral-primary ux4g-text-center">Too many
+								incorrect attempts</h2>
+						</div>
+						<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+							onsubmit="return false;">
+							<div class="ux4g-otp ux4g-otp-locked ux4g-w-100" data-ux-otp data-ux-state="locked-out" data-ux-count="6"
+								data-ux-no-separator role="group" aria-labelledby="ux4g-otp-col-locked-label" aria-disabled="true">
+								<div class="ux4g-otp-group"></div>
+								<input class="ux4g-otp-source" type="hidden" placeholder="â€”" disabled>
+								<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="polite">
+									<span class="ux4g-otp-status">
+										<span class="ux4g-icon-outlined" aria-hidden="true">lock</span>
+										<span class="ux4g-text-neutral-tertiary">Locked for 28:43</span>
+									</span>
+									<span class="ux4g-text-link-disabled">Resend OTP</span>
+								</div>
+							</div>
+							<div class="ux4g-alert ux4g-alert-error ux4g-form-alert">
+								<i class="ux4g-icon ux4g-alert-icon">error</i>
+								<div class="ux4g-alert-content">
+									<span class="ux4g-alert-message">Account locked. Please wait for the countdown to
+										complete</span>
+								</div>
+							</div>
+						</form>
+						<div class="ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s ux4g-mt-l">
+							<span class="ux4g-body-s-default ux4g-text-neutral-secondary">Need help?</span>
+							<a href="tel:18001111111" class="ux4g-text-link ux4g-label-l-default">Call 1800-XXX-XXXX</a>
+						</div>
+			</div>
+			<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+				<span class="ux4g-label-m-default">Powered by -</span>
+				<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+			</div>
+		</div>
+	</section>
+
+	<!-- Card State 5: Auto Unlock -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Card â€” Auto Unlock</h4>
+	<section class="ux4g-identity-access-container ux4g-mb-4xl">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<div class="ux4g-identity-access-layout-card ux4g-bg-primary-soft">
+			<div class="ux4g-form-box">
+						<a href="#" class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block"><span class="ux4g-icon-outlined ux4g-fs-14" data-ux4g-init="true">arrow_back</span> Back</a>
+						<div class="ux4g-alert ux4g-alert-success ux4g-radius-m ux4g-mb-l">
+						<i class="ux4g-icon ux4g-alert-icon" data-ux4g-init="true">check_circle</i>
+						<div class="ux4g-alert-content">
+							<span class="ux4g-alert-message">You can now try signing in again.</span>
+						</div>
+					</div>
+						<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs">OTP Verification</h2>
+						<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">Enter the 6-digit code
+							sent to +91 98XXX XXXXX</p>
+						<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+							onsubmit="return false;">
+							<div class="ux4g-otp" data-ux-otp data-ux-count="6" data-ux-no-separator role="group"
+								aria-labelledby="ux4g-otp-card-unlock-label">
+								<div class="ux4g-otp-group"></div>
+								<input class="ux4g-otp-source" type="hidden" placeholder="â€”">
+								<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="polite">
+									<span class="ux4g-text-neutral-tertiary">Didn't receive OTP?</span>
+									<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+										data-ux-otp-prefix="Resend in " data-ux-otp-seconds="17">Resend in 00:17</span>
+								</div>
+							</div>
+							<div class="ux4g-form-actions">
+								<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify
+									OTP</button>
+							</div>
+						</form>
+			</div>
+			<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+				<span class="ux4g-label-m-default">Powered by -</span>
+				<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+			</div>
+		</div>
+	</section>
+
+	<!-- Card State 6: Suspicious Activity -->
+	<h4 class="ux4g-body-s-default ux4g-mb-xs ux4g-bg-primary-soft ux4g-p-m ux4g-text-center ux4g-m-m">Card â€” Suspicious Activity</h4>
+	<section class="ux4g-identity-access-container ux4g-mb-4xl">
+		<nav class="ux4g-navbar">
+			<div class="ux4g-container">
+				<div class="ux4g-navbar-wrap">
+					<div class="ux4g-d-flex ux4g-ai-center ux4g-inline-gap-s">
+						<img src="../../assets/images/national_emblem.svg" alt="National Emblem" class="ux4g-navbar-logo">
+						<span class="ux4g-divider-vertical"></span>
+						<img src="../../assets/images/navbar-logo.svg" alt="Logo" class="ux4g-navbar-logo">
+						<div class="ux4g-d-flex ux4g-flex-column">
+							<span class="ux4g-label-m-strong">Title</span>
+							<span class="ux4g-body-xs-default">Description</span>
+						</div>
+					</div>
+					<a href="#" class="ux4g-label-l-default ux4g-text-link-md">Help & Support</a>
+				</div>
+			</div>
+		</nav>
+		<!-- Variant: Fluid Layout - Warning -->
+		<div class="ux4g-alert ux4g-alert-warning">
+			<i class="ux4g-icon ux4g-alert-icon">warning</i>
+			<div class="ux4g-alert-content">
+				<span class="ux4g-alert-title">Suspicious activity detected</span>
+				<span class="ux4g-alert-message">We detected a sign-in from a new device. Please verify your identity before continuing.</span>
+			</div>
+			<div class="ux4g-alert-actions">
+				<button class="ux4g-alert-close">
+					<i class="ux4g-icon">close</i>
+				</button>
+			</div>
+		</div>
+		<div class="ux4g-identity-access-layout-card ux4g-bg-primary-soft">
+			<div class="ux4g-form-box">
+						<a href="#" class="ux4g-text-link ux4g-label-l-default ux4g-mb-l ux4g-d-inline-block"><span class="ux4g-icon-outlined ux4g-fs-14" data-ux4g-init="true">arrow_back</span> Back</a>
+						<!-- Warning Alert Block -->
+						<div class="ux4g-alert ux4g-alert-warning ux4g-form-alert ux4g-mb-m">
+							<i class="ux4g-icon-outlined ux4g-alert-icon">error</i>
+							<div class="ux4g-form-alert-body">
+								<span class="ux4g-alert-message ux4g-body-s-strong">Suspicious activity detected</span>
+								<div class="ux4g-form-alert-footer ux4g-d-flex ux4g-ai-center ux4g-jc-between">
+									<span class="ux4g-text-warning">We detected a sign-in from a new device. Please verify your identity before
+										continuing.</span>
+								</div>
+							</div>
+						</div>
+						<h2 class="ux4g-heading-l-default ux4g-text-neutral-primary ux4g-mb-xs">OTP Verification</h2>
+						<p class="ux4g-body-m-default ux4g-text-neutral-secondary ux4g-mb-2xl">A verification code has
+							been sent to your registered number for security verification.</p>
+						<form class="ux4g-signin-form ux4g-d-flex ux4g-flex-column ux4g-stack-gap-l"
+							onsubmit="return false;">
+							<div class="ux4g-otp" data-ux-otp data-ux-count="6" data-ux-no-separator role="group"
+								aria-labelledby="ux4g-otp-card-suspicious-label">
+								<div class="ux4g-otp-group"></div>
+								<input class="ux4g-otp-source" type="hidden" placeholder="â€”">
+								<div class="ux4g-otp-meta ux4g-otp-meta-between ux4g-body-s-default" aria-live="polite">
+									<span class="ux4g-text-neutral-tertiary">Didn't receive OTP?</span>
+									<span class="ux4g-otp-resend ux4g-otp-resend-disabled" data-ux-otp-timer
+										data-ux-otp-prefix="Resend in " data-ux-otp-seconds="17">Resend in 00:17</span>
+								</div>
+							</div>
+							<div class="ux4g-form-actions">
+								<button class="ux4g-btn-primary ux4g-btn-lg ux4g-w-100" type="submit">Verify
+									OTP</button>
+							</div>
+						</form>
+			</div>
+			<div class="ux4g-form-footer ux4g-d-flex ux4g-ai-center ux4g-jc-center ux4g-inline-gap-s">
+				<span class="ux4g-label-m-default">Powered by -</span>
+				<img src="./assets/images/dic.svg" alt="Digital India" class="ux4g-dept-logo">
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>
