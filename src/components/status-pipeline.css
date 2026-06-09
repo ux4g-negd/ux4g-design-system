@@ -122,7 +122,8 @@
     color: var(--ux4g-text-neutral-secondary);
     font-weight: var(--ux4g-fw-bold);
 }
-.ux4g-status-pipeline-step .ux4g-status-pipeline-status{
+
+.ux4g-status-pipeline-step .ux4g-status-pipeline-status {
     font-weight: var(--ux4g-font-weight-regular);
 }
 
@@ -159,12 +160,17 @@
 
 }
 
-.ux4g-status-pipeline-stepper:not(.ux4g-status-pipeline-vertical) .ux4g-status-pipeline-step {
-    flex: auto;
+.ux4g-status-pipeline-stepper:not(.ux4g-status-pipeline-vertical):not(.ux4g-status-pipeline-center):not(.ux4g-status-pipeline-left) .ux4g-status-pipeline-step {
+    flex: 1;
     display: flex;
     align-items: center;
     gap: var(--ux4g-inline-s);
     position: var(--ux4g-pos-relative);
+    min-width: 0;
+}
+
+.ux4g-status-pipeline-stepper:not(.ux4g-status-pipeline-vertical):not(.ux4g-status-pipeline-center):not(.ux4g-status-pipeline-left) .ux4g-status-pipeline-step:last-child {
+    flex: none;
 }
 
 
@@ -818,6 +824,84 @@
 
     .ux4g-status-pipeline-horizontal .ux4g-status-pipeline-head {
         flex: 1;
+    }
+}
+
+/* ========================================================== RESPONSIVE MEDIA QUERY FOR MOBILE (767px) ========================================================== */
+@media (max-width: 767px) {
+    /* 1. Resize all icons to 20px width & height on mobile for horizontal steppers and prevent squishing */
+    .ux4g-status-pipeline-horizontal .ux4g-status-pipeline-head-icon {
+        width: 20px !important;
+        height: 20px !important;
+        font-size: var(--ux4g-fs-11) !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ux4g-status-pipeline-horizontal .ux4g-status-pipeline-head-check {
+        width: 10px !important;
+        height: 10px !important;
+    }
+
+    .ux4g-status-pipeline-horizontal .ux4g-status-pipeline-done span.ux4g-status-pipeline-head-icon {
+        background-size: 12px !important;
+        font-size: 0 !important;
+    }
+
+    /* 2. Format default horizontal stepper text below icons on mobile (like center-aligned layout) */
+    .ux4g-status-pipeline-stepper.ux4g-status-pipeline-horizontal:not(.ux4g-status-pipeline-center):not(.ux4g-status-pipeline-left) .ux4g-status-pipeline-step {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .ux4g-status-pipeline-stepper.ux4g-status-pipeline-horizontal:not(.ux4g-status-pipeline-center):not(.ux4g-status-pipeline-left) .ux4g-status-pipeline-step:last-child {
+        flex: 1 !important;
+    }
+
+    .ux4g-status-pipeline-stepper.ux4g-status-pipeline-horizontal:not(.ux4g-status-pipeline-center):not(.ux4g-status-pipeline-left) .ux4g-status-pipeline-head {
+        margin-top: 8px !important;
+        margin-left: 0 !important;
+        align-items: center !important;
+    }
+
+    .ux4g-status-pipeline-stepper.ux4g-status-pipeline-horizontal:not(.ux4g-status-pipeline-center):not(.ux4g-status-pipeline-left) .ux4g-status-pipeline-step:not(:last-child):after {
+        position: absolute !important;
+        content: "" !important;
+        left: calc(50% + 14px) !important;
+        width: calc(100% - 28px) !important;
+        top: 10px !important; /* Center of the 20px icon */
+        height: 4px !important;
+        background-color: var(--ux4g-bg-neutral-subtle) !important;
+        flex: none !important;
+        margin: 0 !important;
+    }
+
+    /* 3. Adjust line alignment for center-aligned horizontal stepper */
+    .ux4g-status-pipeline-horizontal.ux4g-status-pipeline-center .ux4g-status-pipeline-step:not(:last-child):after {
+        left: calc(50% + 14px) !important;
+        width: calc(100% - 28px) !important;
+        top: var(--ux4g-space-4) !important;
+    }
+
+    /* 4. Adjust line alignment for left-aligned horizontal stepper */
+    .ux4g-status-pipeline-horizontal.ux4g-status-pipeline-left .ux4g-status-pipeline-step:not(:last-child):after {
+        left: 28px !important;
+        width: calc(100% - 32px) !important;
+        top: var(--ux4g-space-4) !important;
+    }
+
+    /* 5. Ensure text labels wrap and size down properly to prevent overlap on mobile */
+    .ux4g-status-pipeline-horizontal .ux4g-status-pipeline-label {
+        font-size: var(--ux4g-fs-12) !important;
+        line-height: var(--ux4g-lh-16) !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    .ux4g-status-pipeline-horizontal .ux4g-status-pipeline-status {
+        font-size: var(--ux4g-fs-10) !important;
+        line-height: var(--ux4g-lh-14) !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
     }
 }
 

@@ -92,15 +92,15 @@
       const rect = target.getBoundingClientRect();
       const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
       const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-      
+
       // Temporary show to measure
       const originalDisplay = floating.style.display;
       const originalVisibility = floating.style.visibility;
       floating.style.display = "block";
       floating.style.visibility = "hidden";
-      
+
       const fr = floating.getBoundingClientRect();
-      
+
       floating.style.display = originalDisplay;
       floating.style.visibility = originalVisibility;
 
@@ -124,7 +124,7 @@
       const compute = (p) => {
         let t = 0, l = 0;
         const [side, align] = p.split("-");
-        
+
         if (side === "top") {
           t = rect.top - fr.height - offset;
           if (align === "start") l = rect.left;
@@ -169,10 +169,10 @@
       floating.style.top = `${top}px`;
       floating.style.left = `${left}px`;
       floating.setAttribute("data-placement", chosen.p);
-      
+
       const isTooltip = floating.classList.contains('ux4g-tooltip');
       const baseClass = isTooltip ? 'ux4g-tooltip' : 'ux4g-popover';
-      
+
       const placementPrefix = `${baseClass}-`;
       for (const cls of Array.from(floating.classList)) {
         if (cls.startsWith(placementPrefix) && cls !== baseClass) {
@@ -532,12 +532,12 @@
           </div>`;
         }
         inner += `<div class="ux4g-popover-body">${c}</div>`;
-        
+
         const hasArrow = U.bool(U.data(this.el, "arrow", "true"), true);
         if (hasArrow) {
           inner += '<div class="ux4g-popover-arrow"><i class="ux4g-icon">arrow_drop_up</i></div>';
         }
-        
+
         return inner;
       }
 
@@ -550,7 +550,7 @@
       const div = document.createElement("div");
       div.className = this.kind === "tooltip" ? "ux4g-tooltip" : "ux4g-popover";
       div.setAttribute("role", this.kind === "tooltip" ? "tooltip" : "dialog");
-      
+
       const hasArrow = U.bool(U.data(this.el, "arrow", "true"), true);
       if (!hasArrow) {
         div.classList.add("ux4g-popover-no-arrow");
@@ -577,9 +577,9 @@
       this._create();
       this._floating.style.display = "block";
       this._floating.classList.add("show");
-      
+
       init(this._floating);
-      
+
       const update = () => {
         if (!this._open) return;
         U.placeFloating(this.el, this._floating, this.placement, this.offset);
@@ -629,7 +629,7 @@
 
     _bind() {
       let triggers = String(this.trigger).split(/\s+/).filter(Boolean);
-      
+
       if (this.kind === "popover") {
         triggers = triggers.filter(t => t !== "hover");
         if (!triggers.length) triggers = ["click"];
@@ -979,9 +979,9 @@
             th.classList.remove("ux4g-is-filtering");
             const input = U.qs(".ux4g-search-input", th);
             if (input) {
-               input.value = '';
-               const container = U.closest(input, '.ux4g-search-container');
-               if (container) container.classList.remove('ux4g-has-value');
+              input.value = '';
+              const container = U.closest(input, '.ux4g-search-container');
+              if (container) container.classList.remove('ux4g-has-value');
             }
           }
         });
@@ -990,14 +990,14 @@
       const inputs = U.qsa("th .ux4g-search-input", this.el);
       inputs.forEach(input => {
         U.on(input, "input", (e) => {
-           const container = U.closest(input, '.ux4g-search-container');
-           if (container) {
-              if (input.value.length > 0) {
-                 container.classList.add('ux4g-has-value');
-              } else {
-                 container.classList.remove('ux4g-has-value');
-              }
-           }
+          const container = U.closest(input, '.ux4g-search-container');
+          if (container) {
+            if (input.value.length > 0) {
+              container.classList.add('ux4g-has-value');
+            } else {
+              container.classList.remove('ux4g-has-value');
+            }
+          }
         });
       });
     }
@@ -1016,52 +1016,52 @@
         U.on(th, "click", (e) => {
           // If the click happened on a filter button or something else interactive, ignore sort
           if (U.closest(e.target, ".ux4g-table-filter-icon") || U.closest(e.target, ".ux4g-search-input") || U.closest(e.target, ".ux4g-search-clear")) {
-             return;
+            return;
           }
 
           const currentSort = U.attr(th, "data-sort", "none");
           // Cycle: none -> asc -> desc -> asc... (skip none once sorted to avoid double clicks)
           const nextSort = currentSort === "asc" ? "desc" : "asc";
-          
+
           // Reset other columns in the same table
           sortableCols.forEach(otherTh => {
             if (otherTh !== th) otherTh.setAttribute("data-sort", "none");
           });
 
           th.setAttribute("data-sort", nextSort);
-          
+
           // Row sorting logic
           if (nextSort !== "none") {
-             const tbody = U.qs("tbody", this.el);
-             if (tbody) {
-                const trs = Array.from(tbody.querySelectorAll("tr"));
-                const thIndex = Array.from(th.parentNode.children).indexOf(th);
-                
-                trs.sort((a, b) => {
-                   const aCol = a.children[thIndex];
-                   const bCol = b.children[thIndex];
-                   if (!aCol || !bCol) return 0;
-                   
-                   const aText = (aCol.textContent || aCol.innerText).trim();
-                   const bText = (bCol.textContent || bCol.innerText).trim();
-                   
-                   const cleanV1 = aText.replace(/[₹$,\s]/g, "");
-                   const cleanV2 = bText.replace(/[₹$,\s]/g, "");
-                   const num1 = Number(cleanV1);
-                   const num2 = Number(cleanV2);
-                   
-                   const isNum = !isNaN(num1) && !isNaN(num2) && cleanV1 !== "" && cleanV2 !== "";
-                   
-                   if (isNum) {
-                      return nextSort === "asc" ? (num1 - num2) : (num2 - num1);
-                   } else {
-                      const comp = aText.localeCompare(bText, undefined, { numeric: true, sensitivity: 'base' });
-                      return nextSort === "asc" ? comp : -comp;
-                   }
-                });
-                
-                trs.forEach(tr => tbody.appendChild(tr));
-             }
+            const tbody = U.qs("tbody", this.el);
+            if (tbody) {
+              const trs = Array.from(tbody.querySelectorAll("tr"));
+              const thIndex = Array.from(th.parentNode.children).indexOf(th);
+
+              trs.sort((a, b) => {
+                const aCol = a.children[thIndex];
+                const bCol = b.children[thIndex];
+                if (!aCol || !bCol) return 0;
+
+                const aText = (aCol.textContent || aCol.innerText).trim();
+                const bText = (bCol.textContent || bCol.innerText).trim();
+
+                const cleanV1 = aText.replace(/[₹$,\s]/g, "");
+                const cleanV2 = bText.replace(/[₹$,\s]/g, "");
+                const num1 = Number(cleanV1);
+                const num2 = Number(cleanV2);
+
+                const isNum = !isNaN(num1) && !isNaN(num2) && cleanV1 !== "" && cleanV2 !== "";
+
+                if (isNum) {
+                  return nextSort === "asc" ? (num1 - num2) : (num2 - num1);
+                } else {
+                  const comp = aText.localeCompare(bText, undefined, { numeric: true, sensitivity: 'base' });
+                  return nextSort === "asc" ? comp : -comp;
+                }
+              });
+
+              trs.forEach(tr => tbody.appendChild(tr));
+            }
           }
 
           U.dispatch(this.el, "ux4g.table.sort", { column: th, direction: nextSort });
@@ -1116,7 +1116,7 @@
 
       const rowCheckboxes = U.qsa("tbody .ux4g-checkbox", this.el);
       if (!rowCheckboxes.length) return;
-      
+
       const updateState = () => {
         let checkedCount = 0;
         rowCheckboxes.forEach(cb => {
@@ -1153,14 +1153,14 @@
       // Listen to individual row checkboxes
       rowCheckboxes.forEach(cb => {
         U.on(cb, "change", updateState);
-        
+
         // Also allow row click to toggle checkbox, skipping if clicking on interactable elements
         const tr = U.closest(cb, "tr");
         if (tr && tr.classList.contains("ux4g-table-interactive")) {
           U.on(tr, "click", (e) => {
             if (e.target.tagName !== "INPUT" && e.target.tagName !== "BUTTON" && !U.closest(e.target, "button") && !U.closest(e.target, "a")) {
-               cb.checked = !cb.checked;
-               updateState();
+              cb.checked = !cb.checked;
+              updateState();
             }
           });
         }
@@ -1195,10 +1195,10 @@
         const radio = U.qs('input[type="radio"]', item);
         const switchInput = U.qs('.ux4g-switch-input', item);
 
-        const isMulti = (this.el.id === "ux4g-multiselect-list") || 
-                        this.el.classList.contains("ux4g-multiselect") || 
-                        this.el.classList.contains("ux4g-list-multiselect") ||
-                        (switchInput !== null);
+        const isMulti = (this.el.id === "ux4g-multiselect-list") ||
+          this.el.classList.contains("ux4g-multiselect") ||
+          this.el.classList.contains("ux4g-list-multiselect") ||
+          (switchInput !== null);
 
         // If clicking on a label (but NOT the input itself), let the native browser behavior trigger the input click
         if (e.target.tagName !== 'INPUT' && (e.target.tagName === 'LABEL' || U.closest(e.target, 'label'))) {
@@ -1208,7 +1208,7 @@
         // If clicking on input directly, don't double toggle
         if (e.target.tagName === 'INPUT') {
           const inputChecked = e.target.checked;
-          
+
           if (!isMulti) {
             const allItems = U.qsa(".ux4g-list-item-row, .ux4g-list-select-item", this.el);
             allItems.forEach(i => {
@@ -1240,7 +1240,7 @@
           // Single selection
           const wasActive = item.classList.contains("active");
           const allItems = U.qsa(".ux4g-list-item-row, .ux4g-list-select-item", this.el);
-          
+
           // Clear all first
           allItems.forEach(i => {
             i.classList.remove("active");
@@ -1269,7 +1269,7 @@
             }
           }
         }
-        
+
         U.dispatch(this.el, "ux4g.list.change", { item, active: item.classList.contains("active") });
       });
     }
@@ -1439,9 +1439,9 @@
         const err = this._validate(file);
         if (err) {
           errorOccurred = true;
-        this._showError(err, file);
-        U.dispatch(this.el, 'ux4g.upload.error', { file, reason: err });
-        return;
+          this._showError(err, file);
+          U.dispatch(this.el, 'ux4g.upload.error', { file, reason: err });
+          return;
         }
 
         this.files.push(file);
@@ -1949,7 +1949,6 @@
       this.halfTrackTail = U.qs('.ux4g-progress-half-track-tail', el);
       this.halfRoundedProgress = U.qs('[data-ux-progress-half-svg-progress]', el);
       this.halfRoundedTrack = U.qs('[data-ux-progress-half-svg-track]', el);
-      this.halfRoundedTrackCap = U.qs('[data-ux-progress-half-svg-track-cap]', el);
       this.halfSharpProgress = U.qs('[data-ux-progress-half-svg-progress-sharp]', el);
       this.halfSharpTrack = U.qs('[data-ux-progress-half-svg-track-sharp]', el);
       this.sync();
@@ -1986,7 +1985,6 @@
           </defs>
           <path class="ux4g-progress-half-svg-track" d="${progressHalfRoundedArcPath(config.width, config.roundedStroke)}" data-ux-progress-half-svg-track></path>
           <path class="ux4g-progress-half-svg-progress" d="${progressHalfRoundedArcPath(config.width, config.roundedStroke)}" pathLength="100" data-ux-progress-half-svg-progress></path>
-          <circle class="ux4g-progress-half-svg-track-cap" cx="${config.width - (config.roundedStroke / 2)}" cy="${config.height / 2}" r="${config.roundedStroke / 2}" data-ux-progress-half-svg-track-cap></circle>
         </svg>`;
       const sharpArcMarkup = `
         <svg class="ux4g-progress-half-svg ux4g-progress-half-svg-sharp" viewBox="0 0 ${config.width} ${config.height}" aria-hidden="true" focusable="false">
@@ -2120,7 +2118,7 @@
   }
 
   function renderProgressIndicatorDemos(root = document) {
-    const steps = [0, 10];
+    const steps = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
     const barContainers = [
       ['sharp-outside', 'sharp', 'outside'],
       ['rounded-outside', 'rounded', 'outside'],
@@ -2270,11 +2268,11 @@
   global.ux4gCustomInitList = global.ux4gCustomInitList || [];
 
   const attachedGlobalListeners = new Set();
-  
+
   // Safe wrapper for global event listeners to prevent double-binding
   const originalDocAddEventListener = document.addEventListener;
   const originalWinAddEventListener = window.addEventListener;
-  
+
   function safeDocAddEventListener(type, listener, options) {
     if (type === 'DOMContentLoaded') {
       return originalDocAddEventListener.call(document, type, listener, options);
@@ -2285,7 +2283,7 @@
       originalDocAddEventListener.call(document, type, listener, options);
     }
   }
-  
+
   function safeWinAddEventListener(type, listener, options) {
     const key = 'win:' + type + ':' + listener.toString().substring(0, 100);
     if (!attachedGlobalListeners.has(key)) {
@@ -2297,34 +2295,34 @@
   // Safe wrapper for querySelectorAll to prevent double-binding on elements
   const originalDocQSA = Document.prototype.querySelectorAll;
   const originalElementQSA = Element.prototype.querySelectorAll;
-  
+
   function rewriteSelector(selector) {
-      if (typeof selector === 'string' && !selector.includes('[data-ux4g-init]')) {
-          return selector.split(',').map(s => s.trim() + ':not([data-ux4g-init])').join(', ');
-      }
-      return selector;
+    if (typeof selector === 'string' && !selector.includes('[data-ux4g-init]')) {
+      return selector.split(',').map(s => s.trim() + ':not([data-ux4g-init])').join(', ');
+    }
+    return selector;
   }
-  
+
   function tagNodes(nodes) {
-      nodes.forEach(n => {
-          if (n.setAttribute) n.setAttribute('data-ux4g-init', 'true');
-      });
-      return nodes;
+    nodes.forEach(n => {
+      if (n.setAttribute) n.setAttribute('data-ux4g-init', 'true');
+    });
+    return nodes;
   }
 
   function safeDocQSA(selector) {
-     const newSelector = rewriteSelector(selector);
-     const nodes = originalDocQSA.call(this, newSelector);
-     return selector !== newSelector ? tagNodes(nodes) : nodes;
+    const newSelector = rewriteSelector(selector);
+    const nodes = originalDocQSA.call(this, newSelector);
+    return selector !== newSelector ? tagNodes(nodes) : nodes;
   }
 
   function safeElementQSA(selector) {
-     const newSelector = rewriteSelector(selector);
-     const nodes = originalElementQSA.call(this, newSelector);
-     return selector !== newSelector ? tagNodes(nodes) : nodes;
+    const newSelector = rewriteSelector(selector);
+    const nodes = originalElementQSA.call(this, newSelector);
+    return selector !== newSelector ? tagNodes(nodes) : nodes;
   }
 
-  global.ux4gCustomInit = function() {
+  global.ux4gCustomInit = function () {
     // Mock the environment
     document.addEventListener = safeDocAddEventListener;
     window.addEventListener = safeWinAddEventListener;
@@ -2335,7 +2333,7 @@
     // Run all registered initializers
     if (global.ux4gCustomInitList) {
       global.ux4gCustomInitList.forEach(fn => {
-        try { fn(); } catch (e) {}
+        try { fn(); } catch (e) { }
       });
     }
 
@@ -2362,7 +2360,7 @@
         global.ux4gCustomInit();
       });
     });
-    
+
     const startObserving = () => {
       if (document.body) {
         observer.observe(document.body, { childList: true, subtree: true });

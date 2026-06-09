@@ -447,7 +447,7 @@ window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomIn
 
 /* ========================================================= Modal js ========================================================= */
 
-// Single delegated click handler â€” works with any framework, no re-init needed
+// Single delegated click handler — works with any framework, no re-init needed
 document.addEventListener('click', (e) => {
   const openBtn = e.target.closest('[data-modal-target], [data-target], .open-modal-btn, .modal-backdrop-btn-trigger');
   if (openBtn) {
@@ -480,7 +480,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Escape key to close all open modals â€” registered once, never duplicates
+// Escape key to close all open modals — registered once, never duplicates
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     const openModals = document.querySelectorAll('.ux4g-modal-backdrop.is-open');
@@ -3698,12 +3698,12 @@ window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomIn
 /* ========================================================= checkbox js ========================================================= */
 window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
 
-  // 1. Standalone indeterminate checkboxes â€” add data-ux4g-indeterminate attribute to set on init
+  // 1. Standalone indeterminate checkboxes — add data-ux4g-indeterminate attribute to set on init
   document.querySelectorAll('.ux4g-checkbox-input[data-ux4g-indeterminate]').forEach(input => {
     input.indeterminate = true;
   });
 
-  // 2. Parent-child checkbox groups â€” wrap the group in data-ux4g-parent-child.
+  // 2. Parent-child checkbox groups — wrap the group in data-ux4g-parent-child.
   //    Mark the select-all input with data-ux4g-select-all.
   //    Mark each child input with data-ux4g-child.
   document.querySelectorAll('[data-ux4g-parent-child]').forEach(container => {

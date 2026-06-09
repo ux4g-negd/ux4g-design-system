@@ -37,18 +37,18 @@
 @import "../components/time-slot.css";
 @import "../components/result-list.css";
 @import "../components/mega-menu.css";
-@import './navbar.css';
-@import './otp.css';
-@import './draft-status-bar.css';
-@import './upload.css';
-@import './empty-state.css';
-@import './feedback.css';
-@import './chips-group.css';
-@import './sla-progress-indicator.css';
-@import './form-field-group.css';
-@import './progress-indicator.css';
-@import './carousel.css';
-@import './footer.css';
+@import '../components/navbar.css';
+@import '../components/otp.css';
+@import '../components/draft-status-bar.css';
+@import '../components/upload.css';
+@import '../components/empty-state.css';
+@import '../components/feedback.css';
+@import '../components/chips-group.css';
+@import '../components/sla-progress-indicator.css';
+@import '../components/form-field-group.css';
+@import '../components/progress-indicator.css';
+@import '../components/carousel.css';
+@import '../components/footer.css';
 
 
 

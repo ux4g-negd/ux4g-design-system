@@ -14,10 +14,10 @@
 /* 3. Components */
 @import "./components/ux4g.components.css";
 
+/* 4. Patterns */
 @import "./pattern/ux4g-pattern.css";
-@import "./pattern/identity-access.css";
 
-/* 4. Utilities (Moved to bottom to win specificity battles) */
+/* 5. Utilities (Moved to bottom to win specificity battles) */
 @import "./utilities/ux4g.utilities.css";
 
 

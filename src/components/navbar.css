@@ -79,14 +79,32 @@
     .ux4g-navbar-desktop {
         display: none !important;
     }
+    .ux4g-navbar {
+        position: relative;
+    }
     .ux4g-navbar-mobile {
         display: flex;
         align-items: center;
         margin-left: auto;
     }
+    /* Set positioning context to static on mobile so the menu spans the full navbar width */
+    .ux4g-navbar-mobile,
+    .ux4g-navbar-mobile *:not(.ux4g-dropdown-menu):not(.ux4g-dropdown-menu *) {
+        position: static !important;
+    }
+    /* Style mobile dropdown menu to be full-width block below navbar */
     .ux4g-navbar-mobile .ux4g-dropdown-menu {
-        right: 0;
-        left: auto;
+        position: absolute !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: 100% !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+        box-sizing: border-box !important;
+        z-index: var(--ux4g-z-dropdown, 1000) !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
     }
     .ux4g-navbar.ux4g-radius-full {
         border-radius: 0 !important;

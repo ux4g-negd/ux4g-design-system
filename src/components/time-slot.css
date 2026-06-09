@@ -608,6 +608,21 @@
     cursor: not-allowed;
 }
 
+.ux4g-time-slot-compact-slot-item.selected {
+    background-color: var(--ux4g-bg-primary) !important;
+    color: var(--ux4g-text-brand-primary-default) !important;
+}
+
+.ux4g-time-slot-compact-slot-item.selected .ux4g-slot-badge {
+    font-size: 0 !important;
+    background-color: var(--ux4g-bg-primary-strong) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='20' viewBox='0 0 21 20' fill='none'%3E%3Cmask id='mask0_2138_6182' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='21' height='20'%3E%3Crect x='0.5' width='20' height='20' fill='%23D9D9D9'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_2138_6182)'%3E%3Cpath d='M8.45825 15L3.70825 10.25L4.89575 9.06252L8.45825 12.625L16.1041 4.97919L17.2916 6.16669L8.45825 15Z' fill='white'/%3E%3C/g%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: 12px !important;
+    border-color: var(--ux4g-color-neutral-0) !important;
+}
+
 .ux4g-slot-badge {
     width: 22px;
     height: 22px;
