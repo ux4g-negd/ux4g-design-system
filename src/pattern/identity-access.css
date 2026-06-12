@@ -395,6 +395,48 @@
     max-width: 500px;
 }
 
+/* Session Modal Badge Styles */
+.ux4g-session-badge-outer {
+    width: var(--ux4g-sz-64);
+    height: var(--ux4g-sz-64);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--ux4g-margin-xl);
+}
+
+.ux4g-session-badge-inner {
+    width: var(--ux4g-sz-40);
+    height: var(--ux4g-sz-40);
+    border-radius: var(--ux4g-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Color variations for session badges */
+.ux4g-session-badge-primary {
+    background-color: var(--ux4g-bg-primary-soft);
+}
+.ux4g-session-badge-primary .ux4g-session-badge-inner {
+    background-color: var(--ux4g-bg-primary-strong);
+}
+
+.ux4g-session-badge-warning {
+    background-color: var(--ux4g-bg-warning-soft);
+}
+.ux4g-session-badge-warning .ux4g-session-badge-inner {
+    background-color: var(--ux4g-bg-warning-strong);
+}
+
+.ux4g-session-badge-neutral {
+    background-color: var(--ux4g-bg-neutral-soft);
+}
+.ux4g-session-badge-neutral .ux4g-session-badge-inner {
+    background-color: var(--ux4g-bg-neutral-strong);
+}
+
 @media (min-width: 576px) {
     .ux4g-session-card {
         min-width: 500px;

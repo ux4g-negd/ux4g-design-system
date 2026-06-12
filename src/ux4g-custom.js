@@ -3419,10 +3419,12 @@ class TimeSlotCalendar {
         }
 
         // Current Month Days
+        const todayMidnight = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), this.currentDate.getDate());
         for (let i = 1; i <= daysInMonth; i++) {
             const date = new Date(year, month, i);
             const dateStr = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(i).padStart(2, '0');
             const isToday = date.toDateString() === this.currentDate.toDateString();
+            const isPast = date < todayMidnight;
             const isSelected = this.selectedDate && date.toDateString() === this.selectedDate.toDateString();
             const isHoliday = this.holidays.includes(dateStr);
             const isWeeklyOff = this.weeklyOffs.includes(date.getDay());
@@ -3430,8 +3432,9 @@ class TimeSlotCalendar {
 
             const dateEl = document.createElement('div');
             dateEl.className = 'ux4g-time-slot-date';
+            if (isPast) dateEl.classList.add('disabled');
             if (isToday) dateEl.classList.add('today');
-            if (isSelected) dateEl.classList.add('selected');
+            if (isSelected && !isPast) dateEl.classList.add('selected');
             if (isHoliday) dateEl.classList.add('holiday');
             if (isWeeklyOff) dateEl.classList.add('weekly-off');
             if (isNoSlots) dateEl.classList.add('no-slots');
@@ -3439,12 +3442,14 @@ class TimeSlotCalendar {
             dateEl.innerText = i;
             dateEl.dataset.date = i;
 
-            dateEl.addEventListener('click', () => {
-                this.selectedDate = new Date(year, month, i);
-                this.render();
-                this.updateSlotHeader();
-                this.resetSlots();
-            });
+            if (!isPast) {
+                dateEl.addEventListener('click', () => {
+                    this.selectedDate = new Date(year, month, i);
+                    this.render();
+                    this.updateSlotHeader();
+                    this.resetSlots();
+                });
+            }
 
             this.calendarGrid.appendChild(dateEl);
         }
@@ -3476,14 +3481,20 @@ class TimeSlotCalendar {
     resetSlots() {
         // Reset slot selection and disable confirm button
         const slots = this.container.querySelectorAll('.ux4g-time-slot-compact-slot-item:not(.disabled)');
-        slots.forEach(s => s.style.backgroundColor = 'transparent');
+        slots.forEach(s => {
+            s.classList.remove('selected');
+            s.style.backgroundColor = '';
+        });
         if (this.confirmBtn) this.confirmBtn.setAttribute('disabled', 'true');
         
         // Re-attach slot selection listeners
         slots.forEach(slot => {
             slot.addEventListener('click', () => {
-                slots.forEach(s => s.style.backgroundColor = 'transparent');
-                slot.style.backgroundColor = 'var(--ux4g-bg-neutral-subtle)';
+                slots.forEach(s => {
+                    s.classList.remove('selected');
+                    s.style.backgroundColor = '';
+                });
+                slot.classList.add('selected');
                 if (this.confirmBtn) this.confirmBtn.removeAttribute('disabled');
             });
         });
@@ -4320,5 +4331,35 @@ document.addEventListener('click', (e) => {
     const otherMenu = d.querySelector('.ux4g-custom-dropdown-menu');
     if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
     if (otherMenu) otherMenu.style.display = 'none';
+  });
+});
+
+/********************************* Mega Menu Five Category list JS ***********************************/
+window.ux4gCustomInitList = window.ux4gCustomInitList || []; window.ux4gCustomInitList.push(() => {
+  const categoryItems = document.querySelectorAll('.ux4g-mega-menu-five__category-item');
+  const contentBlocks = document.querySelectorAll('.ux4g-mega-menu-five__content');
+
+  if (!categoryItems.length || !contentBlocks.length) return;
+
+  categoryItems.forEach((item, index) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // Remove active class from all categories
+      categoryItems.forEach(cat => cat.classList.remove('ux4g-mega-menu-five__category-item--active'));
+      // Add active class to clicked category
+      item.classList.add('ux4g-mega-menu-five__category-item--active');
+
+      // Hide all content blocks
+      contentBlocks.forEach(block => block.classList.remove('ux4g-mega-menu-five__content--active'));
+
+      // Show the corresponding content block by ID matching five-category-1, five-category-2, etc.
+      const targetId = `five-category-${index + 1}`;
+      const targetBlock = document.getElementById(targetId);
+
+      if (targetBlock) {
+        targetBlock.classList.add('ux4g-mega-menu-five__content--active');
+      }
+    });
   });
 });

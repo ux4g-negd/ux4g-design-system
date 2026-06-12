@@ -7,16 +7,18 @@
 
 /* Disabled text */
 
-.ux4g-list-item-row:disabled:hover {
+.ux4g-list-item-row:disabled:hover,
+.ux4g-list-item-row[disabled]:hover {
   background: none !important;
-  
-} .ux4g-list-item-row:disabled {
+}
 
+.ux4g-list-item-row:disabled,
+.ux4g-list-item-row[disabled] {
   pointer-events: none  !important;
 }
 
-.ux4g-list-item-row:disabled 
-:is(.ux4g-list-item-start, .ux4g-list-item-end, .ux4g-icon-outlined) {
+.ux4g-list-item-row:disabled :is(.ux4g-list-item-start, .ux4g-list-item-end, .ux4g-icon-outlined),
+.ux4g-list-item-row[disabled] :is(.ux4g-list-item-start, .ux4g-list-item-end, .ux4g-icon-outlined) {
   color: var(--ux4g-text-neutral-disabled) !important;
   background: none ;
 }
@@ -356,7 +358,7 @@ span.ux4g-list-item-row {
   font-weight: var(--ux4g-fw-medium);
 }
 .ux4g-list-xl .ux4g-list-item .ux4g-list-item-row {
-  padding: var(--ux4g-padding-xxl);
+  padding: var(--ux4g-padding-xl);
   min-height: 72px;
 }
 

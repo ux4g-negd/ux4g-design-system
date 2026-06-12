@@ -470,13 +470,19 @@
     transition: all 0.2s;
 }
 
-.ux4g-time-slot-date:hover:not(.muted):not(.selected) {
+.ux4g-time-slot-date:hover:not(.muted):not(.selected):not(.disabled) {
     background-color: var(--ux4g-bg-neutral-subtle);
 }
 
 .ux4g-time-slot-date.muted {
     color: var(--ux4g-text-neutral-disabled);
     cursor: default;
+}
+
+.ux4g-time-slot-date.disabled {
+    color: var(--ux4g-text-neutral-disabled) !important;
+    cursor: not-allowed !important;
+    background-color: transparent !important;
 }
 
 .ux4g-time-slot-date.no-slots {
@@ -609,7 +615,7 @@
 }
 
 .ux4g-time-slot-compact-slot-item.selected {
-    background-color: var(--ux4g-bg-primary) !important;
+    background-color: var(--ux4g-bg-primary-soft) !important;
     color: var(--ux4g-text-brand-primary-default) !important;
 }
 
@@ -633,7 +639,6 @@
     --ux4g-fs-current: var(--ux4g-fs-11);
     --ux4g-lh-current: var(--ux4g-lh-14);
     font-weight: var(--ux4g-font-weight-medium);
-    ;
     color: var(--ux4g-color-neutral-0);
     border: solid 2px var(--ux4g-bg-neutral);
 }
